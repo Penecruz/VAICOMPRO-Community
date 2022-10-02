@@ -457,7 +457,7 @@ namespace VAICOM
 
                     CheckVAVersion(vaProxy);
                     GetAssemblies(vaProxy);
-                    CheckEULA(vaProxy);
+                    //CheckEULA(vaProxy);
 
                 }
                 catch
