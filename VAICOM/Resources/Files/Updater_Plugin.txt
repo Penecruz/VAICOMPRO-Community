@@ -1,0 +1,16 @@
+@ECHO OFF
+ECHO VAICOM PRO 2.5
+ECHO Plugin Updater running...
+ECHO Closing VoiceAttack...
+TASKKILL /F /IM VoiceAttack.exe
+TIMEOUT /T 2
+ECHO Updating files...
+COPY /Y "Updates\Package\VAICOMPRO\Documentation\VAICOM PRO User Manual.pdf" "Documentation\VAICOM PRO User Manual.pdf" 
+COPY /Y "Updates\Package\VAICOMPRO\EULA.txt" "EULA.txt" 
+COPY /Y "Updates\Package\VAICOMPRO\VAICOMPRO.dll" "VAICOMPRO.dll" 
+RMDIR /S /Q "Updates"
+DEL /Q VAICOMPRO.exe
+ECHO Restarting VoiceAttack...
+START "VoiceAttack" /MIN XXXXXX
+ECHO Done!
+EXIT

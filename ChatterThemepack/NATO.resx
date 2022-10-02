@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NATO_Animal_4mins_01_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(01).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_02_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(02).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_03_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(03).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_04_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(04).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_05_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(05).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_06_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(06).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_08_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(08).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_09_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(09).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(10).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(13).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(16).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_17_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(17).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_18_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(18).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_19_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(19).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_20_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(20).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_21_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(21).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_22_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(22).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_23_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(23).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_24_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(24).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_25_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(25).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_26_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(26).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_27_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(27).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_28_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(28).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_29_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(29).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_30_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(30).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_31_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(31).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_32_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(32).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_33_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(33).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_34_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(34).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_35_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(35).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_36_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(36).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_37_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(37).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_38_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(38).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_39_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(39).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_40_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(40).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_41_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(41).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_42_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(42).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_43_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(43).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_44_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(44).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_45_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(45).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_46_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(46).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_47_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(47).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_48_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(48).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_49_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(49).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_50_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(50).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Animal_4mins_51_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato animal 4mins(51).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_01_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(01).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_02_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(02).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_03_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(03).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_04_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(04).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_05_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(05).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_09_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(09).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(16).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_17_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(17).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_18_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(18).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_20_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(20).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_21_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(21).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_22_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(22).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_23_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(23).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_25_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(25).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_26_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(26).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_27_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(27).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_28_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(28).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_29_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(29).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_30_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(30).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_31_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(31).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_32_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(32).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_34_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(34).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_35_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(35).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_36_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(36).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_39_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(39).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_40_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(40).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_42_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(42).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_43_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(43).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_45_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(45).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_47_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(47).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_48_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(48).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_50_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(50).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_51_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(51).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_52_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(52).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_53_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(53).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_54_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(54).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_55_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(55).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_56_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(56).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_57_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(57).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_58_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(58).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_59_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(59).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_61_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(61).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_62_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(62).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_64_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(64).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_66_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(66).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_68_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(68).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_70_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(70).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_71_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(71).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_72_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(72).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_73_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(73).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_74_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(74).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_75_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(75).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_76_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(76).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_79_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(79).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_80_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(80).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NATO_Bear_30mins_82_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\nato bear 30mins(82).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_001_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(001).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_002_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(002).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_003_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(003).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_004_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(004).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_005_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(005).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_006_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(006).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_007_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(007).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_008_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(008).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_009_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(009).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_010_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(010).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_011_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(011).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_012_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(012).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_013_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(013).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_014_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(014).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_015_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(015).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_016_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(016).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_017_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(017).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_018_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(018).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_019_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(019).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_020_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(020).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_021_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(021).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_022_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(022).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_023_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(023).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_024_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(024).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_025_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(025).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_026_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(026).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_027_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(027).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_028_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(028).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_029_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(029).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_030_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(030).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_031_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(031).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_032_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(032).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_033_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(033).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_034_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(034).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_035_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(035).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_036_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(036).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_037_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(037).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_038_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(038).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_039_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(039).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_040_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(040).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_041_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(041).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_042_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(042).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_043_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(043).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_044_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(044).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_045_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(045).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_046_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(046).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_047_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(047).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_048_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(048).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_049_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(049).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_050_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(050).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_051_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(051).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_052_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(052).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_053_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(053).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_054_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(054).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_055_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(055).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_056_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(056).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_057_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(057).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_058_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(058).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_059_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(059).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_060_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(060).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_061_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(061).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_062_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(062).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_063_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(063).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_064_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(064).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_065_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(065).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_066_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(066).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_067_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(067).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_068_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(068).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_069_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(069).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_070_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(070).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_071_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(071).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_072_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(072).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_073_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(073).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_074_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(074).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_075_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(075).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_076_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(076).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_077_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(077).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_078_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(078).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_079_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(079).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_080_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(080).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_081_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(081).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_082_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(082).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_083_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(083).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_084_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(084).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_085_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(085).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_086_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(086).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_087_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(087).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_088_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(088).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_089_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(089).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_090_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(090).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_091_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(091).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_092_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(092).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_093_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(093).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_094_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(094).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_095_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(095).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_096_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(096).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_097_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(097).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_098_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(098).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_099_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(099).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_100_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(100).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_101_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(101).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_102_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(102).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_103_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(103).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_104_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(104).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_105_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(105).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_106_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(106).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_107_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(107).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_general_7mins_108_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf general 7mins(108).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_01_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(01).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_02_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(02).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_03_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(03).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_04_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(04).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_05_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(05).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_06_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(06).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_08_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(08).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_09_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(09).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(10).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(13).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="USAF_tanker_1_mins_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\nato\usaf tanker 1 mins(16).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

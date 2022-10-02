@@ -1,0 +1,235 @@
+-- VAICOM PRO Theme
+
+local LeftMargin = 56
+
+local TitleSkin = {
+		["params"] = {
+			["name"] = "staticOptionsTitleSkin",
+		},
+		["states"] = {
+			["released"] = {
+				[1] = {
+					["text"] = {
+						["horzAlign"] = {
+							["type"] = "min"
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+local SubTitleSkin = {
+	["params"] = {
+		["name"] = "staticSkin2",
+	},
+	["states"] = {
+		["released"] = {
+			[1] = {
+				["text"] = {
+					["fontSize"] = 10,
+					["horzAlign"] = {
+						["type"] = "min"
+					}
+				}
+			}
+		}
+	}
+}
+
+dialog = {
+	["children"] = {
+		["containerPlugin"] = {
+			["children"] = {
+
+				["VAICOMOptionsTitleLabel"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 45,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_TITLE",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+
+				["VAICOMOptionsSubVersionLabel"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 65,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_VERSION",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+
+				["VAICOMOptionsSubLicenseLabel"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 85,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_LICENSE",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+
+				["VAICOMOptionsSubDLLPlugin"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 125,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_DLLPLUGIN",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+
+				["VAICOMOptionsSubDLLChatter"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 145,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_DLLCHATTER",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+
+				["VAICOMOptionsSubDLLRio"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 165,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_DLLRIO",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+	
+				["VAICOMOptionsSubServerIPLabel"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 205,
+							["w"] = 380,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_IPCONFIG",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = TitleSkin,
+					["type"] = "Static",
+				},
+
+				["VAICOMOptionsSubFooter"] = {
+					["params"] = {
+						["bounds"] = {
+							["x"] = LeftMargin,
+							["y"] = 580,
+							["w"] = 880,
+							["h"] = 24,
+						},
+						["enabled"] = true,
+						["text"] = "$VAICOM_FOOTER",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = SubTitleSkin,
+					["type"] = "Static",
+				},
+
+			},
+			["params"] = {
+				["bounds"] = {
+					["h"] = 600,
+					["w"] = 974,
+					["x"] = 0,
+					["y"] = 0,
+				},
+				["enabled"] = true,
+				["text"] = "",
+				["tooltip"] = "",
+				["visible"] = true,
+				["zindex"] = 0,
+			},
+			["skin"] = {
+				["params"] = {
+					["name"] = "panelSkin",
+				},
+			},
+			["type"] = "Panel",
+		},
+	},
+	["params"] = {
+		["bounds"] = {
+			["h"] = 851,
+			["w"] = 1135,
+			["x"] = 0,
+			["y"] = 0,
+		},
+		["draggable"] = true,
+		["enabled"] = true,
+		["hasCursor"] = true,
+		["lockFlow"] = false,
+		["modal"] = false,
+		["offscreen"] = false,
+		["resizable"] = false,
+		["text"] = "New dialog",
+		["zOrder"] = 0,
+	},
+	["skin"] = {
+		["params"] = {
+			["name"] = "windowSkin",
+		},
+	},
+	["type"] = "Window",
+}

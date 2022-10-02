@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="RUSSIA_AF_3mins_01_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(01).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_02_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(02).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_03_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(03).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_04_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(04).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_05_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(05).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_06_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(06).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_08_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(08).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_09_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(09).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(10).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(13).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_AF_3mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia af 3mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_01_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(01).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_02_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(02).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_03_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(03).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_04_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(04).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_05_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(05).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_06_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(06).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_08_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(08).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_09_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(09).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(10).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(13).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(16).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_17_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(17).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_18_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(18).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_19_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(19).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_20_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(20).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_21_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(21).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_22_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(22).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_23_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(23).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_24_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(24).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_25_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(25).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_26_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(26).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_27_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(27).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_28_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(28).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_29_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(29).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_30_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(30).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_31_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(31).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_32_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(32).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_33_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(33).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_34_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(34).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_35_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(35).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_36_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(36).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_37_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(37).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_38_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(38).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_39_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(39).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_40_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(40).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_41_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(41).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_42_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(42).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_43_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(43).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_44_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(44).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_45_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(45).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_46_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(46).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_47_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(47).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_48_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(48).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_49_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(49).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_50_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(50).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_51_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(51).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_52_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(52).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_53_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(53).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_54_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(54).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_55_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(55).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_56_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(56).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_57_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(57).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_58_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(58).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_59_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(59).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_60_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(60).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_61_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(61).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_62_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(62).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_63_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(63).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_64_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(64).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_65_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(65).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_66_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(66).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_67_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(67).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_68_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(68).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_69_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(69).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_70_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(70).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_71_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(71).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_72_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(72).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_73_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(73).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_74_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(74).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_75_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(75).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_76_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(76).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_77_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(77).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_78_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(78).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_79_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(79).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_80_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(80).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_81_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(81).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_82_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(82).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_83_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(83).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_84_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(84).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_85_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(85).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_86_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(86).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RUSSIA_bombers18mins_87_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\russia\russia bombers18mins(87).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

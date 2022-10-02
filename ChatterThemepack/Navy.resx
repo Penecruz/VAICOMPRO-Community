@@ -1,0 +1,1156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NAVY_AWACS_3_mins_02_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(02).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_05_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(05).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_06_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(06).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_08_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(08).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(10).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(13).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(16).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_17_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(17).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_18_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(18).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_19_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(19).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_AWACS_3_mins_20_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy awacs 3 mins(20).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_005_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(005).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_006_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(006).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_007_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(007).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_008_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(008).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_009_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(009).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_010_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(010).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_011_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(011).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_012_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(012).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_013_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(013).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_014_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(014).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_015_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(015).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_016_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(016).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_017_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(017).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_018_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(018).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_019_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(019).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_020_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(020).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_021_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(021).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_022_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(022).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_023_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(023).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_024_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(024).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_025_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(025).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_026_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(026).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_027_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(027).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_029_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(029).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_030_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(030).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_031_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(031).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_032_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(032).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_033_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(033).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_034_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(034).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_035_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(035).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_037_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(037).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_038_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(038).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_039_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(039).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_040_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(040).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_041_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(041).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_043_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(043).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_045_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(045).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_046_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(046).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_047_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(047).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_048_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(048).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_049_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(049).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_050_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(050).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_051_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(051).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_052_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(052).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_054_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(054).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_055_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(055).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_056_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(056).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_057_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(057).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_058_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(058).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_060_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(060).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_061_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(061).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_062_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(062).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_063_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(063).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_064_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(064).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_065_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(065).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_066_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(066).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_067_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(067).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_068_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(068).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_070_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(070).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_071_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(071).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_072_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(072).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_073_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(073).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_074_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(074).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_075_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(075).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_076_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(076).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_077_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(077).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_078_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(078).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_079_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(079).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_080_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(080).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_082_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(082).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_091_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(091).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_095_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(095).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_096_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(096).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_098_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(098).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_099_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(099).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_101_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(101).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_102_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(102).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_103_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(103).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_106_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(106).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_107_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(107).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_109_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(109).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_113_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(113).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_114_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(114).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_116_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(116).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_117_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(117).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_118_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(118).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_119_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(119).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_120_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(120).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_121_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(121).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_123_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(123).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_124_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(124).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_125_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(125).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_126_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(126).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_127_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(127).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_128_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(128).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_131_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(131).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_132_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(132).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_133_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(133).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_135_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(135).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_136_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(136).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_137_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(137).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_138_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(138).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_139_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(139).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_140_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(140).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_141_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(141).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_142_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(142).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_143_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(143).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_144_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(144).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_145_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(145).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_146_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(146).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_147_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(147).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_148_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(148).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_149_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(149).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_150_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(150).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_151_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(151).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_152_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(152).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_153_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(153).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_155_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(155).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_156_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(156).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_157_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(157).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_158_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(158).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_159_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(159).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_160_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(160).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_163_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(163).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_166_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(166).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_167_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(167).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_168_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(168).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_169_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(169).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_171_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(171).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_172_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(172).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_173_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(173).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_174_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(174).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_175_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(175).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_176_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(176).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_177_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(177).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_178_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(178).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_179_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(179).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_180_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(180).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_181_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(181).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_182_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(182).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_183_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(183).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_184_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(184).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_186_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(186).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_188_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(188).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_189_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(189).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_190_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(190).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_191_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(191).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_192_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(192).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_193_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(193).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_194_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(194).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_195_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(195).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_196_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(196).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_197_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(197).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_198_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(198).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_199_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(199).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_201_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(201).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_202_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(202).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_203_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(203).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_204_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(204).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_205_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(205).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_206_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(206).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_207_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(207).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_208_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(208).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_211_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(211).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_212_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(212).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_213_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(213).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_214_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(214).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_215_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(215).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_216_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(216).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_217_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(217).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_218_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(218).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_219_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(219).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_220_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(220).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_221_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(221).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_222_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(222).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_223_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(223).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_224_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(224).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_225_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(225).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_226_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(226).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_227_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(227).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_228_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(228).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_229_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(229).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_230_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(230).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_231_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(231).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_232_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(232).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_233_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(233).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_234_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(234).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_235_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(235).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_237_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(237).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_238_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(238).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_239_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(239).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_241_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(241).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_242_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(242).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_243_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(243).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_244_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(244).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_245_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(245).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_246_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(246).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_247_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(247).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_248_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(248).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_249_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(249).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_250_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(250).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_252_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(252).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_253_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(253).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_255_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(255).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_256_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(256).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_257_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(257).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_258_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(258).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_259_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(259).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_260_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(260).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_261_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(261).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_262_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(262).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_263_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(263).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_264_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(264).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_265_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(265).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_266_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(266).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_268_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(268).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_269_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(269).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_270_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(270).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_271_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(271).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_272_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(272).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_273_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(273).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_274_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(274).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_275_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(275).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_276_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(276).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_277_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(277).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_278_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(278).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_279_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(279).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_280_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(280).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_281_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(281).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_282_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(282).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_283_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(283).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_284_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(284).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_285_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(285).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_286_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(286).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_287_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(287).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_288_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(288).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_291_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(291).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_292_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(292).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_293_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(293).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_294_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(294).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_295_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(295).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_296_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(296).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_297_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(297).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_298_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(298).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_299_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(299).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_300_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(300).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_301_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(301).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_302_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(302).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_303_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(303).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_304_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(304).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_305_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(305).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_306_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(306).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_307_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(307).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_308_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(308).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_309_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(309).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_310_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(310).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_311_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(311).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_312_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(312).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_313_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(313).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_314_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(314).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_315_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(315).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_316_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(316).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_319_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(319).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_321_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(321).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_323_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(323).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_324_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(324).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_325_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(325).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_326_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(326).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_327_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(327).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_328_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(328).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_329_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(329).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_330_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(330).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_331_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(331).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_332_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(332).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_333_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(333).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_334_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(334).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_335_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(335).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_336_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(336).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_337_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(337).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_338_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(338).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_339_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(339).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_340_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(340).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_341_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(341).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_342_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(342).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_343_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(343).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_344_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(344).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_345_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(345).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_346_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(346).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_347_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(347).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_348_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(348).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_349_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(349).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_350_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(350).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_351_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(351).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_352_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(352).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_353_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(353).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_354_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(354).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_355_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(355).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_356_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(356).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_357_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(357).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_358_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(358).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_359_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(359).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_360_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(360).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_361_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(361).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_362_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(362).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_363_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(363).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_364_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(364).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Carrier_120_mins_365_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy carrier 120 mins(365).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_03_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(03).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_06_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(06).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_07_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(07).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_08_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(08).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_09_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(09).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(10).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_11_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(11).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_12_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(12).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_13_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(13).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_14_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(14).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_15_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(15).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_16_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(16).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_17_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(17).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_18_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(18).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_19_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(19).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_20_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(20).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_21_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(21).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_22_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(22).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_23_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(23).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_24_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(24).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_25_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(25).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NAVY_Enterprise_5mins_26_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\audio\themes\chatter\navy\navy enterprise 5mins(26).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
