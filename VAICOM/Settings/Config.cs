@@ -336,7 +336,7 @@ namespace VAICOM
                 AutomaticUpdateFinished     = false,
                 BetaTester                  = false,
                 Windowrestorelocation       = new Point(20, 20),
-                Runningforthefirsttime      = true,
+                Runningforthefirsttime      = false,
                 ClientSendIP                = "127.0.0.1",
                 ClientSendPort              = 33491,
                 ClientReceiveIP             = "*",
