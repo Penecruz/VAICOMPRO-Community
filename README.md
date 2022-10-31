@@ -21,7 +21,7 @@ The Vaicom Pro Community Team
 
 ## Installation Instructions
 
- Backup your current VAICOMPRO folder found in your Voice Attack/Apps folder.
+1. Backup your current VAICOMPRO folder found in your Voice Attack/Apps folder.
 2. Delete the VAICOMPRO folder in your VoiceAttack /Apps folder.
 3. Launch VoiceAttack and exit again.
 4. Unzip the contents of the zip file and move the VAICOMPRO folder into your
