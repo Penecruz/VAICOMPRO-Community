@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Program Files\VoiceAttack\Apps\VAICOMPRO\</OutputPath>
+    <OutputPath>..\..\..\..\..\Program Files\VoiceAttack\Apps\VAICOMPRO\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

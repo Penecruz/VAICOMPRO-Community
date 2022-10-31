@@ -191,35 +191,8 @@ namespace VAICOM
 
             public static void FixFiles(dynamic vaProxy)
             {
-                FileHandler.Updater.CleanUpdateFolder();
                 Settings.ConfigFile.AddNewConfigItems(); 
                 Settings.ConfigFile.WriteConfigToFile(true); 
-            }
-
-            public static void CheckUpdates(dynamic vaProxy)
-            {
-                if (State.activeconfig.AutomaticUpdateFinished)
-                {
-                    Log.Write("Plugin files were updated.", Colors.System);
-                    State.activeconfig.AutomaticUpdateFinished = false;
-                }
-                else
-                {
-                    // ---- only check for new updates every <checkmax> sessions
-
-                    Random rnd = new Random();
-                    int checkmax = 1;
-                    int dice = rnd.Next(1, 1 + checkmax);
-                    if (dice.Equals(1))
-                    {
-                        FileHandler.Updater.GetPluginUpdates();
-                    }
-                    else
-                    {
-                        Log.Write("Update check skipped: " + dice, Colors.Inline);
-                    }
-                }
-
             }
 
             public static void LogVersionData(dynamic vaProxy)
@@ -471,7 +444,6 @@ namespace VAICOM
                 {
 
                     FixFiles(vaProxy);
-                    CheckUpdates(vaProxy);
                     LogVersionData(vaProxy); 
                     ResetStateValues(vaProxy);        
                     Processor.InitTTSPlaybackStream();

@@ -1,4 +1,4 @@
-dofile('./Scripts/UI/initGUI.lua')
+п»їdofile('./Scripts/UI/initGUI.lua')
 
 local base = _G
 
@@ -166,8 +166,7 @@ function clear()
 		sRadioAuto:setVisible(false)
 		sMain:setVisible(false)
 		
-
-		autoScrollTextTrig:setBounds(getLentaTriggerBounds(0)) --возвращаем назад для новой миссии
+		autoScrollTextTrig:setBounds(getLentaTriggerBounds(0)) --РІРѕР·РІСЂР°С‰Р°РµРј РЅР°Р·Р°Рґ РґР»СЏ РЅРѕРІРѕР№ РјРёСЃСЃРёРё
 	end
 end
 

@@ -58,91 +58,96 @@ local unitSystems = {
 	}
 }
 
+--[DCSCORE-6483: A-10C speech error](https://jira.eagle.ru/browse/DCSCORE-6483)
+--by some reason at mission execution  time  table coutry is chnaged in format , save  original  as reference
+
+local  nations  = base.country.id
+
 unitSystemByCountry = {
-	[base.country.id.RUSSIA]			= unitSystems.metric,
-	[base.country.id.UKRAINE]			= unitSystems.metric,
-	[base.country.id.USA]				= unitSystems.imperial,
-	[base.country.id.TURKEY]			= unitSystems.imperial,
-	[base.country.id.UK]				= unitSystems.imperial,
-	[base.country.id.FRANCE]			= unitSystems.imperial,
-	[base.country.id.GERMANY]			= unitSystems.imperial,
-	[base.country.id.CANADA]			= unitSystems.imperial,
-	[base.country.id.SPAIN]				= unitSystems.imperial,
-	[base.country.id.THE_NETHERLANDS]	= unitSystems.imperial,
-	[base.country.id.BELGIUM]			= unitSystems.imperial,
-	[base.country.id.NORWAY]			= unitSystems.imperial,
-	[base.country.id.DENMARK]			= unitSystems.imperial,
-	[base.country.id.ISRAEL]			= unitSystems.imperial,
-	[base.country.id.GEORGIA]			= unitSystems.imperial,
-	[base.country.id.INSURGENTS]		= unitSystems.metric,
-	[base.country.id.ABKHAZIA]			= unitSystems.metric,
-	[base.country.id.SOUTH_OSETIA]		= unitSystems.metric,
-	[base.country.id.ITALY]				= unitSystems.imperial,
-	[base.country.id.AUSTRALIA]			= unitSystems.imperial,
-    [base.country.id.SWITZERLAND] 	    = unitSystems.imperial,
-    [base.country.id.AUSTRIA] 	        = unitSystems.imperial,
-    [base.country.id.BELARUS] 	        = unitSystems.metric,
-    [base.country.id.BULGARIA] 	        = unitSystems.imperial,
-    [base.country.id.CHEZH_REPUBLIC]    = unitSystems.imperial,
-    [base.country.id.CHINA]             = unitSystems.metric,
-    [base.country.id.CROATIA] 	        = unitSystems.imperial,
-    [base.country.id.EGYPT]	            = unitSystems.imperial,
-    [base.country.id.FINLAND] 	        = unitSystems.imperial,
-    [base.country.id.GREECE] 	        = unitSystems.imperial,
-    [base.country.id.HUNGARY] 	        = unitSystems.imperial,
-    [base.country.id.INDIA] 	        = unitSystems.imperial,
-    [base.country.id.IRAN] 	            = unitSystems.imperial,
-    [base.country.id.IRAQ] 	            = unitSystems.imperial,
-    [base.country.id.JAPAN]	            = unitSystems.imperial,
-    [base.country.id.KAZAKHSTAN] 	    = unitSystems.metric,
-    [base.country.id.NORTH_KOREA] 	    = unitSystems.imperial,
-    [base.country.id.PAKISTAN] 	        = unitSystems.imperial,
-    [base.country.id.POLAND] 	        = unitSystems.imperial,
-    [base.country.id.ROMANIA] 	        = unitSystems.imperial,
-    [base.country.id.SAUDI_ARABIA] 	    = unitSystems.imperial,
-    [base.country.id.SERBIA] 	        = unitSystems.imperial,
-    [base.country.id.SLOVAKIA] 	        = unitSystems.imperial,
-    [base.country.id.SOUTH_KOREA] 	    = unitSystems.imperial,
-    [base.country.id.SWEDEN] 	        = unitSystems.imperial,
-    [base.country.id.SYRIA]	            = unitSystems.imperial,
-    [base.country.id.AGGRESSORS]	    = unitSystems.imperial,
+	[nations.RUSSIA]			= unitSystems.metric,
+	[nations.UKRAINE]			= unitSystems.metric,
+	[nations.USA]				= unitSystems.imperial,
+	[nations.TURKEY]			= unitSystems.imperial,
+	[nations.UK]				= unitSystems.imperial,
+	[nations.FRANCE]			= unitSystems.imperial,
+	[nations.GERMANY]			= unitSystems.imperial,
+	[nations.CANADA]			= unitSystems.imperial,
+	[nations.SPAIN]				= unitSystems.imperial,
+	[nations.THE_NETHERLANDS]	= unitSystems.imperial,
+	[nations.BELGIUM]			= unitSystems.imperial,
+	[nations.NORWAY]			= unitSystems.imperial,
+	[nations.DENMARK]			= unitSystems.imperial,
+	[nations.ISRAEL]			= unitSystems.imperial,
+	[nations.GEORGIA]			= unitSystems.imperial,
+	[nations.INSURGENTS]		= unitSystems.metric,
+	[nations.ABKHAZIA]			= unitSystems.metric,
+	[nations.SOUTH_OSETIA]		= unitSystems.metric,
+	[nations.ITALY]				= unitSystems.imperial,
+	[nations.AUSTRALIA]			= unitSystems.imperial,
+    [nations.SWITZERLAND] 	    = unitSystems.imperial,
+    [nations.AUSTRIA] 	        = unitSystems.imperial,
+    [nations.BELARUS] 	        = unitSystems.metric,
+    [nations.BULGARIA] 	        = unitSystems.imperial,
+    [nations.CHEZH_REPUBLIC]    = unitSystems.imperial,
+    [nations.CHINA]             = unitSystems.metric,
+    [nations.CROATIA] 	        = unitSystems.imperial,
+    [nations.EGYPT]	            = unitSystems.imperial,
+    [nations.FINLAND] 	        = unitSystems.imperial,
+    [nations.GREECE] 	        = unitSystems.imperial,
+    [nations.HUNGARY] 	        = unitSystems.imperial,
+    [nations.INDIA] 	        = unitSystems.imperial,
+    [nations.IRAN] 	            = unitSystems.imperial,
+    [nations.IRAQ] 	            = unitSystems.imperial,
+    [nations.JAPAN]	            = unitSystems.imperial,
+    [nations.KAZAKHSTAN] 	    = unitSystems.metric,
+    [nations.NORTH_KOREA] 	    = unitSystems.imperial,
+    [nations.PAKISTAN] 	        = unitSystems.imperial,
+    [nations.POLAND] 	        = unitSystems.imperial,
+    [nations.ROMANIA] 	        = unitSystems.imperial,
+    [nations.SAUDI_ARABIA] 	    = unitSystems.imperial,
+    [nations.SERBIA] 	        = unitSystems.imperial,
+    [nations.SLOVAKIA] 	        = unitSystems.imperial,
+    [nations.SOUTH_KOREA] 	    = unitSystems.imperial,
+    [nations.SWEDEN] 	        = unitSystems.imperial,
+    [nations.SYRIA]	            = unitSystems.imperial,
+    [nations.AGGRESSORS]	    = unitSystems.imperial,
 
-    [base.country.id.YEMEN]	            = unitSystems.imperial,
-    [base.country.id.VIETNAM]	        = unitSystems.imperial,
-    [base.country.id.VENEZUELA]	        = unitSystems.imperial,
-    [base.country.id.TUNISIA]	        = unitSystems.imperial,
-    [base.country.id.THAILAND]	        = unitSystems.imperial,
-    [base.country.id.SUDAN]	            = unitSystems.imperial,
-    [base.country.id.PHILIPPINES]	    = unitSystems.imperial,
-    [base.country.id.MOROCCO]	        = unitSystems.imperial,
-    [base.country.id.MEXICO]	        = unitSystems.imperial,
-    [base.country.id.MALAYSIA]	        = unitSystems.imperial,
-    [base.country.id.LIBYA]			    = unitSystems.imperial,
-    [base.country.id.JORDAN]	        = unitSystems.imperial,
-    [base.country.id.INDONESIA]	        = unitSystems.imperial,
-    [base.country.id.HONDURAS]	        = unitSystems.imperial,
-    [base.country.id.ETHIOPIA]	        = unitSystems.imperial,
-    [base.country.id.CHILE]			    = unitSystems.imperial,
-    [base.country.id.BRAZIL]	        = unitSystems.imperial,
-    [base.country.id.BAHRAIN]	        = unitSystems.imperial,
+    [nations.YEMEN]	            = unitSystems.imperial,
+    [nations.VIETNAM]	        = unitSystems.imperial,
+    [nations.VENEZUELA]	        = unitSystems.imperial,
+    [nations.TUNISIA]	        = unitSystems.imperial,
+    [nations.THAILAND]	        = unitSystems.imperial,
+    [nations.SUDAN]	            = unitSystems.imperial,
+    [nations.PHILIPPINES]	    = unitSystems.imperial,
+    [nations.MOROCCO]	        = unitSystems.imperial,
+    [nations.MEXICO]	        = unitSystems.imperial,
+    [nations.MALAYSIA]	        = unitSystems.imperial,
+    [nations.LIBYA]			    = unitSystems.imperial,
+    [nations.JORDAN]	        = unitSystems.imperial,
+    [nations.INDONESIA]	        = unitSystems.imperial,
+    [nations.HONDURAS]	        = unitSystems.imperial,
+    [nations.ETHIOPIA]	        = unitSystems.imperial,
+    [nations.CHILE]			    = unitSystems.imperial,
+    [nations.BRAZIL]	        = unitSystems.imperial,
+    [nations.BAHRAIN]	        = unitSystems.imperial,
 
-	[base.country.id.THIRDREICH]				= unitSystems.metric,	
-	[base.country.id.YUGOSLAVIA]				= unitSystems.metric,
-	[base.country.id.USSR]						= unitSystems.metric,	
-	[base.country.id.ITALIAN_SOCIAL_REPUBLIC]	= unitSystems.metric,	
-	[base.country.id.ALGERIA]					= unitSystems.metric,	
+	[nations.THIRDREICH]				= unitSystems.metric,	
+	[nations.YUGOSLAVIA]				= unitSystems.metric,
+	[nations.USSR]						= unitSystems.metric,	
+	[nations.ITALIAN_SOCIAL_REPUBLIC]	= unitSystems.metric,	
+	[nations.ALGERIA]					= unitSystems.metric,	
 
-	[base.country.id.KUWAIT]					= unitSystems.imperial,	
-	[base.country.id.QATAR]						= unitSystems.imperial,	
-	[base.country.id.OMAN]						= unitSystems.imperial,	
-	[base.country.id.UNITED_ARAB_EMIRATES]		= unitSystems.imperial,	
-	[base.country.id.CUBA]						= unitSystems.imperial,	
-	[base.country.id.CJTF_RED]					= unitSystems.metric,	
-	[base.country.id.CJTF_BLUE]					= unitSystems.imperial,	
-	[base.country.id.UN_PEACEKEEPERS]			= unitSystems.imperial,
-	[base.country.id.LEBANON]					= unitSystems.metric,
-	[base.country.id.GDR]						= unitSystems.metric,
-	[base.country.id.ARGENTINA]					= unitSystems.metric,
+	[nations.KUWAIT]					= unitSystems.imperial,	
+	[nations.QATAR]						= unitSystems.imperial,	
+	[nations.OMAN]						= unitSystems.imperial,	
+	[nations.UNITED_ARAB_EMIRATES]		= unitSystems.imperial,	
+	[nations.CUBA]						= unitSystems.imperial,	
+	[nations.CJTF_RED]					= unitSystems.metric,	
+	[nations.CJTF_BLUE]					= unitSystems.imperial,	
+	[nations.UN_PEACEKEEPERS]			= unitSystems.imperial,
+	[nations.LEBANON]					= unitSystems.metric,
+	[nations.GDR]						= unitSystems.metric,
+	[nations.ARGENTINA]					= unitSystems.metric,
 	
 	--Combined Joint Task Forces Red
 }
@@ -392,7 +397,7 @@ do
 
 Pressure = {
 	make = function(self, pressure, aircraftType, fmt)
-		local country = aircraftNativeCountry[aircraftType] or base.country.id.USA
+		local country = aircraftNativeCountry[aircraftType] or base.country.USA
 		local unit = unitSystemByCountry[country].pressure
 		return self.sub.Digits:make(u.round(pressure * unit.coeff, 0.01), fmt)
 	end,
@@ -624,8 +629,9 @@ function hasNumericCallsign(pUnit)
 			country == base.country.CHINA or
 			country == base.country.VIETNAM or 
 			country == base.country.USSR or
-			country == base.country.YUGOSLAVIA 
-			--or (country == base.country.id.USA and forcesName == 'NAVY')	-- TODO: Make correct Numeric Callsign for US NAVY
+			country == base.country.YUGOSLAVIA or
+			country == base.country.GDR
+			--or (country == nations.USA and forcesName == 'NAVY')	-- TODO: Make correct Numeric Callsign for US NAVY
 end
 
 local airdromeNameVariants = {
@@ -1189,7 +1195,9 @@ local bandit	= {_('_bandit'), 	'bandit'}
 
 TargetShortDescription = {
 	make = function(self, targetDesc, level, coalition, country)		
+		base.print('\t\t TargetShortDescription : targetDesc.type = '..#targetDesc.type)
 		local level = base.math.min(level, #targetDesc.type)
+		base.print('\t\t TargetShortDescription : level = '..level)
 		return self.sub.targetType:make(targetDesc.type[level] + 1) + ' ' + self.sub.BullseyeCoords:make(targetDesc.point, coalition, country)
 	end,
 	sub = {
@@ -1209,8 +1217,8 @@ TargetShortDescription = {
 										{_('_bunker'),			'bunker'},
 										{_('_radar'),			'radar'},
 										{_('_AAA'),				'AAA',		 'tripple A',		_('tripple A') },
-										{_('_AUXILLARY_EQUIPMENT'), 'auxillary_equipment'},
 										{_('_SAM'), 			'SAM'},
+										{_('_ground targets'),	'ground targets'},
 										ship,
 										ship,
 										ship,
@@ -1270,7 +1278,6 @@ AirGroupCallsign = {
 			end	
 		end	
 	end,
-	-- TODO: to remove the 'hack' with A-10 specific callnames. This features should be available for all units	- removed
 	sub = { AirGroupCallname	= UnitCallname:new('Air', true, nil, 'Callsign'),
 			AWACSCallname		= UnitCallname:new('AWACS', true, nil, 'Callsign'),
 			TankerCallname		= UnitCallname:new('Tankers', true, nil, 'Callsign'),
@@ -1699,19 +1706,19 @@ handlersTable = {
 			else
 				if message.parameters.case == 1 then
 					--[[[SIDE NUMBER] flight, [SHIP CALLSIGN] marshal, CASE II recovery, CV-1 approach, expected BRC [CARRIER HEADING], altimeter [PRESSURE]. [SIDE NUMBER] flight, marshal mother’s [BEARING] radial, [DISTANCE] DME, angels [ALTITUDE]. Expected approach time is [TIME], approach button is 15.]]--
-					res = res + self.sub.marshal_report_case2:make(message.parameters.carrierID - 67)  + space_
-					res = res + Digits:make(message.parameters.BRC * u.units.deg.coeff)				
+					res = res + self.sub.marshal_report_case2:make((message.parameters.carrierID or 74) - 67)  + space_
+					res = res + Digits:make((message.parameters.BRC or 0 )* u.units.deg.coeff)				
 				else
 					--[[[SIDE NUMBER], [SHIP CALLSIGN] marshal, CASE III recovery, CV-1 approach, expected final bearing [BEARING], altimeter [PRESSURE]. [SIDE NUMBER], marshal mother’s [BEARING] radial, [DISTANCE] DME, angels [ALTITUDE]. Expected approach time is [TIME], approach button is button 15.]]--
-					res = res + self.sub.marshal_report_case3:make(message.parameters.carrierID - 67)  + comma_space_
-					res = res + self.sub.final_bearing:make() + space + Digits:make(message.parameters.BRC * u.units.deg.coeff) 
+					res = res + self.sub.marshal_report_case3:make((message.parameters.carrierID or 74) - 67)  + comma_space_
+					res = res + self.sub.final_bearing:make() + space + Digits:make(message.parameters.BRC * u.units.deg.coeff)
 				end
 				res = res + self.sub.altimeter:make() + space_+ self.sub.Pressure:make(message.parameters.pressure, aircraftType, '%.2f') + comma_space_
 				res = res + self.sub.PlayerAircraftCallsign:make(message.receiver:getUnit()) + comma_space_
-				res = res + self.sub.marshal_mothers:make() + space_ + Digits:make(message.parameters.RBRC * u.units.deg.coeff) + space_+ self.sub.radial:make()  + comma_space_
-				res = res + Digits:make(message.parameters.NumberInStack + 21) + space_+ self.sub.dme_angels:make() + space_ 
-				res = res + Digits:make(message.parameters.NumberInStack + 6)  + comma_space_
-				res = res + self.sub.eatTime:make() + space_ + Digits:make(message.parameters.EAT, '%02d')  --+ comma_space_ + self.sub.approachButton:make()
+				res = res + self.sub.marshal_mothers:make() + space_ + Digits:make((message.parameters.RBRC or 0 )* u.units.deg.coeff) + space_+ self.sub.radial:make()  + comma_space_
+				res = res + Digits:make((message.parameters.NumberInStack or 0) + 21) + space_+ self.sub.dme_angels:make() + space_ 
+				res = res + Digits:make((message.parameters.NumberInStack or 0) + 6)  + comma_space_
+				res = res + self.sub.eatTime:make() + space_ + Digits:make((message.parameters.EAT or 0), '%02d')  --+ comma_space_ + self.sub.approachButton:make()
 			end		
 			res = res  + self.sub._end:make()			
 			return 	 res
@@ -1746,26 +1753,26 @@ handlersTable = {
 				solid_layer 			= Phrase:new({_('solid layer at'), 'solid_layer'}, 'Messages'),
 				marshal_report      	= Phrase:new({_('CASE I recovery, expected BRC'),'case_I_recovery_expected_BRC'}, 'Messages'),
 				--marshal_report_case2    = Phrase:new({_('CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-74-CASE2'}, 'Messages'),	
-				marshal_report_case2    = Phrases:new(	{{_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-68-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-69-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-70-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-71-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-72-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-73-CASE2'},
+				marshal_report_case2    = Phrases:new(	{{_('Old Salt marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-68-CASE2'},
+														 {_('Ike marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-69-CASE2'},
+														 {_('Gold Eagle marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-70-CASE2'},
+														 {_('Rough Rider marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-71-CASE2'},
+														 {_('Union marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-72-CASE2'},
+														 {_('Warfighter marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-73-CASE2'},
 														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-74-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-75-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-76-CASE2'},
-														 {_('Courage marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-77-CASE2'},		 }, 'Messages'),				
-				marshal_report_case3    = Phrases:new(	{{_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-68-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-69-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-70-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-71-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-72-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-73-CASE3'},
+														 {_('Lone Warrior marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-75-CASE2'},
+														 {_('Freedom marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-76-CASE2'},
+														 {_('Avenger marshal, CASE II recovery, CV-1 approach, expected BRC'),'MARSHAL-77-CASE2'},		 }, 'Messages'),				
+				marshal_report_case3    = Phrases:new(	{{_('Old Salt marshal, CASE III recovery, CV-1 approach'),'MARSHAL-68-CASE3'},
+														 {_('Ike marshal, CASE III recovery, CV-1 approach'),'MARSHAL-69-CASE3'},
+														 {_('Gold Eagle marshal, CASE III recovery, CV-1 approach'),'MARSHAL-70-CASE3'},
+														 {_('Rough Rider marshal, CASE III recovery, CV-1 approach'),'MARSHAL-71-CASE3'},
+														 {_('Union marshal, CASE III recovery, CV-1 approach'),'MARSHAL-72-CASE3'},
+														 {_('Warfighter marshal, CASE III recovery, CV-1 approach'),'MARSHAL-73-CASE3'},
 														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-74-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-75-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-76-CASE3'},
-														 {_('Courage marshal, CASE III recovery, CV-1 approach'),'MARSHAL-77-CASE3'},		 }, 'Messages'),
+														 {_('Lone Warrior marshal, CASE III recovery, CV-1 approach'),'MARSHAL-75-CASE3'},
+														 {_('Freedom marshal, CASE III recovery, CV-1 approach'),'MARSHAL-76-CASE3'},
+														 {_('Avenger marshal, CASE III recovery, CV-1 approach'),'MARSHAL-77-CASE3'},		 }, 'Messages'),
 				final_bearing			= Phrase:new({_('expected final bearing '), 'expect_fb'}, 'Messages'),
 				marshal_mothers			= Phrase:new({_('Marshal mother \'s'),'MARSHAL-MOTHERS'}, 'Messages'),
 				radial					= Phrase:new({_('radial'),'RADIAL'}, 'Messages'),
@@ -1923,10 +1930,10 @@ handlersTable = {
 		make = function(self, message, language)
 			local res		
 			res = self.sub._start:make() +  self.sub.PlayerAircraftCallsign:make(message.receiver:getUnit())+ comma_space_
-			res = res  + self.sub.marshal_on_the:make() + space_ + Digits:make(message.parameters.RBRC * u.units.deg.coeff) + comma_space_
-			res = res + self.sub.Number:make(message.parameters.NumberInStack + 21) + space_+ self.sub.dme_angels:make() + space_ 
-			res = res + self.sub.Number:make(message.parameters.NumberInStack + 6)  + comma_space_
-			res = res  + self.sub.EAT:make() + space_ + self.sub.Digits:make(message.parameters.EAT,'%02d')-- + comma_space_
+			res = res  + self.sub.marshal_on_the:make() + space_ + Digits:make((message.parameters.RBRC  or 0) * u.units.deg.coeff) + comma_space_
+			res = res + self.sub.Number:make((message.parameters.NumberInStack or 0) +21) + space_+ self.sub.dme_angels:make() + space_ 
+			res = res + self.sub.Number:make((message.parameters.NumberInStack or 0) + 6)  + comma_space_
+			res = res  + self.sub.EAT:make() + space_ + self.sub.Digits:make((message.parameters.EAT or 0),'%02d')-- + comma_space_
 			--res = res  + self.sub.approachButtonIs:make()
 			res = res  + self.sub._end:make()
 			return res
@@ -2458,6 +2465,17 @@ handlersTable = {
 		sub = { on	= Phrase:new({_('request to place wheel chocks'),	'request to place the wheel chocks'}),
 				off	= Phrase:new({_('request to remove wheel chocks'),	'request to remove wheel chocks'}) }
 	},
+	[base.Message.wMsgLeaderGroundToggleExhaustScreen] = {
+		make = function(self, message)
+			if message.parameters.on then
+				return self.sub.on:make()
+			else
+				return self.sub.off:make()
+			end
+		end,
+		sub = { on	= Phrase:new({_('request to place exhaust screen'),	'request to place the exhaust screen'}),
+				off	= Phrase:new({_('request to remove exhaust screen'),'request to remove exhaust screen'}) }
+	},
 	[base.Message.wMsgLeaderGroundToggleCanopy] = {
 		make = function(self, message)
 			if message.parameters.on then
@@ -2747,25 +2765,26 @@ local language = {
 local defaultLanguage = language.ENG
 
 local languageByCountry = {
-	[base.country.id.RUSSIA]		= language.RUS,
-	[base.country.id.UKRAINE]		= language.RUS,
-	[base.country.id.BELARUS]		= language.RUS,
-	[base.country.id.USA]			= language.ENG,
-	[base.country.id.UK]			= language.ENG,
-	[base.country.id.GERMANY]		= language.GER,
-	[base.country.id.FRANCE]		= language.FR,
-	[base.country.id.SPAIN]			= language.SPA,
-	[base.country.id.INSURGENTS]	= language.RUS,
-	[base.country.id.ABKHAZIA]		= language.RUS,
-	[base.country.id.SOUTH_OSETIA]	= language.RUS,	
-	[base.country.id.ITALY]			= language.ENG,
-	[base.country.id.AUSTRALIA]		= language.ENG,
-	[base.country.id.SWITZERLAND]	= language.GER,
-	[base.country.id.CHINA]			= language.CHN,--by uboats
-	[base.country.id.THIRDREICH]	= language.GER,
-	[base.country.id.YUGOSLAVIA]	= language.RUS,
-	[base.country.id.USSR]			= language.RUS,
-	[base.country.id.KAZAKHSTAN]	= language.RUS,
+	[nations.RUSSIA]		= language.RUS,
+	[nations.UKRAINE]		= language.RUS,
+	[nations.BELARUS]		= language.RUS,
+	[nations.USA]			= language.ENG,
+	[nations.UK]			= language.ENG,
+	[nations.GERMANY]		= language.GER,
+	[nations.FRANCE]		= language.FR,
+	[nations.SPAIN]			= language.SPA,
+	[nations.INSURGENTS]	= language.RUS,
+	[nations.ABKHAZIA]		= language.RUS,
+	[nations.SOUTH_OSETIA]	= language.RUS,	
+	[nations.ITALY]			= language.ENG,
+	[nations.AUSTRALIA]		= language.ENG,
+	[nations.SWITZERLAND]	= language.GER,
+	[nations.CHINA]			= language.CHN,--by uboats
+	[nations.THIRDREICH]	= language.GER,
+	[nations.YUGOSLAVIA]	= language.RUS,
+	[nations.USSR]			= language.RUS,
+	[nations.KAZAKHSTAN]	= language.RUS,
+	[nations.GDR]			= language.RUS,
 }
 
 --Accents
@@ -2774,32 +2793,32 @@ local accent = base.country
 
 local accentTable = {
 	[language.ENG] = {
-		[base.country.id.RUSSIA]			= accent.RUSSIA,
-		[base.country.id.UKRAINE]			= accent.RUSSIA,
-		[base.country.id.BELARUS]			= accent.RUSSIA,
-		[base.country.id.USA]				= accent.USA,
-		[base.country.id.TURKEY]			= accent.USA,
-		[base.country.id.UK]				= accent.UK,
-		[base.country.id.FRANCE]			= accent.FRANCE,
-		[base.country.id.GERMANY]			= accent.GERMANY,
-		[base.country.id.THIRDREICH]		= accent.GERMANY,
-		[base.country.id.CANADA]			= accent.USA,
-		[base.country.id.SPAIN]				= accent.SPAIN,
-		[base.country.id.THE_NETHERLANDS]	= accent.GERMANY,
-		[base.country.id.BELGIUM]			= accent.FRANCE,
-		[base.country.id.NORWAY]			= accent.GERMANY,
-		[base.country.id.DENMARK]			= accent.GERMANY,
-		[base.country.id.ISRAEL]			= accent.USA,
-		[base.country.id.GEORGIA]			= accent.USA,
-		[base.country.id.INSURGENTS]		= accent.RUSSIA,
-		[base.country.id.ABKHAZIA]			= accent.RUSSIA,
-		[base.country.id.SOUTH_OSETIA]		= accent.RUSSIA,
-		[base.country.id.ITALY]						= accent.USA,
-		[base.country.id.ITALIAN_SOCIAL_REPUBLIC]	= accent.USA,
-		[base.country.id.AUSTRALIA]			= accent.UK,
-        [base.country.id.SWITZERLAND]		= accent.GERMANY,
-		[base.country.id.CHINA]				= accent.CHINA,--by uboats
-		[base.country.id.KAZAKHSTAN]		= accent.RUSSIA,
+		[nations.RUSSIA]			= accent.RUSSIA,
+		[nations.UKRAINE]			= accent.RUSSIA,
+		[nations.BELARUS]			= accent.RUSSIA,
+		[nations.USA]				= accent.USA,
+		[nations.TURKEY]			= accent.USA,
+		[nations.UK]				= accent.UK,
+		[nations.FRANCE]			= accent.FRANCE,
+		[nations.GERMANY]			= accent.GERMANY,
+		[nations.THIRDREICH]		= accent.GERMANY,
+		[nations.CANADA]			= accent.USA,
+		[nations.SPAIN]				= accent.SPAIN,
+		[nations.THE_NETHERLANDS]	= accent.GERMANY,
+		[nations.BELGIUM]			= accent.FRANCE,
+		[nations.NORWAY]			= accent.GERMANY,
+		[nations.DENMARK]			= accent.GERMANY,
+		[nations.ISRAEL]			= accent.USA,
+		[nations.GEORGIA]			= accent.USA,
+		[nations.INSURGENTS]		= accent.RUSSIA,
+		[nations.ABKHAZIA]			= accent.RUSSIA,
+		[nations.SOUTH_OSETIA]		= accent.RUSSIA,
+		[nations.ITALY]						= accent.USA,
+		[nations.ITALIAN_SOCIAL_REPUBLIC]	= accent.USA,
+		[nations.AUSTRALIA]			= accent.UK,
+        [nations.SWITZERLAND]		= accent.GERMANY,
+		[nations.CHINA]				= accent.CHINA,--by uboats
+		[nations.KAZAKHSTAN]		= accent.RUSSIA,
 	}
 }
 
@@ -3102,6 +3121,23 @@ local function getMessageModuleAndLanguage(roleData, module, language)
 	end
 end
 
+function Initialize()
+	--base.print( '\t Common::AirbaseName : Initialize()' )
+	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
+		AirbaseName.sub[base.Airbase.Category.AIRDROME].sub[airdromeNameVariant] = Phrases:new(airdromeNames[airdromeNameVariant], 'Callsign')
+	end
+end
+
+--[[
+function Release()
+	airdromeNames = {}
+	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
+		airdromeNames[airdromeNameVariant] = {}
+	end
+	--base.print( '\t Common::AirbaseName : Release()' )
+end
+]]
+
 function make(self, message)
 
 	local role = self:findRole(message.event)
@@ -3173,9 +3209,9 @@ function make(self, message)
 	
 	--if roleData ~= nil then
 		--Accent
-		if roleData ~= nil and roleData.accents ~= nil then
+		if roleData ~= nil and roleData.accents ~= nil then			
 			local messageAccent = accentTable[messageLanguage][country] or accent.USA
-			result.directory = result.directory..base.country.name[messageAccent]..'/'
+			result.directory = result.directory..base.country.names[messageAccent]..'/'
 			roleData = roleData.accents[messageAccent]
 		end
 	

@@ -795,7 +795,7 @@ namespace VAICOM.Properties {
         ///	shortName	 = &quot;VAICOM PRO&quot;,
         ///	fileMenuName = &quot;VAICOM PRO&quot;,
         ///
-        ///	version		 = &quot;2.5.28&quot;,
+        ///	version		 = &quot;2.8.0&quot;,
         ///	state		 = &quot;installed&quot;, 	
         ///	developerName= &quot;DCS Community&quot;,
         ///	info		 = _(&quot;VAICOM PRO is a professional-grade voice communications interface. The plugin uses VoiceAttack as client host for advanced speech recognition, enabling true-to-life ra [rest of string was truncated]&quot;;.
@@ -1936,7 +1936,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO 2.5
+        ///ECHO VAICOM PRO 2.8
         ///ECHO Extension Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe
@@ -1958,7 +1958,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO 2.5
+        ///ECHO VAICOM PRO 2.8
         ///ECHO Plugin Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe
@@ -1981,7 +1981,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO 2.5
+        ///ECHO VAICOM PRO 2.8
         ///ECHO Extension Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe

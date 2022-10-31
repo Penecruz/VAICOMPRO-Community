@@ -18,7 +18,7 @@ namespace VAICOM
 
                 // ---- Export.lua  ----------------------------------
 
-                {"2.5 Export.lua",new Server.LuaFile
+                {"2.8 Export.lua",new Server.LuaFile
                 { fileid = "4E6E20D3-3BE1-4045-982C-D84CB7E35922",
                   filename = "Export.lua",
                   installfolder = "Scripts",
@@ -30,7 +30,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_Export, 
                   source = Properties.Resources.Append_Core_Export,
                   source_legacy = Properties.Resources.Append_Core_Export,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE :
@@ -45,7 +45,7 @@ namespace VAICOM
 
                 // ---- VAICOMPRO.export.lua  -------------------------
 
-                {"2.5 VAICOMPRO.export.lua",new Server.LuaFile
+                {"2.8 VAICOMPRO.export.lua",new Server.LuaFile
                 { fileid = "F33823D7-69B4-4A7A-8993-9DCF7494003C",
                   filename = "VAICOMPRO.export.lua",
                   installfolder = "Scripts\\VAICOMPRO",
@@ -57,7 +57,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_VAICOMPRO_export,
                   source = Properties.Resources.Append_Core_VAICOMPRO_export,
                   source_legacy = Properties.Resources.Append_Core_VAICOMPRO_export,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -71,7 +71,7 @@ namespace VAICOM
 
                 // ---- RadioCommandDialogsPanel.lua  ------------------
 
-                {"2.5 RadioCommandDialogsPanel.lua",new Server.LuaFile
+                {"2.8 RadioCommandDialogsPanel.lua",new Server.LuaFile
                 { fileid = "D6A3E78B-CA66-4C8B-94CC-69A63B90E5B2",
                   filename = "RadioCommandDialogsPanel.lua",
                   installfolder = "Scripts\\UI\\RadioCommandDialogPanel",
@@ -83,7 +83,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_RadioCommandDialogsPanel,
                   source = Properties.Resources.Append_Core_RadioCommandDialogsPanel,
                   source_legacy = Properties.Resources.Append_Core_RadioCommandDialogsPanel,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //(ACTIVE)
@@ -97,7 +97,7 @@ namespace VAICOM
 
                 // ---- Speech.lua: --------------------------------------
 
-                {"2.5 speech.lua",new Server.LuaFile
+                {"2.8 speech.lua",new Server.LuaFile
                 { fileid = "8B5DD910-4821-4748-A24D-7ADE09346B49",
                   filename = "speech.lua",
                   installfolder = "Scripts\\Speech",
@@ -109,7 +109,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_speech, 
                   source = Properties.Resources.Append_Core_speech,
                   source_legacy = Properties.Resources.Append_Core_speech,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //(ACTIVE)
@@ -123,7 +123,7 @@ namespace VAICOM
 
                 // ---- common.lua: --------------------------------------
 
-                {"2.5 common.lua",new Server.LuaFile
+                {"2.8 common.lua",new Server.LuaFile
                 { fileid = "F8ECF2E5-CD93-47C4-B728-2EAA290D9B67",
                   filename = "common.lua",
                   installfolder = "Scripts\\Speech",
@@ -135,7 +135,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_common, 
                   source = Properties.Resources.Append_Core_common,
                   source_legacy = Properties.Resources.Append_Core_common, 
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //(ACTIVE)
@@ -149,7 +149,7 @@ namespace VAICOM
 
                 // ---- TabSheetBar.lua  ----------------------------------
 
-                {"2.5 TabSheetBar.lua",new Server.LuaFile
+                {"2.8 TabSheetBar.lua",new Server.LuaFile
                 { fileid = "173C0B42-5CD0-4929-88C1-46B5AC1FF668",
                   filename = "TabSheetBar.lua",
                   installfolder = "Scripts\\UI\\RadioCommandDialogPanel",
@@ -161,7 +161,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_TabSheetBar,
                   source = Properties.Resources.Append_Core_TabSheetBar,
                   source_legacy = Properties.Resources.Append_Core_TabSheetBar,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //(ACTIVE)
@@ -175,7 +175,7 @@ namespace VAICOM
 
                 // ---- gameMessages.lua  ----------------------------------
 
-                {"2.5 gameMessages.lua",new Server.LuaFile
+                {"2.8 gameMessages.lua",new Server.LuaFile
                 { fileid = "9DDCD66F-BBC6-4B7B-8335-5BEEB1DB521A",
                   filename = "gameMessages.lua",
                   installfolder = "Scripts\\UI",
@@ -187,7 +187,7 @@ namespace VAICOM
                   orig_legacy = Properties.Resources.Orig_Core_gameMessages, 
                   source = Properties.Resources.Append_Core_gameMessages,
                   source_legacy = Properties.Resources.Append_Core_gameMessages,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = !State.activeconfig.HideOnScreenText, // <-----
                   //ACTIVE :
@@ -202,7 +202,7 @@ namespace VAICOM
 
                 // ---- JesterAI_page.lua  -------------------------
 
-                {"2.5 JesterAI_Page.lua",new Server.LuaFile
+                {"2.8 JesterAI_Page.lua",new Server.LuaFile
                 { fileid = "D784B941-D625-4C9F-B124-B38CD6EB41AD",
                   filename = "JesterAI_Page.lua",
                   installfolder = "Mods\\aircraft\\F14\\Cockpit\\Scripts\\JesterAI",
@@ -215,7 +215,7 @@ namespace VAICOM
                   stringreplace = false,
                   stringorig    = Properties.Resources.Orig_ReplaceString_F14_JesterAI_Page,
                   stringsource  = Properties.Resources.Append_ReplaceString_F14_JesterAI_Page,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -227,7 +227,7 @@ namespace VAICOM
                   kneeboard = false,
                 } },
 
-                {"2.5 JesterInit.lua",new Server.LuaFile
+                {"2.8 JesterInit.lua",new Server.LuaFile
                 { fileid = "D60BC4B9-FD1B-4EE7-B095-2964DDD0095E",
                   filename = "init.lua",
                   installfolder = "Mods\\aircraft\\F14\\Cockpit\\Scripts\\JesterAI",
@@ -240,7 +240,7 @@ namespace VAICOM
                   stringreplace = false,
                   stringorig    = Properties.Resources.Orig_F14_JesterInit,
                   stringsource  = Properties.Resources.Append_F14_JesterInit,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -263,7 +263,7 @@ namespace VAICOM
                   hardreset = false,
                   orig = Properties.Resources.Append_Kneeboard_1,
                   source = Properties.Resources.Append_Kneeboard_1,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -286,7 +286,7 @@ namespace VAICOM
                   hardreset = true,
                   orig = Properties.Resources.Append_Kneeboard_declare_VAICOMPRO_device,
                   source = Properties.Resources.Append_Kneeboard_declare_VAICOMPRO_device,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -309,7 +309,7 @@ namespace VAICOM
                   hardreset = true,
                   orig = Properties.Resources.Append_Kneeboard_VAICOMPRO_Common,
                   source = Properties.Resources.Append_Kneeboard_VAICOMPRO_Common,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -332,7 +332,7 @@ namespace VAICOM
                   hardreset = true,
                   orig = Properties.Resources.Append_Kneeboard_VAICOMPRO_Device,
                   source = Properties.Resources.Append_Kneeboard_VAICOMPRO_Device,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:
@@ -355,7 +355,7 @@ namespace VAICOM
                   hardreset = true,
                   orig = Properties.Resources.Append_Kneeboard_command_defs,
                   source = Properties.Resources.Append_Kneeboard_command_defs,
-                  version ="2.5",
+                  version ="2.8",
                   canremove = true,
                   reset = false,
                   //ACTIVE:

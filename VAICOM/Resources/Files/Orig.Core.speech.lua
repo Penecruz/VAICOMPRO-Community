@@ -25,14 +25,20 @@ module('speech')
 
 --Protocol by country
 
+--[DCSCORE-6483: A-10C speech error](https://jira.eagle.ru/browse/DCSCORE-6483)
+--by some reason at mission execution  time  table coutry is chnaged in format , save  original  as reference
+
+local  nations  = base.country.id
+
 protocolByCountry = {
-	[base.country.id.RUSSIA] 		= 'USSR',
-	[base.country.id.UKRAINE] 		= 'USSR',
-	[base.country.id.INSURGENTS] 	= 'USSR',
-	[base.country.id.ABKHAZIA] 		= 'USSR',
-	[base.country.id.SOUTH_OSETIA] 	= 'USSR',
-	[base.country.id.KAZAKHSTAN] 	= 'USSR',
-	[base.country.id.USSR] 			= 'USSR',
+	[nations.RUSSIA] 		= 'USSR',
+	[nations.UKRAINE] 		= 'USSR',
+	[nations.INSURGENTS] 	= 'USSR',
+	[nations.ABKHAZIA] 		= 'USSR',
+	[nations.SOUTH_OSETIA] 	= 'USSR',
+	[nations.KAZAKHSTAN] 	= 'USSR',
+	[nations.USSR] 			= 'USSR',
+	[nations.GDR] 			= 'USSR',
 }
 defaultProtocol = 'NATO'
 
@@ -49,26 +55,26 @@ protocols = {
 
 --Aircraft native country used to select VMS language and unit system
 aircraftNativeCountry = {
-	['Ka-50']	  = base.country.id.RUSSIA,
-	['Su-27']	  = base.country.id.RUSSIA,
-	['Su-33']	  = base.country.id.RUSSIA,
-	['MiG-29A']   = base.country.id.RUSSIA,
-	['MiG-29S']   = base.country.id.RUSSIA,
-	['MiG-29G']   = base.country.id.GERMANY,
-	['Su-25'] 	  = base.country.id.RUSSIA,
-	['Su-25T']	  = base.country.id.RUSSIA,
-	['Mi-8MT']	  = base.country.id.RUSSIA,
-	['L-39C'] 	  = base.country.id.RUSSIA,
-	['L-39ZA'] 	  = base.country.id.RUSSIA,
-	['MiG-15bis'] = base.country.id.RUSSIA,
-	['MiG-21Bis'] = base.country.id.RUSSIA,
-	['Bf-109K-4'] = base.country.id.GERMANY,
-	['FW-190D9']  = base.country.id.GERMANY,
-	['MiG-19P']   = base.country.id.RUSSIA,
-	['I-16']   	  = base.country.id.RUSSIA,
-	['Yak-52']    = base.country.id.RUSSIA,
-	['J-11A'] 	  = base.country.id.CHINA,
-	['Mi-24P'] 	  = base.country.id.RUSSIA,
+	['Ka-50']	  = nations.RUSSIA,
+	['Su-27']	  = nations.RUSSIA,
+	['Su-33']	  = nations.RUSSIA,
+	['MiG-29A']   = nations.RUSSIA,
+	['MiG-29S']   = nations.RUSSIA,
+	['MiG-29G']   = nations.GERMANY,
+	['Su-25'] 	  = nations.RUSSIA,
+	['Su-25T']	  = nations.RUSSIA,
+	['Mi-8MT']	  = nations.RUSSIA,
+	['L-39C'] 	  = nations.RUSSIA,
+	['L-39ZA'] 	  = nations.RUSSIA,
+	['MiG-15bis'] = nations.RUSSIA,
+	['MiG-21Bis'] = nations.RUSSIA,
+	['Bf-109K-4'] = nations.GERMANY,
+	['FW-190D9']  = nations.GERMANY,
+	['MiG-19P']   = nations.RUSSIA,
+	['I-16']   	  = nations.RUSSIA,
+	['Yak-52']    = nations.RUSSIA,
+	['J-11A'] 	  = nations.CHINA,
+	['Mi-24P'] 	  = nations.RUSSIA,
 }
 
 if not ED_FINAL_VERSION then
@@ -103,9 +109,9 @@ local function getCountry(message)
 		return message.sender:getUnit():getCountry()	
 	elseif message.event > base.Message.wMsgBettyNull and message.event < base.Message.wMsgA10_VMU_Maximum then
 		if nativeCockpitLanguage then
-			return aircraftNativeCountry[message.sender:getUnit():getTypeName()] or base.country.id.USA
+			return aircraftNativeCountry[message.sender:getUnit():getTypeName()] or nations.USA
 		else
-			return base.country.id.USA
+			return nations.USA
 		end
 	else
 		return message.sender:getUnit():getCountry()

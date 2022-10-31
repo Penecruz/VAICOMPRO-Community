@@ -39,7 +39,10 @@ dofile(LockOn_Options.script_path.."fonts.lua")
 dofile(LockOn_Options.script_path.."Scripts/Common/common_defs.lua")
 IndTexture_Path = LockOn_Options.script_path.."Resources/IndicationTextures/"
 
-local alpha = 190 
+
+
+local alpha = 190
+
 
 local BaseCircleMat = MakeMaterial(IndTexture_Path.."JUI_Base_Circle.dds", {255, 255, 255, alpha})
 local OuterTriangleMat = MakeMaterial(IndTexture_Path.."JUI_Outer_Triangle.tga", {255, 255, 255, alpha})
@@ -49,6 +52,10 @@ local CategoriesMat = MakeMaterial(IndTexture_Path.."JUI_Categories.tga", {255, 
 local HighlightItemMat = MakeMaterial(IndTexture_Path.."JUI_Highlight.dds", {255, 255, 255, alpha-60})
 local ShadedItemMat = MakeMaterial(IndTexture_Path.."JUI_GreyOut.dds", {255, 255, 255, alpha})
 local StatusBarMat = MakeMaterial(IndTexture_Path.."JUI_StatusBar.dds", {255, 255, 255, alpha})
+
+
+
+
 
 function AddElement(object)
 	object.screenspace = ScreenType.SCREENSPACE_TRUE

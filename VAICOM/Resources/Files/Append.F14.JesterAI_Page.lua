@@ -11,10 +11,8 @@ local cy = 0
 local aspect = 1
 local alpha = 0 
 
-viewJester = nil
-
 if GetSelf():is_VR() == false then 
-	viewJester = find_viewport("F14_JESTER_MENU") or find_viewport("GU_MAIN_VIEWPORT")
+	local viewJester = find_viewport("F14_JESTER_MENU") or find_viewport("GU_MAIN_VIEWPORT")
 	if viewJester == nil then
 		viewJester = {
 		x = 0;
