@@ -119,7 +119,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:..\\..\\..\\..\\..\\Program Files\\VoiceAttack\\Apps\\VAICOMPRO\\VAICOM PRO for DCS World.msi"
+        "OutputFilename" = "8:..\\bin\\Release\\VAICOM PRO for DCS World.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
