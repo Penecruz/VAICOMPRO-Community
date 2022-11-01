@@ -24,6 +24,7 @@ The VAICOMPRO Community Team
 ## Installation Instructions
 
 NOTE: If this is a fresh VAICOMPRO install, you should follow the install instructions in the VAICOMPRO manual found in the VAICOMPRO/Documentation folder.
+	
 
 1. Backup your current VAICOMPRO folder found in your VoiceAttack/Apps folder.
 
@@ -33,19 +34,17 @@ NOTE: If this is a fresh VAICOMPRO install, you should follow the install instru
 
 4. Launch VoiceAttack and exit VoiceAttack.
 
-5. Unzip the contents of the zip file and move the VAICOMPRO folder into your VoiceAttack/Apps folder.
+5. Unzip the contents of the zip file and move the VAICOMPRO folder into your VoiceAttack/Apps folder or run the msi installer.
 	
-6. Launch VoiceAttack and exit VoiceAttack. This generates the necessary file structure within the VAICOMPRO folder.
+6. Launch VoiceAttack and exit VoiceAttack. This generates the necessary file structure within the VAICOMPRO folder. If using the msi installer, drag the AIRIO and CHATTER dll files to the VAICOMPRO/Extensions folder.
 
-7. If you wish to restore your VAICOM settings, copy your backed up Config folder to your new VAICOMPRO folder in VoiceAttack/Apps. 
-   Your profile should remain in VoiceAttack as it is stored in the VoiceAttack.dat file. If your profile somehow gets changed, import your backed up profile.
+7. If you wish to restore your VAICOM settings, copy your backed up Config folder to your new VAICOMPRO folder in VoiceAttack/Apps. Your profile should remain in VoiceAttack as it is stored in the VoiceAttack.dat file. If your profile somehow gets changed, import your backed up profile.
 	
-8. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab. 
-   If this does not work, check your VoiceAttack profile and ensure the command "Configuration" exists and is enabled with the proper shortcut.
+8. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab. If this does not work, check your VoiceAttack profile and ensure the command "Configuration" exists and is enabled with the proper shortcut.
 
-9. Next to “Use Custom DCS Path” click the SET button and direct it to your DCS World install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
-	
-10. Move the sliders to match your DCS World version (i. e. openbeta / standalone).
+9. Check Fix Reg and move the sliders to match your DCS World version (i. e. openbeta / standalone).
+
+10. Next to “Use Custom DCS Path” click the SET button and direct it to your DCS World install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
 
 11. Open the “Reset” tab and uncheck all of the boxes.
 
