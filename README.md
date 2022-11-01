@@ -22,19 +22,31 @@ The VAICOMPRO Community Team
 ## Installation Instructions
 
 1. Backup your current VAICOMPRO folder found in your VoiceAttack/Apps folder.
+
 2. Delete the VAICOMPRO folder in your VoiceAttack /Apps folder.
-3. Launch VoiceAttack and exit again.
+
+3. Launch VoiceAttack and exit VoiceAttack.
+
 4. Unzip the contents of the zip file and move the VAICOMPRO folder into your
-	VoiceAttack/Apps folder.
-5. Launch VoiceAttack and exit again.
+   VoiceAttack/Apps folder.
+	
+5. Launch VoiceAttack and exit VoiceAttack.
+
 6. If you wish to restore your VoiceAttack profile and VAICOM settings, copy your backed
-	up Config and Profiles folders to your new VAICOMPRO folder in VoiceAttack/Apps.
-7. Launch VoiceAttack.
-8. Launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab.
+   up Config and Profiles folders to your new VAICOMPRO folder in VoiceAttack/Apps.
+	
+7. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab.
+
 9. Next to “Use Custom DCS Path” click the SET button and direct it to your DCS World
-	install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
+   install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
+	
 10. Move the sliders to match your DCS World version (i. e. openbeta / standalone).
-11. Open the “Reset” tab and uncheck all but Lua code and click “Master Zero”.
+
+11. Open the “Reset” tab and uncheck all of the boxes.
+
+12. Check only the "Lua code" box and click “Master Zero”.
+
 12. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8
 	installation.
-13. Join our Discord on https://discord.gg/7c22BHNSCS if you have any questions.
+	
+13. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
