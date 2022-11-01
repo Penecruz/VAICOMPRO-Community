@@ -15,7 +15,9 @@ The plan is to get VAICOMPRO Community running well with DCS 2.8 and then look w
 ## Important Information
 
 Please backup your previous installation and backup your current .vap profile from Voice Attack so you can move it across, this will save you a lot of work as it is compatible with this version.
-Use of this software is at your risk, we accept no liability for stuffing up your Voice Attack installation, DCS World installation, Windows installation, or any other action. 
+Use of this software is at your risk, we accept no liability for stuffing up your Voice Attack installation, DCS World installation, Windows installation, or any other action.
+
+VAICOMPRO Community 2.8 is not designed to be backwards compatible with DCS 2.7. If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Comminuty.
 
 The VAICOMPRO Community Team
 
