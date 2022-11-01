@@ -25,22 +25,23 @@ The VAICOMPRO Community Team
 
 1. Backup your current VAICOMPRO folder found in your VoiceAttack/Apps folder.
 
-2. Delete the VAICOMPRO folder in your VoiceAttack /Apps folder.
+2. Backup your current VoiceAttack profile by clicking "More Profile Actions" (button right of the edit in VoiceAttack) and exporting your profile to a known location.
 
-3. Launch VoiceAttack and exit VoiceAttack.
+3. Delete the VAICOMPRO folder in your VoiceAttack/Apps folder.
 
-4. Unzip the contents of the zip file and move the VAICOMPRO folder into your
-   VoiceAttack/Apps folder.
+4. Launch VoiceAttack and exit VoiceAttack.
+
+5. Unzip the contents of the zip file and move the VAICOMPRO folder into your VoiceAttack/Apps folder.
 	
-5. Launch VoiceAttack and exit VoiceAttack.
+6. Launch VoiceAttack and exit VoiceAttack. This generates the necessary file structure within the VAICOMPRO folder.
 
-6. If you wish to restore your VoiceAttack profile and VAICOM settings, copy your backed
-   up Config and Profiles folders to your new VAICOMPRO folder in VoiceAttack/Apps.
+7. If you wish to restore your VAICOM settings, copy your backed up Config folder to your new VAICOMPRO folder in VoiceAttack/Apps. 
+   Your profile should remain in VoiceAttack as it is stored in the VoiceAttack.dat file. If your profile somehow gets changed, import your backed up profile.
 	
-7. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab.
+8. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab. 
+   If this does not work, check your VoiceAttack profile and ensure the command "Configuration" exists and is enabled with the proper shortcut.
 
-9. Next to “Use Custom DCS Path” click the SET button and direct it to your DCS World
-   install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
+9. Next to “Use Custom DCS Path” click the SET button and direct it to your DCS World install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
 	
 10. Move the sliders to match your DCS World version (i. e. openbeta / standalone).
 
@@ -48,7 +49,6 @@ The VAICOMPRO Community Team
 
 12. Check only the "Lua code" box and click “Master Zero”.
 
-12. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8
-	installation.
+12. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8 installation.
 	
 13. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
