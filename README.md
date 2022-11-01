@@ -23,6 +23,8 @@ The VAICOMPRO Community Team
 
 ## Installation Instructions
 
+NOTE: If this is a fresh VAICOMPRO install, you should follow the install instructions in the VAICOMPRO manual found in the VAICOMPRO/Documentation folder.
+
 1. Backup your current VAICOMPRO folder found in your VoiceAttack/Apps folder.
 
 2. Backup your current VoiceAttack profile by clicking "More Profile Actions" (button right of the edit in VoiceAttack) and exporting your profile to a known location.
