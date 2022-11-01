@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30128.74
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAICOM", "VAICOM\VAICOM.csproj", "{AF6CE74F-FE22-4BB4-81CC-53363A59E703}"
 EndProject
@@ -12,6 +12,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAICOM_App", "VA_watchdog\VAICOM_App.csproj", "{1F03A050-0B98-4A25-A090-92355445CA48}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "VAICOM_Installer", "VAICOM_Installer\VAICOM_Installer.vdproj", "{C040815E-C198-43BF-BB2B-AD05B526EBF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B22375E9-81B8-4068-B3A4-1AC0F416B064}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

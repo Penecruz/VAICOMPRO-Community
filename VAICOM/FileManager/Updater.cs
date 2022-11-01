@@ -256,7 +256,7 @@ namespace VAICOM
 
                     try
                     {
-                        WebClient myWebClient = new WebClient();
+                        var myWebClient = new WebClient();
                         myWebClient.DownloadFile(packageurl, localfolder + "\\" + packagefile);
                     }
                     catch

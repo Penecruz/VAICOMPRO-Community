@@ -1,0 +1,271 @@
+2022-11-01 14:50:27.462 -06:00 [INF] Loaded 2 extensions
+2022-11-01 14:50:27.631 -06:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.411\
+2022-11-01 14:50:30.444 -06:00 [INF] Initializing upgrade step Select an entrypoint
+2022-11-01 14:50:32.070 -06:00 [INF] Applying upgrade step Select an entrypoint
+2022-11-01 14:50:35.209 -06:00 [INF] Upgrade step Select an entrypoint applied successfully
+2022-11-01 14:50:36.286 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:50:36.352 -06:00 [INF] Initializing upgrade step Back up project
+2022-11-01 14:50:37.837 -06:00 [INF] Applying upgrade step Back up project
+2022-11-01 14:50:39.102 -06:00 [INF] Backing up D:\dev\VAICOMPRO-Community\RIO to D:\dev\VAICOMPRO-Community.backup\RIO
+2022-11-01 14:50:39.119 -06:00 [INF] Project backed up to D:\dev\VAICOMPRO-Community.backup\RIO
+2022-11-01 14:50:39.120 -06:00 [INF] Upgrade step Back up project applied successfully
+2022-11-01 14:50:39.971 -06:00 [INF] Initializing upgrade step Convert project file to SDK style
+2022-11-01 14:50:40.925 -06:00 [INF] Applying upgrade step Convert project file to SDK style
+2022-11-01 14:50:40.927 -06:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2022-11-01 14:50:43.200 -06:00 [INF] [dotnet] Conversion complete!
+2022-11-01 14:50:43.657 -06:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2022-11-01 14:50:45.006 -06:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2022-11-01 14:50:46.020 -06:00 [INF] Initializing upgrade step Clean up NuGet package references
+2022-11-01 14:50:47.803 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:50:47.804 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:50:47.806 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:50:47.810 -06:00 [INF] No package updates needed
+2022-11-01 14:50:47.811 -06:00 [INF] Initializing upgrade step Update TFM
+2022-11-01 14:50:47.815 -06:00 [INF] TFM needs updated to netstandard2.0
+2022-11-01 14:50:49.253 -06:00 [INF] Applying upgrade step Update TFM
+2022-11-01 14:50:51.116 -06:00 [INF] Updated TFM to netstandard2.0
+2022-11-01 14:50:51.117 -06:00 [INF] Upgrade step Update TFM applied successfully
+2022-11-01 14:50:51.877 -06:00 [INF] Initializing upgrade step Update NuGet Packages
+2022-11-01 14:50:52.905 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:50:52.906 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:50:52.907 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:50:52.908 -06:00 [INF] No package updates needed
+2022-11-01 14:50:52.908 -06:00 [INF] Initializing upgrade step Add template files
+2022-11-01 14:50:52.913 -06:00 [INF] 0 expected template items needed
+2022-11-01 14:50:52.915 -06:00 [INF] Initializing upgrade step Update source code
+2022-11-01 14:50:54.986 -06:00 [INF] Initializing upgrade step Move to next project
+2022-11-01 14:50:54.993 -06:00 [INF] Applying upgrade step Move to next project
+2022-11-01 14:50:54.993 -06:00 [INF] Upgrade step Move to next project applied successfully
+2022-11-01 14:50:56.143 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:50:56.145 -06:00 [INF] No projects need upgraded for selected entrypoint
+2022-11-01 14:50:56.146 -06:00 [INF] Initializing upgrade step Finalize upgrade
+2022-11-01 14:50:57.453 -06:00 [INF] Applying upgrade step Finalize upgrade
+2022-11-01 14:50:57.455 -06:00 [INF] Upgrade step Finalize upgrade applied successfully
+2022-11-01 14:50:58.258 -06:00 [INF] Upgrade has completed. Please review any changes.
+2022-11-01 14:51:01.242 -06:00 [INF] Loaded 2 extensions
+2022-11-01 14:51:01.371 -06:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.411\
+2022-11-01 14:51:02.790 -06:00 [INF] Initializing upgrade step Select an entrypoint
+2022-11-01 14:51:04.190 -06:00 [INF] Applying upgrade step Select an entrypoint
+2022-11-01 14:51:07.589 -06:00 [INF] Upgrade step Select an entrypoint applied successfully
+2022-11-01 14:51:08.467 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:51:08.607 -06:00 [INF] No projects need upgraded for selected entrypoint
+2022-11-01 14:51:08.608 -06:00 [INF] Initializing upgrade step Finalize upgrade
+2022-11-01 14:51:09.478 -06:00 [INF] Applying upgrade step Finalize upgrade
+2022-11-01 14:51:09.479 -06:00 [INF] Upgrade step Finalize upgrade applied successfully
+2022-11-01 14:51:10.322 -06:00 [INF] Upgrade has completed. Please review any changes.
+2022-11-01 14:51:10.327 -06:00 [INF] No state to save
+2022-11-01 14:51:13.381 -06:00 [INF] Loaded 2 extensions
+2022-11-01 14:51:13.509 -06:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.411\
+2022-11-01 14:51:14.909 -06:00 [INF] Initializing upgrade step Select an entrypoint
+2022-11-01 14:51:15.678 -06:00 [INF] Applying upgrade step Select an entrypoint
+2022-11-01 14:51:17.920 -06:00 [INF] Upgrade step Select an entrypoint applied successfully
+2022-11-01 14:51:18.549 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:51:18.622 -06:00 [INF] Initializing upgrade step Back up project
+2022-11-01 14:51:19.597 -06:00 [INF] Applying upgrade step Back up project
+2022-11-01 14:51:20.390 -06:00 [INF] Backing up D:\dev\VAICOMPRO-Community\ChatterThemepack to D:\dev\VAICOMPRO-Community.backup\ChatterThemepack
+2022-11-01 14:51:21.010 -06:00 [INF] Project backed up to D:\dev\VAICOMPRO-Community.backup\ChatterThemepack
+2022-11-01 14:51:21.011 -06:00 [INF] Upgrade step Back up project applied successfully
+2022-11-01 14:51:22.507 -06:00 [INF] Initializing upgrade step Convert project file to SDK style
+2022-11-01 14:51:23.253 -06:00 [INF] Applying upgrade step Convert project file to SDK style
+2022-11-01 14:51:23.255 -06:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2022-11-01 14:51:35.227 -06:00 [INF] [dotnet] Conversion complete!
+2022-11-01 14:51:35.802 -06:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2022-11-01 14:51:37.492 -06:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2022-11-01 14:51:46.445 -06:00 [INF] Initializing upgrade step Clean up NuGet package references
+2022-11-01 14:51:48.215 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:51:48.216 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:51:48.218 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:51:48.225 -06:00 [INF] No package updates needed
+2022-11-01 14:51:48.226 -06:00 [INF] Initializing upgrade step Update TFM
+2022-11-01 14:51:48.232 -06:00 [INF] TFM needs updated to netstandard2.0
+2022-11-01 14:51:49.125 -06:00 [INF] Applying upgrade step Update TFM
+2022-11-01 14:51:51.292 -06:00 [INF] Updated TFM to netstandard2.0
+2022-11-01 14:51:51.293 -06:00 [INF] Upgrade step Update TFM applied successfully
+2022-11-01 14:51:51.898 -06:00 [INF] Initializing upgrade step Update NuGet Packages
+2022-11-01 14:51:53.520 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:51:53.522 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:51:53.522 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:51:53.524 -06:00 [INF] No package updates needed
+2022-11-01 14:51:53.525 -06:00 [INF] Initializing upgrade step Add template files
+2022-11-01 14:51:53.529 -06:00 [INF] 0 expected template items needed
+2022-11-01 14:51:53.533 -06:00 [INF] Initializing upgrade step Update source code
+2022-11-01 14:51:55.570 -06:00 [INF] Initializing upgrade step Move to next project
+2022-11-01 14:51:56.565 -06:00 [INF] Applying upgrade step Move to next project
+2022-11-01 14:51:56.567 -06:00 [INF] Upgrade step Move to next project applied successfully
+2022-11-01 14:51:57.276 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:51:57.279 -06:00 [INF] No projects need upgraded for selected entrypoint
+2022-11-01 14:51:57.285 -06:00 [INF] Initializing upgrade step Finalize upgrade
+2022-11-01 14:51:57.974 -06:00 [INF] Applying upgrade step Finalize upgrade
+2022-11-01 14:51:57.975 -06:00 [INF] Upgrade step Finalize upgrade applied successfully
+2022-11-01 14:51:58.750 -06:00 [INF] Upgrade has completed. Please review any changes.
+2022-11-01 14:52:01.151 -06:00 [INF] Loaded 2 extensions
+2022-11-01 14:52:01.279 -06:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.411\
+2022-11-01 14:52:02.966 -06:00 [INF] Initializing upgrade step Select an entrypoint
+2022-11-01 14:52:03.870 -06:00 [INF] Applying upgrade step Select an entrypoint
+2022-11-01 14:52:06.602 -06:00 [INF] Upgrade step Select an entrypoint applied successfully
+2022-11-01 14:52:07.195 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:52:08.141 -06:00 [INF] Applying upgrade step Select project to upgrade
+2022-11-01 14:52:09.686 -06:00 [INF] Upgrade step Select project to upgrade applied successfully
+2022-11-01 14:52:10.491 -06:00 [INF] Initializing upgrade step Back up project
+2022-11-01 14:52:11.173 -06:00 [INF] Applying upgrade step Back up project
+2022-11-01 14:52:11.911 -06:00 [INF] Backing up D:\dev\VAICOMPRO-Community\VAICOM to D:\dev\VAICOMPRO-Community.backup\VAICOM
+2022-11-01 14:52:12.105 -06:00 [INF] Project backed up to D:\dev\VAICOMPRO-Community.backup\VAICOM
+2022-11-01 14:52:12.106 -06:00 [INF] Upgrade step Back up project applied successfully
+2022-11-01 14:52:12.779 -06:00 [INF] Initializing upgrade step Convert project file to SDK style
+2022-11-01 14:52:13.581 -06:00 [INF] Applying upgrade step Convert project file to SDK style
+2022-11-01 14:52:13.584 -06:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2022-11-01 14:52:14.476 -06:00 [INF] [dotnet] This project has an unrecognized custom import which may need reviewed after conversion: Fody.targets
+2022-11-01 14:52:14.478 -06:00 [INF] [dotnet] This project has an unrecognized custom import which may need reviewed after conversion: Fody.targets
+2022-11-01 14:52:16.567 -06:00 [INF] [dotnet] Conversion complete!
+2022-11-01 14:52:17.185 -06:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2022-11-01 14:52:18.804 -06:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2022-11-01 14:52:19.579 -06:00 [INF] Initializing upgrade step Clean up NuGet package references
+2022-11-01 14:52:21.150 -06:00 [INF] Marking package NAudio.Asio for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.152 -06:00 [INF] Marking package NAudio.Core for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.154 -06:00 [INF] Marking package NAudio.Midi for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.156 -06:00 [INF] Marking package NAudio.Wasapi for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.157 -06:00 [INF] Marking package NAudio.WinForms for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.158 -06:00 [INF] Marking package NAudio.WinMM for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.161 -06:00 [INF] Marking package System.Buffers for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.162 -06:00 [INF] Marking package System.Data.DataSetExtensions for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.164 -06:00 [INF] Marking package System.Numerics.Vectors for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.166 -06:00 [INF] Marking package System.Security.Principal.Windows for removal because it appears to be a transitive dependency
+2022-11-01 14:52:21.260 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:21.261 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:21.263 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:52:21.267 -06:00 [INF] Packages to be removed: NAudio.Asio, Version=2.1.0
+NAudio.Core, Version=2.1.0
+NAudio.Midi, Version=2.1.0
+NAudio.Wasapi, Version=2.1.0
+NAudio.WinForms, Version=2.1.0
+NAudio.WinMM, Version=2.1.0
+System.Buffers, Version=4.5.1
+System.Data.DataSetExtensions, Version=4.5.0
+System.Numerics.Vectors, Version=4.5.0
+System.Security.Principal.Windows, Version=5.0.0
+2022-11-01 14:52:21.861 -06:00 [INF] Applying upgrade step Clean up NuGet package references
+2022-11-01 14:52:21.865 -06:00 [INF] Removing outdated package reference: NAudio.Asio, Version=2.1.0
+2022-11-01 14:52:21.866 -06:00 [INF] Removing outdated package reference: NAudio.Core, Version=2.1.0
+2022-11-01 14:52:21.866 -06:00 [INF] Removing outdated package reference: NAudio.Midi, Version=2.1.0
+2022-11-01 14:52:21.867 -06:00 [INF] Removing outdated package reference: NAudio.Wasapi, Version=2.1.0
+2022-11-01 14:52:21.868 -06:00 [INF] Removing outdated package reference: NAudio.WinForms, Version=2.1.0
+2022-11-01 14:52:21.869 -06:00 [INF] Removing outdated package reference: NAudio.WinMM, Version=2.1.0
+2022-11-01 14:52:21.870 -06:00 [INF] Removing outdated package reference: System.Buffers, Version=4.5.1
+2022-11-01 14:52:21.871 -06:00 [INF] Removing outdated package reference: System.Data.DataSetExtensions, Version=4.5.0
+2022-11-01 14:52:21.872 -06:00 [INF] Removing outdated package reference: System.Numerics.Vectors, Version=4.5.0
+2022-11-01 14:52:21.872 -06:00 [INF] Removing outdated package reference: System.Security.Principal.Windows, Version=5.0.0
+2022-11-01 14:52:24.741 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:24.742 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:24.743 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:52:24.745 -06:00 [INF] Upgrade step Clean up NuGet package references applied successfully
+2022-11-01 14:52:25.713 -06:00 [INF] Initializing upgrade step Update TFM
+2022-11-01 14:52:25.895 -06:00 [INF] TFM needs updated to net5.0-windows
+2022-11-01 14:52:26.997 -06:00 [INF] Applying upgrade step Update TFM
+2022-11-01 14:52:31.261 -06:00 [INF] Updated TFM to net5.0-windows
+2022-11-01 14:52:31.262 -06:00 [INF] Upgrade step Update TFM applied successfully
+2022-11-01 14:52:31.878 -06:00 [INF] Initializing upgrade step Update NuGet Packages
+2022-11-01 14:52:33.556 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:33.557 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:33.558 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:52:34.121 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:34.122 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:34.124 -06:00 [INF] Adding Microsoft.Windows.Compatibility 6.0.1
+2022-11-01 14:52:34.127 -06:00 [INF] Packages to be added: Microsoft.Windows.Compatibility, Version=6.0.1
+2022-11-01 14:52:34.783 -06:00 [INF] Applying upgrade step Update NuGet Packages
+2022-11-01 14:52:34.784 -06:00 [INF] Adding package reference: Microsoft.Windows.Compatibility, Version=6.0.1
+2022-11-01 14:52:39.777 -06:00 [INF] Marking package Microsoft.Win32.Registry for removal because it appears to be a transitive dependency
+2022-11-01 14:52:39.831 -06:00 [INF] Marking package System.Runtime.CompilerServices.Unsafe for removal because it appears to be a transitive dependency
+2022-11-01 14:52:39.858 -06:00 [INF] Marking package System.Security.AccessControl for removal because it appears to be a transitive dependency
+2022-11-01 14:52:39.871 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:39.872 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:39.873 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:52:39.931 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:39.933 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:39.940 -06:00 [INF] Removing outdated package reference: Microsoft.Win32.Registry, Version=5.0.0
+2022-11-01 14:52:39.940 -06:00 [INF] Removing outdated package reference: System.Runtime.CompilerServices.Unsafe, Version=6.0.0
+2022-11-01 14:52:39.941 -06:00 [INF] Removing outdated package reference: System.Security.AccessControl, Version=6.0.0
+2022-11-01 14:52:42.643 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:42.645 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:42.646 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:52:42.724 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:52:42.726 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:52:42.737 -06:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2022-11-01 14:52:42.761 -06:00 [INF] Initializing upgrade step Add template files
+2022-11-01 14:52:42.767 -06:00 [INF] 0 expected template items needed
+2022-11-01 14:52:42.767 -06:00 [INF] Initializing upgrade step Upgrade app config files
+2022-11-01 14:52:42.779 -06:00 [INF] Found 0 app settings for upgrade: 
+2022-11-01 14:52:42.781 -06:00 [INF] Found 0 connection strings for upgrade: 
+2022-11-01 14:52:42.792 -06:00 [INF] Initializing upgrade step Update source code
+2022-11-01 14:52:50.177 -06:00 [INF] Initializing upgrade step Move to next project
+2022-11-01 14:53:42.638 -06:00 [INF] Applying upgrade step Move to next project
+2022-11-01 14:53:42.639 -06:00 [INF] Upgrade step Move to next project applied successfully
+2022-11-01 14:53:43.527 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:53:43.533 -06:00 [INF] No projects need upgraded for selected entrypoint
+2022-11-01 14:53:43.534 -06:00 [INF] Initializing upgrade step Finalize upgrade
+2022-11-01 14:53:44.093 -06:00 [INF] Applying upgrade step Finalize upgrade
+2022-11-01 14:53:44.095 -06:00 [INF] Upgrade step Finalize upgrade applied successfully
+2022-11-01 14:53:44.764 -06:00 [INF] Upgrade has completed. Please review any changes.
+2022-11-01 14:53:46.990 -06:00 [INF] Loaded 2 extensions
+2022-11-01 14:53:47.117 -06:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.411\
+2022-11-01 14:53:49.129 -06:00 [INF] Initializing upgrade step Select an entrypoint
+2022-11-01 14:53:50.447 -06:00 [INF] Applying upgrade step Select an entrypoint
+2022-11-01 14:53:54.012 -06:00 [INF] Upgrade step Select an entrypoint applied successfully
+2022-11-01 14:53:55.028 -06:00 [INF] Initializing upgrade step Select project to upgrade
+2022-11-01 14:53:55.048 -06:00 [INF] Initializing upgrade step Back up project
+2022-11-01 14:53:56.158 -06:00 [INF] Applying upgrade step Back up project
+2022-11-01 14:53:56.904 -06:00 [INF] Backing up D:\dev\VAICOMPRO-Community\VA_watchdog to D:\dev\VAICOMPRO-Community.backup\VA_watchdog
+2022-11-01 14:53:56.917 -06:00 [INF] Project backed up to D:\dev\VAICOMPRO-Community.backup\VA_watchdog
+2022-11-01 14:53:56.918 -06:00 [INF] Upgrade step Back up project applied successfully
+2022-11-01 14:53:57.576 -06:00 [INF] Initializing upgrade step Convert project file to SDK style
+2022-11-01 14:53:58.238 -06:00 [INF] Applying upgrade step Convert project file to SDK style
+2022-11-01 14:53:58.240 -06:00 [INF] Converting project file format with try-convert, version 0.7.226301
+2022-11-01 14:53:58.450 -06:00 [INF] [dotnet] D:\dev\VAICOMPRO-Community\VA_watchdog\VAICOM_App.csproj contains an App.config file. App.config is replaced by appsettings.json in .NET Core. You will need to delete App.config and migrate to appsettings.json if it's applicable to your project.
+2022-11-01 14:54:00.050 -06:00 [INF] [dotnet] Conversion complete!
+2022-11-01 14:54:00.823 -06:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2022-11-01 14:54:02.250 -06:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2022-11-01 14:54:03.270 -06:00 [INF] Initializing upgrade step Clean up NuGet package references
+2022-11-01 14:54:04.778 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:04.779 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:04.781 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:54:04.784 -06:00 [INF] No package updates needed
+2022-11-01 14:54:04.784 -06:00 [INF] Initializing upgrade step Update TFM
+2022-11-01 14:54:04.786 -06:00 [INF] TFM needs updated to net5.0-windows
+2022-11-01 14:54:06.246 -06:00 [INF] Applying upgrade step Update TFM
+2022-11-01 14:54:08.538 -06:00 [INF] Updated TFM to net5.0-windows
+2022-11-01 14:54:08.539 -06:00 [INF] Upgrade step Update TFM applied successfully
+2022-11-01 14:54:09.214 -06:00 [INF] Initializing upgrade step Update NuGet Packages
+2022-11-01 14:54:10.665 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:10.666 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:10.667 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:54:10.748 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:10.750 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:10.752 -06:00 [INF] Adding Microsoft.Windows.Compatibility 6.0.1
+2022-11-01 14:54:10.754 -06:00 [INF] Packages to be added: Microsoft.Windows.Compatibility, Version=6.0.1
+2022-11-01 14:54:11.318 -06:00 [INF] Applying upgrade step Update NuGet Packages
+2022-11-01 14:54:11.321 -06:00 [INF] Adding package reference: Microsoft.Windows.Compatibility, Version=6.0.1
+2022-11-01 14:54:13.861 -06:00 [INF] Marking package System.Data.DataSetExtensions for removal because it appears to be a transitive dependency
+2022-11-01 14:54:13.870 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:13.872 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:13.874 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:54:13.968 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:13.969 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:13.972 -06:00 [INF] Removing outdated package reference: System.Data.DataSetExtensions, Version=4.5.0
+2022-11-01 14:54:16.382 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:16.383 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:16.385 -06:00 [WRN] .NET Upgrade Assistant analyzer NuGet package reference cannot be added because the package cannot be found
+2022-11-01 14:54:16.510 -06:00 [WRN] Failed to get package versions from source https://packages.infragistics.com/nuget/licensed due to a NuGet protocol error
+2022-11-01 14:54:16.512 -06:00 [INF] If NuGet packages are coming from an authenticated source, Upgrade Assistant requires a .NET Core-compatible v2 credential provider be installed. To authenticate with an Azure DevOps NuGet source, for example, see https://github.com/microsoft/artifacts-credprovider#setup
+2022-11-01 14:54:16.514 -06:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2022-11-01 14:54:17.181 -06:00 [INF] Initializing upgrade step Add template files
+2022-11-01 14:54:17.188 -06:00 [INF] 0 expected template items needed
+2022-11-01 14:54:17.190 -06:00 [INF] Initializing upgrade step Upgrade app config files
+2022-11-01 14:54:17.198 -06:00 [INF] Found 0 app settings for upgrade: 
+2022-11-01 14:54:17.200 -06:00 [INF] Found 0 connection strings for upgrade: 
+2022-11-01 14:54:17.205 -06:00 [INF] Initializing upgrade step Update source code
+2022-11-01 14:54:18.264 -06:00 [INF] Initializing upgrade step Move to next project
+2022-11-01 14:54:19.182 -06:00 [INF] Applying upgrade step Move to next project
+2022-11-01 14:54:19.184 -06:00 [INF] Upgrade step Move to next project applied successfully
+2022-11-01 14:54:20.184 -06:00 [INF] Initializing upgrade step Finalize upgrade
+2022-11-01 14:54:21.038 -06:00 [INF] Applying upgrade step Finalize upgrade
+2022-11-01 14:54:21.039 -06:00 [INF] Upgrade step Finalize upgrade applied successfully
+2022-11-01 14:54:21.856 -06:00 [INF] Upgrade has completed. Please review any changes.
