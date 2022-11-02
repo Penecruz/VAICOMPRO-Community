@@ -1,33 +1,29 @@
-﻿using VAICOM.Static;
+﻿using NAudio.Wave;
 using System;
-using System.Timers;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Resources;
 using System.IO;
+using System.Resources;
+using System.Runtime.Versioning;
+using System.Timers;
 using System.Windows.Forms;
-using NAudio.Wave;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Extensions
-    {
-        namespace Chatter
-        {
+namespace VAICOM {
+    namespace Extensions {
+        namespace Chatter {
 
-            public static partial class AudioTimer
-            {
+            [SupportedOSPlatform("windows")]
+            public static partial class AudioTimer {
 
                 public static Dictionary<string, ResourceManager> ChatterCollection;
                 public static System.Timers.Timer PlaybackTimer { get; set; }
                 public static bool Created { get; set; }
                 public static bool CurrentPlayStatus { get; set; }
 
-                public static void Chatter_Initialize()
-                {
-                    try
-                    {
+                public static void Chatter_Initialize() {
+                    try {
 
                         // default values (if load based on theme fails)
                         State.chatterintervalmin = 4000;
@@ -43,32 +39,26 @@ namespace VAICOM
                         ChatterCollection.Add("RedFlag", Themepack.RedFlag.ResourceManager);
                         ChatterCollection.Add("WWII", Themepack.WWII.ResourceManager);
                         State.chatterthemes = new List<string>();
-                        foreach (KeyValuePair<string, ResourceManager> theme in ChatterCollection)
-                        {
+                        foreach (KeyValuePair<string, ResourceManager> theme in ChatterCollection) {
                             State.chatterthemes.Add(theme.Key);
                         }
 
                         // set the name of the current collection (from config setting)
                         string currenttheme;
-                        if (State.activeconfig.ChatterFolder.Equals("(AUTO)"))
-                        {
+                        if (State.activeconfig.ChatterFolder.Equals("(AUTO)")) {
                             currenttheme = State.currentmodule.Theme;
-                        }
-                        else
-                        {
+                        } else {
                             currenttheme = State.activeconfig.ChatterFolder;
                         }
 
                         // catch if somehow there was a change
-                        if (!State.chatterthemes.Contains(currenttheme))
-                        {
+                        if (!State.chatterthemes.Contains(currenttheme)) {
                             Log.Write("Chatter theme mismatch for " + currenttheme, Colors.Text);
                             State.activeconfig.ChatterFolder = State.chatterthemes[0]; // Default
                             currenttheme = State.activeconfig.ChatterFolder;
                         }
 
-                        if (State.chatterthemesactivated)
-                        {
+                        if (State.chatterthemesactivated) {
                             Log.Write("Chatter theme set to " + currenttheme, Colors.Text);
                         }
 
@@ -78,8 +68,7 @@ namespace VAICOM
                         State.chattersoundfiles = new List<string>();
 
                         //..add them to soundfiles table.
-                        foreach (DictionaryEntry entry in State.chatterresources)
-                        {
+                        foreach (DictionaryEntry entry in State.chatterresources) {
                             State.chattersoundfiles.Add(entry.Key.ToString());
                         }
                         Log.Write("Resources added. ", Colors.Text);
@@ -87,52 +76,37 @@ namespace VAICOM
                         // initialize ready.
                         Log.Write("Chatter initialized. ", Colors.Text);
                         State.chatterinitalized = true;
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Chatter theme init: " + e.Message, Colors.Text);
                         State.chatterinitalized = false;
                     }
                 }
 
-                public static void Chatter_TimerPlayToggle()
-                {
-                    try
-                    {
-                        if (!State.chatterinitalized)
-                        {
+                public static void Chatter_TimerPlayToggle() {
+                    try {
+                        if (!State.chatterinitalized) {
                             Chatter_Initialize();
                         }
-                        if (CurrentPlayStatus == false)
-                        {
+                        if (CurrentPlayStatus == false) {
                             Log.Write("Chatter start.", Colors.Text);
                             Chatter_TimerStart();
-                        }
-                        else
-                        {
+                        } else {
                             Log.Write("Chatter stop.", Colors.Text);
                             Chatter_TimerStop();
                         }
-                        if (State.configwindowopen && (State.configurationwindow != null))
-                        {
-                            State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                            {
+                        if (State.configwindowopen && (State.configurationwindow != null)) {
+                            State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                                 State.configurationwindow.Changechatterbug();
                             });
                         }
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Problems were reported with Chatter toggle. " + e.Message, Colors.Inline);
                     }
                 }
 
-                public static void Chatter_TimerStart()
-                {
-                    try
-                    {
-                        if (!Created)
-                        {
+                public static void Chatter_TimerStart() {
+                    try {
+                        if (!Created) {
                             PlaybackTimer = new System.Timers.Timer(1000);
                         }
 
@@ -141,32 +115,24 @@ namespace VAICOM
                         CurrentPlayStatus = true;
                         State.chatteractive = true;
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Problems were reported with Chatter timer start. " + e.Message, Colors.Inline);
                     }
                 }
 
-                public static void Chatter_TimerStop()
-                {
-                    try
-                    {
+                public static void Chatter_TimerStop() {
+                    try {
                         PlaybackTimer.Elapsed -= Chatter_Timer_Elapsed_Handler;
                         PlaybackTimer.Stop();
                         CurrentPlayStatus = false;
                         State.chatteractive = false;
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Problems were reported with Chatter timer stop. " + e.Message, Colors.Inline);
                     }
                 }
 
-                private static void Chatter_Timer_Elapsed_Handler(object sender, ElapsedEventArgs e)
-                {
-                    try
-                    {
+                private static void Chatter_Timer_Elapsed_Handler(object sender, ElapsedEventArgs e) {
+                    try {
 
                         Random randomsoundfile = new Random();
                         int filenumber = randomsoundfile.Next(State.chattersoundfiles.Count);
@@ -174,8 +140,7 @@ namespace VAICOM
 
                         bool chatterextviewblocked = State.currentstate.viewexternal && !State.currentstate.soundsallowexternal;
 
-                        if (!chatterextviewblocked && ((State.dcsrunning || !State.activeconfig.ChatterSilentOffline) && ((State.chattersoundfiles.Count > 0) & State.oneradioactive)))
-                        {
+                        if (!chatterextviewblocked && ((State.dcsrunning || !State.activeconfig.ChatterSilentOffline) && ((State.chattersoundfiles.Count > 0) & State.oneradioactive))) {
 
                             object playbackfile = State.chatterresources.GetObject(State.chattersoundfiles[filenumber]);
                             Stream fragment = (Stream)playbackfile;
@@ -193,13 +158,11 @@ namespace VAICOM
 
                             int pan = 0;
 
-                            switch (State.activeconfig.ChatterPanSetting)
-                            {
+                            switch (State.activeconfig.ChatterPanSetting) {
                                 case 2:
                                     Random rnd = new Random();
-                                    int dice = rnd.Next(1, 2+1);
-                                    switch (dice)
-                                    {
+                                    int dice = rnd.Next(1, 2 + 1);
+                                    switch (dice) {
                                         case 1:
                                             pan = -1;
                                             break;
@@ -211,16 +174,13 @@ namespace VAICOM
                                 default:
                                     pan = State.activeconfig.ChatterPanSetting;
                                     break;
-                            }   
+                            }
 
                             panningSampleProvider.Pan = pan;
 
-                            if (State.activeconfig.Redirect_World_Speech)
-                            {
+                            if (State.activeconfig.Redirect_World_Speech) {
                                 State.ttsmixer.AddMixerInput(panningSampleProvider);
-                            }
-                            else
-                            {
+                            } else {
                                 State.chatteroutput.Init(panningSampleProvider);
                                 State.chatteroutput.Play();
                             }
@@ -233,9 +193,7 @@ namespace VAICOM
                         PlaybackTimer.Interval = currentduration + newinterval;
                         PlaybackTimer.Start();
 
-                    }
-                    catch (Exception a)
-                    {
+                    } catch (Exception a) {
                         Log.Write("Problems were reported with the Chatter timer handler. " + a.Message, Colors.Inline);
                     }
                 }

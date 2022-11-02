@@ -1,30 +1,25 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
+namespace VAICOM {
 
-namespace VAICOM
-{
+    namespace Client {
 
-    namespace Client
-    {
+        [SupportedOSPlatform("windows")]
+        public partial class DcsClient {
 
-        public partial class DcsClient
-        {
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
 
-            public static partial class Message
-            {
-
-                public static void SetRioDeviceSequence_Radio_Tuning()
-                {
-                    try
-                    {
+                public static void SetRioDeviceSequence_Radio_Tuning() {
+                    try {
 
                         // exit if AIRIO not valid
-                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]))
-                        {
+                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod])) {
                             Log.Write("AIRIO commands are not available at this time.", Colors.Warning);
                             UI.Playsound.Recipientna();
                             return;
@@ -47,8 +42,7 @@ namespace VAICOM
                         int majval1;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}"), out majval1);
 
-                        switch (majval1)
-                        {
+                        switch (majval1) {
                             case 0:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_0_); // underscore for first only
                                 break;
@@ -67,8 +61,7 @@ namespace VAICOM
                         int majval2;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}"), out majval2);
 
-                        switch (majval2)
-                        {
+                        switch (majval2) {
                             case 0:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_0);
                                 break;
@@ -105,8 +98,7 @@ namespace VAICOM
                         int majval3;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:3}"), out majval3);
 
-                        switch (majval3)
-                        {
+                        switch (majval3) {
                             case 0:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_0);
                                 break;
@@ -143,8 +135,7 @@ namespace VAICOM
                         int minval1;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:5}"), out minval1);
 
-                        switch (minval1)
-                        {
+                        switch (minval1) {
                             case 0:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_0);
                                 break;
@@ -181,8 +172,7 @@ namespace VAICOM
                         // MIN 2
                         int minval2 = 0;
                         string valstr = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:6}");
-                        switch (valstr.ToLower())
-                        {
+                        switch (valstr.ToLower()) {
                             //0
                             case "0":
                                 minval2 = 0;
@@ -190,7 +180,7 @@ namespace VAICOM
                             case "zero":
                                 minval2 = 0;
                                 break;
-                            case "cero": 
+                            case "cero":
                                 minval2 = 0;
                                 break;
                             case "null":
@@ -233,7 +223,7 @@ namespace VAICOM
                             case "funf null":
                                 minval2 = 50;
                                 break;
-                            
+
                             // 75
                             case "7 5":
                                 minval2 = 75;
@@ -256,8 +246,7 @@ namespace VAICOM
                                 break;
                         }
 
-                        switch (minval2)
-                        {
+                        switch (minval2) {
                             case 0:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_00);
                                 break;
@@ -278,34 +267,29 @@ namespace VAICOM
 
                         string message = majval1.ToString() + majval2.ToString() + majval3.ToString() + "." + minval1.ToString() + minval2.ToString() + " MHz";
 
-                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
-                        {
+                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only) {
                             State.currentmessage.dspmsg = "AIRIO : " + "AN/ARC-182 Tune " + message;
                             State.currentmessage.msgdur = 5;
                         }
 
                         UI.Playsound.Commandcomplete();
 
-                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO))
-                        {
+                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO)) {
                             State.currentmessage.dspmsg = "AIRIO : You are in Jester's seat!\n";
                             State.currentmessage.msgdur = 5;
                             State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        }
-                        else // ok, in pilot seat
-                        {
+                        } else // ok, in pilot seat
+                          {
                             int combinedvalue = ((100000 * majval1) + (10000 * majval2) + (1000 * majval3) + (100 * minval1) + minval2);
                             int deviceminvalue = 30000;
                             int devicemaxvalue = 399975;
-                            if ((combinedvalue > devicemaxvalue) || (combinedvalue < deviceminvalue))
-                            {
+                            if ((combinedvalue > devicemaxvalue) || (combinedvalue < deviceminvalue)) {
                                 State.currentmessage.dspmsg = "AIRIO : Radio command out of range.\n";
                                 State.currentmessage.msgdur = 5;
                                 State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
                                 riospeech.riospeakrandom(2); //negative
-                            }
-                            else // not out of range
-                            {
+                            } else // not out of range
+                              {
                                 //riospeech.riospeakrandom(1); //not needed (menu)
                             }
                         }
@@ -313,22 +297,20 @@ namespace VAICOM
                         SendNewMessage();
 
                         // write message to log 
-                        
+
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {
                             Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "AN/ARC-182 Tune " + message + " [ " + " ] [ " + " ]", Colors.Message);
-                        }
-                        else // for multi:
-                        {
+                        } else // for multi:
+                          {
                             Log.Write(State.currentTXnode.name + " | " + State.currentTXnode.radios[0].name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "AN/ARC-182 Tune " + message + " [ " + " ] [ " + " ]", Colors.Message);
                         }
 
                         // for hotmic:
                         if (State.activeconfig.ICShotmic) //  
                         {
-                            if (!State.valistening)
-                            {
+                            if (!State.valistening) {
                                 DcsClient.SendUpdateRequest();
                                 State.MessageReset();
                                 State.processlocked = false;
@@ -337,9 +319,7 @@ namespace VAICOM
 
                         State.MessageReset();
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Error setting RIO command sequence: " + e.StackTrace + e.InnerException, Colors.Inline);
                     }
                 }

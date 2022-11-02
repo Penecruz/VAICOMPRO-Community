@@ -1,13 +1,11 @@
-﻿using VAICOM.Database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
+using VAICOM.Database;
 
 
-namespace VAICOM
-{
-    namespace Languages
-    {
-        public enum language
-        {
+namespace VAICOM {
+    namespace Languages {
+        public enum language {
             ENG,
             GER,
             ESP,
@@ -17,12 +15,12 @@ namespace VAICOM
             RUS
         }
 
-        public class localization
-        {
+        [SupportedOSPlatform("windows")]
+        public class localization {
             // not used yet
             public static Dictionary<language, Dictionary<string, string>> translatedversion = new Dictionary<language, Dictionary<string, string>>()
             {
-                { language.ENG, Aliases.airecipients    },                 
+                { language.ENG, Aliases.airecipients    },
 
             };
 

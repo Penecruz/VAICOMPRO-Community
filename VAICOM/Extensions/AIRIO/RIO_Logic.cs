@@ -1,18 +1,16 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Runtime.Versioning;
 using VAICOM.Extensions.WorldAudio;
 using VAICOM.Servers;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Extensions
-    {
-        namespace RIO
-        {
+namespace VAICOM {
+    namespace Extensions {
+        namespace RIO {
 
-            public partial class helper
-            {
+            [SupportedOSPlatform("windows")]
+            public partial class helper {
 
                 public static Dictionary<string, DeviceAction> AGweaponsstate = new Dictionary<string, DeviceAction>()
                 {
@@ -36,8 +34,7 @@ namespace VAICOM
 
                 };
 
-                public static DeviceAction GetAtom(int num)
-                {
+                public static DeviceAction GetAtom(int num) {
                     DeviceAction value = DeviceActionsLibrary.RIO.Atom_J_VOID;
 
                     if (num.Equals(1)) { return DeviceActionsLibrary.RIO.Atom_J_MENU_OPTION_1; }
@@ -52,8 +49,7 @@ namespace VAICOM
                     return value;
                 }
 
-                public static void resetAGweapons()
-                {
+                public static void resetAGweapons() {
                     AGweaponsstate = new Dictionary<string, DeviceAction>();
 
 
@@ -62,61 +58,54 @@ namespace VAICOM
                     AGweaponsstate["Mk83"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk84"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Zuni"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU10"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU12"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU16"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU24"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU10"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU12"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU16"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU24"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk20"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["LUU2"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["BDU33"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["BDU33"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk82A"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk82SE"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["TALD"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["default"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["default"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
 
 
                 }
 
-                public static string extractweapon(string classid)
-                {
+                public static string extractweapon(string classid) {
                     string result = "";
 
-                    if (classid.Contains("MK") && classid.Contains("81")) { return "Mk81";  }
-                    if (classid.Contains("MK") && classid.Contains("82")) 
-                    {
-                        if (classid.ToLower().Contains("air"))
-                        {
+                    if (classid.Contains("MK") && classid.Contains("81")) { return "Mk81"; }
+                    if (classid.Contains("MK") && classid.Contains("82")) {
+                        if (classid.ToLower().Contains("air")) {
                             return "Mk82A";
                         }
-                        if (classid.ToLower().Contains("se"))
-                        {
+                        if (classid.ToLower().Contains("se")) {
                             return "Mk82SE";
                         }
-                        return "Mk82";  
+                        return "Mk82";
                     }
-                    if (classid.Contains("MK") && classid.Contains("83")) { return "Mk83";  }
-                    if (classid.Contains("MK") && classid.Contains("84")) { return "Mk84";  }
-                    if (classid.Contains("LAU")&& classid.Contains("10")) { return "Zuni";  }
-                    if (classid.Contains("GBU")&& classid.Contains("10")) { return "GBU10"; }
-                    if (classid.Contains("GBU")&& classid.Contains("12")) { return "GBU12"; }
-                    if (classid.Contains("GBU")&& classid.Contains("16")) { return "GBU16"; }
-                    if (classid.Contains("GBU")&& classid.Contains("24")) { return "GBU24"; }
-                    if (classid.Contains("MK") && classid.Contains("20")) { return "Mk20";  }
-                    if (classid.Contains("SUU")&& classid.Contains("25")) { return "LUU2";  }
-                    if (classid.Contains("BDU"))                          { return "BDU33"; }
-                    if (classid.Contains("ADM141"))                       { return "TALD";  }
+                    if (classid.Contains("MK") && classid.Contains("83")) { return "Mk83"; }
+                    if (classid.Contains("MK") && classid.Contains("84")) { return "Mk84"; }
+                    if (classid.Contains("LAU") && classid.Contains("10")) { return "Zuni"; }
+                    if (classid.Contains("GBU") && classid.Contains("10")) { return "GBU10"; }
+                    if (classid.Contains("GBU") && classid.Contains("12")) { return "GBU12"; }
+                    if (classid.Contains("GBU") && classid.Contains("16")) { return "GBU16"; }
+                    if (classid.Contains("GBU") && classid.Contains("24")) { return "GBU24"; }
+                    if (classid.Contains("MK") && classid.Contains("20")) { return "Mk20"; }
+                    if (classid.Contains("SUU") && classid.Contains("25")) { return "LUU2"; }
+                    if (classid.Contains("BDU")) { return "BDU33"; }
+                    if (classid.Contains("ADM141")) { return "TALD"; }
 
                     return result;
                 }
 
-                public static bool havetank()
-                {
+                public static bool havetank() {
                     bool result = false;
 
-                    foreach (Server.payloadstation station in State.currentstate.payload.Stations)
-                    {
-                        if(station.CLSID.Contains("300gal") && station.count > 0)
-                        {
+                    foreach (Server.payloadstation station in State.currentstate.payload.Stations) {
+                        if (station.CLSID.Contains("300gal") && station.count > 0) {
                             return true;
                         }
                     }
@@ -124,25 +113,20 @@ namespace VAICOM
                     return result;
                 }
 
-                public static void getAGweaponsstate()
-                {
-                    try
-                    {
+                public static void getAGweaponsstate() {
+                    try {
 
                         resetAGweapons();
                         int counter = 0;
 
                         Dictionary<string, DeviceAction> readdict = new Dictionary<string, DeviceAction>(AGweaponsstate);
 
-                        foreach (KeyValuePair<string, DeviceAction> entry in readdict)
-                        {
+                        foreach (KeyValuePair<string, DeviceAction> entry in readdict) {
                             if (entry.Value.Equals(DeviceActionsLibrary.RIO.Atom_J_VOID)) // wpn not identified yet
                             {
-                                foreach (Server.payloadstation station in State.currentstate.payload.Stations)
-                                {
+                                foreach (Server.payloadstation station in State.currentstate.payload.Stations) {
                                     string wpn = extractweapon(station.CLSID);
-                                    if (entry.Key.Equals(wpn) && station.count > 0)
-                                    {
+                                    if (entry.Key.Equals(wpn) && station.count > 0) {
                                         Log.Write("found new AG weapon!" + wpn, Colors.Inline);
                                         counter += 1;
                                         AGweaponsstate[wpn] = GetAtom(counter);
@@ -151,26 +135,20 @@ namespace VAICOM
                                 }
                             }
                         }
-                    }
-                    catch
-                    {
+                    } catch {
                         Log.Write("could not update weapons state.", Colors.Inline);
                     }
                 }
 
-                public static void getAGweaponsstate_OLD()
-                {
+                public static void getAGweaponsstate_OLD() {
 
                     resetAGweapons();
                     int counter = 0;
 
-                    foreach (Server.payloadstation station in State.currentstate.payload.Stations)
-                    {
+                    foreach (Server.payloadstation station in State.currentstate.payload.Stations) {
                         string wpn = extractweapon(station.CLSID);
-                        if (AGweaponsstate.ContainsKey(wpn) && station.count >0)
-                        {
-                            if (AGweaponsstate[wpn].Equals(DeviceActionsLibrary.RIO.Atom_J_VOID))
-                            {
+                        if (AGweaponsstate.ContainsKey(wpn) && station.count > 0) {
+                            if (AGweaponsstate[wpn].Equals(DeviceActionsLibrary.RIO.Atom_J_VOID)) {
                                 Log.Write("found new AG weapon!" + wpn, Colors.Inline);
                                 counter += 1;
                                 AGweaponsstate[wpn] = GetAtom(counter);
@@ -179,12 +157,11 @@ namespace VAICOM
                     }
                 }
 
-                public static Server.Vector diffvector()
-                {
+                public static Server.Vector diffvector() {
                     Server.Vector dp = new Server.Vector();
 
-                    Server.Vector cam       = State.currentstate.cpos.loc;
-                    Server.Vector acbody    = State.currentstate.bpos;
+                    Server.Vector cam = State.currentstate.cpos.loc;
+                    Server.Vector acbody = State.currentstate.bpos;
 
                     dp.x = cam.x - acbody.x;
                     dp.y = cam.y - acbody.y;
@@ -193,12 +170,11 @@ namespace VAICOM
                     return dp;
                 }
 
-                public static Server.Vector shiftedcamvector(double factor)
-                {
+                public static Server.Vector shiftedcamvector(double factor) {
                     Server.Vector campos = new Server.Vector();
 
                     Server.Vector acbody = State.currentstate.bpos;
-                    Server.Vector dp     = diffvector();
+                    Server.Vector dp = diffvector();
 
                     dp.x = factor * dp.x;
                     dp.y = factor * dp.y;
@@ -211,23 +187,19 @@ namespace VAICOM
                     return campos;
                 }
 
-                public static int seatposition()
-                {
+                public static int seatposition() {
                     int seatpos = 1; // default, 2 for RIO seat
 
                     Server.Vector dp = diffvector();
 
-                    double length = Math.Sqrt((dp.x * dp.x) + (dp.y * dp.y) + (dp.z* dp.z));
+                    double length = Math.Sqrt((dp.x * dp.x) + (dp.y * dp.y) + (dp.z * dp.z));
 
                     //Log.Write("Length = " + length, Colors.Inline);
 
-                    if (length < 6.25)
-                    {
+                    if (length < 6.25) {
                         seatpos = 2;
                         //Log.Write("RIO!", Colors.Inline);
-                    }
-                    else
-                    {
+                    } else {
                         seatpos = 1;
                         //Log.Write("Pilot!", Colors.Inline);
                     }
@@ -235,14 +207,11 @@ namespace VAICOM
                 }
             }
 
-            public class riospeech
-            {
+            public class riospeech {
 
-                public static void riospeakrandom(int type)
-                {
+                public static void riospeakrandom(int type) {
 
-                    if (tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.No_Talk))
-                    {
+                    if (tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.No_Talk)) {
                         return;
                     }
 
@@ -258,41 +227,34 @@ namespace VAICOM
                     Log.Write("random = " + dice0, Colors.Inline);
                     string filename;
 
-                    switch (dice0)
-                    {
+                    switch (dice0) {
                         case 1:
                             filename = "";
-                            if (type.Equals(1))
-                            {
+                            if (type.Equals(1)) {
                                 filename = "misc/roger";
                             }
-                            if (type.Equals(2))
-                            {
+                            if (type.Equals(2)) {
                                 filename = "misc/unable";
                             }
-                            if (type.Equals(3))
-                            {
+                            if (type.Equals(3)) {
                                 filename = "misc/uhm";
                             }
                             break;
 
                         default:
                             filename = "";
-                            if (type.Equals(1))
-                            {
+                            if (type.Equals(1)) {
                                 filename = "misc/copy";
                             }
-                            if (type.Equals(2))
-                            {
+                            if (type.Equals(2)) {
                                 filename = "misc/cantdo";
                             }
-                            if (type.Equals(3))
-                            {
+                            if (type.Equals(3)) {
                                 filename = "misc/uhm"; // nothing
                             }
                             break;
 
-                    }                          
+                    }
 
                     //now add random extension (1-17)
                     //Random rnd = new Random();
@@ -325,8 +287,7 @@ namespace VAICOM
 
             }
 
-            public class menuhelper
-            {
+            public class menuhelper {
                 public static Dictionary<string, string> optionhints = new Dictionary<string, string>()
                 {
 

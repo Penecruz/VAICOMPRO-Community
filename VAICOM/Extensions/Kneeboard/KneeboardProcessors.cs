@@ -1,62 +1,52 @@
-using VAICOM.Static;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Servers;
+using VAICOM.Static;
 
 
-namespace VAICOM
-{
-    namespace Extensions
-    {
-        namespace Kneeboard
-        {
+namespace VAICOM {
+    namespace Extensions {
+        namespace Kneeboard {
 
-            public static partial class KneeboardHelper
-            {
+            [SupportedOSPlatform("windows")]
+            public static partial class KneeboardHelper {
 
-                public static string theatercode(string theater)
-                {
+                public static string theatercode(string theater) {
                     string returnstring = "";
-                    try
-                    {
-                        switch (theater.ToLower())
-                    {
-                        case "caucasus":
-                            returnstring += "BLKS";
-                            break;
-                        case "nevada":
-                            returnstring += "NTTR";
-                            break;
-                        case "normandy":
-                            returnstring += "NRMY";
-                            break;
-                        case "persiangulf":
-                            returnstring += "GULF";
-                            break;
-                        case "thechannel":
-                            returnstring += "CHAN";
-                            break;
-                        case "syria":
-                            returnstring += "SYRI";
-                            break;
-                        default: 
-                            returnstring += "THTR";
-                            break;
-                    }
-                    }
-                    catch
-                    {
+                    try {
+                        switch (theater.ToLower()) {
+                            case "caucasus":
+                                returnstring += "BLKS";
+                                break;
+                            case "nevada":
+                                returnstring += "NTTR";
+                                break;
+                            case "normandy":
+                                returnstring += "NRMY";
+                                break;
+                            case "persiangulf":
+                                returnstring += "GULF";
+                                break;
+                            case "thechannel":
+                                returnstring += "CHAN";
+                                break;
+                            case "syria":
+                                returnstring += "SYRI";
+                                break;
+                            default:
+                                returnstring += "THTR";
+                                break;
+                        }
+                    } catch {
                     }
                     return returnstring;
                 }
-                public static string theatertimezonestring(string theater)
-                {
+                public static string theatertimezonestring(string theater) {
                     string returnstring = "";
-                    try
-                    {
+                    try {
 
-                        switch (theater.ToLower())
-                        {
+                        switch (theater.ToLower()) {
                             case "caucasus":
                                 returnstring += "D(Z+4)";
                                 break;
@@ -79,80 +69,57 @@ namespace VAICOM
                                 returnstring += "Z";
                                 break;
                         }
-                    }
-                    catch 
-                    { 
+                    } catch {
                     }
                     return returnstring;
                 }
-                public static string reconstructplayercallsign()
-                {
+                public static string reconstructplayercallsign() {
                     string returntext = State.currentstate.playercallsign;
-                    try
-                    {
+                    try {
                         string playercallsign = State.currentstate.playercallsign;  //Boar21 or 401
                         string groupcallsign = Helpers.Common.RemoveDigits(State.currentstate.playercallsign); //Boar or "" 
                         string digits = playercallsign.Replace(groupcallsign, ""); //21 or 401
                         string reconstructplayercallsign;
-                        if (groupcallsign.TrimStart().TrimEnd().Equals(""))
-                        {
+                        if (groupcallsign.TrimStart().TrimEnd().Equals("")) {
                             reconstructplayercallsign = digits; // 401
-                        }
-                        else
-                        {
+                        } else {
                             reconstructplayercallsign = groupcallsign + " " + digits.Substring(0, 1) + "-" + digits.Substring(1, 1); // Boar 2-1
                         }
                         returntext = reconstructplayercallsign;
-                    }
-                    catch
-                    {
+                    } catch {
 
                     }
                     return returntext;
                 }
-                public static string JTAC_processnineline(string text, string sendercallsign)
-                {
+                public static string JTAC_processnineline(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
+                    try {
                         returntext = text.Replace("(" + sendercallsign + ")", "").Replace("Marked by", "Mark").Replace("Heading", "Hdg").Replace("Distance", "Dist").Replace("nautical", "NM").Replace(".", " -").Replace("line is as follows\n", "").Replace("[", "").Replace("]", "").Replace("1, 2, 3 N/A", "1 -\n2 -\n3 -").Replace(":", "").Replace("Elevation", "Elev").Replace("feet", "ft").Replace("Target", "Tgt").Replace("Coordinates", "Coord").Replace("Egress", "Egr").Replace("Friendlies", "Troops").Replace("south", "S").Replace("north", "N").Replace("east", "E").Replace("west", "W");
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string JTAC_processremarks(string text, string sendercallsign)
-                {
+                public static string JTAC_processremarks(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
+                    try {
                         returntext = text.Replace("(" + sendercallsign + "):", "").Replace("\nuse ", "pref ").Replace("\nrequest ", "pref ").Replace("Final attack heading:", "in ").Replace("make your attack heading:", "in ").Replace("meters per second", "m/s").Replace(" at ", " @").Replace(" and ", " + ").Replace("nautical", "NM").Replace("south", "S").Replace("north", "N").Replace("east", "E").Replace("west", "W").Replace("wind", "wnd").Replace(":", "");
-                    }
-                    catch    
-                    { 
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string JTAC_processgeneral(string text, string sendercallsign)
-                {
+                public static string JTAC_processgeneral(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
+                    try {
                         returntext = text.Replace("(" + sendercallsign + "):", "").Replace(sendercallsign + ",", "").Replace(reconstructplayercallsign() + ",", "");
                         returntext = returntext.Replace("your target is ", "tgt ");
                         returntext = returntext.TrimStart().TrimEnd();
-                    }
-                    catch
-                    { 
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string AWACS_processgeneral(string text, string sendercallsign)
-                {
+                public static string AWACS_processgeneral(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
+                    try {
                         returntext = returntext.Replace("(" + sendercallsign + "):", "").Replace(sendercallsign + ",", "").Replace(reconstructplayercallsign() + ",", "");
                         returntext = returntext.Replace("home plate ", "home ").Replace("at bulls ", "@").Replace("at bullseye ", "@").Replace("bullseye ", "bulls @").Replace("for", "/");
                         returntext = returntext.Replace("BRA", "");
@@ -161,17 +128,13 @@ namespace VAICOM
                         returntext = returntext.Replace(",", " ");
                         returntext = returntext.Replace("000", "k");
                         returntext = returntext.TrimStart().TrimEnd();
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string ATC_processgeneral(string text, string sendercallsign)
-                {
+                public static string ATC_processgeneral(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {               
+                    try {
                         returntext = returntext.Replace(reconstructplayercallsign() + ",", "").Replace(sendercallsign + ",", sendercallsign.Substring(0, 3).ToUpper() + " ").Replace("(" + sendercallsign + "):", "").Replace("Ship-ADF,", "");
                         returntext = returntext.Replace(", your heading", " @hdg").Replace("at QFE", "QFE").Replace("climb ", "+").Replace("you are cleared for takeoff when ready,", "TO").Replace("cleared for startup,", "gnd clr").Replace("wind ", "wnd ").Replace("at ", "@").Replace("meters per second", "m/s");
                         returntext = returntext.Replace("fly heading", "hdg").Replace(" for ", " / ").Replace("runway ", "L").Replace("to pattern altitude", "");
@@ -179,18 +142,14 @@ namespace VAICOM
                         returntext = returntext.Replace("cleared to taxi to", "clr taxi");
                         returntext = returntext.Replace(",", "");
                         returntext = returntext.TrimStart().TrimEnd();
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string Flight_processgeneral(string text, string sendercallsign)
-                {
+                public static string Flight_processgeneral(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
-                        returntext = returntext.Replace(reconstructplayercallsign() + ",", "").Replace(sendercallsign + ",", sendercallsign.Substring(0, 3).ToUpper() + " ").Replace("(" + sendercallsign + "):", "").Replace("Ship-ADF,", "");                  
+                    try {
+                        returntext = returntext.Replace(reconstructplayercallsign() + ",", "").Replace(sendercallsign + ",", sendercallsign.Substring(0, 3).ToUpper() + " ").Replace("(" + sendercallsign + "):", "").Replace("Ship-ADF,", "");
                         returntext = returntext.Replace("spike", "tgt");
                         returntext = returntext.Replace("spike", "tgt");
                         returntext = returntext.Replace("SPIKE", "spk");
@@ -199,21 +158,17 @@ namespace VAICOM
                         returntext = returntext.Replace("contact", "");
                         returntext = returntext.Replace("target", "tgt");
                         returntext = returntext.Replace("o'clock", "`");
-                        returntext = returntext.Replace("for", "/");      
+                        returntext = returntext.Replace("for", "/");
                         returntext = returntext.Replace("1,", "").Replace("2,", "").Replace("3,", "").Replace("4,", "");
                         returntext = returntext.Replace(",", "");
                         returntext = returntext.TrimStart().TrimEnd();
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string Carrier_processgeneral(string text, string sendercallsign)
-                {
+                public static string Carrier_processgeneral(string text, string sendercallsign) {
                     string returntext = "init recov\n";
-                    try
-                    {
+                    try {
                         //308, mother's weather is visibility ten plus miles, 
                         //scattered clouds at 3000, altimeter is 29.93, 
                         // CASE I recovery, expected BRC 354, report see me at 10.
@@ -223,138 +178,106 @@ namespace VAICOM
 
                         string[] phrases = text.Split(',');
 
-                        foreach (string phrase in phrases)
-                        {
+                        foreach (string phrase in phrases) {
 
                             // get recovery type
                             List<string> cases = new List<string>() { "CASE III", "CASE II", "CASE I" };
-                            foreach (string thiscase in cases)
-                            {
-                                if (phrase.Contains(thiscase))
-                                {
+                            foreach (string thiscase in cases) {
+                                if (phrase.Contains(thiscase)) {
                                     returntext += thiscase + "\n";
                                     break;
                                 }
                             }
 
                             // get clouds type          
-                            if (phrase.Contains("clouds"))
-                            {
-                                returntext += "clouds "+ phrase.Replace(Helpers.Common.RemoveDigits(phrase),"") + "\n";
+                            if (phrase.Contains("clouds")) {
+                                returntext += "clouds " + phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "\n";
                             }
 
-                            if (phrase.Contains("altimeter"))
-                            {
-                                returntext += "alti "+ phrase.Replace(Helpers.Common.RemoveDigits(phrase.Replace(".","")), "") + "\n";
+                            if (phrase.Contains("altimeter")) {
+                                returntext += "alti " + phrase.Replace(Helpers.Common.RemoveDigits(phrase.Replace(".", "")), "") + "\n";
                             }
 
-                            if (phrase.Contains("visibility"))
-                            {
-                                returntext += "vis +" + phrase.Replace(Helpers.Common.RemoveDigits(phrase),"") + "\n";
+                            if (phrase.Contains("visibility")) {
+                                returntext += "vis +" + phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "\n";
                             }
 
-                            if (phrase.Contains("radar contact"))
-                            {
-                                returntext += "rdr " +phrase.Replace(Helpers.Common.RemoveDigits(phrase.Replace(" miles","")), "") + " NM\n";
+                            if (phrase.Contains("radar contact")) {
+                                returntext += "rdr " + phrase.Replace(Helpers.Common.RemoveDigits(phrase.Replace(" miles", "")), "") + " NM\n";
                             }
 
-                            if (phrase.Contains("BRC"))
-                            {
+                            if (phrase.Contains("BRC")) {
                                 returntext += "BRC " + phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "\n";
                             }
 
-                            if (phrase.ToLower().Contains("expected final bearing"))
-                            {
+                            if (phrase.ToLower().Contains("expected final bearing")) {
                                 returntext += "bearing " + phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "\n";
                             }
 
-                            if (phrase.ToLower().Contains("radial"))
-                            {
-                                returntext += "radial" + phrase.Replace(" radial","").Replace("Marshal mother 's", "") + "\n";
+                            if (phrase.ToLower().Contains("radial")) {
+                                returntext += "radial" + phrase.Replace(" radial", "").Replace("Marshal mother 's", "") + "\n";
                             }
 
-                            if (phrase.Contains("DME"))
-                            {
+                            if (phrase.Contains("DME")) {
                                 returntext += phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "\n";
                             }
 
-                            if (phrase.ToLower().Contains("angels"))
-                            {
-                                returntext +=  phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "k ft" + "\n";
+                            if (phrase.ToLower().Contains("angels")) {
+                                returntext += phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "k ft" + "\n";
                             }
 
-                            if (phrase.ToLower().Contains("expected approach time"))
-                            {
+                            if (phrase.ToLower().Contains("expected approach time")) {
                                 returntext += "time " + phrase.Replace(Helpers.Common.RemoveDigits(phrase), "") + "\n";
                             }
 
                         }
 
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string Crew_processgeneral(string text, string sendercallsign)
-                {
+                public static string Crew_processgeneral(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
-                        returntext = returntext.Replace("Ground Crew: ", "").Replace("rearming complete", "stores signoff").Replace("refueling complete", "fuel max lbs");     
+                    try {
+                        returntext = returntext.Replace("Ground Crew: ", "").Replace("rearming complete", "stores signoff").Replace("refueling complete", "fuel max lbs");
                         returntext = returntext.TrimStart().TrimEnd();
 
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string Tanker_processgeneral(string text, string sendercallsign)
-                {
+                public static string Tanker_processgeneral(string text, string sendercallsign) {
                     string returntext = text;
-                    try
-                    {
+                    try {
                         returntext = returntext.Replace("(" + sendercallsign + "):", "").Replace(sendercallsign + ",", "").Replace(reconstructplayercallsign() + ",", "");
                         returntext = returntext.Replace("proceed to pre-contact at ", "AAR").Replace("at velocity", "/kts");
                         returntext = returntext.TrimStart().TrimEnd();
 
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     return returntext;
                 }
-                public static string ProcessMessageByEvent(Server.ServerCommsMessage message)
-                {
+                public static string ProcessMessageByEvent(Server.ServerCommsMessage message) {
 
-                    try
-                    {
+                    try {
 
                         string summarynote = "";
                         string sendercallsign = State.currentstate.playercallsign; //default
 
                         string[] split1 = message.text.Split('(', ')');
-                        if (split1.Length > 1)
-                        {
+                        if (split1.Length > 1) {
                             sendercallsign = split1[1];
-                        }
-                        else
-                        {
+                        } else {
                             string[] split2 = message.text.Split(':');
-                            if (split2.Length > 1)
-                            {
+                            if (split2.Length > 1) {
                                 sendercallsign = split2[1];
-                            }
-                            else
-                            {
+                            } else {
                                 sendercallsign = "";
                             }
                         }
 
                         string dcsid = message.eventkey;
-                        switch (dcsid)
-                        {
+                        switch (dcsid) {
 
                             // TANKER -----------------------------------------------
 
@@ -509,7 +432,7 @@ namespace VAICOM
                             case "wMsgATCMarshallCopyInbound": // 4296:
                                 summarynote = "*" + Carrier_processgeneral(message.text, sendercallsign);
                                 break;
-                            case "wMsgATCMarshallCopyInbound2and3": 
+                            case "wMsgATCMarshallCopyInbound2and3":
                                 summarynote = "*" + Carrier_processgeneral(message.text, sendercallsign);
                                 break;
                             // final bearing
@@ -570,16 +493,14 @@ namespace VAICOM
                                 break;
                         }
 
-                        string sendercategory = Database.Dcs.SenderCatByString(dcsid).ToString().ToUpper();     
+                        string sendercategory = Database.Dcs.SenderCatByString(dcsid).ToString().ToUpper();
                         summarynote = summarynote.Replace(sendercategory, "").TrimStart().TrimEnd();
 
                         Log.Write("(sum note):" + summarynote, Colors.Inline);
 
                         return summarynote;
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write(e.Message + e.StackTrace, Colors.Inline);
                         return "";
                     }
@@ -590,4 +511,4 @@ namespace VAICOM
 
         }
     }
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+}

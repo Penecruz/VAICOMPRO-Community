@@ -1,38 +1,35 @@
-﻿using VAICOM.Static;
+﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Database;
-using System.Collections.Generic;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace FileManager
-    {
+namespace VAICOM {
+    namespace FileManager {
 
-        public partial class FileHandler
-        {
+        [SupportedOSPlatform("windows")]
+        public partial class FileHandler {
 
-            public partial class Database
-            {
+            [SupportedOSPlatform("windows")]
+            public partial class Database {
 
-                public static void ForceAddAliases()
-                {
+                public static void ForceAddAliases() {
 
 
                     Log.Write("Updating aliases..", Colors.Text);
 
                     // Alias remove / add tables
 
-                    Dictionary<string, string> RemoveAliasesRecipients = new Dictionary<string, string>()
-                    {
+                    Dictionary<string, string> RemoveAliasesRecipients = new Dictionary<string, string>() {
                     };
 
                     Dictionary<string, string> ForceAliasesRecipients = new Dictionary<string, string>()
                     {
-                        { "Carrier", "nearestcarrier" }, 
-                        { "Cats","nearestcarrier" }, 
-                        { "Marshal","nearestcarrier" }, 
+                        { "Carrier", "nearestcarrier" },
+                        { "Cats","nearestcarrier" },
+                        { "Marshal","nearestcarrier" },
                         { "Approach","nearestcarrier" },
-                        { "LSO", "nearestcarrier" }, 
-                        { "Paddles", "nearestcarrier" }, 
+                        { "LSO", "nearestcarrier" },
+                        { "Paddles", "nearestcarrier" },
 
                         { "Rough Rider",           "CVN-71 Theodore Roosevelt"      },
                         { "Union",                 "CVN-72 Abraham Lincoln"         },
@@ -58,10 +55,10 @@ namespace VAICOM
                         { "Overhead" ,                  "wMsgLeaderTowerOverhead"               },
                         { "Kiss Off" ,                  "wMsgLeaderFlightKissOff"               },
                         { "Ball" ,                      "wMsgLeaderHornetBall"                  },
-                        { "Needles" ,                   "wMsgLeaderSayNeedle"                   }, 
+                        { "Needles" ,                   "wMsgLeaderSayNeedle"                   },
                         { "Low State" ,                 "wMsgLeaderConfirmRemainingFuel"        },
                         { "Approach Check In" ,         "wMsgLeaderChecingIn"                   },
-                        { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"      }, 
+                        { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"      },
                         { "Meatball" ,                  "wMsgLeaderBall"                        },
 
                         { "Hornet Ball" ,              "wMsgLeaderHornetBall"                  },
@@ -79,77 +76,53 @@ namespace VAICOM
 
                     // recipients: clear first then add new 
 
-                    foreach (KeyValuePair<string, string> entry in RemoveAliasesRecipients)
-                    {
-                        try
-                        {
+                    foreach (KeyValuePair<string, string> entry in RemoveAliasesRecipients) {
+                        try {
                             Aliases.airecipients.Remove(entry.Key);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
 
                     // for safety remove new ones also
 
-                    foreach (KeyValuePair<string, string> entry in ForceAliasesRecipients)
-                    {
-                        try
-                        {
+                    foreach (KeyValuePair<string, string> entry in ForceAliasesRecipients) {
+                        try {
                             Aliases.airecipients.Remove(entry.Key);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
 
                     // add the forced list
 
-                    foreach (KeyValuePair<string, string> entry in ForceAliasesRecipients)
-                    {
-                        try
-                        {
+                    foreach (KeyValuePair<string, string> entry in ForceAliasesRecipients) {
+                        try {
                             Aliases.airecipients.Add(entry.Key, entry.Value);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
 
                     // commands: clear first then add new 
 
-                    foreach (KeyValuePair<string, string> entry in RemoveAliasesCommands)
-                    {
-                        try
-                        {
+                    foreach (KeyValuePair<string, string> entry in RemoveAliasesCommands) {
+                        try {
                             Aliases.aicommands.Remove(entry.Key);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
 
                     // for safety commands also
 
-                    foreach (KeyValuePair<string, string> entry in ForceAliasesCommands)
-                    {
-                        try
-                        {
+                    foreach (KeyValuePair<string, string> entry in ForceAliasesCommands) {
+                        try {
                             Aliases.aicommands.Remove(entry.Key);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
 
-                    foreach (KeyValuePair<string,string> entry in ForceAliasesCommands)
-                    {
-                        try
-                        {
+                    foreach (KeyValuePair<string, string> entry in ForceAliasesCommands) {
+                        try {
                             Aliases.aicommands.Add(entry.Key, entry.Value);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
 

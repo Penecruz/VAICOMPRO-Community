@@ -1,14 +1,13 @@
-﻿using VAICOM.Client;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Runtime.Versioning;
+using VAICOM.Client;
 
-namespace VAICOM
-{
-    namespace Products
-    {
+namespace VAICOM {
+    namespace Products {
 
-        public class DCSmodule
-        {
+        [SupportedOSPlatform("windows")]
+        public class DCSmodule {
             public string Id;
             public string Name;
             public string Alias;
@@ -25,23 +24,19 @@ namespace VAICOM
             public string Theme;
             public List<int> Flightmenu;
 
-            public DCSmodule()
-            {
+            public DCSmodule() {
                 chnoffset = 1;
                 radiodelay = 0;
             }
         }
 
-        public static class DCSmodules
-        {
-            public static DCSmodule findmodulebyid(string id)
-            {
+        [SupportedOSPlatform("windows")]
+        public static class DCSmodules {
+            public static DCSmodule findmodulebyid(string id) {
                 DCSmodule result = null;
 
-                foreach (KeyValuePair<string,DCSmodule> entry in LookupTable)
-                {
-                    if (id.ToLower().Contains(entry.Value.Id.ToLower()))
-                    {
+                foreach (KeyValuePair<string, DCSmodule> entry in LookupTable) {
+                    if (id.ToLower().Contains(entry.Value.Id.ToLower())) {
                         result = entry.Value;
                         break;
                     }

@@ -1,16 +1,13 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
-using System;
+﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Extensions
-    {
-        namespace RIO
-        {
+namespace VAICOM {
+    namespace Extensions {
+        namespace RIO {
 
-            public partial class helper
-            {
+            [SupportedOSPlatform("windows")]
+            public partial class helper {
 
                 public static Dictionary<string, DeviceAction> TACANstate = new Dictionary<string, DeviceAction>()
                 {
@@ -26,63 +23,53 @@ namespace VAICOM
 
                 };
 
-                public static void resetTACANstate()
-                {
+                public static void resetTACANstate() {
                     TACANstate = new Dictionary<string, DeviceAction>();
 
-                    TACANstate["Stennis"]   = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Washington"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Stennis"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Washington"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     TACANstate["Roosevelt"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Lincoln"]   = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Truman"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Tarawa"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Arco"]      = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Shell"]     = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Texaco"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Lincoln"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Truman"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Tarawa"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Arco"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Shell"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Texaco"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                 }
 
-                public static string extractTACANunit(string unitcallsign, string fullname)
-                {
+                public static string extractTACANunit(string unitcallsign, string fullname) {
                     string result = "";
 
-                    if (unitcallsign.Contains("Stennis")    || fullname.Contains("Stennis"))    { return "Stennis"; }
+                    if (unitcallsign.Contains("Stennis") || fullname.Contains("Stennis")) { return "Stennis"; }
                     if (unitcallsign.Contains("Washington") || fullname.Contains("Washington")) { return "Washington"; }
-                    if (unitcallsign.Contains("Roosevelt")  || fullname.Contains("Roosevelt"))  { return "Roosevelt"; }
-                    if (unitcallsign.Contains("Lincoln")    || fullname.Contains("Lincoln"))    { return "Lincoln"; }
-                    if (unitcallsign.Contains("Truman")     || fullname.Contains("Truman"))     { return "Truman"; }
-                    if (unitcallsign.Contains("Tarawa")     || fullname.Contains("Tarawa"))     { return "Tarawa";  }
-                    if (unitcallsign.Contains("Arco")       || fullname.Contains("Arco"))       { return "Arco";    }
-                    if (unitcallsign.Contains("Shell")      || fullname.Contains("Shell"))      { return "Shell";   }
-                    if (unitcallsign.Contains("Texaco")     || fullname.Contains("Texaco"))     { return "Texaco";  }
+                    if (unitcallsign.Contains("Roosevelt") || fullname.Contains("Roosevelt")) { return "Roosevelt"; }
+                    if (unitcallsign.Contains("Lincoln") || fullname.Contains("Lincoln")) { return "Lincoln"; }
+                    if (unitcallsign.Contains("Truman") || fullname.Contains("Truman")) { return "Truman"; }
+                    if (unitcallsign.Contains("Tarawa") || fullname.Contains("Tarawa")) { return "Tarawa"; }
+                    if (unitcallsign.Contains("Arco") || fullname.Contains("Arco")) { return "Arco"; }
+                    if (unitcallsign.Contains("Shell") || fullname.Contains("Shell")) { return "Shell"; }
+                    if (unitcallsign.Contains("Texaco") || fullname.Contains("Texaco")) { return "Texaco"; }
 
                     return result;
                 }
 
-                public static void getTACANstate()
-                {
-                    try
-                    {
+                public static void getTACANstate() {
+                    try {
 
                         resetTACANstate();
                         int counter = 0;
-                
-                        foreach (Servers.Server.DcsUnit unit in State.currentstate.TACANunits)
-                        {
+
+                        foreach (Servers.Server.DcsUnit unit in State.currentstate.TACANunits) {
                             string callsign = extractTACANunit(unit.callsign, unit.fullname);
                             counter += 1;
-                            try
-                            {
+                            try {
                                 TACANstate[callsign] = GetAtom(counter);
-                            }
-                            catch 
-                            {
+                            } catch {
                             }
 
                         }
 
-                    }
-                    catch
-                    {
+                    } catch {
                         Log.Write("could not update TACAN state.", Colors.Inline);
                     }
 

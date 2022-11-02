@@ -1,25 +1,19 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using System;
+﻿using System;
+using System.Runtime.Versioning;
 using System.Threading;
 using System.Windows.Forms;
+using VAICOM.Client;
+using VAICOM.Static;
+namespace VAICOM {
 
+    namespace UI {
 
-namespace VAICOM
-{
+        [SupportedOSPlatform("windows")]
+        public partial class Initialize {
 
-    namespace UI
-    {
-
-        public partial class Initialize
-        {
-
-            public static void OpenConfiguration(dynamic vaProxy, bool resetwindow)
-            {
-                if (!State.configwindowopen)
-                {
-                    try
-                    {
+            public static void OpenConfiguration(dynamic vaProxy, bool resetwindow) {
+                if (!State.configwindowopen) {
+                    try {
                         State.configwindowopen = true;
 
                         vaProxy.WriteToLog("Opening Configuration window", Colors.Message);
@@ -33,18 +27,12 @@ namespace VAICOM
                         UI.Playsound.Startup();
 
                         DcsClient.SendUpdateRequest();
-                    }
-                    catch (Exception a)
-                    {
+                    } catch (Exception a) {
                         Log.Write("There was a problem opening the configuration window: " + a.Message, Colors.Text);
                     }
-                }
-                else
-                {
-                    if (resetwindow && State.configurationwindow != null)
-                    {
-                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                        {
+                } else {
+                    if (resetwindow && State.configurationwindow != null) {
+                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                             State.configurationwindow.Left = 20;
                             State.configurationwindow.Top = 20;
                         });
@@ -53,13 +41,11 @@ namespace VAICOM
             }
 
 
-            public static void StartConfigWindow(Object resetwindow)
-            {
-                
+            public static void StartConfigWindow(Object resetwindow) {
+
                 State.configurationwindow = new ConfigWindow();
 
-                if ((bool)resetwindow)
-                {
+                if ((bool)resetwindow) {
                     State.configurationwindow.Left = 20;
                     State.configurationwindow.Top = 20;
                 }
@@ -68,5 +54,5 @@ namespace VAICOM
 
             }
         }
-    }  
+    }
 }

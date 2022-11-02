@@ -5,6 +5,7 @@ using System;
 using System.Threading;
 using VAICOM.Extensions.WorldAudio;
 using VAICOM.FileManager;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -12,7 +13,7 @@ namespace VAICOM
     {
 
         //25
-
+        [SupportedOSPlatform("windows")]
         public class VA_Plugin
         {
 

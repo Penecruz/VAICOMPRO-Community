@@ -1,33 +1,31 @@
-﻿namespace VAICOM
-{
-    namespace Products
-    {
+﻿using System.Runtime.Versioning;
 
-        public partial class Products
-        {
+namespace VAICOM {
+    namespace Products {
 
-            public static bool CheckActiveLicenses()
-            {
+        [SupportedOSPlatform("windows")]
+        public partial class Products {
+
+            public static bool CheckActiveLicenses() {
 
                 // ALL LICENSES UNLOCKED:
 
-                State.PRO = true; 
-                State.chatterthemesactivated = true; 
-                State.jesteractivated = true; 
-                State.kneeboardactivated = true; 
-                State.realatcactivated = true; 
+                State.PRO = true;
+                State.chatterthemesactivated = true;
+                State.jesteractivated = true;
+                State.kneeboardactivated = true;
+                State.realatcactivated = true;
 
                 UpdateClientLicense();
 
                 return true;
- 
+
             }
 
-            public static void UpdateClientLicense()
-            {
+            public static void UpdateClientLicense() {
                 State.currentlicense = State.PRO ? "PRO" : "FREE";
             }
-        
+
         }
     }
 }

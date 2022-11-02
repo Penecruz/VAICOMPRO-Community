@@ -1,24 +1,19 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Framework
-    {
+namespace VAICOM {
+    namespace Framework {
 
-        public class SpecialFoldersRetrieve
-        {
+        [SupportedOSPlatform("windows")]
+        public class SpecialFoldersRetrieve {
 
-            public static string GetSavedGames()
-            {
+            public static string GetSavedGames() {
                 SpecialFolder SavedGamesFolder = new SpecialFolder(SpecialFolderTypes.SavedGames);
-                try
-                {
+                try {
                     return SavedGamesFolder.Path;
-                }
-                catch (ExternalException ex)
-                {
+                } catch (ExternalException ex) {
                     // revert to default
                     Log.Write("There was problem with locating the Saved Games folder: " + ex, Colors.Text);
                     string SavedGames = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Saved Games\\";

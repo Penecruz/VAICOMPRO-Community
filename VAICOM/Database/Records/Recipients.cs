@@ -1,15 +1,13 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Runtime.Versioning;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Database
-    {
+    namespace Database {
 
-        public static partial class Recipients
-        {
+        [SupportedOSPlatform("windows")]
+        public static partial class Recipients {
 
             public static Dictionary<string, Recipient> Table = new Dictionary<string, Recipient>(StringComparer.OrdinalIgnoreCase)
             {
@@ -192,7 +190,7 @@ namespace VAICOM
 
 
                 { "wAIUnitATCSyriaNull",        new Recipient { uniqueid = 15300, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaNull",              } },
-                
+
                 { "Beirut-Rafic Hariri",        new Recipient { uniqueid = 15301, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaBeirutRaficHariri",  displayname = Labels.airecipients["Beirut-Rafic Hariri"], blockedforFree = true  } },
                 { "Rayak",                      new Recipient { uniqueid = 15302, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaRayak",  displayname = Labels.airecipients["Rayak"], blockedforFree = true  } },
                 { "Wujah Al Hajar",             new Recipient { uniqueid = 15303, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaWujahAlHajar",  displayname = Labels.airecipients["Wujah Al Hajar"], blockedforFree = true  } },
@@ -240,7 +238,7 @@ namespace VAICOM
                 { "rome",                       new Recipient { uniqueid = 15419, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueRome",     displayname = Labels.airecipients["rome"] }     },
                 { "warsaw",                     new Recipient { uniqueid = 15420, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueWarsaw",   displayname = Labels.airecipients["warsaw"] }   },
 
-          
+
 
                 { "wAIUnitATCFarpsBlueMaximum", new Recipient { uniqueid = 15450, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueMaximum",  } },
                 { "wAIUnitATCFarpsRedNull",     new Recipient { uniqueid = 15451, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsRedNull",      } },
@@ -284,7 +282,7 @@ namespace VAICOM
                 { "CarrierLSO",                 new Recipient { uniqueid = 15524, category = RecipientCategories.aiship, name = "wAIUnitCarrierLSO",           displayname = Labels.airecipients["CarrierLSO"], blockedforFree = true, requiresrealatc = true } },
                 { "wAIUnitCarrierRoleMaximum",  new Recipient { uniqueid = 15530, category = RecipientCategories.aiship, name = "wAIUnitCarrierRoleMaximum", }      },
 
-             
+
                 { "wAIUnitATCCarriersMaximum",  new Recipient { uniqueid = 15590, category = RecipientCategories.aiship, name = "wAIUnitATCCarriersMaximum",   } },
 
                 { "wAIUnitATCImportedNull",     new Recipient { uniqueid = 15800, category = RecipientCategories.aiatc, name = "wAIUnitATCImportedNull",      } },

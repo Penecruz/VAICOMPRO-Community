@@ -1,97 +1,72 @@
-﻿using VAICOM.Static;
-using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.PushToTalk;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Interfaces
-    {
-        public class API
-        {
-            public static void PTT_Mode_Page_Up(dynamic vaProxy)
-            {
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+namespace VAICOM {
+    namespace Interfaces {
+        [SupportedOSPlatform("windows")]
+        public class API {
+            public static void PTT_Mode_Page_Up(dynamic vaProxy) {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Page_Up();
                         vaProxy.WriteToLog("PTT: TX node SNGL set to " + State.activeconfig.SingleHotkey, Colors.Warning);
                     }
                    );
-                }
-                else
-                {
-                    try
-                    {
+                } else {
+                    try {
                         Int32 txnumber;
                         Int32.TryParse(State.activeconfig.SingleHotkey.Replace("TX", ""), out txnumber);
 
-                        if (txnumber > 1)
-                        {
+                        if (txnumber > 1) {
                             txnumber = txnumber - 1;
                             State.activeconfig.SingleHotkey = "TX" + txnumber.ToString();
                         }
 
                         PTT.PTT_ApplyNewConfig();
                         Settings.ConfigFile.WriteConfigToFile(true);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     vaProxy.WriteToLog("PTT: TX node SNGL set to " + State.activeconfig.SingleHotkey, Colors.Warning);
                 }
             }
 
-            public static void PTT_Mode_Page_Dn(dynamic vaProxy)
-            {
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+            public static void PTT_Mode_Page_Dn(dynamic vaProxy) {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Page_Dn();
                         vaProxy.WriteToLog("PTT: TX node SNGL set to " + State.activeconfig.SingleHotkey, Colors.Warning);
                     }
                    );
-                }
-                else
-                {
-                    try
-                    {
+                } else {
+                    try {
                         Int32 txnumber;
                         Int32.TryParse(State.activeconfig.SingleHotkey.Replace("TX", ""), out txnumber);
 
-                        if (txnumber < 6)
-                        {
+                        if (txnumber < 6) {
                             txnumber = txnumber + 1;
                             State.activeconfig.SingleHotkey = "TX" + txnumber.ToString();
                         }
 
                         PTT.PTT_ApplyNewConfig();
                         Settings.ConfigFile.WriteConfigToFile(true);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                     vaProxy.WriteToLog("PTT: TX node SNGL set to " + State.activeconfig.SingleHotkey, Colors.Warning);
                 }
             }
 
-            public static void Chatter_Vol_Up(dynamic vaProxy)
-            {
+            public static void Chatter_Vol_Up(dynamic vaProxy) {
                 State.activeconfig.ChatterVolume = State.activeconfig.ChatterVolume + 0.05f;
-                if (State.activeconfig.ChatterVolume > 1)
-                {
+                if (State.activeconfig.ChatterVolume > 1) {
                     State.activeconfig.ChatterVolume = 1;
-                }
-                else
-                {
-                    if (State.configwindowopen && (State.configurationwindow != null))
-                    {
-                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                        {
+                } else {
+                    if (State.configwindowopen && (State.configurationwindow != null)) {
+                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                             State.configurationwindow.Set_Volume_init();
 
                         }
@@ -101,19 +76,13 @@ namespace VAICOM
                 vaProxy.WriteToLog("Chatter volume set to " + Math.Round((double)State.activeconfig.ChatterVolume * 100) + "%", Colors.Warning);
             }
 
-            public static void Chatter_Vol_Dn(dynamic vaProxy)
-            {
+            public static void Chatter_Vol_Dn(dynamic vaProxy) {
                 State.activeconfig.ChatterVolume = State.activeconfig.ChatterVolume - 0.05f;
-                if (State.activeconfig.ChatterVolume < 0)
-                {
+                if (State.activeconfig.ChatterVolume < 0) {
                     State.activeconfig.ChatterVolume = 0;
-                }
-                else
-                {
-                    if (State.configwindowopen && (State.configurationwindow != null))
-                    {
-                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                        {
+                } else {
+                    if (State.configwindowopen && (State.configurationwindow != null)) {
+                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                             State.configurationwindow.Set_Volume_init();
                         }
                         );
@@ -122,19 +91,13 @@ namespace VAICOM
                 vaProxy.WriteToLog("Chatter volume set to " + Math.Round((double)State.activeconfig.ChatterVolume * 100) + "%", Colors.Warning);
             }
 
-            public static void Operate_Dial(dynamic vaProxy)
-            {
+            public static void Operate_Dial(dynamic vaProxy) {
                 State.activeconfig.OperateDial = !State.activeconfig.OperateDial;
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
-                        if (!State.activeconfig.OperateDial)
-                        {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
+                        if (!State.activeconfig.OperateDial) {
                             State.configurationwindow.Dial_Sw_to_Down();
-                        }
-                        else
-                        {
+                        } else {
                             State.configurationwindow.Dial_Sw_to_Up();
                         }
                     }
@@ -143,53 +106,37 @@ namespace VAICOM
                 vaProxy.WriteToLog("PTT: Operate Dial set to " + State.activeconfig.OperateDial, Colors.Warning);
             }
 
-            public static void SRS_Mapping(dynamic vaProxy)
-            {
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+            public static void SRS_Mapping(dynamic vaProxy) {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Toggle_SRS_Mode();
                     }
                     );
-                }
-                else
-                {
+                } else {
                     State.activeconfig.UseSRSmapping = !State.activeconfig.UseSRSmapping;
                 }
                 vaProxy.WriteToLog("PTT: SRS Mapping set to " + State.activeconfig.UseSRSmapping, Colors.Warning);
             }
 
-            public static void PTT_Release_Hot(dynamic vaProxy)
-            {
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+            public static void PTT_Release_Hot(dynamic vaProxy) {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.PTT_Release_Hot_Toggle();
                     }
                     );
-                }
-                else
-                {
+                } else {
                     State.activeconfig.ReleaseHot = !State.activeconfig.ReleaseHot;
                 }
                 vaProxy.WriteToLog("PTT: Release Hot set to " + State.activeconfig.ReleaseHot, Colors.Warning);
             }
 
-            public static void PTT_Mode_Prv(dynamic vaProxy)
-            {
+            public static void PTT_Mode_Prv(dynamic vaProxy) {
                 State.activeconfig.SelectorMode = State.activeconfig.SelectorMode + 1;
-                if (State.activeconfig.SelectorMode > 4)
-                {
+                if (State.activeconfig.SelectorMode > 4) {
                     State.activeconfig.SelectorMode = 4;
-                }
-                else
-                {
-                    if (State.configwindowopen && (State.configurationwindow != null))
-                    {
-                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                        {
+                } else {
+                    if (State.configwindowopen && (State.configurationwindow != null)) {
+                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                             State.configurationwindow.Selector_SetMode();
                             UI.Playsound.Dial_Click();
                         }
@@ -201,19 +148,13 @@ namespace VAICOM
                 vaProxy.WriteToLog("PTT: Mode set to " + modes[(int)State.activeconfig.SelectorMode - 1], Colors.Warning);
             }
 
-            public static void PTT_Mode_Nxt(dynamic vaProxy)
-            {
+            public static void PTT_Mode_Nxt(dynamic vaProxy) {
                 State.activeconfig.SelectorMode = State.activeconfig.SelectorMode - 1;
-                if (State.activeconfig.SelectorMode < 1)
-                {
+                if (State.activeconfig.SelectorMode < 1) {
                     State.activeconfig.SelectorMode = 1;
-                }
-                else
-                {
-                    if (State.configwindowopen && (State.configurationwindow != null))
-                    {
-                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                        {
+                } else {
+                    if (State.configwindowopen && (State.configurationwindow != null)) {
+                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                             State.configurationwindow.Selector_SetMode();
                             UI.Playsound.Dial_Click();
                         }
@@ -224,13 +165,10 @@ namespace VAICOM
                 vaProxy.WriteToLog("PTT: Mode set to " + modes[(int)State.activeconfig.SelectorMode - 1], Colors.Warning);
             }
 
-            public static void PTT_Mode_Inv(dynamic vaProxy)
-            {
+            public static void PTT_Mode_Inv(dynamic vaProxy) {
                 State.activeconfig.SelectorMode = 1;
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Selector_SetMode();
                         UI.Playsound.Dial_Click();
 
@@ -240,13 +178,10 @@ namespace VAICOM
                 vaProxy.WriteToLog("PTT: Mode set to INV", Colors.Warning);
             }
 
-            public static void PTT_Mode_Norm(dynamic vaProxy)
-            {
+            public static void PTT_Mode_Norm(dynamic vaProxy) {
                 State.activeconfig.SelectorMode = 2;
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Selector_SetMode();
                         UI.Playsound.Dial_Click();
                     }
@@ -255,13 +190,10 @@ namespace VAICOM
                 vaProxy.WriteToLog("PTT: Mode set to NORM", Colors.Warning);
             }
 
-            public static void PTT_Mode_Multi(dynamic vaProxy)
-            {
+            public static void PTT_Mode_Multi(dynamic vaProxy) {
                 State.activeconfig.SelectorMode = 3;
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Selector_SetMode();
                         UI.Playsound.Dial_Click();
                     }
@@ -271,13 +203,10 @@ namespace VAICOM
             }
 
 
-            public static void PTT_Mode_Single(dynamic vaProxy)
-            {
+            public static void PTT_Mode_Single(dynamic vaProxy) {
                 State.activeconfig.SelectorMode = 4;
-                if (State.configwindowopen && (State.configurationwindow != null))
-                {
-                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
+                if (State.configwindowopen && (State.configurationwindow != null)) {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                         State.configurationwindow.Selector_SetMode();
                         UI.Playsound.Dial_Click();
                     }
@@ -289,29 +218,23 @@ namespace VAICOM
             public static List<string> tabcats = new List<string>()
             { "ALL","LOG", "AWACS","JTAC", "ATC", "TANKER", "FLIGHT", "AOCS" ,"REF","NOTES" };
 
-            public static void CycleTabs(dynamic vaProxy, int ud)
-            {
+            public static void CycleTabs(dynamic vaProxy, int ud) {
                 int catnum = tabcats.IndexOf(State.KneeboardState.activecat.ToUpper()) + ud;
-                if (catnum < 1)
-                {
-                    catnum = tabcats.Count -1;
+                if (catnum < 1) {
+                    catnum = tabcats.Count - 1;
                 }
-                if (catnum > tabcats.Count - 1)
-                {
+                if (catnum > tabcats.Count - 1) {
                     catnum = 1;
                 }
                 string cat = tabcats[catnum];
-                ControlKneeboard(vaProxy, "kneeboard.tab."+cat.ToLower());
+                ControlKneeboard(vaProxy, "kneeboard.tab." + cat.ToLower());
 
             }
 
-            public static void ControlKneeboard(dynamic vaProxy, string apicommand)
-            {
-                try
-                {
+            public static void ControlKneeboard(dynamic vaProxy, string apicommand) {
+                try {
 
-                    switch (apicommand.ToLower())
-                    {
+                    switch (apicommand.ToLower()) {
 
                         case "kneeboard.tab.all":
                             State.KneeboardState.activecat = "ALL";
@@ -374,25 +297,22 @@ namespace VAICOM
                             break;
 
                         case "kneeboard.tab.prv":
-                                CycleTabs(vaProxy, -1);
+                            CycleTabs(vaProxy, -1);
                             break;
 
                         case "kneeboard.tab.nxt":
-                                CycleTabs(vaProxy, 1);
+                            CycleTabs(vaProxy, 1);
                             break;
 
                         case "kneeboard.opac.up":
                             State.activeconfig.KneeboardOpacity += 0.05;
-                            if (State.activeconfig.KneeboardOpacity > 1)
-                            {
+                            if (State.activeconfig.KneeboardOpacity > 1) {
                                 State.activeconfig.KneeboardOpacity = 1;
-                            }                        
+                            }
                             KneeboardUpdater.SendDeviceCommand(255, 3020, State.activeconfig.KneeboardOpacity);
                             Settings.ConfigFile.WriteConfigToFile(true);
-                            if (State.configwindowopen && (State.configurationwindow != null))
-                            {
-                                State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                                {
+                            if (State.configwindowopen && (State.configurationwindow != null)) {
+                                State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                                     State.configurationwindow.KneeboardOpacity.Value = State.activeconfig.KneeboardOpacity;
                                 }
                                );
@@ -401,16 +321,13 @@ namespace VAICOM
 
                         case "kneeboard.opac.dn":
                             State.activeconfig.KneeboardOpacity -= 0.05;
-                            if (State.activeconfig.KneeboardOpacity <0)
-                            {
+                            if (State.activeconfig.KneeboardOpacity < 0) {
                                 State.activeconfig.KneeboardOpacity = 0;
-                            }                        
+                            }
                             KneeboardUpdater.SendDeviceCommand(255, 3020, State.activeconfig.KneeboardOpacity);
                             Settings.ConfigFile.WriteConfigToFile(true);
-                            if (State.configwindowopen && (State.configurationwindow != null))
-                            {
-                                State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                                {
+                            if (State.configwindowopen && (State.configurationwindow != null)) {
+                                State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                                     State.configurationwindow.KneeboardOpacity.Value = State.activeconfig.KneeboardOpacity;
                                 }
                                );
@@ -421,9 +338,7 @@ namespace VAICOM
                             break;
                     }
 
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     vaProxy.WriteToLog("Dictate: failed." + e.Message, Colors.Inline);
                 }
 
@@ -431,16 +346,12 @@ namespace VAICOM
             }
 
 
-            public static void API_Test(dynamic vaProxy)
-            {
-                try
-                {
+            public static void API_Test(dynamic vaProxy) {
+                try {
                     string output = "no return.";
                     int bufsize = 0;
                     vaProxy.WriteToLog("API: output " + output + ":" + bufsize, Colors.Warning);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     vaProxy.WriteToLog("API: test failed " + e.Message, Colors.Warning);
                 }
 

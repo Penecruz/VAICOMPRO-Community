@@ -1,20 +1,19 @@
-﻿using VAICOM.Database;
-using VAICOM.FileManager;
-using VAICOM.Servers;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Win32;
+using VAICOM.Database;
+using VAICOM.FileManager;
+using VAICOM.Servers;
 
 
-namespace VAICOM
-{
-    namespace UI
-    {
+namespace VAICOM {
+    namespace UI {
 
-        public partial class ConfigWindow : Window
-        {
+        [SupportedOSPlatform("windows")]
+        public partial class ConfigWindow : Window {
 
             // ------RESET PAGE -------------------------------------------
 
@@ -42,62 +41,45 @@ namespace VAICOM
             private void resetluaoff(object sender, RoutedEventArgs e) { State.activeconfig.Resetlua = false; }
             private void SetCurrentValueResetLua(object sender, EventArgs e) { clearlua.IsChecked = State.activeconfig.Resetlua; }
 
-            private void RepairLuas(object sender, RoutedEventArgs e)
-            {
-                try
-                {
+            private void RepairLuas(object sender, RoutedEventArgs e) {
+                try {
                     string caption = "Repair Lua files";
                     string message = "LUA repair:\nOriginal lua files have been restored,\nVAICOM PRO lua code was re-installed.\n";
                     MessageBoxResult selectedchoice = System.Windows.MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch
-                {
+                } catch {
                 }
             }
             //
 
-            private void ResetToFactoryDefaults(object sender, RoutedEventArgs e)
-            {
-                try
-                {
+            private void ResetToFactoryDefaults(object sender, RoutedEventArgs e) {
+                try {
                     string caption = "Master Reset";
                     string message = "FACTORY DEFAULTS\n\nPressing OK will reset the selected settings\nto their factory defaults.\n\nAfter reset you will need to restart VoiceAttack.\nAre you sure you want to proceed?\n";
                     MessageBoxResult selectedchoice = MessageBox.Show(message, caption, MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                    if (selectedchoice.Equals(MessageBoxResult.OK))
-                    {
+                    if (selectedchoice.Equals(MessageBoxResult.OK)) {
                         // execute
 
                         State.activeconfig.Debugmode = true;
 
-                        if (State.activeconfig.Resetlicenses)
-                        {
-                            try
-                            {
+                        if (State.activeconfig.Resetlicenses) {
+                            try {
                                 removeallactivelicenses();
                                 Log.Write("License data cleared.", Static.Colors.Text);
-                            }
-                            catch
-                            {
+                            } catch {
                             }
                         }
 
-                        if (State.activeconfig.Resetprofile)
-                        {
-                            try
-                            {
+                        if (State.activeconfig.Resetprofile) {
+                            try {
                                 // replace profile file 
                                 FileHandler.Root.CheckProfile(true);
                                 Log.Write("VA profile file restored.", Static.Colors.Text);
-                            }
-                            catch
-                            {
+                            } catch {
                             }
                         }
 
-                        if (State.activeconfig.Resetdb)
-                        {
-                            try
-                            {
+                        if (State.activeconfig.Resetdb) {
+                            try {
                                 // clear / restore Database folder
                                 FileHandler.Root.DeleteDatabaseFolder();
                                 FileHandler.Root.CheckSubFolders();
@@ -112,35 +94,26 @@ namespace VAICOM
                                 Reflectunsavedchanges();
                                 Reflectrequiresreload();
                                 Log.Write("Database cleared.", Static.Colors.Text);
-                            }
-                            catch
-                            {
+                            } catch {
                             }
                         }
 
-                        if (State.activeconfig.Resettheme)
-                        {
+                        if (State.activeconfig.Resettheme) {
                             FileHandler.Lua.Remove_DCS_Theme();
                         }
 
-                        if (State.activeconfig.Resetlua)
-                        {
-                            try
-                            {
+                        if (State.activeconfig.Resetlua) {
+                            try {
                                 FileHandler.Lua.LuaFiles_Install(true, true); // reset quietly;
                                 State.datawasreset = true;
 
                                 Log.Write("Lua code cleared.", Static.Colors.Text);
-                            }
-                            catch
-                            {
+                            } catch {
                             }
                         }
 
-                        if (State.activeconfig.Resetoptions)
-                        {
-                            try
-                            {
+                        if (State.activeconfig.Resetoptions) {
+                            try {
 
                                 FileHandler.Root.DeleteConfigFolder();
                                 FileHandler.Root.CheckSubFolders();
@@ -149,9 +122,7 @@ namespace VAICOM
                                 State.activeconfig = Settings.ConfigFile.ReadConfigFromFile();
                                 State.activeconfig.Debugmode = true;
                                 Log.Write("Config restored to default.", Static.Colors.Text);
-                            }
-                            catch
-                            {
+                            } catch {
                             }
                         }
 
@@ -159,30 +130,22 @@ namespace VAICOM
                         MessageBoxResult finish = MessageBox.Show(readymessage, caption, MessageBoxButton.OK, MessageBoxImage.Warning);
 
                     }
-                }
-                catch
-                {
+                } catch {
                 }
             }
-            private void removeallactivelicenses()
-            {
-                try
-                {
+            private void removeallactivelicenses() {
+                try {
                     RegistryKey getkey = Registry.CurrentUser.OpenSubKey(Products.Products.Families.Vaicom.RegKeyBase, true);
-                    if (getkey != null)
-                    {
+                    if (getkey != null) {
                         RegistryKey testkey = Registry.CurrentUser.OpenSubKey(Products.Products.Families.Vaicom.RegKeyRoot);
-                        if (testkey != null)
-                        {
+                        if (testkey != null) {
                             string keyname = "VAICOMPRO";
                             Log.Write("Deleting reg key for " + keyname, Static.Colors.System);
                             getkey.DeleteSubKeyTree(keyname, true);
                         }
                     }
                     getkey.Close();
-                }
-                catch (Exception a)
-                {
+                } catch (Exception a) {
                     Log.Write(a.Message, Static.Colors.System);
                 }
 
@@ -191,23 +154,17 @@ namespace VAICOM
 
                 string productidstring = Products.Products.Families.Vaicom.VaicomProPlugin.product_id.ToString();
 
-                if (State.activelicenses.ContainsKey(productidstring))
-                {
+                if (State.activelicenses.ContainsKey(productidstring)) {
                     State.PRO = true;
-                }
-                else
-                {
+                } else {
                     State.PRO = false;
                 }
 
                 productidstring = Products.Products.Families.Vaicom.ChatterThemePack.product_id.ToString();
 
-                if (State.activelicenses.ContainsKey(productidstring))
-                {
+                if (State.activelicenses.ContainsKey(productidstring)) {
                     State.chatterthemesactivated = true;
-                }
-                else
-                {
+                } else {
                     State.chatterthemesactivated = false;
                 }
 
@@ -216,10 +173,8 @@ namespace VAICOM
                 showprolight();
 
             }
-            private void clearkeywordsdb()
-            {
-                try
-                {
+            private void clearkeywordsdb() {
+                try {
                     Aliases.appendiceswpn = new Dictionary<string, string>();
                     Aliases.appendicesdir = new Dictionary<string, string>();
                     Aliases.aicues = new Dictionary<string, string>();
@@ -229,14 +184,11 @@ namespace VAICOM
                     Aliases.importedatcs = new Dictionary<string, string>();
                     Aliases.playercallsigns = new Dictionary<string, string>();
                     Aliases.simcontrol = new Dictionary<string, string>();
-                }
-                catch
-                {
+                } catch {
                 }
             }
 
-            private void Test_Install(object sender, MouseButtonEventArgs e)
-            {
+            private void Test_Install(object sender, MouseButtonEventArgs e) {
                 string caption = "VAICOM PRO Installation info";
                 string message = "";
                 MessageBoxImage BoxImage = new MessageBoxImage();
@@ -249,12 +201,9 @@ namespace VAICOM
                 System.Version VAminversion = Version.Parse(State.vaminversion);
 
                 message += "> VoiceAttack version: " + VAcurrentversion + " ";
-                if (VAcurrentversion < VAminversion)
-                {
+                if (VAcurrentversion < VAminversion) {
                     message += "[OUTDATED VERSION, VA REQUIRES UPDATE]";
-                }
-                else
-                {
+                } else {
                     message += "(plugin compatible)";
                 }
                 message += "\n";
@@ -265,69 +214,53 @@ namespace VAICOM
 
                 message += "> VAICOMPRO.dll version " + State.dll_version_plugin + " ";
 
-                if (State.updateavailable_plugin)
-                {
+                if (State.updateavailable_plugin) {
                     message += "[UPDATE AVAILABLE]";
-                }
-                else
-                {
+                } else {
                     message += "(up to date)";
                 }
 
                 message += "\n";
 
-                if (State.dll_installed_chatter)
-                {
+                if (State.dll_installed_chatter) {
                     message += "> Chatter.dll version " + State.dll_version_chatter + " ";
 
-                    if (State.updateavailable_chatter)
-                    {
+                    if (State.updateavailable_chatter) {
                         message += "[UPDATE AVAILABLE]";
-                    }
-                    else
-                    {
+                    } else {
                         message += "(up to date)";
                     }
 
                     message += "\n";
 
-                }
-                else
-                {
+                } else {
                     message += "> Chatter.dll [NOT INSTALLED]\n";
                 }
 
-                if (State.dll_installed_rio)
-                {
+                if (State.dll_installed_rio) {
                     message += "> AIRIO.dll version " + State.dll_version_rio + " ";
 
-                    if (State.updateavailable_rio)
-                    {
+                    if (State.updateavailable_rio) {
                         message += "[UPDATE AVAILABLE]";
-                    }
-                    else
-                    {
+                    } else {
                         message += "(up to date)";
                     }
 
                     message += "\n";
 
-                }
-                else
-                {
+                } else {
                     message += "> AIRIO.dll [NOT INSTALLED]\n";
                 }
 
                 message += "\n";
 
                 message += "If some of these files are not up to date, get the latest versions from the website for manual install.\n";
-                                
+
                 message += "\n";
 
                 message += "DCS World installation\n\n";
 
-                if (State.dcsinstalled)
-                {
+                if (State.dcsinstalled) {
                     string UserSavedGamesFolder = Framework.SpecialFoldersRetrieve.GetSavedGames();
                     string steamfolder = Helpers.WinReg.GetSteamFolder().Replace("/", "\\") + "\\steamapps\\common\\" + "DCSWorld";
 
@@ -337,8 +270,7 @@ namespace VAICOM
                     message += "The following install paths are used by the plugin:" + "\n" + "\n";
 
                     string pathrelease = "[NOT FOUND]";
-                    if (!State.dcspath_release.Equals(""))
-                    {
+                    if (!State.dcspath_release.Equals("")) {
                         pathrelease = State.dcspath_release + "\n";
                         pathrelease += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.5"] + "\n";
                     }
@@ -346,8 +278,7 @@ namespace VAICOM
                     message += "   " + pathrelease + "\n";
 
                     string pathopenbeta = "[NOT FOUND]";
-                    if (!State.dcspath_openbeta.Equals(""))
-                    {
+                    if (!State.dcspath_openbeta.Equals("")) {
                         pathopenbeta = State.dcspath_openbeta + "\n";
                         pathopenbeta += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.5 OpenBeta"] + "\n";
                     }
@@ -355,8 +286,7 @@ namespace VAICOM
                     message += "   " + pathopenbeta + "\n";
 
                     string pathsteam = "[NOT FOUND]";
-                    if (!State.dcspath_steam.Equals(""))
-                    {
+                    if (!State.dcspath_steam.Equals("")) {
                         pathsteam = State.dcspath_steam + "\n";
                         pathsteam += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.5"] + "\n"; ;
                     }
@@ -366,9 +296,7 @@ namespace VAICOM
                     message += "If some of these paths are not correct, use Custom Path option (Config page). ";
                     message += "Optionally select Fix Registry for permanent correction." + "\n";
 
-                }
-                else
-                {
+                } else {
                     BoxImage = MessageBoxImage.Exclamation;
 
                     message += "No DCS World installations were detected on this machine." + "\n";

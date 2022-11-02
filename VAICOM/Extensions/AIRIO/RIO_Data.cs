@@ -1,33 +1,27 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
+using VAICOM.Static;
 
 
-namespace VAICOM
-{
-    namespace Extensions
-    {
-        namespace RIO
-        {
+namespace VAICOM {
+    namespace Extensions {
+        namespace RIO {
 
-            public class tables
-            {
+            [SupportedOSPlatform("windows")]
+            public class tables {
 
-                public static void resetriomenustate()
-                {
-                    try
-                    {
-                        tables.menustate[tables.menucats.RDR_BVR]       = tables.menustates.Radar_Active;
-                        tables.menustate[tables.menucats.RDR_STT]       = tables.menustates.Not_STT_Locked;
-                        tables.menustate[tables.menucats.WPN_AG]        = tables.menustates.AG_Computer_Pilot;
-                        tables.menustate[tables.menucats.CREW]          = tables.menustates.Crew_Awake;
-                        tables.menustate[tables.menucats.STARTUP]       = tables.menustates.Starting_Up;
-                        tables.menustate[tables.menucats.PLAYERSEAT]    = tables.menustates.Pilot;
-                        tables.menustate[tables.menucats.CONTR_TALK]    = tables.menustates.Talk;
-                        tables.menustate[tables.menucats.CONTR_EJECT]   = tables.menustates.Eject_Single;
-                        tables.menustate[tables.menucats.CALLOUTS]      = tables.menustates.Call;
-                    }
-                    catch
-                    {
+                public static void resetriomenustate() {
+                    try {
+                        tables.menustate[tables.menucats.RDR_BVR] = tables.menustates.Radar_Active;
+                        tables.menustate[tables.menucats.RDR_STT] = tables.menustates.Not_STT_Locked;
+                        tables.menustate[tables.menucats.WPN_AG] = tables.menustates.AG_Computer_Pilot;
+                        tables.menustate[tables.menucats.CREW] = tables.menustates.Crew_Awake;
+                        tables.menustate[tables.menucats.STARTUP] = tables.menustates.Starting_Up;
+                        tables.menustate[tables.menucats.PLAYERSEAT] = tables.menustates.Pilot;
+                        tables.menustate[tables.menucats.CONTR_TALK] = tables.menustates.Talk;
+                        tables.menustate[tables.menucats.CONTR_EJECT] = tables.menustates.Eject_Single;
+                        tables.menustate[tables.menucats.CALLOUTS] = tables.menustates.Call;
+                    } catch {
                         Log.Write("Problems reported with resetting RIO state.", Colors.Text);
                     }
                 }
@@ -46,8 +40,7 @@ namespace VAICOM
 
                 };
 
-                public enum menucats
-                {
+                public enum menucats {
                     RADIO,
                     RDR_BVR,
                     RDR_STT,
@@ -65,8 +58,7 @@ namespace VAICOM
                     CALLOUTS
                 }
 
-                public enum menustates
-                {
+                public enum menustates {
                     Radar_Active,
                     Radar_Passive,
                     STT_locked,

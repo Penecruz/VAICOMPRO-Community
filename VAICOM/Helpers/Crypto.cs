@@ -1,44 +1,35 @@
 ﻿using System;
-using System.Text;
+using System.Runtime.Versioning;
 using System.Security.Cryptography;
+using System.Text;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Helpers
-    {
+    namespace Helpers {
 
-        public static class Crypto
-        {
+        [SupportedOSPlatform("windows")]
+        public static class Crypto {
 
             private const DataProtectionScope Scope = DataProtectionScope.CurrentUser;
 
-            public static string Encrypt(this string text)
-            {
-                try
-                {
+            public static string Encrypt(this string text) {
+                try {
                     if (text == null) { throw new ArgumentNullException("text"); }
                     var data = Encoding.Unicode.GetBytes(text);
                     byte[] encrypted = ProtectedData.Protect(data, null, Scope);
                     return Convert.ToBase64String(encrypted);
-                }
-                catch
-                {
+                } catch {
                     return null;
                 }
             }
 
-            public static string Decrypt(this string cipher)
-            {
-                try
-                {
+            public static string Decrypt(this string cipher) {
+                try {
                     if (cipher == null) { throw new ArgumentNullException("cipher"); }
                     byte[] data = Convert.FromBase64String(cipher);
                     byte[] decrypted = ProtectedData.Unprotect(data, null, Scope);
                     return Encoding.Unicode.GetString(decrypted);
-                }
-                catch
-                {
+                } catch {
                     return null;
                 }
             }

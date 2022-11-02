@@ -1,155 +1,138 @@
-﻿using VAICOM.Static;
+﻿using System.Runtime.Versioning;
 using VAICOM.Servers;
+using VAICOM.Static;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Database
-    {
+    namespace Database {
 
-        public class Command
-        {
+        [SupportedOSPlatform("windows")]
+        public class Command {
             public int uniqueid;
 
             public string displayname;
             public CommandCategories category;
             public bool enabled;
 
-            public int      eventnumber;
-            public string   dcsid;
-            public int geteventnumber() 
-            {
+            public int eventnumber;
+            public string dcsid;
+            public int geteventnumber() {
                 return Database.Dcs.GetEventNumber(dcsid);
             }
 
-            public bool     hasparameter;
+            public bool hasparameter;
 
-            public bool     engagecondition;
-            public bool     on;
-            public int      type;
-            public int      device;
-            public int      power_source;
-            public int      recoverycase;
-            public string   parametername;
-            public bool     value;
-            public bool     close; 
-            public double   volume; 
-            public int      parameters;
-            public bool     readback;
-            public Server.Vector   point;      
+            public bool engagecondition;
+            public bool on;
+            public int type;
+            public int device;
+            public int power_source;
+            public int recoverycase;
+            public string parametername;
+            public bool value;
+            public bool close;
+            public double volume;
+            public int parameters;
+            public bool readback;
+            public Server.Vector point;
 
-            public bool     useappendix;
-            public bool     useweapon;
-            public int      weapon;
-            public bool     usedirection;
-            public double   direction;
+            public bool useappendix;
+            public bool useweapon;
+            public int weapon;
+            public bool usedirection;
+            public double direction;
 
-            public bool     blockedforFC;
-            public bool     blockedforFCnonPro;
-            public bool     blockedforFree;
-            public bool     requiresJester;
-            public bool     requiresrealatc;
+            public bool blockedforFC;
+            public bool blockedforFCnonPro;
+            public bool blockedforFree;
+            public bool requiresJester;
+            public bool requiresrealatc;
 
-            public string   servername;
-            public string   menuitemname;
-            public int      actionIndex;
+            public string servername;
+            public string menuitemname;
+            public int actionIndex;
 
-            public Command()
-            {
+            public Command() {
                 uniqueid = 0;
                 eventnumber = 0;
                 dcsid = "";
             }
 
-            public bool RequiresFlightNumInsert()
-            {
+            public bool RequiresFlightNumInsert() {
                 bool value = false;
                 if (this.RecipientClass().Equals(Recipientclasses.Flight)) { value = true; }
                 return value;
             }
 
-            public bool isReply()
-            {
+            public bool isReply() {
                 bool value = false;
                 if ((this.uniqueid >= Commands.Table["wMsgReplyNull"].uniqueid) & (this.uniqueid <= Commands.Table["wMsgReplyMaximum"].uniqueid)) { value = true; }
                 return value;
             }
 
 
-            public bool isState()
-            {
+            public bool isState() {
                 bool value = false;
                 if (this.dcsid.Equals("wMsgProvideState") || this.dcsid.Equals("wMsgReadBriefing")) { value = true; }
                 return value;
             }
 
-            public bool isSelect()
-            {
+            public bool isSelect() {
                 bool value = false;
                 if (this.dcsid.Equals("wMsgSelectRecipient")) { value = true; }
                 return value;
             }
 
-            public bool isOptions()
-            {
+            public bool isOptions() {
                 bool value = false;
                 if (this.dcsid.Equals("wMsgShowOptions")) { value = true; }
                 return value;
             }
 
-            public bool isSwitch()
-            {
+            public bool isSwitch() {
                 return this.dcsid.Equals("wMsgSwitchListening");
             }
 
-            public bool isMenu()
-            {
+            public bool isMenu() {
                 bool value = false;
                 if ((this.uniqueid >= Commands.Table["menu01"].uniqueid) & (this.uniqueid <= Commands.Table["menu12"].uniqueid)) { value = true; }
                 return value;
             }
 
-            public bool isSpecial()
-            {
-                return this.eventnumber.Equals(4000);     
+            public bool isSpecial() {
+                return this.eventnumber.Equals(4000);
             }
 
-            public bool isEngage()
-            {
+            public bool isEngage() {
                 bool value = false;
                 if ((this.uniqueid >= Commands.Table["groundtarget"].uniqueid) & (this.uniqueid <= Commands.Table["ship"].uniqueid)) { value = true; }
                 return value;
             }
 
 
-            public bool isInputcommand()
-            {
+            public bool isInputcommand() {
                 bool value = false;
                 if ((this.uniqueid >= Commands.Table["iCommandNull"].uniqueid) & (this.uniqueid < Commands.Table["iCommandMaximum"].uniqueid)) { value = true; }
                 return value;
             }
 
-            public bool hasAppendix()
-            {
+            public bool hasAppendix() {
                 bool value = false;
                 if ((this.uniqueid >= Commands.Table["groundtarget"].uniqueid) & (this.uniqueid <= Commands.Table["ship"].uniqueid)) { value = true; }
                 return value;
             }
 
-            public bool isCarrier()
-            {
+            public bool isCarrier() {
                 return (this.uniqueid >= Commands.Table["wMsgLeaderToNavyATCNull"].uniqueid) & (this.uniqueid <= Commands.Table["wMsgLeaderToNavyATCMaximum"].uniqueid);
             }
 
-            public Recipientclass SenderCat()
-            {
+            public Recipientclass SenderCat() {
                 Recipientclass value = Recipientclasses.Undefined;
                 if ((this.uniqueid >= Commands.Table["wMsgLeaderNull"].uniqueid) & (this.uniqueid <= Commands.Table["wMsgLeaderMaximum"].uniqueid)) { value = Recipientclasses.Player; }
                 return value;
             }
 
-            public Recipientclass RecipientClass()
-            {
+            public Recipientclass RecipientClass() {
                 Recipientclass value = Recipientclasses.Undefined;
 
                 if ((this.uniqueid >= Commands.Table["iCommandNull"].uniqueid) & (this.uniqueid <= Commands.Table["iCommandMaximum"].uniqueid)) { value = Recipientclasses.Cockpit; }
@@ -181,9 +164,7 @@ namespace VAICOM
                 return value;
             }
 
-            public string ApplicationType()
-
-            {
+            public string ApplicationType() {
                 string value = Messagetypes.Undefined;
 
                 if ((this.uniqueid >= Commands.Table["iCommandNull"].uniqueid) & (this.uniqueid < Commands.Table["iCommandMaximum"].uniqueid)) { value = Messagetypes.DeviceControl; }
@@ -194,42 +175,37 @@ namespace VAICOM
             }
 
             //RIO
-            public bool isRIO()
-            {
+            public bool isRIO() {
                 bool value = false;
                 if ((this.uniqueid >= Commands.Table["wMsgRIOCmndsNull"].uniqueid) & (this.uniqueid <= Commands.Table["wMsgAIPilotCmndsMaximum"].uniqueid)) { value = true; }
                 return value;
             }
 
-            public bool isVoid()
-            {
+            public bool isVoid() {
 
                 return (this.isSpecial() & !this.isOptions() & !this.isSelect() & !this.isMenu() & !this.isState() & !this.isRIO());
- 
-            }
-           
 
-            public bool RequiresInsert()
-            {
+            }
+
+
+            public bool RequiresInsert() {
                 bool value = false;
 
-                if (this.RecipientClass().Equals(Recipientclasses.JTAC))    { value = true; }
-                if (this.RecipientClass().Equals(Recipientclasses.ATC))     { value = true; }
-                if (this.RecipientClass().Equals(Recipientclasses.Tanker))  { value = true; }
-                if (this.RecipientClass().Equals(Recipientclasses.AWACS))   { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.JTAC)) { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.ATC)) { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.Tanker)) { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.AWACS)) { value = true; }
 
                 return value;
             }
 
 
-            public bool isKneeboard()
-            {
+            public bool isKneeboard() {
                 return ((this.uniqueid >= Commands.Table["wMsgKneeboardCmndsNull"].uniqueid) & (this.uniqueid <= Commands.Table["wMsgKneeboardCmndsMaximum"].uniqueid));
             }
         }
 
-        public enum CommandCategories
-        {
+        public enum CommandCategories {
             undefined,
             aicomms,
             aicommsflight,

@@ -1,116 +1,94 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security.Principal;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Framework
-    {
+    namespace Framework {
 
-        public sealed class SpecialFolder
-        {
+        [SupportedOSPlatform("windows")]
+        public sealed class SpecialFolder {
 
             public SpecialFolder(SpecialFolderTypes type)
-                : this(type, WindowsIdentity.GetCurrent())
-            {
+                : this(type, WindowsIdentity.GetCurrent()) {
             }
 
-            public SpecialFolder(SpecialFolderTypes type, WindowsIdentity identity)
-            {
+            public SpecialFolder(SpecialFolderTypes type, WindowsIdentity identity) {
                 Type = type;
                 Identity = identity;
             }
 
 
-            public SpecialFolderTypes Type
-            {
+            public SpecialFolderTypes Type {
                 get;
                 private set;
             }
 
-            public WindowsIdentity Identity
-            {
+            public WindowsIdentity Identity {
                 get;
                 private set;
             }
 
-            public string DefaultPath
-            {
-                get
-                {
+            public string DefaultPath {
+                get {
                     return GetPath(KnownFolderFlags.DontVerify | KnownFolderFlags.DefaultPath);
                 }
-                set
-                {
+                set {
                 }
             }
 
-            public string Path
-            {
-                get
-                {
+            public string Path {
+                get {
                     return GetPath(KnownFolderFlags.DontVerify);
                 }
-                set
-                {
+                set {
                     SetPath(KnownFolderFlags.None, value);
                 }
             }
 
-            public string ExpandedPath
-            {
-                get
-                {
+            public string ExpandedPath {
+                get {
                     return GetPath(KnownFolderFlags.DontVerify | KnownFolderFlags.NoAlias);
                 }
-                set
-                {
+                set {
                     SetPath(KnownFolderFlags.DontUnexpand, value);
                 }
             }
 
-            public void Create()
-            {
+            public void Create() {
                 GetPath(KnownFolderFlags.Init | KnownFolderFlags.Create);
             }
 
-            private string GetPath(KnownFolderFlags flags)
-            {
+            private string GetPath(KnownFolderFlags flags) {
                 IntPtr outPath;
                 int result = SHGetKnownFolderPath(Type.GetGuid(), (uint)flags, Identity.Token, out outPath);
-                if (result >= 0)
-                {
+                if (result >= 0) {
                     return Marshal.PtrToStringUni(outPath);
-                }
-                else
-                {
+                } else {
                     throw new ExternalException("Cannot get the known folder path. It may not be available on this system.",
                         result);
                 }
             }
 
-            private void SetPath(KnownFolderFlags flags, string path)
-            {
+            private void SetPath(KnownFolderFlags flags, string path) {
                 int result = SHSetKnownFolderPath(Type.GetGuid(), (uint)flags, Identity.Token, path);
-                if (result < 0)
-                {
+                if (result < 0) {
                     throw new ExternalException("Cannot set the known folder path. It may not be available on this system.",
                         result);
                 }
             }
 
             [DllImport("Shell32.dll")]
-            private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags,
+            private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags,
                 IntPtr hToken, out IntPtr ppszPath);
 
             [DllImport("Shell32.dll")]
-            private static extern int SHSetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags,
-                IntPtr hToken, [MarshalAs(UnmanagedType.LPWStr)]string pszPath);
+            private static extern int SHSetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags,
+                IntPtr hToken, [MarshalAs(UnmanagedType.LPWStr)] string pszPath);
 
             [Flags]
-            private enum KnownFolderFlags : uint
-            {
+            private enum KnownFolderFlags : uint {
                 None = 0x00000000,
                 SimpleIDList = 0x00000100,
                 NotParentRelative = 0x00000200,

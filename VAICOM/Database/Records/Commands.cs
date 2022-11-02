@@ -1,15 +1,12 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Linq;
+using System.Runtime.Versioning;
 
-namespace VAICOM
-{
-    namespace Database
-    {
+namespace VAICOM {
+    namespace Database {
 
-        public static partial class Commands
-        {
+        [SupportedOSPlatform("windows")]
+        public static partial class Commands {
 
             public static Dictionary<string, Command> Table = new Dictionary<string, Command>(StringComparer.OrdinalIgnoreCase)
             {
@@ -303,13 +300,13 @@ namespace VAICOM
             { "wMsgTankerNull" ,      new Command {  dcsid = "wMsgTankerNull"         } },
             { "wMsgTankerMaximum" ,   new Command {  dcsid = "wMsgTankerMaximum"      } },
             /// FAC
-            { "wMsgFACNull" ,      new Command {  dcsid = "wMsgFACNull"         } }, 
+            { "wMsgFACNull" ,      new Command {  dcsid = "wMsgFACNull"         } },
             { "wMsgFACMaximum" ,   new Command {  dcsid = "wMsgFACMaximum"      } },
             /// CCC
             { "wMsgCCCNull" ,      new Command {  dcsid = "wMsgCCCNull"         } }, //
             { "wMsgCCCMaximum" ,   new Command {  dcsid = "wMsgCCCMaximum"      } }, //
             /// Ground Crew
-            { "wMsgGroundCrewNull" ,      new Command {  dcsid = "wMsgGroundCrewNull"         } }, 
+            { "wMsgGroundCrewNull" ,      new Command {  dcsid = "wMsgGroundCrewNull"         } },
             { "wMsgGroundCrewMaximum" ,   new Command {  dcsid = "wMsgGroundCrewMaximum"      } }, 
             /// Betty
             { "wMsgBettyNull" ,      new Command {  dcsid = "wMsgBettyNull"         } },

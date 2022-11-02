@@ -1,15 +1,14 @@
-﻿using VAICOM.PushToTalk;
-using System;
+﻿using System;
+using System.Runtime.Versioning;
 using System.Windows;
+using VAICOM.PushToTalk;
 
 
-namespace VAICOM
-{
-    namespace UI
-    {
+namespace VAICOM {
+    namespace UI {
 
-        public partial class ConfigWindow : Window
-        {
+        [SupportedOSPlatform("windows")]
+        public partial class ConfigWindow : Window {
             // ------------  MULTIPLAYER PAGE -----------------------------
 
             // use with multiplayer
@@ -70,7 +69,7 @@ namespace VAICOM
             // Sound notify
             private void SetConfigEnableMP_WarnHumans(object sender, RoutedEventArgs e) { State.activeconfig.MP_WarnHumans = true; }
             private void SetConfigDisableMP_WarnHumans(object sender, RoutedEventArgs e) { State.activeconfig.MP_WarnHumans = false; }
-            private void SetCurrentValueMP_WarnHumans(object sender, EventArgs e) { MP_WarnHumans.IsEnabled = State.PRO ; MP_WarnHumans.IsChecked = State.activeconfig.MP_WarnHumans; }
+            private void SetCurrentValueMP_WarnHumans(object sender, EventArgs e) { MP_WarnHumans.IsEnabled = State.PRO; MP_WarnHumans.IsChecked = State.activeconfig.MP_WarnHumans; }
 
             // delay transmit
             private void SetConfigEnableMP_DelayTransmit(object sender, RoutedEventArgs e) { State.activeconfig.MP_DelayTransmit = true; }
@@ -88,39 +87,36 @@ namespace VAICOM
             private void SetCurrentValueMP_AllowSwitchCommand(object sender, EventArgs e) { MP_AllowSwitchCommand.IsEnabled = State.PRO && State.activeconfig.MP_VoIPUseSwitch; MP_AllowSwitchCommand.IsChecked = State.activeconfig.MP_AllowSwitchCommand; }
 
             private void SetCurrentValueVoIPSwitching(object sender, EventArgs e) { VoIPSwitching.IsEnabled = State.PRO; VoIPSwitching.Value = State.activeconfig.MP_VoIPSwitching; }
-            private void VoIPSwitching_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
-            {
+            private void VoIPSwitching_Change(object sender, RoutedPropertyChangedEventArgs<double> e) {
 
-                if (!State.activeconfig.MP_VoIPSwitching.Equals((int)e.NewValue))
-                {
+                if (!State.activeconfig.MP_VoIPSwitching.Equals((int)e.NewValue)) {
                     UI.Playsound.Soft_Click();
                     State.activeconfig.MP_VoIPSwitching = (int)VoIPSwitching.Value;
                     SetNotify();
 
-                    switch (State.activeconfig.MP_VoIPSwitching)
-                    {
+                    switch (State.activeconfig.MP_VoIPSwitching) {
 
                         case 0: //parallel
-                            State.activeconfig.MP_VoIPParallel  = true;
-                            State.activeconfig.MP_UseTXLink     = false;
+                            State.activeconfig.MP_VoIPParallel = true;
+                            State.activeconfig.MP_UseTXLink = false;
                             State.activeconfig.MP_VoIPUseSwitch = false;
                             break;
 
                         case 1: // TX Link
-                            State.activeconfig.MP_VoIPParallel  = false;
-                            State.activeconfig.MP_UseTXLink     = true;
+                            State.activeconfig.MP_VoIPParallel = false;
+                            State.activeconfig.MP_UseTXLink = true;
                             State.activeconfig.MP_VoIPUseSwitch = false;
                             break;
 
                         case 2: // use switching
-                            State.activeconfig.MP_VoIPParallel  = false;
-                            State.activeconfig.MP_UseTXLink     = false;
+                            State.activeconfig.MP_VoIPParallel = false;
+                            State.activeconfig.MP_UseTXLink = false;
                             State.activeconfig.MP_VoIPUseSwitch = true;
                             break;
 
                         default: //0
-                            State.activeconfig.MP_VoIPParallel  = true;
-                            State.activeconfig.MP_UseTXLink     = false;
+                            State.activeconfig.MP_VoIPParallel = true;
+                            State.activeconfig.MP_UseTXLink = false;
                             State.activeconfig.MP_VoIPUseSwitch = false;
                             break;
 
@@ -129,11 +125,10 @@ namespace VAICOM
                     Settings.ConfigFile.WriteConfigToFile(true);
 
                 }
-                    
+
             }
 
-            public void SetNotify()
-            {
+            public void SetNotify() {
                 int slider = State.activeconfig.MP_VoIPSwitching;
 
                 MP_AutoSwitch.IsEnabled = slider.Equals(2);

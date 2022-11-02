@@ -1,29 +1,25 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Client
-    {
+    namespace Client {
 
-        public partial class DcsClient
-        {
+        [SupportedOSPlatform("windows")]
+        public partial class DcsClient {
 
-            public static partial class Message
-            {
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
 
-                public static void SetRioDeviceSequence_Datalink_Tuning()
-                {
-                    try
-                    {
+                public static void SetRioDeviceSequence_Datalink_Tuning() {
+                    try {
 
                         // exit if AIRIO not valid
-                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]))
-                        {
+                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod])) {
                             Log.Write("AIRIO commands are not available at this time.", Colors.Warning);
                             UI.Playsound.Recipientna();
                             return;
@@ -41,8 +37,7 @@ namespace VAICOM
                         int majval1;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}"), out majval1);
                         //Log.Write("majval1 = " + majval1, Colors.Warning);
-                        switch (majval1)
-                        {
+                        switch (majval1) {
                             case 0:
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_DL_MAJ1_0);
                                 break;
@@ -78,8 +73,7 @@ namespace VAICOM
                         int majval2;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}"), out majval2);
                         //Log.Write("majval2 = " + majval2, Colors.Warning);
-                        switch (majval2)
-                        {
+                        switch (majval2) {
                             case 0:
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_DL_MAJ2_0);
                                 break;
@@ -115,8 +109,7 @@ namespace VAICOM
                         int minval;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:4}"), out minval);
                         //Log.Write("Segment 3 = " + minval, Colors.Warning);
-                        switch (minval)
-                        {
+                        switch (minval) {
                             case 0:
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_DL_MIN_0);
                                 break;
@@ -148,36 +141,31 @@ namespace VAICOM
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_DL_MIN_9);
                                 break;
                         }
-                        
+
                         string message = "3" + majval1.ToString() + majval2.ToString() + "." + minval.ToString() + "0 Mhz";
 
-                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
-                        {
+                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only) {
                             State.currentmessage.dspmsg = "AIRIO : " + "Datalink Tune " + message;
                             State.currentmessage.msgdur = 5;
                         }
 
                         UI.Playsound.Commandcomplete();
 
-                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO))
-                        {
+                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO)) {
                             State.currentmessage.dspmsg = "AIRIO : You are in Jester's seat!\n";
                             State.currentmessage.msgdur = 5;
                             State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        }
-                        else // ok, in pilot seat
-                        {
+                        } else // ok, in pilot seat
+                          {
                             int combinedvalue = ((100 * majval1) + (10 * majval2) + minval);
                             int devicemaxvalue = 999;
-                            if (combinedvalue > devicemaxvalue)
-                            {
+                            if (combinedvalue > devicemaxvalue) {
                                 State.currentmessage.dspmsg = "AIRIO : Datalink command out of range.\n";
                                 State.currentmessage.msgdur = 5;
                                 State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
                                 riospeech.riospeakrandom(2); //negative
-                            }
-                            else // not out of range
-                            {
+                            } else // not out of range
+                              {
                                 riospeech.riospeakrandom(1); //ok
                             }
                         }
@@ -189,17 +177,15 @@ namespace VAICOM
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {
                             Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "Datalink Tune " + message + " [ " + " ] [ " + " ]", Colors.Message);
-                        }
-                        else // for multi:
-                        {
+                        } else // for multi:
+                          {
                             Log.Write(State.currentTXnode.name + " | " + State.currentTXnode.radios[0].name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "Datalink Tune " + message + " [ " + " ] [ " + " ]", Colors.Message);
                         }
 
                         // for hotmic:
                         if (State.activeconfig.ICShotmic) //  
                         {
-                            if (!State.valistening)
-                            {
+                            if (!State.valistening) {
                                 DcsClient.SendUpdateRequest();
                                 State.MessageReset();
                                 State.processlocked = false;
@@ -208,9 +194,7 @@ namespace VAICOM
 
                         State.MessageReset();
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Error setting RIO command sequence: " + e.StackTrace + e.InnerException, Colors.Inline);
                     }
                 }

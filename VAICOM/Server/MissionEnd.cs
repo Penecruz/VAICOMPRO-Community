@@ -1,26 +1,23 @@
-﻿using VAICOM.Products;
-using VAICOM.PushToTalk;
+﻿using System.Runtime.Versioning;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Products;
+using VAICOM.PushToTalk;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Servers
-    {
+    namespace Servers {
 
-        public static partial class Server
-        {
+        [SupportedOSPlatform("windows")]
+        public static partial class Server {
 
             public static string missionendstring = "missiondata.update.beacon.unlock";
 
-            public static bool DetectEndMission(string detectstr)
-            {
+            public static bool DetectEndMission(string detectstr) {
                 return detectstr.Equals(missionendstring);
             }
 
-            public static void EndMission()
-            {
+            public static void EndMission() {
 
 
                 State.beaconlocked = false;
@@ -36,7 +33,7 @@ namespace VAICOM
                 State.synth.SpeakAsyncCancelAll();
                 State.briefinginprogress = false;
                 State.allowairioswitching = true;
-                PTT.PTT_Manage_Listen_States_OnPressRelease(false,false);
+                PTT.PTT_Manage_Listen_States_OnPressRelease(false, false);
                 //Server.fetchingunits = false;
                 Extensions.RIO.helper.showingjestermenu = false;
 
@@ -47,14 +44,10 @@ namespace VAICOM
 
             }
 
-            public static void EndMissionUpdateGUI()
-            {
-                try
-                {
-                    if (State.configwindowopen && (State.configurationwindow != null))
-                    {
-                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
-                        {
+            public static void EndMissionUpdateGUI() {
+                try {
+                    if (State.configwindowopen && (State.configurationwindow != null)) {
+                        State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate {
                             State.configurationwindow.Changedatabug();
                             State.configurationwindow.UpdateAllbugs();
                             State.configurationwindow.Voidcounterbug();
@@ -65,9 +58,7 @@ namespace VAICOM
 
                         });
                     }
-                }
-                catch
-                {
+                } catch {
                 }
             }
 

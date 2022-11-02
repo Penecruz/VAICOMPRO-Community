@@ -1,32 +1,28 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
+
+namespace VAICOM {
+
+    namespace Client {
+
+        [SupportedOSPlatform("windows")]
+        public partial class DcsClient {
+
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
+
+                public static void setdefaultmessageparams() {
 
 
-namespace VAICOM
-{
+                    State.currentmessage.debug = State.activeconfig.Debugmode;
+                    State.currentmessage.client = State.currentlicense;
+                    State.currentmessage.mode = State.clientmode;
 
-    namespace Client
-    {
-
-        public partial class DcsClient
-        {
-
-            public static partial class Message
-            {
-
-                public static void setdefaultmessageparams()
-                {
-
-
-                    State.currentmessage.debug          = State.activeconfig.Debugmode;
-                    State.currentmessage.client         = State.currentlicense;
-                    State.currentmessage.mode           = State.clientmode;
-
-                    try
-                    {
+                    try {
                         State.currentmessage.type = State.currentcommand.ApplicationType();
                         State.currentmessage.tgtdevid = Message.GetSendDeviceId();
                         State.currentmessage.tgtdevname = State.currentradiodevicename;
@@ -39,29 +35,24 @@ namespace VAICOM
                         State.currentmessage.forcetune = !State.currentstate.easycomms && State.activeconfig.AllowRadioTuning && State.currentcommand.isSelect();
 
                         // set preferences..
-                        State.currentmessage.redirect_world_speech  = State.activeconfig.Redirect_World_Speech;
-                        State.currentmessage.disableplayervoice     = State.activeconfig.DisablePlayerVoice;
-                        State.currentmessage.menuinvisible          = State.activeconfig.HideMenus;
-                        State.currentmessage.forcenatoprotocol      = State.activeconfig.EnforceATCProtocol;
-                        State.currentmessage.forcecallsigns     = State.activeconfig.EnforceCallsigns;
-                        State.currentmessage.operatedial            = State.activeconfig.OperateDial;
-                    }
-                    catch
-                    {
+                        State.currentmessage.redirect_world_speech = State.activeconfig.Redirect_World_Speech;
+                        State.currentmessage.disableplayervoice = State.activeconfig.DisablePlayerVoice;
+                        State.currentmessage.menuinvisible = State.activeconfig.HideMenus;
+                        State.currentmessage.forcenatoprotocol = State.activeconfig.EnforceATCProtocol;
+                        State.currentmessage.forcecallsigns = State.activeconfig.EnforceCallsigns;
+                        State.currentmessage.operatedial = State.activeconfig.OperateDial;
+                    } catch {
                     }
 
                     State.currentmessage.AIRIO = State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]);
 
                 }
 
-                public static void SetRioDeviceSequence_TACAN_Tuning()
-                {
-                    try
-                    {
+                public static void SetRioDeviceSequence_TACAN_Tuning() {
+                    try {
 
                         // exit if AIRIO not valid
-                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]))
-                        {
+                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod])) {
                             Log.Write("AIRIO commands are not available at this time.", Colors.Warning);
                             UI.Playsound.Recipientna();
                             return;
@@ -78,8 +69,7 @@ namespace VAICOM
                         // band {CMDSEGMENT:1}
                         string band = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}");
 
-                        switch (band)
-                        {
+                        switch (band) {
                             case "x-ray":
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_TCN_X);
                                 break;
@@ -97,8 +87,7 @@ namespace VAICOM
 
                         int majval = (10 * majval1) + majval2;
 
-                        switch (majval)
-                        {
+                        switch (majval) {
                             case 0:
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_TCN_MAJ_00);
                                 break;
@@ -144,8 +133,7 @@ namespace VAICOM
                         int minval;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:4}"), out minval);
 
-                        switch (minval)
-                        {
+                        switch (minval) {
                             case 0:
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_TCN_MIN_0);
                                 break;
@@ -178,36 +166,31 @@ namespace VAICOM
                                 break;
                         }
 
-                        
+
                         string message = majval.ToString() + minval.ToString() + band.ToCharArray()[0].ToString().ToUpper();
 
-                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
-                        {
+                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only) {
                             State.currentmessage.dspmsg = "AIRIO : " + "TACAN Tune " + message;
                             State.currentmessage.msgdur = 5;
                         }
 
                         UI.Playsound.Commandcomplete();
 
-                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO))
-                        {
+                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO)) {
                             State.currentmessage.dspmsg = "AIRIO : You are in Jester's seat!\n";
                             State.currentmessage.msgdur = 5;
                             State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        }
-                        else // ok, in pilot seat
-                        {
+                        } else // ok, in pilot seat
+                          {
                             int combinedvalue = ((10 * majval) + minval);
                             int devicemaxvalue = 129;
-                            if (combinedvalue > devicemaxvalue)
-                            {
+                            if (combinedvalue > devicemaxvalue) {
                                 State.currentmessage.dspmsg = "AIRIO : TACAN command out of range.\n";
                                 State.currentmessage.msgdur = 5;
                                 State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
                                 riospeech.riospeakrandom(2); //negative
-                            }
-                            else // not out of range
-                            {
+                            } else // not out of range
+                              {
                                 riospeech.riospeakrandom(1); //ok
                             }
                         }
@@ -219,17 +202,15 @@ namespace VAICOM
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {
                             Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "TACAN Tune " + message + " [ " + " ] [ " + " ]", Colors.Message);
-                        }
-                        else // for multi:
-                        {
+                        } else // for multi:
+                          {
                             Log.Write(State.currentTXnode.name + " | " + State.currentTXnode.radios[0].name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "TACAN Tune " + message + " [ " + " ] [ " + " ]", Colors.Message);
                         }
 
                         // for hotmic:
                         if (State.activeconfig.ICShotmic) //  
                         {
-                            if (!State.valistening)
-                            {
+                            if (!State.valistening) {
                                 DcsClient.SendUpdateRequest();
                                 State.MessageReset();
                                 State.processlocked = false;
@@ -238,9 +219,7 @@ namespace VAICOM
 
                         State.MessageReset();
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Error setting RIO command sequence: " + e.StackTrace + e.InnerException, Colors.Inline);
                     }
                 }

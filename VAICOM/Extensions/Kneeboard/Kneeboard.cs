@@ -1,93 +1,71 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using VAICOM.Servers;
+using System.Runtime.Versioning;
 using VAICOM.Client;
+using VAICOM.Servers;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Extensions
-    {
-        namespace Kneeboard
-        {
+namespace VAICOM {
+    namespace Extensions {
+        namespace Kneeboard {
 
-            public static class KneeboardUpdater
-            {
+            [SupportedOSPlatform("windows")]
+            public static class KneeboardUpdater {
 
                 // updates kneeboard for incoming messsages
-                public static void UpdateFromReceivedMessage(Server.ServerCommsMessage message)
-                {
+                public static void UpdateFromReceivedMessage(Server.ServerCommsMessage message) {
                     // relays messages from AWACS, etc
-                    try
-                    {
+                    try {
                         KneeboardMessage msg = new KneeboardMessage();
                         msg.eventid = message.eventid;
                         string sendercat = Database.Dcs.SenderCatByString(message.eventkey).ToString().ToUpper();
                         msg.logdata = new LogData(sendercat, KneeboardHelper.ProcessMessageByEvent(message));
                         Client.DcsClient.SendKneeboardMessage(msg);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
                 // used by AOCS
-                public static void UpdateMessagelogForCat(string cat, string content)
-                {
+                public static void UpdateMessagelogForCat(string cat, string content) {
                     //
-                    try
-                    {
+                    try {
                         KneeboardMessage msg = new KneeboardMessage();
                         msg.logdata = new LogData(cat, content);
                         Client.DcsClient.SendKneeboardMessage(msg);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
-                public static void UpdateUnitsDetailsForCat(string cat, List<string> contents)
-                {
+                public static void UpdateUnitsDetailsForCat(string cat, List<string> contents) {
                     //
-                    try
-                    {
+                    try {
                         KneeboardMessage msg = new KneeboardMessage();
                         msg.unitsdetails = new KneeboardUnitsDetails(cat, contents, true);
                         Client.DcsClient.SendKneeboardMessage(msg);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
 
-                public static void UpdateServerData()
-                {
+                public static void UpdateServerData() {
                     //
-                    try
-                    {
+                    try {
                         KneeboardMessage msg = new KneeboardMessage();
                         msg.serverdata = new KneeboardServerData();
                         Client.DcsClient.SendKneeboardMessage(msg);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
 
-                public static void SwitchPage(string cat)
-                {
+                public static void SwitchPage(string cat) {
 
-                    for (int i = 0; i <= 1; i += 1)
-                    {
+                    for (int i = 0; i <= 1; i += 1) {
                         //
-                        try
-                        {
+                        try {
                             KneeboardMessage msg = new KneeboardMessage();
                             string sendcat = cat;
-                            if (State.AIRIOactive && (cat.Equals("RIO") || cat.Equals("Iceman")))
-                            {
+                            if (State.AIRIOactive && (cat.Equals("RIO") || cat.Equals("Iceman"))) {
                                 sendcat = "REF";
                             }
 
@@ -96,18 +74,15 @@ namespace VAICOM
                                 sendcat = "REF";
                             }
 
-                            if (cat.Equals("Allies"))
-                            {
+                            if (cat.Equals("Allies")) {
                                 sendcat = "FLIGHT";
                             }
 
                             msg.logdata = new LogData(sendcat.ToUpper(), sendcat.ToUpper());
                             State.KneeboardState.activecat = sendcat;
 
-                            if (!sendcat.Equals("NOTES") & !sendcat.Equals("LOG"))
-                            {
-                                if (!sendcat.Equals("REF"))
-                                {
+                            if (!sendcat.Equals("NOTES") & !sendcat.Equals("LOG")) {
+                                if (!sendcat.Equals("REF")) {
                                     KneeboardUnitsData catunits = new KneeboardUnitsData(sendcat, false);
                                     msg.unitsdata = catunits;
                                 }
@@ -125,30 +100,25 @@ namespace VAICOM
 
                             if (true) //(sendcat.Equals("NOTES") || sendcat.Equals("LOG") || msg.aliasdata.content.Count > 0) // if chunk not empty
                             {
-                                if (State.kneeboardactivated)
-                                {
+                                if (State.kneeboardactivated) {
                                     msg.switchpage = true; // usually false
                                     Client.DcsClient.SendKneeboardMessage(msg); // send chunk
                                     Log.Write("(kneeboard switch page):" + msg.logdata.category, Colors.Inline); //+ " dict keys count " + aliasstrings.Count); ; ; ; // number of dict keys
                                 }
                             }
 
-                        }
-                        catch (Exception a)
-                        {
+                        } catch (Exception a) {
                             Log.Write("error switching page for :" + cat + "\n" + a.Message, Colors.Inline);
                         }
                     }
                 }
 
 
-                public static void SendHeartBeatCycle()
-                {
-                    try
-                    {
+                public static void SendHeartBeatCycle() {
+                    try {
                         KneeboardMessage msg = new KneeboardMessage(); // includes dict state
 
-                        msg.serverdata = new KneeboardServerData(); 
+                        msg.serverdata = new KneeboardServerData();
 
                         if (State.Proxy.Dictation.IsOn()) // in dictation mode: include buffer update every 1/4 second:
                         {
@@ -160,28 +130,22 @@ namespace VAICOM
                                 State.kneeboardcurrentbuffer = dictbuffer;
                                 msg.logdata = new LogData("NOTES", dictbuffer);
                             }
-                        }
-                        else
-                        {
+                        } else {
                             State.uitimerinterval = 1000;
                         }
-                 
+
                         Client.DcsClient.SendKneeboardMessage(msg);
 
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
-                public static void SendDeviceCommand(int dev, int cmd, double val)
-                {
-                    try
-                    {
+                public static void SendDeviceCommand(int dev, int cmd, double val) {
+                    try {
                         // generic device action
 
                         State.currentmessage = new DcsClient.Message.CommsMessage();
-                        State.currentmessage.client = State.currentlicense; 
+                        State.currentmessage.client = State.currentlicense;
                         State.currentmessage.type = Messagetypes.DeviceControl;
 
                         DcsClient.DeviceAction action = new DcsClient.DeviceAction();
@@ -194,9 +158,7 @@ namespace VAICOM
 
                         Client.DcsClient.SendClientMessage();
 
-                    }
-                    catch (Exception a)
-                    {
+                    } catch (Exception a) {
                         Log.Write("SendDeviceCommand: " + a.StackTrace, Colors.Text);
                     }
                 }
@@ -204,12 +166,10 @@ namespace VAICOM
 
             }
 
-            public class KneeboardState
-            {
+            public class KneeboardState {
                 public string activecat;
 
-                public KneeboardState()
-                {
+                public KneeboardState() {
                     activecat = "LOG";
                 }
 

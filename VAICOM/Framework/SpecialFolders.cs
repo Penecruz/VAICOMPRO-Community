@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Framework
-    {
+    namespace Framework {
 
 
-        public static class SpecialFolderInstances
-        {
+        [SupportedOSPlatform("windows")]
+        public static class SpecialFolderInstances {
 
             private static Dictionary<SpecialFolderTypes, SpecialFolder> _knownFolderInstances;
 
@@ -17,8 +16,7 @@ namespace VAICOM
             /// The per-user Account Pictures folder. Introduced in Windows 8.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\AccountPictures&quot;.
             /// </summary>
-            public static SpecialFolder AccountPictures
-            {
+            public static SpecialFolder AccountPictures {
                 get { return GetInstance(SpecialFolderTypes.AccountPictures); }
             }
 
@@ -26,8 +24,7 @@ namespace VAICOM
             /// The per-user Administrative Tools folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Start Menu\Programs\Administrative Tools&quot;.
             /// </summary>
-            public static SpecialFolder AdminTools
-            {
+            public static SpecialFolder AdminTools {
                 get { return GetInstance(SpecialFolderTypes.AdminTools); }
             }
 
@@ -35,8 +32,7 @@ namespace VAICOM
             /// The per-user Application Shortcuts folder. Introduced in Windows 8.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\Application Shortcuts&quot;.
             /// </summary>
-            public static SpecialFolder ApplicationShortcuts
-            {
+            public static SpecialFolder ApplicationShortcuts {
                 get { return GetInstance(SpecialFolderTypes.ApplicationShortcuts); }
             }
 
@@ -44,8 +40,7 @@ namespace VAICOM
             /// The per-user Camera Roll folder. Introduced in Windows 8.1.
             /// Defaults to &quot;.%USERPROFILE%\Pictures\Camera Roll&quot;.
             /// </summary>
-            public static SpecialFolder CameraRoll
-            {
+            public static SpecialFolder CameraRoll {
                 get { return GetInstance(SpecialFolderTypes.CameraRoll); }
             }
 
@@ -53,8 +48,7 @@ namespace VAICOM
             /// The per-user Temporary Burn Folder.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\Burn\Burn&quot;.
             /// </summary>
-            public static SpecialFolder CDBurning
-            {
+            public static SpecialFolder CDBurning {
                 get { return GetInstance(SpecialFolderTypes.CDBurning); }
             }
 
@@ -62,8 +56,7 @@ namespace VAICOM
             /// The common Administrative Tools folder.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Administrative Tools&quot;.
             /// </summary>
-            public static SpecialFolder CommonAdminTools
-            {
+            public static SpecialFolder CommonAdminTools {
                 get { return GetInstance(SpecialFolderTypes.CommonAdminTools); }
             }
 
@@ -71,8 +64,7 @@ namespace VAICOM
             /// The common OEM Links folder.
             /// Defaults to &quot;%ALLUSERSPROFILE%\OEM Links&quot;.
             /// </summary>
-            public static SpecialFolder CommonOemLinks
-            {
+            public static SpecialFolder CommonOemLinks {
                 get { return GetInstance(SpecialFolderTypes.CommonOemLinks); }
             }
 
@@ -80,8 +72,7 @@ namespace VAICOM
             /// The common Programs folder.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs&quot;.
             /// </summary>
-            public static SpecialFolder CommonPrograms
-            {
+            public static SpecialFolder CommonPrograms {
                 get { return GetInstance(SpecialFolderTypes.CommonPrograms); }
             }
 
@@ -89,8 +80,7 @@ namespace VAICOM
             /// The common Start Menu folder.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu&quot;.
             /// </summary>
-            public static SpecialFolder CommonStartMenu
-            {
+            public static SpecialFolder CommonStartMenu {
                 get { return GetInstance(SpecialFolderTypes.CommonStartMenu); }
             }
 
@@ -98,8 +88,7 @@ namespace VAICOM
             /// The common Startup folder.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\StartUp&quot;.
             /// </summary>
-            public static SpecialFolder CommonStartup
-            {
+            public static SpecialFolder CommonStartup {
                 get { return GetInstance(SpecialFolderTypes.CommonStartup); }
             }
 
@@ -107,8 +96,7 @@ namespace VAICOM
             /// The common Templates folder.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Templates&quot;.
             /// </summary>
-            public static SpecialFolder CommonTemplates
-            {
+            public static SpecialFolder CommonTemplates {
                 get { return GetInstance(SpecialFolderTypes.CommonTemplates); }
             }
 
@@ -116,8 +104,7 @@ namespace VAICOM
             /// The per-user Contacts folder. Introduced in Windows Vista.
             /// Defaults to &quot;%USERPROFILE%\Contacts&quot;.
             /// </summary>
-            public static SpecialFolder Contacts
-            {
+            public static SpecialFolder Contacts {
                 get { return GetInstance(SpecialFolderTypes.Contacts); }
             }
 
@@ -125,8 +112,7 @@ namespace VAICOM
             /// The per-user Cookies folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Cookies&quot;.
             /// </summary>
-            public static SpecialFolder Cookies
-            {
+            public static SpecialFolder Cookies {
                 get { return GetInstance(SpecialFolderTypes.Cookies); }
             }
 
@@ -134,8 +120,7 @@ namespace VAICOM
             /// The per-user Desktop folder.
             /// Defaults to &quot;%USERPROFILE%\Desktop&quot;.
             /// </summary>
-            public static SpecialFolder Desktop
-            {
+            public static SpecialFolder Desktop {
                 get { return GetInstance(SpecialFolderTypes.Desktop); }
             }
 
@@ -143,8 +128,7 @@ namespace VAICOM
             /// The common DeviceMetadataStore folder. Introduced in Windows 7.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\DeviceMetadataStore&quot;.
             /// </summary>
-            public static SpecialFolder DeviceMetadataStore
-            {
+            public static SpecialFolder DeviceMetadataStore {
                 get { return GetInstance(SpecialFolderTypes.DeviceMetadataStore); }
             }
 
@@ -152,8 +136,7 @@ namespace VAICOM
             /// The per-user Documents folder.
             /// Defaults to &quot;%USERPROFILE%\Documents&quot;.
             /// </summary>
-            public static SpecialFolder Documents
-            {
+            public static SpecialFolder Documents {
                 get { return GetInstance(SpecialFolderTypes.Documents); }
             }
 
@@ -161,8 +144,7 @@ namespace VAICOM
             /// The per-user Documents library. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Libraries\Documents.library-ms&quot;.
             /// </summary>
-            public static SpecialFolder DocumentsLibrary
-            {
+            public static SpecialFolder DocumentsLibrary {
                 get { return GetInstance(SpecialFolderTypes.DocumentsLibrary); }
             }
 
@@ -170,8 +152,7 @@ namespace VAICOM
             /// The per-user Downloads folder.
             /// Defaults to &quot;%USERPROFILE%\Downloads&quot;.
             /// </summary>
-            public static SpecialFolder Downloads
-            {
+            public static SpecialFolder Downloads {
                 get { return GetInstance(SpecialFolderTypes.Downloads); }
             }
 
@@ -179,8 +160,7 @@ namespace VAICOM
             /// The per-user Favorites folder.
             /// Defaults to &quot;%USERPROFILE%\Favorites&quot;.
             /// </summary>
-            public static SpecialFolder Favorites
-            {
+            public static SpecialFolder Favorites {
                 get { return GetInstance(SpecialFolderTypes.Favorites); }
             }
 
@@ -188,8 +168,7 @@ namespace VAICOM
             /// The fixed Fonts folder.
             /// Points to &quot;%WINDIR%\Fonts&quot;.
             /// </summary>
-            public static SpecialFolder Fonts
-            {
+            public static SpecialFolder Fonts {
                 get { return GetInstance(SpecialFolderTypes.Fonts); }
             }
 
@@ -197,8 +176,7 @@ namespace VAICOM
             /// The per-user GameExplorer folder. Introduced in Windows Vista.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\GameExplorer&quot;.
             /// </summary>
-            public static SpecialFolder GameTasks
-            {
+            public static SpecialFolder GameTasks {
                 get { return GetInstance(SpecialFolderTypes.GameTasks); }
             }
 
@@ -206,8 +184,7 @@ namespace VAICOM
             /// The per-user History folder.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\History&quot;.
             /// </summary>
-            public static SpecialFolder History
-            {
+            public static SpecialFolder History {
                 get { return GetInstance(SpecialFolderTypes.History); }
             }
 
@@ -215,8 +192,7 @@ namespace VAICOM
             /// The per-user ImplicitAppShortcuts folder. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Internet Explorer\Quick Launch\User Pinned\ImplicitAppShortcuts&quot;.
             /// </summary>
-            public static SpecialFolder ImplicitAppShortcuts
-            {
+            public static SpecialFolder ImplicitAppShortcuts {
                 get { return GetInstance(SpecialFolderTypes.ImplicitAppShortcuts); }
             }
 
@@ -224,8 +200,7 @@ namespace VAICOM
             /// The per-user Temporary Internet Files folder.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\Temporary Internet Files&quot;.
             /// </summary>
-            public static SpecialFolder InternetCache
-            {
+            public static SpecialFolder InternetCache {
                 get { return GetInstance(SpecialFolderTypes.InternetCache); }
             }
 
@@ -233,8 +208,7 @@ namespace VAICOM
             /// The per-user Libraries folder. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Libraries&quot;.
             /// </summary>
-            public static SpecialFolder Libraries
-            {
+            public static SpecialFolder Libraries {
                 get { return GetInstance(SpecialFolderTypes.Libraries); }
             }
 
@@ -242,8 +216,7 @@ namespace VAICOM
             /// The per-user Links folder.
             /// Defaults to &quot;%USERPROFILE%\Links&quot;.
             /// </summary>
-            public static SpecialFolder Links
-            {
+            public static SpecialFolder Links {
                 get { return GetInstance(SpecialFolderTypes.Links); }
             }
 
@@ -251,8 +224,7 @@ namespace VAICOM
             /// The per-user Local folder.
             /// Defaults to &quot;%LOCALAPPDATA%&quot; (&quot;%USERPROFILE%\AppData\Local&quot;)&quot;.
             /// </summary>
-            public static SpecialFolder LocalAppData
-            {
+            public static SpecialFolder LocalAppData {
                 get { return GetInstance(SpecialFolderTypes.LocalAppData); }
             }
 
@@ -260,8 +232,7 @@ namespace VAICOM
             /// The per-user LocalLow folder.
             /// Defaults to &quot;%USERPROFILE%\AppData\LocalLow&quot;.
             /// </summary>
-            public static SpecialFolder LocalAppDataLow
-            {
+            public static SpecialFolder LocalAppDataLow {
                 get { return GetInstance(SpecialFolderTypes.LocalAppDataLow); }
             }
 
@@ -269,8 +240,7 @@ namespace VAICOM
             /// The fixed LocalizedResourcesDir folder.
             /// Points to &quot;%WINDIR%\resources\0409&quot; (code page).
             /// </summary>
-            public static SpecialFolder LocalizedResourcesDir
-            {
+            public static SpecialFolder LocalizedResourcesDir {
                 get { return GetInstance(SpecialFolderTypes.LocalizedResourcesDir); }
             }
 
@@ -278,8 +248,7 @@ namespace VAICOM
             /// The per-user Music folder.
             /// Defaults to &quot;%USERPROFILE%\Music&quot;.
             /// </summary>
-            public static SpecialFolder Music
-            {
+            public static SpecialFolder Music {
                 get { return GetInstance(SpecialFolderTypes.Music); }
             }
 
@@ -287,8 +256,7 @@ namespace VAICOM
             /// The per-user Music library. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Libraries\Music.library-ms&quot;.
             /// </summary>
-            public static SpecialFolder MusicLibrary
-            {
+            public static SpecialFolder MusicLibrary {
                 get { return GetInstance(SpecialFolderTypes.MusicLibrary); }
             }
 
@@ -296,8 +264,7 @@ namespace VAICOM
             /// The per-user Network Shortcuts folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Network Shortcuts&quot;.
             /// </summary>
-            public static SpecialFolder NetHood
-            {
+            public static SpecialFolder NetHood {
                 get { return GetInstance(SpecialFolderTypes.NetHood); }
             }
 
@@ -305,8 +272,7 @@ namespace VAICOM
             /// The per-user Original Images folder. Introduced in Windows Vista.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows Photo Gallery\Original Images&quot;.
             /// </summary>
-            public static SpecialFolder OriginalImages
-            {
+            public static SpecialFolder OriginalImages {
                 get { return GetInstance(SpecialFolderTypes.OriginalImages); }
             }
 
@@ -314,8 +280,7 @@ namespace VAICOM
             /// The per-user Slide Shows folder. Introduced in Windows Vista.
             /// Defaults to &quot;%USERPROFILE%\Pictures\Slide Shows&quot;.
             /// </summary>
-            public static SpecialFolder PhotoAlbums
-            {
+            public static SpecialFolder PhotoAlbums {
                 get { return GetInstance(SpecialFolderTypes.PhotoAlbums); }
             }
 
@@ -323,8 +288,7 @@ namespace VAICOM
             /// The per-user Pictures library. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Libraries\Pictures.library-ms&quot;.
             /// </summary>
-            public static SpecialFolder PicturesLibrary
-            {
+            public static SpecialFolder PicturesLibrary {
                 get { return GetInstance(SpecialFolderTypes.PicturesLibrary); }
             }
 
@@ -332,8 +296,7 @@ namespace VAICOM
             /// The per-user Pictures folder.
             /// Defaults to &quot;%USERPROFILE%\Pictures&quot;.
             /// </summary>
-            public static SpecialFolder Pictures
-            {
+            public static SpecialFolder Pictures {
                 get { return GetInstance(SpecialFolderTypes.Pictures); }
             }
 
@@ -341,8 +304,7 @@ namespace VAICOM
             /// The per-user Playlists folder.
             /// Defaults to &quot;%USERPROFILE%\Music\Playlists&quot;.
             /// </summary>
-            public static SpecialFolder Playlists
-            {
+            public static SpecialFolder Playlists {
                 get { return GetInstance(SpecialFolderTypes.Playlists); }
             }
 
@@ -350,8 +312,7 @@ namespace VAICOM
             /// The per-user Printer Shortcuts folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Printer Shortcuts&quot;.
             /// </summary>
-            public static SpecialFolder PrintHood
-            {
+            public static SpecialFolder PrintHood {
                 get { return GetInstance(SpecialFolderTypes.PrintHood); }
             }
 
@@ -359,8 +320,7 @@ namespace VAICOM
             /// The fixed user profile folder.
             /// Defaults to &quot;%USERPROFILE%&quot; (&quot;%SYSTEMDRIVE%\USERS\%USERNAME%&quot;)&quot;.
             /// </summary>
-            public static SpecialFolder Profile
-            {
+            public static SpecialFolder Profile {
                 get { return GetInstance(SpecialFolderTypes.Profile); }
             }
 
@@ -368,8 +328,7 @@ namespace VAICOM
             /// The fixed ProgramData folder.
             /// Points to &quot;%ALLUSERSPROFILE%&quot; (&quot;%PROGRAMDATA%&quot;, &quot;%SYSTEMDRIVE%\ProgramData&quot;).
             /// </summary>
-            public static SpecialFolder ProgramData
-            {
+            public static SpecialFolder ProgramData {
                 get { return GetInstance(SpecialFolderTypes.ProgramData); }
             }
 
@@ -381,8 +340,7 @@ namespace VAICOM
             /// operating system and to %SYSTEMDRIVE%\Program Files (x86) in 32-bit applications on a 64-bit operating
             /// system.
             /// </summary>
-            public static SpecialFolder ProgramFiles
-            {
+            public static SpecialFolder ProgramFiles {
                 get { return GetInstance(SpecialFolderTypes.ProgramFiles); }
             }
 
@@ -391,8 +349,7 @@ namespace VAICOM
             /// This known folder is unsupported in 32-bit applications.
             /// Points to %SYSTEMDRIVE%\Program Files.
             /// </summary>
-            public static SpecialFolder ProgramFilesX64
-            {
+            public static SpecialFolder ProgramFilesX64 {
                 get { return GetInstance(SpecialFolderTypes.ProgramFilesX64); }
             }
 
@@ -402,8 +359,7 @@ namespace VAICOM
             /// Points to &quot;%SYSTEMDRIVE%\Program Files&quot; on a 32-bit operating system and to
             /// &quot;%SYSTEMDRIVE%\Program Files (x86)&quot; on a 64-bit operating system.
             /// </summary>
-            public static SpecialFolder ProgramFilesX86
-            {
+            public static SpecialFolder ProgramFilesX86 {
                 get { return GetInstance(SpecialFolderTypes.ProgramFilesX86); }
             }
 
@@ -415,8 +371,7 @@ namespace VAICOM
             /// a 64-bit operating system and to &quot;%PROGRAMFILES(X86)%\Common Files&quot; in 32-bit applications on a
             /// 64-bit operating system.
             /// </summary>
-            public static SpecialFolder ProgramFilesCommon
-            {
+            public static SpecialFolder ProgramFilesCommon {
                 get { return GetInstance(SpecialFolderTypes.ProgramFilesCommon); }
             }
 
@@ -425,8 +380,7 @@ namespace VAICOM
             /// This known folder is unsupported in 32-bit applications.
             /// Points to &quot;%PROGRAMFILES%\Common Files&quot;.
             /// </summary>
-            public static SpecialFolder ProgramFilesCommonX64
-            {
+            public static SpecialFolder ProgramFilesCommonX64 {
                 get { return GetInstance(SpecialFolderTypes.ProgramFilesCommonX64); }
             }
 
@@ -436,8 +390,7 @@ namespace VAICOM
             /// Points to &quot;%PROGRAMFILES%\Common Files&quot; on a 32-bit operating system and to
             /// &quot;%PROGRAMFILES(X86)%\Common Files&quot; on a 64-bit operating system.
             /// </summary>
-            public static SpecialFolder ProgramFilesCommonX86
-            {
+            public static SpecialFolder ProgramFilesCommonX86 {
                 get { return GetInstance(SpecialFolderTypes.ProgramFilesCommonX86); }
             }
 
@@ -445,8 +398,7 @@ namespace VAICOM
             /// The per-user Programs folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Start Menu\Programs&quot;.
             /// </summary>
-            public static SpecialFolder Programs
-            {
+            public static SpecialFolder Programs {
                 get { return GetInstance(SpecialFolderTypes.Programs); }
             }
 
@@ -454,8 +406,7 @@ namespace VAICOM
             /// The fixed Public folder. Introduced in Windows Vista.
             /// Defaults to &quot;%PUBLIC%&quot; (&quot;%SYSTEMDRIVE%\Users\Public)&quot;.
             /// </summary>
-            public static SpecialFolder Public
-            {
+            public static SpecialFolder Public {
                 get { return GetInstance(SpecialFolderTypes.Public); }
             }
 
@@ -463,8 +414,7 @@ namespace VAICOM
             /// The common Public Desktop folder.
             /// Defaults to &quot;%PUBLIC%\Desktop&quot;.
             /// </summary>
-            public static SpecialFolder PublicDesktop
-            {
+            public static SpecialFolder PublicDesktop {
                 get { return GetInstance(SpecialFolderTypes.PublicDesktop); }
             }
 
@@ -472,8 +422,7 @@ namespace VAICOM
             /// The common Public Documents folder.
             /// Defaults to &quot;%PUBLIC%\Documents&quot;.
             /// </summary>
-            public static SpecialFolder PublicDocuments
-            {
+            public static SpecialFolder PublicDocuments {
                 get { return GetInstance(SpecialFolderTypes.PublicDocuments); }
             }
 
@@ -481,8 +430,7 @@ namespace VAICOM
             /// The common Public Downloads folder. Introduced in Windows Vista.
             /// Defaults to &quot;%PUBLIC%\Downloads&quot;.
             /// </summary>
-            public static SpecialFolder PublicDownloads
-            {
+            public static SpecialFolder PublicDownloads {
                 get { return GetInstance(SpecialFolderTypes.PublicDownloads); }
             }
 
@@ -490,8 +438,7 @@ namespace VAICOM
             /// The common GameExplorer folder. Introduced in Windows Vista.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\GameExplorer&quot;.
             /// </summary>
-            public static SpecialFolder PublicGameTasks
-            {
+            public static SpecialFolder PublicGameTasks {
                 get { return GetInstance(SpecialFolderTypes.PublicGameTasks); }
             }
 
@@ -499,8 +446,7 @@ namespace VAICOM
             /// The common Libraries folder. Introduced in Windows 7.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Libraries&quot;.
             /// </summary>
-            public static SpecialFolder PublicLibraries
-            {
+            public static SpecialFolder PublicLibraries {
                 get { return GetInstance(SpecialFolderTypes.PublicLibraries); }
             }
 
@@ -508,8 +454,7 @@ namespace VAICOM
             /// The common Public Music folder.
             /// Defaults to &quot;%PUBLIC%\Music&quot;.
             /// </summary>
-            public static SpecialFolder PublicMusic
-            {
+            public static SpecialFolder PublicMusic {
                 get { return GetInstance(SpecialFolderTypes.PublicMusic); }
             }
 
@@ -517,8 +462,7 @@ namespace VAICOM
             /// The common Public Pictures folder.
             /// Defaults to &quot;%PUBLIC%\Pictures&quot;.
             /// </summary>
-            public static SpecialFolder PublicPictures
-            {
+            public static SpecialFolder PublicPictures {
                 get { return GetInstance(SpecialFolderTypes.PublicPictures); }
             }
 
@@ -526,8 +470,7 @@ namespace VAICOM
             /// The common Ringtones folder. Introduced in Windows 7.
             /// Defaults to &quot;%ALLUSERSPROFILE%\Microsoft\Windows\Ringtones&quot;.
             /// </summary>
-            public static SpecialFolder PublicRingtones
-            {
+            public static SpecialFolder PublicRingtones {
                 get { return GetInstance(SpecialFolderTypes.PublicRingtones); }
             }
 
@@ -535,8 +478,7 @@ namespace VAICOM
             /// The common Public Account Pictures folder. Introduced in Windows 8.
             /// Defaults to &quot;%PUBLIC%\AccountPictures&quot;.
             /// </summary>
-            public static SpecialFolder PublicUserTiles
-            {
+            public static SpecialFolder PublicUserTiles {
                 get { return GetInstance(SpecialFolderTypes.PublicUserTiles); }
             }
 
@@ -544,8 +486,7 @@ namespace VAICOM
             /// The common Public Videos folder.
             /// Defaults to &quot;%PUBLIC%\Videos&quot;.
             /// </summary>
-            public static SpecialFolder PublicVideos
-            {
+            public static SpecialFolder PublicVideos {
                 get { return GetInstance(SpecialFolderTypes.PublicVideos); }
             }
 
@@ -553,8 +494,7 @@ namespace VAICOM
             /// The per-user Quick Launch folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Internet Explorer\Quick Launch&quot;.
             /// </summary>
-            public static SpecialFolder QuickLaunch
-            {
+            public static SpecialFolder QuickLaunch {
                 get { return GetInstance(SpecialFolderTypes.QuickLaunch); }
             }
 
@@ -562,8 +502,7 @@ namespace VAICOM
             /// The per-user Recent Items folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Recent&quot;.
             /// </summary>
-            public static SpecialFolder Recent
-            {
+            public static SpecialFolder Recent {
                 get { return GetInstance(SpecialFolderTypes.Recent); }
             }
 
@@ -571,8 +510,7 @@ namespace VAICOM
             /// The common Recorded TV library. Introduced in Windows 7.
             /// Defaults to &quot;%PUBLIC%\RecordedTV.library-ms&quot;.
             /// </summary>
-            public static SpecialFolder RecordedTVLibrary
-            {
+            public static SpecialFolder RecordedTVLibrary {
                 get { return GetInstance(SpecialFolderTypes.RecordedTVLibrary); }
             }
 
@@ -580,8 +518,7 @@ namespace VAICOM
             /// The fixed Resources folder.
             /// Points to &quot;%WINDIR%\Resources&quot;.
             /// </summary>
-            public static SpecialFolder ResourceDir
-            {
+            public static SpecialFolder ResourceDir {
                 get { return GetInstance(SpecialFolderTypes.ResourceDir); }
             }
 
@@ -589,8 +526,7 @@ namespace VAICOM
             /// The per-user Ringtones folder. Introduced in Windows 7.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\Ringtones&quot;.
             /// </summary>
-            public static SpecialFolder Ringtones
-            {
+            public static SpecialFolder Ringtones {
                 get { return GetInstance(SpecialFolderTypes.Ringtones); }
             }
 
@@ -598,8 +534,7 @@ namespace VAICOM
             /// The per-user Roaming folder.
             /// Defaults to &quot;%APPDATA%&quot; (&quot;%USERPROFILE%\AppData\Roaming&quot;).
             /// </summary>
-            public static SpecialFolder RoamingAppData
-            {
+            public static SpecialFolder RoamingAppData {
                 get { return GetInstance(SpecialFolderTypes.RoamingAppData); }
             }
 
@@ -607,8 +542,7 @@ namespace VAICOM
             /// The per-user RoamedTileImages folder. Introduced in Windows 8.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\RoamedTileImages&quot;.
             /// </summary>
-            public static SpecialFolder RoamedTileImages
-            {
+            public static SpecialFolder RoamedTileImages {
                 get { return GetInstance(SpecialFolderTypes.RoamedTileImages); }
             }
 
@@ -616,8 +550,7 @@ namespace VAICOM
             /// The per-user RoamingTiles folder. Introduced in Windows 8.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\RoamingTiles&quot;.
             /// </summary>
-            public static SpecialFolder RoamingTiles
-            {
+            public static SpecialFolder RoamingTiles {
                 get { return GetInstance(SpecialFolderTypes.RoamingTiles); }
             }
 
@@ -625,8 +558,7 @@ namespace VAICOM
             /// The common Sample Music folder.
             /// Defaults to &quot;%PUBLIC%\Music\Sample Music&quot;.
             /// </summary>
-            public static SpecialFolder SampleMusic
-            {
+            public static SpecialFolder SampleMusic {
                 get { return GetInstance(SpecialFolderTypes.SampleMusic); }
             }
 
@@ -634,8 +566,7 @@ namespace VAICOM
             /// The common Sample Pictures folder.
             /// Defaults to &quot;%PUBLIC%\Pictures\Sample Pictures&quot;.
             /// </summary>
-            public static SpecialFolder SamplePictures
-            {
+            public static SpecialFolder SamplePictures {
                 get { return GetInstance(SpecialFolderTypes.SamplePictures); }
             }
 
@@ -643,8 +574,7 @@ namespace VAICOM
             /// The common Sample Playlists folder. Introduced in Windows Vista.
             /// Defaults to &quot;%PUBLIC%\Music\Sample Playlists&quot;.
             /// </summary>
-            public static SpecialFolder SamplePlaylists
-            {
+            public static SpecialFolder SamplePlaylists {
                 get { return GetInstance(SpecialFolderTypes.SamplePlaylists); }
             }
 
@@ -652,8 +582,7 @@ namespace VAICOM
             /// The common Sample Videos folder.
             /// Defaults to &quot;%PUBLIC%\Videos\Sample Videos&quot;.
             /// </summary>
-            public static SpecialFolder SampleVideos
-            {
+            public static SpecialFolder SampleVideos {
                 get { return GetInstance(SpecialFolderTypes.SampleVideos); }
             }
 
@@ -661,8 +590,7 @@ namespace VAICOM
             /// The per-user Saved Games folder. Introduced in Windows Vista.
             /// Defaults to &quot;%USERPROFILE%\Saved Games&quot;.
             /// </summary>
-            public static SpecialFolder SavedGames
-            {
+            public static SpecialFolder SavedGames {
                 get { return GetInstance(SpecialFolderTypes.SavedGames); }
             }
 
@@ -670,8 +598,7 @@ namespace VAICOM
             /// The per-user Searches folder.
             /// Defaults to &quot;%USERPROFILE%\Searches&quot;.
             /// </summary>
-            public static SpecialFolder SavedSearches
-            {
+            public static SpecialFolder SavedSearches {
                 get { return GetInstance(SpecialFolderTypes.SavedSearches); }
             }
 
@@ -679,8 +606,7 @@ namespace VAICOM
             /// The per-user Screenshots folder. Introduced in Windows 8.
             /// Defaults to &quot;%USERPROFILE%\Pictures\Screenshots&quot;.
             /// </summary>
-            public static SpecialFolder Screenshots
-            {
+            public static SpecialFolder Screenshots {
                 get { return GetInstance(SpecialFolderTypes.Screenshots); }
             }
 
@@ -688,8 +614,7 @@ namespace VAICOM
             /// The per-user History folder. Introduced in Windows 8.1.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\ConnectedSearch\History&quot;.
             /// </summary>
-            public static SpecialFolder SearchHistory
-            {
+            public static SpecialFolder SearchHistory {
                 get { return GetInstance(SpecialFolderTypes.SearchHistory); }
             }
 
@@ -697,8 +622,7 @@ namespace VAICOM
             /// The per-user Templates folder. Introduced in Windows 8.1.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows\ConnectedSearch\Templates&quot;.
             /// </summary>
-            public static SpecialFolder SearchTemplates
-            {
+            public static SpecialFolder SearchTemplates {
                 get { return GetInstance(SpecialFolderTypes.SearchTemplates); }
             }
 
@@ -706,8 +630,7 @@ namespace VAICOM
             /// The per-user SendTo folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\SendTo&quot;.
             /// </summary>
-            public static SpecialFolder SendTo
-            {
+            public static SpecialFolder SendTo {
                 get { return GetInstance(SpecialFolderTypes.SendTo); }
             }
 
@@ -715,8 +638,7 @@ namespace VAICOM
             /// The common Gadgets folder. Introduced in Windows 7.
             /// Defaults to &quot;%ProgramFiles%\Windows Sidebar\Gadgets&quot;.
             /// </summary>
-            public static SpecialFolder SidebarDefaultParts
-            {
+            public static SpecialFolder SidebarDefaultParts {
                 get { return GetInstance(SpecialFolderTypes.SidebarDefaultParts); }
             }
 
@@ -724,8 +646,7 @@ namespace VAICOM
             /// The per-user Gadgets folder. Introduced in Windows 7.
             /// Defaults to &quot;%LOCALAPPDATA%\Microsoft\Windows Sidebar\Gadgets&quot;.
             /// </summary>
-            public static SpecialFolder SidebarParts
-            {
+            public static SpecialFolder SidebarParts {
                 get { return GetInstance(SpecialFolderTypes.SidebarParts); }
             }
 
@@ -733,8 +654,7 @@ namespace VAICOM
             /// The per-user OneDrive folder. Introduced in Windows 8.1.
             /// Defaults to &quot;%USERPROFILE%\OneDrive&quot;.
             /// </summary>
-            public static SpecialFolder SkyDrive
-            {
+            public static SpecialFolder SkyDrive {
                 get { return GetInstance(SpecialFolderTypes.SkyDrive); }
             }
 
@@ -742,8 +662,7 @@ namespace VAICOM
             /// The per-user OneDrive Camera Roll folder. Introduced in Windows 8.1.
             /// Defaults to &quot;%USERPROFILE%\OneDrive\Pictures\Camera Roll&quot;.
             /// </summary>
-            public static SpecialFolder SkyDriveCameraRoll
-            {
+            public static SpecialFolder SkyDriveCameraRoll {
                 get { return GetInstance(SpecialFolderTypes.SkyDriveCameraRoll); }
             }
 
@@ -751,8 +670,7 @@ namespace VAICOM
             /// The per-user OneDrive Documents folder. Introduced in Windows 8.1.
             /// Defaults to &quot;%USERPROFILE%\OneDrive\Documents&quot;.
             /// </summary>
-            public static SpecialFolder SkyDriveDocuments
-            {
+            public static SpecialFolder SkyDriveDocuments {
                 get { return GetInstance(SpecialFolderTypes.SkyDriveDocuments); }
             }
 
@@ -760,8 +678,7 @@ namespace VAICOM
             /// The per-user OneDrive Pictures folder. Introduced in Windows 8.1.
             /// Defaults to &quot;%USERPROFILE%\OneDrive\Pictures&quot;.
             /// </summary>
-            public static SpecialFolder SkyDrivePictures
-            {
+            public static SpecialFolder SkyDrivePictures {
                 get { return GetInstance(SpecialFolderTypes.SkyDrivePictures); }
             }
 
@@ -769,8 +686,7 @@ namespace VAICOM
             /// The per-user Start Menu folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Start Menu&quot;.
             /// </summary>
-            public static SpecialFolder StartMenu
-            {
+            public static SpecialFolder StartMenu {
                 get { return GetInstance(SpecialFolderTypes.StartMenu); }
             }
 
@@ -778,8 +694,7 @@ namespace VAICOM
             /// The per-user Startup folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Start Menu\Programs\StartUp&quot;.
             /// </summary>
-            public static SpecialFolder Startup
-            {
+            public static SpecialFolder Startup {
                 get { return GetInstance(SpecialFolderTypes.Startup); }
             }
 
@@ -789,8 +704,7 @@ namespace VAICOM
             /// Points to &quot;%WINDIR%\system32&quot; on 32-bit operating systems or in 64-bit applications on a 64-bit
             /// operating system and to &quot;%WINDIR%\syswow64&quot; in 32-bit applications on a 64-bit operating system.
             /// </summary>
-            public static SpecialFolder System
-            {
+            public static SpecialFolder System {
                 get { return GetInstance(SpecialFolderTypes.System); }
             }
 
@@ -800,8 +714,7 @@ namespace VAICOM
             /// Points to &quot;%WINDIR%\syswow64&quot; in 64-bit applications or in 32-bit applications on a 64-bit
             /// operating system and to &quot;%WINDIR%\system32&quot; on 32-bit operating systems.
             /// </summary>
-            public static SpecialFolder SystemX86
-            {
+            public static SpecialFolder SystemX86 {
                 get { return GetInstance(SpecialFolderTypes.SystemX86); }
             }
 
@@ -809,8 +722,7 @@ namespace VAICOM
             /// The per-user Templates folder.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Templates&quot;.
             /// </summary>
-            public static SpecialFolder Templates
-            {
+            public static SpecialFolder Templates {
                 get { return GetInstance(SpecialFolderTypes.Templates); }
             }
 
@@ -818,8 +730,7 @@ namespace VAICOM
             /// The per-user User Pinned folder. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Internet Explorer\Quick Launch\User Pinned&quot;.
             /// </summary>
-            public static SpecialFolder UserPinned
-            {
+            public static SpecialFolder UserPinned {
                 get { return GetInstance(SpecialFolderTypes.UserPinned); }
             }
 
@@ -827,8 +738,7 @@ namespace VAICOM
             /// The fixed Users folder. Introduced in Windows Vista.
             /// Points to &quot;%SYSTEMDRIVE%\Users&quot;.
             /// </summary>
-            public static SpecialFolder UserProfiles
-            {
+            public static SpecialFolder UserProfiles {
                 get { return GetInstance(SpecialFolderTypes.UserProfiles); }
             }
 
@@ -836,8 +746,7 @@ namespace VAICOM
             /// The per-user Programs folder. Introduced in Windows 7.
             /// Defaults to &quot;%LOCALAPPDATA%\Programs.&quot;.
             /// </summary>
-            public static SpecialFolder UserProgramFiles
-            {
+            public static SpecialFolder UserProgramFiles {
                 get { return GetInstance(SpecialFolderTypes.UserProgramFiles); }
             }
 
@@ -845,8 +754,7 @@ namespace VAICOM
             /// The per-user common Programs folder. INtroduced in Windows 7.
             /// Defaults to &quot;%LOCALAPPDATA%\Programs\Common&quot;.
             /// </summary>
-            public static SpecialFolder UserProgramFilesCommon
-            {
+            public static SpecialFolder UserProgramFilesCommon {
                 get { return GetInstance(SpecialFolderTypes.UserProgramFilesCommon); }
             }
 
@@ -854,8 +762,7 @@ namespace VAICOM
             /// The per-user Videos folder.
             /// Defaults to &quot;%USERPROFILE%\Videos&quot;.
             /// </summary>
-            public static SpecialFolder Videos
-            {
+            public static SpecialFolder Videos {
                 get { return GetInstance(SpecialFolderTypes.Videos); }
             }
 
@@ -863,8 +770,7 @@ namespace VAICOM
             /// The per-user Videos library. Introduced in Windows 7.
             /// Defaults to &quot;%APPDATA%\Microsoft\Windows\Libraries\Videos.library-ms&quot;.
             /// </summary>
-            public static SpecialFolder VideosLibrary
-            {
+            public static SpecialFolder VideosLibrary {
                 get { return GetInstance(SpecialFolderTypes.VideosLibrary); }
             }
 
@@ -872,23 +778,19 @@ namespace VAICOM
             /// The fixed Windows folder.
             /// Points to &quot;%WINDIR%&quot;.
             /// </summary>
-            public static SpecialFolder Windows
-            {
+            public static SpecialFolder Windows {
                 get { return GetInstance(SpecialFolderTypes.Windows); }
             }
             #endregion
 
-            private static SpecialFolder GetInstance(SpecialFolderTypes type)
-            {
+            private static SpecialFolder GetInstance(SpecialFolderTypes type) {
 
-                if (_knownFolderInstances == null)
-                {
+                if (_knownFolderInstances == null) {
                     _knownFolderInstances = new Dictionary<SpecialFolderTypes, SpecialFolder>();
                 }
 
                 SpecialFolder knownFolder;
-                if (!_knownFolderInstances.TryGetValue(type, out knownFolder))
-                {
+                if (!_knownFolderInstances.TryGetValue(type, out knownFolder)) {
                     knownFolder = new SpecialFolder(type);
                     _knownFolderInstances.Add(type, knownFolder);
                 }

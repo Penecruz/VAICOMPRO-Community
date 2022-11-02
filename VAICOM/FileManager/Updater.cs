@@ -1,57 +1,46 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System;
-using System.Windows;
-using System.Net;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Net;
+using System.Runtime.Versioning;
 using System.Threading;
+using System.Windows;
+using VAICOM.Static;
 
 
-namespace VAICOM
-{
-    namespace FileManager
-    {
-        public static partial class FileHandler
-        {
+namespace VAICOM {
+    namespace FileManager {
+        public static partial class FileHandler {
 
-            public static partial class Updater
-            {
+            [SupportedOSPlatform("windows")]
+            public static partial class Updater {
 
-                public static void GetPluginUpdates()
-                {
-                    try
-                    {
+                public static void GetPluginUpdates() {
+                    try {
 
                         string basefolder = State.Proxy.SessionState["VA_APPS"] + "\\" + Products.Products.Families.Vaicom.VaicomProPlugin.rootfoldername + "\\";
                         string localfolder = basefolder + "Updates" + "\\";
                         string filename;
-                        if (State.versionbeta)
-                        {
+                        if (State.versionbeta) {
                             filename = "updates.json";
-                        }
-                        else
-                        {
+                        } else {
                             filename = "updates.json";
                         }
 
-                        if (!GetWebUpdateFile(basefolder, filename))
-                        {
+                        if (!GetWebUpdateFile(basefolder, filename)) {
                             Log.Write("Updater: JSON could not be downloaded. ", Colors.Inline);
                             return;
                         }
 
                         UpdateDescriptions newdescr = new UpdateDescriptions();
 
-                        try
-                        {
+                        try {
                             newdescr = JsonConvert.DeserializeObject<UpdateDescriptions>(File.ReadAllText(basefolder + filename));
-                            foreach (UpdateData componentupdate in newdescr.updates)
-                            {
-                                if (AcceptUpdate(componentupdate))
-                                {
+                            foreach (UpdateData componentupdate in newdescr.updates) {
+                                if (AcceptUpdate(componentupdate)) {
                                     GetUpdate(localfolder, componentupdate);
                                     File.Delete(basefolder + filename);
                                     PerformUpdate(basefolder, componentupdate);
@@ -59,34 +48,27 @@ namespace VAICOM
                                 }
                             }
 
-                            if (File.Exists(basefolder + filename))
-                            {
+                            if (File.Exists(basefolder + filename)) {
 
                                 File.Delete(basefolder + filename);
                             }
 
-                        }
-                        catch
-                        {
+                        } catch {
                             Log.Write("failed to read update JSON. ", Colors.Inline);
                             File.Delete(basefolder + filename);
                         }
-    
-                    }
-                    catch
-                    {
+
+                    } catch {
                         UI.Playsound.Error();
-                        Log.Write("There was an updater problem." , Colors.Inline);
+                        Log.Write("There was an updater problem.", Colors.Inline);
                     }
 
                 }
 
-                public static void FinishUpdate()
-                {
-                    
+                public static void FinishUpdate() {
+
                     int timeout = 10;
-                    for (int i = 0; i < timeout; i++)
-                    {
+                    for (int i = 0; i < timeout; i++) {
                         Thread.Sleep(1000);
                         UI.Playsound.Proceed();
                     }
@@ -97,13 +79,12 @@ namespace VAICOM
 
                     Log.Write("Update finished. Restart VoiceAttack.", Colors.Warning);
 
-                    startloop:
+                startloop:
                     goto startloop;
 
                 }
 
-                public static void PerformUpdate(string basefolder, UpdateData componentupdate)
-                {
+                public static void PerformUpdate(string basefolder, UpdateData componentupdate) {
                     if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.VaicomProPlugin.product_id)) // plugin
                     {
                         RunBatchFile(basefolder, Properties.Resources.Updater_Plugin);
@@ -120,31 +101,24 @@ namespace VAICOM
                     }
                 }
 
-                public static bool AcceptUpdate(UpdateData componentupdate)
-                {
+                public static bool AcceptUpdate(UpdateData componentupdate) {
                     bool accept = false;
 
-                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.VaicomProPlugin.product_id))
-                    {
+                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.VaicomProPlugin.product_id)) {
                         Version currentversionplugin = State.dll_info_plugin.Version;
 
                         Version onlineversionplugin = new Version();
-                        if (Version.TryParse(componentupdate.versionstring, out onlineversionplugin))
-                        {
+                        if (Version.TryParse(componentupdate.versionstring, out onlineversionplugin)) {
                             State.updateavailable_plugin = componentupdate.isrelease && (onlineversionplugin > currentversionplugin); // sets update bug
-                        }
-                        else
-                        {
+                        } else {
                             State.updateavailable_plugin = false;
                         }
 
-                        if (State.activeconfig.DisableAutomaticUpdates || (componentupdate.isbeta && !State.activeconfig.BetaTester))
-                        {
+                        if (State.activeconfig.DisableAutomaticUpdates || (componentupdate.isbeta && !State.activeconfig.BetaTester)) {
                             State.updateavailable_plugin = false;
                         }
 
-                        if (State.updateavailable_plugin &&!State.activeconfig.DisableAutomaticUpdates)
-                        {
+                        if (State.updateavailable_plugin && !State.activeconfig.DisableAutomaticUpdates) {
                             Log.Write("New update available!", Colors.Warning);
 
                             string caption = componentupdate.title;
@@ -152,35 +126,27 @@ namespace VAICOM
                             MessageBoxResult selectedchoice = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Information);
                             accept = selectedchoice.Equals(MessageBoxResult.Yes);
                             return accept;
-                        }
-                        else
-                        {
+                        } else {
                             return false;
                         }
 
                     }
 
-                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id))
-                    {                        
+                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id)) {
                         Version currentversionchatter = State.dll_info_chatter.Version;
 
                         Version onlineversionchatter = new Version();
-                        if (Version.TryParse(componentupdate.versionstring, out onlineversionchatter))
-                        {
+                        if (Version.TryParse(componentupdate.versionstring, out onlineversionchatter)) {
                             State.updateavailable_chatter = componentupdate.isrelease && (onlineversionchatter > currentversionchatter); // sets update bug
-                        }
-                        else
-                        {
+                        } else {
                             State.updateavailable_chatter = false;
                         }
 
-                        if (!State.chatterthemesactivated || State.activeconfig.DisableAutomaticUpdates || (componentupdate.isbeta && !State.activeconfig.BetaTester))
-                        {
+                        if (!State.chatterthemesactivated || State.activeconfig.DisableAutomaticUpdates || (componentupdate.isbeta && !State.activeconfig.BetaTester)) {
                             State.updateavailable_chatter = false;
                         }
 
-                        if (State.updateavailable_chatter && !State.activeconfig.DisableAutomaticUpdates)
-                        {
+                        if (State.updateavailable_chatter && !State.activeconfig.DisableAutomaticUpdates) {
 
                             Log.Write("New update available!", Colors.Warning);
 
@@ -189,44 +155,34 @@ namespace VAICOM
                             MessageBoxResult selectedchoice = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Information);
                             accept = selectedchoice.Equals(MessageBoxResult.Yes);
                             return accept;
-                        }
-                        else
-                        {
+                        } else {
                             return false;
                         }
 
                     }
 
-                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.RIODialog.product_id))
-                    {
+                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.RIODialog.product_id)) {
                         Version currentversionrio = State.dll_info_rio.Version;
 
                         Version onlineversionrio = new Version();
-                        if (Version.TryParse(componentupdate.versionstring, out onlineversionrio))
-                        {
+                        if (Version.TryParse(componentupdate.versionstring, out onlineversionrio)) {
                             State.updateavailable_rio = componentupdate.isrelease && (onlineversionrio > currentversionrio); // sets update bug
-                        }
-                        else
-                        {
+                        } else {
                             State.updateavailable_rio = false;
                         }
 
-                        if (!State.jesteractivated || State.activeconfig.DisableAutomaticUpdates || (componentupdate.isbeta && !State.activeconfig.BetaTester))
-                        {
+                        if (!State.jesteractivated || State.activeconfig.DisableAutomaticUpdates || (componentupdate.isbeta && !State.activeconfig.BetaTester)) {
                             State.updateavailable_rio = false;
                         }
 
-                        if (State.updateavailable_rio && !State.activeconfig.DisableAutomaticUpdates)
-                        {
+                        if (State.updateavailable_rio && !State.activeconfig.DisableAutomaticUpdates) {
                             Log.Write("New update available!", Colors.Warning);
                             string caption = componentupdate.title;
                             string message = "New update available: \n\n" + componentupdate.releasenotes + "\n\nDo you want to update now?\n";
                             MessageBoxResult selectedchoice = MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Information);
                             accept = selectedchoice.Equals(MessageBoxResult.Yes);
                             return accept;
-                        }
-                        else
-                        {
+                        } else {
                             return false;
                         }
 
@@ -235,17 +191,15 @@ namespace VAICOM
                     return false;
                 }
 
-                public static void GetUpdate(string localfolder, UpdateData componentupdate)
-                {
+                public static void GetUpdate(string localfolder, UpdateData componentupdate) {
 
                     State.activeconfig.AutomaticUpdateFinished = false;
                     Settings.ConfigFile.WriteConfigToFile(true);
 
                     Log.Write("Executing automatic update.", Colors.Warning);
 
-                    if (!Directory.Exists(localfolder))
-                    {
-                        Directory.CreateDirectory(localfolder); 
+                    if (!Directory.Exists(localfolder)) {
+                        Directory.CreateDirectory(localfolder);
                     }
 
                     // get the zip from URL
@@ -254,13 +208,10 @@ namespace VAICOM
                     Log.Write("Downloading package..... ", Colors.Warning);
                     string packagefile = "download"; // local name of file when done
 
-                    try
-                    {
+                    try {
                         var myWebClient = new WebClient();
                         myWebClient.DownloadFile(packageurl, localfolder + "\\" + packagefile);
-                    }
-                    catch
-                    {
+                    } catch {
                         UI.Playsound.Error();
                         Log.Write("There was a problem downloading the update package. Please try again later.", Colors.Warning);
                         Thread.Sleep(1000);
@@ -274,8 +225,7 @@ namespace VAICOM
 
                     string extractpath = localfolder + "Package\\";
 
-                    if (Directory.Exists(extractpath))
-                    {
+                    if (Directory.Exists(extractpath)) {
                         Directory.Delete(extractpath, true);
                     }
 
@@ -287,39 +237,32 @@ namespace VAICOM
 
                 }
 
-                public static void CleanUpdateFolder()
-                {
+                public static void CleanUpdateFolder() {
 
-                    try
-                    {
+                    try {
 
                         string basefolder = State.Proxy.SessionState["VA_APPS"] + "\\" + Products.Products.Families.Vaicom.VaicomProPlugin.rootfoldername + "\\";
                         string localfolder = basefolder + "Updates" + "\\";
 
-                        if (File.Exists(basefolder + "updater.cmd"))
-                        {
+                        if (File.Exists(basefolder + "updater.cmd")) {
                             File.Delete(basefolder + "updater.cmd");
                         }
 
-                        if (Directory.Exists(localfolder))
-                        {
+                        if (Directory.Exists(localfolder)) {
                             Directory.Delete(localfolder, true);
                         }
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Cleanup: " + e.Message, Colors.Text);
                     }
 
                 }
 
-                public static void RunBatchFile(string basefolder, string batchcontentsraw)
-                {
+                public static void RunBatchFile(string basefolder, string batchcontentsraw) {
 
                     string batchfile = basefolder + "updater.cmd";
                     string VApath = State.VA_DIR;
-     
+
                     string insertcontent1 = "\"" + VApath + "\\VoiceAttack.exe\"\n";
                     string batchcontents = batchcontentsraw.Replace("XXXXXX", insertcontent1);
 
@@ -329,10 +272,10 @@ namespace VAICOM
                     proc.StartInfo.FileName = batchfile;
                     proc.StartInfo.WorkingDirectory = basefolder;
                     proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    
+
                     State.activeconfig.AutomaticUpdateFinished = true;
                     Settings.ConfigFile.WriteConfigToFile(true);
-                    
+
                     UI.Playsound.Proceed();
 
                     Thread.Sleep(1500);
@@ -341,13 +284,11 @@ namespace VAICOM
 
                 }
 
-                public static bool GetWebUpdateFile(string basefolder, string filename)
-                {
+                public static bool GetWebUpdateFile(string basefolder, string filename) {
 
                     bool success;
 
-                    try
-                    {
+                    try {
 
                         string URL = "http://www.awebsite.com/uploads/"; // <-- web URL of the hosted updates.json file 
                         string downloadfile = null;
@@ -357,43 +298,38 @@ namespace VAICOM
                         myWebClient.DownloadFile(downloadfile, basefolder + filename);
 
                         success = true;
-                    }
-                    catch
-                    {
+                    } catch {
                         success = false;
                     }
 
                     return success;
                 }
 
-                public class UpdateData
-                {
-                    public string   title;
-                    public bool     isrelease;
-                    public bool     isbeta;
-                    public Int64    productid;
-                    public Int64    releasedate;
-                    public Int64    version; // for backwards compatibility
-                    public string   versionstring;
-                    public string   downloadurl;
-                    public string   releasenotes;
+                public class UpdateData {
+                    public string title;
+                    public bool isrelease;
+                    public bool isbeta;
+                    public Int64 productid;
+                    public Int64 releasedate;
+                    public Int64 version; // for backwards compatibility
+                    public string versionstring;
+                    public string downloadurl;
+                    public string releasenotes;
 
-                    public UpdateData()
-                    {
-                        title       = "";
-                        isrelease   = false;
-                        isbeta      = false;
-                        productid   = 0;
+                    public UpdateData() {
+                        title = "";
+                        isrelease = false;
+                        isbeta = false;
+                        productid = 0;
                         releasedate = 0;
-                        version     = 0;
+                        version = 0;
                         versionstring = "";
                         downloadurl = "";
-                        releasenotes= "";
+                        releasenotes = "";
                     }
                 }
 
-                public class UpdateDescriptions
-                {
+                public class UpdateDescriptions {
                     public List<UpdateData> updates;
                 }
 

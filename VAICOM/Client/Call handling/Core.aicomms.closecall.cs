@@ -1,142 +1,100 @@
-﻿using VAICOM.Static;
+﻿using System.Runtime.Versioning;
 using VAICOM.Database;
 using VAICOM.PushToTalk;
-using System;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Client
-    {
-        public partial class DcsClient
-        {
-            public static partial class Message
-            {
-                public static void logclosecall()
-                {
+namespace VAICOM {
+    namespace Client {
+        [SupportedOSPlatform("windows")]
+        public partial class DcsClient {
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
+                public static void logclosecall() {
 
-                        try
-                        {
-                            if (State.currentcommand.isSwitch())
-                            {
-                                if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_AllowSwitchCommand)
-                                {
-                                    if (State.activeconfig.MP_VoIPUseSwitch && !State.activeconfig.MP_VoIPAutoSwitch && State.activeconfig.MP_WarnHumans)
-                                    {
-                                        UI.Playsound.Human_Comms_Active();
-                                    }
+                    try {
+                        if (State.currentcommand.isSwitch()) {
+                            if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_AllowSwitchCommand) {
+                                if (State.activeconfig.MP_VoIPUseSwitch && !State.activeconfig.MP_VoIPAutoSwitch && State.activeconfig.MP_WarnHumans) {
+                                    UI.Playsound.Human_Comms_Active();
                                 }
-                                else
-                                {
-                                    UI.Playsound.Sorry();
-                                }
+                            } else {
+                                UI.Playsound.Sorry();
                             }
-                            else
-                            {
-                               UI.Playsound.Commandcomplete();
+                        } else {
+                            UI.Playsound.Commandcomplete();
+                        }
+
+                        string recipientlabel = "";
+                        string senderlabel = "";
+                        string cuelabel = "";
+                        string commandlabel = "";
+                        string labelwpn = "";
+                        string labeldir = "";
+
+                        recipientlabel = Labels.airecipients[State.currentkey["recipient"]];
+
+                        if (!recipientlabel.Equals("")) {
+                            recipientlabel = "[ " + recipientlabel + " ] , ";
+                        }
+
+
+                        // sender label
+                        try {
+                            if (State.activeconfig.UseNewRecognitionModel) {
+                                if (State.currentrecipientclass.Name.Equals("Flight")) {
+                                    senderlabel = "";
+                                } else {
+                                    senderlabel = "";
+                                }
+                            } else {
+                                senderlabel = Labels.playercallsigns[State.currentkey["sender"]];
+
                             }
 
-                            string recipientlabel ="";
-                            string senderlabel = "";
-                            string cuelabel = "";
-                            string commandlabel = "";
-                            string labelwpn = "";
-                            string labeldir = "";
-
-                            recipientlabel = Labels.airecipients[State.currentkey["recipient"]];
-
-                            if (!recipientlabel.Equals(""))
-                            {
-                                recipientlabel = "[ " + recipientlabel + " ] , ";
-                            }
-
-
-                            // sender label
-                            try
-                            {
-                                if (State.activeconfig.UseNewRecognitionModel)
-                                {
-                                    if (State.currentrecipientclass.Name.Equals("Flight"))
-                                    {
-                                        senderlabel = "";
-                                    }
-                                    else
-                                    {
-                                        senderlabel = "";
-                                    }
-                                }
-                                else
-                                {
-                                    senderlabel = Labels.playercallsigns[State.currentkey["sender"]];
-
-                                }
-
-                                if (!senderlabel.Equals("") && !senderlabel.Equals(" "))
-                                {
-                                    senderlabel = "[ " + senderlabel + " ], ";
-                                }
-                                else
-                                {
+                            if (!senderlabel.Equals("") && !senderlabel.Equals(" ")) {
+                                senderlabel = "[ " + senderlabel + " ], ";
+                            } else {
                                 senderlabel = "";
-                                }
-
-                            }
-                            catch
-                            {
                             }
 
-                            // cue
-                            try
-                            {
-                                cuelabel = Labels.aicues[State.currentkey["cue"]];
-                            }
-                            catch
-                            {
-                            }
+                        } catch {
+                        }
 
-                            if (!cuelabel.Equals("") && !cuelabel.Equals(" "))
-                            {
-                                cuelabel = "[ " + cuelabel + " ] ";
-                            }
+                        // cue
+                        try {
+                            cuelabel = Labels.aicues[State.currentkey["cue"]];
+                        } catch {
+                        }
+
+                        if (!cuelabel.Equals("") && !cuelabel.Equals(" ")) {
+                            cuelabel = "[ " + cuelabel + " ] ";
+                        }
 
                         // command label
-                        try
-                        {
-                            if (State.have["importedmenus"])
-                            {
+                        try {
+                            if (State.have["importedmenus"]) {
                                 commandlabel = Labels.importedmenus[State.currentkey["command"]];
-                            }
-                            else
-                            {
+                            } else {
                                 commandlabel = Labels.aicommands[State.currentkey["command"]];
                             }
-                        }
-                        catch
-                        {
+                        } catch {
                         }
 
                         commandlabel = "[ " + commandlabel + " ] ";
 
-                        try
-                        {
+                        try {
                             labelwpn = Labels.aiappendiceswpn[State.currentkey["apxwpn"]];
+                        } catch {
                         }
-                        catch
-                        {
-                        }
-                        if (!labelwpn.Equals("") && !labelwpn.Equals(" "))
-                        {
+                        if (!labelwpn.Equals("") && !labelwpn.Equals(" ")) {
                             labelwpn = "[ " + labelwpn + " ] ";
                         }
 
-                        try
-                        {
+                        try {
                             labeldir = Labels.aiappendicesdir[State.currentkey["apxdir"]];
+                        } catch {
                         }
-                        catch
-                        {
-                        }
-                        if (!labeldir.Equals("") && !labeldir.Equals(" "))
-                        {
+                        if (!labeldir.Equals("") && !labeldir.Equals(" ")) {
                             labeldir = "[ " + labeldir + " ]";
                         }
 
@@ -145,15 +103,12 @@ namespace VAICOM
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {
-                            Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": "+ recipientlabel + senderlabel + cuelabel + commandlabel + labelwpn + labeldir , Colors.Message);
-                        }
-                        else // for multi:
-                        {
+                            Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": " + recipientlabel + senderlabel + cuelabel + commandlabel + labelwpn + labeldir, Colors.Message);
+                        } else // for multi:
+                          {
                             Log.Write(State.currentTXnode.name + " | " + State.currentTXnode.radios[0].name + ": " + recipientlabel + senderlabel + cuelabel + commandlabel + labelwpn + labeldir, Colors.Message);
                         }
-                    }
-                    catch
-                    {
+                    } catch {
                         //Log.Write("Closing call:" + e.StackTrace, Colors.Text);
                     }
 

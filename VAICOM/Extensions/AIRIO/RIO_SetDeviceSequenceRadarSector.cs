@@ -1,30 +1,25 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
+namespace VAICOM {
 
-namespace VAICOM
-{
+    namespace Client {
 
-    namespace Client
-    {
+        [SupportedOSPlatform("windows")]
+        public partial class DcsClient {
 
-        public partial class DcsClient
-        {
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
 
-            public static partial class Message
-            {
-
-                public static void SetRioDeviceSequence_Radar_Sector()
-                {
-                    try
-                    {
+                public static void SetRioDeviceSequence_Radar_Sector() {
+                    try {
 
                         // exit if AIRIO not valid
-                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]))
-                        {
+                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod])) {
                             Log.Write("AIRIO commands are not available at this time.", Colors.Warning);
                             UI.Playsound.Recipientna();
                             return;
@@ -46,8 +41,7 @@ namespace VAICOM
                         int scanrange;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:3}"), out scanrange);
                         //Log.Write("Segment 3 = " + scanrange, Colors.Warning);
-                        switch (scanrange)
-                        {
+                        switch (scanrange) {
                             default:
                                 if (scanrange >= 0 && scanrange < 15)  // 15
                                 {
@@ -87,8 +81,7 @@ namespace VAICOM
                         int scanaltitude;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}"), out scanaltitude);
                         //Log.Write("Segment 1 = " + scanaltitude, Colors.Warning);
-                        switch (scanaltitude)
-                        {
+                        switch (scanaltitude) {
                             case 0:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_1);
                                 break;
@@ -150,23 +143,20 @@ namespace VAICOM
 
                         string message = scanaltitude.ToString() + ".000ft " + majval2.ToString() + " " + scanrange.ToString() + "NM";
 
-                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
-                        {
+                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only) {
                             State.currentmessage.dspmsg = "AIRIO : " + "Radar Scan Sector " + message;
                             State.currentmessage.msgdur = 5;
                         }
 
                         UI.Playsound.Commandcomplete();
 
-                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO))
-                        {
+                        if (!State.clientmode.Equals(ClientModes.Debug) && tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO)) {
                             State.currentmessage.dspmsg = "AIRIO : You are in Jester's seat!\n";
                             State.currentmessage.msgdur = 5;
                             State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        }
-                        else // ok, in pilot seat
-                        {
-                                //riospeech.riospeakrandom(1); //ok       
+                        } else // ok, in pilot seat
+                          {
+                            //riospeech.riospeakrandom(1); //ok       
                         }
 
                         SendNewMessage();
@@ -176,17 +166,15 @@ namespace VAICOM
                         if (PTT.IsPTTModeSingle()) // for single mode
                         {
                             Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "Radar Scan Sector " + message + " [ " + " ] [ " + " ]", Colors.Message);
-                        }
-                        else // for multi:
-                        {
+                        } else // for multi:
+                          {
                             Log.Write(State.currentTXnode.name + " | " + State.currentTXnode.radios[0].name + ": [ " + "RIO" + " ],[ " + " ],[ " + " ] " + "Radar Scan Sector " + message + " [ " + " ] [ " + " ]", Colors.Message);
                         }
 
                         // for hotmic:
                         if (State.activeconfig.ICShotmic) //  
                         {
-                            if (!State.valistening)
-                            {
+                            if (!State.valistening) {
                                 DcsClient.SendUpdateRequest();
                                 State.MessageReset();
                                 State.processlocked = false;
@@ -195,9 +183,7 @@ namespace VAICOM
 
                         State.MessageReset();
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Error setting RIO command sequence: " + e.StackTrace + e.InnerException, Colors.Inline);
                     }
                 }

@@ -1,14 +1,13 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Runtime.Versioning;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Database
-    {
+namespace VAICOM {
+    namespace Database {
 
-        public static partial class Labels
-        {
+        [SupportedOSPlatform("windows")]
+        public static partial class Labels {
 
             public static Dictionary<string, string> importedmenus = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             public static Dictionary<string, string> importedatcs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -18,8 +17,7 @@ namespace VAICOM
 
             public static Dictionary<string, Dictionary<string, string>> categories;
 
-            public static void ResetDatabase()
-            {
+            public static void ResetDatabase() {
 
                 categories = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase)
                 {
@@ -35,15 +33,11 @@ namespace VAICOM
                     { "simcontrol",         Labels.simcontrol           },
                 };
 
-                if (State.dll_installed_rio)
-                {
-                    try
-                    {
+                if (State.dll_installed_rio) {
+                    try {
                         categories.Add("riorecipients", Extensions.RIO.Labels.airecipients);
                         categories.Add("riocommands", Extensions.RIO.Labels.aicommands);
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
@@ -70,11 +64,9 @@ namespace VAICOM
 
             public static Dictionary<string, string> master = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-            public static void BuildNewMasterTable()
-            {
+            public static void BuildNewMasterTable() {
 
-                try
-                {
+                try {
                     ResetDatabase();
 
                     master.Clear();
@@ -82,20 +74,14 @@ namespace VAICOM
 
                     Log.Write("Building master labels table...", Colors.Text);
 
-                    foreach (KeyValuePair<string, Dictionary<string, string>> subset in categories)
-                    {
+                    foreach (KeyValuePair<string, Dictionary<string, string>> subset in categories) {
 
                         Dictionary<string, string> set = subset.Value;
 
-                        foreach (KeyValuePair<string, string> element in set)
-                        {
-                            try
-                            {
-                                if (!master.ContainsKey(element.Key))
-                                { master.Add(element.Key, element.Value); count = count + 1; }
-                            }
-                            catch
-                            {
+                        foreach (KeyValuePair<string, string> element in set) {
+                            try {
+                                if (!master.ContainsKey(element.Key)) { master.Add(element.Key, element.Value); count = count + 1; }
+                            } catch {
                             }
                         }
                     }
@@ -103,9 +89,7 @@ namespace VAICOM
                     State.labelcount = count;
 
                     Log.Write("Success.", Colors.Text);
-                }
-                catch (Exception a)
-                {
+                } catch (Exception a) {
                     Log.Write(a.Message + a.StackTrace, Colors.Text);
                 }
             }

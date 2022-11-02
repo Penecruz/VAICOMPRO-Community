@@ -1,31 +1,26 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
+
+namespace VAICOM {
+
+    namespace Client {
+
+        [SupportedOSPlatform("windows")]
+        public partial class DcsClient {
+
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
 
 
-namespace VAICOM
-{
-
-    namespace Client
-    {
-
-        public partial class DcsClient
-        {
-
-            public static partial class Message
-            {
-
-
-                public static void SetRioDeviceSequence_FlyMapMarker()
-                {
-                    try
-                    {
+                public static void SetRioDeviceSequence_FlyMapMarker() {
+                    try {
 
                         // exit if AIRIO not valid
-                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]))
-                        {
+                        if (!State.jesteractivated || !State.dll_installed_rio || !State.activeconfig.RIO_Enabled || !State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod])) {
                             Log.Write("AIRIO commands are not available at this time.", Colors.Warning);
                             UI.Playsound.Recipientna();
                             return;
@@ -44,29 +39,25 @@ namespace VAICOM
                         // root sequence
                         State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_CONTEXT); // includes close first
                         State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_6);
-                        
-                        if (orbit)
-                        {
+
+                        if (orbit) {
                             State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_4);
-                        }
-                        else
-                        {
+                        } else {
                             State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_2);
                         }
 
-                        
-                        
+
+
                         //Log.Write("Segment 0 = " + header, Colors.Warning);
-                        
+
                         int segment1;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}"), out segment1); // Marker Number 1-10
                         int markercount = State.currentstate.riostate.markers;
 
-                        int position = 1+ markercount - segment1; // 1+
+                        int position = 1 + markercount - segment1; // 1+
                         //Log.Write("Position = " + position, Colors.Warning);
 
-                        switch (position)
-                        {
+                        switch (position) {
                             case 1:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_1);
                                 break;
@@ -90,7 +81,7 @@ namespace VAICOM
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_1);
                                 break;
                             case 8:
-                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);            
+                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_2);
                                 break;
                             case 9:
@@ -106,8 +97,7 @@ namespace VAICOM
 
                         }
 
-                        if (orbit)
-                        {
+                        if (orbit) {
                             State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_4);
                         }
 
@@ -115,29 +105,25 @@ namespace VAICOM
                         // always close menu wheel: add at the very end
                         State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_MENU_CLOSE);
 
-                        string str = orbit ? "Orbit" : "Fly to"; 
+                        string str = orbit ? "Orbit" : "Fly to";
                         string message = str + " Map Marker " + segment1.ToString();
 
-                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
-                        {
+                        if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only) {
                             State.currentmessage.dspmsg = "AIRIO : " + message;
                             State.currentmessage.msgdur = 5;
                         }
 
                         UI.Playsound.Commandcomplete();
 
-                        if (!State.clientmode.Equals(ClientModes.Debug) && !tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO))
-                        {
+                        if (!State.clientmode.Equals(ClientModes.Debug) && !tables.menustate[tables.menucats.PLAYERSEAT].Equals(tables.menustates.RIO)) {
                             State.currentmessage.dspmsg = "AIRIO : You are in the pilot seat!\n";
                             State.currentmessage.msgdur = 5;
                             State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        }
-                        else // ok, in RIO seat
-                        {
+                        } else // ok, in RIO seat
+                          {
                         }
 
-                        if (segment1 > markercount)
-                        {
+                        if (segment1 > markercount) {
                             Log.Write("Marker out of range! There are " + markercount + " markers on the map.", Colors.Warning);
                             State.currentmessage.dspmsg = "AIRIO : Marker out of range!\nThere are " + markercount + " markers on the map.";
                             State.currentmessage.msgdur = 5;
@@ -148,22 +134,20 @@ namespace VAICOM
                         SendNewMessage();
 
                         // write message to log 
-                        
+
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {
                             Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": [ " + "AI Pilot" + " ],[ " + " ],[ " + " ] " + message + " [ " + " ] [ " + " ]", Colors.Message);
-                        }
-                        else // for multi:
-                        {
+                        } else // for multi:
+                          {
                             Log.Write(State.currentTXnode.name + " | " + State.currentTXnode.radios[0].name + ": [ " + "AI Pilot" + " ],[ " + " ],[ " + " ] " + message + " [ " + " ] [ " + " ]", Colors.Message);
                         }
 
                         // for hotmic:
                         if (State.activeconfig.ICShotmic) //  
                         {
-                            if (!State.valistening)
-                            {
+                            if (!State.valistening) {
                                 DcsClient.SendUpdateRequest();
                                 State.MessageReset();
                                 State.processlocked = false;
@@ -172,9 +156,7 @@ namespace VAICOM
 
                         State.MessageReset();
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Log.Write("Error setting RIO command sequence: " + e.StackTrace + e.InnerException, Colors.Inline);
                     }
                 }

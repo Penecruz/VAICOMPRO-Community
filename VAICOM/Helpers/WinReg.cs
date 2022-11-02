@@ -1,56 +1,45 @@
-﻿using VAICOM.Static;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
+using System.Runtime.Versioning;
 using System.Security.AccessControl;
+using VAICOM.Static;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Helpers
-    {
+    namespace Helpers {
 
-        public static class WinReg
-        {
+        [SupportedOSPlatform("windows")]
+        public static class WinReg {
             // looks for reg entry for dcs version
-            public static string GetDCSInstallFolder(string DCSversionname)
-            {
+            public static string GetDCSInstallFolder(string DCSversionname) {
                 string keystring = "";
-                try
-                {
+                try {
                     RegistryKey getkey = Registry.CurrentUser.OpenSubKey(Products.Products.Families.DCSWorld.RegKeyRoot + "\\" + DCSversionname);
                     keystring = getkey.GetValue("Path").ToString();
                     return keystring;
-                }
-                catch
-                {
+                } catch {
                     keystring = null;
                 }
                 return keystring;
             }
 
 
-            public static string GetSteamFolder()
-            {
+            public static string GetSteamFolder() {
                 string keystring = "";
-                try
-                {
+                try {
                     RegistryKey getkey = Registry.CurrentUser.OpenSubKey("Software\\Valve\\Steam");
                     keystring = getkey.GetValue("SteamPath").ToString();
                     return keystring;
-                }
-                catch
-                {
+                } catch {
                     keystring = "";
                 }
                 return keystring;
             }
 
-            public static string GetDeepSteamFolder()
-            {
+            public static string GetDeepSteamFolder() {
                 string keystring = "";
 
-                try
-                {
+                try {
                     string user = Environment.UserDomainName + "\\" + "Administrators";
 
                     Log.Write("USER: " + user, Colors.Critical);
@@ -60,31 +49,26 @@ namespace VAICOM
                     RegistryKey rk2;
 
                     // Attempt to change permissions for the key.
-                    try
-                    {
+                    try {
                         rs = new RegistrySecurity();
                         rs.AddAccessRule(new RegistryAccessRule(user,
                             RegistryRights.ReadKey,
                             InheritanceFlags.None,
                             PropagationFlags.None,
                             AccessControlType.Allow));
-;
+                        ;
                         rk2 = Registry.LocalMachine.OpenSubKey(keystr);
                         rk2.SetAccessControl(rs);
 
                         keystring = rk2.GetValue("InstallLocation").ToString();
 
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
+                    } catch (UnauthorizedAccessException) {
                         Log.Write("ACCED DENIED", Colors.Critical);
 
                     }
 
                     return keystring;
-                }
-                catch(Exception e)
-                {
+                } catch (Exception e) {
                     keystring = e.InnerException.Message;
                 }
 

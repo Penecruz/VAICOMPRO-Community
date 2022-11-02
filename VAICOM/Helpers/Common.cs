@@ -1,51 +1,40 @@
-﻿using VAICOM.Static;
-using VAICOM.Products;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
 using System.Linq;
+using System.Runtime.Versioning;
+using System.Text;
 using System.Text.RegularExpressions;
+using VAICOM.Products;
+using VAICOM.Static;
+namespace VAICOM {
 
+    namespace Helpers {
 
-namespace VAICOM
-{
+        [SupportedOSPlatform("windows")]
+        public partial class Common {
 
-    namespace Helpers
-    {
-
-        public partial class Common
-        {
-
-            public static string RemoveDigits(string q)
-            {
+            public static string RemoveDigits(string q) {
                 return Regex.Replace(q, @"\d", "");
             }
 
-            public static string ReadFrequency(string q)
-            {
+            public static string ReadFrequency(string q) {
                 //input must be normalized freq string
                 string returnstr = q;
 
-                try
-                {
+                try {
                     string freqbase = returnstr.Substring(0, 1) + " " + returnstr.Substring(1, 1) + " " + returnstr.Substring(2, 1);
                     string freqdec = returnstr.Substring(4, 1) + returnstr.Substring(5, 1) + returnstr.Substring(6, 1);
 
                     returnstr = freqbase + " decimal " + freqdec;
                     returnstr = returnstr.Replace("000", "zero");
-                }
-                catch
-                {
+                } catch {
                 }
 
                 return returnstr;
             }
 
 
-            public static List<string> SortFrequencies(List<string> a)
-            {
+            public static List<string> SortFrequencies(List<string> a) {
                 List<string> SortedList = new List<string>();
 
                 SortedList = a.OrderBy(q => q).ToList();
@@ -53,79 +42,62 @@ namespace VAICOM
                 return SortedList;
             }
 
-            public static string Reverse(string s)
-            {
+            public static string Reverse(string s) {
                 char[] charArray = s.ToCharArray();
                 Array.Reverse(charArray);
                 return new string(charArray);
             }
 
-            public static int Modulo(int x, int m)
-            {
+            public static int Modulo(int x, int m) {
                 int r = x % m;
                 return r < 0 ? r + m : r;
             }
 
-            public static string RemoveIllegalChars(string inputstr)
-            {
-    
+            public static string RemoveIllegalChars(string inputstr) {
+
                 return inputstr.Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "").Replace("@", "").Replace("$", "").Replace("#", "").Replace(";", "").Replace(":", "").Replace("\"", "").Replace("\'", "").Replace("*", "").Replace(".", " ").Replace("-", " ").Replace("(", "").Replace(")", "");
             }
 
-            public static string RemoveIllegalCharsForDB(string inputstr)
-            {
+            public static string RemoveIllegalCharsForDB(string inputstr) {
                 string outputstr = inputstr.Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "").Replace("@", "").Replace("$", "").Replace("#", "").Replace(";", "").Replace(":", "").Replace("\"", "").Replace("\'", "");
 
-                if (!outputstr.Contains("*"))
-                {
+                if (!outputstr.Contains("*")) {
                     return outputstr;
-                }
-                else
-                {
-                    if (State.activeconfig.UseNewRecognitionModel)
-                    {
+                } else {
+                    if (State.activeconfig.UseNewRecognitionModel) {
                         bool addhead = false;
                         bool addtail = false;
 
-                        if (outputstr.StartsWith("*"))
-                        {
+                        if (outputstr.StartsWith("*")) {
                             addhead = true;
                         }
-                        if (outputstr.EndsWith("*"))
-                        {
+                        if (outputstr.EndsWith("*")) {
                             addtail = true;
                         }
 
                         outputstr = outputstr.Replace("*", "");
 
-                        if (addhead)
-                        {
+                        if (addhead) {
                             outputstr = "*" + outputstr;
                         }
 
-                        if (addtail)
-                        {
+                        if (addtail) {
                             outputstr = outputstr + "*";
                         }
 
                         return outputstr;
-                    }
-                    else
-                    {
+                    } else {
                         outputstr = outputstr.Replace("*", "");
                         return outputstr;
                     }
                 }
-   
+
             }
 
-            public static string StringArrayToMultiString(ICollection<string> stringArray)
-            {
+            public static string StringArrayToMultiString(ICollection<string> stringArray) {
                 StringBuilder multiString = new StringBuilder();
-                if (stringArray != null)
-                {
-                    foreach (string s in stringArray)
-                    {
+                if (stringArray != null) {
+                    foreach (string s in stringArray) {
                         multiString.Append(s);
                         multiString.Append('\0');
                     }
@@ -133,26 +105,20 @@ namespace VAICOM
                 return multiString.ToString();
             }
 
-            public static int GetRange(Servers.Server.Vector A, Servers.Server.Vector B)
-            {
-                double Range = Math.Round(Math.Sqrt(Math.Pow((A.x-B.x),2)+ Math.Pow((A.z - B.z), 2)),0);
+            public static int GetRange(Servers.Server.Vector A, Servers.Server.Vector B) {
+                double Range = Math.Round(Math.Sqrt(Math.Pow((A.x - B.x), 2) + Math.Pow((A.z - B.z), 2)), 0);
                 return (int)Range;
             }
 
-            public static string NormalizeFreqString(string inputstring)
-            {
+            public static string NormalizeFreqString(string inputstring) {
                 string normalizedinput;
-                if (inputstring.Equals(null))
-                {
+                if (inputstring.Equals(null)) {
                     normalizedinput = "";
-                }
-                else
-                {
+                } else {
                     normalizedinput = inputstring;
                 }
 
-                if (normalizedinput.Contains("."))
-                {
+                if (normalizedinput.Contains(".")) {
                     normalizedinput = normalizedinput.Substring(0, normalizedinput.IndexOf("."));
                 }
 
@@ -160,7 +126,7 @@ namespace VAICOM
 
                 string RawValMain = normalizedinput.Substring(0, 3);
                 int RawValDec = Int32.Parse(normalizedinput.Substring(3, 3));
-                double RoundedValDec = 25 * Math.Round((double)RawValDec / 25); 
+                double RoundedValDec = 25 * Math.Round((double)RawValDec / 25);
                 string RoundedDec = Common.Reverse(Common.Reverse(("000" + RoundedValDec)).Substring(0, 3));
 
                 normalizedinput = RawValMain + "." + RoundedDec; // + " MHz";
@@ -169,8 +135,7 @@ namespace VAICOM
             }
 
 
-            public static string StringNormalize(string inputstring)
-            {
+            public static string StringNormalize(string inputstring) {
                 string normalizedinput = inputstring;
                 normalizedinput = normalizedinput.TrimEnd();
                 normalizedinput = normalizedinput.TrimStart();
@@ -178,8 +143,7 @@ namespace VAICOM
                 return normalizedinput;
             }
 
-            public static string TrimmedString(string inputstring)
-            {
+            public static string TrimmedString(string inputstring) {
                 string trimmedinput = inputstring;
                 trimmedinput = trimmedinput.TrimEnd();
                 trimmedinput = trimmedinput.TrimStart();
@@ -187,13 +151,11 @@ namespace VAICOM
             }
 
 
-            public static string ProcessBrevity(string inputstr)
-            {
+            public static string ProcessBrevity(string inputstr) {
 
                 string processtring = inputstr;
 
-                try
-                {
+                try {
 
                     processtring = processtring.Replace("CV 1143.5 ", "");
                     processtring = processtring.Replace("CVN-70 ", "");
@@ -202,8 +164,7 @@ namespace VAICOM
                     processtring = processtring.Replace("CVN-74 ", "");
                     processtring = processtring.Replace("CG-60 ", "");
 
-                    foreach (KeyValuePair<string, DCSmodule> mod in DCSmodules.LookupTable)
-                    {
+                    foreach (KeyValuePair<string, DCSmodule> mod in DCSmodules.LookupTable) {
                         processtring = processtring.Replace(mod.Key, mod.Value.SpeechAlias);
                     }
 
@@ -333,8 +294,7 @@ namespace VAICOM
                     processtring = processtring.Replace("FM", "F M ");
 
                     // for callsign numbers
-                    for (int i = 0; i < 10; i++)
-                    {
+                    for (int i = 0; i < 10; i++) {
                         processtring = processtring.Replace(i.ToString(), " " + i.ToString());
                     }
 
@@ -347,9 +307,7 @@ namespace VAICOM
                     processtring = processtring.Replace("lasvegas", "Las Vegas");
                     processtring = processtring.Replace("Vaziani", "Vaaziaanee");
 
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Log.Write("Error" + e.StackTrace, Colors.Inline);
                 }
 

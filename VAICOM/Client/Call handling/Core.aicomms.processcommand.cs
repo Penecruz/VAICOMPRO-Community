@@ -1,30 +1,26 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using VAICOM.Extensions.WorldAudio;
-using VAICOM.Servers;
-using VAICOM.PushToTalk;
+using System.Runtime.Versioning;
+using VAICOM.Database;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Extensions.WorldAudio;
+using VAICOM.PushToTalk;
+using VAICOM.Servers;
+using VAICOM.Static;
 
-namespace VAICOM
-{
-    namespace Client
-    {
-        public partial class DcsClient
-    {
-            public static partial class Message
-            {
+namespace VAICOM {
+    namespace Client {
+        public partial class DcsClient {
+            [SupportedOSPlatform("windows")]
+            public static partial class Message {
 
                 public static bool havedelayedmessage = false;
 
-                public static Recipientclass getrecipientclass()
-                {
+                public static Recipientclass getrecipientclass() {
                     Recipientclass foundclass = Recipientclasses.Undefined;
 
                     Recipientclass classfromrecipient = Recipientclasses.Undefined;
-                    if (State.have["recipient"])
-                    {
+                    if (State.have["recipient"]) {
                         classfromrecipient = Recipients.Table[State.currentkey["recipient"]].RecipientClass();
                     }
 
@@ -33,19 +29,15 @@ namespace VAICOM
                     if (Commands.Table[State.currentkey["command"]].isSpecial()) // void cmds eventnumber.Equals(4000))
                     {
 
-                        if (State.have["recipient"])
-                        {
+                        if (State.have["recipient"]) {
                             foundclass = classfromrecipient;
                             State.calledisclass = Recipients.Table[State.currentkey["recipient"]].RecipientClass().Name.ToLower().Equals(State.currentkey["recipient"].ToLower());
-                        }
-                        else
-                        {
+                        } else {
                             State.calledisclass = true;
                             // keep as undefined
                         }
-                    }
-                    else // normal commands
-                    {
+                    } else // normal commands
+                      {
                         // always base on command (overrule recipient)
                         foundclass = classfromcommand;
                         State.calledisclass = !State.have["recipient"] || Recipients.Table[State.currentkey["recipient"]].RecipientClass().Name.ToLower().Equals(State.currentkey["recipient"].ToLower());
@@ -54,51 +46,39 @@ namespace VAICOM
                     return foundclass;
                 }
 
-                public static bool noTX()
-                {
-                    if (State.elapsedsincelastpttrelease > 2)
-                    {
+                public static bool noTX() {
+                    if (State.elapsedsincelastpttrelease > 2) {
                         // void hotkey
-                        if (!State.transmitting && !State.currentrecipientclass.Equals(Recipientclasses.Crew) && !(State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]) && State.activeconfig.ICShotmic))
-                        {
+                        if (!State.transmitting && !State.currentrecipientclass.Equals(Recipientclasses.Crew) && !(State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]) && State.activeconfig.ICShotmic)) {
                             Log.Write("PTT: use an active TX node", Colors.Warning);
                             return true;
-                        }
-                        else
-                        {
+                        } else {
                             return false;
                         }
-                    }
-                    else
-                    {
+                    } else {
                         return false;
                     }
                 }
 
-                public static bool blocked()
-                {
+                public static bool blocked() {
                     // block for training mode
-                    if (State.trainerrunning)
-                    {
+                    if (State.trainerrunning) {
                         Log.Write("Keyword Training Mode active: command processing disabled.", Colors.Warning);
                         return true;
                     }
 
                     // block for PRO
-                    if (State.blockedmodule)
-                    {
+                    if (State.blockedmodule) {
                         Log.Write("PRO license is required for this module.", Colors.Warning);
                         return true;
                     }
                     // temporary block
-                    if (State.tempblockedcommands)
-                    {
+                    if (State.tempblockedcommands) {
                         Log.Write("(plugin commands are currently not available)", Colors.Warning);
                         return true;
                     }
                     // script conflicts
-                    if (State.blockallcommands)
-                    {
+                    if (State.blockallcommands) {
                         Log.Write("(server-side script error: inputs blocked. re-install DCS-side lua files)", Colors.Critical);
                         return true;
                     }
@@ -106,46 +86,34 @@ namespace VAICOM
                     return false;
                 }
 
-                public static void filterconflicts()
-                {
-                    try
-                    {
-                        if (State.usedalias["command"].ToLower().Contains(State.usedalias["recipient"].ToLower()))
-                        {
+                public static void filterconflicts() {
+                    try {
+                        if (State.usedalias["command"].ToLower().Contains(State.usedalias["recipient"].ToLower())) {
                             State.currentkey["recipient"] = State.currentcommand.RecipientClass().Name.ToLower();
                             State.have["recipient"] = false;
                         }
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
-                public static void correctforimportedobjects()
-                {
+                public static void correctforimportedobjects() {
                     // special case: imported atcs
 
-                    try
-                    {
-                        if (State.have["importedatcs"])
-                        {
+                    try {
+                        if (State.have["importedatcs"]) {
                             Log.Write("Matched imported atc.", Colors.Text);
 
                             State.currentkey["recipient"] = State.currentkey["importedatcs"];
                             State.usedalias["recipient"] = State.usedalias["importedatcs"];
                             State.have["recipient"] = true;
                         }
-                    }
-                    catch
-                    {
+                    } catch {
                     }
 
                     // special case: imported F10 menus
 
-                    try
-                    {
-                        if (State.have["importedmenus"])
-                        {
+                    try {
+                        if (State.have["importedmenus"]) {
                             Log.Write("Matched imported F10 menu command.", Colors.Text);
 
                             State.currentkey["command"] = State.currentkey["importedmenus"];
@@ -155,112 +123,78 @@ namespace VAICOM
                             State.have["recipient"] = true;
                             State.have["command"] = true;
                         }
-                    }
-                    catch
-                    {
+                    } catch {
                     }
 
                 }
 
-                public static void scanforkeywords()
-                {
-                    try
-                    {
+                public static void scanforkeywords() {
+                    try {
 
-                        foreach (KeyValuePair<string, Dictionary<string, string>> category in Aliases.inputscancats)
-                        {
-                            if (!State.have[category.Key])
-                            {
+                        foreach (KeyValuePair<string, Dictionary<string, string>> category in Aliases.inputscancats) {
+                            if (!State.have[category.Key]) {
                                 State.have[category.Key] = scanfor(category.Key);
                             }
                         }
-                    }
-                    catch
-                    {
+                    } catch {
                     }
                 }
 
-                public static void waitformoreinput()
-                {
-                    if (!State.valistening && State.AIRIOactive && State.activeconfig.ICShotmic)
-                    {
+                public static void waitformoreinput() {
+                    if (!State.valistening && State.AIRIOactive && State.activeconfig.ICShotmic) {
                         State.MessageReset();
-                    }
-                    else
-                    {
-                        if (State.activeconfig.UIaddhints)
-                        {
+                    } else {
+                        if (State.activeconfig.UIaddhints) {
                             UI.Playsound.Proceed();
                         }
                         Log.Write("(awaiting additional input)", Colors.Message);
-                 
+
                         // show kneeboard (if "kneeboard" command used)
-                        try
-                        {
-                            if (Database.Recipients.Table[State.currentkey["recipient"]].name.Equals("wAIUnitKneeboard"))
-                            {
-                                if (State.kneeboardactivated)
-                                {
+                        try {
+                            if (Database.Recipients.Table[State.currentkey["recipient"]].name.Equals("wAIUnitKneeboard")) {
+                                if (State.kneeboardactivated) {
                                     KneeboardToggle();
-                                }
-                                else
-                                {
+                                } else {
                                     Log.Write("Activate your Interactive Kneeboard license to use this command.", Colors.Warning);
                                     UI.Playsound.Error();
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 string cat = Database.Recipients.Table[State.currentkey["recipient"]].RecipientClass().Name;
-                                if (State.activeconfig.KneeboardlinkPTT)
-                                {
-                                    if (State.kneeboardactivated)
-                                    {
+                                if (State.activeconfig.KneeboardlinkPTT) {
+                                    if (State.kneeboardactivated) {
                                         KneeboardUpdater.SwitchPage(cat);
                                     }
                                 }
                             }
-                        }
-                        catch
-                        {
+                        } catch {
                         }
                     }
                 }
-                
-                public static bool getunitforspecialcommands()
-                {
+
+                public static bool getunitforspecialcommands() {
 
                     // OPTIONS
-                    if (State.currentcommand.isOptions() || State.currentcommand.isMenu())
-                    {
-                        if (State.have["recipient"])
-                        {
+                    if (State.currentcommand.isOptions() || State.currentcommand.isMenu()) {
+                        if (State.have["recipient"]) {
                             Server.DcsUnit IntendedUnit = GetCalledUnit(State.currentrecipientclass, State.currentkey["recipient"]);
-                            if (!IntendedUnit.id_.Equals(-1))
-                            {
+                            if (!IntendedUnit.id_.Equals(-1)) {
                                 State.currentmessageunit = IntendedUnit;
                             }
-                        }
-                        else
-                        {                     
+                        } else {
                             // continue ok with no messageunit, class = undefined
                         }
                         return true;
                     }
 
                     // SELECT
-                    if (State.currentcommand.isSelect())
-                    {
+                    if (State.currentcommand.isSelect()) {
                         Server.DcsUnit IntendedUnit = GetCalledUnit(State.currentrecipientclass, State.currentkey["recipient"]);
-                        if (!IntendedUnit.id_.Equals(-1))
-                        {
+                        if (!IntendedUnit.id_.Equals(-1)) {
                             Log.Write("Selecting unit ", Colors.Text);
                             State.SelectedUnit[State.currentrecipientclass.Name] = IntendedUnit;
                             State.currentmessageunit = IntendedUnit;
                             return true;
-                        }
-                        else
-                        {
+                        } else {
                             Log.Write("Recipient " + Labels.airecipients[State.currentkey["recipient"]] + " is currently not available.", Colors.Warning);
                             UI.Playsound.Recipientna();
                             return false;
@@ -268,25 +202,20 @@ namespace VAICOM
                     }
 
                     // STATE
-                    if (State.currentcommand.isState())
-                    {
-                        if (State.have["recipient"])
-                        {
+                    if (State.currentcommand.isState()) {
+                        if (State.have["recipient"]) {
                             Server.DcsUnit IntendedUnit = GetCalledUnit(State.currentrecipientclass, State.currentkey["recipient"]);
-                            if (!IntendedUnit.id_.Equals(-1))
-                            {
+                            if (!IntendedUnit.id_.Equals(-1)) {
                                 State.currentmessageunit = IntendedUnit;
                                 State.calledisclass = (State.currentrecipientclass.Name.ToLower().Equals(State.currentkey["recipient"].ToLower()));
-                            }
-                            else // no units defaults to class --> will state no units available
-                            {
+                            } else // no units defaults to class --> will state no units available
+                              {
                                 State.currentkey["recipient"] = State.currentrecipientclass.Name.ToLower();
                                 State.calledisclass = true;
                             }
                             State.genericstaterequest = false; // true if no recipient called
-                        }
-                        else // generic, targets ACOS
-                        {
+                        } else // generic, targets ACOS
+                          {
                             State.currentmessageunit = State.currentstate.availablerecipients["Aux"].Find(IsAOCS);
                             State.genericstaterequest = true;
                             State.currentrecipientclass = Recipientclasses.Aux; // --> make correction because was AOCS     
@@ -295,14 +224,10 @@ namespace VAICOM
                     }
 
                     // REPEAT
-                    if (State.currentcommand.dcsid.Equals("wMsgReplySayAgain"))
-                    {
-                        if (State.have["recipient"])
-                        {
+                    if (State.currentcommand.dcsid.Equals("wMsgReplySayAgain")) {
+                        if (State.have["recipient"]) {
                             //State.currentrecipientclass = State.currentrecipientclass;
-                        }
-                        else
-                        {
+                        } else {
                             State.currentrecipientclass = State.previousrecipientclass;
                         }
                         return true;
@@ -314,22 +239,18 @@ namespace VAICOM
 
                 }
 
-                public static bool checkifanyunitsincat()
-                {
+                public static bool checkifanyunitsincat() {
                     return !CatCanHaveUnits(Commands.Table[State.currentkey["command"]].RecipientClass()) || State.currentstate.availablerecipients[State.currentrecipientclass.Name].Count > 0;
                 }
 
-                public static bool getunitforregularcommands()
-                {
+                public static bool getunitforregularcommands() {
 
                     // if no recipient alias used: correct to generic recipient based on command: e.g. awacs
-                    if (!State.have["recipient"] || !State.currentrecipientclass.Equals(State.currentcommand.RecipientClass()))
-                    {
+                    if (!State.have["recipient"] || !State.currentrecipientclass.Equals(State.currentcommand.RecipientClass())) {
                         State.currentkey["recipient"] = State.currentcommand.RecipientClass().Name.ToLower();
                     }
 
-                    if (!AllowRecipient(Recipients.Table[State.currentkey["recipient"]]))
-                    {
+                    if (!AllowRecipient(Recipients.Table[State.currentkey["recipient"]])) {
                         return false;
                     }
 
@@ -337,8 +258,7 @@ namespace VAICOM
                     filterconflicts();
 
                     // is its worth even continuing?
-                    if (!checkifanyunitsincat())
-                    {
+                    if (!checkifanyunitsincat()) {
                         Log.Write("There are currently no " + Commands.Table[State.currentkey["command"]].RecipientClass().Name + " recipients available.", Colors.Warning);
                         UI.Playsound.Recipientna();
                         return false;
@@ -346,35 +266,28 @@ namespace VAICOM
 
                     // at least one unit exists in cat
                     // preferred: try set recipient based on freq (for eay comms off)
-                    if (!SetRecipientByFreq())
-                    {
+                    if (!SetRecipientByFreq()) {
                         // easy comms on, fc3 or not tuned:
                         if (!SetRecipientByCall()) // tries to use called unit alias and/or command
                         {
                             return false;
-                        }
-                        else
-                        {
+                        } else {
                             Log.Write("Recipient for " + State.currentcommand.RecipientClass().Name + " set by call contents.", Colors.Text);
                             return true;
                         }
-                    }
-                    else
-                    {
+                    } else {
                         Log.Write("Recipient for " + State.currentcommand.RecipientClass().Name + " set by frequency.", Colors.Text);
                         return true;
                     }
 
                 }
 
-                public static void sendmessage()
-                {
+                public static void sendmessage() {
 
                     Log.Write("Ready, sending message for recipient class " + State.currentrecipientclass.Name + ", calledisclass = " + State.calledisclass, Colors.Inline);
 
 
-                    if (ConstructMessage())
-                    {
+                    if (ConstructMessage()) {
                         SendNewMessage();
 
                         State.previousmessageunit = State.currentmessageunit;
@@ -382,64 +295,48 @@ namespace VAICOM
 
                         // for ics hotmic:
 
-                        if (State.AIRIOactive && State.activeconfig.ICShotmic)
-                        {
-                            if (!State.valistening)
-                            {
+                        if (State.AIRIOactive && State.activeconfig.ICShotmic) {
+                            if (!State.valistening) {
                                 State.MessageReset();
                                 State.processlocked = false;
                             }
 
-                            if (!State.currentcommand.isMenu() && !State.currentcommand.isOptions())
-                            {
+                            if (!State.currentcommand.isMenu() && !State.currentcommand.isOptions()) {
                                 Extensions.RIO.helper.ShowWheel(false);
                                 Extensions.RIO.helper.showingjestermenu = false;
                             }
 
-                        }
-                        else
-                        {
+                        } else {
                             Log.Write("No message sent.", Colors.Inline);
                         }
                     }
-  
+
                 }
 
-                public static void sendvoid()
-                {
+                public static void sendvoid() {
                     Log.Write("Void command.", Colors.Inline);
 
-                    try
-                    {
+                    try {
 
                         // for kneeboard commands
-                        if (State.currentcommand.isKneeboard() || State.currentcommand.uniqueid.Equals(23004) || State.currentcommand.uniqueid.Equals(23005))
-                        {
-                            if (State.kneeboardactivated)
-                            {
+                        if (State.currentcommand.isKneeboard() || State.currentcommand.uniqueid.Equals(23004) || State.currentcommand.uniqueid.Equals(23005)) {
+                            if (State.kneeboardactivated) {
 
-                                switch (State.currentcommand.dcsid)
-                                {
+                                switch (State.currentcommand.dcsid) {
                                     case "wMsgShowKneeboardTab":
-                                        try
-                                        {
+                                        try {
                                             string cat = Database.Recipients.Table[State.currentkey["recipient"]].RecipientClass().Name;
                                             KneeboardUpdater.SwitchPage(cat);
                                             UI.Playsound.Commandcomplete();
-                                        }
-                                        catch
-                                        {
+                                        } catch {
                                         }
                                         break;
                                     case "wMsgClearKneeboardTab": // not used
-                                        try
-                                        {
+                                        try {
                                             string cat = Database.Recipients.Table[State.currentkey["recipient"]].RecipientClass().Name;
                                             KneeboardUpdater.SwitchPage(cat);
                                             UI.Playsound.Commandcomplete();
-                                        }
-                                        catch
-                                        {
+                                        } catch {
                                         }
                                         break;
                                     case "wMsgKneeboardDictateStart":
@@ -450,7 +347,7 @@ namespace VAICOM
                                         //vaProxy.WriteToLog("Start: buffer = " + buffer, Colors.Critical);
                                         break;
                                     case "wMsgKneeboardDictateStop":
-                                        PTT.PTT_Manage_Listen_States_OnPressRelease(false,false);
+                                        PTT.PTT_Manage_Listen_States_OnPressRelease(false, false);
                                         State.Proxy.Dictation.Stop();
                                         //UI.Playsound.Commandcomplete();
                                         break;
@@ -476,52 +373,37 @@ namespace VAICOM
                                     default:
                                         break;
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 Log.Write("Activate your Interactive Kneeboard license to use this command.", Colors.Warning);
                                 UI.Playsound.Error();
                             }
                         }
-                    }
-                    catch 
-                    { 
+                    } catch {
                     }
 
 
-                    if (State.currentcommand.isSwitch())
-                    {
-                        if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_AllowSwitchCommand)
-                        {
+                    if (State.currentcommand.isSwitch()) {
+                        if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_AllowSwitchCommand) {
                             SwapSRSListeningStates();
-                        }
-                        else
-                        {
+                        } else {
                             Log.Write("Switch voice command is disabled in Preferences.", Colors.Warning);
                         }
                     }
 
-                    if (State.currentcommand.dcsid.Equals("wMsgReplySayAgain"))
-                    {
+                    if (State.currentcommand.dcsid.Equals("wMsgReplySayAgain")) {
 
-                        Processor.commcat sendercat = Processor.commcat.ALL; 
+                        Processor.commcat sendercat = Processor.commcat.ALL;
 
-                        try
-                        {
+                        try {
                             sendercat = Processor.CategoryMap[State.currentrecipientclass];
-                        }
-                        catch
-                        {
+                        } catch {
                         }
 
                         Log.Write(State.lastmessage[sendercat].text, Colors.Message);
 
-                        try
-                        {
+                        try {
                             State.receivedtx = Processor.GetReceivingTXFromUnitID(sendercat, State.lastmessage[sendercat].pMsgSender.id_);
-                        }
-                        catch
-                        {
+                        } catch {
                         }
 
                         //Processor.SpeakMessageFromFiles(State.lastmessage[sendercat], 6); // 6x250ms delay
@@ -530,39 +412,29 @@ namespace VAICOM
 
                 }
 
-                public static void SwapSRSListeningStates()
-                {
-                    if (State.activeconfig.MP_VoIPUseSwitch)
-                    {
+                public static void SwapSRSListeningStates() {
+                    if (State.activeconfig.MP_VoIPUseSwitch) {
                         PTT.PTT_Manage_Listen_States_OnSwitch();
-                    }
-                    else
-                    {
+                    } else {
                         Log.Write("VoIP switching is disabled in Preferences.", Colors.Warning);
                     }
                 }
 
-                public static bool dospeech()
-                {
+                public static bool dospeech() {
                     return State.currentcommand.isState() && State.activeconfig.DeepInterrogate && Server.tunedforAOCS;
                 }
 
                 // processes voice command, called directly from plugin
-                public static bool processcommand()
-                {
+                public static bool processcommand() {
                     // thread-safe locking
-                    if (State.processlocked)
-                    {
+                    if (State.processlocked) {
                         return false;
-                    }
-                    else
-                    {
+                    } else {
                         State.processlocked = true;
                     }
 
                     // ------------------
-                    if (blocked())
-                    {
+                    if (blocked()) {
                         State.processlocked = false;
                         return false;
                     }
@@ -573,8 +445,7 @@ namespace VAICOM
                     bool options = false;
                     bool menu = false;
 
-                    try
-                    {
+                    try {
 
                         // get voice input
 
@@ -588,8 +459,7 @@ namespace VAICOM
 
                         // if not: wait..
 
-                        if (!State.haveinputscomplete)
-                        {
+                        if (!State.haveinputscomplete) {
                             waitformoreinput();
                             State.processlocked = false;
                             return false;
@@ -601,8 +471,7 @@ namespace VAICOM
                         //State.activenode = State.currentTXnode;
                         State.currentrecipientclass = getrecipientclass();
 
-                        if (noTX())
-                        {
+                        if (noTX()) {
                             State.processlocked = false;
                             return true; //?? or false
                         }
@@ -618,35 +487,29 @@ namespace VAICOM
                         {
                             // Special commands:  Options / Take / Select / State / Repeat 
 
-                            if (!getunitforspecialcommands() && State.dcsrunning)
-                            {
+                            if (!getunitforspecialcommands() && State.dcsrunning) {
                                 State.MessageReset();
                                 State.processlocked = false;
                                 return !State.currentcommand.isOptions() && !State.currentcommand.isMenu();
                             }
-                        }
-                        else 
-                        {
+                        } else {
                             // Normal commands
 
-                            if (!getunitforregularcommands() && State.dcsrunning)
-                            {
+                            if (!getunitforregularcommands() && State.dcsrunning) {
                                 //didn't get a unit
                                 State.MessageReset();
                                 State.processlocked = false;
                                 return true;
                             }
 
-                            if (!checkcorrectradiouse() && State.dcsrunning)
-                            {
+                            if (!checkcorrectradiouse() && State.dcsrunning) {
                                 // wrong radio
                                 State.MessageReset();
                                 State.processlocked = false;
                                 return true;
                             }
 
-                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.descr.ToLower().Contains("supercarrier"))
-                            {
+                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.descr.ToLower().Contains("supercarrier")) {
                                 Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning);
                                 UI.Playsound.Error();
                                 return true;
@@ -659,16 +522,12 @@ namespace VAICOM
                         logclosecall();
 
                         // switch kneeboard page if autobrowse on
-                        try
-                        {
-                            if (State.activeconfig.KneeboardlinkPTT)
-                            {
+                        try {
+                            if (State.activeconfig.KneeboardlinkPTT) {
                                 string cat = Database.Recipients.Table[State.currentkey["recipient"]].RecipientClass().Name;
                                 KneeboardUpdater.SwitchPage(cat);
                             }
-                        }
-                        catch
-                        {
+                        } catch {
                         }
 
 
@@ -682,53 +541,41 @@ namespace VAICOM
                         if (State.currentcommand.isVoid()) // i.e. replies, switch and repeat
                         {
                             sendvoid();
-                        }
-                        else
-                        {
+                        } else {
                             if (riocommand || selectcommand || optionscommand || menucommand || !(State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_DelayTransmit)) //  || !State.currentTXnode.tunedforhuman 
                             {
                                 sendmessage();
-                            }
-                            else
-                            {
+                            } else {
                                 havedelayedmessage = true;
                             }
                         }
 
-                        if (dospeech())
-                        {
+                        if (dospeech()) {
                             Extensions.AOCS.AOCSProvider.AOCS_CallDeepInterrogate();
-                        }
-                        else
-                        {
-                            if (!havedelayedmessage)
-                            {
+                        } else {
+                            if (!havedelayedmessage) {
                                 State.MessageReset();
                             }
                         }
 
- 
+
                         // setting: auto switch to VoIP when call finished
-                        if (!riocommand && !optionscommand && !menucommand && State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_VoIPAutoSwitch && !switchcommand && !(selectcommand && State.activeconfig.MP_IgnoreSelect))
-                        {
+                        if (!riocommand && !optionscommand && !menucommand && State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_VoIPAutoSwitch && !switchcommand && !(selectcommand && State.activeconfig.MP_IgnoreSelect)) {
                             PTT.PTT_Manage_Listen_States_OnSwitch();
 
-                            if (State.activeconfig.MP_WarnHumans)
-                            {
+                            if (State.activeconfig.MP_WarnHumans) {
                                 UI.Playsound.Human_Comms_Active();
                             }
 
                         }
 
-                    }
-                    catch (Exception e)
-                    {
-                        Log.Write("Voice command processing error:" +  e.StackTrace, Colors.Inline);          
+                    } catch (Exception e) {
+                        Log.Write("Voice command processing error:" + e.StackTrace, Colors.Inline);
                     }
 
                     State.processlocked = false;
 
-                    return !options && !menu; 
+                    return !options && !menu;
 
                 }
 

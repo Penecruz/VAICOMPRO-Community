@@ -1,15 +1,14 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using System.Runtime.Versioning;
+using VAICOM.Static;
 
-namespace VAICOM
-{
+namespace VAICOM {
 
-    namespace Database
-    {
+    namespace Database {
 
-        public static partial class Appendices
-        {
+        [SupportedOSPlatform("windows")]
+        public static partial class Appendices {
 
             public static Dictionary<string, Command> Weapon = new Dictionary<string, Command>(StringComparer.OrdinalIgnoreCase)
             {
