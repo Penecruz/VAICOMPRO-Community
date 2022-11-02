@@ -167,28 +167,6 @@ namespace VAICOM
                 State.activeconfig = Settings.ConfigFile.ReadConfigFromFile();
             }
 
-            public static void CheckEULA(dynamic vaProxy)
-            {
-
-                if (State.activeconfig.Runningforthefirsttime)
-                {
-                    string caption = "EULA - VAICOM PRO";
-                    string message = "\nBy pressing OK you accept the end user license agreement.\n";
-                    MessageBoxResult goahead = MessageBox.Show(message, caption, MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                    if (goahead.Equals(MessageBoxResult.OK))
-                    {
-                        Log.Write("UELA accepted.", Colors.Text);
-                        State.activeconfig.Runningforthefirsttime = false;
-                        Settings.ConfigFile.WriteConfigToFile(true);
-                    }
-                    else
-                    {
-                        throw new Exception(message = "The EULA must be accepted to use VAICOM PRO.");
-                    }
-                }
-
-            }
-
             public static void FixFiles(dynamic vaProxy)
             {
                 Settings.ConfigFile.AddNewConfigItems(); 
@@ -210,7 +188,6 @@ namespace VAICOM
                 State.versionstring = State.dll_version_plugin + " " + betastring;
 
                 Log.Write("Plugin version " + State.versionstring, Colors.Text);
-                Log.Write("License: " + State.currentlicense, Colors.Text);
 
             }
 
@@ -420,7 +397,7 @@ namespace VAICOM
                     FileHandler.Root.CheckSubFolders();
                     FileHandler.Root.ExtractCompagnionApp();
 
-                    Log.Write("VAICOM PRO for DCS World. " + "License: " + State.currentlicense, Colors.System);
+                    Log.Write("VAICOM PRO Community Edition for DCS World.", Colors.System);
                     Log.Write("Press LCtrl+LAlt+C for config.", Colors.System);
                     Log.Write("Initializing..", Colors.System);
 
@@ -430,7 +407,6 @@ namespace VAICOM
 
                     CheckVAVersion(vaProxy);
                     GetAssemblies(vaProxy);
-                    //CheckEULA(vaProxy);
 
                 }
                 catch

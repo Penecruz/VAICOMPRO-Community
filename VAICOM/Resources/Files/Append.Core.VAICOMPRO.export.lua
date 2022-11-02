@@ -176,7 +176,7 @@ vaicom.insert = {
 			LoSetCommand(1592) 
 			return 
 		end	
-		if string.find(mod, "L-39") then
+		if string.find(mod, "L%-39") then
 			GetDevice(34):performClickableAction(1188,1)
 			return
 		end	
@@ -190,18 +190,18 @@ vaicom.insert = {
 			LoSetCommand(1591) 													 		
 			return 
 		end	
-		if string.find(mod, "P-51") or string.find(mod, "TF-51") then
+		if string.find(mod, "P%-51") or string.find(mod, "TF%-51") then
 			LoSetCommand(1592)
 			LoSetCommand(1591)
 			LoSetCommand(1591)			
 			return 
 		end	
-		if string.find(mod, "P-47") then
+		if string.find(mod, "P%-47") then
 			LoSetCommand(1592)
 			LoSetCommand(1591)                                         
 			return
 		end	
-		if string.find(mod, "Mi-24") then
+		if string.find(mod, "Mi%-24") then
 			GetDevice(55):performClickableAction(3026,1) 
 			GetDevice(55):performClickableAction(3026,0) 
 			return
@@ -211,7 +211,7 @@ vaicom.insert = {
 			LoSetCommand(1591) 					
 			return 
 		end	
-		if string.find(mod, "AH-64") then
+		if string.find(mod, "AH%-64") then
 			GetDevice(25):performClickableAction(3017,-1)
 			GetDevice(25):performClickableAction(3017,-1)
 			return 

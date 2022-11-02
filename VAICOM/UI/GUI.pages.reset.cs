@@ -18,10 +18,6 @@ namespace VAICOM
 
             // ------RESET PAGE -------------------------------------------
 
-            private void resetlicenseson(object sender, RoutedEventArgs e) { State.activeconfig.Resetlicenses = true; }
-            private void resetlicensesoff(object sender, RoutedEventArgs e) { State.activeconfig.Resetlicenses = false; }
-            private void SetCurrentValueResetLicenses(object sender, EventArgs e) { clearlicenses.IsChecked = State.activeconfig.Resetlicenses; }
-
             private void resetdbon(object sender, RoutedEventArgs e) { State.activeconfig.Resetdb = true; }
             private void resetdboff(object sender, RoutedEventArgs e) { State.activeconfig.Resetdb = false; }
             private void SetCurrentValueResetDb(object sender, EventArgs e) { cleardb.IsChecked = State.activeconfig.Resetdb; }
@@ -68,18 +64,6 @@ namespace VAICOM
                         // execute
 
                         State.activeconfig.Debugmode = true;
-
-                        if (State.activeconfig.Resetlicenses)
-                        {
-                            try
-                            {
-                                removeallactivelicenses();
-                                Log.Write("License data cleared.", Static.Colors.Text);
-                            }
-                            catch
-                            {
-                            }
-                        }
 
                         if (State.activeconfig.Resetprofile)
                         {

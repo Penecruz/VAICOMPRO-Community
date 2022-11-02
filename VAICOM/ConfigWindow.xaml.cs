@@ -112,7 +112,7 @@ namespace VAICOM
 
             public string setversionnumber()
             {
-                return "GPL version " + State.versionstring ;
+                return "Version " + State.versionstring ;
             }
 
             private void setversionnumber1(object sender, EventArgs e)

@@ -7,7 +7,7 @@
         xmlns:Properties="clr-namespace:VAICOM.Properties" 
         x:Class="VAICOM.UI.ConfigWindow"
         mc:Ignorable="d"
-        Title="VAICOM PRO for DCS World" Height = "335" Width = "495" 
+        Title="VAICOM PRO Community Edition for DCS World" Height = "335" Width = "495" 
         Closing="Window_Closing" Closed="Window_Closed"
     >
 
@@ -509,7 +509,7 @@
                     <Label x:Name="tagline" Content="INTERACTIVE VOICE COMMUNICATIONS PLUGIN FOR DCS WORLD" HorizontalContentAlignment="Center" Foreground="#808080" FontStyle ="Normal" FontWeight="ExtraLight" FontSize="9"  HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Height="37" Width="479" Grid.ColumnSpan="3" Visibility="Hidden"/>
                     <TextBox x:Name="licensekey" FontSize="12" Foreground="#888" Background="#FF272C2D" HorizontalAlignment="Left" Height="23" Margin="51,172,0,0" TextWrapping="Wrap" Text="(enter license key here)" VerticalAlignment="Top" Width="189" TextAlignment="Center" FontFamily="Segoe UI" BorderThickness="2" Grid.Column="1" BorderBrush="#FF434344" Visibility="Hidden" Grid.ColumnSpan="2" />
                     <TextBox x:Name="emailadress"  FontSize="12" Foreground="#888" Background="#FF272D2F" HorizontalAlignment="Left" Height="23" Margin="51,198,0,0" TextWrapping="Wrap" Text="(enter email address here)" VerticalAlignment="Top" Width="189" TextAlignment="Center" FontFamily="Segoe UI" Grid.Column="1" BorderBrush="#FF434344" BorderThickness="2" Visibility="Hidden" Grid.ColumnSpan="2"/>
-                    <TextBlock x:Name="productname" FontSize="12" HorizontalAlignment="Left" Margin="0,9,0,0" TextWrapping="Wrap" Foreground="#FFA0ABAC" Text="current license: FREE edition" VerticalAlignment="Top" Initialized="setproductname" Width="479" TextAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden"/>
+                    <TextBlock x:Name="productname" FontSize="12" HorizontalAlignment="Left" Margin="0,9,0,0" TextWrapping="Wrap" Foreground="#FFA0ABAC" Text="Community Edition" VerticalAlignment="Top" Initialized="setproductname" Width="479" TextAlignment="Center" Grid.ColumnSpan="3" Visibility="Hidden"/>
                     <Image x:Name="ProductLogo" HorizontalAlignment="Left" Height="32" Margin="127,43,0,0" VerticalAlignment="Top" Width="32" Source="Resources/Images/VAICOMPRO logo icon 5 128.png" Grid.Column="1" Visibility="Hidden"/>
                     <Image x:Name="ProductLogo258" HorizontalAlignment="Center" Height="101" Margin="53,69,143,0" VerticalAlignment="Top" Width="189" Source="Resources/Images/MainMenulogo.png" Grid.Column="1" Grid.ColumnSpan="2"/>
 
@@ -526,7 +526,7 @@
                     <Image x:Name="Code_Button" HorizontalAlignment="Left" Height="22" Margin="67,83,0,0" VerticalAlignment="Top" Width="22" Source="Resources/Images/Code_Button_Up.png" MouseDown="ShowLicenses" Cursor="Hand" Panel.ZIndex="1" Grid.Column="2"/>
                     <Rectangle Grid.ColumnSpan="2" Fill="#FF2F373A" HorizontalAlignment="Left" Height="34" Margin="73,133,0,0" VerticalAlignment="Top" Width="44"/>
                     <Border BorderBrush="#FF151515" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="120" Margin="64,74,0,0" VerticalAlignment="Top" Width="43" Visibility="Hidden"/>
-                    <TextBlock x:Name="License_text" Foreground="#D0D0D0" FontSize="10" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="479" TextAlignment="Center" Text="free for use - licenses unlocked" />
+                    <TextBlock x:Name="License_text" Foreground="#D0D0D0" FontSize="10" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="479" TextAlignment="Center" Text="Free Community Edition" />
 
                 </Grid>
             </TabItem>
@@ -538,7 +538,6 @@
                     <Label x:Name="labelsub7" Content=""  HorizontalContentAlignment="Center" Foreground="#FF686868" FontStyle ="Normal" FontSize="10"  HorizontalAlignment="Left" Margin="0,231,0,-9" VerticalAlignment="Top" Height="37" Width="479" Grid.ColumnSpan="2" Initialized="setversionnumber7"/>
                     <CheckBox x:Name="cleardb"       Foreground="#D0D0D0" FontSize="12" Content="Keywords" HorizontalAlignment="Left" Margin="82,73,0,0" VerticalAlignment="Top" Checked="resetdbon" Unchecked="resetdboff" Initialized="SetCurrentValueResetDb" Click="ConfigUpdate" ToolTip="clear keywords database" BorderThickness="2" BorderBrush="#FF8C9AA4"/>
                     <CheckBox x:Name="clearsettings" Foreground="#D0D0D0" FontSize="12" Content="Settings" HorizontalAlignment="Left" Margin="82,93,0,0" VerticalAlignment="Top" Checked="resetoptionson" Unchecked="resetoptionsoff" Initialized="SetCurrentValueResetOptions" Click="ConfigUpdate" ToolTip="clear options and preferences" BorderThickness="2" BorderBrush="#FF8C9AA4"/>
-                    <CheckBox x:Name="clearlicenses" Foreground="#D0D0D0" FontSize="12" Content="License data" HorizontalAlignment="Left" Margin="82,53,0,0" VerticalAlignment="Top" Checked="resetlicenseson" Unchecked="resetlicensesoff" Initialized="SetCurrentValueResetLicenses" Click="ConfigUpdate" ToolTip="clear license data" BorderThickness="2" BorderBrush="#FF8C9AA4" />
                     <CheckBox x:Name="clearprofile" Foreground="#D0D0D0" FontSize="12" Content="Profile" HorizontalAlignment="Left" Margin="82,114,0,0" VerticalAlignment="Top" Checked="resetprofileon" Unchecked="resetprofileoff" Initialized="SetCurrentValueResetProfile" Click="ConfigUpdate" ToolTip="clear profile" BorderThickness="2" BorderBrush="#FF8C9AA4" />
                     <CheckBox x:Name="cleartheme" Foreground="#D0D0D0" FontSize="12" Content="Theme" HorizontalAlignment="Left" Margin="82,134,0,0" VerticalAlignment="Top" Checked="resetthemeon" Unchecked="resetthemeoff" Initialized="SetCurrentValueResetTheme" Click="ConfigUpdate" ToolTip="clear DCS theme" BorderThickness="2" BorderBrush="#FF8C9AA4" />
                     <CheckBox x:Name="clearlua" Foreground="#D0D0D0" FontSize="12" Content="Lua code" HorizontalAlignment="Left" Margin="82,154,0,0" VerticalAlignment="Top" Checked="resetluaon" Unchecked="resetluaoff" Initialized="SetCurrentValueResetLua" Click="ConfigUpdate" ToolTip="clear lua code" BorderThickness="2" BorderBrush="#FF8C9AA4" />

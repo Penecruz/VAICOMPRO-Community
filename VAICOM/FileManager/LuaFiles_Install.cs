@@ -96,7 +96,14 @@ namespace VAICOM
                                         Log.Write("   Using Registry entry for " + set.Key, Colors.Text);
                                     }
                                     dcsprogramfilesfolder = dcsinstallfolder_fromreg;
-                                    installfound = true;
+                                    if (Directory.Exists(dcsprogramfilesfolder))
+                                    {
+                                        installfound = true;
+                                    }
+                                    else if (!forcequiet)
+                                    {
+                                        Log.Write("   Your registry key is invalid, create a custom path instead!", Colors.Warning);
+                                    }
                                 }
 
                                 // STEAM DEFAULT FOLDER
@@ -112,7 +119,14 @@ namespace VAICOM
                                     }
 
                                     dcsprogramfilesfolder = dcsinstallfolder_steamdefault;
-                                    installfound = true;
+                                    if (Directory.Exists(dcsprogramfilesfolder))
+                                    {
+                                        installfound = true;
+                                    }
+                                    else if (!forcequiet)
+                                    {
+                                        Log.Write("   Your Steam install path is wrong, set a custom path instead!", Colors.Warning);
+                                    }
                                 }
 
                                 // REGULAR PATH (FAILSAFE)
@@ -126,7 +140,10 @@ namespace VAICOM
                                         Log.Write("   Using Regular install path for " + set.Key, Colors.Text);
                                     }
                                     dcsprogramfilesfolder = dcsinstallfolder_regular;
-                                    installfound = true;
+                                    if (Directory.Exists(dcsprogramfilesfolder))
+                                    {
+                                        installfound = true;
+                                    }
                                 }
 
                                 // ELSE VERSION NOT FOUND

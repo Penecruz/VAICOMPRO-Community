@@ -1,4 +1,4 @@
-local self_ID = "VAICOM PRO GPL by DCS Community"
+local self_ID = "VAICOM PRO Community Edition"
 
 declare_plugin(self_ID,
 {
@@ -18,7 +18,7 @@ declare_plugin(self_ID,
 	Skins	=
 	{
 		{
-			name	= "VAICOM PRO GPL",
+			name	= "VAICOM PRO Community Edition",
 			dir		= "Theme"
 		},
 	},
@@ -26,7 +26,7 @@ declare_plugin(self_ID,
 	Options =
 	{
 		{
-			name		= "VAICOM PRO GPL",
+			name		= "VAICOM PRO Commnuity Edition",
 			nameId		= "VAICOM",
 			dir			= "Options",
 			CLSID		= "{VAICOM options}"

@@ -783,7 +783,7 @@ namespace VAICOM.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to local self_ID = &quot;VAICOM PRO GPL by DCS Community&quot;
+        ///   Looks up a localized string similar to local self_ID = &quot;VAICOM PRO Community Edition&quot;
         ///
         ///declare_plugin(self_ID,
         ///{
