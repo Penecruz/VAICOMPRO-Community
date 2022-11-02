@@ -2,7 +2,7 @@ using VAICOM.Static;
 using System.Collections.Generic;
 using System;
 using VAICOM.Servers;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -11,6 +11,7 @@ namespace VAICOM
         namespace Kneeboard
         {
 
+            [SupportedOSPlatform("windows")]
             public static partial class KneeboardHelper
             {
 

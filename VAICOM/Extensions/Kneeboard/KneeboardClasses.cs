@@ -4,6 +4,7 @@ using System;
 using VAICOM.Servers;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -14,6 +15,7 @@ namespace VAICOM
 
             // core class for kneeboard messages
 
+            [SupportedOSPlatform("windows")]
             public class KneeboardMessage
             {
                 public int      eventid;
@@ -67,6 +69,7 @@ namespace VAICOM
                 }
             }
 
+            [SupportedOSPlatform("windows")]
             public class KneeboardServerData
             {
                 public string theater;
@@ -147,6 +150,7 @@ namespace VAICOM
                 }
             }
 
+            [SupportedOSPlatform("windows")]
             public class KneeboardUnitsData
             {
                 public string category;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -7,6 +8,7 @@ namespace VAICOM
     {
 
 
+        [SupportedOSPlatform("windows")]
         public static class SpecialFolderInstances
         {
 

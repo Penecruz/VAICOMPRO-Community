@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using System.Threading;
 using System.Speech.Synthesis;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -12,6 +13,7 @@ namespace VAICOM
     namespace PushToTalk
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class PTT
         {
 

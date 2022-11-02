@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Speech.Synthesis;
 using VAICOM.Extensions.WorldAudio;
 using VAICOM.Extensions.Kneeboard;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -19,6 +20,7 @@ namespace VAICOM
     namespace Client
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class DcsClient
         {
 

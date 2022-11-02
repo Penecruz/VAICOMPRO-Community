@@ -3,11 +3,13 @@ using VAICOM.Servers;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace FileManager
     {
+        [SupportedOSPlatform("windows")]
         public static partial class FileHandler
         {
             public static partial class Lua

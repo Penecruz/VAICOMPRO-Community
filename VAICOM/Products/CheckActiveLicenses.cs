@@ -1,8 +1,11 @@
-﻿namespace VAICOM
+﻿using System.Runtime.Versioning;
+
+namespace VAICOM
 {
     namespace Products
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class Products
         {
 

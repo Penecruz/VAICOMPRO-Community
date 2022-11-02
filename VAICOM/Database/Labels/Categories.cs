@@ -1,12 +1,14 @@
 ﻿using VAICOM.Static;
 using System.Collections.Generic;
 using System;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Database
     {
 
+        [SupportedOSPlatform("windows")]
         public static partial class Labels
         {
 

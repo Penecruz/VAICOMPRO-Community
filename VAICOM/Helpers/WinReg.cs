@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Security.AccessControl;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -9,6 +10,7 @@ namespace VAICOM
     namespace Helpers
     {
 
+        [SupportedOSPlatform("windows")]
         public static class WinReg
         {
             // looks for reg entry for dcs version

@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Linq;
 using System.Text.RegularExpressions;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -15,6 +15,7 @@ namespace VAICOM
     namespace Helpers
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class Common
         {
 

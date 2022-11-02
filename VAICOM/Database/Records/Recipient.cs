@@ -1,5 +1,6 @@
 ﻿using VAICOM.Static;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -7,6 +8,7 @@ namespace VAICOM
     namespace Database
     {
 
+        [SupportedOSPlatform("windows")]
         public class Recipient
         {
 

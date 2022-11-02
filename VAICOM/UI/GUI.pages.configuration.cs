@@ -3,12 +3,14 @@ using System;
 using System.Windows;
 using Microsoft.Win32;
 using System.Net;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace UI
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class ConfigWindow : Window
         {
             // ------------  CONFIGURATION PAGE ---------------------------

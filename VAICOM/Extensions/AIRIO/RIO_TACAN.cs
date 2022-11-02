@@ -1,6 +1,7 @@
 ﻿using VAICOM.Static;
 using System.Collections.Generic;
 using System;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -9,6 +10,7 @@ namespace VAICOM
         namespace RIO
         {
 
+            [SupportedOSPlatform("windows")]
             public partial class helper
             {
 

@@ -8,6 +8,7 @@ using NAudio.Wave.SampleProviders;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using VAICOM.PushToTalk;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -16,6 +17,7 @@ namespace VAICOM
         namespace WorldAudio
         {
 
+            [SupportedOSPlatform("windows")]
             public static partial class Processor
             {
                 public class AudioDeviceObject
@@ -404,7 +406,7 @@ namespace VAICOM
                         //Log.Write("Initialized new stream for device " + State.activeconfig.AudioDeviceNumber, Colors.Warning);
 
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
 
                         Log.Write("Device " + State.audiodeviceobjects[State.activeconfig.AudioDeviceNumber].name + " could not be initialized..", Colors.Text);
@@ -592,7 +594,7 @@ namespace VAICOM
                         State.ttsoutput.Play();
                         State.currentaudiodevicevalid = true;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         try
                         {

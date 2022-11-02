@@ -1,9 +1,11 @@
 ﻿using VAICOM.Static;
 using System.IO;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
 
+    [SupportedOSPlatform("windows")]
     public static class Log
     {
 

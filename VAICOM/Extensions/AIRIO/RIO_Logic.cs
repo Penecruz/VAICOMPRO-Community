@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using VAICOM.Extensions.WorldAudio;
 using VAICOM.Servers;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -11,6 +12,7 @@ namespace VAICOM
         namespace RIO
         {
 
+            [SupportedOSPlatform("windows")]
             public partial class helper
             {
 
@@ -235,6 +237,7 @@ namespace VAICOM
                 }
             }
 
+            [SupportedOSPlatform("windows")]
             public class riospeech
             {
 

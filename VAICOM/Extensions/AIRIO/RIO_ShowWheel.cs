@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using VAICOM.Client;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -10,6 +11,7 @@ namespace VAICOM
         namespace RIO
         {
 
+            [SupportedOSPlatform("windows")]
             public partial class helper
             {
 

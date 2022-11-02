@@ -1,13 +1,14 @@
 ﻿using VAICOM.Static;
 using System;
 using System.Timers;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Extensions
     {
 
+        [SupportedOSPlatform("windows")]
         public static partial class SRSclient
         {
 

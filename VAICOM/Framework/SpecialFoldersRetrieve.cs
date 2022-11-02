@@ -1,12 +1,14 @@
 ﻿using VAICOM.Static;
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Framework
     {
 
+        [SupportedOSPlatform("windows")]
         public class SpecialFoldersRetrieve
         {
 

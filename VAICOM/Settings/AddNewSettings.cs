@@ -3,13 +3,14 @@ using VAICOM.Database;
 using System.IO;
 using Newtonsoft.Json;
 using VAICOM.Languages;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Settings
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class ConfigFile
         {
 

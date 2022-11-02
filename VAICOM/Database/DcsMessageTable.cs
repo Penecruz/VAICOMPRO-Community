@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Versioning;
 using VAICOM.Static;
 
 namespace VAICOM
@@ -9,6 +10,7 @@ namespace VAICOM
     namespace Database
     {
 
+        [SupportedOSPlatform("windows")]
         public static partial class Dcs
         {
             public static SortedDictionary<int, string> DcsMessageTable;

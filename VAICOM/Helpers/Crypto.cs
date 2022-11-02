@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Security.Cryptography;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -8,6 +9,7 @@ namespace VAICOM
     namespace Helpers
     {
 
+        [SupportedOSPlatform("windows")]
         public static class Crypto
         {
 

@@ -4,12 +4,14 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Interfaces
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class Network
         {
 

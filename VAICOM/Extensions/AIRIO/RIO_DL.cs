@@ -79,7 +79,7 @@ namespace VAICOM
                                 counter += 1;
                                 DLstate[callsign] = GetAtom(counter);
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                             }
 

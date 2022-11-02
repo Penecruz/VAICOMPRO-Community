@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Collections;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Database
     {
 
+        [SupportedOSPlatform("windows")]
         public static class CollectionData
         {
 

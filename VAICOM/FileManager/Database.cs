@@ -169,7 +169,7 @@ namespace VAICOM
                                     }
                                 }
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 //Log.Write("There was a problem adding references for " + alias.Key + ": " + e.Message, Colors.Text);
                             }

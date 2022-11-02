@@ -1,6 +1,7 @@
 ﻿using System.Media;
 using NAudio.Wave;
 using System.IO;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -8,6 +9,7 @@ namespace VAICOM
     namespace UI
     {
 
+        [SupportedOSPlatform("windows")]
         public static class Playsound
         {
 

@@ -3,6 +3,7 @@ using VAICOM.Database;
 using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -10,6 +11,7 @@ namespace VAICOM
     namespace Database
     {
 
+        [SupportedOSPlatform("windows")]
         public static partial class Aliases
         {
 

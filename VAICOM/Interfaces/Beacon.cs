@@ -2,12 +2,14 @@
 using VAICOM.Client;
 using System;
 using System.Timers;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Interfaces
     {
 
+        [SupportedOSPlatform("windows")]
         public static partial class Beacon
         {
 
