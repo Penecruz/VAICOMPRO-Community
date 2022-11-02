@@ -23,7 +23,7 @@ namespace VAICOM
 
             public void showproductname()
             {
-                productname.Text = "current license: " + State.currentlicense + " edition";
+                productname.Text = "Community Edition";
 
             }
 
@@ -223,12 +223,6 @@ namespace VAICOM
                 Cancel.IsEnabled = State.PRO;
                 ImportCSVbutton_Add.IsEnabled = true; 
 
-            }
-
-            public void resetlicensefields()
-            {
-                licensekey.Text = "(enter license key here)";
-                emailadress.Text = "(enter email address here)";
             }
 
             private void ShowLicenses(object sender, MouseButtonEventArgs e)
