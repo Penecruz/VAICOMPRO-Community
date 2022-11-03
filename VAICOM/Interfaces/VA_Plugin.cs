@@ -18,12 +18,12 @@ namespace VAICOM
 
             public static string VA_DisplayName()
             {
-                return "VAICOM PRO for DCS World"; 
+                return "VAICOM PRO Community Edition for DCS World"; 
             }
 
             public static string VA_DisplayInfo()
             {
-                return "VAICOM PRO 2.8 for DCS World"; 
+                return "VAICOM PRO Community Edition 2.8 for DCS World"; 
             }
 
             public static Guid VA_Id()

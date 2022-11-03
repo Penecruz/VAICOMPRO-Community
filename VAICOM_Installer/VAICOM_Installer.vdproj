@@ -15,20 +15,26 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_010B6EEEE38B4B289478C8BAB09CB776"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0458D060CC6A4FD8A820F2F02E9779EB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_074170142C3484ED45CF55B506CEE2E2"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_19C27855AD0FD81F7BC21A384FA1DB67"
         "OwnerKey" = "8:_20258B2C85C0459B90E369E0058930F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_19C27855AD0FD81F7BC21A384FA1DB67"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,14 +57,68 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_20F520036137116CAA28688BF429C9E4"
+        "OwnerKey" = "8:_4B11592E3B222519B41F1E1B3853A283"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_29930BA8B5CBD25A34BF0B09E0820056"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2C39C997DC7A4E52BE478DF36D0D6E57"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9D0223B67DC64296821AC70B696423A3"
+        "MsmKey" = "8:_3113650584DA4781A6404881B357252D"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_352294B96BBEF342B2E0F1A5AB3990CC"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4B11592E3B222519B41F1E1B3853A283"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_52D419DD9058075517348CF57EC04842"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5F053255F9451820794FDDB781C051BC"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B345B2554AC6C36E3DAFE99E6006AC22"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC27B4E5A2534A21A8F4448C0D799481"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C558259E2D25237C652416BA91DBC545"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,8 +129,92 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E3E378898DC11C2EDFD7D0E97AD056EF"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FAE96D4555FC9342DF3DCACADB6EA924"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_20258B2C85C0459B90E369E0058930F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1DEB01E740BB4EBBB22B24BBAD692B74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_52D419DD9058075517348CF57EC04842"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C558259E2D25237C652416BA91DBC545"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_074170142C3484ED45CF55B506CEE2E2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_29930BA8B5CBD25A34BF0B09E0820056"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E3E378898DC11C2EDFD7D0E97AD056EF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B345B2554AC6C36E3DAFE99E6006AC22"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FAE96D4555FC9342DF3DCACADB6EA924"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5F053255F9451820794FDDB781C051BC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4B11592E3B222519B41F1E1B3853A283"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_20F520036137116CAA28688BF429C9E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_352294B96BBEF342B2E0F1A5AB3990CC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -174,26 +318,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_010B6EEEE38B4B289478C8BAB09CB776"
-            {
-            "SourcePath" = "8:Resources\\VAICOM PRO User Manual.pdf"
-            "TargetName" = "8:VAICOM PRO User Manual.pdf"
-            "Tag" = "8:"
-            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:FALSE"
-            "ReadOnly" = "11:TRUE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0458D060CC6A4FD8A820F2F02E9779EB"
             {
             "SourcePath" = "8:..\\VA_watchdog\\App_icon_64.ico"
@@ -212,6 +336,37 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_074170142C3484ED45CF55B506CEE2E2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NAudio.Vorbis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_074170142C3484ED45CF55B506CEE2E2"
+                    {
+                    "Name" = "8:NAudio.Vorbis.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:NAudio.Vorbis.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_19C27855AD0FD81F7BC21A384FA1DB67"
@@ -265,6 +420,68 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_20F520036137116CAA28688BF429C9E4"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_20F520036137116CAA28688BF429C9E4"
+                    {
+                    "Name" = "8:System.IO.Compression.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:System.IO.Compression.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_29930BA8B5CBD25A34BF0B09E0820056"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NAudio, Version=1.8.5.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_29930BA8B5CBD25A34BF0B09E0820056"
+                    {
+                    "Name" = "8:NAudio.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:NAudio.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C39C997DC7A4E52BE478DF36D0D6E57"
             {
             "SourcePath" = "8:Resources\\Splash_Explain_Profile_Import.png"
@@ -285,10 +502,165 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D0223B67DC64296821AC70B696423A3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3113650584DA4781A6404881B357252D"
             {
-            "SourcePath" = "8:Resources\\EULA.rtf"
-            "TargetName" = "8:EULA.rtf"
+            "SourcePath" = "8:Resources\\LICENSE.txt"
+            "TargetName" = "8:LICENSE.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_B07D98AC14D24AFBA45F8634C49A3FCF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_352294B96BBEF342B2E0F1A5AB3990CC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                "ScatterAssemblies"
+                {
+                    "_352294B96BBEF342B2E0F1A5AB3990CC"
+                    {
+                    "Name" = "8:System.IO.Compression.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:System.IO.Compression.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4B11592E3B222519B41F1E1B3853A283"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.IO.Compression.FileSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                "ScatterAssemblies"
+                {
+                    "_4B11592E3B222519B41F1E1B3853A283"
+                    {
+                    "Name" = "8:System.IO.Compression.FileSystem.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:System.IO.Compression.FileSystem.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_52D419DD9058075517348CF57EC04842"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NVorbis, Version=0.8.6.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_52D419DD9058075517348CF57EC04842"
+                    {
+                    "Name" = "8:NVorbis.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:NVorbis.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5F053255F9451820794FDDB781C051BC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Windows, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_5F053255F9451820794FDDB781C051BC"
+                    {
+                    "Name" = "8:System.Windows.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:System.Windows.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B345B2554AC6C36E3DAFE99E6006AC22"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Chatter, Version=2.8.0.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B345B2554AC6C36E3DAFE99E6006AC22"
+                    {
+                    "Name" = "8:Chatter.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Chatter.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
             "Condition" = "8:"
@@ -301,8 +673,59 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC27B4E5A2534A21A8F4448C0D799481"
+            {
+            "SourcePath" = "8:Resources\\VAICOM PRO Community User Manual.pdf"
+            "TargetName" = "8:VAICOM PRO Community User Manual.pdf"
+            "Tag" = "8:"
+            "Folder" = "8:_B07D98AC14D24AFBA45F8634C49A3FCF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C558259E2D25237C652416BA91DBC545"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C558259E2D25237C652416BA91DBC545"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D9FC1731A48749BFB52C854CA5D4ABB4"
@@ -323,6 +746,68 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E3E378898DC11C2EDFD7D0E97AD056EF"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Costura, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E3E378898DC11C2EDFD7D0E97AD056EF"
+                    {
+                    "Name" = "8:Costura.dll"
+                    "Attributes" = "3:0"
+                    }
+                }
+            "SourcePath" = "8:Costura.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:FALSE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FAE96D4555FC9342DF3DCACADB6EA924"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AIRIO, Version=2.8.0.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_FAE96D4555FC9342DF3DCACADB6EA924"
+                    {
+                    "Name" = "8:AIRIO.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AIRIO.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D1346CB344A44AF98D08381FF2568E25"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -376,7 +861,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_3989EF8353E3463CA10F43A44F52739A"
                     {
-                    "Name" = "8:VAICOM PRO for DCS World"
+                    "Name" = "8:VAICOM PRO Community Edition for DCS World"
                     "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -449,25 +934,25 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:VAICOM PRO for DCS World"
-        "ProductCode" = "8:{8EABFB98-B632-4E74-91B2-894B9219152C}"
-        "PackageCode" = "8:{723F50D9-B72C-42C8-85F8-D776DAE33E0B}"
+        "ProductName" = "8:VAICOM PRO Community Edition for DCS World"
+        "ProductCode" = "8:{39702A23-AEC7-48CA-880B-06A9FC13C07A}"
+        "PackageCode" = "8:{1F17A5A1-F198-470B-9813-19198459A970}"
         "UpgradeCode" = "8:{16C6ACD8-D83D-44F3-93C0-5BD1BEB540A4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.5.28"
-        "Manufacturer" = "8:GPL"
+        "ProductVersion" = "8:2.8.0"
+        "Manufacturer" = "8:DCS Community"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:VAICOM PRO for DCS World"
+        "Title" = "8:VAICOM PRO Community Edition for DCS World"
         "Subject" = "8:Interactive Voice Communications Plugin"
         "ARPCONTACT" = "8:"
         "Keywords" = "8:DCS World; VoiceAttack;  plugin"
-        "ARPCOMMENTS" = "8:VAICOM PRO for DCS World"
-        "ARPURLINFOABOUT" = "8:"
+        "ARPCOMMENTS" = "8:VAICOM PRO Community Edition for DCS World"
+        "ARPURLINFOABOUT" = "8:https://discord.gg/7c22BHNSCS"
         "ARPPRODUCTICON" = "8:_0458D060CC6A4FD8A820F2F02E9779EB"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -573,7 +1058,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7CBD0CB4F4124F3FB8B29916DCDAF679"
             {
-            "Name" = "8:VAICOM PRO for DCS World"
+            "Name" = "8:VAICOM PRO Community Edition for DCS World"
             "Arguments" = "8:"
             "Description" = "8:VAICOM PRO for DCS World"
             "ShowCmd" = "3:1"
@@ -587,7 +1072,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C0F30472291E44B89DFDCCFD3AE140EC"
             {
-            "Name" = "8:VAICOM PRO for DCS World"
+            "Name" = "8:VAICOM PRO Community Edition for DCS World"
             "Arguments" = "8:"
             "Description" = "8:VAICOM PRO for DCS World"
             "ShowCmd" = "3:1"
@@ -779,7 +1264,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:_9D0223B67DC64296821AC70B696423A3"
+                            "Value" = "8:_3113650584DA4781A6404881B357252D"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "Sunken"
@@ -864,8 +1349,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -950,7 +1435,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:_9D0223B67DC64296821AC70B696423A3"
+                            "Value" = "8:_3113650584DA4781A6404881B357252D"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "Sunken"

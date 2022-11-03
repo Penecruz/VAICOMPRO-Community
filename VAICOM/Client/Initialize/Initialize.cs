@@ -89,12 +89,12 @@ namespace VAICOM
 
                     if (VAcurrentversion < VAminversion)
                     {
-                        Log.Write("ALERT: VoiceAttack is not up to date! Update to version " + State.vaminversion + " or higher to use with VAICOM PRO.", Colors.Critical);
+                        Log.Write("ALERT: VoiceAttack is not up to date! Update to version " + State.vaminversion + " or higher to use with VAICOM PRO Community Edition.", Colors.Critical);
                         UI.Playsound.Error();
                     }
                     else
                     {
-                        Log.Write("VoiceAttack current version " + VAcurrentversion.ToString() + " up-to-date for use with VAICOM PRO.", Colors.Text);
+                        Log.Write("VoiceAttack current version " + VAcurrentversion.ToString() + " up-to-date for use with VAICOM PRO Community Edition.", Colors.Text);
                     }
 
                 }
