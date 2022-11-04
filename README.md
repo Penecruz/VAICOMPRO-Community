@@ -14,6 +14,8 @@ The plan is to get VAICOMPRO Community running well with DCS 2.8 and then look w
 
 ## Important Information
 
+VAICOMPRO Community is 100% free and includes all modules (Chatter, AIRIO, Kneeboard, Realistic ATC) that were available with the last paid release.
+
 Please backup your previous installation and backup your current .vap profile from Voice Attack so you can move it across, this will save you a lot of work as it is compatible with this version.
 Use of this software is at your risk, we accept no liability for stuffing up your Voice Attack installation, DCS World installation, Windows installation, or any other action.
 
@@ -51,5 +53,7 @@ NOTE: If this is a fresh VAICOMPRO install, you should follow the install instru
 12. Check only the "Lua code" box and click “Master Zero”.
 
 12. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8 installation.
+
+13. As always, please update your VoiceAttack Profile and your VAICOMPRO keyword commands using the Editior tab in the VAICOMPRO configuration window. Instructions on how to do this can be found in the manual.
 	
-13. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
+14. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
