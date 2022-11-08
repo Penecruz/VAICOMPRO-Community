@@ -29,7 +29,7 @@ DiCE: DCS Integrated Countermeasure Editor creates many functionality issues wit
 
 Flashing Comms Menu after DCS update is a known issue and can be resolved with a lua reset, launching and closing DCS to generate DCS side files, and an additional lua reset.
 
-High DCS module counts (>37) have been known to cause hooking issues, easy comms issues, and other communications and behavior quirks. Uninstalling to leave 37 or less seems to fix for now, this is being investigated.
+High DCS module counts (>37) have been known to cause hooking issues, easy comms issues, and other communications and behavior quirks. Deactivating to leave 37 or less seems to fix for now, this is being investigated.
 
 ## Installation Instructions
 
