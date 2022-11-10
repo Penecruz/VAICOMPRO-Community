@@ -417,7 +417,7 @@ namespace VAICOM
                     this.messagetype = "heartbeat";
                     this.status = "OK";
 
-                    string profilename = "VAICOM PRO for DCS World";     
+                    string profilename = "VAICOM PRO Community Edition for DCS World";     
                     if(!State.Proxy.GetProfileName().ToLower().Contains(profilename.ToLower()))
                     {
                         status = "profile error";

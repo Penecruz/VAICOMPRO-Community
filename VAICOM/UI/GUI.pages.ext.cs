@@ -22,7 +22,7 @@ namespace VAICOM
 
             private void SetCurrentValueKneeboardOpacity(object sender, EventArgs e) 
             {
-                KneeboardOpacity.IsEnabled = State.kneeboardactivated;
+                KneeboardOpacity.IsEnabled = true;
                 KneeboardOpacity.Value = State.activeconfig.KneeboardOpacity;
                 kneeboard_init = true;
             }
@@ -31,6 +31,13 @@ namespace VAICOM
                 if (kneeboard_init && !State.activeconfig.KneeboardOpacity.Equals(e.NewValue))
                 {
                     State.activeconfig.KneeboardOpacity = e.NewValue;
+                    if (State.activeconfig.KneeboardOpacity == 0)
+                    {
+                        State.kneeboardactivated = false;
+                    } else
+                    {
+                        State.kneeboardactivated = true;
+                    }
                     Settings.ConfigFile.WriteConfigToFile(true);
                     UpdateKneeboard();                               
                 }

@@ -228,13 +228,8 @@ namespace VAICOM
             private void ShowLicenses(object sender, MouseButtonEventArgs e)
             {
 
-                string caption = "VAICOM PRO Registered licenses info";
-                string message ="";
-
-                foreach (KeyValuePair<string, Product> checklicense in Products.Products.LookupTable)
-                {
-                    message += checklicense.Value.description +"\n" + "UNLOCKED, LICENSE ACTIVE" + "\n\n";
-                }
+                string caption = "VAICOM PRO Community Edition";
+                string message = "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
 
                 MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information);
 

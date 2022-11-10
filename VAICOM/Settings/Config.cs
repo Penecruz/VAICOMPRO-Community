@@ -84,6 +84,7 @@ namespace VAICOM
 
             public double   KneeboardOpacity;
             public bool     KneeboardlinkPTT;
+            public bool     Kneeboard_Enabled;
 
             // multiplayer page
 

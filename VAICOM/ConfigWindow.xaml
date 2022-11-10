@@ -230,8 +230,8 @@
                     <TextBlock x:Name="labelrio" FontSize="12" Foreground="#FFEEEEEE" HorizontalAlignment="Left" Margin="98,54,0,0" TextWrapping="Wrap" Text="AIRIO" VerticalAlignment="Top" Width="131" TextAlignment="Center" Height="16" RenderTransformOrigin="0.5,0.5"/>
 
                     <Slider x:Name="KneeboardOpacity" IsSnapToTickEnabled = "true" HorizontalAlignment="Left" Margin="391,70,0,0" VerticalAlignment="Top" Maximum="1" Width="32" Cursor="Hand"  Initialized="SetCurrentValueKneeboardOpacity" ValueChanged="KneeboardOpacity_Change" LargeChange="0.05" Value="0.6" Orientation="Vertical" Height="121" Grid.RowSpan="2" TickFrequency="0.05" />
-                    <TextBlock x:Name="OpacityLabel1" HorizontalAlignment="Left" Margin="410,0,0,0"  VerticalAlignment="Top" FontSize="7" Foreground="#999" Text="BRT" Width="39" Grid.Row="1"/>
-                    <TextBlock x:Name="OpacityLabel2" HorizontalAlignment="Left" Margin="410,90,0,0"  VerticalAlignment="Top" FontSize="7" Foreground="#999" Text="DIM" Width="39" Grid.Row="1"/>
+                    <TextBlock x:Name="OpacityLabel1" HorizontalAlignment="Left" Margin="412,-5,0,0"  VerticalAlignment="Top" FontSize="7" Foreground="#999" Text="BRT" Width="39" Grid.Row="1"/>
+                    <TextBlock x:Name="OpacityLabel2" HorizontalAlignment="Left" Margin="412,96,0,0"  VerticalAlignment="Top" FontSize="7" Foreground="#999" Text="DIM / OFF" Width="39" Grid.Row="1"/>
                     <TextBlock x:Name="KneeboardLabel" HorizontalAlignment="Left" Margin="415,45,0,0"  VerticalAlignment="Top" FontSize="12" Foreground="#FFEEEEEE" Text="KNEE" Width="39" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
@@ -519,7 +519,7 @@
                     <Image x:Name="Sidebar1" HorizontalAlignment="Left" Height="118" VerticalAlignment="Center" Width="42" Source="Resources/Images/Sidetitle-About.png" Stretch="None" Margin="6,75,0,73"/>
                     <Image x:Name="prowarnpic0" HorizontalAlignment="Left" Height="24" Margin="4,216,0,0" VerticalAlignment="Top" Width="25" Source="Resources/Images/hazard-sign-images-general_warning.png" Initialized="ShowProWarnPic0" Grid.Column="1"/>
                     <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="Resources/Images/UI_2511_BG_About.png" Stretch="Fill" Panel.ZIndex="-1" Grid.ColumnSpan="3"/>
-                    <TextBlock x:Name="labellist" FontSize="11" Foreground="#FFDDDDDD" HorizontalAlignment="Left" Margin="59,63,0,0" TextWrapping="Wrap" Text="LIST" VerticalAlignment="Top" Width="38" TextAlignment="Center" Height="16" FontWeight="Bold" Panel.ZIndex="1" Grid.Column="2"/>
+                    <TextBlock x:Name="labellist" FontSize="11" Foreground="#FFDDDDDD" HorizontalAlignment="Left" Margin="59,63,0,0" TextWrapping="Wrap" Text="INFO" VerticalAlignment="Top" Width="38" TextAlignment="Center" Height="16" FontWeight="Bold" Panel.ZIndex="1" Grid.Column="2"/>
                     <Image x:Name="pro_light" Grid.Column="2" HorizontalAlignment="Left" Height="37" Margin="61,153,0,0" VerticalAlignment="Top" Width="37" Source="Resources/Images/Tacan-Test-Light-On.png" Stretch="None" Initialized="showprolight" RenderTransformOrigin="0.5,0.5" Visibility="Hidden"/>
                     <Image x:Name="list_button_bg" HorizontalAlignment="Left" Height="38" Margin="60,77,0,0" VerticalAlignment="Top" Width="38" Source="Resources/Images/Tacan-Test-Light-On.png" Stretch="None" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1" Grid.Column="2"/>
                     

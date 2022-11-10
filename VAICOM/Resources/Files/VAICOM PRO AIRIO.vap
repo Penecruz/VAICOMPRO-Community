@@ -2,7 +2,7 @@
 <Profile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <HasMB>false</HasMB>
   <Id>b3cf35bb-92e5-49b1-b63c-b2c10c7690f3</Id>
-  <Name>VAICOM PRO AIRIO</Name>
+  <Name>VAICOM PRO Community Edition AIRIO</Name>
   <Commands>
     <Command>
       <Referrer xsi:nil="true" />
