@@ -529,13 +529,6 @@ namespace VAICOM
                                     Install_DCS_Theme(UserSavedGamesFolder + "\\" + Server.dcsversion[set.Key]);
 
                                 }
-                                else // no install found, switch to exit early 
-                                {
-                                    if (!forcequiet)
-                                    {
-                                        Log.Write("DCS World version " + set.Key + " not found.", Colors.Text);
-                                    }
-                                }
 
                             }
                             catch (Exception e)

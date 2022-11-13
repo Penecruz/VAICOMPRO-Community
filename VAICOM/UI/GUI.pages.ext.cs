@@ -106,7 +106,7 @@ namespace VAICOM
             {
                 State.activeconfig.ICShotmic = true;
                 if (State.AIRIOactive)
-                {     
+                {
                     State.Proxy.Command.SetSessionEnabledByCategory("Keyword Collections", true);
                     State.Proxy.Command.SetSessionEnabledByCategory("Extension packs", true);
                     State.Proxy.State.SetListeningEnabled(true);
@@ -137,31 +137,43 @@ namespace VAICOM
             }
             private void SetCurrentValueRIO_ICShotmic(object sender, EventArgs e)
             {
-                if (State.jesteractivated && State.dll_installed_rio)
-                {
-                    RIO_ICShotmic.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    RIO_ICShotmic.Visibility = Visibility.Hidden;
-                }
-                RIO_ICShotmic.IsEnabled = false; 
                 RIO_ICShotmic.IsChecked = State.activeconfig.ICShotmic;
             }
 
             public void CheckBoxHotMic()
             {
-                RIO_ICShotmic.IsChecked = State.activeconfig.ICShotmic;
+                if (State.activeconfig.ICShotmic_useswitch && State.currentstate.riostate.ics)
+                {
+                    RIO_ICShotmic.IsChecked = true;
+                    Dictate_set_relhot_Light(true);
+                }
+                else
+                {
+                    RIO_ICShotmic.IsChecked = false;
+                    Dictate_set_relhot_Light(false);
+                }
             }
 
             private void SetConfigEnableRIO_ICShotmic_useswitch(object sender, RoutedEventArgs e)
             {
+                State.activeconfig.ICShotmic_useswitch = true;
             }
             private void SetConfigDisableRIO_ICShotmic_useswitch(object sender, RoutedEventArgs e)
             {
+                State.activeconfig.ICShotmic_useswitch = false;
             }
             private void SetCurrentValueRIO_ICShotmic_useswitch(object sender, EventArgs e)
             {
+                if (State.jesteractivated && State.dll_installed_rio)
+                {
+                    RIO_ICShotmic_useswitch.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    RIO_ICShotmic_useswitch.Visibility = Visibility.Hidden;
+                }
+                RIO_ICShotmic_useswitch.IsEnabled = State.jesteractivated;
+                RIO_ICShotmic_useswitch.IsChecked = State.activeconfig.ICShotmic_useswitch;
             }
 
             private void InitRIODllWarning(object sender, EventArgs e)

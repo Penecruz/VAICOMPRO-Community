@@ -221,7 +221,7 @@ namespace VAICOM
 
             private void Test_Install(object sender, MouseButtonEventArgs e)
             {
-                string caption = "VAICOM PRO Installation info";
+                string caption = "VAICOM PRO Community Edition Installation info";
                 string message = "";
                 MessageBoxImage BoxImage = new MessageBoxImage();
 

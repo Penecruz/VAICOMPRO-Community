@@ -399,7 +399,6 @@
     <EmbeddedResource Include="Resources\Fonts\MS33558.ttf" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\Files\Debug_code.lua" />
-    <EmbeddedResource Include="Resources\Files\VAICOM PRO AIRIO.vap" />
     <None Include="Resources\Files\Append.Core.common.lua" />
     <None Include="Resources\Files\Append.Core.Export.lua" />
     <None Include="Resources\Files\Append.Core.gameMessages.lua" />
