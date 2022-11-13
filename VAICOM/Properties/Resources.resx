@@ -403,9 +403,6 @@
   <data name="Debug_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\files\debug_code.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="VAICOM_PRO_AIRIO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\files\vaicom pro airio.vap;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="UI_2511_BG_About" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\images\ui_2511_bg_about.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

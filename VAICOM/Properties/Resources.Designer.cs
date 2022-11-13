@@ -19,7 +19,7 @@ namespace VAICOM.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -267,15 +267,13 @@ namespace VAICOM.Properties {
         ///local aspect = 1
         ///local alpha = 0 
         ///
-        ///viewJester = nil
-        ///
         ///if GetSelf():is_VR() == false then 
-        ///	viewJester = find_viewport(&quot;F14_JESTER_MENU&quot;) or find_viewport(&quot;GU_MAIN_VIEWPORT&quot;)
+        ///	local viewJester = find_viewport(&quot;F14_JESTER_MENU&quot;) or find_viewport(&quot;GU_MAIN_VIEWPORT&quot;)
         ///	if viewJester == nil then
         ///		viewJester = {
         ///		x = 0;
         ///		y = 0;
-        ///		width =  [rest of string was truncated]&quot;;.
+        ///		width = LockOn_Options [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_F14_JesterAI_Page {
             get {
@@ -289,7 +287,7 @@ namespace VAICOM.Properties {
         ///
         ///indicator_type  = 0 
         ///purposes = { 1 } 
-        ///screenspace_scale = 4
+        ///screenspace_scale = 4;
         ///
         ///-------PAGE IDs-------
         ///id_Page =
@@ -307,7 +305,7 @@ namespace VAICOM.Properties {
         ///  	
         ///----------------------
         ///pages = {}
-        ///pages[id_Page.MAIN] = { id_pagesubset.COMMON }
+        ///pages[id_Page.MAIN] = { id_pagesubset.COMMON}
         ///init_pageID     = id_ [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_F14_JesterInit {
@@ -359,7 +357,7 @@ namespace VAICOM.Properties {
         ///    Select_Page_05                  = counter(),
         ///    Select_Page_06                  = counter(),
         ///    Select_Page_07                  = counter(),
-        ///    Select_Page_08                  [rest of string was truncated]&quot;;.
+        ///    Select_Page_08 [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_Kneeboard_command_defs {
             get {
@@ -441,8 +439,7 @@ namespace VAICOM.Properties {
         ///
         ///headers = {}
         ///init_headers = function()
-        ///	headers[1] = { &quot;TopLeft&quot;, &quot;L&quot;, 0, &quot;T&quot;, &quot;LeftCenter&quot;	    }
-        /// [rest of string was truncated]&quot;;.
+        ///	headers[1] = { &quot;TopLeft&quot;, &quot;L&quot;, 0, &quot;T&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_Kneeboard_VAICOMPRO_Common {
             get {
@@ -471,9 +468,7 @@ namespace VAICOM.Properties {
         ///need_to_be_closed = false
         ///
         ///local sender
-        ///local receiver
-        ///
-        ///local config [rest of string was truncated]&quot;;.
+        ///local re [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_Kneeboard_VAICOMPRO_Device {
             get {
@@ -791,14 +786,14 @@ namespace VAICOM.Properties {
         ///	dirName		 = current_mod_path,
         ///	binaries	 = {&apos;VAICOMPRO.dll&apos;},
         ///
-        ///	displayName	 = &quot;VAICOM PRO&quot;,
+        ///	displayName	 = &quot;VAICOM PRO Community Edition&quot;,
         ///	shortName	 = &quot;VAICOM PRO&quot;,
-        ///	fileMenuName = &quot;VAICOM PRO&quot;,
+        ///	fileMenuName = &quot;VAICOM PRO Community Edition&quot;,
         ///
         ///	version		 = &quot;2.8.0&quot;,
         ///	state		 = &quot;installed&quot;, 	
         ///	developerName= &quot;DCS Community&quot;,
-        ///	info		 = _(&quot;VAICOM PRO is a professional-grade voice communications interface. The plugin uses VoiceAttack as client host for advanced speech recognition, enabling true-to-life ra [rest of string was truncated]&quot;;.
+        ///	info		 = _(&quot;VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as clie [rest of string was truncated]&quot;;.
         /// </summary>
         public static string entry {
             get {
@@ -1038,15 +1033,7 @@ namespace VAICOM.Properties {
         ///				[&quot;text&quot;] = {
         ///					[&quot;fontSize&quot;] = 10,
         ///					[&quot;horzAlign&quot;] = {
-        ///						[&quot;type&quot;] = &quot;min&quot;
-        ///					}
-        ///				}
-        ///			}
-        ///		}
-        ///	}
-        ///}
-        ///
-        ///dial [rest of string was truncated]&quot;;.
+        ///						[&quot;type&quot;] = &quot;min&quot;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string options {
             get {
@@ -1288,7 +1275,7 @@ namespace VAICOM.Properties {
         ///dofile(LockOn_Options.script_path..&quot;materials.lua&quot;)
         ///
         ///indicator_type       = indicator_types.COMMON
-        ///purposes 	 = {render_purpose.HUD_ONLY_VIEW,render_purpose.SCREENSPACE_INSIDE_COCKPIT,render_purpose.SCREENSPACE_OUTSIDE_COCKPIT}
+        ///purposes 	 = {render_purpose.SCREENSPACE_INSIDE_COCKPIT,render_purpose.SCREENSPACE_OUTSIDE_COCKPIT,render_purpose.HUD_ONLY_VIEW}
         ///screenspace_scale    = 4;
         ///
         ///-------PAGE IDs-------
@@ -1936,7 +1923,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO 2.8
+        ///ECHO VAICOM PRO Commnity Edition 2.8
         ///ECHO Extension Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe
@@ -1970,8 +1957,7 @@ namespace VAICOM.Properties {
         ///RMDIR /S /Q &quot;Updates&quot;
         ///DEL /Q VAICOMPRO.exe
         ///ECHO Restarting VoiceAttack...
-        ///START &quot;VoiceAttack&quot; /MIN XXXXXX
-        ///ECHO [rest of string was truncated]&quot;;.
+        ///START &quot;VoiceAttack&quot; /MI [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Updater_Plugin {
             get {
@@ -1981,7 +1967,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO 2.8
+        ///ECHO VAICOM PRO Community Edition 2.8
         ///ECHO Extension Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe
@@ -2005,29 +1991,8 @@ namespace VAICOM.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
         ///&lt;Profile xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
         ///  &lt;HasMB&gt;false&lt;/HasMB&gt;
-        ///  &lt;Id&gt;b3cf35bb-92e5-49b1-b63c-b2c10c7690f3&lt;/Id&gt;
-        ///  &lt;Name&gt;VAICOM PRO AIRIO&lt;/Name&gt;
-        ///  &lt;Commands&gt;
-        ///    &lt;Command&gt;
-        ///      &lt;Referrer xsi:nil=&quot;true&quot; /&gt;
-        ///      &lt;ExecType&gt;3&lt;/ExecType&gt;
-        ///      &lt;Confidence&gt;0&lt;/Confidence&gt;
-        ///      &lt;PrefixActionCount&gt;0&lt;/PrefixActionCount&gt;
-        ///      &lt;IsDynamicallyCreated&gt;false&lt;/IsDynamicallyCreated&gt;
-        ///      &lt;TargetProcessSet&gt;false&lt;/TargetPr [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string VAICOM_PRO_AIRIO {
-            get {
-                return ResourceManager.GetString("VAICOM_PRO_AIRIO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
-        ///&lt;Profile xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-        ///  &lt;HasMB&gt;false&lt;/HasMB&gt;
         ///  &lt;Id&gt;65ee8337-d43c-4b26-aea9-4ce0f9d4e467&lt;/Id&gt;
-        ///  &lt;Name&gt;VAICOM PRO for DCS World&lt;/Name&gt;
+        ///  &lt;Name&gt;VAICOM PRO Community Edition for DCS World&lt;/Name&gt;
         ///  &lt;Commands&gt;
         ///    &lt;Command&gt;
         ///      &lt;Referrer xsi:nil=&quot;true&quot; /&gt;
@@ -2035,7 +2000,7 @@ namespace VAICOM.Properties {
         ///      &lt;Confidence&gt;0&lt;/Confidence&gt;
         ///      &lt;PrefixActionCount&gt;0&lt;/PrefixActionCount&gt;
         ///      &lt;IsDynamicallyCreated&gt;false&lt;/IsDynamicallyCreated&gt;
-        ///      &lt;TargetProcessSet&gt;false&lt;/ [rest of string was truncated]&quot;;.
+        ///      &lt;Target [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VAICOM_PRO_for_DCS_World {
             get {

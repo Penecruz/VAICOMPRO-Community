@@ -656,7 +656,7 @@ base.vaicom = base.vaicom or {}
 	
 base.vaicom.config = {
 	sendaddress 		= "127.0.0.1", 
-	sendport 			= 33333,
+	sendport 			= 33492,
 	sendtimeout 		= 0,
 	receiveaddress 		= "127.0.0.1",
 	receiveport 		= 33334,

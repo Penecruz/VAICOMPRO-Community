@@ -78,8 +78,8 @@ namespace VAICOM
                     {"P-47D" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"CE-2" ,               new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
 
-                    {"Mirage-F1" ,          new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
-                    {"MB-339A" ,          new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
+                    {"Mirage-F1" ,          new radioslotdevicelist() { Slot_map_INT = {6,7,0}, Slot_map_SRS = {6,7,0}, Slot_map_CUS = {0,0,0} } },
+                    {"MB-339A" ,          new radioslotdevicelist() { Slot_map_INT = {6,7,0}, Slot_map_SRS = {6,7,0}, Slot_map_CUS = {0,0,0} } },
 
                 };
 
@@ -137,8 +137,8 @@ namespace VAICOM
                     {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "", "" } } },
                     {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "", "" } } },
 
-                    {"Mirage-F1" ,     new radioslotlist() { Slot_map = { "VHF", "UHF", "" } } },
-                    {"MB-339A" ,     new radioslotlist() { Slot_map = { "VHF", "UHF", "" } } },
+                    {"Mirage-F1" ,     new radioslotlist() { Slot_map = { "VUHF (TRAP-136)", "UHF (TRAP-137B)", "" } } },
+                    {"MB-339A" ,     new radioslotlist() { Slot_map = { "COMM1 Radio", "COMM2 Radio", "" } } },
 
                 };
 
@@ -196,8 +196,8 @@ namespace VAICOM
                     {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
                     {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "[AN/ARC-186(V)]", "[AN/ARC-186(V)FM]" } } },
 
-                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "TRAP 136 VHF", "TRAP 137B UHF", "" } } },
-                    {"MB-339A" ,    new radioslotlist() { Slot_map = { "SRT-651", "AN/ARC-150", "" } } },
+                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "" } } },
+                    {"MB-339A" ,    new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "" } } },
 
                 };
             }
