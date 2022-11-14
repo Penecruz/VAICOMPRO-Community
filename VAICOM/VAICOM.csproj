@@ -128,6 +128,8 @@
     <Resource Include="Resources\Images\YouTubePlay.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Fonts\MS33558.ttf" />
     <EmbeddedResource Include="Resources\Files\base-menu-window" />
     <EmbeddedResource Include="Resources\Files\Debug_chunk.lua" />
     <EmbeddedResource Include="Resources\Files\entry.lua" />
@@ -152,83 +154,64 @@
     <EmbeddedResource Include="Resources\Fonts\FRAMDCN.TTF" />
     <EmbeddedResource Include="Resources\Fonts\framdit.ttf" />
     <EmbeddedResource Include="Resources\Fonts\MS33558.ttf" />
+    <None Include="packages.config" />
     <EmbeddedResource Include="Resources\Files\Debug_code.lua" />
-    <EmbeddedResource Include="Resources\Files\VAICOM PRO AIRIO.vap" />
+    <None Include="Resources\Files\Append.Core.common.lua" />
+    <None Include="Resources\Files\Append.Core.Export.lua" />
+    <None Include="Resources\Files\Append.Core.gameMessages.lua" />
+    <None Include="Resources\Files\Append.Core.RadioCommandDialogsPanel.lua" />
+    <None Include="Resources\Files\Append.Core.speech.lua" />
+    <None Include="Resources\Files\Append.Core.TabSheetBar.lua" />
+    <None Include="Resources\Files\Append.Core.VAICOMPRO.export.lua" />
+    <None Include="Resources\Files\Append.F14.JesterAI_Page.lua" />
+    <None Include="Resources\Files\Append.F14.JesterInit.lua" />
+    <None Include="Resources\Files\Append.Kneeboard.1.lua" />
+    <None Include="Resources\Files\Append.Kneeboard.command_defs.lua" />
+    <None Include="Resources\Files\Append.Kneeboard.declare_VAICOMPRO_device.lua" />
+    <None Include="Resources\Files\Append.Kneeboard.device_init.lua" />
+    <None Include="Resources\Files\Append.Kneeboard.VAICOMPRO_Common.lua" />
+    <None Include="Resources\Files\Append.Kneeboard.VAICOMPRO_Device.lua" />
+    <None Include="Resources\Files\Append.ReplaceString.F14.JesterAI_Page.lua" />
     <EmbeddedResource Include="Resources\Files\Notepad_png" />
     <EmbeddedResource Include="Resources\Files\Notepad_smudge_png" />
     <EmbeddedResource Include="Resources\Files\Notepad_watermark_png" />
+    <None Include="Resources\Files\Orig.Core.common.lua" />
+    <None Include="Resources\Files\Orig.Core.Export.lua" />
+    <None Include="Resources\Files\Orig.Core.gameMessages.lua" />
+    <None Include="Resources\Files\Orig.Core.RadioCommandDialogsPanel.lua" />
+    <None Include="Resources\Files\Orig.Core.speech.lua" />
+    <None Include="Resources\Files\Orig.Core.TabSheetBar.lua" />
+    <None Include="Resources\Files\Orig.Core.VAICOMPRO.export.lua" />
+    <None Include="Resources\Files\Orig.F14.JesterAI_Page.lua" />
+    <None Include="Resources\Files\Orig.F14.JesterInit.lua" />
+    <None Include="Resources\Files\Orig.ReplaceString.F14.JesterAI_Page.lua" />
+    <None Include="Resources\Files\Tabs_ALL_png" />
+    <None Include="Resources\Files\Tabs_AOCS_png" />
+    <None Include="Resources\Files\Tabs_ATC_png" />
+    <None Include="Resources\Files\Tabs_AWACS_png" />
+    <None Include="Resources\Files\Tabs_FLIGHT_png" />
+    <None Include="Resources\Files\Tabs_JTAC_png" />
+    <None Include="Resources\Files\Tabs_LOG_png" />
+    <None Include="Resources\Files\Tabs_NOTES_png" />
+    <None Include="Resources\Files\Tabs_REF_png" />
+    <None Include="Resources\Files\Tabs_TANKER_png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Audio\Helpers\delimeter_44100.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Audio\Helpers\delimeter_22050.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Tacan-Test-Light-Off.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Audio\UI\Radio Noise Test.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Embed\NAudio.dll" />
-    <EmbeddedResource Include="Embed\NAudio.Vorbis.dll" />
-    <EmbeddedResource Include="Embed\NVorbis.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Embed\Sound.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Audio\UI\Silence_22kHz_Mono_250ms.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\UI_2511_BG_About.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_Config.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_Edit.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_Help.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_Prefs.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_PTT_INV.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_PTT_MULTI.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_PTT_NORM.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_PTT_SNGL.png" />
-    <Resource Include="Resources\Images\UI_2511_BG_Reset.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\PTT_HOT_Left.png" />
-    <Resource Include="Resources\Images\PTT_HOT_Mid.png" />
-    <Resource Include="Resources\Images\PTT_HOT_Right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\3_Way_Small_Down.png" />
-    <Resource Include="Resources\Images\3_Way_Small_Mid.png" />
-    <Resource Include="Resources\Images\3_Way_Small_Up.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Hotmic_OFF.png" />
-    <Resource Include="Resources\Images\Hotmic_ON.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Vox_Relay_Cold.png" />
-    <Resource Include="Resources\Images\Vox_Relay_Hot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Audio\UI\Stereo 44kHz 16bit -26dB\UI Notify.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Files\VAICOMPRO.exe" />
-  </ItemGroup>
-  <ItemGroup>
+    <PackageReference Include="Fody" Version="6.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.24.1" />
     <PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NVorbis" Version="0.10.5" />
     <PackageReference Include="SharpDX" Version="4.2.0" />
     <PackageReference Include="NAudio" Version="2.1.0" />
-    <PackageReference Include="Costura.Fody" Version="2.0.1">
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="App.xaml.cs" />
