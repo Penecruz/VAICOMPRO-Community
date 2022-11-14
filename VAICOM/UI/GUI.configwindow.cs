@@ -3,7 +3,7 @@ using VAICOM.Client;
 using System;
 using System.Threading;
 using System.Windows.Forms;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -11,6 +11,7 @@ namespace VAICOM
     namespace UI
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class Initialize
         {
 

@@ -1,13 +1,14 @@
 ﻿using VAICOM.Static;
 using System.Collections.Generic;
 using System.Speech.Recognition;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Database
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class AliasEditor       
         {
 
@@ -26,6 +27,7 @@ namespace VAICOM
             }
 
             // trainer functions
+            [SupportedOSPlatform("windows")]
             public static class SpeechTrainer
             {
                 public static SpeechRecognizer trainer;

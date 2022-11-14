@@ -1,12 +1,14 @@
 ﻿using VAICOM.Static;
 using VAICOM.Database;
 using System.IO;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace FileManager
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class FileHandler
         {
             public static partial class Root

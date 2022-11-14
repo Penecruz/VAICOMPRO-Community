@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace UI
     {
 
+        [SupportedOSPlatform("windows")]
         public partial class ConfigWindow : Window
         {
 

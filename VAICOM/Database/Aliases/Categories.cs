@@ -414,7 +414,7 @@ namespace VAICOM
                     }
                     Log.Write("Created aliases database file for CSV export, keyword count = " + counter.ToString(), Colors.Text);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //Log.Write("Export error " + e.Message + e.StackTrace +e.InnerException, Colors.Text);
                 }

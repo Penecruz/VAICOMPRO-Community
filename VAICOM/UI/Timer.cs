@@ -5,11 +5,13 @@ using System.Timers;
 using VAICOM.Servers;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace UI
     {
+        [SupportedOSPlatform("windows")]
         public static partial class Timers
         {
 

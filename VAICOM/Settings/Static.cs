@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Versioning;
 using VAICOM.Database;
 
 namespace VAICOM
@@ -133,6 +134,7 @@ namespace VAICOM
             };
         }
 
+        [SupportedOSPlatform("windows")]
         public static class AppData
         {
             public static string RootFolder = Products.Products.Families.Vaicom.VaicomProPlugin.rootfoldername;

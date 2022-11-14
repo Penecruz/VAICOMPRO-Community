@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Database
     {
-
+        [SupportedOSPlatform("windows")]
         public static partial class Commands
         {
 

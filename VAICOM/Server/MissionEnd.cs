@@ -2,6 +2,7 @@
 using VAICOM.PushToTalk;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -9,6 +10,7 @@ namespace VAICOM
     namespace Servers
     {
 
+        [SupportedOSPlatform("windows")]
         public static partial class Server
         {
 

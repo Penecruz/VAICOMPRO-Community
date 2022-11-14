@@ -17,10 +17,12 @@ using System.Reflection;
 using NAudio.Wave.SampleProviders;
 using VAICOM.Extensions.Kneeboard;
 using System.Diagnostics;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
 
+    [SupportedOSPlatform("windows")]
     public static class State
 
         {

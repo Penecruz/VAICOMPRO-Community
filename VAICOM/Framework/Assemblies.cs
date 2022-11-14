@@ -1,11 +1,13 @@
 ﻿using VAICOM.Static;
 using System;
 using System.Reflection;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Framework
     {
+        [SupportedOSPlatform("windows")]
         public partial class Assemblies
         {
             public static void GetAssembliesInfo_Plugin()

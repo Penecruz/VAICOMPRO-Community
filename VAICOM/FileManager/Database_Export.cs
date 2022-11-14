@@ -297,7 +297,7 @@ namespace VAICOM
                         }
 
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         Log.Write("There was a problem reading the file contents, no new aliases were added.", Colors.Warning);
                     }

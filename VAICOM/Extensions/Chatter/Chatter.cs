@@ -8,6 +8,7 @@ using System.Resources;
 using System.IO;
 using System.Windows.Forms;
 using NAudio.Wave;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -16,6 +17,7 @@ namespace VAICOM
         namespace Chatter
         {
 
+            [SupportedOSPlatform("windows")]
             public static partial class AudioTimer
             {
 

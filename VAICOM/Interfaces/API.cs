@@ -4,11 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
     namespace Interfaces
     {
+        [SupportedOSPlatform("windows")]
         public class API
         {
             public static void PTT_Mode_Page_Up(dynamic vaProxy)

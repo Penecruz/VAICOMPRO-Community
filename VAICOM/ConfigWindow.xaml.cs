@@ -34,11 +34,8 @@ namespace VAICOM
                 this.ResizeMode = ResizeMode.CanMinimize;
                 this.WindowStyle = WindowStyle.SingleBorderWindow;
 
-                if (State.activeconfig.Windowrestorelocation != null)
-                {
-                    this.Left = State.activeconfig.Windowrestorelocation.X;
-                    this.Top = State.activeconfig.Windowrestorelocation.Y;
-                }
+                this.Left = State.activeconfig.Windowrestorelocation.X;
+                this.Top = State.activeconfig.Windowrestorelocation.Y;
 
                 this.Width  = 500;
                 this.Height = 340;

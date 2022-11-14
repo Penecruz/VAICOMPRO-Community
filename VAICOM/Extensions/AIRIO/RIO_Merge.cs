@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using Newtonsoft.Json;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -14,6 +15,7 @@ namespace VAICOM
         namespace RIO
         {
 
+            [SupportedOSPlatform("windows")]
             public partial class ExtImport
             {
 

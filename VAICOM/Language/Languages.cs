@@ -1,6 +1,6 @@
 ﻿using VAICOM.Database;
 using System.Collections.Generic;
-
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -17,6 +17,7 @@ namespace VAICOM
             RUS
         }
 
+        [SupportedOSPlatform("windows")]
         public class localization
         {
             // not used yet

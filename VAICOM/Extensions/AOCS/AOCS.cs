@@ -18,6 +18,7 @@ using System.Speech.AudioFormat;
 using VAICOM.Extensions.WorldAudio;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -28,6 +29,7 @@ namespace VAICOM
         namespace AOCS
         {
 
+            [SupportedOSPlatform("windows")]
             public static class AOCSProvider
             {
 

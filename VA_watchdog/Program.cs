@@ -7,9 +7,11 @@ using Microsoft.Win32;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Versioning;
 
 namespace VAICOM_App
 {
+    [SupportedOSPlatform("windows7.0")]
     partial class Program
     {
 
@@ -347,11 +349,15 @@ namespace VAICOM_App
 
             public CustomApplicationContext()
             {
+                var contextMenuStrip = new ContextMenuStrip();
+                contextMenuStrip.Items.Add("Restart", null, ForceVARestart);
+                contextMenuStrip.Items.Add("Reset Window", null, ResetWindow);
+                contextMenuStrip.Items.Add("Exit", null, Exit);
 
                 trayIcon = new NotifyIcon()
                 {
                     Icon = Properties.Resources.Tray_icon_64,
-                    ContextMenu = new ContextMenu(new MenuItem[] {  new MenuItem("Restart", ForceVARestart), new MenuItem("Reset Window", ResetWindow), new MenuItem("Exit", Exit) }), //new MenuItem("API Test", APITest),
+                    ContextMenuStrip = contextMenuStrip,
                     Visible = true,
 
                 };

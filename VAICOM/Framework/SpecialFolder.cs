@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security.Principal;
 
 namespace VAICOM
@@ -8,6 +9,7 @@ namespace VAICOM
     namespace Framework
     {
 
+        [SupportedOSPlatform("windows")]
         public sealed class SpecialFolder
         {
 

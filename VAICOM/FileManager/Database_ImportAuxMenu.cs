@@ -4,7 +4,8 @@ using VAICOM.Database;
 using System.Collections.Generic;
 using System;
 using System.IO;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -14,6 +15,7 @@ namespace VAICOM
         public partial class FileHandler
         {
 
+            [SupportedOSPlatform("windows")]
             public partial class Database
             {
 

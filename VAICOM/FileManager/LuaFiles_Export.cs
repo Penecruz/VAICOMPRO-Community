@@ -3,6 +3,7 @@ using VAICOM.Servers;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -22,6 +23,7 @@ namespace VAICOM
                 }
             }
 
+            [SupportedOSPlatform("windows")]
             public static partial class Lua
             {
 

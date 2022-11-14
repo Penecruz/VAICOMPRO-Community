@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using VAICOM.Servers;
 using VAICOM.Client;
+using System.Runtime.Versioning;
 
 namespace VAICOM
 {
@@ -11,6 +12,7 @@ namespace VAICOM
         namespace Kneeboard
         {
 
+            [SupportedOSPlatform("windows")]
             public static class KneeboardUpdater
             {
 
