@@ -18,6 +18,7 @@ using System.Speech.AudioFormat;
 using VAICOM.Extensions.WorldAudio;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using System.Globalization;
 
 namespace VAICOM
 {
@@ -86,7 +87,7 @@ namespace VAICOM
                         var mi = State.synth.GetType().GetMethod("SetOutputStream", BindingFlags.Instance | BindingFlags.NonPublic);               
                         mi.Invoke(State.synth, new object[] { wavstream, outformat, true, true });
 
-                        PromptBuilder builder = new PromptBuilder();
+                        PromptBuilder builder = new PromptBuilder(CultureInfo.GetCultureInfo("en-US"));
                         builder.AppendText(str);
                         State.synth.Speak(builder);
                         wavstream.Seek(0, SeekOrigin.Begin);
