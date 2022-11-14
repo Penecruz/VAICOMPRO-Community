@@ -11,12 +11,11 @@ base.trigger.action.outText("arg "..arg.." = "..base.tostring(value),5)
 
 
 
---[[
 
 base = _G
 local lfs = require("lfs")
 local io = require("io")
-dumpfile = io.open(lfs.writedir()..[[crawl-x.csv]], "w")
+dumpfile = io.open(lfs.writedir().."crawl-x.csv", "w")
 
 if dumpfile then
 listtables = function (offset, maxdepth, tablename, filtertype)
@@ -51,4 +50,3 @@ end
 listtables(0,6,base.speech)
 dumpfile:close()
 end
-]]--
