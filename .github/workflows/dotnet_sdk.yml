@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        ref: 'Open-Beta'
+        ref: 'projmig'
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
