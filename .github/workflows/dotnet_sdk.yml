@@ -28,6 +28,7 @@ jobs:
         dotnet add package Newtonsoft.Json
         dotnet add package Fody --version 2.0.0
         dotnet add package WindowsInput
+      working-directory: ./VAICOM
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
