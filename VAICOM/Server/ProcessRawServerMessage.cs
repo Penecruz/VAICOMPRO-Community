@@ -11,29 +11,29 @@ namespace VAICOM
         public static partial class Server
         {
 
-            public static void ProcessRawServerMessage()
+            public static void ProcessRawServerMessage(string receivedString)
             {
                 try
                 {
-                    if (!ValidateRaw())
+                    if (!ValidateRaw(receivedString))
                     {
-                        Log.Write("VOID SERVER MESSAGE: " + State.udpreceivedstring, Static.Colors.Inline);
+                        Log.Write("VOID SERVER MESSAGE: " + receivedString, Static.Colors.Inline);
                         return;
                     }
            
-                    if (DetectEndMission(State.udpreceivedstring))
+                    if (DetectEndMission(receivedString))
                     {
                         EndMission();
                         return;
                     }
-
-                    if (!DecodeRawMessage())
+                    ServerMessage decodedMessage = DecodeRawMessage(receivedString);
+                    if (decodedMessage == null)
                     {
-                        Log.Write("NOT DECODED: " + State.udpreceivedstring, Static.Colors.Inline);
+                        Log.Write("NOT DECODED: " + receivedString, Static.Colors.Inline);
                         return;
                     }
 
-                    UpdateServerState();
+                    UpdateServerState(decodedMessage);
 
                 }
                 catch (Exception e)
@@ -42,10 +42,10 @@ namespace VAICOM
                 }
             }
 
-            public static bool ValidateRaw()
+            public static bool ValidateRaw(string receivedString)
             {
                 string inputfilter = "missiondata.update";
-                if (!State.udpreceivedstring.Contains(inputfilter))
+                if (!receivedString.Contains(inputfilter))
                 {
                     return false;
                 }
@@ -55,19 +55,18 @@ namespace VAICOM
                 }
             }
 
-            public static bool DecodeRawMessage()
+            public static ServerMessage DecodeRawMessage(string receivedString)
             {
 
-                string jsonstring = State.udpreceivedstring;
+                
                 try
                 {             
-                    State.receivedchunk = JsonConvert.DeserializeObject<ServerMessage>(jsonstring);                                                                                                   
-                    return true;
-                }
+                    return  JsonConvert.DeserializeObject<ServerMessage>(receivedString);                                                                                                   
+                 }
                 catch (Exception e)
                 {
                     Log.Write("JSON eror - server message decoding failed: " + e.Message, Colors.Inline);
-                    return false;
+                    return null;
                 }
 
             }
