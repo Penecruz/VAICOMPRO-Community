@@ -1,0 +1,36 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: VAICOM Build SDK
+
+on:
+  push:
+    branches: [ "projmig" ]
+  pull_request:
+    branches: [ "projmig" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: 'projmig'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 5.0.x
+    - name: Install dependencies
+      run: |
+        dotnet add package Newtonsoft.Json
+        dotnet add package Fody --version 2.0.0
+        dotnet add package WindowsInput
+      working-directory: ./VAICOM
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+
