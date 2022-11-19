@@ -282,8 +282,6 @@ namespace VAICOM
         public static bool                  AIRIOactive;
         public static Server.ServerState    previousstate; 
         public static Server.ServerState    currentstate;  
-        public static Server.ServerMessage  receivedchunk;
-        public static string                udpreceivedstring;
         public static int                   radiocount;
         public static string                messagelog;
         public static string                lastmessagelog;

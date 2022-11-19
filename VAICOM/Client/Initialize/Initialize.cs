@@ -124,11 +124,10 @@ namespace VAICOM
                 State.KneeboardCatAliasStrings[1] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[2] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[3] = new Dictionary<string, SortedDictionary<string, List<string>>>();
-                State.udpreceivedstring = "";
+              
                 State.wingmanspeechpath = "";
                 State.previousstate = new Server.ServerState();
                 State.currentstate = new Server.ServerState();
-                State.receivedchunk = new Server.ServerMessage();
                 State.menuauximported = false;
                 State.currentstate.easycomms = true;
                 State.currentmodule = DCSmodules.LookupTable["----"];

@@ -218,24 +218,24 @@ namespace VAICOM
             // RECEIVERS
 
             // invoked when new DCS server packet was received (async)
-            public static void UDPreceive(IAsyncResult res) 
+            public static   void UDPreceive(IAsyncResult res) 
             {
                 byte[] receivedbytes = State.ReceivingUdpClient.EndReceive(res, ref State.ReceiveIpEndPoint);
                 State.ReceivingUdpClient.BeginReceive(State.ReturnCall, null);
-
+                string receivedString = "";
                 try
                 {
-                    State.udpreceivedstring = Encoding.UTF8.GetString(receivedbytes);
+                    receivedString = Encoding.UTF8.GetString(receivedbytes);
                 }
                 catch (Exception e)
                 {
                     Log.Write("Processing UTF8 input failed: " + e.Message, Colors.Inline);
-                    State.udpreceivedstring = "";
+                   
                 }
 
                 try
                 {
-                    Server.ProcessRawServerMessage();
+                    Server.ProcessRawServerMessage(receivedString);
                 }
                 catch (Exception e)
                 {
