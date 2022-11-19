@@ -174,7 +174,7 @@ namespace VAICOM
                 {
                     State.transmitting = false;
                     PTTkey.relay = false;
-
+                    TXLinkToggle = false;
                     if (keypress)
                     {
                         DcsClient.SendUpdateRequest();
