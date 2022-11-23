@@ -8,7 +8,6 @@
     <Description>Extension for VAICOM PRO plugin for DCS World</Description>
     <AssemblyVersion>2.8.0.1</AssemblyVersion>
     <FileVersion>2.8.0.1</FileVersion>
-	<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -1886,6 +1885,5 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Properties\Resources.Designer.cs" />
-	<PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
   </ItemGroup>
 </Project>

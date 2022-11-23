@@ -7,7 +7,6 @@
     <Description>Interactive Voice Communications for DCS World</Description>
     <AssemblyVersion>2.8.0.1</AssemblyVersion>
     <FileVersion>2.8.0.1</FileVersion>
-	<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
     <PostBuildEvent>cd "$(TargetDir)"
@@ -63,7 +62,6 @@ del *.config
 </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-	<PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
     <PackageReference Include="Costura.Fody" Version="1.6.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
