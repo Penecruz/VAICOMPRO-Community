@@ -4,6 +4,8 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace VAICOM
 {
@@ -16,7 +18,7 @@ namespace VAICOM
             public static void UDPsetup()
             {
 
-               try
+                try
                 {
                     // --------------------------------------------------------------------
                     // DCS JSON I/O
@@ -61,7 +63,7 @@ namespace VAICOM
                     State.SendIpEndPoint = new IPEndPoint(IPAddress.Parse(State.activeconfig.ClientSendIP), State.activeconfig.ClientSendPort);
                     State.ReceivingUdpClient = new UdpClient(State.activeconfig.ClientReceivePort);
                     State.ReceiveIpEndPoint = new IPEndPoint(IPAddress.Any, State.activeconfig.ClientReceivePort);
-                    State.ReturnCall = new AsyncCallback(UDPreceive);
+                   
 
                     // --------------------------------------------------------------------
                 }
@@ -102,7 +104,7 @@ namespace VAICOM
                 // for receiving messages from tray icon
 
                 try
-                {               
+                {
                     int traymessagesport = 19300;
                     State.ReceivingTrayMessages = new UdpClient(traymessagesport);
                     State.ReceiveIpTrayMessages = new IPEndPoint(IPAddress.Any, traymessagesport);
@@ -187,7 +189,7 @@ namespace VAICOM
                     // --------------------------------------------------------------------
                     // KNEEBOARD SEND
 
-                    string Kneeboard_SendIP ="127.0.0.1";
+                    string Kneeboard_SendIP = "127.0.0.1";
                     int Kneeboard_SendPort = 52341;
 
                     State.Kneeboard_SendSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -207,7 +209,8 @@ namespace VAICOM
 
             public static void UDPstart()
             {
-                State.ReceivingUdpClient.BeginReceive(State.ReturnCall, null); 
+                Task ReceivingUdpClient = new Task(UDPreceive);
+                ReceivingUdpClient.Start();
                 State.ReceivingUdpClientMessages.BeginReceive(State.ReturnCallMessages, null);
 
                 //. for tray
@@ -218,33 +221,44 @@ namespace VAICOM
             // RECEIVERS
 
             // invoked when new DCS server packet was received (async)
-            public static   void UDPreceive(IAsyncResult res) 
+            public static void UDPreceive()
             {
-                byte[] receivedbytes = State.ReceivingUdpClient.EndReceive(res, ref State.ReceiveIpEndPoint);
-                State.ReceivingUdpClient.BeginReceive(State.ReturnCall, null);
-                string receivedString = "";
-                try
+                while (true)
                 {
-                    receivedString = Encoding.UTF8.GetString(receivedbytes);
-                }
-                catch (Exception e)
-                {
-                    Log.Write("Processing UTF8 input failed: " + e.Message, Colors.Inline);
-                   
-                }
+                    try
+                    {
+                        byte[] receivedbytes = State.ReceivingUdpClient.Receive(ref State.ReceiveIpEndPoint);
+                        string receivedString = "";
+                        try
+                        {
+                            receivedString = Encoding.UTF8.GetString(receivedbytes);
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Write("Processing UTF8 input failed: " + e.Message, Colors.Inline);
 
-                try
-                {
-                    Server.ProcessRawServerMessage(receivedString);
-                }
-                catch (Exception e)
-                {
-                    Log.Write("Problem with processing raw server message: " + e.StackTrace, Colors.Inline);
+                        }
+
+                        try
+                        {
+                            Server.ProcessRawServerMessage(receivedString);
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Write("Problem with processing raw server message: " + e.StackTrace, Colors.Inline);
+                        }
+                    }
+                    catch (ObjectDisposedException closedException)
+                    {
+                        break;
+                    }
+                    Thread.Sleep(1);
+
                 }
             }
 
             // for incoming messages
-            public static void UDPreceiveMessages(IAsyncResult res) 
+            public static void UDPreceiveMessages(IAsyncResult res)
             {
                 byte[] receivedbytes = State.ReceivingUdpClientMessages.EndReceive(res, ref State.ReceiveIpEndPointMessages);
                 State.ReceivingUdpClientMessages.BeginReceive(State.ReturnCallMessages, null);
@@ -255,7 +269,7 @@ namespace VAICOM
                     Log.Write("RECEIVED MESSAGE: " + receivedstring, Colors.Inline);
                     Server.ProcessCommsMessage(receivedstring);
 
-                 }
+                }
                 catch
                 {
                 }
@@ -279,7 +293,7 @@ namespace VAICOM
             }
 
             // SRS Receiver
-            public static void SRS_UDPreceive(IAsyncResult res) 
+            public static void SRS_UDPreceive(IAsyncResult res)
             {
                 byte[] receivedbytes = State.SRS_ReceivingUdpClient.EndReceive(res, ref State.SRS_ReceiveIpEndPoint);
                 State.SRS_ReceivingUdpClient.BeginReceive(State.SRS_ReturnCall, null);
