@@ -1,12 +1,12 @@
 # VAICOMPRO-Community
 VAICOM PRO for DCS World
 
-## Overview of the State of Play
+## Overview - Community Edition
 
 On 31 OCT 2022 Hollywood_315 open sourced his awesome AI communications software for DCS Word. VAICOMPRO has been the launch pad for VR flyers in DCS to create a
 immersive environment free from the constraints of keyboard or mouse-controlled radio menus.
 
-A group of community members have patched his work to make it compatible with DCS 2.8.XXXXX. This is a standalone installer that will replace your previous version of VAICOMPRO.
+A group of community members have patched his work to make it compatible with DCS 2.8.XXXXX and later. This is a standalone installer that will replace your previous version of VAICOMPRO. It will not work with DCS 2.7.XXXXX or erlier.
 
 We have tested this version and have not noticed any behaviors that were not present in the previous version. That said, there may be issues. Please use the issues register here on GitHub to report them.
 
@@ -29,12 +29,13 @@ DiCE: DCS Integrated Countermeasure Editor creates many functionality issues wit
 
 Flashing Comms Menu after DCS update is a known issue and can be resolved with a lua reset, launching and closing DCS to generate DCS side files, and an additional lua reset.
 
-High DCS module counts (>37) have been known to cause hooking issues, easy comms issues, and other communications and behavior quirks. Deactivating to leave 37 or less seems to fix for now, this is being investigated.
+High DCS module counts (>37) have been known to cause hooking issues, easy comms issues, and other communications and behavior quirks. Deactivating to leave 37 or less seems to fix for now, this has been resolved for the next release.
 
 ## Installation Instructions
 
-NOTE: If this is a fresh VAICOMPRO install, you should follow the install instructions in the VAICOMPRO manual found in the VAICOMPRO/Documentation folder.
+#### NOTE: If this is a new VAICOMPRO installation, you should follow the install instructions in the VAICOMPRO manual found in the VAICOMPRO/Documentation folder.
 	
+#### To update from an older version of VAICOMPRO
 
 1. Backup your current VAICOMPRO folder found in your VoiceAttack/Apps folder.
 
