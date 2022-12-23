@@ -10,7 +10,7 @@ A group of community members have patched his work to make it compatible with DC
 
 We have tested this version and have not noticed any behaviors that were not present in the previous version. That said, there may be issues. Please use the issues register here on GitHub to report them.
 
-We no have VAICOMPRO Community Edition running well with DCS 2.8 and are looking where we can take it going forward with lots of new modules coming to DCS World.
+We now have VAICOMPRO Community Edition running well with DCS 2.8 and are looking where we can take it going forward with lots of new modules coming to DCS World.
 
 ## Important Information
 
