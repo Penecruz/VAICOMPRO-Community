@@ -56,6 +56,7 @@ protocols = {
 --Aircraft native country used to select VMS language and unit system
 aircraftNativeCountry = {
 	['Ka-50']	  = nations.RUSSIA,
+	['Ka-50_3']	  = nations.RUSSIA,
 	['Su-27']	  = nations.RUSSIA,
 	['Su-33']	  = nations.RUSSIA,
 	['MiG-29A']   = nations.RUSSIA,

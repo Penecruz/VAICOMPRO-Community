@@ -37,8 +37,6 @@ namespace VAICOM
 
             public static void ExtractAll(ServerMessage serverMessage)
             {
-                Log.Write("ServerMessage CHunk: " + serverMessage.cid, Colors.Critical);
-            
                 switch (serverMessage.cid)
                 {
                     case 1:

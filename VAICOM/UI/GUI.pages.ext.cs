@@ -3,7 +3,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-
 namespace VAICOM
 {
     namespace UI
@@ -116,7 +115,7 @@ namespace VAICOM
             {
                 State.activeconfig.ICShotmic = false;
                 if (State.AIRIOactive)
-                {                
+                {
                     if (State.activeconfig.ReleaseHot)
                     {
                         State.Proxy.Command.SetSessionEnabledByCategory("Keyword Collections", false);
@@ -142,28 +141,28 @@ namespace VAICOM
 
             public void CheckBoxHotMic()
             {
-                if (State.activeconfig.ICShotmic_useswitch && State.currentstate.riostate.ics)
-                {
-                    RIO_ICShotmic.IsChecked = true;
-                    Dictate_set_relhot_Light(true);
-                }
-                else
-                {
-                    RIO_ICShotmic.IsChecked = false;
-                    Dictate_set_relhot_Light(false);
-                }
+                RIO_ICShotmic.IsChecked = State.activeconfig.ICShotmic;
             }
 
             private void SetConfigEnableRIO_ICShotmic_useswitch(object sender, RoutedEventArgs e)
             {
                 State.activeconfig.ICShotmic_useswitch = true;
+                if (State.currentstate.riostate != null && State.currentstate.riostate.ics)
+                {
+                    State.activeconfig.ICShotmic = true;
+                    CheckBoxHotMic();
+                }
             }
+
             private void SetConfigDisableRIO_ICShotmic_useswitch(object sender, RoutedEventArgs e)
             {
                 State.activeconfig.ICShotmic_useswitch = false;
+                State.activeconfig.ICShotmic = false;
+                CheckBoxHotMic();
             }
+
             private void SetCurrentValueRIO_ICShotmic_useswitch(object sender, EventArgs e)
-            {
+            { 
                 if (State.jesteractivated && State.dll_installed_rio)
                 {
                     RIO_ICShotmic_useswitch.Visibility = Visibility.Visible;
