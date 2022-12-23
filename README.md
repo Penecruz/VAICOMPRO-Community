@@ -10,7 +10,7 @@ A group of community members have patched his work to make it compatible with DC
 
 We have tested this version and have not noticed any behaviors that were not present in the previous version. That said, there may be issues. Please use the issues register here on GitHub to report them.
 
-The plan is to get VAICOMPRO Community running well with DCS 2.8 and then look where we can take it with lots of new modules coming to DCS World.
+We no have VAICOMPRO Community Edition running well with DCS 2.8 and are looking where we can take it going forward with lots of new modules coming to DCS World.
 
 ## Important Information
 
@@ -23,13 +23,12 @@ The VAICOMPRO Community Team
 
 ## Known Issues
 
-VAICOMPRO Community 2.8 is not designed to be backwards compatible with DCS 2.7. If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Community.
+VAICOMPRO Community 2.8.1.0 is not designed to be backwards compatible with DCS 2.7.X If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Community.
 
 DiCE: DCS Integrated Countermeasure Editor creates many functionality issues with VAICOMPRO Community, and it is recommended this be uninstalled before using VAICOMPRO Community.
 
-Flashing Comms Menu after DCS update is a known issue and can be resolved with a lua reset, launching and closing DCS to generate DCS side files, and an additional lua reset.
+Flashing Comms Menu after DCS World update is a known issue and can be resolved with a lua reset, closing DCS and voiceAttack then launching VoiceAttack again prior to lainching DCS to generate DCS side files.
 
-High DCS module counts (>37) have been known to cause hooking issues, easy comms issues, and other communications and behavior quirks. Deactivating to leave 37 or less seems to fix for now, this has been resolved for the next release.
 
 ## Installation Instructions
 
@@ -41,11 +40,11 @@ High DCS module counts (>37) have been known to cause hooking issues, easy comms
 
 2. Backup your current VoiceAttack profile by clicking "More Profile Actions" (button right of the edit in VoiceAttack) and exporting your profile to a known location.
 
-3. Delete the VAICOMPRO folder in your VoiceAttack/Apps folder.
+3. Uninstall or Delete the VAICOMPRO folder in your VoiceAttack/Apps folder (If you used the MSI Installer, you will need to uninstall).
 
 4. Launch VoiceAttack and exit VoiceAttack.
 
-5. Unzip the contents of the zip file and move the VAICOMPRO folder into your VoiceAttack/Apps folder or run the msi installer.
+5. Run the MSI installer and follow the instructions or for manual install Unzip the contents of the zip file and move the VAICOMPRO folder into your VoiceAttack/Apps folder.
 	
 6. Launch VoiceAttack and exit VoiceAttack. This generates the necessary file structure within the VAICOMPRO folder. If using the msi installer, drag the AIRIO and CHATTER dll files to the VAICOMPRO/Extensions folder.
 
@@ -53,16 +52,38 @@ High DCS module counts (>37) have been known to cause hooking issues, easy comms
 	
 8. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab. If this does not work, check your VoiceAttack profile and ensure the command "Configuration" exists and is enabled with the proper shortcut.
 
-9. Check Fix Reg and move the sliders to match your DCS World version (i. e. openbeta / standalone).
+9. Check that your path Settings and sliders are as desired to match your version of DCS.
 
-10. Next to “Use Custom DCS Path” click the SET button and direct it to your DCS World install folder (i. e. Program Files/Eagle Dynamics/DCS World OpenBeta).
+10. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8 installation.
 
-11. Open the “Reset” tab and uncheck all of the boxes.
-
-12. Check only the "Lua code" box and click “Master Zero”.
-
-12. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8 installation.
-
-13. As always, please update your VoiceAttack Profile and your VAICOMPRO keyword commands using the Editor tab in the VAICOMPRO configuration window. Instructions on how to do this can be found in the manual.
+11. As always, please update your VoiceAttack Profile and your VAICOMPRO keyword commands using the Editor tab in the VAICOMPRO configuration window. Instructions on how to do this can be found in the manual.
 	
-14. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
+12. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
+
+## Patch Notes
+
+VAICOMPRO Community Edition V2.8.1.0
+
+- Added Mirage F1
+- Added MB-339 (WIP it is detected but not complete)
+- Added KA-50 Black Shark 3
+- Added Interactive Kneeboard now gets disabled when slider is in the DM/OFF position
+- Fixed error in Export script
+- Fixed the issue with too many modules causing undesired behaviour
+- Improved detection method of DCS installations (custom path overide)
+- Improved Hot Mic switch in cockpit to not interfere with Hot Mic in config selection
+- Improved Hot Mic in config is changeable again (and gets saved/loaded correctly)
+- Changed license text on msi installation
+- Changed GUI labels to Community Edition.
+- Changed all versions to 2.8.1.0
+- Changed all relevant VAICOM PRO texts to VAICOM PRO Community Edition
+- Removed old licenses from GUI.
+- Removed AIRIO.vap, renamed VAICOM.vap back
+- Updated the manual to the community edition
+
+## Community Team
+
+Special K, RroouniJones, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit, stag1975 and Pene
+
+#### Beta Team
+104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye and Virus
