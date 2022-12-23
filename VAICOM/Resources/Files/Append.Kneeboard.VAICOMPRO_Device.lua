@@ -10,7 +10,7 @@ local	socket 		= require('socket')
 local 	JSON    	= require('JSON')
 
 local 	dev = GetSelf()
-local 	timer
+local 	dev_timer
 local 	update_time_step = 0.02
 local 	master_opacity = 0.5
 
@@ -112,7 +112,7 @@ function post_initialize()
 	if kneeboard then
 		kneeboard:performClickableAction(3004,1) 
 	end
-	timer = 0
+	dev_timer = 0
 end
 
 function SetCommand(command,value)
@@ -402,7 +402,7 @@ function update_contents()
 end
 
 function update()
-	timer = timer + update_time_step
+	dev_timer = dev_timer + update_time_step
 	local datareadout = receiver and receiver:receive()
 	receiveddata = datareadout or false
 	if receiveddata then

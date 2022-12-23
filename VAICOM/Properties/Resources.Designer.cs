@@ -790,7 +790,7 @@ namespace VAICOM.Properties {
         ///	shortName	 = &quot;VAICOM PRO&quot;,
         ///	fileMenuName = &quot;VAICOM PRO Community Edition&quot;,
         ///
-        ///	version		 = &quot;2.8.0&quot;,
+        ///	version		 = &quot;2.8.1&quot;,
         ///	state		 = &quot;installed&quot;, 	
         ///	developerName= &quot;DCS Community&quot;,
         ///	info		 = _(&quot;VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as clie [rest of string was truncated]&quot;;.

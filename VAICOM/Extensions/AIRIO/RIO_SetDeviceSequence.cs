@@ -24,11 +24,19 @@ namespace VAICOM
 
                 try
                 {
+                    if (State.currentstate.riostate.ics && State.activeconfig.ICShotmic_useswitch)
+                    {
+                        State.activeconfig.ICShotmic = true;
+                    } else
+                    {
+                        State.activeconfig.ICShotmic = false;
+                    }
                     if (State.configwindowopen && (State.configurationwindow != null))
                     {
                         State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
                             State.configurationwindow.CheckBoxHotMic();
+                            State.configurationwindow.Dictate_set_relhot_Light(State.activeconfig.ICShotmic);
                         });
                     }
                    

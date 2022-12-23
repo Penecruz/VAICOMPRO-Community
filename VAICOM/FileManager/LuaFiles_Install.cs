@@ -88,7 +88,7 @@ namespace VAICOM
                                 // REGISTRY
                                 // get from registry (preferred)
 
-                                if (!installfound && dcsinstallfolder_fromreg != null)
+                                if (!installfound && !customoverride && dcsinstallfolder_fromreg != null)
                                 {
                                     if (!forcequiet)
                                     {
@@ -102,14 +102,14 @@ namespace VAICOM
                                     }
                                     else if (!forcequiet)
                                     {
-                                        Log.Write("   Your registry key is invalid, create a custom path instead!", Colors.Warning);
+                                        Log.Write("   Your registry key is invalid, fix it or create a custom path instead!", Colors.Warning);
                                     }
                                 }
 
                                 // STEAM DEFAULT FOLDER
                                 // steam (standard path)
 
-                                if (!installfound && currentcycleis_steam && Directory.Exists(dcsinstallfolder_steamdefault))
+                                if (!installfound && !customoverride && currentcycleis_steam && Directory.Exists(dcsinstallfolder_steamdefault))
                                 {
                                     if (!forcequiet)
                                     {
@@ -132,7 +132,7 @@ namespace VAICOM
                                 // REGULAR PATH (FAILSAFE)
                                 // regular install path
 
-                                if (!installfound && Directory.Exists(dcsinstallfolder_regular))
+                                if (!installfound && !customoverride && Directory.Exists(dcsinstallfolder_regular))
                                 {
                                     if (!forcequiet)
                                     {
