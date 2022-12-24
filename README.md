@@ -65,7 +65,7 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 VAICOMPRO Community Edition V2.8.1.0
 
 - Added Mirage F1
-- Added MB-339 (WIP it is detected but not complete)
+- Added MB-339 (WIP- it is detected but not complete)
 - Added KA-50 Black Shark 3
 - Added Interactive Kneeboard now gets disabled when slider is in the DM/OFF position
 - Fixed error in Export script
@@ -83,7 +83,7 @@ VAICOMPRO Community Edition V2.8.1.0
 
 ## Community Team
 
-Special K, RroouniJones, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit, stag1975 and Pene
+Special K, RurouniJones, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit, stag1975 and Pene
 
 #### Beta Team
 104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye and Virus
