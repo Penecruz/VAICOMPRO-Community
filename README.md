@@ -25,10 +25,11 @@ The VAICOMPRO Community Team
 
 VAICOMPRO Community 2.8.1.0 is not designed to be backwards compatible with DCS 2.7.X If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Community.
 
+VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts. This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
+
 DiCE: DCS Integrated Countermeasure Editor creates many functionality issues with VAICOMPRO Community, and it is recommended this be uninstalled before using VAICOMPRO Community.
 
-Flashing Comms Menu after DCS World update is a known issue and can be resolved with a lua reset, closing DCS and voiceAttack then launching VoiceAttack again prior to lainching DCS to generate DCS side files.
-
+Flashing Comms Menu after DCS World update is a known issue and can be resolved with a lua reset, closing DCS and voiceAttack then launching VoiceAttack again prior to launching DCS to generate DCS side files.
 
 ## Installation Instructions
 
@@ -68,6 +69,7 @@ VAICOMPRO Community Edition V2.8.1.0
 - Added MB-339 (WIP- it is detected but not complete)
 - Added KA-50 Black Shark 3
 - Added Interactive Kneeboard now gets disabled when slider is in the DM/OFF position
+- Added the option to use other than system language via the VoiceAttack settings page
 - Fixed error in Export script
 - Fixed the issue with too many modules causing undesired behaviour
 - Improved detection method of DCS installations (custom path overide)
