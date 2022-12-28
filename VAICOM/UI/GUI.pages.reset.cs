@@ -18,10 +18,6 @@ namespace VAICOM
 
             // ------RESET PAGE -------------------------------------------
 
-            private void resetlicenseson(object sender, RoutedEventArgs e) { State.activeconfig.Resetlicenses = true; }
-            private void resetlicensesoff(object sender, RoutedEventArgs e) { State.activeconfig.Resetlicenses = false; }
-            private void SetCurrentValueResetLicenses(object sender, EventArgs e) { clearlicenses.IsChecked = State.activeconfig.Resetlicenses; }
-
             private void resetdbon(object sender, RoutedEventArgs e) { State.activeconfig.Resetdb = true; }
             private void resetdboff(object sender, RoutedEventArgs e) { State.activeconfig.Resetdb = false; }
             private void SetCurrentValueResetDb(object sender, EventArgs e) { cleardb.IsChecked = State.activeconfig.Resetdb; }
@@ -68,18 +64,6 @@ namespace VAICOM
                         // execute
 
                         State.activeconfig.Debugmode = true;
-
-                        if (State.activeconfig.Resetlicenses)
-                        {
-                            try
-                            {
-                                removeallactivelicenses();
-                                Log.Write("License data cleared.", Static.Colors.Text);
-                            }
-                            catch
-                            {
-                            }
-                        }
 
                         if (State.activeconfig.Resetprofile)
                         {
@@ -237,7 +221,7 @@ namespace VAICOM
 
             private void Test_Install(object sender, MouseButtonEventArgs e)
             {
-                string caption = "VAICOM PRO Installation info";
+                string caption = "VAICOM PRO Community Edition Installation info";
                 string message = "";
                 MessageBoxImage BoxImage = new MessageBoxImage();
 
@@ -340,7 +324,7 @@ namespace VAICOM
                     if (!State.dcspath_release.Equals(""))
                     {
                         pathrelease = State.dcspath_release + "\n";
-                        pathrelease += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.5"] + "\n";
+                        pathrelease += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.8"] + "\n";
                     }
                     message += "> DCS World (release version):" + "\n";
                     message += "   " + pathrelease + "\n";
@@ -349,7 +333,7 @@ namespace VAICOM
                     if (!State.dcspath_openbeta.Equals(""))
                     {
                         pathopenbeta = State.dcspath_openbeta + "\n";
-                        pathopenbeta += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.5 OpenBeta"] + "\n";
+                        pathopenbeta += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.8 OpenBeta"] + "\n";
                     }
                     message += "> DCS World (open beta):" + "\n";
                     message += "   " + pathopenbeta + "\n";
@@ -358,7 +342,7 @@ namespace VAICOM
                     if (!State.dcspath_steam.Equals(""))
                     {
                         pathsteam = State.dcspath_steam + "\n";
-                        pathsteam += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.5"] + "\n"; ;
+                        pathsteam += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.8"] + "\n"; ;
                     }
                     message += "> DCS World (STEAM):" + "\n";
                     message += "   " + pathsteam + "\n";

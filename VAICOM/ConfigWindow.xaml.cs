@@ -112,7 +112,7 @@ namespace VAICOM
 
             public string setversionnumber()
             {
-                return "GPL version " + State.versionstring ;
+                return "Version " + State.versionstring ;
             }
 
             private void setversionnumber1(object sender, EventArgs e)
@@ -222,6 +222,31 @@ namespace VAICOM
                     debugpage.IsEnabled = false;
                     debugpage.Visibility = Visibility.Hidden;
                 }             
+            }
+
+            public void DebugViewState()
+            {
+                if (State.clientmode.Equals(ClientModes.Debug))
+                {
+                    debugpage.IsEnabled = true;
+                    debugpage.Visibility = Visibility.Visible;
+                    SendButton.IsEnabled = true;
+                    SendButton.Visibility = Visibility.Visible;
+                    CodeBlock.IsEnabled = true;
+                    CodeBlock.Visibility = Visibility.Visible;
+                    CodeBlock.Text = Properties.Resources.Debug_code;
+                }
+                else
+                {
+                    debugpage.IsEnabled = false;
+                    debugpage.Visibility = Visibility.Hidden;
+                    SendButton.IsEnabled = false;
+                    SendButton.Visibility = Visibility.Hidden;
+
+                    CodeBlock.IsEnabled = false;
+                    CodeBlock.Visibility = Visibility.Hidden;
+                    CodeBlock.Text = "";
+                }
             }
 
             private void DumpState(object sender, MouseButtonEventArgs e)

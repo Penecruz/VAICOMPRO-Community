@@ -44,7 +44,7 @@ namespace VAICOM
                     State.dll_info_rio = Assembly.GetAssembly(typeof(Extensions.RIO.DeviceActionsLibrary)).GetName();
                     if (State.dll_info_rio.Version.ToString().Equals("0.0.0.0"))
                     {
-                        State.dll_info_rio = new AssemblyName() { Version = Version.Parse("2.5.0.0")};
+                        State.dll_info_rio = new AssemblyName() { Version = Version.Parse("2.8.1.0")};
                         State.dll_version_rio = "(not installed)";
                         State.dll_installed_rio = false;
                     }

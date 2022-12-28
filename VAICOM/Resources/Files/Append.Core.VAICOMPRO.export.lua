@@ -13,12 +13,6 @@ vaicom = {}
 
 vaicom.config = {
 
-		receivefromradio =	{ -- do not edit
-							address	= "127.0.0.1",
-							port	= 33333,
-							timeout = 0,
-							},
-							
 		sendtoradio =		{ -- do not edit
 							address	= "127.0.0.1",
 							port	= 33334,
@@ -44,10 +38,6 @@ vaicom.insert = {
 
 	Start = function(self) 
 	
-		vaicom.receivefromradio = socket.try(socket.udp()) 
-		socket.try(vaicom.receivefromradio:setsockname(vaicom.config.receivefromradio.address,vaicom.config.receivefromradio.port))
-		socket.try(vaicom.receivefromradio:settimeout(vaicom.config.receivefromradio.timeout))
-		
 		vaicom.sendtoradio = socket.try(socket.udp()) 
 		socket.try(vaicom.sendtoradio:setpeername(vaicom.config.sendtoradio.address,vaicom.config.sendtoradio.port))
 		socket.try(vaicom.sendtoradio:settimeout(vaicom.config.sendtoradio.timeout))
@@ -76,27 +66,17 @@ vaicom.insert = {
 		end
 	end,
 	
-	AfterNextFrame = function(self)		
-		local newdata = false
-		newdata = vaicom.receivefromradio:receive()		
-		if newdata then
-			vaicom.sendtoclient:send(newdata)
-		else	
-			if purge then
-				vaicom.insert:Flush()	
-			end
-			purge = false
-		end			
+	AfterNextFrame = function(self)
+		if purge then
+			vaicom.insert:Flush()	
+		end
+		purge = false
 	end,
 
 	Stop = function(self)
 
 		vaicom.sendtoclient:send(vaicom.config.beaconclose)
 
-		if vaicom.receivefromradio then
-			socket.try(vaicom.receivefromradio:close())
-			vaicom.receivefromradio = nil
-		end	
 		if vaicom.sendtoradio then
 			socket.try(vaicom.sendtoradio:close())
 			vaicom.sendtoradio = nil
@@ -176,7 +156,7 @@ vaicom.insert = {
 			LoSetCommand(1592) 
 			return 
 		end	
-		if string.find(mod, "L-39") then
+		if string.find(mod, "L%-39") then
 			GetDevice(34):performClickableAction(1188,1)
 			return
 		end	
@@ -190,18 +170,18 @@ vaicom.insert = {
 			LoSetCommand(1591) 													 		
 			return 
 		end	
-		if string.find(mod, "P-51") or string.find(mod, "TF-51") then
+		if string.find(mod, "P%-51") or string.find(mod, "TF%-51") then
 			LoSetCommand(1592)
 			LoSetCommand(1591)
 			LoSetCommand(1591)			
 			return 
 		end	
-		if string.find(mod, "P-47") then
+		if string.find(mod, "P%-47") then
 			LoSetCommand(1592)
 			LoSetCommand(1591)                                         
 			return
 		end	
-		if string.find(mod, "Mi-24") then
+		if string.find(mod, "Mi%-24") then
 			GetDevice(55):performClickableAction(3026,1) 
 			GetDevice(55):performClickableAction(3026,0) 
 			return
@@ -211,7 +191,7 @@ vaicom.insert = {
 			LoSetCommand(1591) 					
 			return 
 		end	
-		if string.find(mod, "AH-64") then
+		if string.find(mod, "AH%-64") then
 			GetDevice(25):performClickableAction(3017,-1)
 			GetDevice(25):performClickableAction(3017,-1)
 			return 

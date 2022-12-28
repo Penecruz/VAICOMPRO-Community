@@ -3,7 +3,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-
 namespace VAICOM
 {
     namespace UI
@@ -22,7 +21,7 @@ namespace VAICOM
 
             private void SetCurrentValueKneeboardOpacity(object sender, EventArgs e) 
             {
-                KneeboardOpacity.IsEnabled = State.kneeboardactivated;
+                KneeboardOpacity.IsEnabled = true;
                 KneeboardOpacity.Value = State.activeconfig.KneeboardOpacity;
                 kneeboard_init = true;
             }
@@ -31,6 +30,13 @@ namespace VAICOM
                 if (kneeboard_init && !State.activeconfig.KneeboardOpacity.Equals(e.NewValue))
                 {
                     State.activeconfig.KneeboardOpacity = e.NewValue;
+                    if (State.activeconfig.KneeboardOpacity == 0)
+                    {
+                        State.kneeboardactivated = false;
+                    } else
+                    {
+                        State.kneeboardactivated = true;
+                    }
                     Settings.ConfigFile.WriteConfigToFile(true);
                     UpdateKneeboard();                               
                 }
@@ -99,7 +105,7 @@ namespace VAICOM
             {
                 State.activeconfig.ICShotmic = true;
                 if (State.AIRIOactive)
-                {     
+                {
                     State.Proxy.Command.SetSessionEnabledByCategory("Keyword Collections", true);
                     State.Proxy.Command.SetSessionEnabledByCategory("Extension packs", true);
                     State.Proxy.State.SetListeningEnabled(true);
@@ -109,7 +115,7 @@ namespace VAICOM
             {
                 State.activeconfig.ICShotmic = false;
                 if (State.AIRIOactive)
-                {                
+                {
                     if (State.activeconfig.ReleaseHot)
                     {
                         State.Proxy.Command.SetSessionEnabledByCategory("Keyword Collections", false);
@@ -130,15 +136,6 @@ namespace VAICOM
             }
             private void SetCurrentValueRIO_ICShotmic(object sender, EventArgs e)
             {
-                if (State.jesteractivated && State.dll_installed_rio)
-                {
-                    RIO_ICShotmic.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    RIO_ICShotmic.Visibility = Visibility.Hidden;
-                }
-                RIO_ICShotmic.IsEnabled = false; 
                 RIO_ICShotmic.IsChecked = State.activeconfig.ICShotmic;
             }
 
@@ -149,12 +146,33 @@ namespace VAICOM
 
             private void SetConfigEnableRIO_ICShotmic_useswitch(object sender, RoutedEventArgs e)
             {
+                State.activeconfig.ICShotmic_useswitch = true;
+                if (State.currentstate.riostate != null && State.currentstate.riostate.ics)
+                {
+                    State.activeconfig.ICShotmic = true;
+                    CheckBoxHotMic();
+                }
             }
+
             private void SetConfigDisableRIO_ICShotmic_useswitch(object sender, RoutedEventArgs e)
             {
+                State.activeconfig.ICShotmic_useswitch = false;
+                State.activeconfig.ICShotmic = false;
+                CheckBoxHotMic();
             }
+
             private void SetCurrentValueRIO_ICShotmic_useswitch(object sender, EventArgs e)
-            {
+            { 
+                if (State.jesteractivated && State.dll_installed_rio)
+                {
+                    RIO_ICShotmic_useswitch.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    RIO_ICShotmic_useswitch.Visibility = Visibility.Hidden;
+                }
+                RIO_ICShotmic_useswitch.IsEnabled = State.jesteractivated;
+                RIO_ICShotmic_useswitch.IsChecked = State.activeconfig.ICShotmic_useswitch;
             }
 
             private void InitRIODllWarning(object sender, EventArgs e)

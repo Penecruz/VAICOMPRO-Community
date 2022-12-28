@@ -12,16 +12,16 @@ namespace VAICOM
             // Program Files:
             public static Dictionary<string, string> dcsfolders = new Dictionary<string, string>()
             {
-                {"2.5",             "DCS World"             },
-                {"2.5 OpenBeta",    "DCS World OpenBeta"    },
+                {"2.8",             "DCS World"             },
+                {"2.8 OpenBeta",    "DCS World OpenBeta"    },
                 {"STEAM",           "DCSWorld"              },
             };
 
             // Saved Games:
             public static Dictionary<string, string> dcsversion = new Dictionary<string, string>()
             {
-                {"2.5",             "DCS"           },
-                {"2.5 OpenBeta",    "DCS.openbeta"  },
+                {"2.8",             "DCS"           },
+                {"2.8 OpenBeta",    "DCS.openbeta"  },
                 {"STEAM",           "DCS"           },
             };
 

@@ -18,9 +18,15 @@ function make(self, message)
 											getMessageModuleAndLanguage(roleData, defaultModuleName, desiredLanguage) or
 											getMessageModuleAndLanguage(roleData, module, nil) or
 											getMessageModuleAndLanguage(roleData, defaultModuleName, nil)
+		if not messageModuleAndLanguage then
+			return nil
+		end
 		messageModuleName = messageModuleAndLanguage[1]	
 		messageLanguage = base.vaicom.settings.forcelanguage and base.vaicom.settings.forcedlanguage or messageModuleAndLanguage[2]	
 		roleData = roleData.modules[messageModuleName]
+		if roleData == nil then
+			base.print('make: module name = ', messageModuleName)
+		end		
 	else
 		messageLanguage = 	base.vaicom.settings.forcelanguage and base.vaicom.settings.forcedlanguage or getMessageLanguage(roleData, desiredLanguage) or
 							getMessageLanguage(roleData, nil)
@@ -28,7 +34,9 @@ function make(self, message)
 	if 	messageLanguage ~= nil and
 		roleData.languages ~= nil then
 		roleData = roleData.languages[messageLanguage]
-	end
+		if roleData == nil then
+			base.print('make: language name = ', messageLanguage)
+		end	end
 	local handler = (message.parameters and message.parameters.simple) and self.SimpleHandler or self:getHandler(message.event)
 	local result = handler:make(message, messageLanguage)
 	if result == nil then
@@ -42,20 +50,28 @@ function make(self, message)
 		result.directory = result.directory..messageModuleName..'/'
 	end	
 	result.directory = result.directory..role.dir..'/'
-	if roleData.accents ~= nil then
-		local messageAccent = accentTable[messageLanguage][country] or accent.USA
-		result.directory = result.directory..base.country.name[messageAccent]..'/'
-		roleData = roleData.accents[messageAccent]
-	end
-	if 	roleData.voices ~= nil and
-		roleData.voices > 0 then
-		local voice = message.sender:getVoice()	or 1
-		voice = base.math.fmod(voice, roleData.voices)
-		if voice == 0 then
-			voice = roleData.voices
+	
+	--if roleData ~= nil then
+		--Accent
+		if roleData ~= nil and roleData.accents ~= nil then			
+			local messageAccent = accentTable[messageLanguage][country] or accent.USA
+			result.directory = result.directory..base.country.names[messageAccent]..'/'
+			roleData = roleData.accents[messageAccent]
 		end
-		result.directory = result.directory..base.tostring(voice)..'/'
-	end
+	
+		--Voice
+		if 	roleData ~= nil and roleData.voices ~= nil and
+			roleData.voices > 0 then
+			local voice = message.sender:getVoice()	or 1
+			voice = base.math.fmod(voice, roleData.voices)
+			if voice == 0 then
+				voice = roleData.voices
+			end
+			result.directory = result.directory..base.tostring(voice)..'/'
+		end
+	--end
+
+	--Sender caption for subtitles
 	local caption = self:makeCaption(role, message.sender, getAirdromeNameVariant(messageLanguage))
 	if message.radio then
 		p.addRadioClicks(result)

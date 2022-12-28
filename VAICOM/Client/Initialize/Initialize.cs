@@ -89,12 +89,12 @@ namespace VAICOM
 
                     if (VAcurrentversion < VAminversion)
                     {
-                        Log.Write("ALERT: VoiceAttack is not up to date! Update to version " + State.vaminversion + " or higher to use with VAICOM PRO.", Colors.Critical);
+                        Log.Write("ALERT: VoiceAttack is not up to date! Update to version " + State.vaminversion + " or higher to use with VAICOM PRO Community Edition.", Colors.Critical);
                         UI.Playsound.Error();
                     }
                     else
                     {
-                        Log.Write("VoiceAttack current version " + VAcurrentversion.ToString() + " up-to-date for use with VAICOM PRO.", Colors.Text);
+                        Log.Write("VoiceAttack current version " + VAcurrentversion.ToString() + " up-to-date for use with VAICOM PRO Community Edition.", Colors.Text);
                     }
 
                 }
@@ -124,11 +124,10 @@ namespace VAICOM
                 State.KneeboardCatAliasStrings[1] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[2] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[3] = new Dictionary<string, SortedDictionary<string, List<string>>>();
-                State.udpreceivedstring = "";
+              
                 State.wingmanspeechpath = "";
                 State.previousstate = new Server.ServerState();
                 State.currentstate = new Server.ServerState();
-                State.receivedchunk = new Server.ServerMessage();
                 State.menuauximported = false;
                 State.currentstate.easycomms = true;
                 State.currentmodule = DCSmodules.LookupTable["----"];
@@ -167,59 +166,10 @@ namespace VAICOM
                 State.activeconfig = Settings.ConfigFile.ReadConfigFromFile();
             }
 
-            public static void CheckEULA(dynamic vaProxy)
-            {
-
-                if (State.activeconfig.Runningforthefirsttime)
-                {
-                    string caption = "EULA - VAICOM PRO";
-                    string message = "\nBy pressing OK you accept the end user license agreement.\n";
-                    MessageBoxResult goahead = MessageBox.Show(message, caption, MessageBoxButton.OKCancel, MessageBoxImage.Information);
-                    if (goahead.Equals(MessageBoxResult.OK))
-                    {
-                        Log.Write("UELA accepted.", Colors.Text);
-                        State.activeconfig.Runningforthefirsttime = false;
-                        Settings.ConfigFile.WriteConfigToFile(true);
-                    }
-                    else
-                    {
-                        throw new Exception(message = "The EULA must be accepted to use VAICOM PRO.");
-                    }
-                }
-
-            }
-
             public static void FixFiles(dynamic vaProxy)
             {
-                FileHandler.Updater.CleanUpdateFolder();
                 Settings.ConfigFile.AddNewConfigItems(); 
                 Settings.ConfigFile.WriteConfigToFile(true); 
-            }
-
-            public static void CheckUpdates(dynamic vaProxy)
-            {
-                if (State.activeconfig.AutomaticUpdateFinished)
-                {
-                    Log.Write("Plugin files were updated.", Colors.System);
-                    State.activeconfig.AutomaticUpdateFinished = false;
-                }
-                else
-                {
-                    // ---- only check for new updates every <checkmax> sessions
-
-                    Random rnd = new Random();
-                    int checkmax = 1;
-                    int dice = rnd.Next(1, 1 + checkmax);
-                    if (dice.Equals(1))
-                    {
-                        FileHandler.Updater.GetPluginUpdates();
-                    }
-                    else
-                    {
-                        Log.Write("Update check skipped: " + dice, Colors.Inline);
-                    }
-                }
-
             }
 
             public static void LogVersionData(dynamic vaProxy)
@@ -237,7 +187,6 @@ namespace VAICOM
                 State.versionstring = State.dll_version_plugin + " " + betastring;
 
                 Log.Write("Plugin version " + State.versionstring, Colors.Text);
-                Log.Write("License: " + State.currentlicense, Colors.Text);
 
             }
 
@@ -447,7 +396,7 @@ namespace VAICOM
                     FileHandler.Root.CheckSubFolders();
                     FileHandler.Root.ExtractCompagnionApp();
 
-                    Log.Write("VAICOM PRO for DCS World. " + "License: " + State.currentlicense, Colors.System);
+                    Log.Write("VAICOM PRO Community Edition for DCS World.", Colors.System);
                     Log.Write("Press LCtrl+LAlt+C for config.", Colors.System);
                     Log.Write("Initializing..", Colors.System);
 
@@ -457,7 +406,6 @@ namespace VAICOM
 
                     CheckVAVersion(vaProxy);
                     GetAssemblies(vaProxy);
-                    //CheckEULA(vaProxy);
 
                 }
                 catch
@@ -471,7 +419,6 @@ namespace VAICOM
                 {
 
                     FixFiles(vaProxy);
-                    CheckUpdates(vaProxy);
                     LogVersionData(vaProxy); 
                     ResetStateValues(vaProxy);        
                     Processor.InitTTSPlaybackStream();

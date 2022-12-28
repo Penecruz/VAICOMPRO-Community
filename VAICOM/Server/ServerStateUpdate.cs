@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
+using static VAICOM.Servers.Server;
 
 namespace VAICOM
 {
@@ -11,9 +12,9 @@ namespace VAICOM
         public static partial class Server
         {
 
-            public static void UpdateServerState() // gets all chuncks
+            public static void UpdateServerState(ServerMessage serverMessage) // gets all chuncks
             {
-                ExtractAll(State.receivedchunk.cid);
+                ExtractAll(serverMessage);
 
                 if (receivedupdatecomplete)
                 {
@@ -34,50 +35,50 @@ namespace VAICOM
 
             public static int chunkcount = 12;
 
-            public static void ExtractAll(int id)
+            public static void ExtractAll(ServerMessage serverMessage)
             {
-                switch (id)
+                switch (serverMessage.cid)
                 {
                     case 1:
-                        ExtractChunk1();
+                        ExtractChunk1(serverMessage);
                         break;
                     case 2:
-                        ExtractChunk2();
+                        ExtractChunk2(serverMessage);
                         break;
                     case 3:
-                        ExtractChunk3();
+                        ExtractChunk3(serverMessage);
                         break;
                     case 4:
-                        ExtractChunk4();
+                        ExtractChunk4(serverMessage);
                         break;
                     case 5:
-                        ExtractChunk5();
+                        ExtractChunk5(serverMessage);
                         break;
                     case 6:
-                        ExtractChunk6();
+                        ExtractChunk6(serverMessage);
                         break;
                     case 7:
-                        ExtractChunk7();
+                        ExtractChunk7(serverMessage);
                         break;
                     case 8:
-                        ExtractChunk8();
+                        ExtractChunk8(serverMessage);
                         break;
                     case 9:
-                        ExtractChunk9();
+                        ExtractChunk9(serverMessage);
                         break;
                     case 10:
-                        ExtractChunk10();
+                        ExtractChunk10(serverMessage);
                         break;
                     case 11:
-                        ExtractChunk11();
+                        ExtractChunk11(serverMessage);
                         break;
                     case 12:
-                        ExtractChunk12();
+                        ExtractChunk12(serverMessage);
                         break;
                 }
             }
 
-            public static void ExtractChunk1()
+            public static void ExtractChunk1(ServerMessage serverMessage)
             {
 
                 processingchunks = true;
@@ -87,21 +88,21 @@ namespace VAICOM
 
                 try
                 {
-                    State.currentstate.client           = State.receivedchunk.client;
-                    State.currentstate.clientversion    = State.receivedchunk.clientversion;
-                    State.currentstate.mode             = State.receivedchunk.mode;
-                    State.currentstate.type             = State.receivedchunk.type;
-                    State.currentstate.dcsversion       = State.receivedchunk.dcsversion.Length > 5 ? State.receivedchunk.dcsversion.Substring(0, 5) : State.receivedchunk.dcsversion;
-                    State.currentstate.root             = State.receivedchunk.root;
-                    State.currentstate.multiplayer      = State.receivedchunk.multiplayer;
-                    State.currentstate.vrmode           = State.receivedchunk.vrmode;
-                    State.currentstate.easycomms        = State.receivedchunk.easycomms;
-                    State.currentstate.pausebasestate   = State.receivedchunk.pausebasestate;
-                    State.currentstate.theatre          = State.receivedchunk.theatre;
-                    State.currentstate.sortie           = State.receivedchunk.sortie;
-                    State.currentstate.task             = State.receivedchunk.task;
-                    State.currentstate.country          = State.receivedchunk.country;
-                    State.currentstate.options          = State.receivedchunk.options;
+                    State.currentstate.client           = serverMessage.client;
+                    State.currentstate.clientversion    = serverMessage.clientversion;
+                    State.currentstate.mode             = serverMessage.mode;
+                    State.currentstate.type             = serverMessage.type;
+                    State.currentstate.dcsversion       = serverMessage.dcsversion.Length > 5 ? serverMessage.dcsversion.Substring(0, 5) : serverMessage.dcsversion;
+                    State.currentstate.root             = serverMessage.root;
+                    State.currentstate.multiplayer      = serverMessage.multiplayer;
+                    State.currentstate.vrmode           = serverMessage.vrmode;
+                    State.currentstate.easycomms        = serverMessage.easycomms;
+                    State.currentstate.pausebasestate   = serverMessage.pausebasestate;
+                    State.currentstate.theatre          = serverMessage.theatre;
+                    State.currentstate.sortie           = serverMessage.sortie;
+                    State.currentstate.task             = serverMessage.task;
+                    State.currentstate.country          = serverMessage.country;
+                    State.currentstate.options          = serverMessage.options;
                 }
                 catch (Exception e)
                 {
@@ -110,23 +111,23 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk2()
+            public static void ExtractChunk2(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.timer                = State.receivedchunk.timer;
-                    State.currentstate.tod                  = State.receivedchunk.tod;
-                    State.currentstate.id                   = State.receivedchunk.id;
-                    State.currentstate.playerusername       = State.receivedchunk.playerusername;
-                    State.currentstate.playercallsign       = State.receivedchunk.playercallsign;
-                    State.currentstate.playercoalition      = State.receivedchunk.playercoalition;
-                    State.currentstate.playerunitid         = State.receivedchunk.playerunitid;
-                    State.currentstate.playerunitcat        = State.receivedchunk.playerunitcat;
-                    State.currentstate.airborne             = State.receivedchunk.airborne;
-                    State.currentstate.intercom             = State.receivedchunk.intercom;
-                    State.currentstate.fsmstate             = State.receivedchunk.fsmstate;
-                    State.currentstate.radios               = State.receivedchunk.radios;
+                    State.currentstate.timer                = serverMessage.timer;
+                    State.currentstate.tod                  = serverMessage.tod;
+                    State.currentstate.id                   = serverMessage.id;
+                    State.currentstate.playerusername       = serverMessage.playerusername;
+                    State.currentstate.playercallsign       = serverMessage.playercallsign;
+                    State.currentstate.playercoalition      = serverMessage.playercoalition;
+                    State.currentstate.playerunitid         = serverMessage.playerunitid;
+                    State.currentstate.playerunitcat        = serverMessage.playerunitcat;
+                    State.currentstate.airborne             = serverMessage.airborne;
+                    State.currentstate.intercom             = serverMessage.intercom;
+                    State.currentstate.fsmstate             = serverMessage.fsmstate;
+                    State.currentstate.radios               = serverMessage.radios;
                 }
                 catch (Exception e)
                 {
@@ -134,15 +135,15 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk3()
+            public static void ExtractChunk3(ServerMessage serverMessage)
             {
 
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.missiontitle     = State.receivedchunk.missiontitle;
-                    State.currentstate.missionbriefing  = State.receivedchunk.missionbriefing;
-                    State.currentstate.missiondetails   = State.receivedchunk.missiondetails;
+                    State.currentstate.missiontitle     = serverMessage.missiontitle;
+                    State.currentstate.missionbriefing  = serverMessage.missionbriefing;
+                    State.currentstate.missiondetails   = serverMessage.missiondetails;
                 }
                 catch (Exception e)
                 {
@@ -156,7 +157,7 @@ namespace VAICOM
                 return checkstr.ToLower().Contains("kuznetsov") || checkstr.ToLower().Contains("stennis") || checkstr.ToLower().Contains("roosevelt") || checkstr.ToLower().Contains("lincoln") || checkstr.ToLower().Contains("washington") || checkstr.ToLower().Contains("truman");
             }
 
-            public static void ExtractChunk4()
+            public static void ExtractChunk4(ServerMessage serverMessage)
             {
 
                 processingchunks = true;
@@ -167,7 +168,7 @@ namespace VAICOM
                     {
                         try
                         {
-                            foreach (DcsUnit a in State.receivedchunk.availablerecipients[catstr])
+                            foreach (DcsUnit a in serverMessage.availablerecipients[catstr])
                             {
                                 a.reccat = catstr;
                                 a.descr = catdescriptions[catstr];
@@ -185,13 +186,13 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk5()
+            public static void ExtractChunk5(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
                     string cat = "ATC";
-                    foreach (DcsUnit a in State.receivedchunk.availablerecipients[cat])
+                    foreach (DcsUnit a in serverMessage.availablerecipients[cat])
                     {
                         a.reccat = cat;
                         a.descr = catdescriptions[cat];
@@ -208,14 +209,14 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk6()
+            public static void ExtractChunk6(ServerMessage serverMessage)
             {
 
                 processingchunks = true;
                 try
                 {
                     string cat = "ATC";
-                    foreach (DcsUnit a in State.receivedchunk.availablerecipients[cat])
+                    foreach (DcsUnit a in serverMessage.availablerecipients[cat])
                     {
                         a.reccat = cat;
                         a.descr = catdescriptions[cat];
@@ -233,15 +234,15 @@ namespace VAICOM
                 receivedupdatecomplete = false;
             }
 
-            public static void ExtractChunk7()
+            public static void ExtractChunk7(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
                     string cat = "Allies";
-                    foreach (DcsUnit a in State.receivedchunk.availablerecipients[cat])
+                    foreach (DcsUnit a in serverMessage.availablerecipients[cat])
                     {
-                        if (!a.id_.Equals(State.currentstate.availablerecipients["Player"][0].id_))
+                        if (State.currentstate.availablerecipients["Player"].Count > 0 && !a.id_.Equals(State.currentstate.availablerecipients["Player"][0].id_))
                         {
                             a.reccat = cat;
                             a.descr = catdescriptions[cat];
@@ -255,13 +256,13 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk8()
+            public static void ExtractChunk8(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
                     string cat = "Allies";
-                    foreach (DcsUnit a in State.receivedchunk.availablerecipients[cat])
+                    foreach (DcsUnit a in serverMessage.availablerecipients[cat])
                     {
                         if (!a.id_.Equals(State.currentstate.availablerecipients["Player"][0].id_))
                         {
@@ -277,15 +278,15 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk9()
+            public static void ExtractChunk9(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
-                    if (State.receivedchunk.menuaux != null)
+                    if (serverMessage.menuaux != null)
                     {
-                        State.currentstate.menuaux = State.receivedchunk.menuaux;
-                        State.currentstate.menucargo = State.receivedchunk.menucargo;
+                        State.currentstate.menuaux = serverMessage.menuaux;
+                        State.currentstate.menucargo = serverMessage.menucargo;
                     }
                 }
                 catch (Exception e)
@@ -294,14 +295,14 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk10()
+            public static void ExtractChunk10(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.riostate             = State.receivedchunk.riostate;
-                    State.currentstate.bpos                 = State.receivedchunk.bpos;
-                    State.currentstate.cpos                 = State.receivedchunk.cpos;
+                    State.currentstate.riostate             = serverMessage.riostate;
+                    State.currentstate.bpos                 = serverMessage.bpos;
+                    State.currentstate.cpos                 = serverMessage.cpos;
                     State.currentstate.viewexternal         = !State.currentstate.cpos.type.Equals(0);
                     State.currentstate.soundsallowexternal  = State.currentstate.options.sound.headphones_on_external_views;
 
@@ -312,12 +313,12 @@ namespace VAICOM
                 }
                 receivedupdatecomplete = false;
             }
-            public static void ExtractChunk11()
+            public static void ExtractChunk11(ServerMessage serverMessage)
             {
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.payload = State.receivedchunk.payload;
+                    State.currentstate.payload = serverMessage.payload;
                 }
                 catch (Exception e)
                 {
@@ -328,7 +329,7 @@ namespace VAICOM
 
             }
 
-            public static void ExtractChunk12()
+            public static void ExtractChunk12(ServerMessage serverMessage)
             {
                 try
                 {

@@ -54,20 +54,11 @@ namespace VAICOM
 
                     try
                     {
-
-                        //VAICOM PRO AIRIO
-                        string filename = "VAICOM PRO AIRIO.vap";
+                        //VAICOM PRO for DCS World
+                        string filename = "VAICOM PRO for DCS World.vap";
                         string filepath = basepath + "\\" + filename;
                         if (File.Exists(filepath)) { File.Delete(filepath); } 
-                        string filewritestring = Properties.Resources.VAICOM_PRO_AIRIO;
-                        using (StreamWriter writer = new StreamWriter(filepath, true)) { writer.Write(filewritestring); };
-                        Log.Write("Exported file: " + filename, Colors.Text);
-
-                        //VAICOM PRO for DCS World
-                        filename = "VAICOM PRO for DCS World.vap";
-                        filepath = basepath + "\\" + filename;
-                        if (File.Exists(filepath)) { File.Delete(filepath); } 
-                        filewritestring = Properties.Resources.VAICOM_PRO_for_DCS_World;
+                        string filewritestring = Properties.Resources.VAICOM_PRO_for_DCS_World;
                         using (StreamWriter writer = new StreamWriter(filepath, true)) { writer.Write(filewritestring); };
                         Log.Write("Exported file: " + filename, Colors.Text);
 

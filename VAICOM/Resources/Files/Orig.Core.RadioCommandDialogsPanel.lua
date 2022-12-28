@@ -10,16 +10,22 @@ local DCS           = require('DCS')
 local function clean()
 	base.RadioCommandDialogsPanel = nil
 	base.package.loaded['RadioCommandDialogsPanel'] = nil
+	
 	base.CommandDialogsPanel = nil
 	base.package.loaded['CommandDialogsPanel'] = nil
+	
 	base.CommandDialog = nil
 	base.package.loaded['CommandDialog'] = nil
+	
 	base.CommandMenu = nil
 	base.package.loaded['CommandMenu'] = nil
+	
 	base.StaticMenu = nil
 	base.package.loaded['StaticMenu'] = nil
+	
 	base.StaticList = nil
 	base.package.loaded['StaticList'] = nil
+	
 	base.TabSheetBar = nil
 	base.package.loaded['TabSheetBar'] = nil
 end
@@ -77,6 +83,10 @@ local data = {
 	radioAutoTune = true,
 	recepientInfo = true,
 	rootItem = function() end,
+	
+	-- 'AddPropAircraft' in the module entry description (lua) -> wsInitData.AddPropList (cpp) -> RadioCommandDialogsPanel.data.customUnitProperties (lua)
+	-- table["PropertyName"] = {value = 0, str_value = ""}
+	customUnitProperties = {},
 }
 
 local commById = {}
@@ -454,16 +464,6 @@ local function makeItemByCommunicator(pCommunicator, submenu)
 		callsignStr = pCommunicator:getUnit():getDesc().displayName
 	end	
 		
-	if pCommunicator:getUnit():hasAttribute("Ships") and data.pUnit:canShipLanding() and not data.pUnit:OldCarrierMenuShow() then	-- need to change  wMsgLeaderInbound command to wMsgLeaderInboundCarrier to select correct role.				
-		if submenu.items  then				
-			for k,v in base.pairs(submenu.items) do				
-				if v and v.command and v.command.command == base.Message.wMsgLeaderInbound  then		
-					v.command.command = base.Message.wMsgLeaderInboundCarrier
-				end
-			end
-		end
-	end
-	
 	local frequency = pCommunicator:getFrequency()
 	local modulation = pCommunicator:getModulation()
 	
@@ -611,6 +611,7 @@ local function buildCargosMenu(Cargos, new_menu_name, child_menu_item, unit)
 	else
 		if Cargos ~= nil then
 			if #Cargos > 0 then
+				
 				local new_menu_item = {
 					name = new_menu_name,
 					menuUnit = unit,
@@ -635,6 +636,144 @@ local function buildCargosMenu(Cargos, new_menu_name, child_menu_item, unit)
 	end
 end
 
+
+local function buildCargosMenuForAircraft(Cargos, new_menu_name, child_menu_item, unit)
+	if unit:checkOpenRamp() == true then
+		local new_menu_item = {
+			name = new_menu_name,
+			menuUnit = unit,
+			submenu = {
+				name = new_menu_name,
+				items = {}
+			}
+		}
+	
+		if Cargos ~= nil then
+			if #Cargos > 0 then
+				if unit:checkOpenRamp() == true then	
+					local maxListItems = 8
+					local counter = 0
+					for index, cargo in base.pairs(Cargos) do
+						counter = counter + 1
+										
+						local cargoName = cargo:getCargoDisplayName()
+
+						local new_menu_item2 = {
+								name = cargoName,
+								menuUnit = unit,
+								submenu = {
+									name = cargoName,
+									items = {}
+								}		
+							}
+						local LoadItem = {
+								name = "Load on board",
+								submenu = nil,
+								command = 
+								{
+									perform = function(self)
+										cargo:chooseCargo()
+										unit:LoadOnBoard()
+									end
+								},
+						}		
+						base.table.insert(new_menu_item2.submenu.items, LoadItem)						
+						base.table.insert(new_menu_item.submenu.items, new_menu_item2)
+						if counter >= maxListItems then
+							break
+						end
+					end
+				end
+			end
+		end
+		local cargosOnBoard = unit:getCargosOnBoard()
+		if cargosOnBoard ~= nil then
+			if #cargosOnBoard > 0 then
+				local UnloadCargos = {
+						name = "Unload cargos",
+						submenu = {
+							name = "Unload cargos",
+							items = {}
+						}
+				}		
+				for index, cargo in base.pairs(cargosOnBoard) do
+									
+					local cargoName = cargo:getCargoDisplayName()
+
+					local new_menu_item2 = {
+							name = cargoName,
+							menuUnit = unit,
+							submenu = {
+								name = cargoName,
+								items = {}
+							}		
+						}
+					local UnloadItem = {
+							name = "Unload",
+							submenu = nil,
+							command = 
+							{
+								perform = function(self)
+									unit:UnloadCargo(cargo)
+								end
+							},
+					}		
+					base.table.insert(new_menu_item2.submenu.items, UnloadItem)						
+					base.table.insert(UnloadCargos.submenu.items, new_menu_item2)					
+				end
+				base.table.insert(new_menu_item.submenu.items, UnloadCargos)				
+			end
+		end
+		local CloseRampItem = {
+			name = "Close ramp",
+			submenu = nil,
+			command = 
+			{
+				perform = function(self)
+					unit:openRamp(false)
+				end
+			},				
+		}
+		base.table.insert(new_menu_item.submenu.items, CloseRampItem)
+		return new_menu_item
+	else
+		local bCargosExist = false 
+		if Cargos ~= nil then
+			if #Cargos > 0 then
+				bCargosExist = true
+			end
+		end
+		local cargosOnBoard = unit:getCargosOnBoard()
+		if cargosOnBoard ~= nil then
+			if #cargosOnBoard > 0 then
+				bCargosExist = true
+			end
+		end
+		
+		if bCargosExist == true then
+			local new_menu_item = {
+				name = new_menu_name,
+				menuUnit = unit,
+				submenu = {
+					name = new_menu_name,
+					items = {}
+				}
+			}				
+			local OpenRampItem = {
+				name = "Open ramp",
+				submenu = nil,
+				command = 
+				{
+					perform = function(self)
+						unit:openRamp(true)
+					end
+				},				
+			}
+			base.table.insert(new_menu_item.submenu.items, OpenRampItem)
+			return new_menu_item
+		end
+	end
+end
 
 local function chooseDescentItem(pDescent, pHel)
 	pDescent:embarking(pHel:getObjectID())
@@ -1141,6 +1280,54 @@ local function buildRecepientsMenu(recepients, new_menu_name, child_menu_item)
 end
 
 
+local function buildRecepientsMenuATC(recepients, new_menu_name, child_menu_item1, child_menu_item2)
+
+	if #recepients == 1 then
+		local communicator = recepients[1]:getCommunicator()
+		if communicator~= nil then			
+			local selectedSubmenu		
+			if communicator:getUnit():hasAttribute("Ships") and not communicator:getUnit():hasAttribute("Straight_in_approach_type")
+			and not communicator:getUnit():hasAttribute("Airfields") and  data.pUnit:canShipLanding() and not data.pUnit:OldCarrierMenuShow() then
+				selectedSubmenu = child_menu_item2
+			else
+				selectedSubmenu = child_menu_item1
+			end
+			local item = makeItemByCommunicator(communicator, selectedSubmenu.submenu)
+			item.name = new_menu_name..' - '..item.name
+			return item
+		end
+	elseif #recepients > 1 then
+		local new_menu_item = {
+			name = new_menu_name,			
+			submenu = {
+				name = new_menu_name,
+				items = {}
+			}
+		}
+		local maxListItems = 10
+		local counter = 0
+		for index, recepient in base.pairs(recepients) do
+			local communicator = recepient:getCommunicator()
+			if communicator ~= nil and communicator:hasTransiver() then
+				counter = counter + 1
+				local recepientItem
+				if communicator:getUnit():hasAttribute("Ships") and not communicator:getUnit():hasAttribute("Straight_in_approach_type")
+				and not communicator:getUnit():hasAttribute("Airfields") and  data.pUnit:canShipLanding() and not data.pUnit:OldCarrierMenuShow() then
+					recepientItem = makeItemByCommunicator(communicator, child_menu_item2.submenu)
+				else
+					recepientItem = makeItemByCommunicator(communicator, child_menu_item1.submenu)
+				end
+				base.table.insert(new_menu_item.submenu.items, recepientItem)
+				if counter >= maxListItems then
+					break
+				end
+			end
+		end
+		return new_menu_item
+	end
+end
+
+
 local function checkRecepients(recepients)
 	local recepientStateCounter = nil
 	for index, recepient in base.pairs(recepients) do
@@ -1379,6 +1566,7 @@ local heightMenu=0
 function initialize(pUnitIn, easyComm, intercomId, communicators)
 	count=count+1
 	
+	--base.print('RadioCommandDialogPanel:initialize() : count = '..count)
 	--base.print("init count"..count)
 	
 	base.assert(COMMUNICATOR_VOID ~= nil)
@@ -1454,7 +1642,9 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 		sendMessage					= sendMessage,
 		buildRecepientsMenu 		= buildRecepientsMenu,
 		buildRecepientsMenuATC2		= buildRecepientsMenuATC2,
+		buildRecepientsMenuATC		= buildRecepientsMenuATC,
 		buildCargosMenu				= buildCargosMenu,
+		buildCargosMenuForAircraft	= buildCargosMenuForAircraft,
 		buildDescentsMenu			= buildDescentsMenu,
 		
 		staticParamsEvent			= staticParamsEvent,
@@ -1503,9 +1693,13 @@ end
 
 function release()
 	--base.assert(data.initialized == true)
+
 	if not data.initialized then
 		return
 	end
+	
+	--base.print('RadioCommandDialogPanel:release()')
+
 	setShowMenu(false)
 	self:toggle(false)
 		
@@ -1519,6 +1713,7 @@ function release()
 	--
 	commandDialogsPanel.release(self)
 	base.world.removeEventHandler(worldEventHandler)
+	data.customUnitProperties = {}
 	data.initialized = false
 end
 
@@ -1812,6 +2007,10 @@ end
 
 function selectCommunicator(communicator)
 	selectAndTuneCommunicator(communicator)
+end
+
+function pushCustomUnitProperty(key_in, value_in, str_value_in)
+	data.customUnitProperties[key_in] = {value = value_in, str_value = str_value_in}
 end
 
 --other menu functions---------------------

@@ -84,6 +84,7 @@ namespace VAICOM
 
             public double   KneeboardOpacity;
             public bool     KneeboardlinkPTT;
+            public bool     Kneeboard_Enabled;
 
             // multiplayer page
 
@@ -151,7 +152,6 @@ namespace VAICOM
 
             // reset options
 
-            public bool     Resetlicenses;
             public bool     Resetdb;
             public bool     Resetoptions;
             public bool     Resetprofile;
@@ -324,7 +324,6 @@ namespace VAICOM
 
                 // Reset page
 
-                Resetlicenses       = false,
                 Resetdb             = false,
                 Resetoptions        = false,
                 Resetprofile        = false,

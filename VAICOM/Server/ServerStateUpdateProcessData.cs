@@ -209,6 +209,23 @@ namespace VAICOM
                 // first set deep debug mode if special user:
                 State.deepdebugmode = State.clientmode.Equals(ClientModes.Debug) || State.currentstate.playerusername.Equals(State.debuguser);
 
+                if (State.currentstate.playerusername.Equals(State.debuguser))
+                {
+                    State.clientmode = ClientModes.Debug;
+                }
+                else
+                {
+                    State.clientmode = ClientModes.Normal;
+                }
+
+                if (State.configwindowopen && (State.configurationwindow != null))
+                {
+                    State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
+                    {
+                        State.configurationwindow.DebugViewState();
+                    });
+                }
+
                 // received something;
                 State.dcsrunning = true;
 

@@ -1,4 +1,4 @@
-local self_ID = "VAICOM PRO GPL by DCS Community"
+local self_ID = "VAICOM PRO Community Edition"
 
 declare_plugin(self_ID,
 {
@@ -6,19 +6,19 @@ declare_plugin(self_ID,
 	dirName		 = current_mod_path,
 	binaries	 = {'VAICOMPRO.dll'},
 
-	displayName	 = "VAICOM PRO",
+	displayName	 = "VAICOM PRO Community Edition",
 	shortName	 = "VAICOM PRO",
-	fileMenuName = "VAICOM PRO",
+	fileMenuName = "VAICOM PRO Community Edition",
 
-	version		 = "2.5.28",
+	version		 = "2.8.1",
 	state		 = "installed", 	
 	developerName= "DCS Community",
-	info		 = _("VAICOM PRO is a professional-grade voice communications interface. The plugin uses VoiceAttack as client host for advanced speech recognition, enabling true-to-life radio communications with all AI units in the mission."),
+	info		 = _("VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as client host for advanced speech recognition, enabling true-to-life radio communications with all AI units in the mission."),
 
 	Skins	=
 	{
 		{
-			name	= "VAICOM PRO GPL",
+			name	= "VAICOM PRO Community Edition",
 			dir		= "Theme"
 		},
 	},
@@ -26,7 +26,7 @@ declare_plugin(self_ID,
 	Options =
 	{
 		{
-			name		= "VAICOM PRO GPL",
+			name		= "VAICOM PRO Commnuity Edition",
 			nameId		= "VAICOM",
 			dir			= "Options",
 			CLSID		= "{VAICOM options}"

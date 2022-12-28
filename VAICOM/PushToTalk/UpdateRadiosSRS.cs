@@ -32,7 +32,6 @@ namespace VAICOM
                 {
                     {"----" ,       new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } }, 
                     
-                    //FREE
                     {"A-10A" ,      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-15C" ,      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"Su-25" ,      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
@@ -48,7 +47,6 @@ namespace VAICOM
                     {"Hawk" ,       new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"M-2000C" ,    new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
 
-                    //PRO
                     {"artillery_commander", new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"FA-18C_hornet",       new radioslotdevicelist() { Slot_map_INT = {38,39,0}, Slot_map_SRS = {38,39,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-14" ,               new radioslotdevicelist() { Slot_map_INT = {3,4,0}, Slot_map_SRS = {3,4,0}, Slot_map_CUS = {0,0,0} } },
@@ -80,13 +78,15 @@ namespace VAICOM
                     {"P-47D" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"CE-2" ,               new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
 
+                    {"Mirage-F1" ,          new radioslotdevicelist() { Slot_map_INT = {6,7,0}, Slot_map_SRS = {6,7,0}, Slot_map_CUS = {0,0,0} } },
+                    {"MB-339A" ,          new radioslotdevicelist() { Slot_map_INT = {6,7,0}, Slot_map_SRS = {6,7,0}, Slot_map_CUS = {0,0,0} } },
+
                 };
 
                 public static Dictionary<string, radioslotlist> mapping_Ref = new Dictionary<string, radioslotlist>()
                 {
                     {"----" , new radioslotlist() { Slot_map = {"VHF AM","UHF","VHF FM"} } },
 
-                    //FREE
                     {"A-10A" ,      new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"F-15C" ,      new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"Su-25" ,      new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
@@ -102,7 +102,6 @@ namespace VAICOM
                     {"Hawk" ,       new radioslotlist() { Slot_map = { "VHF", "UHF", ""} } },
                     {"M-2000C" ,    new radioslotlist() { Slot_map = { "VHF", "UHF", ""} } },
 
-                    //PRO
                     {"artillery_commander",new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"FA-18C_hornet", new radioslotlist() { Slot_map = { "COMM1: ARC-210", "COMM2: ARC-210", ""} } },
                     {"F-14" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
@@ -138,13 +137,15 @@ namespace VAICOM
                     {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "", "" } } },
                     {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "", "" } } },
 
+                    {"Mirage-F1" ,     new radioslotlist() { Slot_map = { "VUHF (TRAP-136)", "UHF (TRAP-137B)", "" } } },
+                    {"MB-339A" ,     new radioslotlist() { Slot_map = { "COMM1 Radio", "COMM2 Radio", "" } } },
+
                 };
 
                 public static Dictionary<string, radioslotlist> mapping_SRS = new Dictionary<string, radioslotlist>()
                 {
                     {"----" , new radioslotlist() { Slot_map = {"SRS 1", "SRS 2", "SRS 3" } } },
 
-                    //FREE
                     {"A-10A" ,      new radioslotlist() { Slot_map = { "AN/ARC-186(V)", "AN/ARC-164 UHF", "AN/ARC-186(V)FM" } } },
                     {"F-15C" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF 1", "AN/ARC-164 UHF 2", "[AN/ARC-186(V)]" } } },
                     {"Su-25" ,      new radioslotlist() { Slot_map = { "R-862", "R-828", "[AN/ARC-164 UHF]" } } },
@@ -160,7 +161,6 @@ namespace VAICOM
                     {"Hawk" ,       new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "ARI 23259/1", ""} } },
                     {"M-2000C" ,    new radioslotlist() { Slot_map = { "TRT ERA 7000 (V/UHF)", "TRT ERA 7200 UHF", ""} } },
 
-                    //PRO
                     {"artillery_commander",new radioslotlist() { Slot_map = { "CA UHF/VHF", "CA UHF/VHF", "CA FM" } } },
                     {"FA-18C_hornet", new radioslotlist() { Slot_map = {"AN/ARC-210 - 1", "AN/ARC-210 - 2", ""} } },
                     {"F-14" ,       new radioslotlist() { Slot_map = { "AN/ARC-159(V)", "AN/ARC-182(V)","" } } },
@@ -195,6 +195,10 @@ namespace VAICOM
                     {"P-47D" ,      new radioslotlist() { Slot_map = { "SCR522", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
                     {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
                     {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "[AN/ARC-186(V)]", "[AN/ARC-186(V)FM]" } } },
+
+                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "" } } },
+                    {"MB-339A" ,    new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "" } } },
+
                 };
             }
 

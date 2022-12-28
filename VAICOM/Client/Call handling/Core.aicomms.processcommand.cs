@@ -205,7 +205,7 @@ namespace VAICOM
                                 }
                                 else
                                 {
-                                    Log.Write("Activate your Interactive Kneeboard license to use this command.", Colors.Warning);
+                                    Log.Write("Interactive Kneeboard is disabled.", Colors.Warning);
                                     UI.Playsound.Error();
                                 }
                             }
@@ -479,7 +479,7 @@ namespace VAICOM
                             }
                             else
                             {
-                                Log.Write("Activate your Interactive Kneeboard license to use this command.", Colors.Warning);
+                                Log.Write("Interactive Kneeboard is disabled.", Colors.Warning);
                                 UI.Playsound.Error();
                             }
                         }

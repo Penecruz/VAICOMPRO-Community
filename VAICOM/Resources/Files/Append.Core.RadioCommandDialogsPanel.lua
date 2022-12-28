@@ -55,6 +55,8 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 		require						= base.require,
 		assert						= base.assert,
 		print						= base.print,	
+		tostring					= base.tostring,
+		string						= base.string,
 		_ 							= _,
 		db							= base.db,	
 		world						= base.world,
@@ -77,7 +79,9 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 		sendMessage					= sendMessage,
 		buildRecepientsMenu 		= buildRecepientsMenu,
 		buildRecepientsMenuATC2		= buildRecepientsMenuATC2,
+		buildRecepientsMenuATC		= buildRecepientsMenuATC,
 		buildCargosMenu				= buildCargosMenu,
+		buildCargosMenuForAircraft	= buildCargosMenuForAircraft,
 		buildDescentsMenu			= buildDescentsMenu,		
 		staticParamsEvent			= staticParamsEvent,			
 		events 						= events,
@@ -99,6 +103,7 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 	base.world.addEventHandler(worldEventHandler)	
 	self:toggle(true)
 	data.initialized = true
+	setHeightCommandMenu( heightMenu )
 	base.vaicom.init.stop()
 	base.vaicom.init.start()
 end
@@ -623,7 +628,7 @@ function onMsgStart(pMessage, pRecepient, text)
 	sendtbl.text			= text
 	sendtbl.parameters 		= pMessage:getTable().parameters
 	sendtbl.speech 			= base.vaicom.state.currentspeech
-	sendtbl.fsm				= base.tostring(base.fsm.state) or ""
+	sendtbl.fsm				= base.tostring(base.fsm.state)
 	socket.try(base.vaicom.relay:send(JSON:encode(sendtbl)))
 end
 function onMsgFinish(pMessage, pRecepient, text)
@@ -647,11 +652,11 @@ function onMsgFinish(pMessage, pRecepient, text)
 	socket.try(base.vaicom.relay:send(JSON:encode(sendtbl)))
 end
 
-base.vaicom = {}
+base.vaicom = base.vaicom or {}
 	
 base.vaicom.config = {
 	sendaddress 		= "127.0.0.1", 
-	sendport 			= 33333,
+	sendport 			= 33492,
 	sendtimeout 		= 0,
 	receiveaddress 		= "127.0.0.1",
 	receiveport 		= 33334,
@@ -1179,8 +1184,8 @@ base.vaicom.list = {
 base.vaicom.get = { 
 	serverdata  ={	
 		dcsversion = function()
-			local fullversionstring = base.tostring(base._APP_VERSION)
-			local versionnumber = fullversionstring or "X.X"
+			local fullversionstring = base.tostring(base._ED_VERSION)
+			local versionnumber = base.string.sub(fullversionstring,5,9) or "X.X"
 			return versionnumber
 		end,				
 				}, 		
@@ -1413,7 +1418,7 @@ base.vaicom.state = {
 									playerunitcat		= base.vaicom.state.dcsmodulecat,
 									airborne			= base.vaicom.state.airborne,								
 									intercom			= data.intercomId,
-									fsmstate 			= base.tostring(base.fsm.state) or "",
+									fsmstate 			= base.tostring(base.fsm.state),
 									radios				= {},
 								  }
 				chunk[3] 		= {		
@@ -1519,7 +1524,7 @@ base.vaicom.state = {
 				end
 				for i= 1,11 do
 					local sndtbl = chunk[i]
-					sndtbl.cid 		    	= i									
+					sndtbl.cid 				= i									
 					sndtbl.client 			= "VAICOMPRO"
 					sndtbl.mode 			= "normal"
 					sndtbl.type 			= "missiondata.update"

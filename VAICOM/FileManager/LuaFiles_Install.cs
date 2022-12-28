@@ -51,8 +51,8 @@ namespace VAICOM
 
                                 // handling current version
 
-                                bool currentcycleis_standalonerelease = set.Key.Equals("2.5");
-                                bool currentcycleis_standaloneopenbeta = set.Key.Equals("2.5 OpenBeta");
+                                bool currentcycleis_standalonerelease = set.Key.Equals("2.8");
+                                bool currentcycleis_standaloneopenbeta = set.Key.Equals("2.8 OpenBeta");
                                 bool currentcycleis_steam = set.Key.Equals("STEAM");
 
                                 // decide whether to place openbeta or release lua code
@@ -88,7 +88,7 @@ namespace VAICOM
                                 // REGISTRY
                                 // get from registry (preferred)
 
-                                if (!installfound && dcsinstallfolder_fromreg != null)
+                                if (!installfound && !customoverride && dcsinstallfolder_fromreg != null)
                                 {
                                     if (!forcequiet)
                                     {
@@ -96,13 +96,20 @@ namespace VAICOM
                                         Log.Write("   Using Registry entry for " + set.Key, Colors.Text);
                                     }
                                     dcsprogramfilesfolder = dcsinstallfolder_fromreg;
-                                    installfound = true;
+                                    if (Directory.Exists(dcsprogramfilesfolder))
+                                    {
+                                        installfound = true;
+                                    }
+                                    else if (!forcequiet)
+                                    {
+                                        Log.Write("   Your registry key is invalid, fix it or create a custom path instead!", Colors.Warning);
+                                    }
                                 }
 
                                 // STEAM DEFAULT FOLDER
                                 // steam (standard path)
 
-                                if (!installfound && currentcycleis_steam && Directory.Exists(dcsinstallfolder_steamdefault))
+                                if (!installfound && !customoverride && currentcycleis_steam && Directory.Exists(dcsinstallfolder_steamdefault))
                                 {
                                     if (!forcequiet)
                                     {
@@ -112,13 +119,20 @@ namespace VAICOM
                                     }
 
                                     dcsprogramfilesfolder = dcsinstallfolder_steamdefault;
-                                    installfound = true;
+                                    if (Directory.Exists(dcsprogramfilesfolder))
+                                    {
+                                        installfound = true;
+                                    }
+                                    else if (!forcequiet)
+                                    {
+                                        Log.Write("   Your Steam install path is wrong, set a custom path instead!", Colors.Warning);
+                                    }
                                 }
 
                                 // REGULAR PATH (FAILSAFE)
                                 // regular install path
 
-                                if (!installfound && Directory.Exists(dcsinstallfolder_regular))
+                                if (!installfound && !customoverride && Directory.Exists(dcsinstallfolder_regular))
                                 {
                                     if (!forcequiet)
                                     {
@@ -126,7 +140,10 @@ namespace VAICOM
                                         Log.Write("   Using Regular install path for " + set.Key, Colors.Text);
                                     }
                                     dcsprogramfilesfolder = dcsinstallfolder_regular;
-                                    installfound = true;
+                                    if (Directory.Exists(dcsprogramfilesfolder))
+                                    {
+                                        installfound = true;
+                                    }
                                 }
 
                                 // ELSE VERSION NOT FOUND
@@ -142,11 +159,11 @@ namespace VAICOM
 
                                     State.dcsinstalled = true;
 
-                                    if (set.Key.Equals("2.5"))
+                                    if (set.Key.Equals("2.8"))
                                     {
                                         State.dcspath_release = dcsprogramfilesfolder;
                                     }
-                                    if (set.Key.Equals("2.5 OpenBeta"))
+                                    if (set.Key.Equals("2.8 OpenBeta"))
                                     {
                                         State.dcspath_openbeta = dcsprogramfilesfolder;
                                     }
@@ -511,13 +528,6 @@ namespace VAICOM
 
                                     Install_DCS_Theme(UserSavedGamesFolder + "\\" + Server.dcsversion[set.Key]);
 
-                                }
-                                else // no install found, switch to exit early 
-                                {
-                                    if (!forcequiet)
-                                    {
-                                        Log.Write("DCS World version " + set.Key + " not found.", Colors.Text);
-                                    }
                                 }
 
                             }

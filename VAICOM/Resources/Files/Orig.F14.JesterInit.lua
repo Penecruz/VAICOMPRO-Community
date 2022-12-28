@@ -2,7 +2,7 @@ dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."materials.lua")
 
 indicator_type       = indicator_types.COMMON
-purposes 	 = {render_purpose.HUD_ONLY_VIEW,render_purpose.SCREENSPACE_INSIDE_COCKPIT,render_purpose.SCREENSPACE_OUTSIDE_COCKPIT}
+purposes 	 = {render_purpose.SCREENSPACE_INSIDE_COCKPIT,render_purpose.SCREENSPACE_OUTSIDE_COCKPIT,render_purpose.HUD_ONLY_VIEW}
 screenspace_scale    = 4;
 
 -------PAGE IDs-------
@@ -21,7 +21,7 @@ page_subsets[id_pagesubset.COMMON] = LockOn_Options.script_path.."Scripts/Jester
   	
 ----------------------
 pages = {}
-pages[id_Page.MAIN] = { id_pagesubset.COMMON }
+pages[id_Page.MAIN] = { id_pagesubset.COMMON}
 init_pageID     = id_Page.MAIN
 
 

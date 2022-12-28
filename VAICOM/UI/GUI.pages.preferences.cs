@@ -139,8 +139,8 @@ namespace VAICOM
             private void SetConfigDisablePlayerVoice(object sender, RoutedEventArgs e) { State.activeconfig.DisablePlayerVoice = true; }
             private void SetCurrentValueDisablePlayerVoice(object sender, EventArgs e) { DisablePlayerVoice.IsEnabled = true; DisablePlayerVoice.IsChecked = State.activeconfig.DisablePlayerVoice; }
             // hide on screen text
-            private void SetConfigEnableHideOnScreenText(object sender, RoutedEventArgs e) { State.activeconfig.HideOnScreenText = true; FileHandler.Lua.LuaFiles["2.5 gameMessages.lua"].reset = !State.activeconfig.HideOnScreenText; FileHandler.Lua.LuaFiles_Install(false, true); }
-            private void SetConfigDisableHideOnScreenText(object sender, RoutedEventArgs e) { State.activeconfig.HideOnScreenText = false; FileHandler.Lua.LuaFiles["2.5 gameMessages.lua"].reset = !State.activeconfig.HideOnScreenText; FileHandler.Lua.LuaFiles_Install(false, true); }
+            private void SetConfigEnableHideOnScreenText(object sender, RoutedEventArgs e) { State.activeconfig.HideOnScreenText = true; FileHandler.Lua.LuaFiles["2.8 gameMessages.lua"].reset = !State.activeconfig.HideOnScreenText; FileHandler.Lua.LuaFiles_Install(false, true); }
+            private void SetConfigDisableHideOnScreenText(object sender, RoutedEventArgs e) { State.activeconfig.HideOnScreenText = false; FileHandler.Lua.LuaFiles["2.8 gameMessages.lua"].reset = !State.activeconfig.HideOnScreenText; FileHandler.Lua.LuaFiles_Install(false, true); }
             private void SetCurrentValueHideOnScreenText(object sender, EventArgs e) { HideOnScreenText.IsEnabled = State.PRO; HideOnScreenText.IsChecked = State.activeconfig.HideOnScreenText; }
 
             // ------------------------------------------------------------
