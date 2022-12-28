@@ -240,7 +240,7 @@ function update_Header_TopMid()
 end
 function update_Header_TopRight()
 	local headerstr = ""
-	headerstr = "| VAICOM PRO Community Edition".." | "..getmodeltime()
+	headerstr = "| VAICOM PRO".." | "..getmodeltime()
     Header_TopRight:set(headerstr)
 end
 function update_Header_BottomLeft()
