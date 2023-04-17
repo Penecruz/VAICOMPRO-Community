@@ -185,9 +185,6 @@ namespace VAICOM
 
                 // config page
                 RunInDebugMode.IsEnabled = true;
-                UseRemoteIP.IsEnabled = State.PRO;
-                ServerIP.IsEnabled = State.PRO;
-                SetIP.IsEnabled = State.PRO;
                 AutoImportATC.IsEnabled = State.PRO;
                 UseCustomFolders.IsEnabled = true;
                 SetFolders.IsEnabled = true;

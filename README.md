@@ -1,4 +1,5 @@
 # VAICOMPRO-Community
+
 VAICOM PRO Community Edition for DCS World
 
 ## Overview - Community Edition
@@ -7,6 +8,7 @@ On 31 OCT 2022 Hollywood_315 open sourced his awesome AI communications software
 immersive environment free from the constraints of keyboard or mouse-controlled radio menus.
 
 A group of community members have patched his work to make it compatible with DCS 2.8.XXXXX and later. This is a standalone installer that will replace your previous version of VAICOMPRO. It will not work with DCS 2.7.XXXXX or erlier.
+
 We now have VAICOMPRO Community Edition running well with DCS 2.8.X.X and are looking where we can take it going forward with lots of new modules coming to DCS World.
 We continue to develop VAICOMPRO to keep it functioning with changes to DCS. That said, there will be issues from time to time. So please use the issues register here on GitHub to report them.
 
@@ -15,6 +17,7 @@ Remember this is a community group, a group that donates their time to keep this
 ## Important Information
 
 VAICOMPRO Community is 100% free and includes all modules (Chatter, AIRIO, Kneeboard, Realistic ATC) that were available with the last paid release.
+
 Use of this software is at your risk, we accept no liability for stuffing up your Voice Attack installation, DCS World installation, Windows installation, or any other action.
 
 The VAICOMPRO Community Team
@@ -34,6 +37,7 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 #### NOTE: If this is a new VAICOMPRO installation, you should follow the install instructions in the VAICOMPRO manual found in the VAICOMPRO/Documentation folder.
 	
 #### To update from an older version of VAICOMPRO
+
 
 1. Ensure DCS is not Running
 

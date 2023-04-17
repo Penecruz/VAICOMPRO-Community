@@ -14,40 +14,10 @@ namespace VAICOM
             // ------------  CONFIGURATION PAGE ---------------------------
 
             // debug mode
-            private void setdebugmodeon(object sender, RoutedEventArgs e) { State.activeconfig.Debugmode = true; }
-            private void setdebugmodeoff(object sender, RoutedEventArgs e) { State.activeconfig.Debugmode = false; }
+            private void Setdebugmodeon(object sender, RoutedEventArgs e) { State.activeconfig.Debugmode = true; }
+            private void Setdebugmodeoff(object sender, RoutedEventArgs e) { State.activeconfig.Debugmode = false; }
             private void SetCurrentValueDebugMode(object sender, EventArgs e) { RunInDebugMode.IsEnabled = true; RunInDebugMode.IsChecked = State.activeconfig.Debugmode; }
             // remote IP
-            private void UseRemoteIPOn(object sender, RoutedEventArgs e) { State.activeconfig.UseRemoteIP = true; }
-            private void UseRemoteIPOff(object sender, RoutedEventArgs e) { State.activeconfig.UseRemoteIP = false; }
-            private void SetCurrentValueUseRemoteIP(object sender, EventArgs e) { UseRemoteIP.IsEnabled = State.PRO; UseRemoteIP.IsChecked = State.activeconfig.UseRemoteIP; }
-            private void IPUpdate(object sender, RoutedEventArgs e)
-            {
-                if (UseRemoteIP.IsChecked == true)
-                { State.activeconfig.ClientSendIP = ServerIP.Text; }
-                else
-                { State.activeconfig.ClientSendIP = "127.0.0.1"; }
-
-                try
-                {
-                    State.SendIpEndPoint = new IPEndPoint(IPAddress.Parse(State.activeconfig.ClientSendIP), State.activeconfig.ClientSendPort);
-                    Settings.ConfigFile.WriteConfigToFile(true);
-                }
-                catch (Exception)
-                {
-                    Log.Write("There was an error setting the IP address.", Static.Colors.Critical);
-                }
-            }
-            private void GetCurrentIP(object sender, EventArgs e)
-            {
-                ServerIP.IsEnabled = State.PRO;
-                ServerIP.Text = State.activeconfig.ClientSendIP;
-            }
-            private void InitIPUpdate(object sender, EventArgs e)
-            {
-                SetIP.IsEnabled = State.PRO;
-            }
-            // auto theater import
             private void AutoImportATCon(object sender, RoutedEventArgs e) { State.activeconfig.Checkfornewatcs = true; }
             private void AutoImportATCoff(object sender, RoutedEventArgs e) { State.activeconfig.Checkfornewatcs = false; }
             private void SetCurrentValueAutoImportATC(object sender, EventArgs e) { AutoImportATC.IsEnabled = State.PRO; AutoImportATC.IsChecked = State.activeconfig.Checkfornewatcs; }
@@ -102,7 +72,7 @@ namespace VAICOM
 
                 pathdialog.Description += "Select program files folder for ";
 
-                int versionselected = 0;
+                int versionselected;
 
                 if (State.activeconfig.Custom_Path_Setting2.Equals(1)) // steam
                 {
@@ -129,7 +99,7 @@ namespace VAICOM
 
                 }
 
-                string selectedversion = "";
+                string selectedversion;
 
                 switch (versionselected)
                 {
@@ -270,10 +240,6 @@ namespace VAICOM
             private void AutoImportModuleson(object sender, RoutedEventArgs e) { State.activeconfig.AutoImportModules = true; }
             private void AutoImportModulesoff(object sender, RoutedEventArgs e) { State.activeconfig.AutoImportModules = false; }
             private void SetCurrentValueAutoImportModules(object sender, EventArgs e) { AutoImportModules.IsEnabled = State.PRO; AutoImportModules.IsChecked = State.activeconfig.AutoImportModules; }
-            // Disable updates
-            private void DisableUpdateson(object sender, RoutedEventArgs e) { State.activeconfig.DisableAutomaticUpdates = true; }
-            private void DisableUpdatesoff(object sender, RoutedEventArgs e) { State.activeconfig.DisableAutomaticUpdates = false; }
-            private void SetCurrentValueDisableUpdates(object sender, EventArgs e) { DisableAutoPluginUpdates.IsEnabled = true; DisableAutoPluginUpdates.IsChecked = State.activeconfig.DisableAutomaticUpdates; }
 
             // manual server files
             private void ManualServerFilesOn(object sender, RoutedEventArgs e) { State.activeconfig.ManualInstallServerFiles = true; }
