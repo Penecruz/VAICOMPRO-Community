@@ -1,5 +1,6 @@
 # VAICOMPRO-Community
-VAICOM PRO for DCS World
+
+VAICOM PRO Community Edition for DCS World
 
 ## Overview - Community Edition
 
@@ -8,15 +9,15 @@ immersive environment free from the constraints of keyboard or mouse-controlled 
 
 A group of community members have patched his work to make it compatible with DCS 2.8.XXXXX and later. This is a standalone installer that will replace your previous version of VAICOMPRO. It will not work with DCS 2.7.XXXXX or erlier.
 
-We have tested this version and have not noticed any behaviors that were not present in the previous version. That said, there may be issues. Please use the issues register here on GitHub to report them.
+We now have VAICOMPRO Community Edition running well with DCS 2.8.X.X and are looking where we can take it going forward with lots of new modules coming to DCS World.
+We continue to develop VAICOMPRO to keep it functioning with changes to DCS. That said, there will be issues from time to time. So please use the issues register here on GitHub to report them.
 
-We now have VAICOMPRO Community Edition running well with DCS 2.8 and are looking where we can take it going forward with lots of new modules coming to DCS World.
+Remember this is a community group, a group that donates their time to keep this awesome software alive. Be respectful and patient, we all have real jobs too. Join our Discord Server (link Below) and become part of our community.
 
 ## Important Information
 
 VAICOMPRO Community is 100% free and includes all modules (Chatter, AIRIO, Kneeboard, Realistic ATC) that were available with the last paid release.
 
-Please backup your previous installation and backup your current .vap profile from Voice Attack so you can move it across, this will save you a lot of work as it is compatible with this version.
 Use of this software is at your risk, we accept no liability for stuffing up your Voice Attack installation, DCS World installation, Windows installation, or any other action.
 
 The VAICOMPRO Community Team
@@ -37,29 +38,22 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 	
 #### To update from an older version of VAICOMPRO
 
-1. Backup your current VAICOMPRO folder found in your VoiceAttack/Apps folder.
 
-2. Backup your current VoiceAttack profile by clicking "More Profile Actions" (button right of the edit in VoiceAttack) and exporting your profile to a known location.
+1. Ensure DCS is not Running
 
-3. Uninstall or Delete the VAICOMPRO folder in your VoiceAttack/Apps folder (If you used the MSI Installer, you will need to uninstall).
+2. Backup your current VoiceAttack profile by clicking "More Profile Actions" (button right of the edit in VoiceAttack) and exporting your profile to a known location (this avoids tears in the event of an issue).
 
-4. Launch VoiceAttack and exit VoiceAttack.
+3. If you are using the MSI Installer, you will need to uninstall via the Windows process It will retain your config and profile settings (You will be propted if you try running the installer)
 
-5. Run the MSI installer and follow the instructions or for manual install Unzip the contents of the zip file and move the VAICOMPRO folder into your VoiceAttack/Apps folder.
+4. If you are using the Zip file just unzip over the top of you existing VAICOMPRO folder in Program Files/ VoiceAttack /Apps folder
+
+5. Launch VoiceAttack and exit VoiceAttack (this allows VAICOMPRO to build the required DCS files).
 	
-6. Launch VoiceAttack and exit VoiceAttack. This generates the necessary file structure within the VAICOMPRO folder. If using the msi installer, drag the AIRIO and CHATTER dll files to the VAICOMPRO/Extensions folder.
+6. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) Check that your settings have been retained and the DCS Path details are correct.
 
-7. If you wish to restore your VAICOM settings, copy your backed up Config folder to your new VAICOMPRO folder in VoiceAttack/Apps. Your profile should remain in VoiceAttack as it is stored in the VoiceAttack.dat file. If your profile somehow gets changed, import your backed up profile.
-	
-8. Launch VoiceAttack and launch the VAICOM config menu (L CTRL+L ALT+C) and open the “Config” tab. If this does not work, check your VoiceAttack profile and ensure the command "Configuration" exists and is enabled with the proper shortcut.
+7. Launch DCS and confirm 
 
-9. Check that your path Settings and sliders are as desired to match your version of DCS.
-
-10. Restart VoiceAttack and check the log that comes up, to make sure it finds your DCS 2.8 installation.
-
-11. As always, please update your VoiceAttack Profile and your VAICOMPRO keyword commands using the Editor tab in the VAICOMPRO configuration window. Instructions on how to do this can be found in the manual.
-	
-12. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
+8. Join our Discord at https://discord.gg/7c22BHNSCS if you have any questions or issues with the install.
 
 ## Patch Notes
 
