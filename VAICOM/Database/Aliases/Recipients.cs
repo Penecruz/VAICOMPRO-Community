@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VAICOM
 {
@@ -106,7 +106,7 @@ namespace VAICOM
                 { "Sukhumi",                "Sukhumi-Babushara"     },
                 { "Vaziani",                "Vaziani"               },
 
-                // nevada
+                // Nevada
 
                 { "Creech",                 "Creech AFB"                    },
                 { "Indian Springs",         "Creech AFB"                    },
@@ -270,7 +270,7 @@ namespace VAICOM
                 { "Vetka",                  "vetka"                 },
                 { "Yunga",                  "yunga"                 },
 
-                { "Carrier",                "carrier"                   }, 
+                { "Carrier",                "carrier"                   },
                 { "Nearest Carrier",        "nearestcarrier"            },
 
                 { "Admiral Kuznetsov",      "CV 1143.5 Admiral Kuznetsov"   },
@@ -286,7 +286,7 @@ namespace VAICOM
 
                 { "Lincoln",               "CVN-72 Abraham Lincoln"         },
                 { "Union",                 "CVN-72 Abraham Lincoln"         },
-                
+
                 { "Washington",            "CVN-73 George Washington"       },
                 { "Warfighter",            "CVN-73 George Washington"       },
 

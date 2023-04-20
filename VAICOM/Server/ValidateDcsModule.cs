@@ -250,18 +250,24 @@ namespace VAICOM
                     State.currentmodule = DCSmodules.LookupTable["AV-8B"];
                     return true;
                 }
-                // Mustang P
+                // Mustang P51
                 if (State.currentstate.id.ToLower().Contains("p") & (State.currentstate.id.ToLower().Contains("51")))
                 {
                     State.currentmodule = DCSmodules.LookupTable["P-51D"];
                     return true;
                 }
                 //Skyhawk
-                if (State.currentstate.id.ToLower().Contains("a4e"))
+                if (State.currentstate.id.ToLower().Contains("a4e") || (State.currentstate.id.ToLower().Contains("skyhawk")))
                 {
                     State.currentmodule = DCSmodules.LookupTable["A-4E-C"];
                     return true;
-                }
+                } 
+                //Goshawk
+                   // if (State.currentstate.id.ToLower().Contains("t") & (State.currentstate.id.ToLower().Contains("45")))
+                //{
+                   // State.currentmodule = DCSmodules.LookupTable["T-45"];
+                       // return true;     
+                //}
 
                 return false;
 

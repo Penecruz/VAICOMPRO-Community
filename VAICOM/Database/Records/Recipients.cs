@@ -104,16 +104,16 @@ namespace VAICOM
                 { "Vaziani",                new Recipient { uniqueid = 15073, category = RecipientCategories.aiatc, name = "wAIUnitATCCaucasusVaziani",   displayname = Labels.airecipients["Vaziani"] } },
                 { "wAIUnitATCCaucasusMaximum",new Recipient{uniqueid = 15099, category = RecipientCategories.aiatc, name = "wAIUnitATCCaucasusMaximum",  } },
 
-                { "wAIUnitATCNevadaNull",           new Recipient { uniqueid = 15150, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNull",        } },
-                { "Creech AFB",                     new Recipient { uniqueid = 15151, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaCreech",      displayname = Labels.airecipients["Creech AFB"] } },
-                { "Henderson Executive Airport",    new Recipient { uniqueid = 15152, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaHenderson",   displayname = Labels.airecipients["Henderson Executive Airport"] } },
-                { "McCarran International Airport", new Recipient { uniqueid = 15153, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMccarran",    displayname = Labels.airecipients["McCarran International Airport"] } },
-                { "Laughlin Airport",               new Recipient { uniqueid = 15154, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaLaughlin",    displayname = Labels.airecipients["Laughlin Airport"] } },
-                { "North Las Vegas",                new Recipient { uniqueid = 15155, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaVegas",       displayname = Labels.airecipients["North Las Vegas"] } },
-                { "Tonopah Test Range Airfield",    new Recipient { uniqueid = 15156, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaTonopah",     displayname = Labels.airecipients["Tonopah Test Range Airfield"] } },
-                { "Groom Lake AFB",                 new Recipient { uniqueid = 15157, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaGroomLake",   displayname = Labels.airecipients["Groom Lake AFB"] } },
-                { "Nellis AFB",                     new Recipient { uniqueid = 15158, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNellis",      displayname = Labels.airecipients["Nellis AFB"] } },
-                { "wAIUnitATCNevadaMaximum",        new Recipient { uniqueid = 15199, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMaximum",     } },
+                { "wAIUnitATCNevadaNull",               new Recipient { uniqueid = 15150, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNull",        } },
+                { "Creech AFB",                         new Recipient { uniqueid = 15151, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaCreech",      displayname = Labels.airecipients["Creech AFB"] } },
+                { "Henderson Executive Airport",        new Recipient { uniqueid = 15152, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaHenderson",   displayname = Labels.airecipients["Henderson Executive Airport"] } },
+                { "McCarran International Airport",     new Recipient { uniqueid = 15153, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMccarran",    displayname = Labels.airecipients["McCarran International Airport"] } },
+                { "Laughlin Airport",                   new Recipient { uniqueid = 15154, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaLaughlin",    displayname = Labels.airecipients["Laughlin Airport"] } },
+                { "North Las Vegas",                    new Recipient { uniqueid = 15155, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaVegas",       displayname = Labels.airecipients["North Las Vegas"] } },
+                { "Tonopah Test Range Airfield",        new Recipient { uniqueid = 15156, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaTonopah",     displayname = Labels.airecipients["Tonopah Test Range Airfield"] } },
+                { "Groom Lake AFB",                     new Recipient { uniqueid = 15157, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaGroomLake",   displayname = Labels.airecipients["Groom Lake AFB"] } },
+                { "Nellis AFB",                         new Recipient { uniqueid = 15158, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNellis",      displayname = Labels.airecipients["Nellis AFB"] } },
+                { "wAIUnitATCNevadaMaximum",            new Recipient { uniqueid = 15199, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMaximum",     } },
 
                 { "wAIUnitATCNormandyNull",         new Recipient { uniqueid = 15200, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyNull",              } },
                 { "Beny-sur-Mer",                   new Recipient { uniqueid = 15201, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyBenysurMer",        displayname = Labels.airecipients["Beny-sur-Mer"], blockedforFree = true } },
@@ -188,11 +188,10 @@ namespace VAICOM
                 { "wAIUnitATCChannelMaximum",   new Recipient { uniqueid = 15290, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelMaximum",           } },
 
                 // syria map
-                // 
 
 
                 { "wAIUnitATCSyriaNull",        new Recipient { uniqueid = 15300, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaNull",              } },
-                
+
                 { "Beirut-Rafic Hariri",        new Recipient { uniqueid = 15301, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaBeirutRaficHariri",  displayname = Labels.airecipients["Beirut-Rafic Hariri"], blockedforFree = true  } },
                 { "Rayak",                      new Recipient { uniqueid = 15302, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaRayak",  displayname = Labels.airecipients["Rayak"], blockedforFree = true  } },
                 { "Wujah Al Hajar",             new Recipient { uniqueid = 15303, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaWujahAlHajar",  displayname = Labels.airecipients["Wujah Al Hajar"], blockedforFree = true  } },
@@ -240,7 +239,7 @@ namespace VAICOM
                 { "rome",                       new Recipient { uniqueid = 15419, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueRome",     displayname = Labels.airecipients["rome"] }     },
                 { "warsaw",                     new Recipient { uniqueid = 15420, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueWarsaw",   displayname = Labels.airecipients["warsaw"] }   },
 
-          
+
 
                 { "wAIUnitATCFarpsBlueMaximum", new Recipient { uniqueid = 15450, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueMaximum",  } },
                 { "wAIUnitATCFarpsRedNull",     new Recipient { uniqueid = 15451, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsRedNull",      } },
@@ -284,7 +283,7 @@ namespace VAICOM
                 { "CarrierLSO",                 new Recipient { uniqueid = 15524, category = RecipientCategories.aiship, name = "wAIUnitCarrierLSO",           displayname = Labels.airecipients["CarrierLSO"], blockedforFree = true, requiresrealatc = true } },
                 { "wAIUnitCarrierRoleMaximum",  new Recipient { uniqueid = 15530, category = RecipientCategories.aiship, name = "wAIUnitCarrierRoleMaximum", }      },
 
-             
+
                 { "wAIUnitATCCarriersMaximum",  new Recipient { uniqueid = 15590, category = RecipientCategories.aiship, name = "wAIUnitATCCarriersMaximum",   } },
 
                 { "wAIUnitATCImportedNull",     new Recipient { uniqueid = 15800, category = RecipientCategories.aiatc, name = "wAIUnitATCImportedNull",      } },
