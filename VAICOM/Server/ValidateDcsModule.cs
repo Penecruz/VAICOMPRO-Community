@@ -86,7 +86,7 @@ namespace VAICOM
                             Log.Write("DCS module " + State.currentmodule.Name + " is available with PRO license only.", Colors.Warning);
 
                         }
-                        State.blockedmodule = true;
+                        State.blockedmodule = false;
                         UI.Playsound.Sorry();
                     }
                     else
@@ -104,7 +104,7 @@ namespace VAICOM
                 {
                     if (State.PRO)
                     {
-                        State.currentmodule = DCSmodules.LookupTable["----"];
+                        State.currentmodule = DCSmodules.LookupTable["Module Error"];
                         if (!silent)
                         {
                             DisplayCurrentModule();
@@ -261,12 +261,24 @@ namespace VAICOM
                 {
                     State.currentmodule = DCSmodules.LookupTable["A-4E-C"];
                     return true;
-                } 
+                }
+                //F-15E Strike Eagle
+                if (State.currentstate.id.ToLower().Contains("f") & State.currentstate.id.ToLower().Contains("15") && (State.currentstate.id.ToLower().Contains("e")))
+                {
+                State.currentmodule = DCSmodules.LookupTable["F-15ESE"];
+                return true;
+                }
+                //F-22 Raptor
+                if (State.currentstate.id.ToLower().Contains("f") & (State.currentstate.id.ToLower().Contains("22a")))
+                {
+                    State.currentmodule = DCSmodules.LookupTable["F-22A"];
+                    return true;
+                }
                 //Goshawk
-                   // if (State.currentstate.id.ToLower().Contains("t") & (State.currentstate.id.ToLower().Contains("45")))
+                // if (State.currentstate.id.ToLower().Contains("t") & (State.currentstate.id.ToLower().Contains("45")))
                 //{
-                   // State.currentmodule = DCSmodules.LookupTable["T-45"];
-                       // return true;     
+                // State.currentmodule = DCSmodules.LookupTable["T-45"];
+                // return true;     
                 //}
 
                 return false;
