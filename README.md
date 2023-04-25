@@ -57,25 +57,17 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.1.1
+VAICOMPRO Community Edition V2.8.2.3
 
-- Added Mirage F1
-- Added MB-339 (WIP- it is detected but not complete)
-- Added KA-50 Black Shark 3
-- Added Interactive Kneeboard now gets disabled when slider is in the DM/OFF position
-- Fixed error in Export script
-- Fixed the issue with too many modules causing undesired behaviour
-- Fixed Kneeboard title version number overlap
-- Improved detection method of DCS installations (custom path overide)
-- Improved Hot Mic switch in cockpit to not interfere with Hot Mic in config selection
-- Improved Hot Mic in config is changeable again (and gets saved/loaded correctly)
-- Changed license text on msi installation
-- Changed GUI labels to Community Edition.
-- Changed all versions to 2.8.1.1
-- Changed all relevant VAICOM PRO texts to VAICOM PRO Community Edition
-- Removed old licenses from GUI.
-- Removed AIRIO.vap, renamed VAICOM.vap back
-- Updated the manual to the community edition
+- Added F15E Strike Eagle.
+- Added F22A Raptor (Grinnelli Designs).
+- Changed F-5E Tiger II to Include Interphone and UHF on seperate TX.
+- Changed F-4E-C Skyhawk to Include Interphone and UHF on seperate TX.
+- Added clear indication in UI when no module is detectced.
+- Added clear Indication in UI when detected module fails to hook.
+
+Known Issues
+- Still many modules that have some commands constructed but do not execute. (WIP)
 
 ## Community Team
 
