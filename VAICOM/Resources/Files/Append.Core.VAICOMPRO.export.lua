@@ -121,21 +121,21 @@ vaicom.insert = {
 		end												 
 		if mod == "F-86F Sabre" then 	
 			GetDevice(26):performClickableAction(3004,1)
-			GetDevice(26):performClickableAction(3004,1)			
+			--GetDevice(26):performClickableAction(3004,1)	-- Confirmed fixed		
 			return 
 		end
 		if mod == "MiG-15bis" then
 			GetDevice(30):performClickableAction(3002,1)
-			GetDevice(30):performClickableAction(3002,1)			
+			--GetDevice(30):performClickableAction(3002,1)	-- Need Cnfirmation!!		
 			return 
 		end	
-		if mod == "AJS37" then
-			GetDevice(30):performClickableAction(3011,1)	
-			return 
-		end	
+		--if mod == "AJS37" then
+			--GetDevice(30):performClickableAction(3011,1)	-- Confirmed fixed
+			--return 
+		--end	
 		if mod == "Ka-50" then
-			GetDevice(50):performClickableAction(1589,1)
-			GetDevice(50):performClickableAction(1589,1)			
+			GetDevice(50):performClickableAction(1589,1)   -- Need Confirmation!!
+			--GetDevice(50):performClickableAction(1589,1)			
 			return 
 		end	
 		if mod == "MiG-21Bis" then
@@ -143,57 +143,60 @@ vaicom.insert = {
 			return 
 		end	
 		if mod == "UH-1H" then
-			GetDevice(21):performClickableAction(3009,1)
-			GetDevice(21):performClickableAction(3009,0)
+			GetDevice(21):performClickableAction(3009,1)  -- Need confirmation
+			GetDevice(21):performClickableAction(3009,1) -- changed from 0 to,1
 			return 
 		end
 		if mod == "Mi-8MT" then
-			GetDevice(36):performClickableAction(3025,1)			
+			GetDevice(36):performClickableAction(3025,1)			--Add ValidateDCS module entry
+			GetDevice(36):performClickableAction(3025,1)     --duplicate to test
 			return 
 		end
-		if mod == "Yak-52" then 
+		--if mod == "Yak-52" then 
+			--LoSetCommand(1591)
+			--LoSetCommand(1592) 
+			--return 
+		--end	
+		--if string.find(mod, "L%-39") then
+			--GetDevice(34):performClickableAction(1188,1) --Need Confirmation
+			--return
+		--end	
+		if string.find(mod, "109") or string.find(mod, "190") then --Need confirmation
 			LoSetCommand(1591)
-			LoSetCommand(1592) 
+			--LoSetCommand(1592) 													 		
 			return 
 		end	
-		if string.find(mod, "L%-39") then
-			GetDevice(34):performClickableAction(1188,1)
-			return
-		end	
-		if string.find(mod, "109") or string.find(mod, "190") then
+		if string.find(mod, "Spitfire") then   -- Confirmed fixed issues with options
 			LoSetCommand(1591)
-			LoSetCommand(1592) 													 		
-			return 
-		end	
-		if string.find(mod, "Spitfire") then
-			LoSetCommand(1591)
-			LoSetCommand(1591) 													 		
-			return 
-		end	
-		if string.find(mod, "P%-51") or string.find(mod, "TF%-51") then
 			LoSetCommand(1592)
-			LoSetCommand(1591)
-			LoSetCommand(1591)			
+			--LoSetCommand(1591) -- add for menu options
 			return 
 		end	
-		if string.find(mod, "P%-47") then
+		--if string.find(mod, "P%-51") or string.find(mod, "TF%-51") then     -- confirmed fixed
+			--LoSetCommand(1592)
+			--LoSetCommand(1591)
+			--LoSetCommand(1591)			
+			--return 
+		--end	
+		if string.find(mod, "P%-47") then  -- confirmed fixed
+			LoSetCommand(1591)
 			LoSetCommand(1592)
-			LoSetCommand(1591)                                         
+			--LoSetCommand(1591)                                         
 			return
 		end	
 		if string.find(mod, "Mi%-24") then
-			GetDevice(55):performClickableAction(3026,1) 
-			GetDevice(55):performClickableAction(3026,0) 
+			GetDevice(55):performClickableAction(3026,1)    --Need Confirmation
+			--GetDevice(55):performClickableAction(3026,0) 
 			return
 		end	
-		if string.find(mod, "Mosquito") then
-			LoSetCommand(1592)			
-			LoSetCommand(1591) 					
-			return 
-		end	
+		--if string.find(mod, "Mosquito") then   --Need Confirmation
+			--LoSetCommand(1592)			
+			--LoSetCommand(1591) 					
+			--return 
+		--end	
 		if string.find(mod, "AH%-64") then
-			GetDevice(25):performClickableAction(3017,-1)
-			GetDevice(25):performClickableAction(3017,-1)
+			GetDevice(25):performClickableAction(3017,-1)  --Issues in Air Ok on Ground
+			--GetDevice(25):performClickableAction(3017,-1)
 			return 
 		end	
 	end,

@@ -261,7 +261,7 @@ function setShowMenu(on)
 		end
 	end
 end
-function RemoteInputs()
+function RemoteInputs() --check remote Inputs for errors
 	local returnvalue = false			
 	datareadout = base.vaicom.receiver:receive()
 	if datareadout then 
