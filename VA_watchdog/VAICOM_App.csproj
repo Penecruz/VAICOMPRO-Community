@@ -7,8 +7,8 @@
     <AssemblyTitle>VAICOM PRO for DCS World</AssemblyTitle>
     <Product>VAICOM PRO</Product>
     <Description>Interactive Voice Communications for DCS World</Description>
-    <AssemblyVersion>2.8.2.5</AssemblyVersion>
-    <FileVersion>2.8.2.5</FileVersion>
+    <AssemblyVersion>2.8.3.1</AssemblyVersion>
+    <FileVersion>2.8.3.1</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
