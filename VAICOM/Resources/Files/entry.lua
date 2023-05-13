@@ -10,9 +10,9 @@ declare_plugin(self_ID,
 	shortName	 = "VAICOM PRO",
 	fileMenuName = "VAICOM PRO Community Edition",
 
-	version		 = "2.8.1",
+	version		 = "2.8.3",
 	state		 = "installed", 	
-	developerName= "DCS Community",
+	developerName= "VAICOM Community",
 	info		 = _("VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as client host for advanced speech recognition, enabling true-to-life radio communications with all AI units in the mission."),
 
 	Skins	=
