@@ -18,7 +18,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-2022
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v3
@@ -30,8 +30,6 @@ jobs:
       uses: NuGet/setup-nuget@v1.2
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1.3.1
-    - name: Restore Packages
-      run: nuget restore $SOLUTION_NAME
     - name: Build solution
       run: msbuild $SOLUTION_NAME -t:rebuild -property:Configuration=Release
 
