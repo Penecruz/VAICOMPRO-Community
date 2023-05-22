@@ -25,13 +25,13 @@ jobs:
       with:
         ref: 'Open-Beta'
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1.3
+      uses: microsoft/setup-msbuild@v1.3.1
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.1.1
+      uses: NuGet/setup-nuget@v1.2
     - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1.1.3
+      uses: microsoft/setup-msbuild@v1.3.1
     - name: Restore Packages
-      run: nuget restore $SOLUTION_NAME
+      run: msbuild  $SOLUTION_NAME -t:restore -p:RestoreUseSkipNonexistentTargets=false
     - name: Build solution
       run: msbuild $SOLUTION_NAME -t:rebuild -property:Configuration=Release
 
