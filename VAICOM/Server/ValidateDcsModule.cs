@@ -178,6 +178,12 @@ namespace VAICOM
                     State.currentmodule = DCSmodules.LookupTable["Spitfire"];
                     return true;
                 }
+                // Mosquito
+                //if (State.currentstate.id.ToLower().Contains("mosquito"))
+                //{
+                    //State.currentmodule = DCSmodules.LookupTable["Mosquito"];
+                    //return true;
+                //}
                 // Mig-29
                 if (State.currentstate.id.ToLower().Contains("-29") || (State.currentstate.id.ToLower().Contains("fulcrum")))
                 {

@@ -30,7 +30,7 @@ namespace VAICOM
 
         public static bool          versionbeta         = false; 
         public static bool          usenewselectmethod  = false;
-        public static string        debuguser           = "VAICOM_Tester_A56CD055";
+        public static string        debuguser           = "VAICOM_Tester";
         public static string        clientmode          = ClientModes.Normal;
                                                                              
         public static string        versionstring       = "";
