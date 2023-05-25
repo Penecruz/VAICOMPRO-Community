@@ -112,7 +112,7 @@ namespace VAICOM
 
             public string setversionnumber()
             {
-                return "Version " + State.versionstring ;
+                return "BETA Version " + State.versionstring ;
             }
 
             private void setversionnumber1(object sender, EventArgs e)

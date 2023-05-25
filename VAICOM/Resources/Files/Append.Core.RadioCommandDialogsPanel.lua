@@ -8,7 +8,7 @@ base.package.cpath = base.package.cpath..";.\\LuaSocket\\?.dll;"
 local	socket 		= base.require('socket')
 local 	JSON    	= base.require('JSON')
 local 	dcsoptions 	= base.require('optionsEditor')
-
+local   Gui         = base.require('dxgui')
 
 local colorByRecepientState = {
 		[RecepientState.VOID] 				= utils.COLOR.LIGHT_GRAY,	 
@@ -243,25 +243,16 @@ function updateMainCaption()
 	commandDialogsPanel.setMainCaption(self, mainCaption)
 end
 function setShowMenu(on)
-	if RemoteInputs() then 	
-		base.vaicom.flags.remote = true
-		ProcessRemoteCommand()
-		return
-	else
-		if data.initialized and hasUnit() then 
-			if base.vaicom.flags.remote then
-				base.vaicom.flags.remote = false	
-				return
-			else
-				on = on and not base.vaicom.settings.menuinvisible	
-				self.mainCaption:setVisible(on)
-				commandDialogsPanel.setShowMenu(self, on)
-				return	
-			end		
-		end
+	if data.initialized and hasUnit() then 
+		
+		on = on and not base.vaicom.settings.menuinvisible	
+		self.mainCaption:setVisible(on)
+		commandDialogsPanel.setShowMenu(self, on)
+		return	
+			
 	end
 end
-function RemoteInputs()
+function RemoteInputs() --check remote Inputs for errors
 	local returnvalue = false			
 	datareadout = base.vaicom.receiver:receive()
 	if datareadout then 
@@ -653,7 +644,26 @@ function onMsgFinish(pMessage, pRecepient, text)
 end
 
 base.vaicom = base.vaicom or {}
-	
+local function vaicom_loop()
+	local 	JSON    	= base.require('JSON') -- is it really needed? had a weird error, maybe it was something else causing a issue
+	if base.vaicom and base.vaicom.receiver and data.initialized and data.pUnit then 
+		if RemoteInputs() then 	
+			base.vaicom.flags.remote = true
+			ProcessRemoteCommand()
+		else
+			if data.initialized then 
+				if base.vaicom.flags.remote then
+					base.vaicom.flags.remote = false	
+					return	
+				end
+			end
+		end
+	else
+		base.print("KILL VAICOM LOOP")
+		Gui.EnableHighSpeedUpdate(false)
+		Gui.RemoveUpdateCallback(vaicom_loop)
+		end
+end
 base.vaicom.config = {
 	sendaddress 		= "127.0.0.1", 
 	sendport 			= 33492,
@@ -1534,6 +1544,9 @@ base.vaicom.state = {
 }
 base.vaicom.init = {
 	start = function(self)	 
+		Gui.SetupApplicationUpdateCallback()
+		Gui.EnableHighSpeedUpdate(true)
+		Gui.AddUpdateCallback(vaicom_loop)
 		base.vaicom.sender = socket.try(socket.udp()) 
 		socket.try(base.vaicom.sender:setpeername(base.vaicom.config.sendaddress,base.vaicom.config.sendport))
 		socket.try(base.vaicom.sender:settimeout(base.vaicom.config.sendtimeout))
