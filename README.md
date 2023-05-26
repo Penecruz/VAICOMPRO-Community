@@ -79,7 +79,7 @@ VAICOMPRO Community Edition V2.8.3.6
 - Enhanced module hooking and release routine
 
 Known Issues
-- Still many modules that have some commands constructed but do not execute. (WIP)
+- Minor errors with ATC recipient names.
 
 ## Community Team
 
