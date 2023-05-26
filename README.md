@@ -57,14 +57,26 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.2.3
+VAICOMPRO Community Edition V2.8.3.6
 
-- Added F15E Strike Eagle.
-- Added F22A Raptor (Grinnelli Designs).
-- Changed F-5E Tiger II to Include Interphone and UHF on seperate TX.
-- Changed F-4E-C Skyhawk to Include Interphone and UHF on seperate TX.
-- Added clear indication in UI when no module is detectced.
-- Added clear Indication in UI when detected module fails to hook.
+- Implement new DX Gui call loop
+- Removed redundant workarounds
+- Add F-15E Strike Eagle
+- Add KA-50 Blackshark III
+- Add MB-339 Aeromacchi
+- Add Community A4E-C Skyhawk
+- Add Community F-22A Raptor (Grinnelli Designs)
+- Add Community C-130J Hercules (Anubis)
+- Add Community UH-60L Blackhawk
+- Add Community T-45 Goshawk (VANO)
+- Add Community A-29B Super Tucano
+- Completed AH-64 Apache Implementation (No George Ai)
+- Fixed in game messages displaying too low in frame
+- Fixed numerous bugs across many modules
+- Fixed Auto-Import modules function (Single PTT and Easy Comms only)
+- Fixed Auto-Import theaters (Note once detected you must add these using the keywords update routine in the VAICOMPRO UI)
+- Enhanced notification if no module is detected ("None Detected" displayed on PTT page)
+- Enhanced module hooking and release routine
 
 Known Issues
 - Still many modules that have some commands constructed but do not execute. (WIP)
