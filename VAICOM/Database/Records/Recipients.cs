@@ -32,6 +32,8 @@ namespace VAICOM
                 { "wingman4",               new Recipient { uniqueid = 12006, category = RecipientCategories.aiflight, name = "wAIUnitFlightWingman4",   displayname = Labels.airecipients["wingman4"], flightnumber = 3 } },
                 { "wAIUnitFlightMaximum",   new Recipient { uniqueid = 12999, category = RecipientCategories.aiflight, name = "wAIUnitFlightMaximum",    } },
 
+                // JTAC
+
                 { "wAIUnitJTACNull",        new Recipient { uniqueid = 14000, category = RecipientCategories.aijtac, name = "wAIUnitJTACNull",         } },
                 { "jtac",                   new Recipient { uniqueid = 14001, category = RecipientCategories.aijtac, name = "wAIUnitJTACJTAC",         displayname = Labels.airecipients["jtac"] } },
 
@@ -57,7 +59,7 @@ namespace VAICOM
                 { "mantis",                 new Recipient { uniqueid = 14020, category = RecipientCategories.aijtac, name = "wAIUnitJTACMantis",       displayname = Labels.airecipients["mantis"],      blockedforFree = true } },
                 { "badger",                 new Recipient { uniqueid = 14021, category = RecipientCategories.aijtac, name = "wAIUnitJTACBadger",       displayname = Labels.airecipients["badger"],      blockedforFree = true } },
 
-                // based on flight callsigns
+                // JTAC based on flight callsigns
 
                 { "boar",                   new Recipient { uniqueid = 14022, category = RecipientCategories.aijtac, name = "wAIUnitJTACBoar",         displayname = Labels.airecipients["boar"],        blockedforFree = true } },
                 { "chevy",                  new Recipient { uniqueid = 14023, category = RecipientCategories.aijtac, name = "wAIUnitJTACChevy",        displayname = Labels.airecipients["chevy"],       blockedforFree = true } },
@@ -104,18 +106,26 @@ namespace VAICOM
                 { "Vaziani",                new Recipient { uniqueid = 15073, category = RecipientCategories.aiatc, name = "wAIUnitATCCaucasusVaziani",   displayname = Labels.airecipients["Vaziani"] } },
                 { "wAIUnitATCCaucasusMaximum",new Recipient{uniqueid = 15099, category = RecipientCategories.aiatc, name = "wAIUnitATCCaucasusMaximum",  } },
 
-                { "wAIUnitATCNevadaNull",               new Recipient { uniqueid = 15150, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNull",        } },
-                { "Creech AFB",                         new Recipient { uniqueid = 15151, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaCreech",      displayname = Labels.airecipients["Creech AFB"] } },
-                { "Henderson Executive Airport",        new Recipient { uniqueid = 15152, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaHenderson",   displayname = Labels.airecipients["Henderson Executive Airport"] } },
-                { "McCarran International Airport",     new Recipient { uniqueid = 15153, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMccarran",    displayname = Labels.airecipients["McCarran International Airport"] } },
-                { "Laughlin Airport",                   new Recipient { uniqueid = 15154, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaLaughlin",    displayname = Labels.airecipients["Laughlin Airport"] } },
-                { "North Las Vegas",                    new Recipient { uniqueid = 15155, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaVegas",       displayname = Labels.airecipients["North Las Vegas"] } },
-                { "Tonopah Test Range Airfield",        new Recipient { uniqueid = 15156, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaTonopah",     displayname = Labels.airecipients["Tonopah Test Range Airfield"] } },
-                { "Groom Lake AFB",                     new Recipient { uniqueid = 15157, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaGroomLake",   displayname = Labels.airecipients["Groom Lake AFB"] } },
-                { "Nellis AFB",                         new Recipient { uniqueid = 15158, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNellis",      displayname = Labels.airecipients["Nellis AFB"] } },
-                { "wAIUnitATCNevadaMaximum",            new Recipient { uniqueid = 15199, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMaximum",     } },
+                // Nevada NTTR Map
+
+                { "wAIUnitATCNevadaNull",           new Recipient { uniqueid = 15150, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNull",        } },
+                
+                { "Creech",                         new Recipient { uniqueid = 15151, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaCreech",      displayname = Labels.airecipients["Creech"] } },
+                { "Henderson Executive",            new Recipient { uniqueid = 15152, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaHenderson",   displayname = Labels.airecipients["Henderson Executive"] } },
+                { "McCarran International",         new Recipient { uniqueid = 15153, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMccarran",    displayname = Labels.airecipients["McCarran International"] } },
+                { "Laughlin",                       new Recipient { uniqueid = 15154, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaLaughlin",    displayname = Labels.airecipients["Laughlin"] } },
+                { "North Las Vegas",                new Recipient { uniqueid = 15155, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaVegas",       displayname = Labels.airecipients["North Las Vegas"] } },
+                { "Tonopah Test Range",             new Recipient { uniqueid = 15156, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaTonopah",     displayname = Labels.airecipients["Tonopah Test Range"] } },
+                { "Groom Lake",                     new Recipient { uniqueid = 15157, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaGroomLake",   displayname = Labels.airecipients["Groom Lake"] } },
+                { "Nellis",                         new Recipient { uniqueid = 15158, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNellis",      displayname = Labels.airecipients["Nellis"] } },
+                { "Boulder City",                   new Recipient { uniqueid = 15159, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaBoulder",     displayname = Labels.airecipients["Boulder City"] } },
+                
+                { "wAIUnitATCNevadaMaximum",        new Recipient { uniqueid = 15199, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMaximum",     } },
+
+                // Normandy Map
 
                 { "wAIUnitATCNormandyNull",         new Recipient { uniqueid = 15200, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyNull",              } },
+                
                 { "Beny-sur-Mer",                   new Recipient { uniqueid = 15201, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyBenysurMer",        displayname = Labels.airecipients["Beny-sur-Mer"], blockedforFree = true } },
                 { "Sainte-Croix-sur-Mer",           new Recipient { uniqueid = 15202, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandySainteCroixsurMer", displayname = Labels.airecipients["Sainte-Croix-sur-Mer"], blockedforFree = true  } },
                 { "Lantheuil",                      new Recipient { uniqueid = 15203, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyLantheuil",         displayname = Labels.airecipients["Lantheuil"], blockedforFree = true  } },
@@ -143,9 +153,13 @@ namespace VAICOM
                 { "Funtington",                     new Recipient { uniqueid = 15225, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyFuntington",        displayname = Labels.airecipients["Funtington"], blockedforFree = true  } },
                 { "Chailey",                        new Recipient { uniqueid = 15226, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyChailey",           displayname = Labels.airecipients["Chailey"], blockedforFree = true  } },
                 { "Needs Oar Point",                new Recipient { uniqueid = 15227, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyNeedsOarPoint",     displayname = Labels.airecipients["Needs Oar Point"], blockedforFree = true  } },
+                
                 { "wAIUnitATCNormandyMaximum",      new Recipient { uniqueid = 15249, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyMaximum",           } },
 
+                // Persian Gulf map
+
                 { "wAIUnitATCPersianGulfNull",      new Recipient { uniqueid = 15250, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfNull",              } },
+                
                 { "Al Maktoum Intl",                new Recipient { uniqueid = 15251, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMaktoumIntl", displayname = Labels.airecipients["Al Maktoum Intl"],           blockedforFree = true  } },
                 { "Al Minhad AFB",                  new Recipient { uniqueid = 15252, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMinhadAFB",    displayname = Labels.airecipients["Al Minhad AFB"],              blockedforFree = true  } },
                 { "Dubai Intl",                     new Recipient { uniqueid = 15253, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfDubaiIntl",     displayname = Labels.airecipients["Dubai Intl"],                blockedforFree = true  } },
@@ -166,16 +180,19 @@ namespace VAICOM
                 { "Kish International Airport",     new Recipient { uniqueid = 15268, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfKishIsland",    displayname = Labels.airecipients["Kish International Airport"],blockedforFree = true  } },
                 { "Lavan Island Airport",           new Recipient { uniqueid = 15269, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLavanIsland",   displayname = Labels.airecipients["Lavan Island Airport"],      blockedforFree = true  } },
                 { "Al Ain International Airport",   new Recipient { uniqueid = 15270, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlAin",         displayname = Labels.airecipients["Al Ain International Airport"], blockedforFree = true  } },
-                //{ "Bandar-e-Jask",                  new Recipient { uniqueid = 15271, category = tgtcat.aiatc, name = "wAIUnitATCPersianGulfBandareJask",   displayname = Labels.airecipients["Bandar-e-Jask"],             blockedforFree = true  } },
+                { "Bandar-e-Jask",                  new Recipient { uniqueid = 15271, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfBandareJask",   displayname = Labels.airecipients["Bandar-e-Jask"],             blockedforFree = true  } },
                 { "Abu Dhabi International Airport",new Recipient { uniqueid = 15272, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAbuDhabi",      displayname = Labels.airecipients["Abu Dhabi International Airport"],   blockedforFree = true  } },
                 { "Sas Al Nakheel Airport",         new Recipient { uniqueid = 15273, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfSasAlNakheel",  displayname = Labels.airecipients["Sas Al Nakheel Airport"],            blockedforFree = true  } },
                 { "Jiroft Airport",                 new Recipient { uniqueid = 15274, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfJiroft",       displayname = Labels.airecipients["Jiroft Airport"],            blockedforFree = true  } },
                 { "Liwa Airbase",                   new Recipient { uniqueid = 15275, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLiwaAirbase",  displayname = Labels.airecipients["Liwa Airbase"],              blockedforFree = true  } },
                 { "Ras Al Khaimah",                 new Recipient { uniqueid = 15276, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfRasAlKhaimah", displayname = Labels.airecipients["Ras Al Khaimah"],            blockedforFree = true  } },
+                
                 { "wAIUnitATCPersianGulfMaximum",   new Recipient { uniqueid = 15277, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfMaximum",           } },
 
                 // Channel Map
+                
                 { "wAIUnitATCChannelNull",      new Recipient { uniqueid = 15280, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelNull",              } },
+                
                 { "Dunkirk Mardyck",            new Recipient { uniqueid = 15281, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelDunkirkMardyck",  displayname = Labels.airecipients["Dunkirk Mardyck"], blockedforFree = true  } },
                 { "Hawkinge",                   new Recipient { uniqueid = 15282, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelHawkinge",  displayname = Labels.airecipients["Hawkinge"], blockedforFree = true  } },
                 { "Saint Omer Longuenesse",     new Recipient { uniqueid = 15283, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelSaintOmerLonguenesse",  displayname = Labels.airecipients["Saint Omer Longuenesse"], blockedforFree = true  } },
@@ -185,11 +202,11 @@ namespace VAICOM
                 { "Abbeville Drucat",           new Recipient { uniqueid = 15287, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelAbbevilleDrucat",  displayname = Labels.airecipients["Abbeville Drucat"], blockedforFree = true  } },
                 { "Lympne",                     new Recipient { uniqueid = 15288, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelLympne",  displayname = Labels.airecipients["Lympne"], blockedforFree = true  } },
                 { "Manston",                    new Recipient { uniqueid = 15289, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelManston",  displayname = Labels.airecipients["Manston"], blockedforFree = true  } },
+                
                 { "wAIUnitATCChannelMaximum",   new Recipient { uniqueid = 15290, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelMaximum",           } },
 
                 // syria map
-
-
+                
                 { "wAIUnitATCSyriaNull",        new Recipient { uniqueid = 15300, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaNull",              } },
 
                 { "Beirut-Rafic Hariri",        new Recipient { uniqueid = 15301, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaBeirutRaficHariri",  displayname = Labels.airecipients["Beirut-Rafic Hariri"], blockedforFree = true  } },
@@ -222,6 +239,73 @@ namespace VAICOM
 
                 { "wAIUnitATCSyriaMaximum",     new Recipient { uniqueid = 15330, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaMaximum",           } },
 
+                // Sinai map
+                
+                { "wAIUnitATCSinaiNull",        new Recipient { uniqueid = 15340, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiNull",              } },
+
+                { "Al Mansurah",                new Recipient { uniqueid = 15341, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiAlMansurah",  displayname = Labels.airecipients["Al Mansurah"], blockedforFree = true  } },
+                { "AzZaqaziq",                  new Recipient { uniqueid = 15342, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiAzZaqaziq",  displayname = Labels.airecipients["AzZaqaziq"], blockedforFree = true  } },
+                { "As Salihiyah",               new Recipient { uniqueid = 15343, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiAsSalihiyah",  displayname = Labels.airecipients["As Salihiyah"], blockedforFree = true  } },
+                { "Bilbeis Air Base",           new Recipient { uniqueid = 15344, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiBilbeisAirBase",  displayname = Labels.airecipients["Bilbeis Air Base"], blockedforFree = true  } },
+                { "Inshas Airbase",             new Recipient { uniqueid = 15345, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiInshasAirbase",  displayname = Labels.airecipients["Inshas Airbase"], blockedforFree = true  } },
+                { "Abu Suwayr",                 new Recipient { uniqueid = 15346, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiAbuSuwayr",  displayname = Labels.airecipients["Abu Suwayr"], blockedforFree = true  } },
+                { "Al Ismailiyah",              new Recipient { uniqueid = 15347, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiAlIsmailiyah",  displayname = Labels.airecipients["Al Ismailiyah"], blockedforFree = true  } },
+                { "Cairo International Airport",       new Recipient { uniqueid = 15348, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiCairoInternationalAirport",  displayname = Labels.airecipients["Cairo International Airport"], blockedforFree = true  } },
+                { "Difarsuwar Airfield",        new Recipient { uniqueid = 15349, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiDifarsuwarAirfield",  displayname = Labels.airecipients["Difarsuwar Airfield"], blockedforFree = true  } },
+                { "Wadi al Jandali",            new Recipient { uniqueid = 15350, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiWadialJandali",  displayname = Labels.airecipients["Wadi al Jandali"], blockedforFree = true  } },
+                { "Fayed",                      new Recipient { uniqueid = 15351, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiFayed",  displayname = Labels.airecipients["Fayed"], blockedforFree = true  } },
+                { "Baluza",                     new Recipient { uniqueid = 15352, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiBaluza",  displayname = Labels.airecipients["Baluza"], blockedforFree = true  } },
+                { "Cairo West",                 new Recipient { uniqueid = 15353, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiCairoWest",  displayname = Labels.airecipients["Cairo West"], blockedforFree = true  } },
+                { "Kibrit Air Base",            new Recipient { uniqueid = 15354, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiKibritAirBase",  displayname = Labels.airecipients["Kibrit Air Base"], blockedforFree = true  } },
+                { "Melez",                      new Recipient { uniqueid = 15355, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiMelez",  displayname = Labels.airecipients["Melez"], blockedforFree = true  } },
+                { "Bir Hasanah",                new Recipient { uniqueid = 15356, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiBirHasanah",  displayname = Labels.airecipients["Bir Hasanah"], blockedforFree = true  } },
+                { "El Arish",                   new Recipient { uniqueid = 15357, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiElArish",  displayname = Labels.airecipients["El Arish"], blockedforFree = true  } },
+                { "El Gora",                    new Recipient { uniqueid = 15358, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiElGora",  displayname = Labels.airecipients["El Gora"], blockedforFree = true  } },
+                { "Abu Rudeis",                 new Recipient { uniqueid = 15359, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiAbuRudeis",  displayname = Labels.airecipients["Abu Rudeis"], blockedforFree = true  } },
+                { "Kedem",                      new Recipient { uniqueid = 15360, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiKedem",  displayname = Labels.airecipients["Kedem"], blockedforFree = true  } },
+                { "Ramon Airbase",              new Recipient { uniqueid = 15361, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiRamonAirbase",  displayname = Labels.airecipients["Ramon Airbase"], blockedforFree = true  } },
+                { "Hatzerim",                   new Recipient { uniqueid = 15362, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiHatzerim",  displayname = Labels.airecipients["Hatzerim"], blockedforFree = true  } },
+                { "Hatzor",                     new Recipient { uniqueid = 15363, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiHatzor",  displayname = Labels.airecipients["Hatzor"], blockedforFree = true  } },
+                { "Palmahim",                   new Recipient { uniqueid = 15364, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiPalmahim",  displayname = Labels.airecipients["Palmahim"], blockedforFree = true  } },
+                { "Tel Nof",                    new Recipient { uniqueid = 15365, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiTelNof",  displayname = Labels.airecipients["Tel Nof"], blockedforFree = true  } },
+                { "Nevatim",                    new Recipient { uniqueid = 15366, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiNevatim",  displayname = Labels.airecipients["Nevatim"], blockedforFree = true  } },
+                { "Sde Dov",                    new Recipient { uniqueid = 15367, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiSdeDov",  displayname = Labels.airecipients["Sde Dov"], blockedforFree = true  } },
+                { "Ben-Gurion",                 new Recipient { uniqueid = 15368, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiBenGurion",  displayname = Labels.airecipients["Ben-Gurion"], blockedforFree = true  } },
+                { "Ovda",                       new Recipient { uniqueid = 15369, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiOvda",  displayname = Labels.airecipients["Ovda"], blockedforFree = true  } },
+                { "St Catherine",               new Recipient { uniqueid = 15370, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiStCatherine",  displayname = Labels.airecipients["St Catherine"], blockedforFree = true  } },
+
+                { "wAIUnitATCSinaiMaximum",     new Recipient { uniqueid = 15371, category = RecipientCategories.aiatc, name = "wAIUnitATCSinaiMaximum",           } },
+
+                // South Atlantic map
+
+                { "wAIUnitATCSAtlanticNull",      new Recipient { uniqueid = 15372, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticNull",              } },
+
+                { "Mount Pleasant",             new Recipient { uniqueid = 15373, category = RecipientCategories.aiatc, name = "wAIUnitATCCSAtlanticMountPleasant",  displayname = Labels.airecipients["Mount Pleasant"], blockedforFree = true  } },
+                { "Goose Green",                new Recipient { uniqueid = 15374, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticGooseGreen",  displayname = Labels.airecipients["Goose Green"], blockedforFree = true  } },
+                { "San Carlos FOB",             new Recipient { uniqueid = 15375, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticSanCarlosFOB",  displayname = Labels.airecipients["San Carlos FOB"], blockedforFree = true  } },
+                { "Port Stanley",               new Recipient { uniqueid = 15376, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPortStanley",  displayname = Labels.airecipients["Port Stanley"], blockedforFree = true  } },
+                { "Aerodromo De Tolhuin",       new Recipient { uniqueid = 15377, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticAerodromoDeTolhuin",  displayname = Labels.airecipients["Aerodromo De Tolhuin"], blockedforFree = true  } },
+                { "Rio Grande",                 new Recipient { uniqueid = 15378, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticRioGrande",  displayname = Labels.airecipients["Rio Grande"], blockedforFree = true  } },
+                { "Puerto Williams",            new Recipient { uniqueid = 15379, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPuertoWilliams",  displayname = Labels.airecipients["Puerto Williams"], blockedforFree = true  } },
+                { "San Julian",                 new Recipient { uniqueid = 15380, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticSanJulian",  displayname = Labels.airecipients["San Julian"], blockedforFree = true  } },
+                { "Ushuaia Helo Port",          new Recipient { uniqueid = 15381, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticUshuaiaHeloPort",  displayname = Labels.airecipients["Ushuaia Helo Port"], blockedforFree = true  } },
+                { "Ushuaia",                    new Recipient { uniqueid = 15382, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticUshuaia",  displayname = Labels.airecipients["Ushuaia"], blockedforFree = true  } },
+                { "Pampa Guanaco",              new Recipient { uniqueid = 15383, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPampaGuanaco",  displayname = Labels.airecipients["Pampa Guanaco"], blockedforFree = true  } },
+                { "Puerto Santa Cruz",          new Recipient { uniqueid = 15384, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPuertoSantaCruz",  displayname = Labels.airecipients["Puerto Santa Cruz"], blockedforFree = true  } },
+                { "Rio Chico",                  new Recipient { uniqueid = 15385, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticRioChico",  displayname = Labels.airecipients["Rio Chico"], blockedforFree = true  } },
+                { "Rio Gallegos",               new Recipient { uniqueid = 15386, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticRioGallegos",  displayname = Labels.airecipients["Rio Gallegos"], blockedforFree = true  } },
+                { "Franco Bianco",              new Recipient { uniqueid = 15387, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticFrancoBianco",  displayname = Labels.airecipients["Franco Bianco"], blockedforFree = true  } },
+                { "Comandante Luis Piedrabuena",  new Recipient { uniqueid = 15388, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticComandanteLuisPiedrabuena",  displayname = Labels.airecipients["Comandante Luis Piedrabuena"], blockedforFree = true  } },
+                { "Porvenir Airfield",          new Recipient { uniqueid = 15389, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPorvenirAirfield",  displayname = Labels.airecipients["Porvenir Airfield"], blockedforFree = true  } },
+                { "Punta Arenas",               new Recipient { uniqueid = 15390, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPuntaArenas",  displayname = Labels.airecipients["Punta Arenas"], blockedforFree = true  } },
+                { "Aeropuerto de Gobernador Gregores",  new Recipient { uniqueid = 15391, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticAeropuertodeGobernadorGregores",  displayname = Labels.airecipients["Aeropuerto de Gobernador Gregores"], blockedforFree = true  } },
+                { "Rio Turbio",                 new Recipient { uniqueid = 15392, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticRioTurbio",  displayname = Labels.airecipients["Rio Turbio"], blockedforFree = true  } },
+                { "El Calafate",                new Recipient { uniqueid = 15393, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticElCalafate",  displayname = Labels.airecipients["El Calafate"], blockedforFree = true  } },
+                { "Puerto Natales",             new Recipient { uniqueid = 15394, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticPuertoNatales",  displayname = Labels.airecipients["Puerto Natales"], blockedforFree = true  } },
+                { "Aerodromo O'Higgins",        new Recipient { uniqueid = 15395, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticAerodromoO'Higgins",  displayname = Labels.airecipients["Aerodromo O'Higgins"], blockedforFree = true  } },
+
+                { "wAIUnitATCSAtlanticMaximum",   new Recipient { uniqueid = 15399, category = RecipientCategories.aiatc, name = "wAIUnitATCSAtlanticMaximum",           } },
+                
                 // Farps
 
                 { "wAIUnitATCFarpsNull",        new Recipient { uniqueid = 15400, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsNull",         } },
@@ -239,8 +323,6 @@ namespace VAICOM
                 { "rome",                       new Recipient { uniqueid = 15419, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueRome",     displayname = Labels.airecipients["rome"] }     },
                 { "warsaw",                     new Recipient { uniqueid = 15420, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueWarsaw",   displayname = Labels.airecipients["warsaw"] }   },
 
-
-
                 { "wAIUnitATCFarpsBlueMaximum", new Recipient { uniqueid = 15450, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsBlueMaximum",  } },
                 { "wAIUnitATCFarpsRedNull",     new Recipient { uniqueid = 15451, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsRedNull",      } },
                 { "kaemka",                     new Recipient { uniqueid = 15452, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsRedKaemka",    displayname = Labels.airecipients["kaemka"] }   },
@@ -256,18 +338,19 @@ namespace VAICOM
                 { "wAIUnitATCFarpsRedMaximum",  new Recipient { uniqueid = 15498, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsRedMaximum",   } },
                 { "wAIUnitATCFarpsMaximum",     new Recipient { uniqueid = 15499, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsMaximum",      } },
 
+                // Aircraft Carriers
+                
                 { "wAIUnitATCCarriersNull",     new Recipient { uniqueid = 15500, category = RecipientCategories.aiship, name = "wAIUnitATCCarriersNull",      } },
                 { "carrier",                    new Recipient { uniqueid = 15501, category = RecipientCategories.aiship, name = "wAIUnitATCCarrier",           displayname = Labels.airecipients["carrier"] } },
                 { "nearestcarrier",             new Recipient { uniqueid = 15502, category = RecipientCategories.aiship, name = "wAIUnitATCCarrierNearest",    displayname = Labels.airecipients["nearestcarrier"] } },
                 { "CV 1143.5 Admiral Kuznetsov",new Recipient { uniqueid = 15503, category = RecipientCategories.aiship, name = "wAIUnitATCAdmiralKuznetsov",  displayname = Labels.airecipients["CV 1143.5 Admiral Kuznetsov"] } },
                 { "CVN-70 Carl Vinson",         new Recipient { uniqueid = 15504, category = RecipientCategories.aiship, name = "wAIUnitATCCarlVinson",        displayname = Labels.airecipients["CVN-70 Carl Vinson"], blockedforFree = true } },
                 { "CVN-74 John C. Stennis",     new Recipient { uniqueid = 15505, category = RecipientCategories.aiship, name = "wAIUnitATCJohnCStennis",      displayname = Labels.airecipients["CVN-74 John C. Stennis"], blockedforFree = true } },
-
-
                 { "LHA-1 Tarawa",               new Recipient { uniqueid = 15506, category = RecipientCategories.aiunit, name = "wAIUnitATCTarawa",            displayname = Labels.airecipients["LHA-1 Tarawa"], blockedforFree = true } }, // was 15505 ship
                 { "FFG-7CL Oliver Hazzard Perry",new Recipient{ uniqueid = 15507, category = RecipientCategories.aiunit, name = "wAIUnitATCHazzardPerry",      displayname = Labels.airecipients["FFG-7CL Oliver Hazzard Perry"], blockedforFree = true } },// was 15506 ship
                 { "CG-60 Normandy",             new Recipient { uniqueid = 15508, category = RecipientCategories.aiunit, name = "wAIUnitATCCGNormandy",        displayname = Labels.airecipients["CG-60 Normandy"], blockedforFree = true } },// was 15508 ship
                 { "CV-59 Forrestal",            new Recipient { uniqueid = 15509, category = RecipientCategories.aiunit, name = "wAIUnitATCForrestal",         displayname = Labels.airecipients["CV-59 Forrestal"], blockedforFree = true } },
+                
                 // new carriers
                 
                 { "CVN-71 Theodore Roosevelt",  new Recipient { uniqueid = 15510, category = RecipientCategories.aiship, name = "wAIUnitATCRoosevelt",         displayname = Labels.airecipients["CVN-71 Theodore Roosevelt"], blockedforFree = true, requiresrealatc = true } },
@@ -277,6 +360,7 @@ namespace VAICOM
 
                 // new roles
                 { "wAIUnitCarrierRoleNull",     new Recipient { uniqueid = 15520, category = RecipientCategories.aiship, name = "wAIUnitCarrierRoleNull", }      },
+                
                 { "CarrierDeparture",           new Recipient { uniqueid = 15521, category = RecipientCategories.aiship, name = "wAIUnitCarrierDeparture",     displayname = Labels.airecipients["CarrierDeparture"], blockedforFree = true, requiresrealatc = true } },
                 { "CarrierMarshal",             new Recipient { uniqueid = 15522, category = RecipientCategories.aiship, name = "wAIUnitCarrierMarshal",       displayname = Labels.airecipients["CarrierMarshal"], blockedforFree = true, requiresrealatc = true } },
                 { "CarrierApproachTower",       new Recipient { uniqueid = 15523, category = RecipientCategories.aiship, name = "wAIUnitCarrierApproachTower", displayname = Labels.airecipients["CarrierApproachTower"], blockedforFree = true, requiresrealatc = true } },
@@ -286,20 +370,29 @@ namespace VAICOM
 
                 { "wAIUnitATCCarriersMaximum",  new Recipient { uniqueid = 15590, category = RecipientCategories.aiship, name = "wAIUnitATCCarriersMaximum",   } },
 
+                // Auto Imported 
+
                 { "wAIUnitATCImportedNull",     new Recipient { uniqueid = 15800, category = RecipientCategories.aiatc, name = "wAIUnitATCImportedNull",      } },
                 { "wAIUnitATCImportedMaximum",  new Recipient { uniqueid = 15998, category = RecipientCategories.aiatc, name = "wAIUnitATCImportedMaximum",   } },
 
                 { "wAIUnitATCMaximum",          new Recipient { uniqueid = 15999, category = RecipientCategories.aiatc, name = "wAIUnitATCMaximum",           } },
 
                 { "wAIUnitTankerNull",      new Recipient { uniqueid = 16000, category = RecipientCategories.aitanker, name = "wAIUnitTankerNull",       } },
+                
+                // Tankers
+
                 { "tanker",                 new Recipient { uniqueid = 16001, category = RecipientCategories.aitanker, name = "wAIUnitTankerTanker",     displayname = Labels.airecipients["tanker"] } },
                 { "texaco",                 new Recipient { uniqueid = 16002, category = RecipientCategories.aitanker, name = "wAIUnitTankerTexaco",     displayname = Labels.airecipients["texaco"] } },
                 { "shell",                  new Recipient { uniqueid = 16003, category = RecipientCategories.aitanker, name = "wAIUnitTankerShell",      displayname = Labels.airecipients["shell"] } },
                 { "arco",                   new Recipient { uniqueid = 16004, category = RecipientCategories.aitanker, name = "wAIUnitTankerArco",       displayname = Labels.airecipients["arco"] } },
                 { "nearesttanker",          new Recipient { uniqueid = 16005, category = RecipientCategories.aitanker, name = "wAIUnitTankerNearest",    displayname = Labels.airecipients["nearesttanker"] } },
+                
                 { "wAIUnitTankerMaximum",   new Recipient { uniqueid = 16999, category = RecipientCategories.aitanker, name = "wAIUnitTankerMaximum",    } },
 
+                // AWACS
+                
                 { "wAIUnitAWACSNull",       new Recipient { uniqueid = 17000, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSNull",        } },
+                
                 { "awacs",                  new Recipient { uniqueid = 17001, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSAWACS",       displayname = Labels.airecipients["awacs"] } },
                 { "darkstar",               new Recipient { uniqueid = 17002, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSDarkstar",    displayname = Labels.airecipients["darkstar"] } },
                 { "focus",                  new Recipient { uniqueid = 17003, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSFocus",       displayname = Labels.airecipients["focus"] } },
@@ -307,15 +400,16 @@ namespace VAICOM
                 { "overlord",               new Recipient { uniqueid = 17005, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSOverlord",    displayname = Labels.airecipients["overlord"] } },
                 { "wizard",                 new Recipient { uniqueid = 17006, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSWizard",      displayname = Labels.airecipients["wizard"] } },
                 { "nearestawacs",           new Recipient { uniqueid = 17007, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSNearest",     displayname = Labels.airecipients["nearestawacs"] } },
+                
                 { "wAIUnitAWACSMaximum",    new Recipient { uniqueid = 17999, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSMaximum",     } },
 
+                // Ai Crew
+                
                 { "wAIUnitCrewNull",        new Recipient { uniqueid = 18000, category = RecipientCategories.aicrew, name = "wAIUnitCrewNull",          } },
                 { "crew",                   new Recipient { uniqueid = 18001, category = RecipientCategories.aicrew, name = "wAIUnitCrewCrew",          displayname = Labels.airecipients["crew"] } },
                 { "wAIUnitCrewMaximum",     new Recipient { uniqueid = 18099, category = RecipientCategories.aicrew, name = "wAIUnitCrewMaximum",       } },
 
                 // parked
-
-
 
                 { "wAIUnitMaximum",         new Recipient { uniqueid = 18999, category = RecipientCategories.aiunit, name = "wAIUnitMaximum",           } },
 
@@ -336,6 +430,7 @@ namespace VAICOM
                 { "wAIUnitDescentMaximum",    new Recipient { uniqueid = 19299, category = RecipientCategories.cargo, name = "wAIUnitDescentMaximum",   } },
 
                 { "wAIUnitFlightCrewMembersNull",        new Recipient { uniqueid = 19300, category = RecipientCategories.RIO, name = "wAIUnitFlightCrewMembersNull",         } },
+                
                 // RIO pack
                 { "wAIUnitFlightCrewMembersMaximum",     new Recipient { uniqueid = 19399, category = RecipientCategories.RIO, name = "wAIUnitFlightCrewMembersMaximum",      } },
 
