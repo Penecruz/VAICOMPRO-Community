@@ -61,9 +61,9 @@ VAICOMPRO Community Edition V2.8.4.4
 
 - Added ATC recipients for Marianas Map
 - Added ATC recipients for South Atlantic Map
-- Added ATC Recipients for Sinai map
+- Added ATC Recipients for Sinai Map
 - Fixed ATC recipients for Persian Gulf Map
-- Fixed ATC recipients on Nevada map
+- Fixed ATC recipients on Nevada Map
 - Updated Voice Attack Profile (VAP) to reflect latest Keywords list.
 - Updated message Commands list to latest DCS open Beta list
 
