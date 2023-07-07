@@ -106,6 +106,18 @@ namespace VAICOM
                 { "Vaziani",                new Recipient { uniqueid = 15073, category = RecipientCategories.aiatc, name = "wAIUnitATCCaucasusVaziani",   displayname = Labels.airecipients["Vaziani"] } },
                 { "wAIUnitATCCaucasusMaximum",new Recipient{uniqueid = 15099, category = RecipientCategories.aiatc, name = "wAIUnitATCCaucasusMaximum",  } },
 
+                // Marianas Map
+
+                { "wAIUnitATCMarianasNull",           new Recipient { uniqueid = 15100, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasNull",        } },
+
+                { "Andersen AFB",                   new Recipient { uniqueid = 15101, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasAndersen",    displayname = Labels.airecipients["Andersen AFB"] } },
+                { "Antonio B. Won Pat Intl",        new Recipient { uniqueid = 15102, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasAntonioB",    displayname = Labels.airecipients["Antonio B. Won Pat Intl"] } },
+                { "Rota Intl",                      new Recipient { uniqueid = 15103, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasRotaIntl",    displayname = Labels.airecipients["Rota Intl"] } },
+                { "Tinian Intl",                    new Recipient { uniqueid = 15104, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasTinianIntl",  displayname = Labels.airecipients["Tinian Intl"] } },
+                { "Saipan Intl",                    new Recipient { uniqueid = 15105, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasSaipanIntl",  displayname = Labels.airecipients["Saipan Intl"] } },
+
+                { "wAIUnitATCMarianasMaximum",      new Recipient { uniqueid = 15110, category = RecipientCategories.aiatc, name = "wAIUnitATCMarianasMaximum",     } },
+
                 // Nevada NTTR Map
 
                 { "wAIUnitATCNevadaNull",           new Recipient { uniqueid = 15150, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNull",        } },
@@ -161,33 +173,34 @@ namespace VAICOM
                 { "wAIUnitATCPersianGulfNull",      new Recipient { uniqueid = 15250, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfNull",              } },
                 
                 { "Al Maktoum Intl",                new Recipient { uniqueid = 15251, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMaktoumIntl", displayname = Labels.airecipients["Al Maktoum Intl"],           blockedforFree = true  } },
-                { "Al Minhad AFB",                  new Recipient { uniqueid = 15252, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMinhadAFB",    displayname = Labels.airecipients["Al Minhad AFB"],              blockedforFree = true  } },
+                { "Al Minhad AFB",                  new Recipient { uniqueid = 15252, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMinhadAFB",   displayname = Labels.airecipients["Al Minhad AFB"],             blockedforFree = true  } },
                 { "Dubai Intl",                     new Recipient { uniqueid = 15253, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfDubaiIntl",     displayname = Labels.airecipients["Dubai Intl"],                blockedforFree = true  } },
                 { "Sharjah Intl",                   new Recipient { uniqueid = 15254, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfSharjahIntl",   displayname = Labels.airecipients["Sharjah Intl"],              blockedforFree = true  } },
-                { "Abu Musa Island Airport",        new Recipient { uniqueid = 15255, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAbuMusaIsland", displayname = Labels.airecipients["Abu Musa Island Airport"],   blockedforFree = true  } },
+                { "Abu Musa Island",                new Recipient { uniqueid = 15255, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAbuMusaIsland", displayname = Labels.airecipients["Abu Musa Island"],           blockedforFree = true  } },
                 { "Sirri Island",                   new Recipient { uniqueid = 15256, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfSirriIsland",   displayname = Labels.airecipients["Sirri Island"],              blockedforFree = true  } },
                 { "Fujairah Intl",                  new Recipient { uniqueid = 15257, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfFujairahIntl",  displayname = Labels.airecipients["Fujairah Intl"],             blockedforFree = true  } },
                 { "Bandar Lengeh",                  new Recipient { uniqueid = 15258, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfBandarLengeh",  displayname = Labels.airecipients["Bandar Lengeh"],             blockedforFree = true  } },
                 { "Khasab",                         new Recipient { uniqueid = 15259, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfKhasab",        displayname = Labels.airecipients["Khasab"],                    blockedforFree = true  } },
                 { "Qeshm Island",                   new Recipient { uniqueid = 15260, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfQeshmIsland",   displayname = Labels.airecipients["Qeshm Island"],              blockedforFree = true  } },
                 { "Havadarya",                      new Recipient { uniqueid = 15261, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfHavadarya",     displayname = Labels.airecipients["Havadarya"],                 blockedforFree = true  } },
-                { "Bandar Abbas Intl",              new Recipient { uniqueid = 15262, category = RecipientCategories.aiatc, name ="wAIUnitATCPersianGulfBandarAbbasIntl",displayname = Labels.airecipients["Bandar Abbas Intl"],         blockedforFree = true  } },
-                { "Lar Airbase",                    new Recipient { uniqueid = 15263, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLarAirbase",    displayname = Labels.airecipients["Lar Airbase"],               blockedforFree = true  } },
-                { "Kerman Airport",                 new Recipient { uniqueid = 15264, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfKermanAirport", displayname = Labels.airecipients["Kerman Airport"],            blockedforFree = true  } },
-                { "Shiraz International Airport",   new Recipient { uniqueid = 15265, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfShirazAirport", displayname = Labels.airecipients["Shiraz International Airport"],blockedforFree = true  } },
-                { "Al Dhafra AB",                   new Recipient { uniqueid = 15266, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlDhafraAB",    displayname = Labels.airecipients["Al Dhafra AB"],              blockedforFree = true  } },
-                { "Al-Bateen Airport",              new Recipient { uniqueid = 15267, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlBateen",      displayname = Labels.airecipients["Al-Bateen Airport"],         blockedforFree = true  } }, //OK
-                { "Kish International Airport",     new Recipient { uniqueid = 15268, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfKishIsland",    displayname = Labels.airecipients["Kish International Airport"],blockedforFree = true  } },
-                { "Lavan Island Airport",           new Recipient { uniqueid = 15269, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLavanIsland",   displayname = Labels.airecipients["Lavan Island Airport"],      blockedforFree = true  } },
-                { "Al Ain International Airport",   new Recipient { uniqueid = 15270, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlAin",         displayname = Labels.airecipients["Al Ain International Airport"], blockedforFree = true  } },
+                { "Bandar Abbas Intl",              new Recipient { uniqueid = 15262, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfBandarAbbasIntl",displayname = Labels.airecipients["Bandar Abbas Intl"],        blockedforFree = true  } },
+                { "Lar",                            new Recipient { uniqueid = 15263, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLar",           displayname = Labels.airecipients["Lar"],                       blockedforFree = true  } },
+                { "Kerman",                         new Recipient { uniqueid = 15264, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfKerman",        displayname = Labels.airecipients["Kerman"],                    blockedforFree = true  } },
+                { "Shiraz Intl",                    new Recipient { uniqueid = 15265, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfShirazIntl",    displayname = Labels.airecipients["Shiraz Intl"],               blockedforFree = true  } },
+                { "Al Dhafra AFB",                  new Recipient { uniqueid = 15266, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlDhafraAFB",   displayname = Labels.airecipients["Al Dhafra AFB"],             blockedforFree = true  } },
+                { "Al-Bateen",                      new Recipient { uniqueid = 15267, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlBateen",      displayname = Labels.airecipients["Al-Bateen"],                 blockedforFree = true  } }, //OK
+                { "Kish Intl",                      new Recipient { uniqueid = 15268, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfKishIsland",    displayname = Labels.airecipients["Kish Intl"],                 blockedforFree = true  } },
+                { "Lavan Island",                   new Recipient { uniqueid = 15269, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLavanIsland",   displayname = Labels.airecipients["Lavan Island"],              blockedforFree = true  } },
+                { "Al Ain Intl",                    new Recipient { uniqueid = 15270, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlAinIntl",     displayname = Labels.airecipients["Al Ain Intl"],               blockedforFree = true  } },
                 { "Bandar-e-Jask",                  new Recipient { uniqueid = 15271, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfBandareJask",   displayname = Labels.airecipients["Bandar-e-Jask"],             blockedforFree = true  } },
-                { "Abu Dhabi International Airport",new Recipient { uniqueid = 15272, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAbuDhabi",      displayname = Labels.airecipients["Abu Dhabi International Airport"],   blockedforFree = true  } },
-                { "Sas Al Nakheel Airport",         new Recipient { uniqueid = 15273, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfSasAlNakheel",  displayname = Labels.airecipients["Sas Al Nakheel Airport"],            blockedforFree = true  } },
-                { "Jiroft Airport",                 new Recipient { uniqueid = 15274, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfJiroft",       displayname = Labels.airecipients["Jiroft Airport"],            blockedforFree = true  } },
-                { "Liwa Airbase",                   new Recipient { uniqueid = 15275, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLiwaAirbase",  displayname = Labels.airecipients["Liwa Airbase"],              blockedforFree = true  } },
-                { "Ras Al Khaimah",                 new Recipient { uniqueid = 15276, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfRasAlKhaimah", displayname = Labels.airecipients["Ras Al Khaimah"],            blockedforFree = true  } },
-                
-                { "wAIUnitATCPersianGulfMaximum",   new Recipient { uniqueid = 15277, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfMaximum",           } },
+                { "Abu Dhabi Intl",                 new Recipient { uniqueid = 15272, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAbuDhabi",      displayname = Labels.airecipients["Abu Dhabi Intl"],            blockedforFree = true  } },
+                { "Sas Al Nakheel",                 new Recipient { uniqueid = 15273, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfSasAlNakheel",  displayname = Labels.airecipients["Sas Al Nakheel"],            blockedforFree = true  } },
+                { "Jiroft",                         new Recipient { uniqueid = 15274, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfJiroft",        displayname = Labels.airecipients["Jiroft"],                    blockedforFree = true  } },
+                { "Liwa AFB",                       new Recipient { uniqueid = 15275, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfLiwaAFB",       displayname = Labels.airecipients["Liwa AFB"],                  blockedforFree = true  } },
+                { "Ras Al Khaimah Intl",            new Recipient { uniqueid = 15276, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfRasAlKhaimah",  displayname = Labels.airecipients["Ras Al Khaimah Intl"],       blockedforFree = true  } },
+                { "Sir Abu Nuayr",                  new Recipient { uniqueid = 15277, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfSirAbuNuayr",   displayname = Labels.airecipients["Sir Abu Nuayr"],             blockedforFree = true  } },
+
+                { "wAIUnitATCPersianGulfMaximum",   new Recipient { uniqueid = 15278, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfMaximum",           } },
 
                 // Channel Map
                 
@@ -205,7 +218,7 @@ namespace VAICOM
                 
                 { "wAIUnitATCChannelMaximum",   new Recipient { uniqueid = 15290, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelMaximum",           } },
 
-                // syria map
+                // Syria map
                 
                 { "wAIUnitATCSyriaNull",        new Recipient { uniqueid = 15300, category = RecipientCategories.aiatc, name = "wAIUnitATCSyriaNull",              } },
 

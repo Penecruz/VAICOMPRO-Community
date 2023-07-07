@@ -93,6 +93,14 @@ namespace VAICOM
                 { "Sukhumi-Babushara",      "Sukhumi-Babushara"     },
                 { "Vaziani",                "Vaziani"               },
 
+                // Marianas map
+
+                { "Andersen AFB",               "Andersen AFB"             },
+                { "Antonio B. Won Pat Intl",    "Antonio B. Won Pat Intl"  },
+                { "Rota Intl",                  "Rota Intl"                },
+                { "Tinian Intl",                "Tinian Intl"              },
+                { "Saipan Intl",                "Saipan Intl"              },
+                
                 // Nevanda map
 
                 { "Creech",                 "Creech"                 },
@@ -141,7 +149,7 @@ namespace VAICOM
                 { "Al Minhad AFB",          "Al Minhad AFB"                 },
                 { "Dubai Intl",             "Dubai Intl"                    },
                 { "Sharjah Intl",           "Sharjah Intl"                  },
-                { "Abu Musa Island Airport","Abu Musa Island Airport"       },
+                { "Abu Musa Island",        "Abu Musa Island"               },
                 { "Sirri Island",           "Sirri Island"                  },
                 { "Fujairah Intl",          "Fujairah Intl"                 },
                 { "Bandar Lengeh",          "Bandar Lengeh"                 },
@@ -149,20 +157,21 @@ namespace VAICOM
                 { "Qeshm Island",           "Qeshm Island"                  },
                 { "Havadarya",              "Havadarya"                     },
                 { "Bandar Abbas Intl",      "Bandar Abbas Intl"             },
-                { "Lar Airbase",            "Lar Airbase"                   },
-                { "Kerman Airport",         "Kerman Airport"                },
-                { "Shiraz International Airport","Shiraz Intl Airport"      },
-                { "Al Dhafra AB",           "Al Dhafra AB"                  },
-                { "Al-Bateen Airport",      "Al-Bateen Airport"             },
-                { "Kish International Airport", "Kish International Airport"},
-                { "Lavan Island Airport",   "Lavan Island Airport"          },
-                { "Al Ain International Airport","Al Ain International Airport"},
+                { "Lar",                    "Lar"                           },
+                { "Kerman",                 "Kerman"                        },
+                { "Shiraz Intl",            "Shiraz Intl"                   },
+                { "Al Dhafra AFB",          "Al Dhafra AFB"                 },
+                { "Al-Bateen",              "Al-Bateen"                     },
+                { "Kish Intl",              "Kish Intl"                     },
+                { "Lavan Island",           "Lavan Island"                  },
+                { "Al Ain Intl",            "Al Ain Intl"                   },
                 { "Bandar-e-Jask",          "Bandar-e-Jask"                 },
-                { "Abu Dhabi International Airport","Abu Dhabi International"},
-                { "Sas Al Nakheel Airport",         "Sas Al Nakheel Airport"},
-                { "Jiroft Airport",         "Jiroft Airport"                },
-                { "Liwa Airbase",           "Liwa Airbase"                  },
-                { "Ras Al Khaimah",         "Ras Al Khaimah"                },
+                { "Abu Dhabi Intl",         "Abu Dhabi Intl"                },
+                { "Sas Al Nakheel",         "Sas Al Nakheel"                },
+                { "Jiroft",                 "Jiroft"                        },
+                { "Liwa AFB",               "Liwa AFB"                      },
+                { "Ras Al Khaimah Intl",    "Ras Al Khaimah Intl"           },
+                { "Sir Abu Nuayr",          "Sir Abu Nuayr"                 },
 
                 //Channel map
                 { "Dunkirk Mardyck",        "Dunkirk Mardyck" },
