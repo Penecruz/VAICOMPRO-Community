@@ -57,33 +57,22 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.3.6
+VAICOMPRO Community Edition V2.8.4.4
 
-- Implement new DX Gui call loop
-- Removed redundant workarounds
-- Add F-15E Strike Eagle
-- Add KA-50 Blackshark III
-- Add MB-339 Aeromacchi
-- Add Community A4E-C Skyhawk
-- Add Community F-22A Raptor (Grinnelli Designs)
-- Add Community C-130J Hercules (Anubis)
-- Add Community UH-60L Blackhawk
-- Add Community T-45 Goshawk (VANO)
-- Add Community A-29B Super Tucano
-- Completed AH-64 Apache Implementation (No George Ai)
-- Fixed in game messages displaying too low in frame
-- Fixed numerous bugs across many modules
-- Fixed Auto-Import modules function (Single PTT and Easy Comms only)
-- Fixed Auto-Import theaters (Note once detected you must add these using the keywords update routine in the VAICOMPRO UI)
-- Enhanced notification if no module is detected ("None Detected" displayed on PTT page)
-- Enhanced module hooking and release routine
+- Added ATC recipients for Marianas Map
+- Added ATC recipients for South Atlantic Map
+- Added ATC Recipients for Sinai map
+- Fixed ATC recipients for Persian Gulf Map
+- Fixed ATC recipients on Nevada map
+- Updated Voice Attack Profile (VAP) to reflect latest Keywords list.
+- Updated message Commands list to latest DCS open Beta list
 
 Known Issues
-- Minor errors with ATC recipient names.
+- IC will not be passed for Servers that recuire Pure Client Scripts. (This due to AIRIO and Kneeboard implementation)
 
 ## Community Team
 
-Special K, RurouniJones, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit, stag1975 and Pene
+Pene, Special K, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit and stag1975
 
 #### Beta Team
 104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye and Virus
