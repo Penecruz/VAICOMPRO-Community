@@ -46,6 +46,7 @@ namespace VAICOM
                         bool harrier = State.currentmodule.Equals(DCSmodules.LookupTable["AV-8B"]);
                         bool viper = State.currentmodule.Equals(DCSmodules.LookupTable["F-16C_50"]);
                         bool tomcat = State.currentstate.id.Contains("F-14");
+                        bool strike = State.currentmodule.Equals(DCSmodules.LookupTable["F-15ESE"]);
 
                         foreach (Server.RadioDevice radiounit in State.currentstate.radios)
                         {
@@ -58,6 +59,9 @@ namespace VAICOM
                             bool viperuhf = (viper & radiounit.deviceid.Equals(36));
 
                             bool tomcatuhf = (tomcat && radiounit.deviceid.Equals(4));
+
+                            bool strikecomm1 = (strike & radiounit.deviceid.Equals(7));
+                            bool strikecomm2 = (strike & radiounit.deviceid.Equals(8));
 
                             bool deviceallocated = false;
 
@@ -83,7 +87,7 @@ namespace VAICOM
                                 // int is not part of radio count
                             }
 
-                            bool uhfcandidate = tomcatuhf || vipervhf || harriercomm2 || (!viperuhf && (!harrier && !tomcat && (radiounit.displayName.ToLower().Contains("uhf") || (radiounit.AM & !radiounit.displayName.ToLower().Contains("vhf")))));
+                            bool uhfcandidate = tomcatuhf || vipervhf || harriercomm2 || strikecomm2 || (!viperuhf && (!harrier && !tomcat && !strike && (radiounit.displayName.ToLower().Contains("uhf") || (radiounit.AM & !radiounit.displayName.ToLower().Contains("vhf")))));
 
                             // UHF -> TX2
                             if (!deviceallocated && !allocatedUHF && uhfcandidate)
@@ -114,7 +118,7 @@ namespace VAICOM
                                 State.radiocount = State.radiocount + 1;
                             }
 
-                            bool amcandidate = viperuhf || harriercomm1 || (!harrier & radiounit.AM);
+                            bool amcandidate = viperuhf || harriercomm1 || strikecomm1 || (!harrier & radiounit.AM);
 
                             // VHF AM -> TX1 
                             if (!deviceallocated & !allocatedAM & amcandidate)
