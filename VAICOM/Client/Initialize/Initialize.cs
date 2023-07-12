@@ -207,7 +207,7 @@ namespace VAICOM
                     try
                     {
                         // KNEEBOARD ADDITION
-                        if (State.kneeboardactivated && State.installkneeboard)
+                        if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled && State.installkneeboard)
                         {
                             FileHandler.Lua.LuaFiles_Install_Kneeboard(false, State.clientmode.Equals(ClientModes.Normal)); // quiet if not debug
                         }
@@ -397,7 +397,7 @@ namespace VAICOM
                     FileHandler.Root.ExtractCompagnionApp();
 
                     Log.Write("VAICOM PRO Community Edition for DCS World.", Colors.System);
-                    Log.Write("Press LCtrl+LAlt+C for config.", Colors.System);
+                    Log.Write("Press LCtrl+LAlt+C to open Vaicom Pro UI", Colors.System);
                     Log.Write("Initializing..", Colors.System);
 
                     ResetConfig(vaProxy);

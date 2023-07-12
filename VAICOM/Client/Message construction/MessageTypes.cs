@@ -316,10 +316,10 @@ namespace VAICOM
                 try
                 {
 
-                    if (!State.kneeboardactivated)
+                    if (!State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled)
                     {
                         msg = new KneeboardMessage();
-                        msg.logdata = new LogData("", "activate your license for the dynamic kneeboard extension to use this page.");
+                        msg.logdata = new LogData("", "activate kneeboard extension to use this page.");
                     }
 
                         string formatmessage = JsonConvert.SerializeObject(msg);

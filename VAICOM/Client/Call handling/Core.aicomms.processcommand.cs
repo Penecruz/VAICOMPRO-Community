@@ -199,7 +199,7 @@ namespace VAICOM
                         {
                             if (Database.Recipients.Table[State.currentkey["recipient"]].name.Equals("wAIUnitKneeboard"))
                             {
-                                if (State.kneeboardactivated)
+                                if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled) // Pene Playing
                                 {
                                     KneeboardToggle();
                                 }
@@ -479,7 +479,7 @@ namespace VAICOM
                             }
                             else
                             {
-                                Log.Write("Interactive Kneeboard is disabled.", Colors.Warning);
+                                Log.Write("Interactive Kneeboard is disabled.Please enable in the Vaicom Pro UI extension tab", Colors.Warning);
                                 UI.Playsound.Error();
                             }
                         }

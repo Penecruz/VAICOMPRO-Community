@@ -125,7 +125,7 @@ namespace VAICOM
 
                             if (true) //(sendcat.Equals("NOTES") || sendcat.Equals("LOG") || msg.aliasdata.content.Count > 0) // if chunk not empty
                             {
-                                if (State.kneeboardactivated)
+                                if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled) 
                                 {
                                     msg.switchpage = true; // usually false
                                     Client.DcsClient.SendKneeboardMessage(msg); // send chunk
