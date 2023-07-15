@@ -51,6 +51,9 @@ namespace VAICOM
                 //Kneeboard
                 if ((this.uniqueid >= Recipients.Table["wAIUnitKneeboardNull"].uniqueid) & (this.uniqueid <= Recipients.Table["wAIUnitKneeboardMaximum"].uniqueid)) { value = Recipientclasses.Kneeboard; }
 
+                // Moose Ops
+                //if ((this.uniqueid >= Recipients.Table["wAIUnitMooseNull"].uniqueid) & (this.uniqueid <= Recipients.Table["wAIUnitMooseMaximum"].uniqueid)) { value = Recipientclasses.Aux; }
+
                 return value;
             }
 
@@ -149,6 +152,10 @@ namespace VAICOM
                     default:
                         returnclass = Undefined;
                         break;
+
+                    //case ("moose"):
+                        //returnclass = Aux;
+                        //break;
                 }
 
                 return returnclass;
@@ -184,6 +191,9 @@ namespace VAICOM
 
             public static Recipientclass Kneeboard  = new Recipientclass { Name = "Kneeboard" };
 
+            // Moose direct integrated comms
+            //public static Recipientclass Moose = new Recipientclass { Name = "Moose" };
+
         }
 
 
@@ -208,7 +218,8 @@ namespace VAICOM
             RIO,
             AI_pilot,
             ally,
-            kneeboard
+            kneeboard,
+            moose
         }
 
 

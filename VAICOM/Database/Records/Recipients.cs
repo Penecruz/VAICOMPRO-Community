@@ -390,10 +390,9 @@ namespace VAICOM
 
                 { "wAIUnitATCMaximum",          new Recipient { uniqueid = 15999, category = RecipientCategories.aiatc, name = "wAIUnitATCMaximum",           } },
 
-                { "wAIUnitTankerNull",      new Recipient { uniqueid = 16000, category = RecipientCategories.aitanker, name = "wAIUnitTankerNull",       } },
-                
                 // Tankers
 
+                { "wAIUnitTankerNull",      new Recipient { uniqueid = 16000, category = RecipientCategories.aitanker, name = "wAIUnitTankerNull",       } },
                 { "tanker",                 new Recipient { uniqueid = 16001, category = RecipientCategories.aitanker, name = "wAIUnitTankerTanker",     displayname = Labels.airecipients["tanker"] } },
                 { "texaco",                 new Recipient { uniqueid = 16002, category = RecipientCategories.aitanker, name = "wAIUnitTankerTexaco",     displayname = Labels.airecipients["texaco"] } },
                 { "shell",                  new Recipient { uniqueid = 16003, category = RecipientCategories.aitanker, name = "wAIUnitTankerShell",      displayname = Labels.airecipients["shell"] } },
@@ -452,6 +451,12 @@ namespace VAICOM
                 { "wAIUnitKneeboardNull",       new Recipient { uniqueid = 19400, category = RecipientCategories.kneeboard, name = "wAIUnitKneeboardNull",      } },
                 { "kneeboard",                  new Recipient { uniqueid = 19401, category = RecipientCategories.kneeboard, name = "wAIUnitKneeboard",          displayname = Labels.airecipients["kneeboard"], blockedforFree = true  } },
                 { "wAIUnitKneeboardMaximum",    new Recipient { uniqueid = 19499, category = RecipientCategories.kneeboard, name = "wAIUnitKneeboardMaximum",   } },
+
+                // Moose Ops 
+                { "wAUnitMooseNull" ,           new Recipient { uniqueid = 19500, category = RecipientCategories.moose,    name = "wAIUnitMooseNull" } },
+                //{ "Radio Check Marshal" ,       new Recipient { uniqueid = 19501, category = RecipientCategories.moose,    name = "wAIUnitRadioChkMarshal",displayname = Labels.airecipients["Radio Check Marshal"],blockedforFree = true   } },
+                //{ "Radio Check LSO" ,           new Recipient { uniqueid = 19502, category = RecipientCategories.moose,    name = "wAIUnitRadioChkLSO",displayname = Labels.airecipients["Radio Check LSO"],blockedforFree = true   } },
+                { "wAIUnitMooseMaximum" ,       new Recipient { uniqueid = 19999, category = RecipientCategories.moose,    name = "wAIUnitMooseMaximum" } },
 
             };
         }

@@ -12,7 +12,7 @@ namespace VAICOM
             public static void CreateDcsInputCommandsTable()
             {
                 // generated directly from lua dump .csv / .xlxs
-                // updated list for DCS 2.8.5.40170
+                // updated list for DCS 2.8.6.41363
 
                 DcsInputCommandsTable = new SortedDictionary<int, string>();
 

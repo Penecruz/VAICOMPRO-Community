@@ -356,6 +356,11 @@ namespace VAICOM
 
                 { "Page",                  "wMsgShowKneeboardTab"         },
 
+                // Moose Airboss
+                { "Marshal Check",         "Action Radio Check Marshal"          },
+                { "LSO Check",             "Action Radio Check LSO"              },
+                { "Request Commence",      "Action Request Commence"             },
+                { "Emergency Landing",     "Action Emergency Landing"            },
             };
 
         }

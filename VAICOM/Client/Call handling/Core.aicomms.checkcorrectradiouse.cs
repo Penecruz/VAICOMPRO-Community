@@ -24,6 +24,7 @@ namespace VAICOM
 
                     bool calledcrew     = State.currentrecipientclass.Equals(Recipientclasses.Crew);
                     bool calledaux      = State.currentrecipientclass.Equals(Recipientclasses.Aux);
+                    //bool calledmoose    = State.currentrecipientclass.Equals(Recipientclasses.Aux);
                     bool calledcargo    = State.currentrecipientclass.Equals(Recipientclasses.Cargo);
                     bool calleddescent  = State.currentrecipientclass.Equals(Recipientclasses.Descent);
                     bool calledRIO      = State.currentrecipientclass.Equals(Recipientclasses.RIO) || State.currentrecipientclass.Equals(Recipientclasses.AI_pilot);
