@@ -57,21 +57,22 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.2.3
+VAICOMPRO Community Edition V2.8.4.4
 
-- Added F15E Strike Eagle.
-- Added F22A Raptor (Grinnelli Designs).
-- Changed F-5E Tiger II to Include Interphone and UHF on seperate TX.
-- Changed F-4E-C Skyhawk to Include Interphone and UHF on seperate TX.
-- Added clear indication in UI when no module is detectced.
-- Added clear Indication in UI when detected module fails to hook.
+- Added ATC recipients for Marianas Map
+- Added ATC recipients for South Atlantic Map
+- Added ATC Recipients for Sinai Map
+- Fixed ATC recipients for Persian Gulf Map
+- Fixed ATC recipients on Nevada Map
+- Updated Voice Attack Profile (VAP) to reflect latest Keywords list.
+- Updated message Commands list to latest DCS open Beta list
 
 Known Issues
-- Still many modules that have some commands constructed but do not execute. (WIP)
+- IC will not be passed for Servers that recuire Pure Client Scripts. (This due to AIRIO and Kneeboard implementation)
 
 ## Community Team
 
-Special K, RurouniJones, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit, stag1975 and Pene
+Pene, Special K, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit and stag1975
 
 #### Beta Team
 104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye and Virus

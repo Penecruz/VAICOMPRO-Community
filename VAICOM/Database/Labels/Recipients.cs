@@ -61,9 +61,15 @@ namespace VAICOM
 
                 { "nearestjtac",            "Nearest JTAC"          },
 
+                // ATC general
+
                 { "atc",                    "Air Traffic Controller" },
                 { "nearestairfield",        "Nearest Airfield"      },
                 //{ "alternateatc",           "Alternate Airfield"    },
+                
+                
+                // Caucuases map
+                
                 { "wAIUnitATCCaucasusNull", "wAIUnitATCCaucasusNull"},
                 { "Anapa-Vityazevo",        "Anapa-Vityazevo"       },
                 { "Batumi",                 "Batumi"                },
@@ -87,14 +93,27 @@ namespace VAICOM
                 { "Sukhumi-Babushara",      "Sukhumi-Babushara"     },
                 { "Vaziani",                "Vaziani"               },
 
-                { "Creech AFB",                     "Creech AFB"                     },
-                { "Henderson Executive Airport",    "Henderson Executive Airport"    },
-                { "McCarran International Airport", "McCarran International Airport" },
-                { "Laughlin Airport",               "Laughlin Airport"               },
-                { "North Las Vegas",                "North Las Vegas"                },
-                { "Tonopah Test Range Airfield",    "Tonopah Test Range Airfield"    },
-                { "Groom Lake AFB",                 "Groom Lake AFB"                 },
-                { "Nellis AFB",                     "Nellis AFB"                     },
+                // Marianas map
+
+                { "Andersen AFB",               "Andersen AFB"             },
+                { "Antonio B. Won Pat Intl",    "Antonio B. Won Pat Intl"  },
+                { "Rota Intl",                  "Rota Intl"                },
+                { "Tinian Intl",                "Tinian Intl"              },
+                { "Saipan Intl",                "Saipan Intl"              },
+                
+                // Nevanda map
+
+                { "Creech",                 "Creech"                 },
+                { "Henderson Executive",    "Henderson Executive"    },
+                { "McCarran International", "McCarran International" },
+                { "Laughlin",               "Laughlin"               },
+                { "North Las Vegas",        "North Las Vegas"        },
+                { "Tonopah Test Range",     "Tonopah Test Range"     },
+                { "Groom Lake",             "Groom Lake"             },
+                { "Nellis",                 "Nellis"                 },
+                { "Boulder City",           "Boulder City"           },
+
+                // Normanday map
 
                 { "Beny-sur-Mer",           "Beny-sur-Mer"                  },
                 { "Sainte-Croix-sur-Mer",   "Sainte-Croix-sur-Mer"          },
@@ -124,11 +143,13 @@ namespace VAICOM
                 { "Chailey",                "Chailey"                       },
                 { "Needs Oar Point",        "Needs Oar Point"               },
 
+                // Persian Gulf Map
+
                 { "Al Maktoum Intl",        "Al Maktoum Intl"               },
                 { "Al Minhad AFB",          "Al Minhad AFB"                 },
                 { "Dubai Intl",             "Dubai Intl"                    },
                 { "Sharjah Intl",           "Sharjah Intl"                  },
-                { "Abu Musa Island Airport","Abu Musa Island Airport"       },
+                { "Abu Musa Island",        "Abu Musa Island"               },
                 { "Sirri Island",           "Sirri Island"                  },
                 { "Fujairah Intl",          "Fujairah Intl"                 },
                 { "Bandar Lengeh",          "Bandar Lengeh"                 },
@@ -136,22 +157,21 @@ namespace VAICOM
                 { "Qeshm Island",           "Qeshm Island"                  },
                 { "Havadarya",              "Havadarya"                     },
                 { "Bandar Abbas Intl",      "Bandar Abbas Intl"             },
-                { "Lar Airbase",            "Lar Airbase"                   },
-                { "Kerman Airport",         "Kerman Airport"                },
-                { "Shiraz International Airport","Shiraz Intl Airport"      },
-                { "Al Dhafra AB",           "Al Dhafra AB"                  },
-
-
-                { "Al-Bateen Airport",      "Al-Bateen Airport"             },
-                { "Kish International Airport", "Kish International Airport"},
-                { "Lavan Island Airport",   "Lavan Island Airport"          },
-                { "Al Ain International Airport","Al Ain International Airport"},
-                //{ "Bandar-e-Jask",          "Bandar-e-Jask"                 },
-                { "Abu Dhabi International Airport","Abu Dhabi International"},
-                { "Sas Al Nakheel Airport",         "Sas Al Nakheel Airport"},
-                { "Jiroft Airport",         "Jiroft Airport"                },
-                { "Liwa Airbase",           "Liwa Airbase"                  },
-                { "Ras Al Khaimah",         "Ras Al Khaimah"                },
+                { "Lar",                    "Lar"                           },
+                { "Kerman",                 "Kerman"                        },
+                { "Shiraz Intl",            "Shiraz Intl"                   },
+                { "Al Dhafra AFB",          "Al Dhafra AFB"                 },
+                { "Al-Bateen",              "Al-Bateen"                     },
+                { "Kish Intl",              "Kish Intl"                     },
+                { "Lavan Island",           "Lavan Island"                  },
+                { "Al Ain Intl",            "Al Ain Intl"                   },
+                { "Bandar-e-Jask",          "Bandar-e-Jask"                 },
+                { "Abu Dhabi Intl",         "Abu Dhabi Intl"                },
+                { "Sas Al Nakheel",         "Sas Al Nakheel"                },
+                { "Jiroft",                 "Jiroft"                        },
+                { "Liwa AFB",               "Liwa AFB"                      },
+                { "Ras Al Khaimah Intl",    "Ras Al Khaimah Intl"           },
+                { "Sir Abu Nuayr",          "Sir Abu Nuayr"                 },
 
                 //Channel map
                 { "Dunkirk Mardyck",        "Dunkirk Mardyck" },
@@ -194,6 +214,65 @@ namespace VAICOM
                 { "Adana Sakirpasa",        "Adana Sakirpasa"       },
                 { "Incirlik",               "Incirlik"              },
 
+                // Sinai map
+
+                { "Al Mansurah",            "Al Mansurah"           },
+                { "AzZaqaziq",              "AzZaqaziq"             },
+                { "As Salihiyah",           "As Salihiyah"          },
+                { "Bilbeis Air Base",       "Bilbeis Air Base"      },
+                { "Inshas Airbase",         "Inshas Airbase"        },
+                { "Abu Suwayr",             "Abu Suwayr"            },
+                { "Al Ismailiyah",          "Al Ismailiyah"         },//
+                { "Cairo International Airport", "Cairo International Airport"  },
+                { "Difarsuwar Airfield",    "Difarsuwar Airfield"   },//
+                { "Wadi al Jandali",        "Wadi al Jandali"       },
+                { "Fayed",                  "Fayed"                 },
+                { "Baluza",                 "Baluza"                },
+                { "Cairo West",             "Cairo West"            },
+                { "Kibrit Air Base",        "Kibrit Air Base"       },
+                { "Melez",                  "Melez"                 },
+                { "Bir Hasanah",            "Bir Hasanah"           },
+                { "El Arish",               "El Arish"              },
+                { "El Gora",                "El Gora"               },
+                { "Abu Rudeis",             "Abu Rudeis"            },
+                { "Kedem",                  "Kedem"                 },
+                { "Ramon Airbase",          "Ramon Airbase"         },
+                { "Hatzerim",               "Hatzerim"              },
+                { "Hatzor",                 "Hatzor"                },
+                { "Palmahim",               "Palmahim"              },
+                { "Tel Nof",                "Tel Nof"               },
+                { "Nevatim",                "Nevatim"               },
+                { "Sde Dov",                "Sde Dov"               },
+                { "Ben-Gurion",             "Ben-Gurion"            },
+                { "Ovda",                   "Ovda"                  },
+                { "St Catherine",           "St Catherine"          },
+
+                // South Atlantic map
+
+                { "Mount Pleasant",         "Mount Pleasant"        },
+                { "Goose Green",            "Goose Green"           },
+                { "San Carlos FOB",         "San Carlos FOB"        },
+                { "Port Stanley",           "Port Stanley"          },
+                { "Aerodromo De Tolhuin",   "Aerodromo De Tolhuin"  },
+                { "Rio Grande",             "Rio Grande"            },
+                { "Puerto Williams",        "Puerto Williams"       },
+                { "San Julian",             "San Julian"            },
+                { "Ushuaia Helo Port",      "Ushuaia Helo Port"     },
+                { "Ushuaia",                "Ushuaia"               },
+                { "Pampa Guanaco",          "Pampa Guanaco"         },
+                { "Puerto Santa Cruz",      "Puerto Santa Cruz"     },
+                { "Rio Chico",              "Rio Chico"             },
+                { "Rio Gallegos",           "Rio Gallegos"          },
+                { "Franco Bianco",          "Franco Bianco"         },
+                { "Comandante Luis Piedrabuena",  "Comandante Luis Piedrabuena"        },
+                { "Porvenir Airfield",      "Porvenir Airfield"     },
+                { "Punta Arenas",           "Punta Arenas"          },
+                { "Aeropuerto de Gobernador Gregores",  "Aeropuerto de Gobernador Gregores"    },
+                { "Rio Turbio",             "Rio Turbio"            },
+                { "El Calafate",            "El Calafate"           },
+                { "Puerto Natales",         "Puerto Natales"        },
+                { "Aerodromo O'Higgins",    "Aerodromo O'Higgins"   },
+                
                 // FARP
 
                 { "platform",               "Helipad"               },
