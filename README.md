@@ -68,6 +68,7 @@ VAICOMPRO Community Edition V2.8.2.3
 
 Known Issues
 - Still many modules that have some commands constructed but do not execute. (WIP)
+- F14 Tomcat wheel chock initial status unknown to DCS/VAICOM. Even if visible, command "place the wheel chocks" first and then they can be removed with VAICOM.
 
 ## Community Team
 
