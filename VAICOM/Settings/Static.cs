@@ -92,7 +92,7 @@ namespace VAICOM
                 {RecipientCategories.RIO,            "RIO"                                   },
                 {RecipientCategories.AI_pilot,       "AI Pilot"                              },
                 {RecipientCategories.kneeboard,      "Interactive Kneeboard extension"       },
-                //{RecipientCategories.moose,          "Moose Script Interaction"              },
+                {RecipientCategories.moose,          "Moose Script Interaction"              },
             };
 
             public static Dictionary<CommandCategories, string> Commands = new Dictionary<CommandCategories, string>()

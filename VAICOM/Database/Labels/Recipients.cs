@@ -349,10 +349,8 @@ namespace VAICOM
                 //{ "kneeboardnotes",         "Flip to Notes tab"     },
 
                  //Moose Airboss
-                { "moose",                  "F10 Menu"              },
-                //{ "Radio Check Marshal",    "F10 Menu"              },
-                //{ "Radio Check LSO",        "F10 Menu"              },
-
+                { "moose",                  "Moose F10 Menu"        },
+                
             };
 
         }

@@ -392,13 +392,6 @@ namespace VAICOM
                             Message.SetMenuItemAction();
                         }
 
-                        // Moose Script F10 menu commands: change type and add action sequence..
-                        //if ((State.currentrecipientclass.Equals(Recipientclasses.moose) && !State.currentrecipientclass.Name.Equals("AOCS")) & !State.currentcommand.isOptions())
-                        //{
-                            //State.currentmessage.type = Messagetypes.ActionIndexSequence;
-                           // Message.SetMenuItemAction();
-                        //}
-
                         // ------------------------------------------------------------------------
 
                         Log.Write("Done. ", Colors.Text);

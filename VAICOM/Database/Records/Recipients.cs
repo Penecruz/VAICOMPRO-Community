@@ -454,7 +454,7 @@ namespace VAICOM
 
                 // Moose Ops 
                 { "wAUnitMooseNull" ,           new Recipient { uniqueid = 19500, category = RecipientCategories.moose,    name = "wAIUnitMooseNull" } },
-                //{ "Radio Check Marshal" ,       new Recipient { uniqueid = 19501, category = RecipientCategories.moose,    name = "wAIUnitRadioChkMarshal",displayname = Labels.airecipients["Radio Check Marshal"],blockedforFree = true   } },
+                { "moose" ,                     new Recipient { uniqueid = 19501, category = RecipientCategories.moose,    name = "wAIUnitMoose",displayname = Labels.airecipients["moose"],blockedforFree = true   } },
                 //{ "Radio Check LSO" ,           new Recipient { uniqueid = 19502, category = RecipientCategories.moose,    name = "wAIUnitRadioChkLSO",displayname = Labels.airecipients["Radio Check LSO"],blockedforFree = true   } },
                 { "wAIUnitMooseMaximum" ,       new Recipient { uniqueid = 19999, category = RecipientCategories.moose,    name = "wAIUnitMooseMaximum" } },
 
