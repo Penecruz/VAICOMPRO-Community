@@ -453,10 +453,10 @@ namespace VAICOM
                 { "wAIUnitKneeboardMaximum",    new Recipient { uniqueid = 19499, category = RecipientCategories.kneeboard, name = "wAIUnitKneeboardMaximum",   } },
 
                 // Moose Ops 
-                { "wAUnitMooseNull" ,           new Recipient { uniqueid = 19500, category = RecipientCategories.moose,    name = "wAIUnitMooseNull" } },
-                { "moose" ,                     new Recipient { uniqueid = 19501, category = RecipientCategories.moose,    name = "wAIUnitMoose",displayname = Labels.airecipients["moose"],blockedforFree = true   } },
-                //{ "Radio Check LSO" ,           new Recipient { uniqueid = 19502, category = RecipientCategories.moose,    name = "wAIUnitRadioChkLSO",displayname = Labels.airecipients["Radio Check LSO"],blockedforFree = true   } },
-                { "wAIUnitMooseMaximum" ,       new Recipient { uniqueid = 19999, category = RecipientCategories.moose,    name = "wAIUnitMooseMaximum" } },
+                { "wAIUnitMooseNull" ,           new Recipient { uniqueid = 19500, category = RecipientCategories.moosemenu,    name = "wAIUnitMooseNull" } },
+                { "Moose" ,                     new Recipient { uniqueid = 19501, category = RecipientCategories.moosemenu,    name = "wAIUnitMoose",displayname = Labels.airecipients["Moose"],blockedforFree = true   } },
+                //{ "Radio Check LSO" ,           new Recipient { uniqueid = 19502, category = RecipientCategories.moosemenu,    name = "wAIUnitRadioChkLSO",displayname = Labels.airecipients["Radio Check LSO"],blockedforFree = true   } },
+                { "wAIUnitMooseMaximum" ,       new Recipient { uniqueid = 19999, category = RecipientCategories.moosemenu,    name = "wAIUnitMooseMaximum" } },
 
             };
         }

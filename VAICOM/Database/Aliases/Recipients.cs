@@ -439,7 +439,7 @@ namespace VAICOM
                 { "Kneeboard",              "kneeboard"              },
 
                 // Moose Airboss
-                { "Air Boss",                "moose"                  },
+                { "Air Boss",                "Moose"                  },
                 
 
             };

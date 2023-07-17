@@ -287,6 +287,7 @@ namespace VAICOM
                     {
                         State.currentstate.menuaux = serverMessage.menuaux;
                         State.currentstate.menucargo = serverMessage.menucargo;
+                        State.currentstate.menumoose = serverMessage.menumoose; // add Moose
                     }
                 }
                 catch (Exception e)

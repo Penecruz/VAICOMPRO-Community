@@ -294,6 +294,7 @@ namespace VAICOM
 
                 public ServerAuxmenu menuaux;
                 public ServerAuxmenu menucargo;
+                public ServerAuxmenu menumoose; //add Moose
 
                 public object mission;
                 public object missioncmds;
@@ -321,6 +322,7 @@ namespace VAICOM
                         {"Aux",     new List<DcsUnit>()},
                         {"Cargo",   new List<DcsUnit>()},
                         {"Allies",  new List<DcsUnit>()},
+                        {"Moose",   new List<DcsUnit>()}, // Add Moose
                     };
                     TACANunits  = new List<DcsUnit>();
                     DLunits     = new List<DcsUnit>();
@@ -385,6 +387,7 @@ namespace VAICOM
 
                 public ServerAuxmenu menuaux;
                 public ServerAuxmenu menucargo;
+                public ServerAuxmenu menumoose; //add moose
 
 
             }

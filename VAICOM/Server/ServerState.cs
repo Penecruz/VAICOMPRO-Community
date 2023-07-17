@@ -23,6 +23,7 @@ namespace VAICOM
                 { "Aux","auxiliary unit" },
                 { "Cargo","cargo unit" },
                 { "Allies","allied flight unit" },
+                { "Moose","Moose Script" }, // add Moose
             };
 
         }

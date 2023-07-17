@@ -390,6 +390,7 @@ namespace VAICOM
             { "Aux"     , new Server.DcsUnit() },
             { "Cargo"   , new Server.DcsUnit() },
             { "Allies"  , new Server.DcsUnit() },
+            { "Moose"   , new Server.DcsUnit() }, //Add moose
 
         };
 
@@ -410,6 +411,7 @@ namespace VAICOM
                 SelectedUnit["Aux"]     = new Server.DcsUnit();
                 SelectedUnit["Cargo"]   = new Server.DcsUnit();
                 SelectedUnit["Allies"]  = new Server.DcsUnit();
+                SelectedUnit["Moose"]   = new Server.DcsUnit(); //Add Moose
 
                 // populate with nearest units
 

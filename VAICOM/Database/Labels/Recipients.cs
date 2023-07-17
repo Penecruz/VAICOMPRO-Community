@@ -349,7 +349,7 @@ namespace VAICOM
                 //{ "kneeboardnotes",         "Flip to Notes tab"     },
 
                  //Moose Airboss
-                { "moose",                  "Moose F10 Menu"        },
+                { "Moose",                  "Moose F10 Menu"        },
                 
             };
 

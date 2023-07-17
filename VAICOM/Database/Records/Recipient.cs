@@ -149,7 +149,7 @@ namespace VAICOM
                         returnclass = Kneeboard;
                         break;
 
-                    case ("moose"):
+                    case ("Moose"):
                        returnclass = Moose;
                        break;
 
@@ -221,7 +221,7 @@ namespace VAICOM
             AI_pilot,
             ally,
             kneeboard,
-            moose
+            moosemenu
         }
 
 

@@ -89,6 +89,9 @@ namespace VAICOM
                         case "Aux":
                             State.currentmessage.cmdsequence.AddRange(iCommandsequences.showAux);
                             break;
+                        case "Moose":
+                            State.currentmessage.cmdsequence.AddRange(iCommandsequences.showMoose); // Add Moose
+                            break;
                         case "Cargo":
                             State.currentmessage.cmdsequence.AddRange(iCommandsequences.showCargo);
                             break;
