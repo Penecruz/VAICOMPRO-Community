@@ -221,7 +221,7 @@ namespace VAICOM
             AI_pilot,
             ally,
             kneeboard,
-            moosemenu
+            moosemenu,
         }
 
 
