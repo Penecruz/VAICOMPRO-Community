@@ -80,7 +80,7 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 		buildRecepientsMenu 		= buildRecepientsMenu,
 		buildRecepientsMenuATC2		= buildRecepientsMenuATC2,
 		buildRecepientsMenuATC		= buildRecepientsMenuATC,
-		buildCargosMenu				= buildCargosMenu,
+		buildCargosMenu				= buildCargosMenu, -- Pene D0 we need to buildMooseMenu?
 		buildCargosMenuForAircraft	= buildCargosMenuForAircraft,
 		buildDescentsMenu			= buildDescentsMenu,		
 		staticParamsEvent			= staticParamsEvent,			
