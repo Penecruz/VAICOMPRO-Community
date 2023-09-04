@@ -80,7 +80,8 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 		buildRecepientsMenu 		= buildRecepientsMenu,
 		buildRecepientsMenuATC2		= buildRecepientsMenuATC2,
 		buildRecepientsMenuATC		= buildRecepientsMenuATC,
-		buildCargosMenu				= buildCargosMenu, -- Pene D0 we need to buildMooseMenu?
+		buildCargosMenu				= buildCargosMenu, 
+		buildMooseMenu				= buildMooseMenu, -- Pene Do we need to buildMooseMenu?
 		buildCargosMenuForAircraft	= buildCargosMenuForAircraft,
 		buildDescentsMenu			= buildDescentsMenu,		
 		staticParamsEvent			= staticParamsEvent,			
@@ -1401,7 +1402,7 @@ base.vaicom.state = {
 					base.vaicom.state.availabilitycounter[recipientclass] = base.vaicom.helper.tablelength(base.vaicom.state.availablerecipients[recipientclass])
 				end
 				base.vaicom.state.menuaux							= data.initialized and data.menuOther
-				base.vaicom.state.menumoose							= data.initialized and data.menuOther -- Add Moose
+				base.vaicom.state.menumoose							= data.initialized and data.menuOther -- Add Moose is this required?
 				base.vaicom.state.menucargo							= data.initialized and data.menuEmbarkToTransport
 				base.vaicom.state.dcsversion						= data.initialized and base.vaicom.get.serverdata.dcsversion()
 				base.vaicom.state.easycomms							= data.initialized and data.radioAutoTune
@@ -1490,7 +1491,7 @@ base.vaicom.state = {
 								  }								  
 				chunk[9] 		= {
 									menuaux		= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menuaux) 	or nil,
-									menumoose	= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menumoose)	or nil, -- Add Moose
+									menumoose	= base.vaicom.state.menumoose or nil, -- Add Moose
 									menucargo	= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menucargo) or nil,		
 								  }						
 				chunk[10] 		= {

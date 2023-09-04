@@ -330,6 +330,7 @@ namespace VAICOM
                     radios = new List<RadioDevice>();
                     menuaux = null;
                     menucargo = null;
+                    menumoose = null; //Add moose
                     mission = null;
                     bpos = new Vector(); // added
                     cpos = new campos();
