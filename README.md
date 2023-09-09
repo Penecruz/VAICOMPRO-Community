@@ -30,7 +30,8 @@ The VAICOMPRO Community Team
 
 VAICOMPRO Community 2.8.X.X is not designed to be backwards compatible with DCS 2.7.X If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Community.
 
-VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts. This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
+VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts unless the AIRIO and Kneeboard extensions are deactivated via the VAICOMPRO UI.
+This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
 
 DiCE: DCS Integrated Countermeasure Editor creates many functionality issues with VAICOMPRO Community, and it is recommended this be uninstalled before using VAICOMPRO Community.
 
@@ -61,18 +62,20 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.2.3
+Patch Notes V2.8.5.0
 
-- Added F15E Strike Eagle.
-- Added F22A Raptor (Grinnelli Designs).
-- Changed F-5E Tiger II to Include Interphone and UHF on seperate TX.
-- Changed F-4E-C Skyhawk to Include Interphone and UHF on seperate TX.
-- Added clear indication in UI when no module is detectced.
-- Added clear Indication in UI when detected module fails to hook.
+-	Fixed MB339 to return to single TX node.
+-	Fixed F-5E-3 TX1 node as primary.
+-	Fixed various modules SRS PTT Integration and radio names.
+-	Added Chatter enable /disable checkbox to Extension Tab. (hot switchable)
+-	Added Kneeboard enable /disable checkbox to Extension Tab. (Requires DCS restart)
+-	Removed redundant Extensions folder
+-	Removed redundant Setup.exe
+-	Updated the VaicomPro Community manual
 
 Known Issues
-- Still many modules that have some commands constructed but do not execute. (WIP)
-- F14 Tomcat wheel chock initial status unknown to DCS/VAICOM. Even if visible, command "place the wheel chocks" first and then they can be removed with VAICOM.
+
+- 	F-14 A/B wheel chocks can get out of sequence and require setting in place then removing to remove them.
 
 ## Community Team
 
