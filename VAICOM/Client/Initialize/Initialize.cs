@@ -177,7 +177,12 @@ namespace VAICOM
                 string betastring = "";
                 if (State.versionbeta)
                 {
-                    betastring = "(beta)";
+                    betastring = "(Beta)";
+                }
+                else
+                if (State.versiondev)
+                {
+                    betastring = "(Dev)";
                 }
                 else
                 {

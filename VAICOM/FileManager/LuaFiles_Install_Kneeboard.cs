@@ -92,6 +92,7 @@ namespace VAICOM
                             initsubfolders.Add("Cockpit\\C-101CC");
                             initsubfolders.Add("Cockpit\\C-101EB");
                             initsubfolders.Add("Cockpit\\A10A");
+                            initsubfolders.Add("Cockpit\\A10C_2");
 
                             foreach (string subdir in filepaths) // both root and Saved Games
                             {
