@@ -449,7 +449,7 @@ namespace VAICOM
                 {
 
                     FixFiles(vaProxy);
-
+                    CheckUpdates(vaProxy);
                     LogVersionData(vaProxy); 
                     ResetStateValues(vaProxy);        
                     Processor.InitTTSPlaybackStream();
