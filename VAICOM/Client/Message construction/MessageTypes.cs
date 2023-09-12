@@ -319,7 +319,7 @@ namespace VAICOM
                     if (!State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled)
                     {
                         msg = new KneeboardMessage();
-                        msg.logdata = new LogData("", "activate kneeboard extension to use this page.");
+                        msg.logdata = new LogData("", "Please enable kneeboard extension to use this page.");
                     }
 
                         string formatmessage = JsonConvert.SerializeObject(msg);

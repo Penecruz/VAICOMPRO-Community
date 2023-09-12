@@ -213,6 +213,18 @@ namespace VAICOM
                 { "Jirah",                  "Jirah"                 },
                 { "Adana Sakirpasa",        "Adana Sakirpasa"       },
                 { "Incirlik",               "Incirlik"              },
+                { "Damascus",               "Damascus"              }, //new additions
+                { "Tha'lah",                "Tha'lah"               },
+                { "Larnaca",                "Larnaca"               },
+                { "Akrotiri",               "Akrotiri"              },
+                { "King Hussein Air College",  "King Hussein Air College"  },
+                { "At Tanf",                "At Tanf"               },
+                { "H3",                     "H3"                    },
+                { "H3 Northwest",           "H3 Northwest"          },
+                { "H3 Southwest",           "H3 Southwest"          },
+                { "Paphos",                 "Paphos"                },
+                { "Lakatamia",              "Lakatamia"             },
+                { "Ercan",                  "Ercan"                 },
 
                 // Sinai map
 
@@ -348,6 +360,9 @@ namespace VAICOM
                 { "kneeboard",              "Kneeboard"             },
                 //{ "kneeboardnotes",         "Flip to Notes tab"     },
 
+                 //Moose Airboss
+                { "Moose",                  "Moose F10 Menu"        },
+                
             };
 
         }

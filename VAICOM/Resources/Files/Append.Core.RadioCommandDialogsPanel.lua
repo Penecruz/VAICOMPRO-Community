@@ -80,7 +80,8 @@ function initialize(pUnitIn, easyComm, intercomId, communicators)
 		buildRecepientsMenu 		= buildRecepientsMenu,
 		buildRecepientsMenuATC2		= buildRecepientsMenuATC2,
 		buildRecepientsMenuATC		= buildRecepientsMenuATC,
-		buildCargosMenu				= buildCargosMenu,
+		buildCargosMenu				= buildCargosMenu, 
+		buildMooseMenu				= buildMooseMenu, -- Pene Do we need to buildMooseMenu?
 		buildCargosMenuForAircraft	= buildCargosMenuForAircraft,
 		buildDescentsMenu			= buildDescentsMenu,		
 		staticParamsEvent			= staticParamsEvent,			
@@ -715,6 +716,7 @@ base.vaicom.categories = {
 				Aux			= "Aux",
 				Cargo		= "Cargo",
 				Allies		= "Allies",
+				Moose		= "Moose", -- Adding Moose
 				},		
 	coalitions = {	
 					[0] 	= "neutral",
@@ -1096,6 +1098,10 @@ base.vaicom.objects = {
 		local Collection = {}
 		return Collection
 	end,
+	localMoose = function(getside) -- Add Moose
+		local Collection = {}
+		return Collection
+	end,
 	localAllies = function(getside)
 		local Collection = {}
 			Collection = base.coalition.getPlayers and base.coalition.getPlayers(getside)
@@ -1182,6 +1188,10 @@ base.vaicom.list = {
 		end
 		return Listing
 	end,
+	localMoose = function(selectstr) -- Add Moose
+		local Listing = {}
+		return Listing
+	end,
 	localAllies = function(selectstr)
 		local Listing = {}
 		local coalition = data.pUnit and data.pUnit:getCoalition()
@@ -1248,6 +1258,10 @@ base.vaicom.get = {
 					local Stack = base.vaicom.list.localCargo(radio)
 					return Stack	
 				end,
+				Moose 	= function(sortfunction, radio) -- Add Moose
+					local Stack = base.vaicom.list.localMoose(radio)
+					return Stack	
+				end,
 				Allies  = function(sortfunction, radio)
 					local Stack = base.vaicom.list.localAllies(radio)
 					return Stack	
@@ -1307,7 +1321,8 @@ base.vaicom.state = {
 		playercoalition			= base.coalition.side.NEUTRAL,			
 		rawcommand 				= base.vaicom.flags.raw,
 		menuaux					= {}, 
-		menucargo				= {}, 
+		menucargo				= {},
+		menumoose				= {}, -- Add Moose
 		activemessage			= {},
 		availableradios			= {},
 		messagesent				= false,
@@ -1320,6 +1335,7 @@ base.vaicom.state = {
 									Tanker			= {},
 									Crew			= {},
 									Aux				= {},
+									Moose		    = {}, -- Add moose
 									Cargo			= {},
 									Allies			= {},									
 									},								
@@ -1332,6 +1348,7 @@ base.vaicom.state = {
 									Tanker			= 0,
 									Crew			= 0,
 									Aux				= 0,
+									Moose			= 0, -- Add Moose
 									Cargo			= 0,
 									Allies			= 0,									
 									},
@@ -1344,6 +1361,7 @@ base.vaicom.state = {
 									[base.vaicom.categories.recipient.Tanker] 	= nil,
 									[base.vaicom.categories.recipient.Crew] 	= nil,
 									[base.vaicom.categories.recipient.Aux] 		= nil,
+									[base.vaicom.categories.recipient.Moose] 	= nil, -- Add Moose
 									[base.vaicom.categories.recipient.Cargo] 	= nil,
 									[base.vaicom.categories.recipient.Allies] 	= nil,										
 									},																	
@@ -1377,12 +1395,14 @@ base.vaicom.state = {
 				base.vaicom.state.availablerecipients.Tanker		= data.initialized and base.vaicom.get.missiondata.listby.Tanker(base.vaicom.helper.sortby.distance,"radio") 
 				base.vaicom.state.availablerecipients.Crew			= data.initialized and base.vaicom.get.missiondata.listby.Crew(base.vaicom.helper.sortby.distance, 	"radio") 
 				base.vaicom.state.availablerecipients.Aux			= data.initialized and base.vaicom.get.missiondata.listby.Aux(base.vaicom.helper.sortby.distance, 	"radio")
+				base.vaicom.state.availablerecipients.Moose			= data.initialized and base.vaicom.get.missiondata.listby.Moose(base.vaicom.helper.sortby.distance, "radio") -- Add moose
 				base.vaicom.state.availablerecipients.Cargo			= data.initialized and base.vaicom.get.missiondata.listby.Cargo(base.vaicom.helper.sortby.distance, "radio")
 				base.vaicom.state.availablerecipients.Allies		= data.initialized and base.vaicom.get.missiondata.listby.Allies(base.vaicom.helper.sortby.distance, "radio")				
 				for recipientclass,_ in base.pairs(base.vaicom.state.availablerecipients) do
 					base.vaicom.state.availabilitycounter[recipientclass] = base.vaicom.helper.tablelength(base.vaicom.state.availablerecipients[recipientclass])
 				end
 				base.vaicom.state.menuaux							= data.initialized and data.menuOther
+				base.vaicom.state.menumoose							= data.initialized and data.menuOther -- Add Moose is this required?
 				base.vaicom.state.menucargo							= data.initialized and data.menuEmbarkToTransport
 				base.vaicom.state.dcsversion						= data.initialized and base.vaicom.get.serverdata.dcsversion()
 				base.vaicom.state.easycomms							= data.initialized and data.radioAutoTune
@@ -1446,6 +1466,7 @@ base.vaicom.state = {
 																Crew		= {},
 																Aux			= {},		
 																Cargo		= {},
+																Moose		= {}, -- Add Moose
 															}		
 								  }
 				chunk[5] 		= {								
@@ -1470,6 +1491,7 @@ base.vaicom.state = {
 								  }								  
 				chunk[9] 		= {
 									menuaux		= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menuaux) 	or nil,
+									menumoose	= base.vaicom.state.menumoose or nil, -- Add Moose
 									menucargo	= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menucargo) or nil,		
 								  }						
 				chunk[10] 		= {

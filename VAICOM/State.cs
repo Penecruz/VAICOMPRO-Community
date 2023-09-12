@@ -28,19 +28,20 @@ namespace VAICOM
         // ------------------------------------------------------------------------------------------------------------
         // general
 
-        public static bool          versionbeta         = false; 
+        public static bool          versionbeta         = true; //set if Beta version
+        public static bool          versiondev          = false; //set if Dev version
         public static bool          usenewselectmethod  = false;
         public static string        debuguser           = "VAICOM_Tester";
         public static string        clientmode          = ClientModes.Normal;
                                                                              
         public static string        versionstring       = "";
-        public static string        pluginversionnumber = "2.8.4"; // used by Theme (Special page)
-        public static string        vaminversion        = "1.8.7";
+        public static string        pluginversionnumber = "2.8.6"; // used by Theme (Special page)
+        public static string        vaminversion        = "1.10.6";
         public static string        defProfileName      = "VAICOM PRO for DCS World";
         public static bool          requirecarrierregkey= false;
         public static bool          installkneeboard    = true;
 
-        public static bool          deepdebugmode       = false;
+        public static bool          deepdebugmode       = false; //set to deepdebug mode
         public static bool          databaseencrypted   = true;
         public static bool          luahardreset        = true;
         public static bool          exitapp             = false;
@@ -390,6 +391,7 @@ namespace VAICOM
             { "Aux"     , new Server.DcsUnit() },
             { "Cargo"   , new Server.DcsUnit() },
             { "Allies"  , new Server.DcsUnit() },
+            { "Moose"   , new Server.DcsUnit() }, //Add moose
 
         };
 
@@ -410,6 +412,7 @@ namespace VAICOM
                 SelectedUnit["Aux"]     = new Server.DcsUnit();
                 SelectedUnit["Cargo"]   = new Server.DcsUnit();
                 SelectedUnit["Allies"]  = new Server.DcsUnit();
+                SelectedUnit["Moose"]   = new Server.DcsUnit(); //Add Moose
 
                 // populate with nearest units
 

@@ -252,9 +252,13 @@ namespace VAICOM
                 { "wMsgKneeboardClearNotes", "Dictation Clear Notes" },
                 { "wMsgKneeboardShowNotes", "Flip to Notes tab" },
                 { "wMsgKneeboardShowLog", "Flip to LOG/ATO tab" },
-
                 { "wMsgShowKneeboardTab", "Show kneeboard tab" },
 
+                // Moose Airboss
+                { "Radio Check Marshal", "Radio Check Marshal" },
+                { "Radio Check LSO",     "Radio Check LSO"     },
+                { "Request Commence",    "Request Commence"    },
+                { "Emergency Landing",   "Emergency Landing"   },
             };
 
         }

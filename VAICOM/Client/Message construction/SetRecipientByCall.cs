@@ -281,6 +281,12 @@ namespace VAICOM
                         return 1;
                     }
 
+                    // Moose -> use player unit
+                    if (recipient.RecipientClass().Equals(Recipientclasses.Moose)) //Add Moose
+                    {
+                        return 1;
+                    }
+
                     // Cargo -> use player unit
                     if (recipient.RecipientClass().Equals(Recipientclasses.Cargo) || recipient.RecipientClass().Equals(Recipientclasses.Descent))
                     {

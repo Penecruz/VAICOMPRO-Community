@@ -1006,6 +1006,13 @@ namespace VAICOM
                 DcsMessageTable.Add(4938, "wMsgLeaderMoving");
                 DcsMessageTable.Add(4939, "wMsgNavyMaximum");
                 DcsMessageTable.Add(4940, "wMsgMaximum");
+                // Add Moose Commands
+                DcsMessageTable.Add(4941, "wMsgLeaderToMooseCmndsNull");
+                DcsMessageTable.Add(4942, "wMsgLeaderToMooseCmndsMaximum");
+                DcsMessageTable.Add(4943, "wMsgLeaderToMooseRadioChkMarshal");
+                DcsMessageTable.Add(4944, "wMsgLeaderToMooseRadioChkLSO");
+                DcsMessageTable.Add(4945, "wMsgLeaderToMooseRqstCommence");
+                DcsMessageTable.Add(4946, "wMsgLeaderToMooseEmerLanding");
 
             }
 

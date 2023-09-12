@@ -5,8 +5,8 @@
     <AssemblyTitle>VAICOM PRO Community Edition for DCS World</AssemblyTitle>
     <Product>VAICOM PRO Community Edition</Product>
     <Description>Interactive Voice Communications for DCS World</Description>
-    <AssemblyVersion>2.8.5.0</AssemblyVersion>
-    <FileVersion>2.8.5.0</FileVersion>
+    <AssemblyVersion>2.8.5.9</AssemblyVersion>
+    <FileVersion>2.8.5.9</FileVersion>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
     <PostBuildEvent>cd "$(TargetDir)"
@@ -62,16 +62,16 @@ del *.config
 </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Costura.Fody" Version="1.6.0">
+    <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Fody" Version="2.0.0">
+    <PackageReference Include="Fody" Version="6.8.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NAudio" Version="1.8.5" />
-    <PackageReference Include="NAudio.Vorbis" Version="1.0.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="NVorbis" Version="0.8.6" />
+    <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NVorbis" Version="0.10.5" />
     <PackageReference Include="SharpDX" Version="4.2.0" />
   </ItemGroup>
   <ItemGroup>

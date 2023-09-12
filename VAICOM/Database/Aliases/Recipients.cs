@@ -232,6 +232,7 @@ namespace VAICOM
                 // Syria map
 
                 { "Hariri",                 "Beirut-Rafic Hariri"   },
+                { "Beirut",                 "Beirut-Rafic Hariri"   },
                 { "Riyaq",                  "Rayak"                 },
                 { "Hamat",                  "Wujah Al Hajar"        },
                 { "Kiryat",                 "Kiryat Shmona"         },
@@ -249,6 +250,7 @@ namespace VAICOM
                 { "Ramat David",            "Ramat David"           },
                 { "Megiddo",                "Megiddo"               },
                 { "Eyn Shemer",             "Eyn Shemer"            },
+                { "Shemer",                 "Eyn Shemer"            },
                 { "Latakia",                "Bassel Al-Assad"       },
                 { "Abu al Duhur",           "Abu al-Duhur"          },
                 { "Taftanaz",               "Taftanaz"              },
@@ -258,6 +260,18 @@ namespace VAICOM
                 { "Jirah",                  "Jirah"                 },
                 { "Adana",                  "Adana Sakirpasa"       },
                 { "Incirlik",               "Incirlik"              },
+                { "Damascus",               "Damascus"              }, //new additions
+                { "Thalah",                 "Tha'lah"               },
+                { "Larnaca",                "Larnaca"               },
+                { "Akrotiri",               "Akrotiri"              },
+                { "King Hussein",           "King Hussein Air College"  },
+                { "At Tanf",                "At Tanf"               },
+                { "H 3",                    "H3"                    },
+                { "H 3 Northwest",          "H3 Northwest"          },
+                { "H 3 Southwest",          "H3 Southwest"          },
+                { "Paphos",                 "Paphos"                },
+                { "Lakatamia",              "Lakatamia"             },
+                { "Ercan",                  "Ercan"                 },
 
                 // Sinai map
 
@@ -422,6 +436,7 @@ namespace VAICOM
                 { "Crew",                   "crew"                   },
                 { "Chief",                  "crew"                   },
                 { "Sarge",                  "crew"                   },
+                { "Ground",                 "crew"                   },
 
                 // AOCS
 
@@ -437,6 +452,10 @@ namespace VAICOM
                 { "Descent",                "descent"                },
 
                 { "Kneeboard",              "kneeboard"              },
+
+                // Moose Airboss
+                { "Air Boss",                "Moose"                  },
+                
 
             };
 
