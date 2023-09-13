@@ -33,6 +33,11 @@ namespace VAICOM
                             filename = "updates.json";
                         }
                         else
+                        if (State.versiondev)
+                        {
+                            filename = "updates.json";
+                        }
+                        else
                         {
                             filename = "updates.json";
                         }
@@ -248,7 +253,7 @@ namespace VAICOM
                         Directory.CreateDirectory(localfolder); 
                     }
 
-                    // get the zip from URL
+                    // get the zip from URL specified in the updates.json/updatesbeta.json/updatesdev.json
 
                     string packageurl = componentupdate.downloadurl;
                     Log.Write("Downloading package..... ", Colors.Warning);
@@ -349,7 +354,7 @@ namespace VAICOM
                     try
                     {
 
-                        string URL = "http://https://github.com/Penecruz/VAICOMPRO-Community/tree/Open-Beta/VAICOM_Installer"; // <-- web URL of the hosted updates.json file 
+                        string URL = "https://github.com/Penecruz/VAICOMPRO-Community/blob/development/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
                         string downloadfile = null;
                         Log.Write("Checking for updates... ", Colors.Inline);
                         WebClient myWebClient = new WebClient();
@@ -371,6 +376,7 @@ namespace VAICOM
                     public string   title;
                     public bool     isrelease;
                     public bool     isbeta;
+                    public bool     isdev;
                     public Int64    productid;
                     public Int64    releasedate;
                     public Int64    version; // for backwards compatibility
@@ -383,6 +389,7 @@ namespace VAICOM
                         title       = "";
                         isrelease   = false;
                         isbeta      = false;
+                        isdev       = false;
                         productid   = 0;
                         releasedate = 0;
                         version     = 0;
