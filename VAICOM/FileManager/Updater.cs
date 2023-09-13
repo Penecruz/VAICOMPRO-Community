@@ -354,7 +354,7 @@ namespace VAICOM
                     try
                     {
 
-                        string URL = "https://github.com/Penecruz/VAICOMPRO-Community/blob/development/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
+                        string URL = "https://github.com/Penecruz/VAICOMPRO-Community/blob/Development/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
                         string downloadfile = null;
                         Log.Write("Checking for updates... ", Colors.Inline);
                         WebClient myWebClient = new WebClient();
