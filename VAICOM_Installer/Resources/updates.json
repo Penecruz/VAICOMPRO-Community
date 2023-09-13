@@ -11,7 +11,7 @@
       "version": 2863,
       "versionstring": "2.8.6.3",
       "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.8.6.3Dev/VAICOMPRO.zip",
-      "releasenotes": " DEV Test for seperate build updates "
+      "releasenotes": "DEV Test for Updater, looped on purpose for testing"
     }
   ]
 }
