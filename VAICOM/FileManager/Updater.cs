@@ -71,12 +71,12 @@ namespace VAICOM
                             }
 
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            Log.Write("failed to read update JSON. ", Colors.Inline);
+                            Log.Write("failed to read update JSON: " + ex.Message, Colors.Inline);
                             File.Delete(basefolder + filename);
                         }
-    
+
                     }
                     catch
                     {
@@ -354,7 +354,7 @@ namespace VAICOM
                     try
                     {
 
-                        string URL = "https://github.com/Penecruz/VAICOMPRO-Community/blob/Development/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
+                        string URL = "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
                         string downloadfile = null;
                         Log.Write("Checking for updates... ", Colors.Inline);
                         WebClient myWebClient = new WebClient();
