@@ -6,7 +6,7 @@
 				"isbeta":      	 	false,
 				"isdev":       	 	true,
 				"productid":   	 	1,
-				"releasedate": 		20230621,
+				"releasedate": 		0,
 				"version":      	2950,
 				"versionstring": 	"2.9.5.0",
 				"downloadurl": 		"https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.8.5.0/VAICOMPRO.zip",
