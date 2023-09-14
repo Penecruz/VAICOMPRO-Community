@@ -30,11 +30,11 @@ namespace VAICOM
                         string filename;
                         if (State.versionbeta)
                         {
-                            filename = "updatesbeta.json";
+                            filename = "updates.json";
                         }
                         if   (State.versiondev)
                         {
-                            filename = "updatesdev.json";
+                            filename = "updates.json";
                         }
                         else
                         {
