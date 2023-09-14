@@ -4,14 +4,14 @@
     {
       "title": "VAICOM PRO Community Edition for DCS World",
       "isrelease": true,
-      "isbeta": false,
-      "isdev": true,
+      "isbeta": true,
+      "isdev": false,
       "productid": 1,
-      "releasedate": 20230913,
-      "version": 2863,
-      "versionstring": "2.8.6.3",
+      "releasedate": 20230914,
+      "version": 2862,
+      "versionstring": "2.8.6.2",
       "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.8.6.3Dev/VAICOMPRO.zip",
-      "releasenotes": "DEV Test for Updater, looped on purpose for testing"
+      "releasenotes": "Open Beta Test Build - Auto Update - Syrian ATC recipients - AH64 and F-5E PTT fixes"
     }
   ]
 }
