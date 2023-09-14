@@ -32,10 +32,6 @@ namespace VAICOM
                         {
                             filename = "updates.json";
                         }
-                        if   (State.versiondev)
-                        {
-                            filename = "updates.json";
-                        }
                         else
                         {
                             filename = "updates.json";
