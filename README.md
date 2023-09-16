@@ -30,7 +30,8 @@ The VAICOMPRO Community Team
 
 VAICOMPRO Community 2.8.X.X is not designed to be backwards compatible with DCS 2.7.X If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Community.
 
-VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts. This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
+VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts unless the AIRIO and Kneeboard extensions are deactivated via the VAICOMPRO UI.
+This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
 
 DiCE: DCS Integrated Countermeasure Editor creates many functionality issues with VAICOMPRO Community, and it is recommended this be uninstalled before using VAICOMPRO Community.
 
@@ -61,18 +62,21 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.4.4
+Patch Notes V2.8.6.3
 
-- Added ATC recipients for Marianas Map
-- Added ATC recipients for South Atlantic Map
-- Added ATC Recipients for Sinai Map
-- Fixed ATC recipients for Persian Gulf Map
-- Fixed ATC recipients on Nevada Map
-- Updated Voice Attack Profile (VAP) to reflect latest Keywords list.
-- Updated message Commands list to latest DCS open Beta list
+-	Fixed AH-64D to Single TX node.
+-	Fixed F-5E-3 to Single TX node.
+-	Added new recipient “Ground” for ground crew.
+-	Added more realistic Tanker communications command set. (see manual)
+-	Added Syrian and Cypriot ATC recipients that were missing. (see manual)
+-	Added Auto Update check on plugin startup (release and Beta).
+-	Added Beta branch update functionality.
+-	Added Moose recipients and command structure. (Deactivated in this build)
+
 
 Known Issues
-- IC will not be passed for Servers that recuire Pure Client Scripts. (This due to AIRIO and Kneeboard implementation)
+
+-	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
 
 ## Community Team
 
