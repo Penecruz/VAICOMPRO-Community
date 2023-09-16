@@ -142,7 +142,7 @@ namespace VAICOM
                     // Chatter on/off
 
                     case "chatter":
-                        if (State.chatterthemesactivated)
+                        if (State.chatterthemesactivated && State.activeconfig.Chatter_Enabled) // Pene Playing
                         {
                             UI.Playsound.Commandcomplete();
                             Extensions.Chatter.AudioTimer.Chatter_TimerPlayToggle();
@@ -150,7 +150,7 @@ namespace VAICOM
                         else
                         {
                             UI.Playsound.Sorry();
-                            vaProxy.WriteToLog("Activate your license for the Chatter Themes expansion pack to use chatter functions.", Colors.Warning);
+                            vaProxy.WriteToLog("Please enable Chatter in the Vaicom Pro UI extension tab to use Chatter functions.", Colors.Warning);
                         }
                         break;
 

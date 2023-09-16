@@ -120,6 +120,7 @@ namespace VAICOM
             public bool     DeepInterrogate;
 
             // Chatter
+            public bool     Chatter_Enabled;
             public bool     ChatterAutostart;
             public bool     ChatterSilentOffline;
             public string   ChatterFolder;
@@ -264,6 +265,7 @@ namespace VAICOM
                 DeepInterrogate = true,
 
                 // Chatter
+                Chatter_Enabled = true,
                 ChatterAutostart = false,
                 ChatterSilentOffline = false,
                 ChatterFolder = "(AUTO)",
@@ -277,7 +279,8 @@ namespace VAICOM
                 // kneeboard
 
                 KneeboardOpacity = 128,
-
+                Kneeboard_Enabled = true,
+                
                 // multiplayer page
 
                 MP_UseTXLink = false,
@@ -333,7 +336,7 @@ namespace VAICOM
                 // deep config stuff
 
                 AutomaticUpdateFinished     = false,
-                BetaTester                  = false,
+                BetaTester                  = true,
                 Windowrestorelocation       = new Point(20, 20),
                 Runningforthefirsttime      = false,
                 ClientSendIP                = "127.0.0.1",

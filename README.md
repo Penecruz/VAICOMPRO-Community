@@ -62,24 +62,25 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-Patch Notes V2.8.5.0
+Patch Notes V2.8.6.3
 
--	Fixed MB339 to return to single TX node.
--	Fixed F-5E-3 TX1 node as primary.
--	Fixed various modules SRS PTT Integration and radio names.
--	Added Chatter enable /disable checkbox to Extension Tab. (hot switchable)
--	Added Kneeboard enable /disable checkbox to Extension Tab. (Requires DCS restart)
--	Removed redundant Extensions folder
--	Removed redundant Setup.exe
--	Updated the VaicomPro Community manual
+-	Fixed AH-64D to Single TX node.
+-	Fixed F-5E-3 to Single TX node.
+-	Added new recipient “Ground” for ground crew.
+-	Added more realistic Tanker communications command set. (see manual)
+-	Added Syrian and Cypriot ATC recipients that were missing. (see manual)
+-	Added Auto Update check on plugin startup (release and Beta).
+-	Added Beta branch update functionality.
+-	Added Moose recipients and command structure. (Deactivated in this build)
+
 
 Known Issues
 
-- 	F-14 A/B wheel chocks can get out of sequence and require setting in place then removing to remove them.
+-	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
 
 ## Community Team
 
-Special K, RurouniJones, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit, stag1975 and Pene
+Pene, Special K, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit and stag1975
 
 #### Beta Team
 104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye and Virus

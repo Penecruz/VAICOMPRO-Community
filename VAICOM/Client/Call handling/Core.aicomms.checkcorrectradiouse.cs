@@ -24,6 +24,7 @@ namespace VAICOM
 
                     bool calledcrew     = State.currentrecipientclass.Equals(Recipientclasses.Crew);
                     bool calledaux      = State.currentrecipientclass.Equals(Recipientclasses.Aux);
+                    bool calledmoose    = State.currentrecipientclass.Equals(Recipientclasses.Moose);
                     bool calledcargo    = State.currentrecipientclass.Equals(Recipientclasses.Cargo);
                     bool calleddescent  = State.currentrecipientclass.Equals(Recipientclasses.Descent);
                     bool calledRIO      = State.currentrecipientclass.Equals(Recipientclasses.RIO) || State.currentrecipientclass.Equals(Recipientclasses.AI_pilot);
@@ -45,7 +46,7 @@ namespace VAICOM
 
 
                     // all ok without further checking
-                    if (acnonfc3 || calledRIO || calledcrew || calledaux || calledmenu || calledcargo || calleddescent || calledreply || noradio || singleradio || optionsroot)
+                    if (acnonfc3 || calledRIO || calledcrew || calledaux || calledmoose || calledmenu || calledcargo || calleddescent || calledreply || noradio || singleradio || optionsroot)
                     {
                         return true;
                     }

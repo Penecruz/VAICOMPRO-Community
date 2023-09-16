@@ -92,6 +92,7 @@ namespace VAICOM
                             initsubfolders.Add("Cockpit\\C-101CC");
                             initsubfolders.Add("Cockpit\\C-101EB");
                             initsubfolders.Add("Cockpit\\A10A");
+                            initsubfolders.Add("Cockpit\\A10C_2");
 
                             foreach (string subdir in filepaths) // both root and Saved Games
                             {
@@ -118,7 +119,7 @@ namespace VAICOM
                                             string modinitfilecontent = File.ReadAllText(initfile);
 
                                             int desiredentryoccurrences = 0;
-                                            if (State.kneeboardactivated)
+                                            if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled)
                                             {
                                                 desiredentryoccurrences = 1;
                                             }

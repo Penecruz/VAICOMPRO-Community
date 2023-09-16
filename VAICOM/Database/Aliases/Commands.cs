@@ -154,10 +154,18 @@ namespace VAICOM
                 { "Declare*",                "declare"               },
                 { "Request Picture",        "requestpicture"        },
                 { "Approaching for Refuel", "intenttorefuel"        },
+                { "Approaching Nose Cold", "intenttorefuel"         },
+                { "Approaching Switches Safe", "intenttorefuel"     },
                 { "Abort Refuel",           "abortrefuel"           },
                 { "Breakaway",              "abortrefuel"           },
+                { "Returning Observation",  "abortrefuel"           },
                 { "Ready Precontact",       "readyprecontact"       },
+                { "Astern Centre",          "readyprecontact"       },
+                { "Astern Left",            "readyprecontact"       },
+                { "Astern Right",           "readyprecontact"       },
                 { "Stop Refueling",         "stoprefueling"         },
+                { "Fuel is Good ",          "stoprefueling"         },
+                { "Stop Fuel",              "stoprefueling"         },
                 { "*Playtime 5 minutes",     "checkin05"             },
                 { "*Playtime 10 minutes",    "checkin10"             },
                 { "*Playtime 15 minutes",    "checkin15"             },
@@ -356,6 +364,11 @@ namespace VAICOM
 
                 { "Page",                  "wMsgShowKneeboardTab"         },
 
+                // Moose Airboss
+                { "Marshal Check",         "Radio Check Marshal"          },
+                { "LSO Check",             "Radio Check LSO"              },
+                { "Request Commence",      "Request Commence"             },
+                { "Emergency Landing",     "Emergency Landing"            },
             };
 
         }

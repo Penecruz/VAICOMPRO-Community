@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "VAICOM": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Program Files\\VoiceAttack",
+      "nativeDebugging": true
+    }
+  }
+}

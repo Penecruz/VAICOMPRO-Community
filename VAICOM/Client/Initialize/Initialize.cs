@@ -168,16 +168,46 @@ namespace VAICOM
 
             public static void FixFiles(dynamic vaProxy)
             {
+                FileHandler.Updater.CleanUpdateFolder();
                 Settings.ConfigFile.AddNewConfigItems(); 
                 Settings.ConfigFile.WriteConfigToFile(true); 
             }
+            public static void CheckUpdates(dynamic vaProxy)
+            {
+                if (State.activeconfig.AutomaticUpdateFinished)
+                {
+                    Log.Write("Plugin files were updated.", Colors.System);
+                    State.activeconfig.AutomaticUpdateFinished = false;
+                }
+                else
+                {
+                    // ---- only check for new updates every <checkmax> sessions
 
+                    Random rnd = new Random();
+                    int checkmax = 1;
+                    int dice = rnd.Next(1, 1 + checkmax);
+                    if (dice.Equals(1))
+                    {
+                        FileHandler.Updater.GetPluginUpdates();
+                    }
+                    else
+                    {
+                        Log.Write("Update check skipped: " + dice, Colors.Inline);
+                    }
+                }
+
+            }
             public static void LogVersionData(dynamic vaProxy)
             {
                 string betastring = "";
                 if (State.versionbeta)
                 {
-                    betastring = "(beta)";
+                    betastring = "(Beta)";
+                }
+                else
+                if (State.versiondev)
+                {
+                    betastring = "(Dev)";
                 }
                 else
                 {
@@ -207,7 +237,7 @@ namespace VAICOM
                     try
                     {
                         // KNEEBOARD ADDITION
-                        if (State.kneeboardactivated && State.installkneeboard)
+                        if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled && State.installkneeboard)
                         {
                             FileHandler.Lua.LuaFiles_Install_Kneeboard(false, State.clientmode.Equals(ClientModes.Normal)); // quiet if not debug
                         }
@@ -397,7 +427,7 @@ namespace VAICOM
                     FileHandler.Root.ExtractCompagnionApp();
 
                     Log.Write("VAICOM PRO Community Edition for DCS World.", Colors.System);
-                    Log.Write("Press LCtrl+LAlt+C for config.", Colors.System);
+                    Log.Write("Press LCtrl+LAlt+C to open Vaicom Pro UI", Colors.System);
                     Log.Write("Initializing..", Colors.System);
 
                     ResetConfig(vaProxy);
@@ -419,6 +449,7 @@ namespace VAICOM
                 {
 
                     FixFiles(vaProxy);
+                    CheckUpdates(vaProxy);
                     LogVersionData(vaProxy); 
                     ResetStateValues(vaProxy);        
                     Processor.InitTTSPlaybackStream();

@@ -23,6 +23,7 @@ namespace VAICOM
                 public static List<int> showTanker  = new List<int>() { iCommands.ICommandMenuItem6, iCommands.ICommandMenuItem9 };
                 public static List<int> showCrew    = new List<int>() { iCommands.ICommandMenuItem8  };
                 public static List<int> showAux     = new List<int>() { iCommands.ICommandMenuItem10 };
+                public static List<int> showMoose   = new List<int>() { iCommands.ICommandMenuItem10 }; // Add Moose
 
                 public static List<int> doAction1   = new List<int>() { iCommands.ICommandMenuItem1 };
                 public static List<int> doAction2   = new List<int>() { iCommands.ICommandMenuItem2 };

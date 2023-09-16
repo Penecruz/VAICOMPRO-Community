@@ -14,8 +14,9 @@
                 State.PRO = true; 
                 State.chatterthemesactivated = true; 
                 State.jesteractivated = true; 
-                State.kneeboardactivated = true; // try deactivating kneeboard with false
-                State.realatcactivated = true; 
+                State.kneeboardactivated = true; 
+                State.realatcactivated = true;
+
 
                 UpdateClientLicense();
 

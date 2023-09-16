@@ -12,6 +12,22 @@ namespace VAICOM
         {
             // ------------  EXTENSIONS PAGE -----------------------------
 
+            // Pene edits Kneeboard Activate/deactivate Box
+
+            public void KNEE_restart_popup()
+            {
+                KNEE_Enable_Box.IsEnabled = false;
+                string caption = "KNEEBOARD setting changed";
+                string message = "KNEEBOARD setting changed:\nRestart VoiceAttack and DCS.";
+                MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            private void SetConfigEnableKNEEOn(object sender, RoutedEventArgs e) { State.activeconfig.Kneeboard_Enabled = true; }
+            private void SetConfigDisableKNEEOff(object sender, RoutedEventArgs e) { State.activeconfig.Kneeboard_Enabled = false; }
+            private void SetCurrentValueKNEE(object sender, EventArgs e)
+            {
+                KNEE_Enable_Box.IsEnabled = State.kneeboardactivated = true;
+                KNEE_Enable_Box.IsChecked = State.activeconfig.Kneeboard_Enabled;
+            }
             public void UpdateKneeboard()
             {
                 Extensions.Kneeboard.KneeboardUpdater.SendHeartBeatCycle();
@@ -288,6 +304,14 @@ namespace VAICOM
                 catch
                 {
                 }
+            }
+            // Pene edits Chatter Activate/deactivate box
+            private void SetConfigEnableCHATOn(object sender, RoutedEventArgs e) { State.activeconfig.Chatter_Enabled = true; }
+            private void SetConfigDisableCHATOff(object sender, RoutedEventArgs e) { State.activeconfig.Chatter_Enabled = false; }
+            private void SetCurrentValueCHAT(object sender, EventArgs e)
+            {
+                CHAT_Enable_Box.IsEnabled = State.chatterthemesactivated = true;
+                CHAT_Enable_Box.IsChecked = State.activeconfig.Chatter_Enabled;
             }
 
             // ------------------------------------------------------------
