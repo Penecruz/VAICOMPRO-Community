@@ -336,7 +336,7 @@ namespace VAICOM
                 // deep config stuff
 
                 AutomaticUpdateFinished     = false,
-                BetaTester                  = false,
+                BetaTester                  = true,
                 Windowrestorelocation       = new Point(20, 20),
                 Runningforthefirsttime      = false,
                 ClientSendIP                = "127.0.0.1",

@@ -435,7 +435,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.8.5"
+        "ProductVersion" = "8:2.8.6"
         "Manufacturer" = "8:DCS Community"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
