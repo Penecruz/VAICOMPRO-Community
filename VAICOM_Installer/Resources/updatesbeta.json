@@ -4,14 +4,14 @@
     {
       "title": "VAICOM PRO Community Edition for DCS World",
       "isrelease": false,
-      "isbeta": false,
-      "isdev": true,
+      "isbeta": true,
+      "isdev": false,
       "productid": 1,
       "releasedate": 20230913,
       "version": 2863,
       "versionstring": "2.8.6.3",
       "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.8.6.3Dev/VAICOMPRO.zip",
-      "releasenotes": " DEV Test for seperate build updates  "
+      "releasenotes": "Beta Test build Multiple Branch updates  "
     }
   ]
 }

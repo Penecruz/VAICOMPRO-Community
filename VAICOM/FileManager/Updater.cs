@@ -28,14 +28,10 @@ namespace VAICOM
                         string basefolder = State.Proxy.SessionState["VA_APPS"] + "\\" + Products.Products.Families.Vaicom.VaicomProPlugin.rootfoldername + "\\";
                         string localfolder = basefolder + "Updates" + "\\";
                         string filename;
+
                         if (State.versionbeta)
                         {
-                            filename = "updates.json";
-                        }
-                        else
-                        if (State.versiondev)
-                        {
-                            filename = "updates.json";
+                            filename = "updatesbeta.json";
                         }
                         else
                         {
@@ -78,10 +74,10 @@ namespace VAICOM
                         }
 
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         UI.Playsound.Error();
-                        Log.Write("There was an updater problem." , Colors.Inline);
+                        Log.Write("There was an updater problem." + ex.Message, Colors.Inline);
                     }
 
                 }
