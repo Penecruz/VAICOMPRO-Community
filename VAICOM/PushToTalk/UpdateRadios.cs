@@ -215,7 +215,7 @@ namespace VAICOM
                 TXNodes.TX2.enabled = false;
                 TXNodes.TX3.enabled = false;
                 TXNodes.TX4.enabled = false;
-                TXNodes.TX5.enabled = false;
+                TXNodes.TX5.enabled = false; //false
                 TXNodes.TX6.enabled = false;
 
                 switch (State.activeconfig.SingleHotkey)
