@@ -289,6 +289,7 @@ namespace VAICOM
                 { "Lightning Ball" ,           "wMsgLeaderHornetBall"                  },
                 { "Prowler Ball" ,             "wMsgLeaderHornetBall"                  },
                 { "Skyhawk Ball" ,             "wMsgLeaderHornetBall"                  },
+                { "Goshawk Ball" ,             "wMsgLeaderHornetBall"                  },
 
                 { "Ball" ,                     "wMsgLeaderHornetBall"                  }, // forced alias
 
@@ -305,11 +306,10 @@ namespace VAICOM
                 
                 { "Established" ,              "wMsgLeaderEsteblished"                 }, 
                 { "Commencing" ,               "wMsgLeaderCommencing"                  },// CASE III
-                { "Checking In" ,              "wMsgLeaderChecingIn"                   },// CASE III
-                { "Approach Check In" ,        "wMsgLeaderChecingIn"                   },// CASE III // forced
+                { "Checking In" ,              "wMsgLeaderCheckingIn"                  },// CASE III //fixed? Pene testing
+                { "Approach Check In" ,        "wMsgLeaderCheckingIn"                  }, //forced
                 { "Platform" ,                 "wMsgLeaderPlatform"                    },// CASE III
 
-                { "Say Needle" ,               "wMsgLeaderSayNeedle"                   }, // force removed 
                 { "Needles" ,                  "wMsgLeaderSayNeedle"                   }, // forced add
 
 

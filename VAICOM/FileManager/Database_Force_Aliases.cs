@@ -60,7 +60,7 @@ namespace VAICOM
                         { "Ball" ,                      "wMsgLeaderHornetBall"                  },
                         { "Needles" ,                   "wMsgLeaderSayNeedle"                   }, 
                         { "Low State" ,                 "wMsgLeaderConfirmRemainingFuel"        },
-                        { "Approach Check In" ,         "wMsgLeaderChecingIn"                   },
+                        { "Approach Check In" ,         "wMsgLeaderCheckingIn"                  },
                         { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"      }, 
                         { "Meatball" ,                  "wMsgLeaderBall"                        },
 
@@ -74,6 +74,7 @@ namespace VAICOM
                         { "Lightning Ball" ,           "wMsgLeaderHornetBall"                  },
                         { "Prowler Ball" ,             "wMsgLeaderHornetBall"                  },
                         { "Skyhawk Ball" ,             "wMsgLeaderHornetBall"                  },
+                        { "Goshawk Ball" ,             "wMsgLeaderHornetBall"                  },
 
                     };
 

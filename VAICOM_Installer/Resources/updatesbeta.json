@@ -9,9 +9,9 @@
       "productid": 1,
       "releasedate": 20230917,
       "version": 2865,
-      "versionstring": "2.8.6.5",
+      "versionstring": "2.8.6.6",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.8.6.5"
+      "releasenotes": "Beta Test build 2.8.6.6 - Supercarrier Checking In fix"
     }
   ]
 }

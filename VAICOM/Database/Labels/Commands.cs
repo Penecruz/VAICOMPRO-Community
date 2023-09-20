@@ -201,7 +201,7 @@ namespace VAICOM
                 { "wMsgLeaderInboundMarshallRespond" ,  "Inbound Marshall Response"    },
                 { "wMsgLeaderEsteblished" ,             "Established"                  },
                 { "wMsgLeaderCommencing" ,              "Commencing"                   },
-                { "wMsgLeaderChecingIn" ,               "Approach Check In"            },
+                { "wMsgLeaderCheckingIn" ,              "Approach Check In"            },
                 { "wMsgLeaderPlatform" ,                "Platform"                     },
                 { "wMsgLeaderSayNeedle" ,               "Say Needles"                  },
                 { "wMsgLeaderSeeYouAtTen" ,             "See You At Ten"               },
