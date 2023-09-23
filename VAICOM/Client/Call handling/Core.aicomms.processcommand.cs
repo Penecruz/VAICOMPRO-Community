@@ -646,10 +646,12 @@ namespace VAICOM
                             }
 
                             if (State.currentcommand.isCarrier() && !State.currentmessageunit.descr.ToLower().Contains("supercarrier"))
-                            {
-                                Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning);
+                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("forrestal"))
+                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("stennis"))
+                                    {
+                                Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning); // Pene changes to allow non SC units if module is installed
                                 UI.Playsound.Error();
-                                return true;
+                                return true; //true
                             }
                         }
 
