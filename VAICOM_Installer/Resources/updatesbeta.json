@@ -8,10 +8,10 @@
       "isdev": false,
       "productid": 1,
       "releasedate": 20230917,
-      "version": 2865,
-      "versionstring": "2.8.6.7",
+      "version": 2868,
+      "versionstring": "2.8.6.8",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.8.6.7 - Adds Forrestal and Stennis to Carrier ATC"
+      "releasenotes": "Beta Test build 2.8.6.8 - Fixes for Forrestal and Stennis Carrier ATC + New Aliase for Forrestal and carl Vinson"
     }
   ]
 }

@@ -384,11 +384,11 @@ namespace VAICOM
 
                 { "Admiral Kuznetsov",      "CV 1143.5 Admiral Kuznetsov"   },
                 { "Carl Vinson",            "CVN-70 Carl Vinson"            },
+                { "Gold Eagle",             "CVN-70 Carl Vinson"            },
                 { "Tarawa",                 "LHA-1 Tarawa"                  },
                 { "Perry",                  "FFG-7CL Oliver Hazzard Perry"  },
                 { "Normandy",               "CG-60 Normandy"                },
-                { "CV-59 Forrestal",        "CV-59 Forrestal"               },
-
+                
                 // supercarriers
                 { "Roosevelt",             "CVN-71 Theodore Roosevelt"      },
                 { "Rough Rider",           "CVN-71 Theodore Roosevelt"      },
@@ -404,6 +404,10 @@ namespace VAICOM
 
                 { "Truman",                "CVN-75 Harry S. Truman"         },
                 { "Lone Warrior",          "CVN-75 Harry S. Truman"         },
+
+                // Non Supercarriers ATC Comms enabled Carriers
+                { "Forrestal",             "CV-59 Forrestal"                },
+                { "Hand Book",             "CV-59 Forrestal"                },
 
                 //new roles
 
