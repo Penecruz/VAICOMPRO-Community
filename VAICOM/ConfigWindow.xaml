@@ -531,7 +531,6 @@
                     <Image x:Name="list_button_bg" HorizontalAlignment="Left" Height="38" Margin="60,77,0,0" VerticalAlignment="Top" Width="38" Source="Resources/Images/Tacan-Test-Light-On.png" Stretch="None" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1" Grid.Column="3"/>
 
                     <Image x:Name="Code_Button" HorizontalAlignment="Left" Height="22" Margin="67,83,0,0" VerticalAlignment="Top" Width="22" Source="Resources/Images/Code_Button_Up.png" MouseDown="ShowLicenses" Cursor="Hand" Panel.ZIndex="1" Grid.Column="3"/>
-                    <Rectangle Grid.ColumnSpan="2" Fill="#FF2F373A" HorizontalAlignment="Left" Height="34" Margin="54,133,0,0" VerticalAlignment="Top" Width="44" Grid.Column="1"/>
                     <Border BorderBrush="#FF151515" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="120" Margin="45,74,0,0" VerticalAlignment="Top" Width="43" Visibility="Hidden" Grid.Column="1"/>
                     <TextBlock x:Name="License_text" Foreground="#D0D0D0" FontSize="10" HorizontalAlignment="Left" Margin="0,180,0,0" VerticalAlignment="Top" Grid.ColumnSpan="5" Width="479" TextAlignment="Center" Text="Open Source Community Edition" />
 

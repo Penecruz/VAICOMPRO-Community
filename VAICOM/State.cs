@@ -302,6 +302,7 @@ namespace VAICOM
             {"command",""       },
             {"apxwpn",""        },
             {"apxdir",""        },
+            {"moose",""         },
         };
 
         public static Dictionary<string, string> usedalias = new Dictionary<string, string>()
@@ -314,6 +315,7 @@ namespace VAICOM
             {"command",""       },
             {"apxwpn",""        },
             {"apxdir",""        },
+            {"moose",""        },
         };
 
         public static Dictionary<string, bool> have = new Dictionary<string, bool>()
@@ -326,6 +328,7 @@ namespace VAICOM
             {"command",         false       },
             {"apxwpn",          false       },
             {"apxdir",          false       },
+            {"moose",           false       },
         };
 
         public static void MessageReset()
@@ -339,7 +342,7 @@ namespace VAICOM
             have["command"]                 = false;
             have["apxwpn"]                  = false;
             have["apxdir"]                  = false;
-
+            have["moose"]                   = false;
             haveinputscomplete              = false;
 
             currentkey["recipient"]          = "";
@@ -350,6 +353,7 @@ namespace VAICOM
             currentkey["command"]            = "";
             currentkey["apxwpn"]             = "";    
             currentkey["apxdir"]             = "";
+            currentkey["moose"]              = "";
 
             currentmessage                  = new DcsClient.Message.CommsMessage();
             currentrecipient                = new Recipient();

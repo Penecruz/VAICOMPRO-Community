@@ -419,12 +419,12 @@ namespace VAICOM
 
 
             // Moose Ops 
-            { "wMsgLeaderToMooseCmndsNull" ,       new Command { uniqueid = 25000, category = CommandCategories.moosemenu,  dcsid = "wMsgLeaderToMooseCmndsNull" } },
-            { "Radio Check Marshal" ,              new Command { uniqueid = 25001, category = CommandCategories.moosemenu,  dcsid = "wMsgLeaderToMooseRadioChkMarshal",displayname = Labels.aicommands["Radio Check Marshal"],blockedforFree = true   } },
-            { "Radio Check LSO" ,                  new Command { uniqueid = 25002, category = CommandCategories.moosemenu,  dcsid = "wMsgLeaderToMooseRadioChkLSO",displayname = Labels.aicommands["Radio Check LSO"],blockedforFree = true   } },
-            { "Request Commence" ,                 new Command { uniqueid = 25003, category = CommandCategories.moosemenu,  dcsid = "wMsgLeaderToMooseRqstCommence",displayname = Labels.aicommands["Request Commence"],blockedforFree = true   } },
-            { "Emergency Landing" ,                new Command { uniqueid = 25003, category = CommandCategories.moosemenu,  dcsid = "wMsgLeaderToMooseEmerLanding",displayname = Labels.aicommands["Emergency Landing"],blockedforFree = true   } },
-            { "wMsgLeaderToMooseCmndsMaximum" ,    new Command { uniqueid = 25100, category = CommandCategories.moosemenu,  dcsid = "wMsgLeaderToMooseCmndsMaximum" } },
+            { "wMsgLeaderToMooseCmndsNull" ,       new Command { uniqueid = 25000, category = CommandCategories.moosemenu,  eventnumber = 4000, dcsid = "wMsgLeaderToMooseCmndsNull" } },
+            { "Radio Check Marshal" ,              new Command { uniqueid = 25001, category = CommandCategories.moosemenu,  eventnumber = 4000, dcsid = "wMsgLeaderToMooseRadioChkMarshal",displayname = Labels.aicommands["Radio Check Marshal"],blockedforFree = true   } },
+            { "Radio Check LSO" ,                  new Command { uniqueid = 25002, category = CommandCategories.moosemenu,  eventnumber = 4000, dcsid = "wMsgLeaderToMooseRadioChkLSO",displayname = Labels.aicommands["Radio Check LSO"],blockedforFree = true   } },
+            { "Request Commence" ,                 new Command { uniqueid = 25003, category = CommandCategories.moosemenu,  eventnumber = 4000, dcsid = "wMsgLeaderToMooseRqstCommence",displayname = Labels.aicommands["Request Commence"],blockedforFree = true   } },
+            { "Emergency Landing" ,                new Command { uniqueid = 25003, category = CommandCategories.moosemenu,  eventnumber = 4000, dcsid = "wMsgLeaderToMooseEmerLanding",displayname = Labels.aicommands["Emergency Landing"],blockedforFree = true   } },
+            { "wMsgLeaderToMooseCmndsMaximum" ,    new Command { uniqueid = 25100, category = CommandCategories.moosemenu,  eventnumber = 4000, dcsid = "wMsgLeaderToMooseCmndsMaximum" } },
             
             // ----------------------------------------------------------------------
 

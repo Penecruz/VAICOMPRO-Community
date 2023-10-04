@@ -365,8 +365,8 @@ namespace VAICOM
                 { "Page",                  "wMsgShowKneeboardTab"         },
 
                 // Moose Airboss
-                { "Marshal Check",         "Radio Check Marshal"          },
-                { "LSO Check",             "Radio Check LSO"              },
+                { "Airboss Marshal Check",         "Radio Check Marshal"  },
+                { "Airboss LSO Check",             "Radio Check LSO"      },
                 { "Request Commence",      "Request Commence"             },
                 { "Emergency Landing",     "Emergency Landing"            },
             };

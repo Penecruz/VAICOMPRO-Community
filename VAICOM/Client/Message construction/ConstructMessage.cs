@@ -392,7 +392,7 @@ namespace VAICOM
                             Message.SetMenuItemAction();
                         }
                         // For Moose Pene testing
-                        if ((State.currentrecipientclass.Equals(Recipientclasses.Moose) & !State.currentcommand.isOptions()))
+                        if ((State.currentrecipientclass.Equals(Recipientclasses.Moose) && !State.currentrecipientclass.Name.Equals("AOCS")) & !State.currentcommand.isOptions())
                         {
                             State.currentmessage.type = Messagetypes.iCommandSequence;
                             Message.SetMenuCmdSequence();

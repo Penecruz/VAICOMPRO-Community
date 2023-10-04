@@ -160,6 +160,26 @@ namespace VAICOM
                     {
                     }
 
+                    // special case: Moose menus
+
+                    try
+                    {
+                        if (State.have["moose"])
+                        {
+                            Log.Write("Matched Moose menu command.", Colors.Text);
+
+                            State.currentkey["command"] = State.currentkey["moose"];
+                            State.usedalias["command"] = State.usedalias["moose"];
+                            State.currentkey["recipient"] = "moose";
+                            State.currentrecipientclass = Recipientclasses.Moose;
+                            State.have["recipient"] = true;
+                            State.have["command"] = true;
+                        }
+                    }
+                    catch
+                    {
+                    }
+
                 }
 
                 public static void scanforkeywords()
