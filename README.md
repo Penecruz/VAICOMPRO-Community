@@ -62,21 +62,18 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-Patch Notes V2.8.6.3
+Patch Notes V2.8.7.0
 
--	Fixed AH-64D to Single TX node.
--	Fixed F-5E-3 to Single TX node.
--	Added new recipient “Ground” for ground crew.
--	Added more realistic Tanker communications command set. (see manual)
--	Added Syrian and Cypriot ATC recipients that were missing. (see manual)
--	Added Auto Update check on plugin startup (release and Beta).
--	Added Beta branch update functionality.
--	Added Moose recipients and command structure. (Deactivated in this build)
+This update fixes functionality with DCS Supercarrier communications and adds some other under the hood fixes and framework to allow continued development. 
 
+-	Fixed Carrier comms when contacting approach.
+-	CASE I and CASE II/III flow now works.
+-	Added USS Forrestal as a Supercarrier enabled AI Comms recipient. (Supercarrier owners only)
+-	Added USS Stennis as a Supercarrier enabled AI Comms recipient. (Supercarrier owners only)
 
 Known Issues
-
 -	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
+-	Server slot blocking scripts may cause Vaicom Pro to not detect an Aircraft or a seat change in multi crew aircraft. 
 
 ## Community Team
 
