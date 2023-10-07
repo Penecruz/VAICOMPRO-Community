@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace VAICOM.Extensions.RIO
 {
@@ -432,17 +433,20 @@ namespace VAICOM.Extensions.RIO
             {"Knock it off",                    "wMsgJ_UTIL_CONTR_INACTIVE"     }, //new
 
             {"Wake Up",                         "wMsgJ_RESET"                   },
-
+            
+            // Supercarriers
             {"Link Host Washington",        "wMsgJ_RAD_DL_HOST_WASH"                },
             {"Link Host Roosevelt",         "wMsgJ_RAD_DL_HOST_ROOS"                },
             {"Link Host Lincoln",           "wMsgJ_RAD_DL_HOST_LINC"                },
             {"Link Host Truman",            "wMsgJ_RAD_DL_HOST_TRUM"                },
             {"Link Host Ticonderoga",       "wMsgJ_RAD_DL_HOST_TICO"                },
+            {"Link Host Forrestal",         "wMsgJ_RAD_DL_HOST_FORE"                }, //Forrestal
 
             {"TACAN Tune Washington",       "wMsgJ_RAD_TCN_TAC_WASH"                },
             {"TACAN Tune Roosevelt",        "wMsgJ_RAD_TCN_TAC_ROOS"                },
             {"TACAN Tune Lincoln",          "wMsgJ_RAD_TCN_TAC_LINC"                },
             {"TACAN Tune Truman",           "wMsgJ_RAD_TCN_TAC_TRUM"                },
+            {"TACAN Tune Forrestal",        "wMsgJ_RAD_TCN_TAC_FORE"                }, // Forrestal
             {"Track Steerpoint 1",          "wMsgJESTER_Steerpoint_SP1"             }, // TESTED OK
             {"Track Steerpoint 2",          "wMsgJESTER_Steerpoint_SP2"             }, // TESTED OK
             {"Track Steerpoint 3",          "wMsgJESTER_Steerpoint_SP3"             }, // TESTED OK

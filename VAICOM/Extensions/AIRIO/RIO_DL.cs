@@ -19,6 +19,7 @@ namespace VAICOM
                     {"Roosevelt",  null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Lincoln",    null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Truman",     null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
+                    {"Forrestal",  null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Ticonderoga",null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Darkstar",   null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Focus",      null }, //DeviceActionsLibrary.RIO.Atom_J_VOID  },
@@ -37,6 +38,7 @@ namespace VAICOM
                     DLstate["Roosevelt"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     DLstate["Lincoln"]      = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     DLstate["Truman"]       = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Forrestal"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     DLstate["Ticonderoga"]  = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     DLstate["Darkstar"]     = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     DLstate["Focus"]        = DeviceActionsLibrary.RIO.Atom_J_VOID;
@@ -49,11 +51,12 @@ namespace VAICOM
                 {
                     string result = "";
 
-                    if (unitcallsign.Contains("Stennis")    || fullname.Contains("Stennis"))    { return "Stennis";     }
+                    if (unitcallsign.Contains("Stennis")    || fullname.Contains("Stennis"))    { return "Stennis";     } //Pene validate?
                     if (unitcallsign.Contains("Washington") || fullname.Contains("Washington")) { return "Washington"; }
                     if (unitcallsign.Contains("Roosevelt")  || fullname.Contains("Roosevelt"))  { return "Roosevelt"; }
                     if (unitcallsign.Contains("Lincoln")    || fullname.Contains("Lincoln"))    { return "Lincoln"; }
                     if (unitcallsign.Contains("Truman")     || fullname.Contains("Truman"))     { return "Truman";  }
+                    if (unitcallsign.Contains("Forrestal")  || fullname.Contains("Forrestal"))  { return "Forrestal";   } //Add USS Forrestal
                     if (unitcallsign.Contains("Ticonderoga")|| fullname.Contains("Ticonderoga")){ return "Ticonderoga"; }
                     if (unitcallsign.Contains("Darkstar")   || fullname.Contains("Darkstar"))   { return "Darkstar";    }
                     if (unitcallsign.Contains("Focus")      || fullname.Contains("Focus"))      { return "Focus";       }

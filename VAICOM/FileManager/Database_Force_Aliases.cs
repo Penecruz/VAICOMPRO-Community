@@ -39,6 +39,7 @@ namespace VAICOM
                         { "Warfighter",            "CVN-73 George Washington"       },
                         { "Courage",               "CVN-74 John C. Stennis"         },
                         { "Lone Warrior",          "CVN-75 Harry S. Truman"         },
+                        { "Hand Book",             "CV-59 Forrestal"                },
 
                     };
 

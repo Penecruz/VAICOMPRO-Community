@@ -324,6 +324,9 @@ namespace VAICOM
                             case "wMsgJ_RAD_TCN_TAC_TRUM": //
                                 unitstr = "Truman";
                                 break;
+                            case "wMsgJ_RAD_TCN_TAC_FORE": //
+                                unitstr = "Forrestal";
+                                break;
                             case "wMsgJ_RAD_TCN_TAC_ARCO": // 
                                 unitstr = "Arco";
                                 break;
@@ -393,6 +396,9 @@ namespace VAICOM
                                 break;
                             case "wMsgJ_RAD_DL_HOST_TICO": //
                                 unitstr = "Ticonderoga";
+                                break;
+                            case "wMsgJ_RAD_DL_HOST_FORE": // 
+                                unitstr = "Forrestal";
                                 break;
                             case "wMsgJ_RAD_DL_HOST_DARK": // 
                                 unitstr = "Darkstar";
