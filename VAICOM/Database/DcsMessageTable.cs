@@ -212,7 +212,7 @@ namespace VAICOM
                 DcsMessageTable.Add(4144, "wMsgLeaderINFLIGHTREP");
                 DcsMessageTable.Add(4145, "wMsgLeaderToFACMaximum");
                 DcsMessageTable.Add(4146, "wMsgLeaderToGroundCrewNull");
-                DcsMessageTable.Add(4147, "wMsgLeaderSpecialCommand");
+                DcsMessageTable.Add(4147, "wMsgLeaderSpecialCommand"); //special for ground
                 DcsMessageTable.Add(4148, "wMsgLeaderRequestRefueling");
                 DcsMessageTable.Add(4149, "wMsgLeaderRequestCannonReloading");
                 DcsMessageTable.Add(4150, "wMsgLeaderRequestRearming");
@@ -226,7 +226,7 @@ namespace VAICOM
                 DcsMessageTable.Add(4158, "wMsgLeaderGroundGestureSalut");
                 DcsMessageTable.Add(4159, "wMsgLeaderGroundRequestLaunch");
                 DcsMessageTable.Add(4160, "wMsgLeaderToGroundCrewMaximum");
-                DcsMessageTable.Add(4161, "wMsgLeaderToServiceMaximum");
+                DcsMessageTable.Add(4161, "wMsgLeaderToServiceMaximum"); // what is this?
                 DcsMessageTable.Add(4162, "wMsgLeaderMaximum");
                 DcsMessageTable.Add(4163, "wMsgLeaderToNavyATCNull");
                 DcsMessageTable.Add(4164, "wMsgLeaderInboundCarrier");

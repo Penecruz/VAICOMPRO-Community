@@ -91,7 +91,7 @@ namespace VAICOM
 
                             //send HUD view first
                             List<int> Cockpitview = new List<int>() { 326 };
-                            DcsClient.SendCmdSequence(Cockpitview, false);// testing Jester Wheel Pene //false
+                            DcsClient.SendCmdSequence(Cockpitview, false);
 
                         }
                         catch (Exception e)

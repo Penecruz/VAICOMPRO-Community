@@ -249,6 +249,7 @@ namespace VAICOM
                 { "Run Inertial Starter",   "runinertialstarter"    },
                 { "Request HMD",            "requesthmd"            },
                 { "Request NVG",            "requestnvg"            },
+                { "Load Water",             "loadwater"             },
                 { "Turbo On",               "turboon"               },
                 { "Turbo Off",              "turbooff"              },
                 { "Ground Power On",        "groundpoweron"         },
