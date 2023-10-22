@@ -8,10 +8,10 @@
       "isdev": false,
       "productid": 1,
       "releasedate": 20231022,
-      "version": 2900,
-      "versionstring": "2.9.0.0",
+      "version": 2901,
+      "versionstring": "2.9.0.1",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.0.0 - Forrestal Additions and folder structure"
+      "releasenotes": "Beta Test build 2.9.0.1 - Forrestal Additions, PTT Comm/Module names and folder structure"
     }
   ]
 }
