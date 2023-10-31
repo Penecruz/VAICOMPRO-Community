@@ -34,8 +34,8 @@ namespace VAICOM
         public static string        debuguser           = "VAICOM_Tester";
         public static string        clientmode          = ClientModes.Normal;
                                                                              
-        public static string        versionstring       = "2.8.7.4";
-        public static string        pluginversionnumber = "2.8.7"; // used by Theme (Special page)
+        public static string        versionstring       = "";
+        public static string        pluginversionnumber = "2.9.0"; // used by Theme (Special page)
         public static string        vaminversion        = "1.10.6";
         public static string        defProfileName      = "VAICOM PRO for DCS World";
         public static bool          requirecarrierregkey= false;
