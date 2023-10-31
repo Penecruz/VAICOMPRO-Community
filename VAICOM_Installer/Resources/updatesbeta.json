@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20231022,
-      "version": 2901,
-      "versionstring": "2.9.0.1",
+      "releasedate": 20231101,
+      "version": 2902,
+      "versionstring": "2.9.0.2",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.0.1 - Forrestal Additions, PTT Comm/Module names and folder structure"
+      "releasenotes": "Beta Test build 2.9.0.2 - Fix Server side install error and folder errors (please delete NOT INSTALLED folder from previous build!)"
     }
   ]
 }
