@@ -11,7 +11,7 @@
       "version": 2903,
       "versionstring": "2.9.0.3",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.0.2 - Fix Server side install error and folder errors (please delete NOT INSTALLED folder from previous build!). Jester Options changes"
+      "releasenotes": "Beta Test build 2.9.0.3 - Fix Server side install error and folder errors (please delete NOT INSTALLED folder from previous build!). Jester Options changes"
     }
   ]
 }
