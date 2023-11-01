@@ -20,18 +20,18 @@ namespace VAICOM
 
                     if (show && !showingjestermenu)
                     {
-                        try
-                        {
+                        //try
+                        //{
 
                             //send HUD view first
-                            List<int> HUDview = new List<int>() { 326 };
-                            DcsClient.SendCmdSequence(HUDview, false);
+                           //List<int> HUDview = new List<int>() { 326 };
+                           //DcsClient.SendCmdSequence(HUDview, false);
 
-                        }
-                        catch (Exception e)
-                        {
-                            Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
-                        }
+                        //}
+                        //catch (Exception e)
+                        //{
+                            //Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
+                        //}
 
                         //Thread.Sleep(2000);
 
@@ -86,18 +86,18 @@ namespace VAICOM
                     
                     if (!show && showingjestermenu)
                     {
-                        try
-                        {
+                        //try
+                        //{
 
                             //send HUD view first
-                            List<int> Cockpitview = new List<int>() { 326 };
-                            DcsClient.SendCmdSequence(Cockpitview, false);
+                           // List<int> Cockpitview = new List<int>() { 326 };
+                           // DcsClient.SendCmdSequence(Cockpitview, false);
 
-                        }
-                        catch (Exception e)
-                        {
-                            Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
-                        }
+                        //}
+                        //catch (Exception e)
+                        //{
+                            //Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
+                        //}
 
                         //Thread.Sleep(2000);
 

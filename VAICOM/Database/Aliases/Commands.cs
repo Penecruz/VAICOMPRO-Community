@@ -344,6 +344,18 @@ namespace VAICOM
                 { "Take 10",                "menu10"                },
                 { "Take 11",                "menu11"                },
                 { "Take 12",                "menu12"                },
+                { "Take One",               "menu01"                },// Try to reduce Flight confusion and accent fix
+                { "Take Two",               "menu02"                },
+                { "Take Three",             "menu03"                },
+                { "Take Four",              "menu04"                },
+                { "Take Five",              "menu05"                },
+                { "Take Six",               "menu06"                },
+                { "Take Seven",             "menu07"                },
+                { "Take Eight",             "menu08"                },
+                { "Take Nine",              "menu09"                },
+                { "Take Ten",               "menu10"                },
+                { "Take Eleven",            "menu11"                },
+                { "Take Twelve",            "menu12"                },
 
                 // special
                 { "Switch*",                "switch"                },
