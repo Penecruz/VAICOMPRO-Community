@@ -7,11 +7,11 @@
      	"isbeta": false,
 	    "isdev": false,
 	    "productid": 1,
-      "releasedate": 20231006,
-     	"version": 2870,
-    	"versionstring": "2.8.7.0",
-    	"downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.8.7.0/VAICOMPRO.zip",
-    	"releasenotes": "Release 2.8.7.0 - Stealth"
+      "releasedate": 20231112,
+     	"version": 2905,
+    	"versionstring": "2.9.0.5",
+    	"downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.0.5/VAICOMPRO.zip",
+    	"releasenotes": "Release 2.9.0.5 - Anniversary"
     }
   ]
 }
