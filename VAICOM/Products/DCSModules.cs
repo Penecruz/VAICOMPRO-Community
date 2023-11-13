@@ -54,7 +54,7 @@ namespace VAICOM
             public static Dictionary<string, DCSmodule> LookupTable = new Dictionary<string, DCSmodule>(StringComparer.OrdinalIgnoreCase)
             {
 
-                {"----",    new DCSmodule() { Id ="----", Name = "Happy",    Alias = "Birthday",         ProOnly = true,  IsFC = false, ApxWpn = false,ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Default",   SpeechAlias = "" } }, 
+                {"----",    new DCSmodule() { Id ="----", Name = "None",    Alias = "Detected",         ProOnly = true,  IsFC = false, ApxWpn = false,ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Default",   SpeechAlias = "" } }, 
             
                 {"A-10A" ,  new DCSmodule() { Id ="A-10A",Name = "A-10A",   Alias = "Warthog",       ProOnly = false, IsFC = true,  ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "A..Ten A"  } },
                 {"A-10C" ,  new DCSmodule() { Id ="A-10C",Name = "A-10C",   Alias = "Warthog",       ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = true,   IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight2 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "A..Ten Cee" } },

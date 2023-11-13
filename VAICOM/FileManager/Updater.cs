@@ -110,7 +110,7 @@ namespace VAICOM
                         RunBatchFile(basefolder, Properties.Resources.Updater_Plugin);
                     }
 
-                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id)) // rio
+                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id)) // chatter
                     {
                         RunBatchFile(basefolder, Properties.Resources.Updater_Chatter);
                     }
