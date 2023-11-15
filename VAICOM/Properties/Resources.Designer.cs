@@ -154,11 +154,11 @@ namespace VAICOM.Properties {
         ///local	socket 		= base.require(&apos;socket&apos;)
         ///local 	JSON    	= base.require(&apos;JSON&apos;)
         ///local 	dcsoptions 	= base.require(&apos;optionsEditor&apos;)
-        ///
+        ///local   Gui         = base.require(&apos;dxgui&apos;)
         ///
         ///local colorByRecepientState = {
         ///		[RecepientState.VOID] 				= utils.COLOR.LIGHT_GRAY,	 
-        ///		[RecepientState.TUNED] 				= utils.COLOR.WHITE, 		 [rest of string was truncated]&quot;;.
+        ///		[Recepi [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_Core_RadioCommandDialogsPanel {
             get {
@@ -236,16 +236,16 @@ namespace VAICOM.Properties {
         ///
         ///vaicom.config = {
         ///
-        ///		receivefromradio =	{ -- do not edit
-        ///							address	= &quot;127.0.0.1&quot;,
-        ///							port	= 33333,
-        ///							timeout = 0,
-        ///							},
-        ///							
         ///		sendtoradio =		{ -- do not edit
         ///							address	= &quot;127.0.0.1&quot;,
         ///							port	= 33334,
-        ///							t [rest of string was truncated]&quot;;.
+        ///							timeout = 0,
+        ///							},
+        ///							
+        ///		receivefromclient =	{ -- do not edit
+        ///							address	= &quot;*&quot;,
+        ///							port	= 33491,
+        ///							timeout  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_Core_VAICOMPRO_export {
             get {
@@ -285,8 +285,8 @@ namespace VAICOM.Properties {
         ///   Looks up a localized string similar to dofile(LockOn_Options.common_script_path..&quot;devices_defs.lua&quot;)
         ///dofile(LockOn_Options.script_path..&quot;materials.lua&quot;)
         ///
-        ///indicator_type  = 0 
-        ///purposes = { 1 } 
+        ///indicator_type  = indicator_types.COMMON --0
+        ///purposes = {render_purpose.SCREENSPACE_INSIDE_COCKPIT,render_purpose.HUD_ONLY_VIEW} --{}
         ///screenspace_scale = 4;
         ///
         ///-------PAGE IDs-------
@@ -303,10 +303,7 @@ namespace VAICOM.Properties {
         ///page_subsets = {}
         ///page_subsets[id_pagesubset.COMMON] = LockOn_Options.script_path..&quot;Scripts/JesterAI/JesterAI_Page.lua&quot;
         ///  	
-        ///----------------------
-        ///pages = {}
-        ///pages[id_Page.MAIN] = { id_pagesubset.COMMON}
-        ///init_pageID     = id_ [rest of string was truncated]&quot;;.
+        ///--------- [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_F14_JesterInit {
             get {
@@ -460,7 +457,7 @@ namespace VAICOM.Properties {
         ///local 	JSON    	= require(&apos;JSON&apos;)
         ///
         ///local 	dev = GetSelf()
-        ///local 	timer
+        ///local 	dev_timer
         ///local 	update_time_step = 0.02
         ///local 	master_opacity = 0.5
         ///
@@ -468,7 +465,7 @@ namespace VAICOM.Properties {
         ///need_to_be_closed = false
         ///
         ///local sender
-        ///local re [rest of string was truncated]&quot;;.
+        ///loca [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Append_Kneeboard_VAICOMPRO_Device {
             get {
@@ -712,16 +709,15 @@ namespace VAICOM.Properties {
         ///
         ///
         ///
-        ///--[[
         ///
         ///base = _G
         ///local lfs = require(&quot;lfs&quot;)
         ///local io = require(&quot;io&quot;)
-        ///dumpfile = io.open(lfs.writedir()..[[crawl-x.csv]], &quot;w&quot;)
+        ///dumpfile = io.open(lfs.writedir()..&quot;crawl-x.csv&quot;, &quot;w&quot;)
         ///
         ///if dumpfile then
         ///listtables = function (offset, maxdepth, tablename, filtertype)
-        ///if base.type(tablename) [rest of string was truncated]&quot;;.
+        ///if base.type(tablename) == &quot;tab [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Debug_code {
             get {
@@ -790,10 +786,10 @@ namespace VAICOM.Properties {
         ///	shortName	 = &quot;VAICOM PRO&quot;,
         ///	fileMenuName = &quot;VAICOM PRO Community Edition&quot;,
         ///
-        ///	version		 = &quot;2.8.1&quot;,
+        ///	version		 = &quot;2.8.5&quot;,
         ///	state		 = &quot;installed&quot;, 	
-        ///	developerName= &quot;DCS Community&quot;,
-        ///	info		 = _(&quot;VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as clie [rest of string was truncated]&quot;;.
+        ///	developerName= &quot;VAICOM Community&quot;,
+        ///	info		 = _(&quot;VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as c [rest of string was truncated]&quot;;.
         /// </summary>
         public static string entry {
             get {
@@ -1033,7 +1029,8 @@ namespace VAICOM.Properties {
         ///				[&quot;text&quot;] = {
         ///					[&quot;fontSize&quot;] = 10,
         ///					[&quot;horzAlign&quot;] = {
-        ///						[&quot;type&quot;] = &quot;min&quot;        /// [rest of string was truncated]&quot;;.
+        ///						[&quot;type&quot;] = &quot;min&quot;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string options {
             get {
@@ -1992,7 +1989,7 @@ namespace VAICOM.Properties {
         ///&lt;Profile xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
         ///  &lt;HasMB&gt;false&lt;/HasMB&gt;
         ///  &lt;Id&gt;65ee8337-d43c-4b26-aea9-4ce0f9d4e467&lt;/Id&gt;
-        ///  &lt;Name&gt;VAICOM PRO Community Edition for DCS World&lt;/Name&gt;
+        ///  &lt;Name&gt;VAICOM PRO for DCS World&lt;/Name&gt;
         ///  &lt;Commands&gt;
         ///    &lt;Command&gt;
         ///      &lt;Referrer xsi:nil=&quot;true&quot; /&gt;
@@ -2000,7 +1997,7 @@ namespace VAICOM.Properties {
         ///      &lt;Confidence&gt;0&lt;/Confidence&gt;
         ///      &lt;PrefixActionCount&gt;0&lt;/PrefixActionCount&gt;
         ///      &lt;IsDynamicallyCreated&gt;false&lt;/IsDynamicallyCreated&gt;
-        ///      &lt;Target [rest of string was truncated]&quot;;.
+        ///      &lt;TargetProcessSet&gt;false&lt;/ [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VAICOM_PRO_for_DCS_World {
             get {
