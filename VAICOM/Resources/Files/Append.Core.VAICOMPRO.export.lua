@@ -52,26 +52,26 @@ vaicom.insert = {
 
 	end,
 
-	--BeforeNextFrame = function(self)		
-		--local newdata = false
-		--newdata = vaicom.receivefromclient:receive()
-		--if newdata then
-			--vaicom.sendtoradio:send(newdata)
-			--if not vaicom.insert:Alt() then -- Pene bug in Alt
-				--LoSetCommand(179)
-			--end
-			--purge = true
-		--else
-			--purge = false
-		--end
-	--end,
+	BeforeNextFrame = function(self)		
+		local newdata = false
+		newdata = vaicom.receivefromclient:receive()
+		if newdata then
+			vaicom.sendtoradio:send(newdata)
+			if not vaicom.insert:Alt() then -- Pene debug Alt
+				LoSetCommand(179)
+			end
+			purge = true
+		else
+			purge = false
+		end
+	end,
 	
-	--AfterNextFrame = function(self)
-		--if purge then
-			--vaicom.insert:Flush()	
-		--end
-		--purge = false
-	--end,
+	AfterNextFrame = function(self)
+		if purge then
+			vaicom.insert:Flush()	-- Pene debug flush
+		end
+		purge = false
+	end,
 
 	Stop = function(self)
 

@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20231201,
-      "version": 2909,
-      "versionstring": "2.9.0.9",
+      "releasedate": 20231202,
+      "version": 2911,
+      "versionstring": "2.9.1.1",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.0.9 - Fix Alt & Flush call errors"
+      "releasenotes": "Beta Test build 2.9.1.1 - Hooking fix"
     }
   ]
 }
