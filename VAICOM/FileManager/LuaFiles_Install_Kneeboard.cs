@@ -93,6 +93,9 @@ namespace VAICOM
                             initsubfolders.Add("Cockpit\\C-101EB");
                             initsubfolders.Add("Cockpit\\A10A");
                             initsubfolders.Add("Cockpit\\A10C_2");
+                            initsubfolders.Add("Cockpit\\Mirage-F1\\Mirage-F1BE");
+                            initsubfolders.Add("Cockpit\\Mirage-F1\\Mirage-F1CE");
+                            initsubfolders.Add("Cockpit\\Mirage-F1\\Mirage-F1EE");
 
                             foreach (string subdir in filepaths) // both root and Saved Games
                             {
