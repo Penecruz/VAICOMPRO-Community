@@ -28,7 +28,8 @@ namespace VAICOM
         // ------------------------------------------------------------------------------------------------------------
         // general
 
-        public static bool          versionbeta         = false; //set if Beta version
+
+        public static bool          versionbeta         = true; //set if Beta version
         public static bool          versiondev          = false; //set if Dev version
         public static bool          usenewselectmethod  = false;
         public static string        debuguser           = "VAICOM_Tester";
