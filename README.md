@@ -62,6 +62,7 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
+
 Patch Notes V2.9.2.0
 
 -	Fix Alt and Flush log errors.
@@ -73,8 +74,8 @@ Patch Notes V2.9.2.0
 -	Refresh of the Vaicom Pro manual. (Thanks @BIONICRAVEN)
  
 Known Issues
-
 -	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
+
 -	Jester mini wheel may briefly display flash with very complex jester commands.
 -	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
 -	Mirage F1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World 
