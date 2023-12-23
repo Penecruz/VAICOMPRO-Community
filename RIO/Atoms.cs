@@ -244,6 +244,7 @@ namespace VAICOM.Extensions.RIO
             public static DeviceAction Atom_J_RAD_TCN_TAC_ROOS = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             public static DeviceAction Atom_J_RAD_TCN_TAC_LINC = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             public static DeviceAction Atom_J_RAD_TCN_TAC_TRUM = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
+            public static DeviceAction Atom_J_RAD_TCN_TAC_FORE = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             //public static DeviceAction Atom_Placeholder198 = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             //public static DeviceAction Atom_Placeholder199 = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
 
@@ -405,6 +406,7 @@ namespace VAICOM.Extensions.RIO
             public static DeviceAction Atom_J_RAD_DL_HOST_LINC = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             public static DeviceAction Atom_J_RAD_DL_HOST_TRUM = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             public static DeviceAction Atom_J_RAD_DL_HOST_TICO = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
+            public static DeviceAction Atom_J_RAD_DL_HOST_FORE = new DeviceAction() { device = Devices.RIO, command = start + 0, value = 0 };
             public static DeviceAction Atom_JESTER_Steerpoint_SP1 = new DeviceAction() { device = Devices.RIO, command = 3566, value = 1 }; // LANTIRN Q JESTER_Steerpoint_SP1
             public static DeviceAction Atom_JESTER_Steerpoint_SP2 = new DeviceAction() { device = Devices.RIO, command = 3567, value = 1 }; // LANTIRN Q JESTER_Steerpoint_SP2
             public static DeviceAction Atom_JESTER_Steerpoint_SP3 = new DeviceAction() { device = Devices.RIO, command = 3568, value = 1 }; // LANTIRN Q JESTER_Steerpoint_SP3

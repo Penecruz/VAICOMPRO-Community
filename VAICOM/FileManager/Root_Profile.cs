@@ -11,7 +11,7 @@ namespace VAICOM
         {
             public static partial class Root
             {
-
+                
                 // check if .vap profile file exist and if not creates it:
                 public static void CheckProfile(bool overwrite)
                 {

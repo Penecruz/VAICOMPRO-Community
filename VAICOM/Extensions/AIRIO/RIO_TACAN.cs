@@ -23,6 +23,7 @@ namespace VAICOM
                     {"Arco",        null }, // DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Shell",       null }, // DeviceActionsLibrary.RIO.Atom_J_VOID  },
                     {"Texaco",      null }, // DeviceActionsLibrary.RIO.Atom_J_VOID  },
+                    {"Forrestal",   null }, // DeviceActionsLibrary.RIO.Atom_J_VOID  },
 
                 };
 
@@ -39,6 +40,7 @@ namespace VAICOM
                     TACANstate["Arco"]      = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     TACANstate["Shell"]     = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     TACANstate["Texaco"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Forrestal"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                 }
 
                 public static string extractTACANunit(string unitcallsign, string fullname)
@@ -54,6 +56,7 @@ namespace VAICOM
                     if (unitcallsign.Contains("Arco")       || fullname.Contains("Arco"))       { return "Arco";    }
                     if (unitcallsign.Contains("Shell")      || fullname.Contains("Shell"))      { return "Shell";   }
                     if (unitcallsign.Contains("Texaco")     || fullname.Contains("Texaco"))     { return "Texaco";  }
+                    if (unitcallsign.Contains("Forrestal")  || fullname.Contains("Forrestal"))  { return "Forrestal"; }
 
                     return result;
                 }

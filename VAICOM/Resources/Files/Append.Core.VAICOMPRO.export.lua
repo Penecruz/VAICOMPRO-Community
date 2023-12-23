@@ -57,9 +57,9 @@ vaicom.insert = {
 		newdata = vaicom.receivefromclient:receive()
 		if newdata then
 			vaicom.sendtoradio:send(newdata)
-			if not vaicom.insert:Alt() then
-				LoSetCommand(179)
-			end
+			--if not vaicom.insert:Alt() then -- Pene debug Alt
+				--LoSetCommand(179)
+			--end
 			purge = true
 		else
 			purge = false
@@ -67,9 +67,9 @@ vaicom.insert = {
 	end,
 	
 	AfterNextFrame = function(self)
-		if purge then
-			vaicom.insert:Flush()	
-		end
+		--if purge then
+			--vaicom.insert:Flush()	-- Pene debug flush
+		--end
 		purge = false
 	end,
 

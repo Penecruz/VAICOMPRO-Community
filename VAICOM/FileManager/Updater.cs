@@ -110,7 +110,7 @@ namespace VAICOM
                         RunBatchFile(basefolder, Properties.Resources.Updater_Plugin);
                     }
 
-                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id)) // rio
+                    if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id)) // chatter
                     {
                         RunBatchFile(basefolder, Properties.Resources.Updater_Chatter);
                     }
@@ -350,7 +350,7 @@ namespace VAICOM
                     try
                     {
 
-                        string URL = "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
+                        string URL = "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Open-Beta/VAICOM_Installer/Resources/"; // <-- web URL of the hosted updates.json files
                         string downloadfile = null;
                         Log.Write("Checking for updates... ", Colors.Inline);
                         WebClient myWebClient = new WebClient();

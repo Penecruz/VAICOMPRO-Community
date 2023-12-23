@@ -62,18 +62,25 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-Patch Notes V2.8.7.0
 
-This update fixes functionality with DCS Supercarrier communications and adds some other under the hood fixes and framework to allow continued development. 
+Patch Notes V2.9.2.0
 
--	Fixed Carrier comms when contacting approach.
--	CASE I and CASE II/III flow now works.
--	Added USS Forrestal as a Supercarrier enabled AI Comms recipient. (Supercarrier owners only)
--	Added USS Stennis as a Supercarrier enabled AI Comms recipient. (Supercarrier owners only)
-
+-	Fix Alt and Flush log errors.
+-	Fix errors with SRS PTT radio names across multiple modules.
+-	Fixed conflict with Mirage 2000 and Mirage F1.
+-	Fixed Mirage F1 Vaicom Pro kneeboard. (page 3 on the kneeboard and see known issue below)
+-	Added Mirage F1CE
+-	Added new DCS Player callsigns for F/A-18, F-15E and C-130.
+-	Refresh of the Vaicom Pro manual. (Thanks @BIONICRAVEN)
+ 
 Known Issues
 -	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
--	Server slot blocking scripts may cause Vaicom Pro to not detect an Aircraft or a seat change in multi crew aircraft. 
+
+-	Jester mini wheel may briefly display flash with very complex jester commands.
+-	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
+-	Mirage F1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World 
+        OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
+
 
 ## Community Team
 

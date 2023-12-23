@@ -357,7 +357,7 @@ namespace VAICOM
                     { "wMsgJ_UTIL_NAV_REST_MORE"    ,"\"Restore [ Steerpoint [1-3] | Fixed Point | Initial Point | Target | Home Base | Defense Point | Hostile Zone ]\"\nRestore steerpoint"   },
                     { "wMsgJ_RAD_TCN_MODE"          ,"\"TACAN Mode [ Off | Rec | Transmit | AA | Beacon ]\"\nSelect TACAN operation mode"   },
                     { "wMsgJ_RAD_TCN_SEL_GND_STN"   ,"\"TACAN [ Ground Station ID ] (e.g. TACAN Oscar Alfa Lima)\"\nSelect TACAN Ground Beacon"   },
-                    { "wMsgJ_RAD_TCN_TUNE_TAC"      ,"\"TACAN Tune [ Stennis | Washington | Roosevelt | Lincoln | Truman | Arco | Shell | Texaco ] or [ X-Ray | Yankee [0-9][0-9][0-9] ]\"\nSelect TACAN TAC unit (Carrier, Air Refuel) or specific channel."   },             
+                    { "wMsgJ_RAD_TCN_TUNE_TAC"      ,"\"TACAN Tune [ Stennis | Washington | Roosevelt | Lincoln | Truman | Forrestal | Arco | Shell | Texaco ] or [ X-Ray | Yankee [0-9][0-9][0-9] ]\"\nSelect TACAN TAC unit (Carrier, Air Refuel) or specific channel."   },             
 
                     // Defensive
                     { "wMsgJ_DEF_RWR_DSP_TYP"       ,"\"Display [ Airborne | Normal | AAA | Friendly | Unknown ]\"\nSelect RWR display mode" },
@@ -370,7 +370,7 @@ namespace VAICOM
                     //Datalink
                     { "wMsgJ_RAD_DL_SET_MODE"       ,"\"Link Mode [ Tactical| Fighter | Off ] \"\nSets Datalink mode" },
                     { "wMsgJ_RAD_DL_SET_FREQ_PRST"  ,"\"Link Preset [1-8] \"\nSelects Datalink frequency preset (1 = default)" },
-                    { "wMsgJ_RAD_DL_SET_HOST"       ,"\"Link Host [ Stennis | Washington | Roosevelt | Lincoln | Ticonderoga | Truman | Darkstar | Focus | Magic | Overlord | Wizard ]\"\nSelect Datalink (Carrier,AWACS) host unit." },
+                    { "wMsgJ_RAD_DL_SET_HOST"       ,"\"Link Host [ Stennis | Washington | Roosevelt | Lincoln | Ticonderoga | Truman | Forrestal | Darkstar | Focus | Magic | Overlord | Wizard ]\"\nSelect Datalink (Carrier,AWACS) host unit." },
 
                     //Iceman
                     { "wMsgI_ALT"                   ,"\"Go Angels [ 1 | 5 | 10 | 15 | 20 | 25 | 30 | 35 ] \"\nSets absolute altitude" },

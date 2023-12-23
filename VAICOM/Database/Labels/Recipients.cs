@@ -319,13 +319,15 @@ namespace VAICOM
                 { "FFG-7CL Oliver Hazzard Perry",   "FFG-7CL Oliver Hazzard Perry"  },
                 { "CVN-74 John C. Stennis",         "CVN-74 John C. Stennis"        },
                 { "CG-60 Normandy",                 "CG-60 Normandy"                },
-                { "CV-59 Forrestal",                "CV-59 Forrestal"               },
-                
+                                
                 // new carriers
                 { "CVN-71 Theodore Roosevelt",                          "CVN-71 Theodore Roosevelt"             },
                 { "CVN-72 Abraham Lincoln",                             "CVN-72 Abraham Lincoln"                },
                 { "CVN-73 George Washington",                           "CVN-73 George Washington"              },
                 { "CVN-75 Harry S. Truman",                             "CVN-75 Harry S. Truman"                },
+
+                // Non Supercarriers ATC Comms enabled Carriers
+                { "CV-59 Forrestal",                                    "CV-59 Forrestal"                       },
 
                 // new roles
 

@@ -81,7 +81,7 @@ namespace VAICOM
 
                     {"Mirage-F1" ,          new radioslotdevicelist() { Slot_map_INT = {6,7,0}, Slot_map_SRS = {6,7,0}, Slot_map_CUS = {0,0,0} } },
                     {"MB-339A" ,            new radioslotdevicelist() { Slot_map_INT = {6,7,0}, Slot_map_SRS = {6,7,0}, Slot_map_CUS = {0,0,0} } },
-                    {"F15-ESE" ,            new radioslotdevicelist() { Slot_map_INT = {7,8,0}, Slot_map_SRS = {7,8,0}, Slot_map_CUS = {0,0,0} } }, //Pene Add F15E place holder
+                    {"F15-ESE" ,            new radioslotdevicelist() { Slot_map_INT = {7,8,0}, Slot_map_SRS = {7,8,0}, Slot_map_CUS = {0,0,0} } },
                     {"A-29B" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"UH-60L" ,             new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"Hercules" ,           new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
@@ -107,7 +107,7 @@ namespace VAICOM
                     {"MiG-15Bis" ,  new radioslotlist() { Slot_map = { "RSI-6K", "", "" } } },
                     {"Su-27" ,      new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"Hawk" ,       new radioslotlist() { Slot_map = { "VHF", "UHF", ""} } },
-                    {"M-2000C" ,    new radioslotlist() { Slot_map = { "VHF", "UHF", ""} } },
+                    {"M-2000C" ,    new radioslotlist() { Slot_map = { "ERA 7000 V/UHF", "ERA 7200 UHF", ""} } },
 
                     {"artillery_commander",new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"FA-18C_hornet", new radioslotlist() { Slot_map = { "COMM1: ARC-210", "COMM2: ARC-210", ""} } },
@@ -115,7 +115,7 @@ namespace VAICOM
                     {"F-14A" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"F-14B" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"AJS37" ,      new radioslotlist() { Slot_map = { "AM Radio", "AM Radio", "" } } },
-                    {"F-5E-3" ,     new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "", "" } } },
+                    {"F-5E-3" ,     new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "", "" } } },
                     {"P-51D" ,      new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"SpitfireLFMkIX",new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"C-101" ,      new radioslotlist() { Slot_map = { "CB UHF", "CB VHF", ""} } },
@@ -144,13 +144,21 @@ namespace VAICOM
                     {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "", "" } } },
                     {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "Radio AN/ARC-164", "" } } },
 
-                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "VUHF (TRAP-136)", "UHF (TRAP-137B)", "" } } },
+                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "V/UHF (TRAP-136)", "UHF (TRAP-137B)", "" } } },
                     {"MB-339A" ,    new radioslotlist() { Slot_map = { "COMM1 Radio", "COMM2 Radio", "" } } },
-                    {"F-15ESE" ,    new radioslotlist() { Slot_map = { "UHF1", "UHF2", ""} } }, //Pene
+                    {"F-15ESE" ,    new radioslotlist() { Slot_map = { "ARC-164 V/UHF", "ARC-210 V/UHF", ""} } }, //Pene
                     {"A-29B" ,      new radioslotlist() { Slot_map = { "V/UHF XT-6013", "V/UHF XT-6013", "V/UHF XT-6013" } } }, //Pene
                     {"UH-60L" ,     new radioslotlist() { Slot_map = { "VHF-FM Radio AN/ARC-201 (1)", "Direction Finder Set AN/ARN-149", "VHF Radio AN/ARC-186" } } }, //Pene
                     {"Hercules" ,   new radioslotlist() { Slot_map = { "", "CB UHF", ""} } }, //Pene
                     {"T-45" ,       new radioslotlist() { Slot_map = { "RADIO2", "RADIO1", ""} } }, //Pene
+                    {"F-16I" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_50" ,   new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_50_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_52",    new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_52_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_Barak_40" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_Barak_30" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+
                     //{"F-22" ,       new radioslotlist() { Slot_map = { "VHF/UHF AN/ARC-182", "VHF/UHF AN/ARC-182", ""} } }, //Pene WIP
 
                 };
@@ -161,61 +169,68 @@ namespace VAICOM
 
                     {"A-10A" ,      new radioslotlist() { Slot_map = { "AN/ARC-186(V)", "AN/ARC-164 UHF", "AN/ARC-186(V)FM" } } },
                     {"F-15C" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF 1", "AN/ARC-164 UHF 2", "[AN/ARC-186(V)]" } } },
-                    {"Su-25" ,      new radioslotlist() { Slot_map = { "R-862", "R-828", "[AN/ARC-164 UHF]" } } },
-                    {"Su-25T" ,     new radioslotlist() { Slot_map = { "R-862", "R-828", "[AN/ARC-164 UHF]" } } },
-                    {"F-86F Sabre" ,new radioslotlist() { Slot_map = { "AN/ARC-27", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
+                    {"Su-25" ,      new radioslotlist() { Slot_map = { "R-862", "R-828", "" } } },
+                    {"Su-25T" ,     new radioslotlist() { Slot_map = { "R-862", "R-828", "" } } },
+                    {"F-86F Sabre" ,new radioslotlist() { Slot_map = { "AN/ARC-27", "", "" } } },
                     {"Ka-50" ,      new radioslotlist() { Slot_map = { "R-800L14 VHF/UHF", "R-828", "[SPU-9 SW]" } } },
                     {"Mi-8MT" ,     new radioslotlist() { Slot_map = { "R-863", "JADRO-1A", "R-828" } } },
                     {"UH-1H" ,      new radioslotlist() { Slot_map = { "AN/ARC-131", "AN/ARC-51BX - UHF", "AN/ARC-134",  } } },
                     {"A-10C" ,      new radioslotlist() { Slot_map = { "AN/ARC-210(G5)", "AN/ARC-164", "AN/ARC-186(V)" } } },
-                    {"TF-51D" ,     new radioslotlist() { Slot_map = { "SCR522A", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"MiG-15Bis" ,  new radioslotlist() { Slot_map = { "RSI-6K", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"Su-27" ,      new radioslotlist() { Slot_map = { "R-800", "R-864", "[AN/ARC-164 UHF]" } } },
+                    {"TF-51D" ,     new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
+                    {"MiG-15Bis" ,  new radioslotlist() { Slot_map = { "RSI-6K", "", "" } } },
+                    {"Su-27" ,      new radioslotlist() { Slot_map = { "R-800", "R-864", "" } } },
                     {"Hawk" ,       new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "ARI 23259/1", ""} } },
-                    {"M-2000C" ,    new radioslotlist() { Slot_map = { "TRT ERA 7000 (V/UHF)", "TRT ERA 7200 UHF", ""} } },
+                    {"M-2000C" ,    new radioslotlist() { Slot_map = { "TRT ERA 7000 V/UHF", "TRT ERA 7200 UHF", ""} } },
 
                     {"artillery_commander",new radioslotlist() { Slot_map = { "CA UHF/VHF", "CA UHF/VHF", "CA FM" } } },
-                    {"FA-18C_hornet", new radioslotlist() { Slot_map = {"AN/ARC-210 - 1", "AN/ARC-210 - 2", ""} } },
-                    {"F-14" ,       new radioslotlist() { Slot_map = { "AN/ARC-159(V)", "AN/ARC-182(V)","" } } },
-                    {"F-14A" ,       new radioslotlist() { Slot_map = { "AN/ARC-159(V)", "AN/ARC-182(V)","" } } },
-                    {"F-14B" ,       new radioslotlist() { Slot_map = { "AN/ARC-159(V)", "AN/ARC-182(V)","" } } },
+                    {"FA-18C_hornet", new radioslotlist() { Slot_map = { "AN/ARC-210 V/UHF", "AN/ARC-210 V/UHF", ""} } },
+                    {"F-14" ,       new radioslotlist() { Slot_map = { "AN/ARC-159 UHF", "AN/ARC-182 V/UHF","" } } },
+                    {"F-14A" ,       new radioslotlist() { Slot_map = { "AN/ARC-159 UHF", "AN/ARC-182 V/UHF", "" } } },
+                    {"F-14B" ,       new radioslotlist() { Slot_map = { "AN/ARC-159 UHF", "AN/ARC-182 V/UHF", "" } } },
                     {"AJS37" ,      new radioslotlist() { Slot_map = { "FR 22", "FR 24", "[AN/ARC-164 UHF]" } } },
-                    {"F-5E-3" ,     new radioslotlist() { Slot_map = { "AN/ARC-164", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"P-51D" ,      new radioslotlist() { Slot_map = { "SCR522A", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"SpitfireLFMkIX",new radioslotlist() { Slot_map = { "A.R.I. 1063", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
+                    {"F-5E-3" ,     new radioslotlist() { Slot_map = { "AN/ARC-164", "", "" } } },
+                    {"P-51D" ,      new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
+                    {"SpitfireLFMkIX",new radioslotlist() { Slot_map = { "A.R.I. 1063", "", "" } } },
                     {"C-101" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-134", ""} } },
-                    {"Bf-109K-4" ,  new radioslotlist() { Slot_map = { "FuG 16ZY", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"FW-190D9" ,   new radioslotlist() { Slot_map = { "FuG 16ZY", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"Su-33" ,      new radioslotlist() { Slot_map = { "R-800", "R-864", "[AN/ARC-164 UHF]" } } },
-                    {"MiG-21Bis" ,  new radioslotlist() { Slot_map = { "R-832", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"L-39ZA" ,     new radioslotlist() { Slot_map = { "R-832M", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"L-39C" ,      new radioslotlist() { Slot_map = { "R-832M", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
+                    {"Bf-109K-4" ,  new radioslotlist() { Slot_map = { "FuG 16ZY", "", "" } } },
+                    {"FW-190D9" ,   new radioslotlist() { Slot_map = { "FuG 16ZY", "", "" } } },
+                    {"Su-33" ,      new radioslotlist() { Slot_map = { "R-800", "R-864", "" } } },
+                    {"MiG-21Bis" ,  new radioslotlist() { Slot_map = { "R-832", "", "" } } },
+                    {"L-39ZA" ,     new radioslotlist() { Slot_map = { "R-832M", "", "" } } },
+                    {"L-39C" ,      new radioslotlist() { Slot_map = { "R-832M", "", "" } } },
                     {"SA342M" ,     new radioslotlist() { Slot_map = { "TRAP 138A", "UHF TRA 6031", "TRC 9600 PR4G" } } },
                     {"SA342L" ,     new radioslotlist() { Slot_map = { "TRAP 138A", "UHF TRA 6031", "TRC 9600 PR4G" } } },
-                    {"MiG-29" ,     new radioslotlist() { Slot_map = { "R-862", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"J-11A" ,      new radioslotlist() { Slot_map = { "R-862", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"AV8BNA" ,     new radioslotlist() { Slot_map = {"ARC-210 COM 1", "ARC-210 COM 2", ""} } },
-                    {"F-16C_50" ,   new radioslotlist() { Slot_map = { "AN/ARC-164", "AN/ARC-222", "" } } },
-                    {"Yak-52" ,     new radioslotlist() { Slot_map = {"Baklan 5", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
+                    {"MiG-29" ,     new radioslotlist() { Slot_map = { "R-862", "", "" } } },
+                    {"J-11A" ,      new radioslotlist() { Slot_map = { "R-862", "", "" } } },
+                    {"AV8BNA" ,     new radioslotlist() { Slot_map = { "ARC-210 V/UHF", "ARC-210 V/UHF", ""} } },
+                    {"F-16C_50" ,   new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"Yak-52" ,     new radioslotlist() { Slot_map = {"Baklan 5", "", "" } } },
 
                     {"Mi-24P" ,     new radioslotlist() { Slot_map = { "R_852", "Jadro-1A", "R-828" } } },
-                    {"AH-64D" ,     new radioslotlist() { Slot_map = { "SRS Radio 1", "SRS Radio 2", "SRS Radio 3" } } },
-                    {"MiG-19P" ,    new radioslotlist() { Slot_map = { "RSIU-4V", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
+                    {"AH-64D" ,     new radioslotlist() { Slot_map = { "ARC-164(V) UHF", "ARC-186(V) VHF", "ARC-210D V/UHF" } } },
+                    {"MiG-19P" ,    new radioslotlist() { Slot_map = { "RSIU-4V", "", "" } } },
                     {"JF-17" ,      new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "[VHF/UHF Expansion]" } } },
                     {"I-16" ,       new radioslotlist() { Slot_map = { "SRS Radio 1", "SRS Radio 2", "SRS Radio 3" } } },
                     {"MosquitoFBMkVI" ,   new radioslotlist() { Slot_map = { "SCR522A", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"Fw-190A8" ,   new radioslotlist() { Slot_map = { "FuG 16ZY", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"P-47D" ,      new radioslotlist() { Slot_map = { "SCR522", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
-                    {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "[AN/ARC-186(V)]", "[AN/ARC-164 UHF]" } } },
+                    {"Fw-190A8" ,   new radioslotlist() { Slot_map = { "FuG 16ZY", "", "" } } },
+                    {"P-47D" ,      new radioslotlist() { Slot_map = { "SCR522", "", "" } } },
+                    {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "", "" } } },
                     {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "[AN/ARC-164(U)]", "[AN/ARC-186(V)FM]" } } },
 
-                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "" } } },
+                    {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "TRAP 136 V/UHF", "TRAP 137B UHF", "" } } },
                     {"MB-339A" ,    new radioslotlist() { Slot_map = { "COMM1 VHF Radio", "COMM2 UHF Radio", "" } } },
                     {"F-15ESE" ,    new radioslotlist() { Slot_map = { "AN/ARC-164", "AN/ARC-210 G5", ""} } }, //Pene confirm Gen 5
                     {"A-29B" ,      new radioslotlist() { Slot_map = { "AN/ARC-150V", "SRT-651/N", ""} } }, //Pene confirm SRT
                     {"UH-60L" ,     new radioslotlist() { Slot_map = { "[AN/ARC-201]", "AN/ARN-149 DF", "AN/ARC-186" } } },
                     {"Hercules" ,   new radioslotlist() { Slot_map = { "", "AN/ARC-164", ""} } },
                     {"T-45" ,       new radioslotlist() { Slot_map = { "AN/ARC-182 1", "AN/ARC-182 2", ""} } }, //Pene WIP
+                    {"F-16I" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_50" ,   new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_50_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_52",    new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_52_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_Barak_40" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16D_Barak_30" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
 
                 };
             }
@@ -496,7 +511,7 @@ namespace VAICOM
                 TXNodes.TX2.enabled = false;
                 TXNodes.TX3.enabled = false;
                 TXNodes.TX4.enabled = false;
-                TXNodes.TX5.enabled = false;
+                TXNodes.TX5.enabled = true;//false
                 TXNodes.TX6.enabled = false;
 
                 switch (State.activeconfig.SingleHotkey)

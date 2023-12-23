@@ -201,6 +201,7 @@ namespace VAICOM
                     processtring = processtring.Replace("FFG-7CL ", "");
                     processtring = processtring.Replace("CVN-74 ", "");
                     processtring = processtring.Replace("CG-60 ", "");
+                    processtring = processtring.Replace("CV-59 ", "");
 
                     foreach (KeyValuePair<string, DCSmodule> mod in DCSmodules.LookupTable)
                     {

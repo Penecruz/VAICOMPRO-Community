@@ -248,6 +248,7 @@ namespace VAICOM.Extensions.RIO
                 public static List<DeviceAction> Seq_J_RAD_TCN_TAC_ROOS = new List<DeviceAction>() { RIO.Atom_J_RAD_TCN_TAC_ROOS };
                 public static List<DeviceAction> Seq_J_RAD_TCN_TAC_LINC = new List<DeviceAction>() { RIO.Atom_J_RAD_TCN_TAC_LINC };
                 public static List<DeviceAction> Seq_J_RAD_TCN_TAC_TRUM = new List<DeviceAction>() { RIO.Atom_J_RAD_TCN_TAC_TRUM };
+                public static List<DeviceAction> Seq_J_RAD_TCN_TAC_FORE = new List<DeviceAction>() { RIO.Atom_J_RAD_TCN_TAC_FORE };
                 //public static List<DeviceAction> Seq_PlaceHolder198 = new List<DeviceAction>() { RIO.Atom_Placeholder198 };
                 //public static List<DeviceAction> Seq_PlaceHolder199 = new List<DeviceAction>() { RIO.Atom_Placeholder199 };
 
@@ -463,11 +464,14 @@ namespace VAICOM.Extensions.RIO
                 public static List<DeviceAction> Seq_J_UTIL_NAV_GRD_5SCTR = new List<DeviceAction>() { RIO.Atom_J_MENU_OPTION_5, RIO.Atom_J_MENU_OPTION_6, RIO.Atom_J_MENU_OPTION_7, RIO.Atom_J_MENU_OPTION_5 };
                 public static List<DeviceAction> Seq_J_UTIL_NAV_GRD_6SCTR = new List<DeviceAction>() { RIO.Atom_J_MENU_OPTION_5, RIO.Atom_J_MENU_OPTION_6, RIO.Atom_J_MENU_OPTION_7, RIO.Atom_J_MENU_OPTION_6 };
                 public static List<DeviceAction> Seq_J_UTIL_NAV_GRD_MARKER = new List<DeviceAction>() { RIO.Atom_J_MENU_OPTION_5, RIO.Atom_J_MENU_OPTION_6, RIO.Atom_J_MENU_OPTION_3 };
+                
+                //Supercarriers
                 public static List<DeviceAction> Seq_J_RAD_DL_HOST_WASH = new List<DeviceAction>() { RIO.Atom_J_RAD_DL_HOST_WASH };
                 public static List<DeviceAction> Seq_J_RAD_DL_HOST_ROOS = new List<DeviceAction>() { RIO.Atom_J_RAD_DL_HOST_ROOS };
                 public static List<DeviceAction> Seq_J_RAD_DL_HOST_LINC = new List<DeviceAction>() { RIO.Atom_J_RAD_DL_HOST_LINC };
                 public static List<DeviceAction> Seq_J_RAD_DL_HOST_TRUM = new List<DeviceAction>() { RIO.Atom_J_RAD_DL_HOST_TRUM };
                 public static List<DeviceAction> Seq_J_RAD_DL_HOST_TICO = new List<DeviceAction>() { RIO.Atom_J_RAD_DL_HOST_TICO };
+                public static List<DeviceAction> Seq_J_RAD_DL_HOST_FORE = new List<DeviceAction>() { RIO.Atom_J_RAD_DL_HOST_FORE };
                 //public static List<DeviceAction> Seq_PlaceHolder388 = new List<DeviceAction>() { RIO.Atom_Placeholder388 };
                 //public static List<DeviceAction> Seq_PlaceHolder389 = new List<DeviceAction>() { RIO.Atom_Placeholder389 };
                 // end of utility

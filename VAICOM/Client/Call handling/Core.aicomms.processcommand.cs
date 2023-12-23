@@ -160,6 +160,26 @@ namespace VAICOM
                     {
                     }
 
+                    // special case: Moose menus
+
+                    try
+                    {
+                        if (State.have["moose"])
+                        {
+                            Log.Write("Matched Moose menu command.", Colors.Text);
+
+                            State.currentkey["command"] = State.currentkey["moose"];
+                            State.usedalias["command"] = State.usedalias["moose"];
+                            State.currentkey["recipient"] = "moose";
+                            State.currentrecipientclass = Recipientclasses.Moose;
+                            State.have["recipient"] = true;
+                            State.have["command"] = true;
+                        }
+                    }
+                    catch
+                    {
+                    }
+
                 }
 
                 public static void scanforkeywords()
@@ -646,10 +666,12 @@ namespace VAICOM
                             }
 
                             if (State.currentcommand.isCarrier() && !State.currentmessageunit.descr.ToLower().Contains("supercarrier"))
-                            {
-                                Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning);
+                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("forrestal"))
+                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("stennis"))
+                                    {
+                                Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning); // Pene changes to allow non SC units if module is installed
                                 UI.Playsound.Error();
-                                return true;
+                                return true; //true
                             }
                         }
 

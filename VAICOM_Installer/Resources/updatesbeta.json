@@ -7,12 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20230916,
-      "version": 2863,
-      "versionstring": "2.8.6.3",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.8.6.3-beta/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build Multiple Branch updates 2.8.6.3"
+      "releasedate": 20231221,
+      "version": 2916,
+      "versionstring": "2.9.1.6",
+      "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
+      "releasenotes": "Beta Test build 2.9.1.6 - Xmas RC2 in Beta. Testing concludes 22.12.2023. "
     }
   ]
 }
-

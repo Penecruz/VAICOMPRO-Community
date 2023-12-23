@@ -154,7 +154,7 @@ namespace VAICOM
 
             public static bool CheckSuperCarrier(string checkstr)
             {
-                return checkstr.ToLower().Contains("kuznetsov") || checkstr.ToLower().Contains("stennis") || checkstr.ToLower().Contains("roosevelt") || checkstr.ToLower().Contains("lincoln") || checkstr.ToLower().Contains("washington") || checkstr.ToLower().Contains("truman");
+                return checkstr.ToLower().Contains("kuznetsov") || checkstr.ToLower().Contains("stennis") || checkstr.ToLower().Contains("roosevelt") || checkstr.ToLower().Contains("lincoln") || checkstr.ToLower().Contains("washington") || checkstr.ToLower().Contains("truman") || checkstr.ToLower().Contains("forrestal");
             }
 
             public static void ExtractChunk4(ServerMessage serverMessage)
@@ -163,7 +163,7 @@ namespace VAICOM
                 processingchunks = true;
                 try
                 {
-                    List<string> cats = new List<string>() { "Player", "Flight", "JTAC", "AWACS", "Tanker", "Crew", "Aux", "Cargo" };
+                    List<string> cats = new List<string>() { "Player", "Flight", "JTAC", "AWACS", "Tanker", "Crew", "Aux", "Cargo", "Moose" };
                     foreach (string catstr in cats)
                     {
                         try

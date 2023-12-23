@@ -255,7 +255,7 @@ namespace VAICOM
 
                         // inserts, parameters, appendices..
                         if (State.currentcommand.RequiresFlightNumInsert()) { State.currentmessage.parameters.Add(State.currentflightrecipientnumber); }
-                        if (State.currentcommand.hasparameter)  { SetParameters(); }
+                        if (State.currentcommand.hasparameter) { SetParameters(); }
                         if (State.currentcommand.hasAppendix() & (State.have["apxwpn"] || State.have["apxdir"])) { SetAppendices(); }
 
                         // settings..
@@ -392,7 +392,7 @@ namespace VAICOM
                             Message.SetMenuItemAction();
                         }
                         // For Moose Pene testing
-                        if ((State.currentrecipientclass.Equals(Recipientclasses.Moose) & !State.currentcommand.isOptions()))
+                        if (State.currentrecipientclass.Equals(Recipientclasses.Moose))
                         {
                             State.currentmessage.type = Messagetypes.iCommandSequence;
                             Message.SetMenuCmdSequence();
