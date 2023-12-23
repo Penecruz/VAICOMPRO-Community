@@ -249,6 +249,7 @@ namespace VAICOM
                 { "Run Inertial Starter",   "runinertialstarter"    },
                 { "Request HMD",            "requesthmd"            },
                 { "Request NVG",            "requestnvg"            },
+                { "Load Water",             "loadwater"             },
                 { "Turbo On",               "turboon"               },
                 { "Turbo Off",              "turbooff"              },
                 { "Ground Power On",        "groundpoweron"         },
@@ -289,6 +290,7 @@ namespace VAICOM
                 { "Lightning Ball" ,           "wMsgLeaderHornetBall"                  },
                 { "Prowler Ball" ,             "wMsgLeaderHornetBall"                  },
                 { "Skyhawk Ball" ,             "wMsgLeaderHornetBall"                  },
+                { "Goshawk Ball" ,             "wMsgLeaderHornetBall"                  },
 
                 { "Ball" ,                     "wMsgLeaderHornetBall"                  }, // forced alias
 
@@ -305,11 +307,10 @@ namespace VAICOM
                 
                 { "Established" ,              "wMsgLeaderEsteblished"                 }, 
                 { "Commencing" ,               "wMsgLeaderCommencing"                  },// CASE III
-                { "Checking In" ,              "wMsgLeaderChecingIn"                   },// CASE III
-                { "Approach Check In" ,        "wMsgLeaderChecingIn"                   },// CASE III // forced
+                { "Checking In" ,              "wMsgLeaderCheckingIn"                  },// CASE III //fixed? Pene testing
+                { "Approach Check In" ,        "wMsgLeaderCheckingIn"                  }, //forced
                 { "Platform" ,                 "wMsgLeaderPlatform"                    },// CASE III
 
-                { "Say Needle" ,               "wMsgLeaderSayNeedle"                   }, // force removed 
                 { "Needles" ,                  "wMsgLeaderSayNeedle"                   }, // forced add
 
 
@@ -343,6 +344,18 @@ namespace VAICOM
                 { "Take 10",                "menu10"                },
                 { "Take 11",                "menu11"                },
                 { "Take 12",                "menu12"                },
+                { "Take One",               "menu01"                },// Try to reduce Flight confusion and accent fix
+                { "Take Two",               "menu02"                },
+                { "Take Three",             "menu03"                },
+                { "Take Four",              "menu04"                },
+                { "Take Five",              "menu05"                },
+                { "Take Six",               "menu06"                },
+                { "Take Seven",             "menu07"                },
+                { "Take Eight",             "menu08"                },
+                { "Take Nine",              "menu09"                },
+                { "Take Ten",               "menu10"                },
+                { "Take Eleven",            "menu11"                },
+                { "Take Twelve",            "menu12"                },
 
                 // special
                 { "Switch*",                "switch"                },
@@ -365,8 +378,8 @@ namespace VAICOM
                 { "Page",                  "wMsgShowKneeboardTab"         },
 
                 // Moose Airboss
-                { "Marshal Check",         "Radio Check Marshal"          },
-                { "LSO Check",             "Radio Check LSO"              },
+                { "Airboss Marshal Check",         "Radio Check Marshal"  },
+                { "Airboss LSO Check",             "Radio Check LSO"      },
                 { "Request Commence",      "Request Commence"             },
                 { "Emergency Landing",     "Emergency Landing"            },
             };

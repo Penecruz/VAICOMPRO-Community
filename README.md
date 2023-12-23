@@ -30,7 +30,8 @@ The VAICOMPRO Community Team
 
 VAICOMPRO Community 2.8.X.X is not designed to be backwards compatible with DCS 2.7.X If you wish to continue using VAICOMPRO for DCS 2.7, please use Hollywood_315's final release and not VAICOMPRO Community.
 
-VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts. This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
+VAICOMPRO Community Edition will not pass the Integrity Check on Multiplayer Servers that require Pure Client Scripts unless the AIRIO and Kneeboard extensions are deactivated via the VAICOMPRO UI.
+This is because VAICOMPRO adds lines to some of DCS World's core LUA files to enable it to function. Multiplayer Server administrators must enable Pure Client Scripts as an option as it is off by default. Very few Servers require Pure Client Scripts. This is something that only ED can change.
 
 DiCE: DCS Integrated Countermeasure Editor creates many functionality issues with VAICOMPRO Community, and it is recommended this be uninstalled before using VAICOMPRO Community.
 
@@ -61,18 +62,24 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-VAICOMPRO Community Edition V2.8.4.4
+Patch Notes V2.9.2.0
 
-- Added ATC recipients for Marianas Map
-- Added ATC recipients for South Atlantic Map
-- Added ATC Recipients for Sinai Map
-- Fixed ATC recipients for Persian Gulf Map
-- Fixed ATC recipients on Nevada Map
-- Updated Voice Attack Profile (VAP) to reflect latest Keywords list.
-- Updated message Commands list to latest DCS open Beta list
-
+-	Fix Alt and Flush log errors.
+-	Fix errors with SRS PTT radio names across multiple modules.
+-	Fixed conflict with Mirage 2000 and Mirage F1.
+-	Fixed Mirage F1 Vaicom Pro kneeboard. (page 3 on the kneeboard and see known issue below)
+-	Added Mirage F1CE
+-	Added new DCS Player callsigns for F/A-18, F-15E and C-130.
+-	Refresh of the Vaicom Pro manual. (Thanks @BIONICRAVEN)
+ 
 Known Issues
-- IC will not be passed for Servers that recuire Pure Client Scripts. (This due to AIRIO and Kneeboard implementation)
+
+-	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
+-	Jester mini wheel may briefly display flash with very complex jester commands.
+-	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
+-	Mirage F1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World 
+        OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
+
 
 ## Community Team
 

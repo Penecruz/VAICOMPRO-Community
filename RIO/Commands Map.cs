@@ -254,6 +254,7 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_RAD_TCN_TAC_ROOS",          new List<List<DeviceAction>> {Macro.Seq_J_RAD_TCN_TAC_ROOS        }},
             {"wMsgJ_RAD_TCN_TAC_LINC",          new List<List<DeviceAction>> {Macro.Seq_J_RAD_TCN_TAC_LINC        }},
             {"wMsgJ_RAD_TCN_TAC_TRUM",          new List<List<DeviceAction>> {Macro.Seq_J_RAD_TCN_TAC_TRUM        }},
+            {"wMsgJ_RAD_TCN_TAC_FORE",          new List<List<DeviceAction>> {Macro.Seq_J_RAD_TCN_TAC_FORE        }},
             //{"wMsgPlaceHolder198",          new List<List<DeviceAction>> {Macro.Seq_PlaceHolder198        }},
             //{"wMsgPlaceHolder199",          new List<List<DeviceAction>> {Macro.Seq_PlaceHolder199        }},
 
@@ -416,6 +417,8 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_RAD_DL_HOST_LINC",          new List<List<DeviceAction>> {Macro.Seq_J_MENU_MAIN, Macro.Seq_J_RAD_DL_HOST_LINC     }},
             {"wMsgJ_RAD_DL_HOST_TRUM",          new List<List<DeviceAction>> {Macro.Seq_J_MENU_MAIN, Macro.Seq_J_RAD_DL_HOST_TRUM     }},
             {"wMsgJ_RAD_DL_HOST_TICO",          new List<List<DeviceAction>> {Macro.Seq_J_MENU_MAIN, Macro.Seq_J_RAD_DL_HOST_TICO     }},
+            {"wMsgJ_RAD_DL_HOST_FORE",          new List<List<DeviceAction>> {Macro.Seq_J_MENU_MAIN, Macro.Seq_J_RAD_DL_HOST_FORE     }},
+
             {"wMsgJESTER_Steerpoint_SP1",       new List<List<DeviceAction>> { Macro.Seq_J_MENU_CONTEXT, Macro.Seq_JESTER_Steerpoint_SP1     }},
             {"wMsgJESTER_Steerpoint_SP2",       new List<List<DeviceAction>> { Macro.Seq_J_MENU_CONTEXT, Macro.Seq_JESTER_Steerpoint_SP2     }},
             {"wMsgJESTER_Steerpoint_SP3",       new List<List<DeviceAction>> { Macro.Seq_J_MENU_CONTEXT, Macro.Seq_JESTER_Steerpoint_SP3     }},

@@ -1,8 +1,8 @@
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."materials.lua")
 
-indicator_type  = 0 
-purposes = { 1 } 
+indicator_type  = indicator_types.COMMON --0
+purposes = {render_purpose.SCREENSPACE_INSIDE_COCKPIT,render_purpose.HUD_ONLY_VIEW} --{}
 screenspace_scale = 4;
 
 -------PAGE IDs-------

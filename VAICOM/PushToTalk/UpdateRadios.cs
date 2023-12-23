@@ -43,8 +43,8 @@ namespace VAICOM
 
                         // business logic to assign the aircraft radios (TX1-3 + TX5)
 
-                        bool harrier = State.currentmodule.Equals(DCSmodules.LookupTable["AV-8B"]);
-                        bool viper = State.currentmodule.Equals(DCSmodules.LookupTable["F-16C_50"]);
+                        bool harrier = State.currentmodule.Equals(DCSmodules.LookupTable["AV-8B"]) ;
+                        bool viper = State.currentstate.id.Contains("F-16");
                         bool tomcat = State.currentstate.id.Contains("F-14");
                         bool strike = State.currentmodule.Equals(DCSmodules.LookupTable["F-15ESE"]);
 
@@ -215,7 +215,7 @@ namespace VAICOM
                 TXNodes.TX2.enabled = false;
                 TXNodes.TX3.enabled = false;
                 TXNodes.TX4.enabled = false;
-                TXNodes.TX5.enabled = false;
+                TXNodes.TX5.enabled = false; //false
                 TXNodes.TX6.enabled = false;
 
                 switch (State.activeconfig.SingleHotkey)

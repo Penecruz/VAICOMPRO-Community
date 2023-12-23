@@ -39,6 +39,7 @@ namespace VAICOM
                         { "Warfighter",            "CVN-73 George Washington"       },
                         { "Courage",               "CVN-74 John C. Stennis"         },
                         { "Lone Warrior",          "CVN-75 Harry S. Truman"         },
+                        { "Hand Book",             "CV-59 Forrestal"                },
 
                     };
 
@@ -60,7 +61,7 @@ namespace VAICOM
                         { "Ball" ,                      "wMsgLeaderHornetBall"                  },
                         { "Needles" ,                   "wMsgLeaderSayNeedle"                   }, 
                         { "Low State" ,                 "wMsgLeaderConfirmRemainingFuel"        },
-                        { "Approach Check In" ,         "wMsgLeaderChecingIn"                   },
+                        { "Approach Check In" ,         "wMsgLeaderCheckingIn"                  },
                         { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"      }, 
                         { "Meatball" ,                  "wMsgLeaderBall"                        },
 
@@ -74,6 +75,7 @@ namespace VAICOM
                         { "Lightning Ball" ,           "wMsgLeaderHornetBall"                  },
                         { "Prowler Ball" ,             "wMsgLeaderHornetBall"                  },
                         { "Skyhawk Ball" ,             "wMsgLeaderHornetBall"                  },
+                        { "Goshawk Ball" ,             "wMsgLeaderHornetBall"                  },
 
                     };
 

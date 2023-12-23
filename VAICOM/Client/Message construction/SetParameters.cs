@@ -50,18 +50,19 @@ namespace VAICOM
                                         break;
 
                                     case 18004:
+                                        //State.currentmessage.parameters.Add("device:0, type:4");
+                                        //State.currentmessage.parameters.Add("device:" + State.currentcommand.device); //Set HMD
                                         State.currentmessage.parameters.Add(State.currentcommand.type);
                                         State.currentmessage.parameters.Add(State.currentcommand.device);
+                                        //State.currentmessage.parameters.Add(State.currentcommand.parametername);
                                         break;
 
                                     case 18005:
-                                        State.currentmessage.parameters.Add(State.currentcommand.type);
+                                        //State.currentmessage.parameters.Add(":" + State.currentcommand.device);
+                                        State.currentmessage.parameters.Add(State.currentcommand.type); //Set NVG
                                         State.currentmessage.parameters.Add(State.currentcommand.device);
-                                        break;
-
-                                    case 18006:
-                                        State.currentmessage.parameters.Add(State.currentcommand.type);
-                                        State.currentmessage.parameters.Add(State.currentcommand.power_source);
+                                        //State.currentmessage.parameters.Add(State.currentcommand.parametername);
+                                        //State.currentmessage.parameters.Add("device:1, type:4");
                                         break;
 
                                     case 18007:
@@ -70,13 +71,24 @@ namespace VAICOM
                                         break;
 
                                     case 18008:
-                                        State.currentmessage.parameters.Add(State.currentcommand.parametername);
-                                        State.currentmessage.parameters.Add(State.currentcommand.value);
+                                        State.currentmessage.parameters.Add(State.currentcommand.type);
+                                        State.currentmessage.parameters.Add(State.currentcommand.power_source);
                                         break;
 
                                     case 18009:
                                         State.currentmessage.parameters.Add(State.currentcommand.parametername);
                                         State.currentmessage.parameters.Add(State.currentcommand.value);
+                                        break;
+
+                                    case 18010:
+                                        State.currentmessage.parameters.Add(State.currentcommand.parametername);
+                                        State.currentmessage.parameters.Add(State.currentcommand.value);
+                                        break;
+
+                                    case 18006:
+                                        //State.currentmessage.parameters.Add(State.currentcommand.type);
+                                        State.currentmessage.parameters.Add(State.currentcommand.volume); // load water for AV-8B
+                                        State.currentmessage.parameters.Add(State.currentcommand.device);
                                         break;
 
                                     default:
@@ -95,7 +107,7 @@ namespace VAICOM
                             break;
 
                         case "wMsgLeaderGroundToggleWheelChocks":
-                            State.currentmessage.parameters.Add(State.currentcommand.on);
+                            State.currentmessage.parameters.Add(State.currentcommand.on); // F-14 try leaving state null?
                             break;
 
                         case "wMsgLeaderGroundToggleCanopy":

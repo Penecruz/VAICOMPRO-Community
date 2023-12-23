@@ -247,6 +247,7 @@ namespace VAICOM.Extensions.RIO
             { "wMsgJ_RAD_TCN_TAC_ROOS" ,            new CommandInfo { uniqueid = 23395, name = "wMsgJ_RAD_TCN_TAC_ROOS",            displayname = Labels.aicommands["wMsgJ_RAD_TCN_TAC_ROOS"], enabled = true           } },
             { "wMsgJ_RAD_TCN_TAC_LINC" ,            new CommandInfo { uniqueid = 23396, name = "wMsgJ_RAD_TCN_TAC_LINC",            displayname = Labels.aicommands["wMsgJ_RAD_TCN_TAC_LINC"], enabled = true           } },
             { "wMsgJ_RAD_TCN_TAC_TRUM" ,            new CommandInfo { uniqueid = 23397, name = "wMsgJ_RAD_TCN_TAC_TRUM",            displayname = Labels.aicommands["wMsgJ_RAD_TCN_TAC_TRUM"], enabled = true           } },
+            { "wMsgJ_RAD_TCN_TAC_FORE" ,            new CommandInfo { uniqueid = 23398, name = "wMsgJ_RAD_TCN_TAC_FORE",            displayname = Labels.aicommands["wMsgJ_RAD_TCN_TAC_FORE"], enabled = true           } },
             //{ "wMsgPlaceHolder198" ,            new CommandInfo { uniqueid = 23398, name = "wMsgPlaceHolder198",            displayname = Labels.aicommands["wMsgPlaceHolder198"]          } },
             //{ "wMsgPlaceHolder199" ,            new CommandInfo { uniqueid = 23399, name = "wMsgPlaceHolder199",            displayname = Labels.aicommands["wMsgPlaceHolder199"]          } },
 
@@ -407,11 +408,14 @@ namespace VAICOM.Extensions.RIO
 
             { "wMsgJ_RESET" ,                   new CommandInfo { uniqueid = 23536, name = "wMsgJ_RESET",                   displayname = Labels.aicommands["wMsgJ_RESET"], enabled = true           } },
 
+            // Supercarriers
             { "wMsgJ_RAD_DL_HOST_WASH" ,        new CommandInfo { uniqueid = 23537, name = "wMsgJ_RAD_DL_HOST_WASH",        displayname = Labels.aicommands["wMsgJ_RAD_DL_HOST_WASH"], enabled = true            } },
             { "wMsgJ_RAD_DL_HOST_ROOS" ,        new CommandInfo { uniqueid = 23538, name = "wMsgJ_RAD_DL_HOST_ROOS",        displayname = Labels.aicommands["wMsgJ_RAD_DL_HOST_ROOS"], enabled = true            } },
             { "wMsgJ_RAD_DL_HOST_LINC" ,        new CommandInfo { uniqueid = 23539, name = "wMsgJ_RAD_DL_HOST_LINC",        displayname = Labels.aicommands["wMsgJ_RAD_DL_HOST_LINC"], enabled = true            } },
             { "wMsgJ_RAD_DL_HOST_TRUM" ,        new CommandInfo { uniqueid = 23540, name = "wMsgJ_RAD_DL_HOST_TRUM",        displayname = Labels.aicommands["wMsgJ_RAD_DL_HOST_TRUM"], enabled = true            } },
             { "wMsgJ_RAD_DL_HOST_TICO" ,        new CommandInfo { uniqueid = 23541, name = "wMsgJ_RAD_DL_HOST_TICO",        displayname = Labels.aicommands["wMsgJ_RAD_DL_HOST_TICO"], enabled = true            } },
+            { "wMsgJ_RAD_DL_HOST_FORE" ,        new CommandInfo { uniqueid = 23541, name = "wMsgJ_RAD_DL_HOST_FORE",        displayname = Labels.aicommands["wMsgJ_RAD_DL_HOST_FORE"], enabled = true            } }, // Add Forrestal
+
             { "wMsgJESTER_Steerpoint_SP1" ,     new CommandInfo { uniqueid = 23542, name = "wMsgJESTER_Steerpoint_SP1",     displayname = Labels.aicommands["wMsgJESTER_Steerpoint_SP1"], enabled = true             } },//
             { "wMsgJESTER_Steerpoint_SP2" ,     new CommandInfo { uniqueid = 23543, name = "wMsgJESTER_Steerpoint_SP2",     displayname = Labels.aicommands["wMsgJESTER_Steerpoint_SP2"], enabled = true             } },//
             { "wMsgJESTER_Steerpoint_SP3" ,     new CommandInfo { uniqueid = 23544, name = "wMsgJESTER_Steerpoint_SP3",     displayname = Labels.aicommands["wMsgJESTER_Steerpoint_SP3"], enabled = true             } },//

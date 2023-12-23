@@ -374,7 +374,6 @@ namespace VAICOM
                 { "LHA-1 Tarawa",               new Recipient { uniqueid = 15506, category = RecipientCategories.aiunit, name = "wAIUnitATCTarawa",            displayname = Labels.airecipients["LHA-1 Tarawa"], blockedforFree = true } }, // was 15505 ship
                 { "FFG-7CL Oliver Hazzard Perry",new Recipient{ uniqueid = 15507, category = RecipientCategories.aiunit, name = "wAIUnitATCHazzardPerry",      displayname = Labels.airecipients["FFG-7CL Oliver Hazzard Perry"], blockedforFree = true } },// was 15506 ship
                 { "CG-60 Normandy",             new Recipient { uniqueid = 15508, category = RecipientCategories.aiunit, name = "wAIUnitATCCGNormandy",        displayname = Labels.airecipients["CG-60 Normandy"], blockedforFree = true } },// was 15508 ship
-                { "CV-59 Forrestal",            new Recipient { uniqueid = 15509, category = RecipientCategories.aiunit, name = "wAIUnitATCForrestal",         displayname = Labels.airecipients["CV-59 Forrestal"], blockedforFree = true } },
                 
                 // new carriers
                 
@@ -382,6 +381,9 @@ namespace VAICOM
                 { "CVN-72 Abraham Lincoln",     new Recipient { uniqueid = 15511, category = RecipientCategories.aiship, name = "wAIUnitATCLincoln",           displayname = Labels.airecipients["CVN-72 Abraham Lincoln"], blockedforFree = true, requiresrealatc = true } },
                 { "CVN-73 George Washington",   new Recipient { uniqueid = 15512, category = RecipientCategories.aiship, name = "wAIUnitATCWashington",        displayname = Labels.airecipients["CVN-73 George Washington"], blockedforFree = true, requiresrealatc = true } },
                 { "CVN-75 Harry S. Truman",     new Recipient { uniqueid = 15513, category = RecipientCategories.aiship, name = "wAIUnitATCTruman",            displayname = Labels.airecipients["CVN-75 Harry S. Truman"], blockedforFree = true, requiresrealatc = true } },
+
+                // Non Supercarrier ATC comms enabled
+                { "CV-59 Forrestal",            new Recipient { uniqueid = 15509, category = RecipientCategories.aiunit, name = "wAIUnitATCForrestal",         displayname = Labels.airecipients["CV-59 Forrestal"], blockedforFree = true } },
 
                 // new roles
                 { "wAIUnitCarrierRoleNull",     new Recipient { uniqueid = 15520, category = RecipientCategories.aiship, name = "wAIUnitCarrierRoleNull", }      },

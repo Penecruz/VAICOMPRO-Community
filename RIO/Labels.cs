@@ -435,16 +435,19 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_UTIL_CONTR_INACTIVE",       "Jester suspend"                },//na
 
             {"wMsgJ_RESET",                     "Reset"                         },
-
+            // Supercarriers
             {"wMsgJ_RAD_DL_HOST_WASH",          "DL Host Washington"            },
             {"wMsgJ_RAD_DL_HOST_ROOS",          "DL Host Roosevelt"             },
             {"wMsgJ_RAD_DL_HOST_LINC",          "DL Host Lincoln"               },
             {"wMsgJ_RAD_DL_HOST_TRUM",          "DL Host Truman"                },
-            {"wMsgJ_RAD_DL_HOST_TICO",          "DL Host Ticonderoga"                       },
+            {"wMsgJ_RAD_DL_HOST_TICO",          "DL Host Ticonderoga"           },
+            {"wMsgJ_RAD_DL_HOST_FORE",          "DL Host Forrestal"             }, // Add Forrestal
             {"wMsgJ_RAD_TCN_TAC_WASH" ,         "TACAN Tune Washington"                     },
             {"wMsgJ_RAD_TCN_TAC_ROOS",          "TACAN Tune Roosevelt"                      },
             {"wMsgJ_RAD_TCN_TAC_LINC" ,         "TACAN Tune Lincoln"                        },
             {"wMsgJ_RAD_TCN_TAC_TRUM",          "TACAN Tune Truman"                         },
+            {"wMsgJ_RAD_TCN_TAC_FORE",          "TACAN Tune Forrestal"                      }, // Add Forrestal
+
             {"wMsgJESTER_Steerpoint_SP1",       "LANTIRN Track Steerpoint 1"                },
             {"wMsgJESTER_Steerpoint_SP2",       "LANTIRN Track Steerpoint 2"                },
             {"wMsgJESTER_Steerpoint_SP3",       "LANTIRN Track Steerpoint 3"                },

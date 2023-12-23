@@ -153,7 +153,7 @@ namespace VAICOM
                         }
 
                     }
-                    State.currentstate.DLunits = DLunits.OrderBy(o => o.range).ToList();
+                    State.currentstate.DLunits = DLunits.OrderBy(o => o.range).ToList(); //pene what's going on here??
                     helper.getDLstate();
                 }
                 catch
