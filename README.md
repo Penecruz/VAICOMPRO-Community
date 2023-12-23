@@ -62,21 +62,24 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 
 ## Patch Notes
 
-Patch Notes V2.8.6.3
+Patch Notes V2.9.2.0
 
--	Fixed AH-64D to Single TX node.
--	Fixed F-5E-3 to Single TX node.
--	Added new recipient “Ground” for ground crew.
--	Added more realistic Tanker communications command set. (see manual)
--	Added Syrian and Cypriot ATC recipients that were missing. (see manual)
--	Added Auto Update check on plugin startup (release and Beta).
--	Added Beta branch update functionality.
--	Added Moose recipients and command structure. (Deactivated in this build)
-
-
+-	Fix Alt and Flush log errors.
+-	Fix errors with SRS PTT radio names across multiple modules.
+-	Fixed conflict with Mirage 2000 and Mirage F1.
+-	Fixed Mirage F1 Vaicom Pro kneeboard. (page 3 on the kneeboard and see known issue below)
+-	Added Mirage F1CE
+-	Added new DCS Player callsigns for F/A-18, F-15E and C-130.
+-	Refresh of the Vaicom Pro manual. (Thanks @BIONICRAVEN)
+ 
 Known Issues
 
 -	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
+-	Jester mini wheel may briefly display flash with very complex jester commands.
+-	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
+-	Mirage F1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World 
+        OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
+
 
 ## Community Team
 
