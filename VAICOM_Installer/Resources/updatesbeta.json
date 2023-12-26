@@ -3,8 +3,8 @@
   [
     {
       "title": "VAICOM PRO Community Edition for DCS World",
-      "isrelease": true,
-      "isbeta": false,
+      "isrelease": false,
+      "isbeta": true,
       "isdev": false,
       "productid": 1,
       "releasedate": 20231226,
