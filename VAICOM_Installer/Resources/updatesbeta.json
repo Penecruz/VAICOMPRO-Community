@@ -3,11 +3,11 @@
   [
     {
       "title": "VAICOM PRO Community Edition for DCS World",
-      "isrelease": false,
-      "isbeta": true,
+      "isrelease": true,
+      "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20231226,
+      "releasedate": 20231227,
       "version": 2922,
       "versionstring": "2.9.2.2",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
