@@ -33,7 +33,7 @@ namespace VAICOM
         public static bool          versiondev          = false; //set if Dev version
         public static bool          usenewselectmethod  = false;
         public static string        debuguser           = "VAICOM_Tester";
-        public static string        clientmode          = ClientModes.Normal;
+        public static string        clientmode          = ClientModes.Debug; //Normal or Debug
                                                                              
         public static string        versionstring       = "";
         public static string        pluginversionnumber = "2.9.2"; // used by Theme (Special page)
