@@ -13,170 +13,170 @@ namespace VAICOM
             public language CurrentLanguage;
 
             // ptt page
-            public bool     ForceMultiHotkey;
-            public bool     ForceSingleHotkey;
-            public string   SingleHotkey;
-            public bool     OperateDial;
-            public int?     SelectorMode;
-            public bool     UseSRSmapping;
-            public bool     PermaTXInfo;
-            public bool     MouseExternalTX;
-            public bool     ReleaseHot;
+            public bool ForceMultiHotkey;
+            public bool ForceSingleHotkey;
+            public string SingleHotkey;
+            public bool OperateDial;
+            public int? SelectorMode;
+            public bool UseSRSmapping;
+            public bool PermaTXInfo;
+            public bool MouseExternalTX;
+            public bool ReleaseHot;
 
             // preferences page
 
             // left column
-            public bool     ImportOtherMenu;
-            public bool     MP_AOCS;
+            public bool ImportOtherMenu;
+            public bool MP_AOCS;
 
-            public bool     HideMenus;
-            public bool     EnforceATCProtocol;
-            public int      EnforcedATCProtocol;
-            public bool     EnforceCallsigns;
-            public int      CallsignsLanguage;
-            public bool     UseInstantSelect;
-            public bool     AllowRadioTuning;
-            public bool     ForceLanguage;
-            public int      ForcedLanguage;
-            public bool     CarrierComms;
+            public bool HideMenus;
+            public bool EnforceATCProtocol;
+            public int EnforcedATCProtocol;
+            public bool EnforceCallsigns;
+            public int CallsignsLanguage;
+            public bool UseInstantSelect;
+            public bool AllowRadioTuning;
+            public bool ForceLanguage;
+            public int ForcedLanguage;
+            public bool CarrierComms;
 
             // right column
-            public bool     UIaddhints;
-            public bool     Engagecuerequired;
-            public bool     AllowAppendices;
-            public bool     AllowOptions;
-            public bool     AllowAddCommands;
-            public bool     DisableSquelch;
-            public bool     UIsounds;
-            public bool     DisablePlayerVoice;
-            public bool     HideOnScreenText;
+            public bool UIaddhints;
+            public bool Engagecuerequired;
+            public bool AllowAppendices;
+            public bool AllowOptions;
+            public bool AllowAddCommands;
+            public bool DisableSquelch;
+            public bool UIsounds;
+            public bool DisablePlayerVoice;
+            public bool HideOnScreenText;
 
             // ext page
 
             // RIO
 
-            public bool     RIO_Enabled;
-            public bool     RIO_Messages;
-            public bool     RIO_Hints_Only;
-            public bool     ICShotmic;
-            public bool     ICShotmic_useswitch;
+            public bool RIO_Enabled;
+            public bool RIO_Messages;
+            public bool RIO_Hints_Only;
+            public bool ICShotmic;
+            public bool ICShotmic_useswitch;
 
             // World
 
-            public bool     Redirect_World_Speech;
-            public int      AudioDeviceNumber;
-            public float    TTSVolume;
+            public bool Redirect_World_Speech;
+            public int AudioDeviceNumber;
+            public float TTSVolume;
 
-            public int      PanSetting_TX1;
-            public int      PanSetting_TX2;
-            public int      PanSetting_TX3;
-            public int      PanSetting_TX4;
-            public int      PanSetting_TX5;
-            public int      PanSetting_TX6;
-            public int      PanSetting_AOCS;
-            public int      ChatterPanSetting;
+            public int PanSetting_TX1;
+            public int PanSetting_TX2;
+            public int PanSetting_TX3;
+            public int PanSetting_TX4;
+            public int PanSetting_TX5;
+            public int PanSetting_TX6;
+            public int PanSetting_AOCS;
+            public int ChatterPanSetting;
 
             // carrier
 
-            public bool     CarrierSuppressAuto;
+            public bool CarrierSuppressAuto;
 
             // kneeboard
 
-            public double   KneeboardOpacity;
-            public bool     KneeboardlinkPTT;
-            public bool     Kneeboard_Enabled;
+            public double KneeboardOpacity;
+            public bool KneeboardlinkPTT;
+            public bool Kneeboard_Enabled;
 
             // multiplayer page
 
-            public bool     MP_UseTXLink;
-            public bool     MP_TXLink_MPOnly;
-            public bool     MP_UsePluginWithMultiplayer;
-            public bool     MP_UseVoiceChatIntegration;
-            public bool     MP_UseSRSIntegration;
-            public bool     MP_VCHotMic;
-            public bool     MP_SRSHotMic;
-            public bool     MP_WarnHumans;
-            public bool     MP_MixedToHumans;
-            public bool     MP_MixedToAI;
-            public bool     MP_MixedSwitchUsingRecipient;
-            public bool     MP_ShowOnScreenMessages;
-            public int      MP_VoIPSwitching;
-            public bool     MP_VoIPSilent;
-            public bool     MP_VoIPParallel;
-            public bool     MP_VoIPUseSwitch;
-            public bool     MP_VoIPAutoSwitch;
-            public bool     MP_DelayTransmit;
-            public bool     MP_IgnoreSelect;
-            public bool     MP_AllowSwitchCommand;
+            public bool MP_UseTXLink;
+            public bool MP_TXLink_MPOnly;
+            public bool MP_UsePluginWithMultiplayer;
+            public bool MP_UseVoiceChatIntegration;
+            public bool MP_UseSRSIntegration;
+            public bool MP_VCHotMic;
+            public bool MP_SRSHotMic;
+            public bool MP_WarnHumans;
+            public bool MP_MixedToHumans;
+            public bool MP_MixedToAI;
+            public bool MP_MixedSwitchUsingRecipient;
+            public bool MP_ShowOnScreenMessages;
+            public int MP_VoIPSwitching;
+            public bool MP_VoIPSilent;
+            public bool MP_VoIPParallel;
+            public bool MP_VoIPUseSwitch;
+            public bool MP_VoIPAutoSwitch;
+            public bool MP_DelayTransmit;
+            public bool MP_IgnoreSelect;
+            public bool MP_AllowSwitchCommand;
 
             // wingman
 
-            public bool     Wingman_Emulate;
-            public int      Wingman_Liveliness;
+            public bool Wingman_Emulate;
+            public int Wingman_Liveliness;
 
             //AOCS
-            public bool     AutoBrief;
-            public bool     BriefConcise;
-            public bool     DeepInterrogate;
+            public bool AutoBrief;
+            public bool BriefConcise;
+            public bool DeepInterrogate;
 
             // Chatter
-            public bool     Chatter_Enabled;
-            public bool     ChatterAutostart;
-            public bool     ChatterSilentOffline;
-            public string   ChatterFolder;
-            public float    ChatterVolume;          
+            public bool Chatter_Enabled;
+            public bool ChatterAutostart;
+            public bool ChatterSilentOffline;
+            public string ChatterFolder;
+            public float ChatterVolume;
 
             // config page
 
-            public bool     Debugmode;
-            public bool     UseRemoteIP;
-            public bool     Checkfornewatcs;
-            public bool     UseCustomFolders;
-            public string   DCSfoldername1;
-            public string   DCSfoldername2;
-            public bool     CustomFoldersOBFlag;
-            public bool     AutoImportModules;
-            public bool     ManualInstallServerFiles;
-            public bool     DisableAutomaticUpdates;
-            public bool     AutomaticUpdateFinished;
+            public bool Debugmode;
+            public bool UseRemoteIP;
+            public bool Checkfornewatcs;
+            public bool UseCustomFolders;
+            public string DCSfoldername1;
+            public string DCSfoldername2;
+            public bool CustomFoldersOBFlag;
+            public bool AutoImportModules;
+            public bool ManualInstallServerFiles;
+            public bool DisableAutomaticUpdates;
+            public bool AutomaticUpdateFinished;
 
-            public int      Custom_Path_Setting1;
-            public int      Custom_Path_Setting2;
-            public bool     CustomFoldersFixReg;
+            public int Custom_Path_Setting1;
+            public int Custom_Path_Setting2;
+            public bool CustomFoldersFixReg;
 
             // editor page
-            public bool     UseNewRecognitionModel;
+            public bool UseNewRecognitionModel;
 
             // about page
 
-            public bool     BetaTester;
+            public bool BetaTester;
 
             // reset options
 
-            public bool     Resetdb;
-            public bool     Resetoptions;
-            public bool     Resetprofile;
-            public bool     Resettheme;
-            public bool     Resetlua;
+            public bool Resetdb;
+            public bool Resetoptions;
+            public bool Resetprofile;
+            public bool Resettheme;
+            public bool Resetlua;
 
             // deep config
 
-            public bool     UseUnloadOnExit;
-            public Point    Windowrestorelocation;
-            public bool     Runningforthefirsttime;
-            public string   ClientSendIP;
-            public int      ClientSendPort;
-            public string   ClientReceiveIP;
-            public int      ClientReceivePort;
-            public bool     Editorrequiresreload;
-            public bool     Editorunsavedchanges;
-            public bool     ForceAliasFinished;
-            public int      ClientReceivePortMessages;
+            public bool UseUnloadOnExit;
+            public Point Windowrestorelocation;
+            public bool Runningforthefirsttime;
+            public string ClientSendIP;
+            public int ClientSendPort;
+            public string ClientReceiveIP;
+            public int ClientReceivePort;
+            public bool Editorrequiresreload;
+            public bool Editorunsavedchanges;
+            public bool ForceAliasFinished;
+            public int ClientReceivePortMessages;
 
-            public string   SRS_ClientSendIP;
-            public int      SRS_ClientSendPort;
-            public string   SRS_ClientReceiveIP;
-            public int      SRS_ClientReceivePort;
+            public string SRS_ClientSendIP;
+            public int SRS_ClientSendPort;
+            public string SRS_ClientReceiveIP;
+            public int SRS_ClientReceivePort;
 
         }
 
@@ -280,7 +280,7 @@ namespace VAICOM
 
                 KneeboardOpacity = 128,
                 Kneeboard_Enabled = true,
-                
+
                 // multiplayer page
 
                 MP_UseTXLink = false,
@@ -327,34 +327,34 @@ namespace VAICOM
 
                 // Reset page
 
-                Resetdb             = false,
-                Resetoptions        = false,
-                Resetprofile        = false,
-                Resettheme          = false,
-                Resetlua            = false,
+                Resetdb = false,
+                Resetoptions = false,
+                Resetprofile = false,
+                Resettheme = false,
+                Resetlua = false,
 
                 // deep config stuff
 
-                AutomaticUpdateFinished     = false,
-                BetaTester                  = true,
-                Windowrestorelocation       = new Point(20, 20),
-                Runningforthefirsttime      = false,
-                ClientSendIP                = "127.0.0.1",
-                ClientSendPort              = 33491,
-                ClientReceiveIP             = "*",
-                ClientReceivePort           = 33492,
-                Editorunsavedchanges        = false,
-                Editorrequiresreload        = false,
-                ForceAliasFinished          = false,
-                ClientReceivePortMessages   = 44111,
+                AutomaticUpdateFinished = false,
+                BetaTester = true,
+                Windowrestorelocation = new Point(20, 20),
+                Runningforthefirsttime = false,
+                ClientSendIP = "127.0.0.1",
+                ClientSendPort = 33491,
+                ClientReceiveIP = "*",
+                ClientReceivePort = 33492,
+                Editorunsavedchanges = false,
+                Editorrequiresreload = false,
+                ForceAliasFinished = false,
+                ClientReceivePortMessages = 44111,
 
-                SRS_ClientSendIP            = "127.0.0.1",
-                SRS_ClientSendPort          = 33501,
-                SRS_ClientReceiveIP         = "*",
-                SRS_ClientReceivePort       = 33502,
+                SRS_ClientSendIP = "127.0.0.1",
+                SRS_ClientSendPort = 33501,
+                SRS_ClientReceiveIP = "*",
+                SRS_ClientReceivePort = 33502,
 
             };
-        
+
         }
     }
 }

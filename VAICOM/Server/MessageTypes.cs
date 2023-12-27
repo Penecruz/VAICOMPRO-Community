@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VAICOM
 {
@@ -11,16 +11,16 @@ namespace VAICOM
 
             public class RadioDevice
             {
-                public int      deviceid;
-                public bool     isavailable;
-                public string   displayName;
-                public bool     AM;
-                public bool     FM;
-                public bool     on;
-                public string   frequency;
-                public string   modulation;
-                public bool     intercom;
-                public string   volume;
+                public int deviceid;
+                public bool isavailable;
+                public string displayName;
+                public bool AM;
+                public bool FM;
+                public bool on;
+                public string frequency;
+                public string modulation;
+                public bool intercom;
+                public string volume;
                 public List<Server.DcsUnit> tunedunits;
 
             }
@@ -67,12 +67,12 @@ namespace VAICOM
 
                 public DcsSoundConfig()
                 {
-                    volume =50;
-                    cockpit =50;
+                    volume = 50;
+                    cockpit = 50;
                     gui = 50;
                     headphones = 50;
                     world = 50;
-                    music =50;
+                    music = 50;
                     switches = 100;
                     headphones_on_external_views = true;
                     hear_in_helmet = true;
@@ -81,22 +81,22 @@ namespace VAICOM
 
             public class DcsUnit
             {
-                public int      index;
-                public int      id_;
-                public string   callsign;
-                public int      range;
-                public Vector   pos;
-                public string   reccat;
-                public string   descr;
-                public string   fullname;
-                public string   coalition;
-                public string   freq;
+                public int index;
+                public int id_;
+                public string callsign;
+                public int range;
+                public Vector pos;
+                public string reccat;
+                public string descr;
+                public string fullname;
+                public string coalition;
+                public string freq;
                 public List<string> altfreq;
-                public string   mod;
-                public string   status;
-                public bool     ishuman;
-                public bool     allowtuning;
-                public string   playerid;
+                public string mod;
+                public string status;
+                public bool ishuman;
+                public bool allowtuning;
+                public string playerid;
 
                 public DcsUnit()
                 {
@@ -113,12 +113,12 @@ namespace VAICOM
                 public string getbearingstr()
                 {
                     Server.DcsUnit playerunit = new Server.DcsUnit();
-                    try 
+                    try
                     {
                         playerunit = State.currentstate.availablerecipients["Player"][0];
                     }
-                    catch        
-                    { 
+                    catch
+                    {
                     }
                     string bearing = ("00" + Helpers.Common.Modulo((int)((Math.Round((Math.Atan2((pos.z - playerunit.pos.z), (pos.x - playerunit.pos.x))) * (180 / Math.PI)))), 360).ToString());
                     bearing = bearing.Substring(bearing.Length - 3);
@@ -149,12 +149,12 @@ namespace VAICOM
 
                 public string isunittuned()
                 {
-                    return "" ; 
+                    return "";
                 }
 
                 public string gethumanname()
                 {
-                    if(ishuman)
+                    if (ishuman)
                     {
                         return playerid;
                     }
@@ -168,13 +168,13 @@ namespace VAICOM
 
             public class DcsPluginsConfig
             {
-                public DcsVaicomConfig  VAICOM;
+                public DcsVaicomConfig VAICOM;
             }
 
             public class DcsVaicomConfig
             {
-                public bool     VAICOMDebugModeEnabled;
-                public string   VAICOMClientIP;
+                public bool VAICOMDebugModeEnabled;
+                public string VAICOMClientIP;
             }
 
             public class DcsCarrierConfig
@@ -184,7 +184,7 @@ namespace VAICOM
 
             public class DcsOptions
             {
-                public DcsSoundConfig   sound;
+                public DcsSoundConfig sound;
                 public DcsPluginsConfig plugins;
 
                 public DcsOptions()
@@ -197,18 +197,18 @@ namespace VAICOM
 
             public class TomcatState
             {
-                public bool     canopy;
-                public bool     rdr;
-                public bool     pdstt;
-                public bool     pstt;
-                public bool     amt;
-                public double   tcn;
-                public bool     ics;
-                public bool     sngl;
-                public bool     jmr;
-                public bool     AM182;
-                public bool     ejsn;
-                public int      markers;
+                public bool canopy;
+                public bool rdr;
+                public bool pdstt;
+                public bool pstt;
+                public bool amt;
+                public double tcn;
+                public bool ics;
+                public bool sngl;
+                public bool jmr;
+                public bool AM182;
+                public bool ejsn;
+                public int markers;
 
             }
 
@@ -324,8 +324,8 @@ namespace VAICOM
                         {"Allies",  new List<DcsUnit>()},
                         {"Moose",   new List<DcsUnit>()}, // Add Moose
                     };
-                    TACANunits  = new List<DcsUnit>();
-                    DLunits     = new List<DcsUnit>();
+                    TACANunits = new List<DcsUnit>();
+                    DLunits = new List<DcsUnit>();
                     id = "----";
                     radios = new List<RadioDevice>();
                     menuaux = null;
@@ -382,7 +382,7 @@ namespace VAICOM
                 public string missiondetails;
 
                 public object mission;
-                public object missioncmds; 
+                public object missioncmds;
 
                 public Dictionary<string, List<DcsUnit>> availablerecipients;
 

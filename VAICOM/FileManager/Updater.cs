@@ -1,13 +1,13 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System;
-using System.Windows;
-using System.Net;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Net;
 using System.Threading;
+using System.Windows;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -84,7 +84,7 @@ namespace VAICOM
 
                 public static void FinishUpdate()
                 {
-                    
+
                     int timeout = 10;
                     for (int i = 0; i < timeout; i++)
                     {
@@ -98,7 +98,7 @@ namespace VAICOM
 
                     Log.Write("Update finished. Restart VoiceAttack.", Colors.Warning);
 
-                    startloop:
+                startloop:
                     goto startloop;
 
                 }
@@ -144,7 +144,7 @@ namespace VAICOM
                             State.updateavailable_plugin = false;
                         }
 
-                        if (State.updateavailable_plugin &&!State.activeconfig.DisableAutomaticUpdates)
+                        if (State.updateavailable_plugin && !State.activeconfig.DisableAutomaticUpdates)
                         {
                             Log.Write("New update available!", Colors.Warning);
 
@@ -162,7 +162,7 @@ namespace VAICOM
                     }
 
                     if (componentupdate.productid.Equals(Products.Products.Families.Vaicom.ChatterThemePack.product_id))
-                    {                        
+                    {
                         Version currentversionchatter = State.dll_info_chatter.Version;
 
                         Version onlineversionchatter = new Version();
@@ -246,7 +246,7 @@ namespace VAICOM
 
                     if (!Directory.Exists(localfolder))
                     {
-                        Directory.CreateDirectory(localfolder); 
+                        Directory.CreateDirectory(localfolder);
                     }
 
                     // get the zip from URL specified in the updates.json/updatesbeta.json/updatesdev.json
@@ -320,7 +320,7 @@ namespace VAICOM
 
                     string batchfile = basefolder + "updater.cmd";
                     string VApath = State.VA_DIR;
-     
+
                     string insertcontent1 = "\"" + VApath + "\\VoiceAttack.exe\"\n";
                     string batchcontents = batchcontentsraw.Replace("XXXXXX", insertcontent1);
 
@@ -330,10 +330,10 @@ namespace VAICOM
                     proc.StartInfo.FileName = batchfile;
                     proc.StartInfo.WorkingDirectory = basefolder;
                     proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    
+
                     State.activeconfig.AutomaticUpdateFinished = true;
                     Settings.ConfigFile.WriteConfigToFile(true);
-                    
+
                     UI.Playsound.Proceed();
 
                     Thread.Sleep(1500);
@@ -369,29 +369,29 @@ namespace VAICOM
 
                 public class UpdateData
                 {
-                    public string   title;
-                    public bool     isrelease;
-                    public bool     isbeta;
-                    public bool     isdev;
-                    public Int64    productid;
-                    public Int64    releasedate;
-                    public Int64    version; // for backwards compatibility
-                    public string   versionstring;
-                    public string   downloadurl;
-                    public string   releasenotes;
+                    public string title;
+                    public bool isrelease;
+                    public bool isbeta;
+                    public bool isdev;
+                    public Int64 productid;
+                    public Int64 releasedate;
+                    public Int64 version; // for backwards compatibility
+                    public string versionstring;
+                    public string downloadurl;
+                    public string releasenotes;
 
                     public UpdateData()
                     {
-                        title       = "";
-                        isrelease   = false;
-                        isbeta      = false;
-                        isdev       = false;
-                        productid   = 0;
+                        title = "";
+                        isrelease = false;
+                        isbeta = false;
+                        isdev = false;
+                        productid = 0;
                         releasedate = 0;
-                        version     = 0;
+                        version = 0;
                         versionstring = "";
                         downloadurl = "";
-                        releasenotes= "";
+                        releasenotes = "";
                     }
                 }
 

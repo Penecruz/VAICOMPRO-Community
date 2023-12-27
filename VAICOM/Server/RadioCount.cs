@@ -15,7 +15,7 @@ namespace VAICOM
                 try
                 {
 
-                    if ((State.currentstate.radios.Count == 0)) 
+                    if ((State.currentstate.radios.Count == 0))
                     {
                         result = true;
                     }

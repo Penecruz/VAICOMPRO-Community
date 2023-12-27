@@ -1,6 +1,6 @@
-﻿using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Windows;
+using VAICOM.PushToTalk;
 
 
 namespace VAICOM
@@ -70,7 +70,7 @@ namespace VAICOM
             // Sound notify
             private void SetConfigEnableMP_WarnHumans(object sender, RoutedEventArgs e) { State.activeconfig.MP_WarnHumans = true; }
             private void SetConfigDisableMP_WarnHumans(object sender, RoutedEventArgs e) { State.activeconfig.MP_WarnHumans = false; }
-            private void SetCurrentValueMP_WarnHumans(object sender, EventArgs e) { MP_WarnHumans.IsEnabled = State.PRO ; MP_WarnHumans.IsChecked = State.activeconfig.MP_WarnHumans; }
+            private void SetCurrentValueMP_WarnHumans(object sender, EventArgs e) { MP_WarnHumans.IsEnabled = State.PRO; MP_WarnHumans.IsChecked = State.activeconfig.MP_WarnHumans; }
 
             // delay transmit
             private void SetConfigEnableMP_DelayTransmit(object sender, RoutedEventArgs e) { State.activeconfig.MP_DelayTransmit = true; }
@@ -101,26 +101,26 @@ namespace VAICOM
                     {
 
                         case 0: //parallel
-                            State.activeconfig.MP_VoIPParallel  = true;
-                            State.activeconfig.MP_UseTXLink     = false;
+                            State.activeconfig.MP_VoIPParallel = true;
+                            State.activeconfig.MP_UseTXLink = false;
                             State.activeconfig.MP_VoIPUseSwitch = false;
                             break;
 
                         case 1: // TX Link
-                            State.activeconfig.MP_VoIPParallel  = false;
-                            State.activeconfig.MP_UseTXLink     = true;
+                            State.activeconfig.MP_VoIPParallel = false;
+                            State.activeconfig.MP_UseTXLink = true;
                             State.activeconfig.MP_VoIPUseSwitch = false;
                             break;
 
                         case 2: // use switching
-                            State.activeconfig.MP_VoIPParallel  = false;
-                            State.activeconfig.MP_UseTXLink     = false;
+                            State.activeconfig.MP_VoIPParallel = false;
+                            State.activeconfig.MP_UseTXLink = false;
                             State.activeconfig.MP_VoIPUseSwitch = true;
                             break;
 
                         default: //0
-                            State.activeconfig.MP_VoIPParallel  = true;
-                            State.activeconfig.MP_UseTXLink     = false;
+                            State.activeconfig.MP_VoIPParallel = true;
+                            State.activeconfig.MP_UseTXLink = false;
                             State.activeconfig.MP_VoIPUseSwitch = false;
                             break;
 
@@ -129,7 +129,7 @@ namespace VAICOM
                     Settings.ConfigFile.WriteConfigToFile(true);
 
                 }
-                    
+
             }
 
             public void SetNotify()

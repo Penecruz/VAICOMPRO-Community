@@ -1,5 +1,5 @@
-﻿using VAICOM.Servers;
-using VAICOM.Products;
+﻿using VAICOM.Products;
+using VAICOM.Servers;
 
 namespace VAICOM
 {
@@ -18,7 +18,7 @@ namespace VAICOM
                     PTT_SetConfigMulti_SRS();
                     return;
                 }
-                
+
                 try
                 {
 
@@ -26,7 +26,7 @@ namespace VAICOM
 
                     if (State.currentstate.radios == null || State.currentstate.radios.Count.Equals(0)) // FC3
                     {
-                        PTT_TXAssignmentDefault(); 
+                        PTT_TXAssignmentDefault();
                         State.radiocount = 3;
                         TXNodes.TX4.enabled = State.currentstate.easycomms;
                         return;
@@ -34,16 +34,16 @@ namespace VAICOM
                     else // non-FC3
                     {
 
-                        bool allocatedAM    = false;
-                        bool allocatedUHF   = false;
-                        bool allocatedFM    = false;
-                        bool allocatedINT   = false;
+                        bool allocatedAM = false;
+                        bool allocatedUHF = false;
+                        bool allocatedFM = false;
+                        bool allocatedINT = false;
 
                         State.radiocount = 0;
 
                         // business logic to assign the aircraft radios (TX1-3 + TX5)
 
-                        bool harrier = State.currentmodule.Equals(DCSmodules.LookupTable["AV-8B"]) ;
+                        bool harrier = State.currentmodule.Equals(DCSmodules.LookupTable["AV-8B"]);
                         bool viper = State.currentstate.id.Contains("F-16");
                         bool tomcat = State.currentstate.id.Contains("F-14");
                         bool strike = State.currentmodule.Equals(DCSmodules.LookupTable["F-15ESE"]);
@@ -100,7 +100,7 @@ namespace VAICOM
                                 RadioDevices.Radio2.deviceid = radiounit.deviceid;
                                 if (radiounit.displayName.Length > 16)
                                 {
-                                    RadioDevices.Radio2.name = radiounit.displayName.Substring(radiounit.displayName.Length -16, 16);
+                                    RadioDevices.Radio2.name = radiounit.displayName.Substring(radiounit.displayName.Length - 16, 16);
                                 }
                                 else
                                 {

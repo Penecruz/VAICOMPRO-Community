@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Reflection;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -44,7 +44,7 @@ namespace VAICOM
                     State.dll_info_rio = Assembly.GetAssembly(typeof(Extensions.RIO.DeviceActionsLibrary)).GetName();
                     if (State.dll_info_rio.Version.ToString().Equals("0.0.0.0"))
                     {
-                        State.dll_info_rio = new AssemblyName() { Version = Version.Parse("2.8.1.1")};
+                        State.dll_info_rio = new AssemblyName() { Version = Version.Parse("2.8.1.1") };
                         State.dll_version_rio = "(not installed)";
                         State.dll_installed_rio = false;
                     }
@@ -114,7 +114,7 @@ namespace VAICOM
 
                     if (missingassembly.StartsWith("nvorbis"))
                     {
-  
+
                         using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("VAICOM.Embed.NVorbis.dll"))
                         {
                             byte[] assemblyData = new byte[stream.Length];

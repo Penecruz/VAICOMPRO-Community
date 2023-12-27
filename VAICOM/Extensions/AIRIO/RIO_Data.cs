@@ -1,5 +1,5 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -16,15 +16,15 @@ namespace VAICOM
                 {
                     try
                     {
-                        tables.menustate[tables.menucats.RDR_BVR]       = tables.menustates.Radar_Active;
-                        tables.menustate[tables.menucats.RDR_STT]       = tables.menustates.Not_STT_Locked;
-                        tables.menustate[tables.menucats.WPN_AG]        = tables.menustates.AG_Computer_Pilot;
-                        tables.menustate[tables.menucats.CREW]          = tables.menustates.Crew_Awake;
-                        tables.menustate[tables.menucats.STARTUP]       = tables.menustates.Starting_Up;
-                        tables.menustate[tables.menucats.PLAYERSEAT]    = tables.menustates.Pilot;
-                        tables.menustate[tables.menucats.CONTR_TALK]    = tables.menustates.Talk;
-                        tables.menustate[tables.menucats.CONTR_EJECT]   = tables.menustates.Eject_Single;
-                        tables.menustate[tables.menucats.CALLOUTS]      = tables.menustates.Call;
+                        tables.menustate[tables.menucats.RDR_BVR] = tables.menustates.Radar_Active;
+                        tables.menustate[tables.menucats.RDR_STT] = tables.menustates.Not_STT_Locked;
+                        tables.menustate[tables.menucats.WPN_AG] = tables.menustates.AG_Computer_Pilot;
+                        tables.menustate[tables.menucats.CREW] = tables.menustates.Crew_Awake;
+                        tables.menustate[tables.menucats.STARTUP] = tables.menustates.Starting_Up;
+                        tables.menustate[tables.menucats.PLAYERSEAT] = tables.menustates.Pilot;
+                        tables.menustate[tables.menucats.CONTR_TALK] = tables.menustates.Talk;
+                        tables.menustate[tables.menucats.CONTR_EJECT] = tables.menustates.Eject_Single;
+                        tables.menustate[tables.menucats.CALLOUTS] = tables.menustates.Call;
                     }
                     catch
                     {

@@ -1,13 +1,13 @@
-﻿using VAICOM.Static;
+﻿using NAudio.Wave;
 using System;
-using System.Timers;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Resources;
 using System.IO;
+using System.Resources;
+using System.Timers;
 using System.Windows.Forms;
-using NAudio.Wave;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -197,7 +197,7 @@ namespace VAICOM
                             {
                                 case 2:
                                     Random rnd = new Random();
-                                    int dice = rnd.Next(1, 2+1);
+                                    int dice = rnd.Next(1, 2 + 1);
                                     switch (dice)
                                     {
                                         case 1:
@@ -211,7 +211,7 @@ namespace VAICOM
                                 default:
                                     pan = State.activeconfig.ChatterPanSetting;
                                     break;
-                            }   
+                            }
 
                             panningSampleProvider.Pan = pan;
 

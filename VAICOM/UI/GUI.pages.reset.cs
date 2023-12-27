@@ -1,11 +1,11 @@
-﻿using VAICOM.Database;
-using VAICOM.FileManager;
-using VAICOM.Servers;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Win32;
+using VAICOM.Database;
+using VAICOM.FileManager;
+using VAICOM.Servers;
 
 
 namespace VAICOM
@@ -305,7 +305,7 @@ namespace VAICOM
                 message += "\n";
 
                 message += "If some of these files are not up to date, get the latest versions from the website for manual install.\n";
-                                
+
                 message += "\n";
 
                 message += "DCS World installation\n\n";

@@ -1,10 +1,10 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using System;
+﻿using System;
 using System.Timers;
-using VAICOM.Servers;
 using System.Windows.Forms;
+using VAICOM.Client;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -13,9 +13,9 @@ namespace VAICOM
         public static partial class Timers
         {
 
-            public static System.Timers.Timer UI_Timer  { get; set; }
-            public static bool Created                  { get; set; }
-            public static bool CurrentPlayStatus        { get; set; }
+            public static System.Timers.Timer UI_Timer { get; set; }
+            public static bool Created { get; set; }
+            public static bool CurrentPlayStatus { get; set; }
 
             public static void UI_Timer_Initialize()
             {
@@ -101,9 +101,9 @@ namespace VAICOM
             {
                 State.random2 = new Random();
 
-                State.lastreceivedmessagetimer  = State.lastreceivedmessagetimer + State.uitimerinterval/1000; // 1sec
-                State.lastupdatewingmantimer    = State.lastupdatewingmantimer + State.uitimerinterval / 1000; // 1sec
-                State.elapsedsincelastpttrelease   = State.elapsedsincelastpttrelease + State.uitimerinterval / 1000; // 1sec
+                State.lastreceivedmessagetimer = State.lastreceivedmessagetimer + State.uitimerinterval / 1000; // 1sec
+                State.lastupdatewingmantimer = State.lastupdatewingmantimer + State.uitimerinterval / 1000; // 1sec
+                State.elapsedsincelastpttrelease = State.elapsedsincelastpttrelease + State.uitimerinterval / 1000; // 1sec
                 State.lasthearbeatsent += State.uitimerinterval / 1000;
                 State.lastupdaterequesttimer = State.lastupdaterequesttimer + State.uitimerinterval / 1000; // 1sec
 
@@ -126,7 +126,7 @@ namespace VAICOM
                         State.receivedmessageforkneeboard = new Server.ServerCommsMessage();
                     }
                 }
-                else 
+                else
                 {
                     State.kneeboardmessagetimer = 0;
                 }
@@ -158,8 +158,8 @@ namespace VAICOM
                         State.lasthearbeatsent = 0;
                     }
                 }
-                catch 
-                { 
+                catch
+                {
                 }
 
                 try

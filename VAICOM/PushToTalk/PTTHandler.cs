@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using System;
-using System.Windows.Forms;
-using System.Threading;
+﻿using System;
 using System.Speech.Synthesis;
+using System.Threading;
+using System.Windows.Forms;
+using VAICOM.Client;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -38,7 +38,7 @@ namespace VAICOM
                 TXLinkApply = State.PRO && State.activeconfig.MP_UseTXLink && !(State.activeconfig.MP_TXLink_MPOnly && !State.currentstate.multiplayer);
                 Log.Write("TXLinkApply = " + TXLinkApply, Colors.Inline);
 
-                bool applylong = !TXLinkApply || longpress ;
+                bool applylong = !TXLinkApply || longpress;
                 Log.Write("apply long press = " + applylong, Colors.Inline);
 
                 if (!PTT_Detect_Blocked(PTTkey, keypress))
@@ -82,11 +82,11 @@ namespace VAICOM
                         return true;
                     }
 
-                    return false; 
+                    return false;
                 }
                 catch
                 {
-                    return true; 
+                    return true;
                 }
 
             }
@@ -102,26 +102,26 @@ namespace VAICOM
 
                 try
                 {
-                    if (press) 
+                    if (press)
                     {
                         Log.Write("PTT press: Elapsed = 0.000s", Colors.Inline);
                         State.Stopwatch.Restart();
 
                         PTT_Manage_Listen_States_OnPressRelease(press, _isVOIP);
-                        PTTkey.relay = _isVOIP || (!State.Proxy.Dictation.IsOn() && (State.activeconfig.MP_VoIPParallel) && (State.activeconfig.MP_UseVoiceChatIntegration || State.activeconfig.MP_UseSRSIntegration)); 
+                        PTTkey.relay = _isVOIP || (!State.Proxy.Dictation.IsOn() && (State.activeconfig.MP_VoIPParallel) && (State.activeconfig.MP_UseVoiceChatIntegration || State.activeconfig.MP_UseSRSIntegration));
 
                         if (PTTkey.radios[0].on)
                         {
                             UI.Playsound.Pttnoise(true);
-                            State.transmitting = true; 
+                            State.transmitting = true;
                             State.currentradiodevicename = PTTkey.radios[0].name;
                             PTT_Manage_AOCS_Speech(true);
                             State.chatteroutput.Stop();
-                            PTT_Manage_ShowOptions(true);                            
+                            PTT_Manage_ShowOptions(true);
                         }
                         else
                         {
-                            State.transmitting = false;                  
+                            State.transmitting = false;
                         }
 
                         DcsClient.SendUpdateRequest();
@@ -133,7 +133,7 @@ namespace VAICOM
                         State.Stopwatch.Stop();
 
                         TimeSpan elapsed = State.Stopwatch.Elapsed;
-                        Log.Write("PTT release: Elapsed = " + elapsed.Seconds + "."+ elapsed.Milliseconds +"s", Colors.Inline);
+                        Log.Write("PTT release: Elapsed = " + elapsed.Seconds + "." + elapsed.Milliseconds + "s", Colors.Inline);
 
                         if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_DelayTransmit && DcsClient.Message.havedelayedmessage)
                         {
@@ -146,7 +146,7 @@ namespace VAICOM
                         {
                             UI.Playsound.Pttnoise(false);
                             PTT_Manage_AOCS_Speech(false);
-                            PTT_Manage_ShowOptions(false);                    
+                            PTT_Manage_ShowOptions(false);
                         }
 
                         PTT_Manage_Listen_States_OnPressRelease(press, _isVOIP);
@@ -195,7 +195,7 @@ namespace VAICOM
 
                 if (State.Proxy.Dictation.IsOn())
                 {
-                    PTT_Manage_Listen_VA(true); 
+                    PTT_Manage_Listen_VA(true);
                     PTT_Manage_Listen_VAICOM(true);
                     PTT_Manage_Listen_VC(false);
                     PTT_Manage_Listen_SRS(false);
@@ -243,9 +243,9 @@ namespace VAICOM
                     if (isVOIP)
                     {
                         Log.Write("PTT: PRESS - VOIP.", Colors.Inline);
-                        PTT_Manage_Listen_VA(false); 
-                        PTT_Manage_Listen_VAICOM(true); 
-                        PTT_Manage_Listen_VC(true); 
+                        PTT_Manage_Listen_VA(false);
+                        PTT_Manage_Listen_VAICOM(true);
+                        PTT_Manage_Listen_VC(true);
                         PTT_Manage_Listen_SRS(true);
 
                         if (State.activeconfig.MP_WarnHumans)
@@ -263,7 +263,7 @@ namespace VAICOM
                     {
                         Log.Write("PTT: PRESS - NORMAL.", Colors.Inline);
                         PTT_Manage_Listen_VA(true);
-                        PTT_Manage_Listen_VAICOM(true); 
+                        PTT_Manage_Listen_VAICOM(true);
                         PTT_Manage_Listen_VC(State.activeconfig.MP_VoIPParallel);
                         PTT_Manage_Listen_SRS(State.activeconfig.MP_VoIPParallel);
                     }
@@ -272,7 +272,7 @@ namespace VAICOM
                 {
                     Log.Write("PTT: RELEASE.", Colors.Inline);
                     PTT.PTT_Manage_Listen_VA(State.activeconfig.ReleaseHot || (State.AIRIOactive && State.activeconfig.ICShotmic));
-                    PTT.PTT_Manage_Listen_VAICOM(!State.activeconfig.ReleaseHot); 
+                    PTT.PTT_Manage_Listen_VAICOM(!State.activeconfig.ReleaseHot);
                     PTT.PTT_Manage_Listen_VC(State.activeconfig.MP_VCHotMic);
                     PTT.PTT_Manage_Listen_SRS(true);
                     State.elapsedsincelastpttrelease = 0;
@@ -306,7 +306,7 @@ namespace VAICOM
                 {
 
                     // AI is present: listen for AI commands
-                    
+
                     PTTkey.relay = State.activeconfig.MP_VoIPParallel;
 
                     Log.Write("PTT: UPDATE switching on VA listening.", Colors.Inline);
@@ -315,7 +315,7 @@ namespace VAICOM
                     PTT_Manage_Listen_VAICOM(true);
                     PTT_Manage_Listen_VC(State.activeconfig.MP_VoIPParallel);
                     PTT_Manage_Listen_SRS(State.activeconfig.MP_VoIPParallel);
-                    
+
                 }
                 catch
                 {
@@ -426,7 +426,7 @@ namespace VAICOM
                     }
                     else
                     {
-                        if (State.showingoptions )
+                        if (State.showingoptions)
                         {
 
                             DcsClient.SendCmdSequence(DcsClient.iCommandsequences.closemenu, false);
@@ -475,7 +475,7 @@ namespace VAICOM
                         {
                             State.configurationwindow.Dispatcher.BeginInvoke((MethodInvoker)delegate
                             {
-                                
+
                                 if (State.currentTXnode.enabled)
                                 {
                                     State.configurationwindow.updatepttinfo();
@@ -525,7 +525,7 @@ namespace VAICOM
 
                                 State.configurationwindow.UpdateAllbugs();
 
-                            }); 
+                            });
 
                         }
 
@@ -536,7 +536,7 @@ namespace VAICOM
                 }
 
             }
-         
+
         }
     }
 }

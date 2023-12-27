@@ -1,8 +1,7 @@
-﻿using VAICOM.FileManager;
+﻿using Microsoft.Win32;
 using System;
 using System.Windows;
-using Microsoft.Win32;
-using System.Net;
+using VAICOM.FileManager;
 
 namespace VAICOM
 {

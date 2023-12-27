@@ -11,12 +11,12 @@
 
                 public class SRS_PTT_Message
                 {
-                    public int  MessageType;
+                    public int MessageType;
                     public bool InhibitTX;
 
                     public SRS_PTT_Message()
                     {
-                        MessageType =1;
+                        MessageType = 1;
                     }
                 }
             }

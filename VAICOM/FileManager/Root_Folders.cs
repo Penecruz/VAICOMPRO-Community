@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using VAICOM.Static;
 
 namespace VAICOM
 {

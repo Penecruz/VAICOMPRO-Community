@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Timers;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
-using System.Text;
-using Microsoft.Win32;
-using System.Threading;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Timers;
+using System.Windows.Forms;
 
 namespace VAICOM_App
 {
@@ -45,7 +45,7 @@ namespace VAICOM_App
                 {
                     // OK
                     timesincelastheartbeat = 0;
-                } 
+                }
                 else
                 {
                     if (forceprofile && receivedstring.ToLower().Contains("profile"))
@@ -129,7 +129,7 @@ namespace VAICOM_App
                 bool VA_not_running = (pname.Length == 0);
                 bool VA_hangs = !VA_not_running && !pname[0].Responding;
 
-                if (VA_not_running || VA_hangs || VA_needsreload )
+                if (VA_not_running || VA_hangs || VA_needsreload)
                 {
 
                     if (VA_needsreload)
@@ -186,12 +186,12 @@ namespace VAICOM_App
             KickStartVA();
         }
 
-        static bool     runasadmin = true;
-        static bool     VA_keepalive = false;
-        static bool     VA_isrunning = false;
-        static bool     forceprofile = false;
-        static bool     VA_needsreload = false;
-        static string   VA_path = "";
+        static bool runasadmin = true;
+        static bool VA_keepalive = false;
+        static bool VA_isrunning = false;
+        static bool forceprofile = false;
+        static bool VA_needsreload = false;
+        static string VA_path = "";
 
         static void ProcessArguments(string[] args)
         {
@@ -203,7 +203,7 @@ namespace VAICOM_App
 
                     foreach (string arg in args)
                     {
-                        switch (arg.Replace(" ","").ToLower())
+                        switch (arg.Replace(" ", "").ToLower())
                         {
                             case "-forceprofile":
                                 forceprofile = true;
@@ -211,14 +211,14 @@ namespace VAICOM_App
                             case "-noadmin":
                                 runasadmin = false;
                                 break;
-                              
+
                             default:
                                 break;
                         }
                     }
                 }
                 else
-                {      
+                {
                     //use defaults
                     forceprofile = false;
                 }
@@ -229,7 +229,7 @@ namespace VAICOM_App
             catch
             {
             }
-        } 
+        }
 
         static void TerminateProcess(string processname)
         {
@@ -351,7 +351,7 @@ namespace VAICOM_App
                 trayIcon = new NotifyIcon()
                 {
                     Icon = Properties.Resources.Tray_icon_64,
-                    ContextMenu = new ContextMenu(new MenuItem[] {  new MenuItem("Restart", ForceVARestart), new MenuItem("Reset Window", ResetWindow), new MenuItem("Exit", Exit) }), //new MenuItem("API Test", APITest),
+                    ContextMenu = new ContextMenu(new MenuItem[] { new MenuItem("Restart", ForceVARestart), new MenuItem("Reset Window", ResetWindow), new MenuItem("Exit", Exit) }), //new MenuItem("API Test", APITest),
                     Visible = true,
 
                 };
@@ -415,7 +415,7 @@ namespace VAICOM_App
                 ProcessArguments(args);
 
                 Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);               
+                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new CustomApplicationContext());
 
             }

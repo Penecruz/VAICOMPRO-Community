@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
+﻿using Newtonsoft.Json;
 using System;
-using Newtonsoft.Json;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -20,7 +20,7 @@ namespace VAICOM
                         Log.Write("VOID SERVER MESSAGE: " + receivedString, Static.Colors.Inline);
                         return;
                     }
-           
+
                     if (DetectEndMission(receivedString))
                     {
                         EndMission();
@@ -58,11 +58,11 @@ namespace VAICOM
             public static ServerMessage DecodeRawMessage(string receivedString)
             {
 
-                
+
                 try
-                {             
-                    return  JsonConvert.DeserializeObject<ServerMessage>(receivedString);                                                                                                   
-                 }
+                {
+                    return JsonConvert.DeserializeObject<ServerMessage>(receivedString);
+                }
                 catch (Exception e)
                 {
                     Log.Write("JSON eror - server message decoding failed: " + e.Message, Colors.Inline);

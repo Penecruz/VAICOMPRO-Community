@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using VAICOM.Database;
 using VAICOM.FileManager;
-using System.Collections.Generic;
-using System;
-using System.Windows.Forms;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -15,22 +15,22 @@ namespace VAICOM
 
             public class ServerAuxmenu
             {
-                public string               name;
-                public List<MenuCommand>    items;
-                public ServerAuxmenu        submenu;
+                public string name;
+                public List<MenuCommand> items;
+                public ServerAuxmenu submenu;
             }
 
             public class MenuCommand
             {
-                public string           name;
-                public MenuAction       command;
-                public ServerAuxmenu    submenu;
+                public string name;
+                public MenuAction command;
+                public ServerAuxmenu submenu;
 
             }
 
             public class MenuAction
             {
-                public int?             actionIndex;
+                public int? actionIndex;
             }
 
             // helper function for iterative scan

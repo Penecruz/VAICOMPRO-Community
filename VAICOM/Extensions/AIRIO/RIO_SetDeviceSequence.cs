@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using VAICOM.Extensions.RIO;
 using System.Windows.Forms;
+using VAICOM.Extensions.RIO;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -27,7 +27,8 @@ namespace VAICOM
                     if (State.currentstate.riostate.ics && State.activeconfig.ICShotmic_useswitch)
                     {
                         State.activeconfig.ICShotmic = true;
-                    } else
+                    }
+                    else
                     {
                         State.activeconfig.ICShotmic = false;
                     }
@@ -39,7 +40,7 @@ namespace VAICOM
                             State.configurationwindow.Dictate_set_relhot_Light(State.activeconfig.ICShotmic);
                         });
                     }
-                   
+
                 }
                 catch
                 {
@@ -118,10 +119,10 @@ namespace VAICOM
                 {
                     //if (!State.activeconfig.RIO_Allow_Seat_Override)
                     //{
-                        State.currentmessage.dspmsg = "AIRIO : You are in Jester's seat!\n";
-                        State.currentmessage.msgdur = 5;
-                        State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        return false;
+                    State.currentmessage.dspmsg = "AIRIO : You are in Jester's seat!\n";
+                    State.currentmessage.msgdur = 5;
+                    State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
+                    return false;
                     //}
                 }
 
@@ -129,10 +130,10 @@ namespace VAICOM
                 {
                     //if (!State.activeconfig.RIO_Allow_Seat_Override)
                     //{
-                        State.currentmessage.dspmsg = "AIRIO : You are in Iceman's seat!\n";
-                        State.currentmessage.msgdur = 5;
-                        State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
-                        return false;
+                    State.currentmessage.dspmsg = "AIRIO : You are in Iceman's seat!\n";
+                    State.currentmessage.msgdur = 5;
+                    State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
+                    return false;
                     //}
                 }
 
@@ -148,8 +149,8 @@ namespace VAICOM
                 // block startup commands while not starting up
                 if (tables.menustate[tables.menucats.STARTUP] == tables.menustates.Not_Starting)
                 {
-                   if (State.currentkey["command"].Equals("wMsgJ_STRT_ABORT") || State.currentkey["command"].StartsWith("wMsgJ_STRT_INS_")) // or others..
-                  {
+                    if (State.currentkey["command"].Equals("wMsgJ_STRT_ABORT") || State.currentkey["command"].StartsWith("wMsgJ_STRT_INS_")) // or others..
+                    {
                         State.currentmessage.dspmsg = "AIRIO: Not starting up!\n";
                         State.currentmessage.msgdur = 5;
                         State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>(); // empty
@@ -279,7 +280,7 @@ namespace VAICOM
                         )
                     {
                         State.currentmessage.dspmsg = "AIRIO : Info: TACAN beacon not located in current theatre.\n";
-                        State.currentmessage.msgdur = 5;                      
+                        State.currentmessage.msgdur = 5;
                     }
 
                     riospeech.riospeakrandom(1); //ok
@@ -357,7 +358,7 @@ namespace VAICOM
                             return false;
                         }
                     }
-                    catch                      
+                    catch
                     {
                     }
 
@@ -592,8 +593,8 @@ namespace VAICOM
                 // Toggled states (contract)
 
                 bool t1 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_NO_TALK") && tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.No_Talk);
-                bool t2 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_TALK")    && tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.Talk);
-                bool t3 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_CALL")    && tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.Call);
+                bool t2 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_TALK") && tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.Talk);
+                bool t3 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_CALL") && tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.Call);
                 bool t4 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_NO_CALL") && tables.menustate[tables.menucats.CONTR_TALK].Equals(tables.menustates.No_Call);
                 bool t5 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_EJECT_BTH") && !State.currentstate.riostate.ejsn;
                 bool t6 = State.currentkey["command"].Equals("wMsgJ_UTIL_CONTR_EJECT_SNG") && State.currentstate.riostate.ejsn;
@@ -693,21 +694,21 @@ namespace VAICOM
                     try
                     {
 
-                        List <Extensions.RIO.DeviceAction > cache = new List<Extensions.RIO.DeviceAction>(); 
+                        List<Extensions.RIO.DeviceAction> cache = new List<Extensions.RIO.DeviceAction>();
                         foreach (List<Extensions.RIO.DeviceAction> actionlist in Extensions.RIO.DeviceActionsLibrary.Sequences.RioCommands[State.currentkey["command"]])
                         {
-                            cache.AddRange(actionlist); 
+                            cache.AddRange(actionlist);
                         }
 
                         // always close menu wheel: add at the end
 
 
-                        for (int i = 0; i <cache.Count; i++ )
+                        for (int i = 0; i < cache.Count; i++)
                         {
                             State.currentmessage.extsequence.Add(new Extensions.RIO.DeviceAction());
                             State.currentmessage.extsequence[i].command = cache[i].command;
-                            State.currentmessage.extsequence[i].device  = cache[i].device;
-                            State.currentmessage.extsequence[i].value   = cache[i].value;
+                            State.currentmessage.extsequence[i].device = cache[i].device;
+                            State.currentmessage.extsequence[i].value = cache[i].value;
                         }
 
                         List<Extensions.RIO.DeviceAction> closemenu = new List<Extensions.RIO.DeviceAction>();

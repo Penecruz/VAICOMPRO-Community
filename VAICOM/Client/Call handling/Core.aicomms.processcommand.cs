@@ -1,18 +1,18 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using VAICOM.Extensions.WorldAudio;
-using VAICOM.Servers;
-using VAICOM.PushToTalk;
+using VAICOM.Database;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Extensions.WorldAudio;
+using VAICOM.PushToTalk;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
     namespace Client
     {
         public partial class DcsClient
-    {
+        {
             public static partial class Message
             {
 
@@ -213,7 +213,7 @@ namespace VAICOM
                             UI.Playsound.Proceed();
                         }
                         Log.Write("(awaiting additional input)", Colors.Message);
-                 
+
                         // show kneeboard (if "kneeboard" command used)
                         try
                         {
@@ -246,7 +246,7 @@ namespace VAICOM
                         }
                     }
                 }
-                
+
                 public static bool getunitforspecialcommands()
                 {
 
@@ -262,7 +262,7 @@ namespace VAICOM
                             }
                         }
                         else
-                        {                     
+                        {
                             // continue ok with no messageunit, class = undefined
                         }
                         return true;
@@ -422,7 +422,7 @@ namespace VAICOM
                             Log.Write("No message sent.", Colors.Inline);
                         }
                     }
-  
+
                 }
 
                 public static void sendvoid()
@@ -470,7 +470,7 @@ namespace VAICOM
                                         //vaProxy.WriteToLog("Start: buffer = " + buffer, Colors.Critical);
                                         break;
                                     case "wMsgKneeboardDictateStop":
-                                        PTT.PTT_Manage_Listen_States_OnPressRelease(false,false);
+                                        PTT.PTT_Manage_Listen_States_OnPressRelease(false, false);
                                         State.Proxy.Dictation.Stop();
                                         //UI.Playsound.Commandcomplete();
                                         break;
@@ -504,8 +504,8 @@ namespace VAICOM
                             }
                         }
                     }
-                    catch 
-                    { 
+                    catch
+                    {
                     }
 
 
@@ -524,7 +524,7 @@ namespace VAICOM
                     if (State.currentcommand.dcsid.Equals("wMsgReplySayAgain"))
                     {
 
-                        Processor.commcat sendercat = Processor.commcat.ALL; 
+                        Processor.commcat sendercat = Processor.commcat.ALL;
 
                         try
                         {
@@ -645,7 +645,7 @@ namespace VAICOM
                                 return !State.currentcommand.isOptions() && !State.currentcommand.isMenu();
                             }
                         }
-                        else 
+                        else
                         {
                             // Normal commands
 
@@ -666,13 +666,13 @@ namespace VAICOM
                             }
 
                             if (State.currentcommand.isCarrier() && !State.currentmessageunit.descr.ToLower().Contains("supercarrier"))
-                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("forrestal"))
-                            if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("stennis"))
+                                if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("forrestal"))
+                                    if (State.currentcommand.isCarrier() && !State.currentmessageunit.fullname.ToLower().Contains("stennis"))
                                     {
-                                Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning); // Pene changes to allow non SC units if module is installed
-                                UI.Playsound.Error();
-                                return true; //true
-                            }
+                                        Log.Write("Selected recipient is not a Supercarrier unit.", Colors.Warning); // Pene changes to allow non SC units if module is installed
+                                        UI.Playsound.Error();
+                                        return true; //true
+                                    }
                         }
 
                         // ---------------------------  
@@ -729,7 +729,7 @@ namespace VAICOM
                             }
                         }
 
- 
+
                         // setting: auto switch to VoIP when call finished
                         if (!riocommand && !optionscommand && !menucommand && State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_VoIPAutoSwitch && !switchcommand && !(selectcommand && State.activeconfig.MP_IgnoreSelect))
                         {
@@ -745,12 +745,12 @@ namespace VAICOM
                     }
                     catch (Exception e)
                     {
-                        Log.Write("Voice command processing error:" +  e.StackTrace, Colors.Inline);          
+                        Log.Write("Voice command processing error:" + e.StackTrace, Colors.Inline);
                     }
 
                     State.processlocked = false;
 
-                    return !options && !menu; 
+                    return !options && !menu;
 
                 }
 

@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -32,14 +32,14 @@ namespace VAICOM
 
                     try
                     {
-   
+
                         foreach (KeyValuePair<string, Server.LuaFile> serverfile in LuaFiles)
                         {
                             if (serverfile.Value.export)
                             {
                                 Server.LuaFile thisfile = serverfile.Value;
                                 string path = basepath + "\\" + thisfile.filename;
-                                if (File.Exists(path)) { File.Delete(path); } 
+                                if (File.Exists(path)) { File.Delete(path); }
                                 string writestring = thisfile.source;
                                 using (StreamWriter writer = new StreamWriter(path, true)) { writer.Write(writestring); };
                                 Log.Write("Exported file: " + thisfile.filename, Colors.Text);
@@ -57,7 +57,7 @@ namespace VAICOM
                         //VAICOM PRO for DCS World
                         string filename = "VAICOM PRO for DCS World.vap";
                         string filepath = basepath + "\\" + filename;
-                        if (File.Exists(filepath)) { File.Delete(filepath); } 
+                        if (File.Exists(filepath)) { File.Delete(filepath); }
                         string filewritestring = Properties.Resources.VAICOM_PRO_for_DCS_World;
                         using (StreamWriter writer = new StreamWriter(filepath, true)) { writer.Write(filewritestring); };
                         Log.Write("Exported file: " + filename, Colors.Text);

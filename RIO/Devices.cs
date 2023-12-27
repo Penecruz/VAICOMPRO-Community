@@ -15,7 +15,7 @@
         {
             public static int ICS = 2;
             public static int ARC159 = 3;
-            public static int ARC182 = 4;          
+            public static int ARC182 = 4;
             public static int COUNTERMEASURES = 5; //hardcoded for the ground crew menu options (countermeasures loadout)
             public static int COCKPITMECHANICS = 12; // now 12
             public static int LANTIRN = 7; // <-- now 7
@@ -33,6 +33,6 @@
         {
         }
 
-    } 
+    }
 
 }

@@ -1,13 +1,13 @@
-﻿using VAICOM.Servers;
-using VAICOM.Client;
-using VAICOM.Products;
-using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using VAICOM.Client;
+using VAICOM.Products;
+using VAICOM.PushToTalk;
+using VAICOM.Servers;
 
 namespace VAICOM
 {
@@ -394,7 +394,7 @@ namespace VAICOM
                 Changesquelchbug();
             }
             // TX viewers
-            private void setTX1text(object sender, EventArgs e) 
+            private void setTX1text(object sender, EventArgs e)
             {
                 string keyname = "TX1";
                 string keyenabled;
@@ -415,7 +415,7 @@ namespace VAICOM
                         keyenabled = "";
                     }
                     radioname = "" + PTT.TXNodes.TX1.radios[0].name;
-                    radioid = ""; 
+                    radioid = "";
                 }
                 else
                 {
@@ -512,7 +512,7 @@ namespace VAICOM
                         keyenabled = "";
                     }
                     radioname = "" + PTT.TXNodes.TX4.radios[0].name;
-                    radioid = ""; 
+                    radioid = "";
                 }
                 else
                 {
@@ -587,7 +587,7 @@ namespace VAICOM
                 TX6info.Text = TXinfo;
 
             }
- 
+
             private void setModuleInfotext(object sender, EventArgs e)
             {
                 string modulename;
@@ -603,26 +603,26 @@ namespace VAICOM
                 string info = "" + modulename + " " + State.currentmodule.Alias;
                 ModuleInfo.Text = info;
             }
- 
+
             private void setMicKeysInfotext(object sender, EventArgs e)
             {
                 setMicKeysInfotext();
             }
-            public void  setMicKeysInfotext()
+            public void setMicKeysInfotext()
             {
-               
+
 
                 if (State.currentmodule.Singlehotkey)
                 {
                     if (State.activeconfig.ForceMultiHotkey)
                     {
-                        
+
                         MultiMode.Visibility = Visibility.Visible;
                         SingleMode.Visibility = Visibility.Hidden;
                     }
                     else
                     {
-                        
+
                         MultiMode.Visibility = Visibility.Hidden;
                         SingleMode.Visibility = Visibility.Visible;
                     }
@@ -631,13 +631,13 @@ namespace VAICOM
                 {
                     if (State.activeconfig.ForceSingleHotkey)
                     {
-                        
+
                         MultiMode.Visibility = Visibility.Hidden;
                         SingleMode.Visibility = Visibility.Visible;
                     }
                     else
                     {
-                        
+
                         MultiMode.Visibility = Visibility.Visible;
                         SingleMode.Visibility = Visibility.Hidden;
                     }
@@ -887,7 +887,7 @@ namespace VAICOM
                 setMicKeysInfotext();
                 ChangeDialbug();
             }
-            private void UpdateSingleHotkey(object sender, SelectionChangedEventArgs e) 
+            private void UpdateSingleHotkey(object sender, SelectionChangedEventArgs e)
             {
                 try
                 {
@@ -936,7 +936,7 @@ namespace VAICOM
             {
                 Dial_SetMode_Dn();
             }
-            public void  Dial_SetMode_Up()
+            public void Dial_SetMode_Up()
             {
 
                 if (State.activeconfig.OperateDial)
@@ -948,7 +948,7 @@ namespace VAICOM
                     Dial_Sw_Up.Visibility = Visibility.Hidden;
                 }
             }
-            public void  Dial_SetMode_Dn()
+            public void Dial_SetMode_Dn()
             {
 
                 if (State.activeconfig.OperateDial)
@@ -965,7 +965,7 @@ namespace VAICOM
             {
                 if (State.activeconfig.SelectorMode == null)
                 {
-                    State.activeconfig.SelectorMode = 2; 
+                    State.activeconfig.SelectorMode = 2;
 
                     if (State.activeconfig.ForceMultiHotkey)
                     {
@@ -1000,7 +1000,7 @@ namespace VAICOM
 
                 }
 
-                if (State.activeconfig.SelectorMode.Equals(2)) 
+                if (State.activeconfig.SelectorMode.Equals(2))
                 {
                     PTT_BG.Visibility = Visibility.Hidden;
                     PTT_BG_INV.Visibility = Visibility.Hidden;
@@ -1087,7 +1087,7 @@ namespace VAICOM
             public void Page_Up()
             {
 
-                if (PTT.IsPTTModeSingle()) 
+                if (PTT.IsPTTModeSingle())
                 {
 
                     try
@@ -1125,7 +1125,7 @@ namespace VAICOM
             public void Page_Dn()
             {
 
-                if (PTT.IsPTTModeSingle()) 
+                if (PTT.IsPTTModeSingle())
                 {
                     try
                     {
@@ -1211,9 +1211,9 @@ namespace VAICOM
                     Hotmic_Sw_Up.Visibility = Visibility.Visible;
                     Hotmic_Sw_Dn.Visibility = Visibility.Hidden;
                 }
-                else 
+                else
                 {
-                    Hotmic_Sw_Up.Visibility = Visibility.Hidden; 
+                    Hotmic_Sw_Up.Visibility = Visibility.Hidden;
                     Hotmic_Sw_Dn.Visibility = Visibility.Visible;
                 }
             }
@@ -1311,7 +1311,7 @@ namespace VAICOM
                     State.Proxy.Command.SetSessionEnabledByCategory("Extension packs", true);
                 }
                 else
-                {                 
+                {
                     State.Proxy.Command.SetSessionEnabledByCategory("Keyword Collections", false);
                     State.Proxy.Command.SetSessionEnabledByCategory("Extension packs", false);
                     if (State.Proxy.GetProfileName().ToLower().Contains(State.defProfileName.ToLower()))
@@ -1337,7 +1337,7 @@ namespace VAICOM
             }
             public void Toggle_SRS_Mode_On_Init()
             {
-                SRS_Mode_Toggle_On.IsEnabled  = State.PRO;
+                SRS_Mode_Toggle_On.IsEnabled = State.PRO;
                 if (State.activeconfig.UseSRSmapping)
                 {
                     SRS_Mode_Toggle_On.Visibility = Visibility.Visible;
@@ -1428,7 +1428,7 @@ namespace VAICOM
                     Point knobCenter = new Point(Volume_Knob.Margin.Left + (Volume_Knob.ActualWidth / 2), Volume_Knob.Margin.Top + (Volume_Knob.ActualHeight / 2));
 
                     double delta = knobCenter.Y - currentLocation.Y;
-    
+
                     if (delta > 150)
                     {
                         delta = 150;
@@ -1441,7 +1441,7 @@ namespace VAICOM
 
                     Volume_Knob.RenderTransform = new RotateTransform() { Angle = delta };
 
-                    State.activeconfig.ChatterVolume = (float) (0.5 + (delta / 300));
+                    State.activeconfig.ChatterVolume = (float)(0.5 + (delta / 300));
                     Settings.ConfigFile.WriteConfigToFile(true);
                 }
             }
@@ -1498,8 +1498,8 @@ namespace VAICOM
                     }
                     else
                     {
-                        PTT.PTT_Handler(State.Proxy, PTT.TXNodes.TX1, false, true);   
-                    }                
+                        PTT.PTT_Handler(State.Proxy, PTT.TXNodes.TX1, false, true);
+                    }
                 }
                 resetTXcolorall();
             }
@@ -1524,7 +1524,7 @@ namespace VAICOM
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
                 {
-                    
+
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX2 press");
@@ -1536,7 +1536,7 @@ namespace VAICOM
                 }
             }
             private void Button_Release_TX2(object sender, MouseButtonEventArgs e)
-            {               
+            {
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX2 release");
@@ -1549,7 +1549,7 @@ namespace VAICOM
             private void Button_Release_TX2(object sender, MouseEventArgs e)
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
-                {            
+                {
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX2 release");
@@ -1569,7 +1569,7 @@ namespace VAICOM
             private void Button_Press_TX3(object sender, MouseButtonEventArgs e)
             {
                 UI.Playsound.Gum_Soft();
-                
+
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX3 press");
@@ -1582,7 +1582,7 @@ namespace VAICOM
             private void Button_Press_TX3(object sender, MouseEventArgs e)
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
-                {                   
+                {
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX3 press");
@@ -1595,7 +1595,7 @@ namespace VAICOM
             }
             private void Button_Release_TX3(object sender, MouseButtonEventArgs e)
             {
-                
+
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX3 release");
@@ -1627,7 +1627,7 @@ namespace VAICOM
             }
             private void Button_Press_TX4(object sender, MouseButtonEventArgs e)
             {
-                UI.Playsound.Gum_Soft();                
+                UI.Playsound.Gum_Soft();
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX4 press");
@@ -1640,7 +1640,7 @@ namespace VAICOM
             private void Button_Press_TX4(object sender, MouseEventArgs e)
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
-                {                   
+                {
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX4 press");
@@ -1652,7 +1652,7 @@ namespace VAICOM
                 }
             }
             private void Button_Release_TX4(object sender, MouseButtonEventArgs e)
-            {             
+            {
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX4 release");
@@ -1667,7 +1667,7 @@ namespace VAICOM
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
                 {
                     if (State.activeconfig.MouseExternalTX)
-                    { 
+                    {
                         State.Proxy.ExecuteCommand("Transmit TX4 release");
                     }
                     else
@@ -1697,7 +1697,7 @@ namespace VAICOM
             private void Button_Press_TX5(object sender, MouseEventArgs e)
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
-                {                  
+                {
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX5 press");
@@ -1709,7 +1709,7 @@ namespace VAICOM
                 }
             }
             private void Button_Release_TX5(object sender, MouseButtonEventArgs e)
-            {          
+            {
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX5 release");
@@ -1722,7 +1722,7 @@ namespace VAICOM
             private void Button_Release_TX5(object sender, MouseEventArgs e)
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
-                {     
+                {
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX5 release");
@@ -1741,7 +1741,7 @@ namespace VAICOM
             }
             private void Button_Press_TX6(object sender, MouseButtonEventArgs e)
             {
-                UI.Playsound.Gum_Soft();    
+                UI.Playsound.Gum_Soft();
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX6 press");
@@ -1754,7 +1754,7 @@ namespace VAICOM
             private void Button_Press_TX6(object sender, MouseEventArgs e)
             {
                 if (e.LeftButton.Equals(MouseButtonState.Pressed) || e.RightButton.Equals(MouseButtonState.Pressed))
-                { 
+                {
                     if (State.activeconfig.MouseExternalTX)
                     {
                         State.Proxy.ExecuteCommand("Transmit TX6 press");
@@ -1766,7 +1766,7 @@ namespace VAICOM
                 }
             }
             private void Button_Release_TX6(object sender, MouseButtonEventArgs e)
-            {                
+            {
                 if (State.activeconfig.MouseExternalTX)
                 {
                     State.Proxy.ExecuteCommand("Transmit TX6 release");
@@ -1786,8 +1786,8 @@ namespace VAICOM
                     }
                     else
                     {
-                        PTT.PTT_Handler(State.Proxy, PTT.TXNodes.TX6, false, true);      
-                    }          
+                        PTT.PTT_Handler(State.Proxy, PTT.TXNodes.TX6, false, true);
+                    }
                 }
                 resetTXcolorall();
             }

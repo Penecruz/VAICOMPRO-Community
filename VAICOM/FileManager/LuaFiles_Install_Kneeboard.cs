@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.IO;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -183,7 +183,7 @@ namespace VAICOM
                                         }
                                         catch (Exception e)
                                         {
-                                            Log.Write(e.Message +"\n" +e.StackTrace, Colors.Inline);
+                                            Log.Write(e.Message + "\n" + e.StackTrace, Colors.Inline);
                                         }
                                     }
 
@@ -202,7 +202,7 @@ namespace VAICOM
                         // ------ device_init ---------------------------------------------------------------------
 
                         // now loop through all other lua files for kneeboard
-                        
+
                         foreach (KeyValuePair<string, Server.LuaFile> serverfile in LuaFiles)
                         {
 
@@ -266,7 +266,7 @@ namespace VAICOM
 
                             if (thisfile.binary)
                             {
-                                byte [] writestring = thisfile.binarysource;
+                                byte[] writestring = thisfile.binarysource;
                                 if (!restore)
                                 {
                                     File.WriteAllBytes(path, writestring);
@@ -275,12 +275,12 @@ namespace VAICOM
                             }
                             else // text files 
                             {
-                                
+
                                 string writestring = "";
 
                                 if (thisfile.reset || restore)
                                 {
-                                   writestring = thisfile.orig; 
+                                    writestring = thisfile.orig;
                                 }
                                 else // new write
                                 {
@@ -303,7 +303,7 @@ namespace VAICOM
                                 Log.Write("   Reset: " + thisfile.filename, Colors.Inline);
                             }
 
-                        }     
+                        }
                     }
                 }
             }

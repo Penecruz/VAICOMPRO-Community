@@ -1,7 +1,6 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
+﻿using VAICOM.Database;
 using VAICOM.PushToTalk;
-using System;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -14,89 +13,89 @@ namespace VAICOM
                 public static void logclosecall()
                 {
 
-                        try
+                    try
+                    {
+                        if (State.currentcommand.isSwitch())
                         {
-                            if (State.currentcommand.isSwitch())
+                            if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_AllowSwitchCommand)
                             {
-                                if (State.activeconfig.MP_VoIPUseSwitch && State.activeconfig.MP_AllowSwitchCommand)
+                                if (State.activeconfig.MP_VoIPUseSwitch && !State.activeconfig.MP_VoIPAutoSwitch && State.activeconfig.MP_WarnHumans)
                                 {
-                                    if (State.activeconfig.MP_VoIPUseSwitch && !State.activeconfig.MP_VoIPAutoSwitch && State.activeconfig.MP_WarnHumans)
-                                    {
-                                        UI.Playsound.Human_Comms_Active();
-                                    }
-                                }
-                                else
-                                {
-                                    UI.Playsound.Sorry();
+                                    UI.Playsound.Human_Comms_Active();
                                 }
                             }
                             else
                             {
-                               UI.Playsound.Commandcomplete();
+                                UI.Playsound.Sorry();
                             }
+                        }
+                        else
+                        {
+                            UI.Playsound.Commandcomplete();
+                        }
 
-                            string recipientlabel ="";
-                            string senderlabel = "";
-                            string cuelabel = "";
-                            string commandlabel = "";
-                            string labelwpn = "";
-                            string labeldir = "";
+                        string recipientlabel = "";
+                        string senderlabel = "";
+                        string cuelabel = "";
+                        string commandlabel = "";
+                        string labelwpn = "";
+                        string labeldir = "";
 
-                            recipientlabel = Labels.airecipients[State.currentkey["recipient"]];
+                        recipientlabel = Labels.airecipients[State.currentkey["recipient"]];
 
-                            if (!recipientlabel.Equals(""))
+                        if (!recipientlabel.Equals(""))
+                        {
+                            recipientlabel = "[ " + recipientlabel + " ] , ";
+                        }
+
+
+                        // sender label
+                        try
+                        {
+                            if (State.activeconfig.UseNewRecognitionModel)
                             {
-                                recipientlabel = "[ " + recipientlabel + " ] , ";
-                            }
-
-
-                            // sender label
-                            try
-                            {
-                                if (State.activeconfig.UseNewRecognitionModel)
+                                if (State.currentrecipientclass.Name.Equals("Flight"))
                                 {
-                                    if (State.currentrecipientclass.Name.Equals("Flight"))
-                                    {
-                                        senderlabel = "";
-                                    }
-                                    else
-                                    {
-                                        senderlabel = "";
-                                    }
+                                    senderlabel = "";
                                 }
                                 else
                                 {
-                                    senderlabel = Labels.playercallsigns[State.currentkey["sender"]];
-
+                                    senderlabel = "";
                                 }
+                            }
+                            else
+                            {
+                                senderlabel = Labels.playercallsigns[State.currentkey["sender"]];
 
-                                if (!senderlabel.Equals("") && !senderlabel.Equals(" "))
-                                {
-                                    senderlabel = "[ " + senderlabel + " ], ";
-                                }
-                                else
-                                {
+                            }
+
+                            if (!senderlabel.Equals("") && !senderlabel.Equals(" "))
+                            {
+                                senderlabel = "[ " + senderlabel + " ], ";
+                            }
+                            else
+                            {
                                 senderlabel = "";
-                                }
-
-                            }
-                            catch
-                            {
                             }
 
-                            // cue
-                            try
-                            {
-                                cuelabel = Labels.aicues[State.currentkey["cue"]];
-                            }
-                            catch
-                            {
-                            }
+                        }
+                        catch
+                        {
+                        }
 
-                            if (!cuelabel.Equals("") && !cuelabel.Equals(" "))
-                            {
-                                cuelabel = "[ " + cuelabel + " ] ";
-                            }
+                        // cue
+                        try
+                        {
+                            cuelabel = Labels.aicues[State.currentkey["cue"]];
+                        }
+                        catch
+                        {
+                        }
+
+                        if (!cuelabel.Equals("") && !cuelabel.Equals(" "))
+                        {
+                            cuelabel = "[ " + cuelabel + " ] ";
+                        }
 
                         // command label
                         try
@@ -145,7 +144,7 @@ namespace VAICOM
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {
-                            Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": "+ recipientlabel + senderlabel + cuelabel + commandlabel + labelwpn + labeldir , Colors.Message);
+                            Log.Write(State.currentTXnode.name + " | " + PTT.RadioDevices.SEL.name + ": " + recipientlabel + senderlabel + cuelabel + commandlabel + labelwpn + labeldir, Colors.Message);
                         }
                         else // for multi:
                         {

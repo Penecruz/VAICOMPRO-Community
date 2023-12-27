@@ -1,6 +1,5 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
 
 namespace VAICOM
 {
@@ -121,7 +120,7 @@ namespace VAICOM
                 // Nevada NTTR Map
 
                 { "wAIUnitATCNevadaNull",           new Recipient { uniqueid = 15150, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNull",        } },
-                
+
                 { "Creech",                         new Recipient { uniqueid = 15151, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaCreech",      displayname = Labels.airecipients["Creech"] } },
                 { "Henderson Executive",            new Recipient { uniqueid = 15152, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaHenderson",   displayname = Labels.airecipients["Henderson Executive"] } },
                 { "McCarran International",         new Recipient { uniqueid = 15153, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMccarran",    displayname = Labels.airecipients["McCarran International"] } },
@@ -131,13 +130,13 @@ namespace VAICOM
                 { "Groom Lake",                     new Recipient { uniqueid = 15157, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaGroomLake",   displayname = Labels.airecipients["Groom Lake"] } },
                 { "Nellis",                         new Recipient { uniqueid = 15158, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaNellis",      displayname = Labels.airecipients["Nellis"] } },
                 { "Boulder City",                   new Recipient { uniqueid = 15159, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaBoulder",     displayname = Labels.airecipients["Boulder City"] } },
-                
+
                 { "wAIUnitATCNevadaMaximum",        new Recipient { uniqueid = 15199, category = RecipientCategories.aiatc, name = "wAIUnitATCNevadaMaximum",     } },
 
                 // Normandy Map
 
                 { "wAIUnitATCNormandyNull",         new Recipient { uniqueid = 15200, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyNull",              } },
-                
+
                 { "Beny-sur-Mer",                   new Recipient { uniqueid = 15201, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyBenysurMer",        displayname = Labels.airecipients["Beny-sur-Mer"], blockedforFree = true } },
                 { "Sainte-Croix-sur-Mer",           new Recipient { uniqueid = 15202, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandySainteCroixsurMer", displayname = Labels.airecipients["Sainte-Croix-sur-Mer"], blockedforFree = true  } },
                 { "Lantheuil",                      new Recipient { uniqueid = 15203, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyLantheuil",         displayname = Labels.airecipients["Lantheuil"], blockedforFree = true  } },
@@ -165,13 +164,13 @@ namespace VAICOM
                 { "Funtington",                     new Recipient { uniqueid = 15225, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyFuntington",        displayname = Labels.airecipients["Funtington"], blockedforFree = true  } },
                 { "Chailey",                        new Recipient { uniqueid = 15226, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyChailey",           displayname = Labels.airecipients["Chailey"], blockedforFree = true  } },
                 { "Needs Oar Point",                new Recipient { uniqueid = 15227, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyNeedsOarPoint",     displayname = Labels.airecipients["Needs Oar Point"], blockedforFree = true  } },
-                
+
                 { "wAIUnitATCNormandyMaximum",      new Recipient { uniqueid = 15249, category = RecipientCategories.aiatc, name = "wAIUnitATCNormandyMaximum",           } },
 
                 // Persian Gulf map
 
                 { "wAIUnitATCPersianGulfNull",      new Recipient { uniqueid = 15250, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfNull",              } },
-                
+
                 { "Al Maktoum Intl",                new Recipient { uniqueid = 15251, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMaktoumIntl", displayname = Labels.airecipients["Al Maktoum Intl"],           blockedforFree = true  } },
                 { "Al Minhad AFB",                  new Recipient { uniqueid = 15252, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfAlMinhadAFB",   displayname = Labels.airecipients["Al Minhad AFB"],             blockedforFree = true  } },
                 { "Dubai Intl",                     new Recipient { uniqueid = 15253, category = RecipientCategories.aiatc, name = "wAIUnitATCPersianGulfDubaiIntl",     displayname = Labels.airecipients["Dubai Intl"],                blockedforFree = true  } },
@@ -205,7 +204,7 @@ namespace VAICOM
                 // Channel Map
                 
                 { "wAIUnitATCChannelNull",      new Recipient { uniqueid = 15280, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelNull",              } },
-                
+
                 { "Dunkirk Mardyck",            new Recipient { uniqueid = 15281, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelDunkirkMardyck",  displayname = Labels.airecipients["Dunkirk Mardyck"], blockedforFree = true  } },
                 { "Hawkinge",                   new Recipient { uniqueid = 15282, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelHawkinge",  displayname = Labels.airecipients["Hawkinge"], blockedforFree = true  } },
                 { "Saint Omer Longuenesse",     new Recipient { uniqueid = 15283, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelSaintOmerLonguenesse",  displayname = Labels.airecipients["Saint Omer Longuenesse"], blockedforFree = true  } },
@@ -215,7 +214,7 @@ namespace VAICOM
                 { "Abbeville Drucat",           new Recipient { uniqueid = 15287, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelAbbevilleDrucat",  displayname = Labels.airecipients["Abbeville Drucat"], blockedforFree = true  } },
                 { "Lympne",                     new Recipient { uniqueid = 15288, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelLympne",  displayname = Labels.airecipients["Lympne"], blockedforFree = true  } },
                 { "Manston",                    new Recipient { uniqueid = 15289, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelManston",  displayname = Labels.airecipients["Manston"], blockedforFree = true  } },
-                
+
                 { "wAIUnitATCChannelMaximum",   new Recipient { uniqueid = 15290, category = RecipientCategories.aiatc, name = "wAIUnitATCChannelMaximum",           } },
 
                 // Syria map
@@ -387,7 +386,7 @@ namespace VAICOM
 
                 // new roles
                 { "wAIUnitCarrierRoleNull",     new Recipient { uniqueid = 15520, category = RecipientCategories.aiship, name = "wAIUnitCarrierRoleNull", }      },
-                
+
                 { "CarrierDeparture",           new Recipient { uniqueid = 15521, category = RecipientCategories.aiship, name = "wAIUnitCarrierDeparture",     displayname = Labels.airecipients["CarrierDeparture"], blockedforFree = true, requiresrealatc = true } },
                 { "CarrierMarshal",             new Recipient { uniqueid = 15522, category = RecipientCategories.aiship, name = "wAIUnitCarrierMarshal",       displayname = Labels.airecipients["CarrierMarshal"], blockedforFree = true, requiresrealatc = true } },
                 { "CarrierApproachTower",       new Recipient { uniqueid = 15523, category = RecipientCategories.aiship, name = "wAIUnitCarrierApproachTower", displayname = Labels.airecipients["CarrierApproachTower"], blockedforFree = true, requiresrealatc = true } },
@@ -412,13 +411,13 @@ namespace VAICOM
                 { "shell",                  new Recipient { uniqueid = 16003, category = RecipientCategories.aitanker, name = "wAIUnitTankerShell",      displayname = Labels.airecipients["shell"] } },
                 { "arco",                   new Recipient { uniqueid = 16004, category = RecipientCategories.aitanker, name = "wAIUnitTankerArco",       displayname = Labels.airecipients["arco"] } },
                 { "nearesttanker",          new Recipient { uniqueid = 16005, category = RecipientCategories.aitanker, name = "wAIUnitTankerNearest",    displayname = Labels.airecipients["nearesttanker"] } },
-                
+
                 { "wAIUnitTankerMaximum",   new Recipient { uniqueid = 16999, category = RecipientCategories.aitanker, name = "wAIUnitTankerMaximum",    } },
 
                 // AWACS
                 
                 { "wAIUnitAWACSNull",       new Recipient { uniqueid = 17000, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSNull",        } },
-                
+
                 { "awacs",                  new Recipient { uniqueid = 17001, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSAWACS",       displayname = Labels.airecipients["awacs"] } },
                 { "darkstar",               new Recipient { uniqueid = 17002, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSDarkstar",    displayname = Labels.airecipients["darkstar"] } },
                 { "focus",                  new Recipient { uniqueid = 17003, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSFocus",       displayname = Labels.airecipients["focus"] } },
@@ -426,7 +425,7 @@ namespace VAICOM
                 { "overlord",               new Recipient { uniqueid = 17005, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSOverlord",    displayname = Labels.airecipients["overlord"] } },
                 { "wizard",                 new Recipient { uniqueid = 17006, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSWizard",      displayname = Labels.airecipients["wizard"] } },
                 { "nearestawacs",           new Recipient { uniqueid = 17007, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSNearest",     displayname = Labels.airecipients["nearestawacs"] } },
-                
+
                 { "wAIUnitAWACSMaximum",    new Recipient { uniqueid = 17999, category = RecipientCategories.aiawacs, name = "wAIUnitAWACSMaximum",     } },
 
                 // Ai Crew

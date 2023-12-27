@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -148,7 +148,7 @@ namespace VAICOM
                                 State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_RAD_DL_MIN_9);
                                 break;
                         }
-                        
+
                         string message = "3" + majval1.ToString() + majval2.ToString() + "." + minval.ToString() + "0 Mhz";
 
                         if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)

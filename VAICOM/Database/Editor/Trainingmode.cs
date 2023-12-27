@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Speech.Recognition;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -8,7 +8,7 @@ namespace VAICOM
     namespace Database
     {
 
-        public partial class AliasEditor       
+        public partial class AliasEditor
         {
 
             // offline keywords training
@@ -17,12 +17,12 @@ namespace VAICOM
                 if (!State.trainerrunning)
                 {
                     SpeechTrainer.Initialize();
-                    SpeechTrainer.Start();             
+                    SpeechTrainer.Start();
                 }
                 else
                 {
-                    SpeechTrainer.Stop();              
-                }            
+                    SpeechTrainer.Stop();
+                }
             }
 
             // trainer functions
@@ -35,7 +35,7 @@ namespace VAICOM
                     try
                     {
                         UI.Playsound.Commandcomplete();
-                    
+
                         Log.Write("Offline keyword training initialized", Colors.System);
                         Log.Write("Ready for training.", Colors.Message);
                         State.trainerrunning = true;
@@ -110,8 +110,8 @@ namespace VAICOM
                         Log.Reset();
                         trainer = new SpeechRecognizer();
                         trainer.UnloadAllGrammars();
-                        trainer.MaxAlternates = 0;                
-   
+                        trainer.MaxAlternates = 0;
+
                         Log.Write(trainer.RecognizerInfo.Description, Colors.System);
 
                         // add all aliases to new grammar
@@ -138,7 +138,7 @@ namespace VAICOM
                     catch
                     {
                     }
-                }                          
+                }
             }
         }
     }

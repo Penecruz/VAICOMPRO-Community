@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -294,14 +294,14 @@ namespace VAICOM
                 int catnum = tabcats.IndexOf(State.KneeboardState.activecat.ToUpper()) + ud;
                 if (catnum < 1)
                 {
-                    catnum = tabcats.Count -1;
+                    catnum = tabcats.Count - 1;
                 }
                 if (catnum > tabcats.Count - 1)
                 {
                     catnum = 1;
                 }
                 string cat = tabcats[catnum];
-                ControlKneeboard(vaProxy, "kneeboard.tab."+cat.ToLower());
+                ControlKneeboard(vaProxy, "kneeboard.tab." + cat.ToLower());
 
             }
 
@@ -374,11 +374,11 @@ namespace VAICOM
                             break;
 
                         case "kneeboard.tab.prv":
-                                CycleTabs(vaProxy, -1);
+                            CycleTabs(vaProxy, -1);
                             break;
 
                         case "kneeboard.tab.nxt":
-                                CycleTabs(vaProxy, 1);
+                            CycleTabs(vaProxy, 1);
                             break;
 
                         case "kneeboard.opac.up":
@@ -386,7 +386,7 @@ namespace VAICOM
                             if (State.activeconfig.KneeboardOpacity > 1)
                             {
                                 State.activeconfig.KneeboardOpacity = 1;
-                            }                        
+                            }
                             KneeboardUpdater.SendDeviceCommand(255, 3020, State.activeconfig.KneeboardOpacity);
                             Settings.ConfigFile.WriteConfigToFile(true);
                             if (State.configwindowopen && (State.configurationwindow != null))
@@ -401,10 +401,10 @@ namespace VAICOM
 
                         case "kneeboard.opac.dn":
                             State.activeconfig.KneeboardOpacity -= 0.05;
-                            if (State.activeconfig.KneeboardOpacity <0)
+                            if (State.activeconfig.KneeboardOpacity < 0)
                             {
                                 State.activeconfig.KneeboardOpacity = 0;
-                            }                        
+                            }
                             KneeboardUpdater.SendDeviceCommand(255, 3020, State.activeconfig.KneeboardOpacity);
                             Settings.ConfigFile.WriteConfigToFile(true);
                             if (State.configwindowopen && (State.configurationwindow != null))

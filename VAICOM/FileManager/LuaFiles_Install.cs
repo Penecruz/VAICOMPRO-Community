@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.IO;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -43,9 +43,9 @@ namespace VAICOM
                                 bool sliders_steamopenbeta = State.activeconfig.Custom_Path_Setting2.Equals(1) && State.activeconfig.Custom_Path_Setting1.Equals(1);
 
                                 // program files folder location options
-         
+
                                 string dcsinstallfolder_fromreg = Helpers.WinReg.GetDCSInstallFolder(set.Value);
-                                string dcsinstallfolder_custom = Helpers.Common.TrimmedString(State.activeconfig.DCSfoldername1); 
+                                string dcsinstallfolder_custom = Helpers.Common.TrimmedString(State.activeconfig.DCSfoldername1);
                                 string dcsinstallfolder_steamdefault = Helpers.WinReg.GetSteamFolder().Replace("/", "\\") + "\\steamapps\\common\\" + "DCSWorld";
                                 string dcsinstallfolder_regular = Environment.GetEnvironmentVariable("ProgramW6432") + "\\" + "Eagle Dynamics" + "\\" + set.Value;
 
@@ -70,7 +70,7 @@ namespace VAICOM
 
                                     if (versionmatch)
                                     {
-                                        string addstring="";
+                                        string addstring = "";
                                         if (currentcycleis_steam && sliders_steamopenbeta)
                                         {
                                             addstring = " (open beta)";
@@ -115,7 +115,7 @@ namespace VAICOM
                                     {
                                         Log.Write("DCS World installation found: version " + set.Key, Colors.Text);
                                         Log.Write("   Using default Steam install path for " + set.Key, Colors.Text);
-                                        
+
                                     }
 
                                     dcsprogramfilesfolder = dcsinstallfolder_steamdefault;
@@ -229,7 +229,7 @@ namespace VAICOM
                                         }
                                         else // to Saved Games
                                         {
-                                            basepath = UserSavedGamesFolder + "\\" + Server.dcsversion[set.Key] + "\\" + thisfile.installfolder;   
+                                            basepath = UserSavedGamesFolder + "\\" + Server.dcsversion[set.Key] + "\\" + thisfile.installfolder;
                                         }
 
                                         // create folder if doesn't exit yet..
@@ -245,7 +245,7 @@ namespace VAICOM
 
                                         // normal file (i.e. not export.lua)
 
-                                        if (!thisfile.filename.ToLower().Equals("export.lua")) 
+                                        if (!thisfile.filename.ToLower().Equals("export.lua"))
                                         {
                                             // ----- remove the file first (unless string replace type) ----
 
@@ -278,9 +278,9 @@ namespace VAICOM
 
                                                         // repair if left in legacy state
 
-                                                        string searchstr  = thisfile.stringsource; 
+                                                        string searchstr = thisfile.stringsource;
                                                         string replacestr = thisfile.stringorig;
-                                                  
+
 
                                                         // write the file
                                                         try
@@ -306,7 +306,7 @@ namespace VAICOM
                                                         else // normal, RIO is enabled
                                                         {
 
-                                                            if (thisfile.append) 
+                                                            if (thisfile.append)
                                                             {
                                                                 writestring = thisfile.orig;
 
@@ -335,8 +335,8 @@ namespace VAICOM
                                                                 writer.Write(writestring);
                                                             }
                                                         }
-                                                        catch 
-                                                        { 
+                                                        catch
+                                                        {
                                                         }
                                                     }
                                                 }
@@ -367,7 +367,7 @@ namespace VAICOM
                                                         {
                                                             writestring += "\n" + thisfile.source;
                                                         }
-                                                     
+
                                                     }
                                                 }
                                                 else // replace type
@@ -399,7 +399,7 @@ namespace VAICOM
                                                 // write the file (append mode)
                                                 using (StreamWriter writer = new StreamWriter(path, true))
                                                 {
-                                                    writer.Write(writestring); 
+                                                    writer.Write(writestring);
                                                 }
                                             }
 
@@ -413,7 +413,7 @@ namespace VAICOM
                                                     Log.Write("   Reset: " + thisfile.filename, Colors.Recognition);
                                                 }
                                             }
-                                            
+
                                         }
                                         else // specifcally for export.lua:
                                         {
@@ -449,7 +449,7 @@ namespace VAICOM
                                                 {
                                                     desiredentryoccurrences = 0;
                                                 }
-                                                 
+
                                                 int matchoccurences = (exportfile.Length - exportfile.Replace(exportmatch, "").Length) / exportmatch.Length;
 
                                                 if (matchoccurences < desiredentryoccurrences) //not enough: need to add fresh entry
@@ -472,7 +472,7 @@ namespace VAICOM
                                                 {
                                                     if (matchoccurences > desiredentryoccurrences) // need to do some repair here
                                                     {
-                                                        exportfile = exportfile.Replace(exportmatch, ""); 
+                                                        exportfile = exportfile.Replace(exportmatch, "");
 
                                                         if (!restore)
                                                         {
@@ -514,7 +514,7 @@ namespace VAICOM
 
                                     } //end foreach
 
-                               
+
                                     // lua for this DCS version processed
 
                                     installcounter = installcounter + 1;

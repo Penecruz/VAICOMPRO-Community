@@ -1,5 +1,5 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -29,7 +29,7 @@ namespace VAICOM
                         int chnoffset = State.currentmodule.chnoffset; // 1 for A10C, varies per module
 
                         SendMessage.tunechn = (chan - chnoffset).ToString();
- 
+
                         SendRadioControlMessage(SendMessage);
 
                         Log.Write("Select Channel " + chan.ToString(), Colors.Message);

@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -166,7 +166,7 @@ namespace VAICOM
                         }
                         else // ok, in pilot seat
                         {
-                                //riospeech.riospeakrandom(1); //ok       
+                            //riospeech.riospeakrandom(1); //ok       
                         }
 
                         SendNewMessage();
