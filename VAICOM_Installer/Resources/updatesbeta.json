@@ -1,6 +1,7 @@
 {
   "updates":
-  [{
+  [
+    {
       "title": "VAICOM PRO Community Edition for DCS World",
       "isrelease": true,
       "isbeta": false,
@@ -10,6 +11,8 @@
       "version": 2922,
       "versionstring": "2.9.2.2",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.2.1 to 2.9.2.2- Installer Testing"
-    }]
+      "releasenotes": "Beta Test build 2.9.2.2 - Testing Installer. "
+
+    }
+  ]
 }
