@@ -1,5 +1,5 @@
 @ECHO OFF
-ECHO VAICOM PRO 2.8
+ECHO VAICOM PRO 2.9
 ECHO Plugin Updater running...
 ECHO Closing VoiceAttack...
 TASKKILL /F /IM VoiceAttack.exe
