@@ -1904,6 +1904,22 @@ function selectMenuItem(num)
 	commandDialogsPanel.selectMenuItem(self, num)
 end
 
+function toNextMenuItem()
+	commandDialogsPanel.toNextMenuItem(self)
+end
+
+function toPrevMenuItem()
+	commandDialogsPanel.toPrevMenuItem(self)
+end
+
+function selectCurrentMenuItem()
+	commandDialogsPanel.selectCurrentMenuItem(self)
+end
+
+function toPrevMenu()
+	commandDialogsPanel.toPrevMenu(self)
+end
+
 --Other submenu
 
 local function findItemByName(menu, name)

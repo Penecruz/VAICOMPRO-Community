@@ -168,7 +168,7 @@ namespace VAICOM
                         Version onlineversionchatter = new Version();
                         if (Version.TryParse(componentupdate.versionstring, out onlineversionchatter))
                         {
-                            State.updateavailable_chatter = componentupdate.isrelease && (onlineversionchatter > currentversionchatter); // sets update bug
+                            State.updateavailable_chatter = componentupdate.isrelease && (onlineversionchatter > currentversionchatter); // sets update bug -- What is this? maybe deliberate on abandonment? Pene
                         }
                         else
                         {
