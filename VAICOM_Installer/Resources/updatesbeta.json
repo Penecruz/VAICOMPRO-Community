@@ -11,7 +11,7 @@
       "version": 2923,
       "versionstring": "2.9.2.3",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.2.3 - Installer testing"
+      "releasenotes": "Beta Test build 2.9.2.3 - Installer testing - removed redundany extension checks - Added option for new DCS command menu navigation - update loop in place to check robustness of installer."
     }
   ]
 }
