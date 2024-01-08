@@ -1,11 +1,11 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Windows;
-using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using System.Windows.Forms;
+using VAICOM.Database;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -35,13 +35,13 @@ namespace VAICOM
                         string filename = "keywords.txt";
                         string path = State.VA_APPS + "\\" + AppData.RootFolder + "\\" + AppData.SubFolders["export"] + "\\" + filename;
                         File.WriteAllText(path, writestring);
-                        System.Windows.Clipboard.SetDataObject(writestring); 
+                        System.Windows.Clipboard.SetDataObject(writestring);
                         Log.Write("File export success.", Colors.Text);
-                    
+
                     }
                     catch (Exception a)
                     {
-                        Log.Write("There was a problem during file export." +a.Message, Colors.Warning);
+                        Log.Write("There was a problem during file export." + a.Message, Colors.Warning);
                         UI.Playsound.Error();
                     }
                 }
@@ -141,7 +141,7 @@ namespace VAICOM
                             string[] headervalues = firstline.Split(';');
                             readheader.Close();
 
-                            int columnkey   = 1;
+                            int columnkey = 1;
                             int columnvalue = 3;
 
                             bool validatedkey = false;
@@ -174,7 +174,7 @@ namespace VAICOM
                                 message = "WARNING: The file appears not to be in the correct format.\nPress Cancel to abort or YES/NO to proceed anyway.\n\nFor matching entries:\ndo you want to replace your current aliases?\n\nYES = replace aliases (overwrite)\nNO = add aliases (and keep existing)\n";
                                 Image = MessageBoxImage.Warning;
                             }
-                                         
+
                             MessageBoxResult choice = System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNoCancel, Image);
 
                             if (choice.Equals(MessageBoxResult.Cancel))
@@ -184,7 +184,7 @@ namespace VAICOM
                             else
                             {
 
-                                Dictionary<string, string> filecapture = new Dictionary<string, string>(); 
+                                Dictionary<string, string> filecapture = new Dictionary<string, string>();
 
                                 String filecontents = "";
 
@@ -197,12 +197,12 @@ namespace VAICOM
                                         var values = line.Split(';');
 
                                         try
-                                        {                               
+                                        {
                                             var FoundKey = Labels.master.FirstOrDefault(x => x.Value == values[columnvalue]).Key;
                                             if (!FoundKey.Equals(null))
                                             {
                                                 // don't allow empty fields
-                                                if (!FoundKey.Replace(" ","").Equals("") && !values[columnkey].Replace(" ", "").Equals(""))
+                                                if (!FoundKey.Replace(" ", "").Equals("") && !values[columnkey].Replace(" ", "").Equals(""))
                                                 {
                                                     filecapture.Add(values[columnkey], FoundKey);
                                                     filecontents += FoundKey + "\n";
@@ -211,7 +211,7 @@ namespace VAICOM
                                         }
                                         catch
                                         {
-                                        }                                             
+                                        }
 
                                     }
 
@@ -220,12 +220,12 @@ namespace VAICOM
 
                                 int importcounter = 0;
 
-                                foreach (KeyValuePair<string,string> entry in filecapture)
+                                foreach (KeyValuePair<string, string> entry in filecapture)
                                 {
 
                                     try
                                     {
-                                       
+
                                         string newalias = Helpers.Common.TrimmedString(Helpers.Common.RemoveIllegalCharsForDB(entry.Key));
                                         // get category first:
                                         string maincat = Getcat(entry.Value);
@@ -235,9 +235,9 @@ namespace VAICOM
                                         }
                                         else
                                         {
-  
+
                                             Aliases.categories[maincat].Add(newalias, entry.Value);
-                                            Log.Write("Import: adding new alias "+ newalias + " for " + Labels.master[entry.Value], Colors.Text);
+                                            Log.Write("Import: adding new alias " + newalias + " for " + Labels.master[entry.Value], Colors.Text);
                                             importcounter += 1;
 
                                             // if overwrite delete all existing alias entries for keyword (except new)
@@ -252,7 +252,7 @@ namespace VAICOM
 
                                                         try
                                                         {
-                                                            if (!filecapture.ContainsKey(existingentry.Key)) 
+                                                            if (!filecapture.ContainsKey(existingentry.Key))
                                                             {
                                                                 Aliases.categories[maincat].Remove(existingentry.Key);
                                                                 //Log.Write(maincat + ": removing " + existingentry.Key, Colors.Warning);
@@ -292,7 +292,7 @@ namespace VAICOM
 
                                 System.Windows.MessageBox.Show(report, "Import complete!", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                                
+
                             }
                         }
 

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VAICOM.Extensions.RIO
 {
- 
+
     public static partial class Labels
     {
         // labels (recipients)
@@ -53,7 +50,7 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_MENU_CTXT_CLOSE",           "Close Context Menu"            },
             {"wMsgJ_MENU_MAIN_CLOSE",           "Close Main Menu"               },
 
-            {"wMsgJESTER_LANTIRN_inhibit_auto_designate",       "Inhibit Auto Designate"            }, 
+            {"wMsgJESTER_LANTIRN_inhibit_auto_designate",       "Inhibit Auto Designate"            },
             {"wMsgJESTER_LANTIRN_track_target_id",              "Track LANTIRN Target"              },
             {"wMsgJESTER_LANTIRN_track_zone_id",                "Track LANTIRN Zone"                },
             {"wMsgJESTER_LANTIRN_designate",                    "LANTIRN Designate"                 },
@@ -560,7 +557,7 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_DEF_FLR_PGM_7",             "Flares Program (6x10sec)"      },
             {"wMsgJ_DEF_FLR_PGM_8",             "Flares Program (10x10sec)"     },
 
-            
+
             {"wMsgLANTIRN_Srch_Any",            "LANTIRN Search All"            },
             {"wMsgLANTIRN_Srch_Any_Active",     "LANTIRN Search Active"         },
             {"wMsgLANTIRN_Srch_Air",            "LANTIRN Search Bogeys"         },

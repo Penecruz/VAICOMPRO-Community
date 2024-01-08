@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -33,36 +33,36 @@ namespace VAICOM
                 {
                     DLstate = new Dictionary<string, DeviceAction>();
 
-                    DLstate["Stennis"]      = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Washington"]   = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Roosevelt"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Lincoln"]      = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Truman"]       = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Forrestal"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Ticonderoga"]  = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Darkstar"]     = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Focus"]        = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Magic"]        = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Overlord"]     = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    DLstate["Wizard"]       = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Stennis"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Washington"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Roosevelt"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Lincoln"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Truman"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Forrestal"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Ticonderoga"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Darkstar"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Focus"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Magic"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Overlord"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    DLstate["Wizard"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                 }
 
                 public static string extractDLunit(string unitcallsign, string fullname)
                 {
                     string result = "";
 
-                    if (unitcallsign.Contains("Stennis")    || fullname.Contains("Stennis"))    { return "Stennis";     } //Pene validate?
+                    if (unitcallsign.Contains("Stennis") || fullname.Contains("Stennis")) { return "Stennis"; } //Pene validate?
                     if (unitcallsign.Contains("Washington") || fullname.Contains("Washington")) { return "Washington"; }
-                    if (unitcallsign.Contains("Roosevelt")  || fullname.Contains("Roosevelt"))  { return "Roosevelt"; }
-                    if (unitcallsign.Contains("Lincoln")    || fullname.Contains("Lincoln"))    { return "Lincoln"; }
-                    if (unitcallsign.Contains("Truman")     || fullname.Contains("Truman"))     { return "Truman";  }
-                    if (unitcallsign.Contains("Forrestal")  || fullname.Contains("Forrestal"))  { return "Forrestal";   } //Add USS Forrestal
-                    if (unitcallsign.Contains("Ticonderoga")|| fullname.Contains("Ticonderoga")){ return "Ticonderoga"; }
-                    if (unitcallsign.Contains("Darkstar")   || fullname.Contains("Darkstar"))   { return "Darkstar";    }
-                    if (unitcallsign.Contains("Focus")      || fullname.Contains("Focus"))      { return "Focus";       }
-                    if (unitcallsign.Contains("Magic")      || fullname.Contains("Magic"))      { return "Magic";       }
-                    if (unitcallsign.Contains("Overlord")   || fullname.Contains("Overlord"))   { return "Overlord";    }
-                    if (unitcallsign.Contains("Wizard")     || fullname.Contains("Wizard"))     { return "Wizard";      }
+                    if (unitcallsign.Contains("Roosevelt") || fullname.Contains("Roosevelt")) { return "Roosevelt"; }
+                    if (unitcallsign.Contains("Lincoln") || fullname.Contains("Lincoln")) { return "Lincoln"; }
+                    if (unitcallsign.Contains("Truman") || fullname.Contains("Truman")) { return "Truman"; }
+                    if (unitcallsign.Contains("Forrestal") || fullname.Contains("Forrestal")) { return "Forrestal"; } //Add USS Forrestal
+                    if (unitcallsign.Contains("Ticonderoga") || fullname.Contains("Ticonderoga")) { return "Ticonderoga"; }
+                    if (unitcallsign.Contains("Darkstar") || fullname.Contains("Darkstar")) { return "Darkstar"; }
+                    if (unitcallsign.Contains("Focus") || fullname.Contains("Focus")) { return "Focus"; }
+                    if (unitcallsign.Contains("Magic") || fullname.Contains("Magic")) { return "Magic"; }
+                    if (unitcallsign.Contains("Overlord") || fullname.Contains("Overlord")) { return "Overlord"; }
+                    if (unitcallsign.Contains("Wizard") || fullname.Contains("Wizard")) { return "Wizard"; }
 
                     return result;
                 }
@@ -76,7 +76,7 @@ namespace VAICOM
 
                         foreach (Servers.Server.DcsUnit unit in State.currentstate.DLunits)
                         {
-                            string callsign = extractDLunit(unit.callsign, unit.fullname);                       
+                            string callsign = extractDLunit(unit.callsign, unit.fullname);
                             try
                             {
                                 counter += 1;

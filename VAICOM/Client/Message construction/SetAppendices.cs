@@ -6,7 +6,7 @@ namespace VAICOM
     {
 
         public partial class DcsClient
-    {
+        {
             public static partial class Message
             {
                 public static void SetAppendices()

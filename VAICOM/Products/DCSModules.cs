@@ -1,6 +1,6 @@
-﻿using VAICOM.Client;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using VAICOM.Client;
 
 namespace VAICOM
 {
@@ -38,7 +38,7 @@ namespace VAICOM
             {
                 DCSmodule result = null;
 
-                foreach (KeyValuePair<string,DCSmodule> entry in LookupTable)
+                foreach (KeyValuePair<string, DCSmodule> entry in LookupTable)
                 {
                     if (id.ToLower().Contains(entry.Value.Id.ToLower()))
                     {
@@ -54,8 +54,8 @@ namespace VAICOM
             public static Dictionary<string, DCSmodule> LookupTable = new Dictionary<string, DCSmodule>(StringComparer.OrdinalIgnoreCase)
             {
 
-                {"----",    new DCSmodule() { Id ="----", Name = "Have A",    Alias = "Bandit Xmas",         ProOnly = true,  IsFC = false, ApxWpn = false,ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Default",   SpeechAlias = "" } }, 
-            
+                {"----",    new DCSmodule() { Id ="----", Name = "None",    Alias = "Detected",         ProOnly = true,  IsFC = false, ApxWpn = false,ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Default",   SpeechAlias = "" } },
+
                 {"A-10A" ,  new DCSmodule() { Id ="A-10A",Name = "A-10A",   Alias = "Warthog",       ProOnly = false, IsFC = true,  ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "A..Ten A"  } },
                 {"A-10C" ,  new DCSmodule() { Id ="A-10C",Name = "A-10C",   Alias = "Warthog",       ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = true,   IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight2 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "A..Ten Cee" } },
                 {"A-10C_2", new DCSmodule() { Id ="A-10C_2",Name = "A-10C", Alias = "Warthog II",    ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = true,   IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight2 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "A..Ten Cee two" } },
@@ -70,7 +70,7 @@ namespace VAICOM
                 {"MiG-15Bis",new DCSmodule(){ Id ="MiG-15Bis",Name ="MiG-15Bis",Alias = "Fagot",     ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = true,  Havedial = false, Theme = "Russia",    SpeechAlias = "Mig..Fifteen" } },
                 {"Su-27",   new DCSmodule() { Id ="Su-27",Name = "Su-27",   Alias = "Flanker",       ProOnly = false, IsFC = true,  ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Russia",    SpeechAlias = "Sue..Twenty Seven" } },
                 {"Hawk",    new DCSmodule() { Id ="Hawk",Name = "T.1A",    Alias = "Hawk",           ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight2 ,Singlehotkey = true,  Havedial = false, Theme = "NATO",      SpeechAlias = "Hawk"  } },
-                {"M-2000C", new DCSmodule() { Id ="M-2000C",Name = "Mirage", Alias = "2000C",        ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "Mirage Two Thousand C"} },          
+                {"M-2000C", new DCSmodule() { Id ="M-2000C",Name = "Mirage", Alias = "2000C",        ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "RedFlag",   SpeechAlias = "Mirage Two Thousand C"} },
                 {"CA",      new DCSmodule() { Id ="artillery_commander",Name = "CA",      Alias = "Combined Arms",ProOnly = true,  IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = true,  Havedial = false, Theme = "RedFlag",   SpeechAlias = "CA"  } },
                 {"FA-18C" , new DCSmodule() { Id ="FA-18C_hornet",Name = "F/A-18C",  Alias = "Hornet",       ProOnly = true,  IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Navy",      SpeechAlias = "F A Eighteen C", radiodelay =0  } },
                 {"F-14AB" , new DCSmodule() { Id ="F-14", Name = "F-14AB",  Alias = "Tomcat",       ProOnly = true,  IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false, Havedial = false, Theme = "Navy",      SpeechAlias = "F Fourteen", radiodelay =500, chnoffset = 0  } },
@@ -107,7 +107,7 @@ namespace VAICOM
                 // VPC Additions
                 {"MB-339A",   new DCSmodule() { Id ="MB-339A",Name = "MB-339A", Alias = "", ProOnly = true, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = true,  Havedial = false, Theme = "NATO", SpeechAlias = "M..Bee Three Three Nine"  } },
                 {"Mirage-F1", new DCSmodule() { Id ="Mirage-F1",Name = "Mirage-", Alias = "F1", ProOnly = true, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false,  Havedial = false, Theme = "NATO", SpeechAlias = "F One"  } },
-				{"F-15ESE",   new DCSmodule() { Id ="F-15ESE",Name = "F-15E", Alias = "Strike Eagle", ProOnly = true, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false,  Havedial = false, Theme = "NATO",   SpeechAlias = "F Fifteen E"  } },
+                {"F-15ESE",   new DCSmodule() { Id ="F-15ESE",Name = "F-15E", Alias = "Strike Eagle", ProOnly = true, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = false, Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = false,  Havedial = false, Theme = "NATO",   SpeechAlias = "F Fifteen E"  } },
                 {"KA-50-3",   new DCSmodule() { Id ="Ka-50_3",Name = "KA-50",   Alias = "BlackShark",    ProOnly = false, IsFC = false, ApxWpn = true, ApxDir = false,  IsHelo = true,  Flightmenu = DcsClient.iCommandsequences.showflight1 ,Singlehotkey = true , Havedial = true,  Theme = "Russia",    SpeechAlias = "Black Shark Three" } },
 				
                 // community Mods

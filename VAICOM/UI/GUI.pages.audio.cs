@@ -48,7 +48,7 @@ namespace VAICOM
 
             public void SetWorldVolumeKnob()
             {
-                Volume_World.IsEnabled = false; 
+                Volume_World.IsEnabled = false;
                 Double vol = State.activeconfig.TTSVolume;
                 RotateTransform RotateTransform = new RotateTransform();
                 RotateTransform.Angle = -150 + 300 * vol;
@@ -89,7 +89,7 @@ namespace VAICOM
                     Settings.ConfigFile.WriteConfigToFile(true);
                 }
             }
-           
+
             // for audio device
             private void AudioDeviceInitialValue(object sender, EventArgs e)
             {
@@ -116,9 +116,9 @@ namespace VAICOM
                 {
                     Log.Write(e.Message + e.StackTrace, Static.Colors.Inline);
                 }
-                
+
             }
-            private void UpdateAudioDevice(object sender, SelectionChangedEventArgs e) 
+            private void UpdateAudioDevice(object sender, SelectionChangedEventArgs e)
             {
                 UpdateAudioDevice();
             }
@@ -128,7 +128,7 @@ namespace VAICOM
                 try
                 {
                     int currentdevicenumber = State.activeconfig.AudioDeviceNumber;
-                    int newvalue = AudioDevice_Selector.SelectedIndex- 1;
+                    int newvalue = AudioDevice_Selector.SelectedIndex - 1;
 
                     if (newvalue.Equals(-2)) //-2
                     {
@@ -145,7 +145,7 @@ namespace VAICOM
 
                     }
                 }
-                catch 
+                catch
                 {
                 }
             }
@@ -163,13 +163,13 @@ namespace VAICOM
                     UI.Playsound.Soft_Click();
                     State.activeconfig.ChatterPanSetting = (int)Chatter_Pan.Value;
                     Settings.ConfigFile.WriteConfigToFile(true);
-                }     
+                }
             }
 
             private void Pan_TX1_Setting_Init(object sender, EventArgs e)
             {
-                Pan_TX1.IsEnabled = false; 
-                Pan_TX1.Value = 0; 
+                Pan_TX1.IsEnabled = false;
+                Pan_TX1.Value = 0;
             }
             private void Pan_TX1_Setting_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
@@ -182,8 +182,8 @@ namespace VAICOM
             }
             private void Pan_TX2_Setting_Init(object sender, EventArgs e)
             {
-                Pan_TX2.IsEnabled = false; 
-                Pan_TX2.Value = 0; 
+                Pan_TX2.IsEnabled = false;
+                Pan_TX2.Value = 0;
             }
             private void Pan_TX2_Setting_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
@@ -196,8 +196,8 @@ namespace VAICOM
             }
             private void Pan_TX3_Setting_Init(object sender, EventArgs e)
             {
-                Pan_TX3.IsEnabled = false;  
-                Pan_TX3.Value = 0; 
+                Pan_TX3.IsEnabled = false;
+                Pan_TX3.Value = 0;
             }
             private void Pan_TX3_Setting_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
@@ -210,8 +210,8 @@ namespace VAICOM
             }
             private void Pan_TX4_Setting_Init(object sender, EventArgs e)
             {
-                Pan_TX4.IsEnabled = false; 
-                Pan_TX4.Value = 0; 
+                Pan_TX4.IsEnabled = false;
+                Pan_TX4.Value = 0;
             }
             private void Pan_TX4_Setting_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
@@ -224,8 +224,8 @@ namespace VAICOM
             }
             private void Pan_TX5_Setting_Init(object sender, EventArgs e)
             {
-                Pan_TX5.IsEnabled = false;  
-                Pan_TX5.Value = 0; 
+                Pan_TX5.IsEnabled = false;
+                Pan_TX5.Value = 0;
             }
             private void Pan_TX5_Setting_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
@@ -238,8 +238,8 @@ namespace VAICOM
             }
             private void Pan_TX6_Setting_Init(object sender, EventArgs e)
             {
-                Pan_TX6.IsEnabled = false; 
-                Pan_TX6.Value = 0; 
+                Pan_TX6.IsEnabled = false;
+                Pan_TX6.Value = 0;
             }
             private void Pan_TX6_Setting_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
             {
@@ -271,7 +271,7 @@ namespace VAICOM
                 World_Init_Button.IsEnabled = (State.PRO && State.activeconfig.Redirect_World_Speech);
             }
             private void WorldReset(object sender, MouseButtonEventArgs e) // press init button
-            {      
+            {
                 if (State.activeconfig.Redirect_World_Speech)
                 {
                     Processor.WorldAudioRedirect();
@@ -323,12 +323,12 @@ namespace VAICOM
 
             public void SetPanSwitches()
             {
-                Pan_TX1.IsEnabled = false;  
-                Pan_TX2.IsEnabled = false;  
-                Pan_TX3.IsEnabled = false; 
-                Pan_TX4.IsEnabled = false;  
-                Pan_TX5.IsEnabled = false;  
-                Pan_TX6.IsEnabled = false; 
+                Pan_TX1.IsEnabled = false;
+                Pan_TX2.IsEnabled = false;
+                Pan_TX3.IsEnabled = false;
+                Pan_TX4.IsEnabled = false;
+                Pan_TX5.IsEnabled = false;
+                Pan_TX6.IsEnabled = false;
             }
 
             private void World_Sw_to_Down(object sender, MouseButtonEventArgs e)
@@ -342,7 +342,7 @@ namespace VAICOM
                 world_light_on.Visibility = Visibility.Hidden;
                 world_light_off.Visibility = Visibility.Visible;
                 UI.Playsound.Soft_Switch();
-                State.activeconfig.Redirect_World_Speech = false;  
+                State.activeconfig.Redirect_World_Speech = false;
                 Settings.ConfigFile.WriteConfigToFile(true);
                 World_Init_Button.IsEnabled = (State.PRO && State.activeconfig.Redirect_World_Speech);
 
@@ -361,7 +361,7 @@ namespace VAICOM
                 world_light_on.Visibility = Visibility.Visible;
                 world_light_off.Visibility = Visibility.Hidden;
                 UI.Playsound.Soft_Switch();
-                State.activeconfig.Redirect_World_Speech = true;        
+                State.activeconfig.Redirect_World_Speech = true;
                 Settings.ConfigFile.WriteConfigToFile(true);
                 World_Init_Button.IsEnabled = (State.PRO && State.activeconfig.Redirect_World_Speech);
 

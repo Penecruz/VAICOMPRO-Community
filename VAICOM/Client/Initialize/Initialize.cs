@@ -1,17 +1,16 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
-using VAICOM.Database;
-using VAICOM.FileManager;
-using VAICOM.PushToTalk;
-using VAICOM.Products;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows;
 using System.Reflection;
 using System.Speech.Synthesis;
-using VAICOM.Extensions.WorldAudio;
+using VAICOM.Database;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Extensions.WorldAudio;
+using VAICOM.FileManager;
+using VAICOM.Products;
+using VAICOM.PushToTalk;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -119,12 +118,12 @@ namespace VAICOM
                 State.random2 = new Random();
                 State.wingnextrandomtimeout = 30;
                 State.KneeboardState = new KneeboardState();
-                State.KneeboardCatAliasStrings = new Dictionary<string, SortedDictionary<string,List<string>>>[4]; //"AWACS", "Request", {"Vector to Base","vect to Tanker"} 
+                State.KneeboardCatAliasStrings = new Dictionary<string, SortedDictionary<string, List<string>>>[4]; //"AWACS", "Request", {"Vector to Base","vect to Tanker"} 
                 State.KneeboardCatAliasStrings[0] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[1] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[2] = new Dictionary<string, SortedDictionary<string, List<string>>>();
                 State.KneeboardCatAliasStrings[3] = new Dictionary<string, SortedDictionary<string, List<string>>>();
-              
+
                 State.wingmanspeechpath = "";
                 State.previousstate = new Server.ServerState();
                 State.currentstate = new Server.ServerState();
@@ -154,7 +153,7 @@ namespace VAICOM
                         { Processor.commcat.ExternalCargo,  new Server.ServerCommsMessage()},
                         { Processor.commcat.GROUND_CREW,    new Server.ServerCommsMessage()},
                     };
-                State.Stopwatch = new System.Diagnostics.Stopwatch(); 
+                State.Stopwatch = new System.Diagnostics.Stopwatch();
                 Server.homebaselocation = new Server.Vector();
 
             }
@@ -169,8 +168,8 @@ namespace VAICOM
             public static void FixFiles(dynamic vaProxy)
             {
                 FileHandler.Updater.CleanUpdateFolder();
-                Settings.ConfigFile.AddNewConfigItems(); 
-                Settings.ConfigFile.WriteConfigToFile(true); 
+                Settings.ConfigFile.AddNewConfigItems();
+                Settings.ConfigFile.WriteConfigToFile(true);
             }
             public static void CheckUpdates(dynamic vaProxy)
             {
@@ -248,7 +247,7 @@ namespace VAICOM
                     }
                     catch (Exception e)
                     {
-                        Log.Write("Problems were reported during kneeboard initialization" + e.Message,Colors.Text);
+                        Log.Write("Problems were reported during kneeboard initialization" + e.Message, Colors.Text);
                     }
                 }
                 else
@@ -260,7 +259,7 @@ namespace VAICOM
             public static bool MergeRIO(dynamic vaProxy)
             {
                 bool RIOmerged = false;
-  
+
                 try
                 {
 
@@ -450,8 +449,8 @@ namespace VAICOM
 
                     FixFiles(vaProxy);
                     CheckUpdates(vaProxy);
-                    LogVersionData(vaProxy); 
-                    ResetStateValues(vaProxy);        
+                    LogVersionData(vaProxy);
+                    ResetStateValues(vaProxy);
                     Processor.InitTTSPlaybackStream();
                     ResetPTTConfig(vaProxy);
                     InstallLuaFiles(vaProxy);

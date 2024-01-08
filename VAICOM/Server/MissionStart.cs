@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.PushToTalk;
-using VAICOM.Extensions.RIO;
-using System;
-using VAICOM.Extensions.Kneeboard;
+﻿using System;
 using System.Windows.Forms;
+using VAICOM.Extensions.Kneeboard;
+using VAICOM.Extensions.RIO;
+using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -14,7 +14,7 @@ namespace VAICOM
         public static partial class Server
         {
 
-            public static bool   newmissionflag;
+            public static bool newmissionflag;
             public static Vector homebaselocation;
 
             public static bool DetectNewMission()
@@ -67,7 +67,7 @@ namespace VAICOM
                 State.nineline = "";
 
                 tables.resetriomenustate();
-                helper.getAGweaponsstate(); 
+                helper.getAGweaponsstate();
 
                 // set homebase pos for AOCS
                 homebaselocation = new Vector();
@@ -80,7 +80,7 @@ namespace VAICOM
                 }
 
                 // reset listen states
-                PTT.PTT_Manage_Listen_States_OnPressRelease(false,false);
+                PTT.PTT_Manage_Listen_States_OnPressRelease(false, false);
 
                 // Chatter Init
                 try

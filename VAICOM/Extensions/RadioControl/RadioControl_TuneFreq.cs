@@ -1,5 +1,5 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -21,7 +21,7 @@ namespace VAICOM
                         RadioTuneMessage SendMessage = new RadioTuneMessage();
                         SendMessage.tgtdevid = Message.GetSendDeviceId();
 
-                        string band = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}").Replace(" ","");
+                        string band = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}").Replace(" ", "");
 
                         switch (band)
                         {
@@ -44,7 +44,7 @@ namespace VAICOM
                         // freq first 3 digits
                         string majval1 = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}");
                         SendRadioControlMessage(SendMessage);
-     
+
                         string majval2 = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:3}");
                         SendRadioControlMessage(SendMessage);
 
@@ -54,15 +54,15 @@ namespace VAICOM
                         // decimal = {CMDSEGMENT:5}
 
                         string minval1 = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:6}");
-                        string minval2 = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:7}").Replace(" ","");
+                        string minval2 = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:7}").Replace(" ", "");
 
-                        string combinedfreq = (majval1 + majval2 + majval3 + minval1 + minval2 + "000000000").Substring(0,9);
+                        string combinedfreq = (majval1 + majval2 + majval3 + minval1 + minval2 + "000000000").Substring(0, 9);
 
                         SendMessage.tunefrq.Add(combinedfreq);
-                        
+
                         SendRadioControlMessage(SendMessage);
 
-                        Log.Write("Select Frequency " + band.ToUpper() + ""+ majval1+ majval2 + majval3 + "." + minval1 + minval2 +" MHz", Colors.Message);
+                        Log.Write("Select Frequency " + band.ToUpper() + "" + majval1 + majval2 + majval3 + "." + minval1 + minval2 + " MHz", Colors.Message);
 
                         UI.Playsound.Commandcomplete();
 

@@ -1,9 +1,7 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using System.IO;
-using Newtonsoft.Json;
+using VAICOM.Database;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -49,7 +47,7 @@ namespace VAICOM
                     {
                         return CommandCategories.RIO_weapons;
                     }
-                    if (id >=23400 && id <= 23499 )
+                    if (id >= 23400 && id <= 23499)
                     {
                         return CommandCategories.RIO_radio;
                     }
@@ -82,14 +80,14 @@ namespace VAICOM
                     {
                         try
                         {
-                            Recipient newrecipient      = new Recipient();
+                            Recipient newrecipient = new Recipient();
 
-                            newrecipient.category       = RecipientCatbyId(entry.Value.uniqueid);
-                            newrecipient.uniqueid       = entry.Value.uniqueid;
-                            newrecipient.name           = entry.Value.name;
-                            newrecipient.displayname    = entry.Value.displayname;
+                            newrecipient.category = RecipientCatbyId(entry.Value.uniqueid);
+                            newrecipient.uniqueid = entry.Value.uniqueid;
+                            newrecipient.name = entry.Value.name;
+                            newrecipient.displayname = entry.Value.displayname;
                             newrecipient.requiresJester = entry.Value.requiresJester;
-                            newrecipient.enabled        = entry.Value.enabled;
+                            newrecipient.enabled = entry.Value.enabled;
                             newrecipient.blockedforFree = entry.Value.blockedforFree;
 
                             if (newrecipient.enabled)
@@ -112,14 +110,14 @@ namespace VAICOM
                         {
                             Command newcommand = new Command();
 
-                            newcommand.category         = CommandCatbyId(entry.Value.uniqueid);
-                            newcommand.uniqueid         = entry.Value.uniqueid;
-                            newcommand.dcsid             = entry.Value.name;
-                            newcommand.displayname      = entry.Value.displayname;
-                            newcommand.eventnumber      = entry.Value.eventnumber;
-                            newcommand.requiresJester   = entry.Value.requiresJester;
-                            newcommand.enabled          = entry.Value.enabled;
-                            newcommand.blockedforFree   = entry.Value.blockedforFree;
+                            newcommand.category = CommandCatbyId(entry.Value.uniqueid);
+                            newcommand.uniqueid = entry.Value.uniqueid;
+                            newcommand.dcsid = entry.Value.name;
+                            newcommand.displayname = entry.Value.displayname;
+                            newcommand.eventnumber = entry.Value.eventnumber;
+                            newcommand.requiresJester = entry.Value.requiresJester;
+                            newcommand.enabled = entry.Value.enabled;
+                            newcommand.blockedforFree = entry.Value.blockedforFree;
 
                             if (newcommand.enabled)
                             {
@@ -142,7 +140,7 @@ namespace VAICOM
                     {
                         try
                         {
-                            if (Database.Recipients.Table.ContainsKey(entry.Value)) 
+                            if (Database.Recipients.Table.ContainsKey(entry.Value))
                             {
                                 Database.Aliases.airecipients.Add(entry.Key, entry.Value);
                                 count += 1;
@@ -159,7 +157,7 @@ namespace VAICOM
                     {
                         try
                         {
-                            if (Database.Commands.Table.ContainsKey(entry.Value)) 
+                            if (Database.Commands.Table.ContainsKey(entry.Value))
                             {
                                 Database.Aliases.aicommands.Add(entry.Key, entry.Value);
                                 count += 1;
@@ -176,7 +174,7 @@ namespace VAICOM
                     {
                         try
                         {
-                            if (Database.Recipients.Table.ContainsKey(entry.Key)) 
+                            if (Database.Recipients.Table.ContainsKey(entry.Key))
                             {
                                 Database.Labels.airecipients.Add(entry.Key, entry.Value);
                                 count += 1;
@@ -193,7 +191,7 @@ namespace VAICOM
                     {
                         try
                         {
-                            if (Database.Commands.Table.ContainsKey(entry.Key)) 
+                            if (Database.Commands.Table.ContainsKey(entry.Key))
                             {
                                 Database.Labels.aicommands.Add(entry.Key, entry.Value);
                                 count += 1;

@@ -1,7 +1,7 @@
-﻿using VAICOM.Static;
+﻿using System.Collections.Generic;
 using VAICOM.Database;
 using VAICOM.FileManager;
-using System.Collections.Generic;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -41,13 +41,13 @@ namespace VAICOM
 
                     if (newatccounter > 0) // new atcs imported
                     {
-                     
+
                         FileHandler.Database.WriteCategoryToFile("importedatcs", Aliases.importedatcs, true);
                         FileHandler.Database.WriteCategoryToFile("airecipients", Aliases.airecipients, true);
 
-                        FileHandler.Database.ReadAllCategoriesFromFile(); 
+                        FileHandler.Database.ReadAllCategoriesFromFile();
                         SetImportedATCsAsRecipients();
-                        Aliases.BuildNewMasterTable(); 
+                        Aliases.BuildNewMasterTable();
 
                         State.activeconfig.Editorrequiresreload = true;
                         Settings.ConfigFile.WriteConfigToFile(true);

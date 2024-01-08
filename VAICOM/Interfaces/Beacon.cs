@@ -1,7 +1,7 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using System;
+﻿using System;
 using System.Timers;
+using VAICOM.Client;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -11,9 +11,9 @@ namespace VAICOM
         public static partial class Beacon
         {
 
-            public static System.Timers.Timer   BeaconTimer         { get; set; }
-            public static bool                  Created             { get; set; }
-            public static bool                  CurrentPlayStatus   { get; set; }
+            public static System.Timers.Timer BeaconTimer { get; set; }
+            public static bool Created { get; set; }
+            public static bool CurrentPlayStatus { get; set; }
 
             public static void Beacon_Initialize()
             {

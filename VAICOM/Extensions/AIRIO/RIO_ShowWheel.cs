@@ -1,7 +1,7 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using VAICOM.Client;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -23,14 +23,14 @@ namespace VAICOM
                         //try
                         //{
 
-                            //send HUD view first
-                           //List<int> HUDview = new List<int>() { 326 };
-                           //DcsClient.SendCmdSequence(HUDview, false);
+                        //send HUD view first
+                        //List<int> HUDview = new List<int>() { 326 };
+                        //DcsClient.SendCmdSequence(HUDview, false);
 
                         //}
                         //catch (Exception e)
                         //{
-                            //Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
+                        //Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
                         //}
 
                         //Thread.Sleep(2000);
@@ -83,20 +83,20 @@ namespace VAICOM
                         showingjestermenu = true;
                         return;
                     }
-                    
+
                     if (!show && showingjestermenu)
                     {
                         //try
                         //{
 
-                            //send HUD view first
-                           // List<int> Cockpitview = new List<int>() { 326 };
-                           // DcsClient.SendCmdSequence(Cockpitview, false);
+                        //send HUD view first
+                        // List<int> Cockpitview = new List<int>() { 326 };
+                        // DcsClient.SendCmdSequence(Cockpitview, false);
 
                         //}
                         //catch (Exception e)
                         //{
-                            //Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
+                        //Log.Write("Error setting command sequence: " + e.StackTrace, Colors.Inline);
                         //}
 
                         //Thread.Sleep(2000);

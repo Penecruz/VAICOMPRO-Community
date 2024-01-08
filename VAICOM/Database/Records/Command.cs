@@ -1,5 +1,5 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -15,44 +15,44 @@ namespace VAICOM
             public CommandCategories category;
             public bool enabled;
 
-            public int      eventnumber;
-            public string   dcsid;
-            public int geteventnumber() 
+            public int eventnumber;
+            public string dcsid;
+            public int geteventnumber()
             {
                 return Database.Dcs.GetEventNumber(dcsid);
             }
 
-            public bool     hasparameter;
+            public bool hasparameter;
 
-            public bool     engagecondition;
-            public bool     on;
-            public int      type;
-            public int      device;
-            public int      power_source;
-            public int      recoverycase;
-            public string   parametername;
-            public bool     value;
-            public bool     close; 
-            public double   volume; 
-            public int      parameters;
-            public bool     readback;
-            public Server.Vector   point;      
+            public bool engagecondition;
+            public bool on;
+            public int type;
+            public int device;
+            public int power_source;
+            public int recoverycase;
+            public string parametername;
+            public bool value;
+            public bool close;
+            public double volume;
+            public int parameters;
+            public bool readback;
+            public Server.Vector point;
 
-            public bool     useappendix;
-            public bool     useweapon;
-            public int      weapon;
-            public bool     usedirection;
-            public double   direction;
+            public bool useappendix;
+            public bool useweapon;
+            public int weapon;
+            public bool usedirection;
+            public double direction;
 
-            public bool     blockedforFC;
-            public bool     blockedforFCnonPro;
-            public bool     blockedforFree;
-            public bool     requiresJester;
-            public bool     requiresrealatc;
+            public bool blockedforFC;
+            public bool blockedforFCnonPro;
+            public bool blockedforFree;
+            public bool requiresJester;
+            public bool requiresrealatc;
 
-            public string   servername;
-            public string   menuitemname;
-            public int      actionIndex;
+            public string servername;
+            public string menuitemname;
+            public int actionIndex;
 
             public Command()
             {
@@ -111,7 +111,7 @@ namespace VAICOM
 
             public bool isSpecial()
             {
-                return this.eventnumber.Equals(4000);     
+                return this.eventnumber.Equals(4000);
             }
 
             public bool isEngage()
@@ -208,18 +208,18 @@ namespace VAICOM
             {
 
                 return (this.isSpecial() & !this.isOptions() & !this.isSelect() & !this.isMenu() & !this.isState() & !this.isRIO());
- 
+
             }
-           
+
 
             public bool RequiresInsert()
             {
                 bool value = false;
 
-                if (this.RecipientClass().Equals(Recipientclasses.JTAC))    { value = true; }
-                if (this.RecipientClass().Equals(Recipientclasses.ATC))     { value = true; }
-                if (this.RecipientClass().Equals(Recipientclasses.Tanker))  { value = true; }
-                if (this.RecipientClass().Equals(Recipientclasses.AWACS))   { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.JTAC)) { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.ATC)) { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.Tanker)) { value = true; }
+                if (this.RecipientClass().Equals(Recipientclasses.AWACS)) { value = true; }
 
                 return value;
             }

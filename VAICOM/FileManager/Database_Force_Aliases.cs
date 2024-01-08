@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
+﻿using System.Collections.Generic;
 using VAICOM.Database;
-using System.Collections.Generic;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -27,12 +27,12 @@ namespace VAICOM
 
                     Dictionary<string, string> ForceAliasesRecipients = new Dictionary<string, string>()
                     {
-                        { "Carrier", "nearestcarrier" }, 
-                        { "Cats","nearestcarrier" }, 
-                        { "Marshal","nearestcarrier" }, 
+                        { "Carrier", "nearestcarrier" },
+                        { "Cats","nearestcarrier" },
+                        { "Marshal","nearestcarrier" },
                         { "Approach","nearestcarrier" },
-                        { "LSO", "nearestcarrier" }, 
-                        { "Paddles", "nearestcarrier" }, 
+                        { "LSO", "nearestcarrier" },
+                        { "Paddles", "nearestcarrier" },
 
                         { "Rough Rider",           "CVN-71 Theodore Roosevelt"      },
                         { "Union",                 "CVN-72 Abraham Lincoln"         },
@@ -59,10 +59,10 @@ namespace VAICOM
                         { "Overhead" ,                  "wMsgLeaderTowerOverhead"               },
                         { "Kiss Off" ,                  "wMsgLeaderFlightKissOff"               },
                         { "Ball" ,                      "wMsgLeaderHornetBall"                  },
-                        { "Needles" ,                   "wMsgLeaderSayNeedle"                   }, 
+                        { "Needles" ,                   "wMsgLeaderSayNeedle"                   },
                         { "Low State" ,                 "wMsgLeaderConfirmRemainingFuel"        },
                         { "Approach Check In" ,         "wMsgLeaderCheckingIn"                  },
-                        { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"      }, 
+                        { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"      },
                         { "Meatball" ,                  "wMsgLeaderBall"                        },
 
                         { "Hornet Ball" ,              "wMsgLeaderHornetBall"                  },
@@ -144,7 +144,7 @@ namespace VAICOM
                         }
                     }
 
-                    foreach (KeyValuePair<string,string> entry in ForceAliasesCommands)
+                    foreach (KeyValuePair<string, string> entry in ForceAliasesCommands)
                     {
                         try
                         {

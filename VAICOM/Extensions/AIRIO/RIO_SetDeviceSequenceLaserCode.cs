@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -68,12 +68,12 @@ namespace VAICOM
                             case 7:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_Atom_Laser_700);
                                 break;
-                            //case 8:
-                            //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_800);
-                            //    break;
-                            //case 9:
-                            //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_900);
-                            //    break;
+                                //case 8:
+                                //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_800);
+                                //    break;
+                                //case 9:
+                                //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_900);
+                                //    break;
                         }
 
                         int majval2;
@@ -108,9 +108,9 @@ namespace VAICOM
                             case 8:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_Atom_Laser_080);
                                 break;
-                            //case 9:
-                            //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_090);
-                            //    break;
+                                //case 9:
+                                //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_090);
+                                //    break;
                         }
 
                         int minval;
@@ -145,11 +145,11 @@ namespace VAICOM
                             case 8:
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_Atom_Laser_008);
                                 break;
-                            //case 9:
-                            //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_009);
-                            //    break;
+                                //case 9:
+                                //    State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_Laser_009);
+                                //    break;
                         }
-                        
+
                         string message = majval1.ToString() + majval2.ToString() + minval.ToString();
 
                         if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)

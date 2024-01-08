@@ -98,11 +98,11 @@ namespace VAICOM
                             }
                             break;
 
-                        case "wMsgLeaderRequestRefueling": 
+                        case "wMsgLeaderRequestRefueling":
                             State.currentmessage.parameters.Add(State.currentcommand.volume);
                             break;
 
-                        case "wMsgLeaderGroundToggleElecPower": 
+                        case "wMsgLeaderGroundToggleElecPower":
                             State.currentmessage.parameters.Add(State.currentcommand.on);
                             break;
 
@@ -114,19 +114,19 @@ namespace VAICOM
                             State.currentmessage.parameters.Add(State.currentcommand.close); //.on
                             break;
 
-                        case "wMsgLeaderGroundToggleAir": 
+                        case "wMsgLeaderGroundToggleAir":
                             State.currentmessage.parameters.Add(State.currentcommand.on);
                             break;
 
-                        case "wMsgLeaderGroundApplyAir": 
+                        case "wMsgLeaderGroundApplyAir":
                             State.currentmessage.parameters.Add(State.currentcommand.on);
                             break;
 
-                        case "wMsgLeaderGroundGestureSalut": 
+                        case "wMsgLeaderGroundGestureSalut":
                             State.currentmessage.parameters.Add(State.currentcommand.on);
                             break;
 
-                        case "wMsgLeaderGroundRequestLaunch": 
+                        case "wMsgLeaderGroundRequestLaunch":
                             State.currentmessage.parameters.Add(State.currentcommand.on);
                             break;
 

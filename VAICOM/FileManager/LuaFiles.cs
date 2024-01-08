@@ -1,5 +1,5 @@
-﻿using VAICOM.Servers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using VAICOM.Servers;
 
 
 namespace VAICOM
@@ -27,7 +27,7 @@ namespace VAICOM
                   root = false,
                   hardreset = false,
                   orig = Properties.Resources.Orig_Core_Export,
-                  orig_legacy = Properties.Resources.Orig_Core_Export, 
+                  orig_legacy = Properties.Resources.Orig_Core_Export,
                   source = Properties.Resources.Append_Core_Export,
                   source_legacy = Properties.Resources.Append_Core_Export,
                   version ="2.8",
@@ -106,7 +106,7 @@ namespace VAICOM
                   root = true,
                   hardreset = true,
                   orig = Properties.Resources.Orig_Core_speech,
-                  orig_legacy = Properties.Resources.Orig_Core_speech, 
+                  orig_legacy = Properties.Resources.Orig_Core_speech,
                   source = Properties.Resources.Append_Core_speech,
                   source_legacy = Properties.Resources.Append_Core_speech,
                   version ="2.8",
@@ -127,14 +127,14 @@ namespace VAICOM
                 { fileid = "F8ECF2E5-CD93-47C4-B728-2EAA290D9B67",
                   filename = "common.lua",
                   installfolder = "Scripts\\Speech",
-                  installfolder_legacy = "Scripts\\Speech", 
+                  installfolder_legacy = "Scripts\\Speech",
                   append = true,
                   root = true,
                   hardreset = true,
                   orig = Properties.Resources.Orig_Core_common,
-                  orig_legacy = Properties.Resources.Orig_Core_common, 
+                  orig_legacy = Properties.Resources.Orig_Core_common,
                   source = Properties.Resources.Append_Core_common,
-                  source_legacy = Properties.Resources.Append_Core_common, 
+                  source_legacy = Properties.Resources.Append_Core_common,
                   version ="2.8",
                   canremove = true,
                   reset = false,
@@ -184,7 +184,7 @@ namespace VAICOM
                   root = true,
                   hardreset = true,
                   orig = Properties.Resources.Orig_Core_gameMessages,
-                  orig_legacy = Properties.Resources.Orig_Core_gameMessages, 
+                  orig_legacy = Properties.Resources.Orig_Core_gameMessages,
                   source = Properties.Resources.Append_Core_gameMessages,
                   source_legacy = Properties.Resources.Append_Core_gameMessages,
                   version ="2.8",

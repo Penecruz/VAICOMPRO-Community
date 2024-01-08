@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -21,9 +21,9 @@ namespace VAICOM
                 {
 
 
-                    State.currentmessage.debug          = State.activeconfig.Debugmode;
-                    State.currentmessage.client         = State.currentlicense;
-                    State.currentmessage.mode           = State.clientmode;
+                    State.currentmessage.debug = State.activeconfig.Debugmode;
+                    State.currentmessage.client = State.currentlicense;
+                    State.currentmessage.mode = State.clientmode;
 
                     try
                     {
@@ -39,12 +39,12 @@ namespace VAICOM
                         State.currentmessage.forcetune = !State.currentstate.easycomms && State.activeconfig.AllowRadioTuning && State.currentcommand.isSelect();
 
                         // set preferences..
-                        State.currentmessage.redirect_world_speech  = State.activeconfig.Redirect_World_Speech;
-                        State.currentmessage.disableplayervoice     = State.activeconfig.DisablePlayerVoice;
-                        State.currentmessage.menuinvisible          = State.activeconfig.HideMenus;
-                        State.currentmessage.forcenatoprotocol      = State.activeconfig.EnforceATCProtocol;
-                        State.currentmessage.forcecallsigns     = State.activeconfig.EnforceCallsigns;
-                        State.currentmessage.operatedial            = State.activeconfig.OperateDial;
+                        State.currentmessage.redirect_world_speech = State.activeconfig.Redirect_World_Speech;
+                        State.currentmessage.disableplayervoice = State.activeconfig.DisablePlayerVoice;
+                        State.currentmessage.menuinvisible = State.activeconfig.HideMenus;
+                        State.currentmessage.forcenatoprotocol = State.activeconfig.EnforceATCProtocol;
+                        State.currentmessage.forcecallsigns = State.activeconfig.EnforceCallsigns;
+                        State.currentmessage.operatedial = State.activeconfig.OperateDial;
                     }
                     catch
                     {
@@ -178,7 +178,7 @@ namespace VAICOM
                                 break;
                         }
 
-                        
+
                         string message = majval.ToString() + minval.ToString() + band.ToCharArray()[0].ToString().ToUpper();
 
                         if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)

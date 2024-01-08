@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
+﻿using VAICOM.Database;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -22,15 +22,15 @@ namespace VAICOM
                         return true;
                     }
 
-                    bool calledcrew     = State.currentrecipientclass.Equals(Recipientclasses.Crew);
-                    bool calledaux      = State.currentrecipientclass.Equals(Recipientclasses.Aux);
-                    bool calledmoose    = State.currentrecipientclass.Equals(Recipientclasses.Moose);
-                    bool calledcargo    = State.currentrecipientclass.Equals(Recipientclasses.Cargo);
-                    bool calleddescent  = State.currentrecipientclass.Equals(Recipientclasses.Descent);
-                    bool calledRIO      = State.currentrecipientclass.Equals(Recipientclasses.RIO) || State.currentrecipientclass.Equals(Recipientclasses.AI_pilot);
-                    bool calledmenu     = State.currentcommand.category.Equals(CommandCategories.menu);
-                    bool calledreply    = State.currentcommand.isReply();
-                    bool optionsroot    = State.currentcommand.isOptions() & !State.have["recipient"];
+                    bool calledcrew = State.currentrecipientclass.Equals(Recipientclasses.Crew);
+                    bool calledaux = State.currentrecipientclass.Equals(Recipientclasses.Aux);
+                    bool calledmoose = State.currentrecipientclass.Equals(Recipientclasses.Moose);
+                    bool calledcargo = State.currentrecipientclass.Equals(Recipientclasses.Cargo);
+                    bool calleddescent = State.currentrecipientclass.Equals(Recipientclasses.Descent);
+                    bool calledRIO = State.currentrecipientclass.Equals(Recipientclasses.RIO) || State.currentrecipientclass.Equals(Recipientclasses.AI_pilot);
+                    bool calledmenu = State.currentcommand.category.Equals(CommandCategories.menu);
+                    bool calledreply = State.currentcommand.isReply();
+                    bool optionsroot = State.currentcommand.isOptions() & !State.have["recipient"];
 
                     bool singlemode = (State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey);
 

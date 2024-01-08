@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using VAICOM.Servers;
-using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text.RegularExpressions;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -16,19 +16,19 @@ namespace VAICOM
 
             public class KneeboardMessage
             {
-                public int      eventid;
-                public bool?    dictmode;
-                public double   opacity;
-                public bool?    autoswitch;
-                public bool?    switchpage;
+                public int eventid;
+                public bool? dictmode;
+                public double opacity;
+                public bool? autoswitch;
+                public bool? switchpage;
 
                 // payload:
 
-                public KneeboardServerData  serverdata;
-                public KneeboardUnitsData   unitsdata;
+                public KneeboardServerData serverdata;
+                public KneeboardUnitsData unitsdata;
                 public KneeboardUnitsDetails unitsdetails;
-                public LogData              logdata;
-                public AliasData            aliasdata;
+                public LogData logdata;
+                public AliasData aliasdata;
 
                 public KneeboardMessage()
                 {
@@ -46,7 +46,7 @@ namespace VAICOM
                 public SortedDictionary<string, List<string>> content;
                 public int chunk;
 
-                public AliasData(string cat, SortedDictionary<string,List<string>> cont)
+                public AliasData(string cat, SortedDictionary<string, List<string>> cont)
                 {
                     category = cat;
                     content = cont;
@@ -58,7 +58,7 @@ namespace VAICOM
             {
                 public string category;
                 public string content;
-                public int    timer;
+                public int timer;
 
                 public LogData(string cat, string cont)
                 {
@@ -72,7 +72,7 @@ namespace VAICOM
                 public string theater;
                 public string dcsversion;
                 public string aircraft;
-                public int    flightsize;
+                public int flightsize;
                 public string playerusername;
                 public string playercallsign;
                 public string coalition;
@@ -82,7 +82,7 @@ namespace VAICOM
                 public string missiontitle;
                 public string missionbriefing;
                 public string missiondetails;
-                public bool   multiplayer;
+                public bool multiplayer;
 
                 public KneeboardServerData()
                 {
@@ -96,7 +96,7 @@ namespace VAICOM
                     Int32.TryParse(State.currentstate.sortie, out int daytimeinsecs);
                     int hr = (daytimeinsecs / 3600);
                     int min = (daytimeinsecs - hr * 3600) / 60;
-                    sortie = "TO "+ KneeboardHelper.theatercode(State.currentstate.theatre) + " MST " + hr.ToString().PadLeft(2, '0') + ":" + min.ToString().PadRight(2,'0') + " "+ KneeboardHelper.theatertimezonestring(State.currentstate.theatre);
+                    sortie = "TO " + KneeboardHelper.theatercode(State.currentstate.theatre) + " MST " + hr.ToString().PadLeft(2, '0') + ":" + min.ToString().PadRight(2, '0') + " " + KneeboardHelper.theatertimezonestring(State.currentstate.theatre);
                     task = State.currentstate.task;
                     country = State.currentstate.country;
                     missiontitle = State.currentstate.missiontitle;
@@ -212,7 +212,7 @@ namespace VAICOM
                             }
 
                             descr.istuned = unit.isunittuned();
-                            
+
                             if (!State.currentmodule.Theme.Equals("WWII") && unit.altfreq.Count >= 1) // there are 1 alts minimum
                             {
                                 descr.frq = unit.getmodstr() + " " + Helpers.Common.NormalizeFreqString(unit.altfreq[0]);
@@ -240,7 +240,7 @@ namespace VAICOM
 
                             units.Add(descr);
 
-                            string lineitem = descr.frq + " " + "[" + descr.alias  + "]" + descr.istuned + " "  + descr.callsign + " " + descr.bearing + " " + descr.range + " " + descr.alt + " "+ " " + altfreqs;
+                            string lineitem = descr.frq + " " + "[" + descr.alias + "]" + descr.istuned + " " + descr.callsign + " " + descr.bearing + " " + descr.range + " " + descr.alt + " " + " " + altfreqs;
 
                             unitslist.Add(lineitem);
 

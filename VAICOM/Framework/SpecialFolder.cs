@@ -101,12 +101,12 @@ namespace VAICOM
             }
 
             [DllImport("Shell32.dll")]
-            private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags,
+            private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags,
                 IntPtr hToken, out IntPtr ppszPath);
 
             [DllImport("Shell32.dll")]
-            private static extern int SHSetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags,
-                IntPtr hToken, [MarshalAs(UnmanagedType.LPWStr)]string pszPath);
+            private static extern int SHSetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags,
+                IntPtr hToken, [MarshalAs(UnmanagedType.LPWStr)] string pszPath);
 
             [Flags]
             private enum KnownFolderFlags : uint

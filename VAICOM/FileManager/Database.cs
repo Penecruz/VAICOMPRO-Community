@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json; 
+using VAICOM.Database;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -159,7 +159,7 @@ namespace VAICOM
                                 }
                                 // for VSPX: fix aliases that should have asterisk in the new model (but not on disk yet) 
                                 if (State.activeconfig.UseNewRecognitionModel)
-                                {                         
+                                {
                                     bool diskhasaliaswithoutasterisk = alias.Key.Contains("*") && Aliases.reference[entry.Key].ContainsKey(alias.Key.Replace("*", ""));
                                     if (diskhasaliaswithoutasterisk)
                                     {
@@ -179,36 +179,36 @@ namespace VAICOM
 
                     //Log.Write(" warning counter: " + warncounter, colors.Warning);
 
-                    Aliases.appendiceswpn               = Aliases.reference["aiappendiceswpn"];
-                    Aliases.appendicesdir               = Aliases.reference["aiappendicesdir"];
-                    Aliases.aicues                      = Aliases.reference["aicues"];
-                    Aliases.aicommands                  = Aliases.reference["aicommands"];
-                    Aliases.airecipients                = Aliases.reference["airecipients"];
-                    Aliases.cockpitcontrol              = Aliases.reference["cockpitcontrol"];
-                    Aliases.importedatcs                = Aliases.reference["importedatcs"];
-                    Aliases.importedmenus               = Aliases.reference["importedmenus"];
-                    Aliases.playercallsigns             = Aliases.reference["playercallsigns"];
-                    Aliases.simcontrol                  = Aliases.reference["simcontrol"];
+                    Aliases.appendiceswpn = Aliases.reference["aiappendiceswpn"];
+                    Aliases.appendicesdir = Aliases.reference["aiappendicesdir"];
+                    Aliases.aicues = Aliases.reference["aicues"];
+                    Aliases.aicommands = Aliases.reference["aicommands"];
+                    Aliases.airecipients = Aliases.reference["airecipients"];
+                    Aliases.cockpitcontrol = Aliases.reference["cockpitcontrol"];
+                    Aliases.importedatcs = Aliases.reference["importedatcs"];
+                    Aliases.importedmenus = Aliases.reference["importedmenus"];
+                    Aliases.playercallsigns = Aliases.reference["playercallsigns"];
+                    Aliases.simcontrol = Aliases.reference["simcontrol"];
 
-                    Aliases.categories["aiappendiceswpn"]   = Aliases.reference["aiappendiceswpn"];
-                    Aliases.categories["aiappendicesdir"]   = Aliases.reference["aiappendicesdir"];
-                    Aliases.categories["aicues"]            = Aliases.reference["aicues"];
-                    Aliases.categories["aicommands"]        = Aliases.reference["aicommands"];
-                    Aliases.categories["airecipients"]      = Aliases.reference["airecipients"];
-                    Aliases.categories["cockpitcontrol"]    = Aliases.reference["cockpitcontrol"];
-                    Aliases.categories["importedatcs"]      = Aliases.reference["importedatcs"];
-                    Aliases.categories["importedmenus"]     = Aliases.reference["importedmenus"];
-                    Aliases.categories["playercallsigns"]   = Aliases.reference["playercallsigns"];
-                    Aliases.categories["simcontrol"]        = Aliases.reference["simcontrol"];
+                    Aliases.categories["aiappendiceswpn"] = Aliases.reference["aiappendiceswpn"];
+                    Aliases.categories["aiappendicesdir"] = Aliases.reference["aiappendicesdir"];
+                    Aliases.categories["aicues"] = Aliases.reference["aicues"];
+                    Aliases.categories["aicommands"] = Aliases.reference["aicommands"];
+                    Aliases.categories["airecipients"] = Aliases.reference["airecipients"];
+                    Aliases.categories["cockpitcontrol"] = Aliases.reference["cockpitcontrol"];
+                    Aliases.categories["importedatcs"] = Aliases.reference["importedatcs"];
+                    Aliases.categories["importedmenus"] = Aliases.reference["importedmenus"];
+                    Aliases.categories["playercallsigns"] = Aliases.reference["playercallsigns"];
+                    Aliases.categories["simcontrol"] = Aliases.reference["simcontrol"];
 
-                    Aliases.inputscancats["recipient"]      = Aliases.reference["airecipients"];
-                    Aliases.inputscancats["importedatcs"]   = Aliases.reference["importedatcs"];
-                    Aliases.inputscancats["importemenus"]   = Aliases.reference["importedmenus"];
-                    Aliases.inputscancats["sender"]         = Aliases.reference["playercallsigns"];
-                    Aliases.inputscancats["cue"]            = Aliases.reference["aicues"];
-                    Aliases.inputscancats["command"]        = Aliases.reference["aicommands"];
-                    Aliases.inputscancats["apxwpn"]         = Aliases.reference["aiappendiceswpn"];
-                    Aliases.inputscancats["apxdir"]         = Aliases.reference["aiappendicesdir"];
+                    Aliases.inputscancats["recipient"] = Aliases.reference["airecipients"];
+                    Aliases.inputscancats["importedatcs"] = Aliases.reference["importedatcs"];
+                    Aliases.inputscancats["importemenus"] = Aliases.reference["importedmenus"];
+                    Aliases.inputscancats["sender"] = Aliases.reference["playercallsigns"];
+                    Aliases.inputscancats["cue"] = Aliases.reference["aicues"];
+                    Aliases.inputscancats["command"] = Aliases.reference["aicommands"];
+                    Aliases.inputscancats["apxwpn"] = Aliases.reference["aiappendiceswpn"];
+                    Aliases.inputscancats["apxdir"] = Aliases.reference["aiappendicesdir"];
 
                     if (warncounter > 0)
                     {

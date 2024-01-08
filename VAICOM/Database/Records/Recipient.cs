@@ -1,7 +1,4 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
-
-namespace VAICOM
+﻿namespace VAICOM
 {
 
     namespace Database
@@ -10,19 +7,19 @@ namespace VAICOM
         public class Recipient
         {
 
-            public int                  uniqueid;
-            public string               name;
-            public string               displayname;
-            public RecipientCategories  category;
+            public int uniqueid;
+            public string name;
+            public string displayname;
+            public RecipientCategories category;
 
-            public bool     requiresJester;
-            public bool     requiresrealatc;
-            public bool     enabled;
-            public bool     blockedforFree;
-            public bool     isallowed;
-            public bool     hasunit;
-            public int      unitid;
-            public int      flightnumber;
+            public bool requiresJester;
+            public bool requiresrealatc;
+            public bool enabled;
+            public bool blockedforFree;
+            public bool isallowed;
+            public bool hasunit;
+            public int unitid;
+            public int flightnumber;
 
             public Recipientclass RecipientClass()
             {
@@ -83,7 +80,7 @@ namespace VAICOM
                 switch (cat.ToLower())
                 {
                     case ("undefined"):
-                        returnclass= Undefined;
+                        returnclass = Undefined;
                         break;
                     case ("cockpit"):
                         returnclass = Cockpit;
@@ -150,48 +147,48 @@ namespace VAICOM
                         break;
 
                     case ("Moose"):
-                       returnclass = Moose;
-                       break;
+                        returnclass = Moose;
+                        break;
 
                     default:
                         returnclass = Undefined;
                         break;
 
-                    
+
                 }
 
                 return returnclass;
             }
 
 
-            public static Recipientclass Undefined  = new Recipientclass { Name = "Undefined"   };
+            public static Recipientclass Undefined = new Recipientclass { Name = "Undefined" };
 
-            public static Recipientclass Cockpit    = new Recipientclass { Name = "Cockpit"     };
+            public static Recipientclass Cockpit = new Recipientclass { Name = "Cockpit" };
 
-            public static Recipientclass Player     = new Recipientclass { Name = "Player"      };
-            public static Recipientclass Navy_Player= new Recipientclass { Name = "Navy_Player" };
-            public static Recipientclass Flight     = new Recipientclass { Name = "Flight"      };
-            public static Recipientclass JTAC       = new Recipientclass { Name = "JTAC"        };
-            public static Recipientclass ATC        = new Recipientclass { Name = "ATC"         };
-            public static Recipientclass Tanker     = new Recipientclass { Name = "Tanker"      };
-            public static Recipientclass AWACS      = new Recipientclass { Name = "AWACS"       };
-            public static Recipientclass Crew       = new Recipientclass { Name = "Crew"        };
-            public static Recipientclass AOCS       = new Recipientclass { Name = "AOCS"        };
-            public static Recipientclass Aux        = new Recipientclass { Name = "Aux"         };
-            public static Recipientclass Cargo      = new Recipientclass { Name = "Cargo"       };
-            public static Recipientclass Descent    = new Recipientclass { Name = "Descent"     };
+            public static Recipientclass Player = new Recipientclass { Name = "Player" };
+            public static Recipientclass Navy_Player = new Recipientclass { Name = "Navy_Player" };
+            public static Recipientclass Flight = new Recipientclass { Name = "Flight" };
+            public static Recipientclass JTAC = new Recipientclass { Name = "JTAC" };
+            public static Recipientclass ATC = new Recipientclass { Name = "ATC" };
+            public static Recipientclass Tanker = new Recipientclass { Name = "Tanker" };
+            public static Recipientclass AWACS = new Recipientclass { Name = "AWACS" };
+            public static Recipientclass Crew = new Recipientclass { Name = "Crew" };
+            public static Recipientclass AOCS = new Recipientclass { Name = "AOCS" };
+            public static Recipientclass Aux = new Recipientclass { Name = "Aux" };
+            public static Recipientclass Cargo = new Recipientclass { Name = "Cargo" };
+            public static Recipientclass Descent = new Recipientclass { Name = "Descent" };
 
             // new carrier comms: add own recipient class?
-            public static Recipientclass ATC_NAVY_CARRIER           = new Recipientclass { Name = "Carrier ATC"                 };
-            public static Recipientclass ATC_NAVY_Approach_Tower    = new Recipientclass { Name = "Carrier ATC Approach Tower"  };
-            public static Recipientclass ATC_NAVY_Departure         = new Recipientclass { Name = "Carrier ATC Departure"       };
-            public static Recipientclass ATC_NAVY_LSO               = new Recipientclass { Name = "Carrier ATC LSO"             };
-            public static Recipientclass ATC_NAVY_Marshal           = new Recipientclass { Name = "Carrier ATC Marshal"         };
+            public static Recipientclass ATC_NAVY_CARRIER = new Recipientclass { Name = "Carrier ATC" };
+            public static Recipientclass ATC_NAVY_Approach_Tower = new Recipientclass { Name = "Carrier ATC Approach Tower" };
+            public static Recipientclass ATC_NAVY_Departure = new Recipientclass { Name = "Carrier ATC Departure" };
+            public static Recipientclass ATC_NAVY_LSO = new Recipientclass { Name = "Carrier ATC LSO" };
+            public static Recipientclass ATC_NAVY_Marshal = new Recipientclass { Name = "Carrier ATC Marshal" };
 
-            public static Recipientclass RIO        = new Recipientclass { Name = "RIO"         };
-            public static Recipientclass AI_pilot   = new Recipientclass { Name = "Iceman"      };
+            public static Recipientclass RIO = new Recipientclass { Name = "RIO" };
+            public static Recipientclass AI_pilot = new Recipientclass { Name = "Iceman" };
 
-            public static Recipientclass Kneeboard  = new Recipientclass { Name = "Kneeboard" };
+            public static Recipientclass Kneeboard = new Recipientclass { Name = "Kneeboard" };
 
             // Moose direct integrated comms
             public static Recipientclass Moose = new Recipientclass { Name = "Moose" };

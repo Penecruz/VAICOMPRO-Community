@@ -1,7 +1,7 @@
-﻿using VAICOM.Products;
-using VAICOM.PushToTalk;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Products;
+using VAICOM.PushToTalk;
 
 namespace VAICOM
 {
@@ -36,7 +36,7 @@ namespace VAICOM
                 State.synth.SpeakAsyncCancelAll();
                 State.briefinginprogress = false;
                 State.allowairioswitching = true;
-                PTT.PTT_Manage_Listen_States_OnPressRelease(false,false);
+                PTT.PTT_Manage_Listen_States_OnPressRelease(false, false);
                 //Server.fetchingunits = false;
                 Extensions.RIO.helper.showingjestermenu = false;
 

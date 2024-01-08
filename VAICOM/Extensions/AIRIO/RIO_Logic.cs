@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using VAICOM.Extensions.WorldAudio;
 using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -62,17 +62,17 @@ namespace VAICOM
                     AGweaponsstate["Mk83"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk84"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Zuni"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU10"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU12"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU16"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["GBU24"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU10"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU12"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU16"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["GBU24"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk20"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["LUU2"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["BDU33"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["BDU33"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk82A"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["Mk82SE"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     AGweaponsstate["TALD"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    AGweaponsstate["default"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    AGweaponsstate["default"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
 
 
                 }
@@ -81,8 +81,8 @@ namespace VAICOM
                 {
                     string result = "";
 
-                    if (classid.Contains("MK") && classid.Contains("81")) { return "Mk81";  }
-                    if (classid.Contains("MK") && classid.Contains("82")) 
+                    if (classid.Contains("MK") && classid.Contains("81")) { return "Mk81"; }
+                    if (classid.Contains("MK") && classid.Contains("82"))
                     {
                         if (classid.ToLower().Contains("air"))
                         {
@@ -92,19 +92,19 @@ namespace VAICOM
                         {
                             return "Mk82SE";
                         }
-                        return "Mk82";  
+                        return "Mk82";
                     }
-                    if (classid.Contains("MK") && classid.Contains("83")) { return "Mk83";  }
-                    if (classid.Contains("MK") && classid.Contains("84")) { return "Mk84";  }
-                    if (classid.Contains("LAU")&& classid.Contains("10")) { return "Zuni";  }
-                    if (classid.Contains("GBU")&& classid.Contains("10")) { return "GBU10"; }
-                    if (classid.Contains("GBU")&& classid.Contains("12")) { return "GBU12"; }
-                    if (classid.Contains("GBU")&& classid.Contains("16")) { return "GBU16"; }
-                    if (classid.Contains("GBU")&& classid.Contains("24")) { return "GBU24"; }
-                    if (classid.Contains("MK") && classid.Contains("20")) { return "Mk20";  }
-                    if (classid.Contains("SUU")&& classid.Contains("25")) { return "LUU2";  }
-                    if (classid.Contains("BDU"))                          { return "BDU33"; }
-                    if (classid.Contains("ADM141"))                       { return "TALD";  }
+                    if (classid.Contains("MK") && classid.Contains("83")) { return "Mk83"; }
+                    if (classid.Contains("MK") && classid.Contains("84")) { return "Mk84"; }
+                    if (classid.Contains("LAU") && classid.Contains("10")) { return "Zuni"; }
+                    if (classid.Contains("GBU") && classid.Contains("10")) { return "GBU10"; }
+                    if (classid.Contains("GBU") && classid.Contains("12")) { return "GBU12"; }
+                    if (classid.Contains("GBU") && classid.Contains("16")) { return "GBU16"; }
+                    if (classid.Contains("GBU") && classid.Contains("24")) { return "GBU24"; }
+                    if (classid.Contains("MK") && classid.Contains("20")) { return "Mk20"; }
+                    if (classid.Contains("SUU") && classid.Contains("25")) { return "LUU2"; }
+                    if (classid.Contains("BDU")) { return "BDU33"; }
+                    if (classid.Contains("ADM141")) { return "TALD"; }
 
                     return result;
                 }
@@ -115,7 +115,7 @@ namespace VAICOM
 
                     foreach (Server.payloadstation station in State.currentstate.payload.Stations)
                     {
-                        if(station.CLSID.Contains("300gal") && station.count > 0)
+                        if (station.CLSID.Contains("300gal") && station.count > 0)
                         {
                             return true;
                         }
@@ -167,7 +167,7 @@ namespace VAICOM
                     foreach (Server.payloadstation station in State.currentstate.payload.Stations)
                     {
                         string wpn = extractweapon(station.CLSID);
-                        if (AGweaponsstate.ContainsKey(wpn) && station.count >0)
+                        if (AGweaponsstate.ContainsKey(wpn) && station.count > 0)
                         {
                             if (AGweaponsstate[wpn].Equals(DeviceActionsLibrary.RIO.Atom_J_VOID))
                             {
@@ -183,8 +183,8 @@ namespace VAICOM
                 {
                     Server.Vector dp = new Server.Vector();
 
-                    Server.Vector cam       = State.currentstate.cpos.loc;
-                    Server.Vector acbody    = State.currentstate.bpos;
+                    Server.Vector cam = State.currentstate.cpos.loc;
+                    Server.Vector acbody = State.currentstate.bpos;
 
                     dp.x = cam.x - acbody.x;
                     dp.y = cam.y - acbody.y;
@@ -198,7 +198,7 @@ namespace VAICOM
                     Server.Vector campos = new Server.Vector();
 
                     Server.Vector acbody = State.currentstate.bpos;
-                    Server.Vector dp     = diffvector();
+                    Server.Vector dp = diffvector();
 
                     dp.x = factor * dp.x;
                     dp.y = factor * dp.y;
@@ -217,7 +217,7 @@ namespace VAICOM
 
                     Server.Vector dp = diffvector();
 
-                    double length = Math.Sqrt((dp.x * dp.x) + (dp.y * dp.y) + (dp.z* dp.z));
+                    double length = Math.Sqrt((dp.x * dp.x) + (dp.y * dp.y) + (dp.z * dp.z));
 
                     //Log.Write("Length = " + length, Colors.Inline);
 
@@ -292,7 +292,7 @@ namespace VAICOM
                             }
                             break;
 
-                    }                          
+                    }
 
                     //now add random extension (1-17)
                     //Random rnd = new Random();

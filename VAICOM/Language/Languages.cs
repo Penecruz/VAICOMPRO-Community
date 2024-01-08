@@ -1,5 +1,5 @@
-﻿using VAICOM.Database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using VAICOM.Database;
 
 
 namespace VAICOM
@@ -22,7 +22,7 @@ namespace VAICOM
             // not used yet
             public static Dictionary<language, Dictionary<string, string>> translatedversion = new Dictionary<language, Dictionary<string, string>>()
             {
-                { language.ENG, Aliases.airecipients    },                 
+                { language.ENG, Aliases.airecipients    },
 
             };
 

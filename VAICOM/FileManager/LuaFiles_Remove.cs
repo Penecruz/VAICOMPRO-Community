@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.IO;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -93,7 +93,7 @@ namespace VAICOM
 
                                             if (!thisfile.filename.ToLower().Equals("export.lua"))
                                             {
-                                                if (State.luahardreset && thisfile.hardreset) 
+                                                if (State.luahardreset && thisfile.hardreset)
                                                 {
                                                     if (File.Exists(path))
                                                     {
@@ -108,7 +108,7 @@ namespace VAICOM
 
                                                     if (thisfile.filename.ToLower().Equals("vaicompro.export.lua"))
                                                     {
-                                                        Directory.Delete(basepath,true);
+                                                        Directory.Delete(basepath, true);
                                                     }
                                                     else
                                                     {

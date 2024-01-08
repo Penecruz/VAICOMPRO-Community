@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.IO;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -38,7 +38,7 @@ namespace VAICOM
                         {
                             Log.Write("Not found: " + installpath, Colors.Inline);
                         }
-                    }    
+                    }
                 }
 
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace VAICOM.Extensions.RIO
 {
@@ -13,7 +9,7 @@ namespace VAICOM.Extensions.RIO
 
         public partial class Sequences // strings using base commands
         {
-       
+
             // central table referenced by command calls: links command unique name to sequence.
             public static Dictionary<string, List<List<DeviceAction>>> RioCommands = new Dictionary<string, List<List<DeviceAction>>>()
             {
@@ -403,7 +399,7 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_UTIL_CONTR",            new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR                }},
             {"wMsgJ_UTIL_CONTR_NO_TALK",    new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_NO_TALK        }}, // direct not via main menu
             {"wMsgJ_UTIL_CONTR_TALK",       new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_TALK           }},
-            {"wMsgJ_UTIL_CONTR_EJECT_BTH",  new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_EJECT_BTH      }},  
+            {"wMsgJ_UTIL_CONTR_EJECT_BTH",  new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_EJECT_BTH      }},
             {"wMsgJ_UTIL_CONTR_EJECT_SNG",  new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_EJECT_SNG      }},
             {"wMsgJ_UTIL_CONTR_ACTIVE",     new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_ACTIVE         }}, //new
             {"wMsgJ_UTIL_CONTR_INACTIVE",   new List<List<DeviceAction>> {Macro.Seq_J_UTIL_CONTR_INACTIVE       }}, //new
@@ -528,7 +524,7 @@ namespace VAICOM.Extensions.RIO
             {"wMsgJ_DEF_FLR_PGM_7",         new List<List<DeviceAction>> { Macro.Seq_J_MENU_MAIN, Macro.Seq_J_DEF_FLR_PGM_7        }},
             {"wMsgJ_DEF_FLR_PGM_8",         new List<List<DeviceAction>> { Macro.Seq_J_MENU_MAIN, Macro.Seq_J_DEF_FLR_PGM_8        }},
 
-            
+
             {"wMsgLANTIRN_Srch_Any",            new List<List<DeviceAction>> { Macro.Seq_J_MENU_CONTEXT, Macro.Seq_LANTIRN_Srch_Any        }},
             {"wMsgLANTIRN_Srch_Any_Active",     new List<List<DeviceAction>> { Macro.Seq_J_MENU_CONTEXT, Macro.Seq_LANTIRN_Srch_Any_Active        }},
             {"wMsgLANTIRN_Srch_Air",            new List<List<DeviceAction>> { Macro.Seq_J_MENU_CONTEXT, Macro.Seq_LANTIRN_Srch_Air        }},
@@ -722,5 +718,5 @@ namespace VAICOM.Extensions.RIO
             };
 
         }
-    } 
+    }
 }

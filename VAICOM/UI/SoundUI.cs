@@ -1,6 +1,6 @@
-﻿using System.Media;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using System.IO;
+using System.Media;
 
 namespace VAICOM
 {
@@ -264,7 +264,7 @@ namespace VAICOM
 
             public static void Human_Comms_Active()
             {
-                if (!State.activeconfig.MP_VoIPParallel &&(State.activeconfig.MP_UseSRSIntegration || State.activeconfig.MP_UseVoiceChatIntegration))
+                if (!State.activeconfig.MP_VoIPParallel && (State.activeconfig.MP_UseSRSIntegration || State.activeconfig.MP_UseVoiceChatIntegration))
                 {
                     if (State.activeconfig.Redirect_World_Speech)
                     {

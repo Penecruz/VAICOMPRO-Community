@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using VAICOM.Servers;
 using VAICOM.Client;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -125,7 +125,7 @@ namespace VAICOM
 
                             if (true) //(sendcat.Equals("NOTES") || sendcat.Equals("LOG") || msg.aliasdata.content.Count > 0) // if chunk not empty
                             {
-                                if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled) 
+                                if (State.kneeboardactivated && State.activeconfig.Kneeboard_Enabled)
                                 {
                                     msg.switchpage = true; // usually false
                                     Client.DcsClient.SendKneeboardMessage(msg); // send chunk
@@ -148,7 +148,7 @@ namespace VAICOM
                     {
                         KneeboardMessage msg = new KneeboardMessage(); // includes dict state
 
-                        msg.serverdata = new KneeboardServerData(); 
+                        msg.serverdata = new KneeboardServerData();
 
                         if (State.Proxy.Dictation.IsOn()) // in dictation mode: include buffer update every 1/4 second:
                         {
@@ -165,7 +165,7 @@ namespace VAICOM
                         {
                             State.uitimerinterval = 1000;
                         }
-                 
+
                         Client.DcsClient.SendKneeboardMessage(msg);
 
                     }
@@ -181,7 +181,7 @@ namespace VAICOM
                         // generic device action
 
                         State.currentmessage = new DcsClient.Message.CommsMessage();
-                        State.currentmessage.client = State.currentlicense; 
+                        State.currentmessage.client = State.currentlicense;
                         State.currentmessage.type = Messagetypes.DeviceControl;
 
                         DcsClient.DeviceAction action = new DcsClient.DeviceAction();

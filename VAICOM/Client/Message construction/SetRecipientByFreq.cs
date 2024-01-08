@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
+using System.Collections.Generic;
 using VAICOM.Database;
 using VAICOM.PushToTalk;
-using System;
-using System.Collections.Generic;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -17,7 +17,7 @@ namespace VAICOM
 
                 public static int getunitsincat(PTT.TXNode TX)
                 {
-                    
+
                     List<Server.DcsUnit> tunedforcurrentTX = DcsClient.GetTunedUnitsForTX(TX, true);
                     List<Server.DcsUnit> catunits = State.currentstate.availablerecipients[State.currentcommand.RecipientClass().Name];
 

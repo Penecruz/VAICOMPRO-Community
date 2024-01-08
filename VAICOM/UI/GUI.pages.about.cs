@@ -1,6 +1,4 @@
-﻿using VAICOM.Products;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,7 +13,7 @@ namespace VAICOM
 
             // ------------  LICENSE PAGE ---------------------------------
 
- 
+
             private void setproductname(object sender, EventArgs e)
             {
                 showproductname();
@@ -78,7 +76,7 @@ namespace VAICOM
                 UseInstantSelect.IsEnabled = State.PRO;
                 AllowRadioTuning.IsEnabled = State.PRO;
                 ForceLanguage.IsEnabled = State.PRO;
-                ForcedLanguage.IsEnabled = State.PRO; 
+                ForcedLanguage.IsEnabled = State.PRO;
                 EnforceCallsigns.IsEnabled = State.PRO;
                 CallsignsLanguage.IsEnabled = State.PRO;
                 EnforceATCProtocol.IsEnabled = State.PRO;
@@ -105,7 +103,7 @@ namespace VAICOM
                 MP_WarnHumans.IsEnabled = State.PRO;
                 MP_DelayTransmit.IsEnabled = State.PRO;
                 MP_IgnoreSelect.IsEnabled = State.PRO;
-                
+
 
                 MP_UseVoiceChatIntegration.IsEnabled = State.PRO;
                 MP_VCHotMic.IsEnabled = State.PRO;
@@ -154,10 +152,10 @@ namespace VAICOM
                 {
                     RIO_ICShotmic.Visibility = Visibility.Hidden;
                 }
-                RIO_ICShotmic_useswitch.IsEnabled = false; 
+                RIO_ICShotmic_useswitch.IsEnabled = false;
                 if (State.jesteractivated && State.dll_installed_rio)
                 {
-                    RIO_ICShotmic_useswitch.Visibility = Visibility.Hidden; 
+                    RIO_ICShotmic_useswitch.Visibility = Visibility.Hidden;
                 }
                 else
                 {
@@ -176,10 +174,10 @@ namespace VAICOM
 
                 //audio page
 
-                Pan_AOCS.IsEnabled      = State.PRO;
-                Chatter_Pan.IsEnabled   = State.chatterthemesactivated;
-                World_Sw_Up.IsEnabled   = State.PRO;
-                World_Sw_Dn.IsEnabled   = State.PRO;
+                Pan_AOCS.IsEnabled = State.PRO;
+                Chatter_Pan.IsEnabled = State.chatterthemesactivated;
+                World_Sw_Up.IsEnabled = State.PRO;
+                World_Sw_Dn.IsEnabled = State.PRO;
                 World_Init_Button.IsEnabled = State.PRO;
 
 
@@ -218,7 +216,7 @@ namespace VAICOM
                 ExportCSVbutton.IsEnabled = true;
                 KeywordsExport.IsEnabled = State.PRO;
                 Cancel.IsEnabled = State.PRO;
-                ImportCSVbutton_Add.IsEnabled = true; 
+                ImportCSVbutton_Add.IsEnabled = true;
 
             }
 

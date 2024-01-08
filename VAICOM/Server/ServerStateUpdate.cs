@@ -1,8 +1,7 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System;
-using Newtonsoft.Json;
-using static VAICOM.Servers.Server;
+using System.Collections.Generic;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -88,21 +87,21 @@ namespace VAICOM
 
                 try
                 {
-                    State.currentstate.client           = serverMessage.client;
-                    State.currentstate.clientversion    = serverMessage.clientversion;
-                    State.currentstate.mode             = serverMessage.mode;
-                    State.currentstate.type             = serverMessage.type;
-                    State.currentstate.dcsversion       = serverMessage.dcsversion.Length > 5 ? serverMessage.dcsversion.Substring(0, 5) : serverMessage.dcsversion;
-                    State.currentstate.root             = serverMessage.root;
-                    State.currentstate.multiplayer      = serverMessage.multiplayer;
-                    State.currentstate.vrmode           = serverMessage.vrmode;
-                    State.currentstate.easycomms        = serverMessage.easycomms;
-                    State.currentstate.pausebasestate   = serverMessage.pausebasestate;
-                    State.currentstate.theatre          = serverMessage.theatre;
-                    State.currentstate.sortie           = serverMessage.sortie;
-                    State.currentstate.task             = serverMessage.task;
-                    State.currentstate.country          = serverMessage.country;
-                    State.currentstate.options          = serverMessage.options;
+                    State.currentstate.client = serverMessage.client;
+                    State.currentstate.clientversion = serverMessage.clientversion;
+                    State.currentstate.mode = serverMessage.mode;
+                    State.currentstate.type = serverMessage.type;
+                    State.currentstate.dcsversion = serverMessage.dcsversion.Length > 5 ? serverMessage.dcsversion.Substring(0, 5) : serverMessage.dcsversion;
+                    State.currentstate.root = serverMessage.root;
+                    State.currentstate.multiplayer = serverMessage.multiplayer;
+                    State.currentstate.vrmode = serverMessage.vrmode;
+                    State.currentstate.easycomms = serverMessage.easycomms;
+                    State.currentstate.pausebasestate = serverMessage.pausebasestate;
+                    State.currentstate.theatre = serverMessage.theatre;
+                    State.currentstate.sortie = serverMessage.sortie;
+                    State.currentstate.task = serverMessage.task;
+                    State.currentstate.country = serverMessage.country;
+                    State.currentstate.options = serverMessage.options;
                 }
                 catch (Exception e)
                 {
@@ -116,18 +115,18 @@ namespace VAICOM
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.timer                = serverMessage.timer;
-                    State.currentstate.tod                  = serverMessage.tod;
-                    State.currentstate.id                   = serverMessage.id;
-                    State.currentstate.playerusername       = serverMessage.playerusername;
-                    State.currentstate.playercallsign       = serverMessage.playercallsign;
-                    State.currentstate.playercoalition      = serverMessage.playercoalition;
-                    State.currentstate.playerunitid         = serverMessage.playerunitid;
-                    State.currentstate.playerunitcat        = serverMessage.playerunitcat;
-                    State.currentstate.airborne             = serverMessage.airborne;
-                    State.currentstate.intercom             = serverMessage.intercom;
-                    State.currentstate.fsmstate             = serverMessage.fsmstate;
-                    State.currentstate.radios               = serverMessage.radios;
+                    State.currentstate.timer = serverMessage.timer;
+                    State.currentstate.tod = serverMessage.tod;
+                    State.currentstate.id = serverMessage.id;
+                    State.currentstate.playerusername = serverMessage.playerusername;
+                    State.currentstate.playercallsign = serverMessage.playercallsign;
+                    State.currentstate.playercoalition = serverMessage.playercoalition;
+                    State.currentstate.playerunitid = serverMessage.playerunitid;
+                    State.currentstate.playerunitcat = serverMessage.playerunitcat;
+                    State.currentstate.airborne = serverMessage.airborne;
+                    State.currentstate.intercom = serverMessage.intercom;
+                    State.currentstate.fsmstate = serverMessage.fsmstate;
+                    State.currentstate.radios = serverMessage.radios;
                 }
                 catch (Exception e)
                 {
@@ -141,9 +140,9 @@ namespace VAICOM
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.missiontitle     = serverMessage.missiontitle;
-                    State.currentstate.missionbriefing  = serverMessage.missionbriefing;
-                    State.currentstate.missiondetails   = serverMessage.missiondetails;
+                    State.currentstate.missiontitle = serverMessage.missiontitle;
+                    State.currentstate.missionbriefing = serverMessage.missionbriefing;
+                    State.currentstate.missiondetails = serverMessage.missiondetails;
                 }
                 catch (Exception e)
                 {
@@ -292,7 +291,7 @@ namespace VAICOM
                 }
                 catch (Exception e)
                 {
-                    Log.Write("ERROR 9/" + chunkcount + " :" + e.StackTrace, Colors.Inline);                 
+                    Log.Write("ERROR 9/" + chunkcount + " :" + e.StackTrace, Colors.Inline);
                 }
                 receivedupdatecomplete = false;
             }
@@ -301,16 +300,16 @@ namespace VAICOM
                 processingchunks = true;
                 try
                 {
-                    State.currentstate.riostate             = serverMessage.riostate;
-                    State.currentstate.bpos                 = serverMessage.bpos;
-                    State.currentstate.cpos                 = serverMessage.cpos;
-                    State.currentstate.viewexternal         = !State.currentstate.cpos.type.Equals(0);
-                    State.currentstate.soundsallowexternal  = State.currentstate.options.sound.headphones_on_external_views;
+                    State.currentstate.riostate = serverMessage.riostate;
+                    State.currentstate.bpos = serverMessage.bpos;
+                    State.currentstate.cpos = serverMessage.cpos;
+                    State.currentstate.viewexternal = !State.currentstate.cpos.type.Equals(0);
+                    State.currentstate.soundsallowexternal = State.currentstate.options.sound.headphones_on_external_views;
 
                 }
                 catch (Exception e)
                 {
-                    Log.Write("ERROR 10/" + chunkcount + " :" + e.StackTrace + " " +e.Message, Colors.Inline);
+                    Log.Write("ERROR 10/" + chunkcount + " :" + e.StackTrace + " " + e.Message, Colors.Inline);
                 }
                 receivedupdatecomplete = false;
             }
@@ -323,7 +322,7 @@ namespace VAICOM
                 }
                 catch (Exception e)
                 {
-                    Log.Write("ERROR 11/" + chunkcount + " :" + e.StackTrace, Colors.Inline);        
+                    Log.Write("ERROR 11/" + chunkcount + " :" + e.StackTrace, Colors.Inline);
                 }
                 receivedupdatecomplete = true;
                 processingchunks = false;

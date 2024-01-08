@@ -1,19 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Media.Imaging;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using Microsoft.Win32;
-using Newtonsoft.Json;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using System.Windows.Media;
-using VAICOM;
+using VAICOM.Client;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -40,7 +29,7 @@ namespace VAICOM
                     this.Top = State.activeconfig.Windowrestorelocation.Y;
                 }
 
-                this.Width  = 500;
+                this.Width = 500;
                 this.Height = 340;
 
                 //this.WindowStyle = WindowStyle.None;
@@ -112,7 +101,7 @@ namespace VAICOM
 
             public string setversionnumber()
             {
-                return " Version " + State.versionstring ;
+                return " Version " + State.versionstring;
             }
 
             private void setversionnumber1(object sender, EventArgs e)
@@ -221,7 +210,7 @@ namespace VAICOM
                 {
                     debugpage.IsEnabled = false;
                     debugpage.Visibility = Visibility.Hidden;
-                }             
+                }
             }
 
             public void DebugViewState()

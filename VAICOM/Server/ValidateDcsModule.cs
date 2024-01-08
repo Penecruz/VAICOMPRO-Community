@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Products;
-using VAICOM.FileManager;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using VAICOM.FileManager;
+using VAICOM.Products;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -113,7 +113,7 @@ namespace VAICOM
 
                 }
             }
-            
+
             public static bool SetKnownModule()
             {
                 // new ones..
@@ -146,7 +146,7 @@ namespace VAICOM
                 }
 
                 // P-47D
-                if ((State.currentstate.id.ToLower().Contains("p") & State.currentstate.id.ToLower().Contains("47")) )
+                if ((State.currentstate.id.ToLower().Contains("p") & State.currentstate.id.ToLower().Contains("47")))
                 {
                     State.currentmodule = DCSmodules.LookupTable["P-47D"];
                     return true;
@@ -181,8 +181,8 @@ namespace VAICOM
                 // Mosquito
                 //if (State.currentstate.id.ToLower().Contains("mosquito"))
                 //{
-                    //State.currentmodule = DCSmodules.LookupTable["Mosquito"];
-                    //return true;
+                //State.currentmodule = DCSmodules.LookupTable["Mosquito"];
+                //return true;
                 //}
                 // Mig-29
                 if (State.currentstate.id.ToLower().Contains("-29") || (State.currentstate.id.ToLower().Contains("fulcrum")))
@@ -271,8 +271,8 @@ namespace VAICOM
                 //F-15E Strike Eagle
                 if (State.currentstate.id.ToLower().Contains("f") & State.currentstate.id.ToLower().Contains("15") && (State.currentstate.id.ToLower().Contains("e")))
                 {
-                State.currentmodule = DCSmodules.LookupTable["F-15ESE"];
-                return true;
+                    State.currentmodule = DCSmodules.LookupTable["F-15ESE"];
+                    return true;
                 }
                 //F-22 Raptor
                 if (State.currentstate.id.ToLower().Contains("f") & (State.currentstate.id.ToLower().Contains("22a")))

@@ -9,65 +9,65 @@ namespace VAICOM
 
         public static class Messagetypes
         {
-            public static readonly string Undefined             = "sim.undefined";
-            public static readonly string SettingsChange        = "sim.changesettings";
+            public static readonly string Undefined = "sim.undefined";
+            public static readonly string SettingsChange = "sim.changesettings";
 
-            public static readonly string RequestUpdate         = "mission.player.requestupdate";
-            public static readonly string DeviceControl         = "mission.player.devicecontrol";
-            public static readonly string iCommandSequence      = "mission.player.cmdsequence";
-            public static readonly string ActionIndexSequence   = "mission.player.actionsequence";
-            public static readonly string CommsMessage          = "mission.player.aicomms";
+            public static readonly string RequestUpdate = "mission.player.requestupdate";
+            public static readonly string DeviceControl = "mission.player.devicecontrol";
+            public static readonly string iCommandSequence = "mission.player.cmdsequence";
+            public static readonly string ActionIndexSequence = "mission.player.actionsequence";
+            public static readonly string CommsMessage = "mission.player.aicomms";
         }
 
         public static class ClientModes
         {
-            public static readonly string Normal            = "normal";
-            public static readonly string Debug             = "debug";
+            public static readonly string Normal = "normal";
+            public static readonly string Debug = "debug";
         }
 
         public static class Colors
         {
 
             // normal log
-            public static readonly string Critical          = "red";
-            public static readonly string System            = "blue";
-            public static readonly string Recognition       = "green";
-            public static readonly string Warning           = "orange";
-            public static readonly string Message           = "purple";
+            public static readonly string Critical = "red";
+            public static readonly string System = "blue";
+            public static readonly string Recognition = "green";
+            public static readonly string Warning = "orange";
+            public static readonly string Message = "purple";
 
             // additional info in debug mode
-            public static readonly string Alert             = "yellow";
-            public static readonly string Text              = "black";
-            public static readonly string Notification      = "grey";
+            public static readonly string Alert = "yellow";
+            public static readonly string Text = "black";
+            public static readonly string Notification = "grey";
 
             // deep debug
-            public static readonly string Inline            = "blank";
+            public static readonly string Inline = "blank";
 
         }
 
         public static class Weapons
         {
-            public static int Default   = 0;
-            public static int Missile   = 1;
-            public static int Unguided  = 2;
-            public static int Guided    = 3;
-            public static int Rocket    = 4;
-            public static int Marker    = 5;
-            public static int Gun       = 6;
+            public static int Default = 0;
+            public static int Missile = 1;
+            public static int Unguided = 2;
+            public static int Guided = 3;
+            public static int Rocket = 4;
+            public static int Marker = 5;
+            public static int Gun = 6;
 
         }
 
         public static class Directions
         {
-            public static double Default    = 0;
-            public static double North      = 2 * 3.1416 * 0 / 8;
-            public static double NorthEast  = 2 * 3.1416 * 1 / 8;
-            public static double East       = 2 * 3.1416 * 2 / 8;
-            public static double SouthEast  = 2 * 3.1416 * 3 / 8;
-            public static double South      = 2 * 3.1416 * 4 / 8;
-            public static double SouthWest  = 2 * 3.1416 * 5 / 8;
-            public static double West       = 2 * 3.1416 * 6 / 8;
-            public static double NorthWest  = 2 * 3.1416 * 7 / 8;
+            public static double Default = 0;
+            public static double North = 2 * 3.1416 * 0 / 8;
+            public static double NorthEast = 2 * 3.1416 * 1 / 8;
+            public static double East = 2 * 3.1416 * 2 / 8;
+            public static double SouthEast = 2 * 3.1416 * 3 / 8;
+            public static double South = 2 * 3.1416 * 4 / 8;
+            public static double SouthWest = 2 * 3.1416 * 5 / 8;
+            public static double West = 2 * 3.1416 * 6 / 8;
+            public static double NorthWest = 2 * 3.1416 * 7 / 8;
 
         }
 

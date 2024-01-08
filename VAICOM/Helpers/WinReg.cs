@@ -1,7 +1,7 @@
-﻿using VAICOM.Static;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Security.AccessControl;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -68,7 +68,7 @@ namespace VAICOM
                             InheritanceFlags.None,
                             PropagationFlags.None,
                             AccessControlType.Allow));
-;
+                        ;
                         rk2 = Registry.LocalMachine.OpenSubKey(keystr);
                         rk2.SetAccessControl(rs);
 
@@ -83,7 +83,7 @@ namespace VAICOM
 
                     return keystring;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     keystring = e.InnerException.Message;
                 }

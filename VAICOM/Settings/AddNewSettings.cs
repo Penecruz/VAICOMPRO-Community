@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
+﻿using Newtonsoft.Json;
 using System.IO;
-using Newtonsoft.Json;
+using VAICOM.Database;
 using VAICOM.Languages;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -15,7 +15,7 @@ namespace VAICOM
 
             public static void AddNewConfigItems()
             {
-                
+
                 try
                 {
                     // added 2.5.25
@@ -37,7 +37,7 @@ namespace VAICOM
                     if (State.activeconfig.KneeboardlinkPTT.Equals(null))
                     {
                         State.activeconfig.KneeboardlinkPTT = false;
-                    }               
+                    }
 
                     // added 2.5.19
                     if (State.activeconfig.Custom_Path_Setting1.Equals(null))
@@ -87,7 +87,7 @@ namespace VAICOM
                     }
 
 
-                    
+
 
                     // added 2.5.16
                     if (State.activeconfig.UseNewRecognitionModel.Equals(null))
@@ -181,7 +181,7 @@ namespace VAICOM
                     if (State.activeconfig.CarrierComms.Equals(null))
                     {
                         State.activeconfig.CarrierComms = false;
-                    }                 
+                    }
 
                     // added 2.5.9.1
                     if (State.activeconfig.CurrentLanguage.Equals(null))

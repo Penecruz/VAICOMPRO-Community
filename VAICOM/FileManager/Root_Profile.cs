@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
+﻿using System.IO;
 using VAICOM.Database;
-using System.IO;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -11,7 +11,7 @@ namespace VAICOM
         {
             public static partial class Root
             {
-                
+
                 // check if .vap profile file exist and if not creates it:
                 public static void CheckProfile(bool overwrite)
                 {
@@ -42,7 +42,7 @@ namespace VAICOM
                     string profileid = State.Proxy.GetProfileName();
                     string result = "";
 
-                    if (!State.activeconfig.UseNewRecognitionModel) 
+                    if (!State.activeconfig.UseNewRecognitionModel)
                     {
                         if (!State.Proxy.Command.Exists("Colt"))
                         {

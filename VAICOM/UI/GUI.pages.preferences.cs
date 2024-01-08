@@ -1,7 +1,7 @@
-﻿using VAICOM.Client;
-using VAICOM.FileManager;
-using System;
+﻿using System;
 using System.Windows;
+using VAICOM.Client;
+using VAICOM.FileManager;
 
 
 namespace VAICOM
@@ -19,8 +19,8 @@ namespace VAICOM
             private void SetConfigEnableImportOtherMenu(object sender, RoutedEventArgs e) { State.activeconfig.ImportOtherMenu = true; }
             private void SetConfigDisableImportOtherMenu(object sender, RoutedEventArgs e) { State.activeconfig.ImportOtherMenu = false; }
             private void SetCurrentValueImportOtherMenu(object sender, EventArgs e) { ImportOtherMenu.IsEnabled = State.PRO; ImportOtherMenu.IsChecked = State.activeconfig.ImportOtherMenu; }
-       
-            
+
+
             // disable menus
             private void SetConfigHideMenus(object sender, RoutedEventArgs e) { State.activeconfig.HideMenus = true; }
             private void SetConfigShowMenus(object sender, RoutedEventArgs e) { State.activeconfig.HideMenus = false; }
@@ -41,7 +41,7 @@ namespace VAICOM
                     DcsClient.SendSettingsChange();
                 }
             }
-            private void Setlabellangvisible(object sender, EventArgs e) {  labellang.Visibility = Visibility.Visible; }
+            private void Setlabellangvisible(object sender, EventArgs e) { labellang.Visibility = Visibility.Visible; }
             // force callsigns
             private void EnforceCallsignsOn(object sender, RoutedEventArgs e) { State.activeconfig.EnforceCallsigns = true; }
             private void EnforceCallsignsOff(object sender, RoutedEventArgs e) { State.activeconfig.EnforceCallsigns = false; }
@@ -60,7 +60,7 @@ namespace VAICOM
             }
 
             // VSPX recognition model
-            private void SetConfigEnableNewRecognitionModel(object sender, RoutedEventArgs e) { State.activeconfig.UseNewRecognitionModel = true; ReloadDB();  }
+            private void SetConfigEnableNewRecognitionModel(object sender, RoutedEventArgs e) { State.activeconfig.UseNewRecognitionModel = true; ReloadDB(); }
             private void SetConfigDisableNewRecognitionModel(object sender, RoutedEventArgs e) { State.activeconfig.UseNewRecognitionModel = false; ReloadDB(); }
             private void SetCurrentValueNewRecognitionModel(object sender, EventArgs e) { NewRecognitionModel.IsEnabled = State.PRO; NewRecognitionModel.IsChecked = State.activeconfig.UseNewRecognitionModel; }
             private void ChangedRecognitionModel(object sender, RoutedEventArgs e)
@@ -102,8 +102,8 @@ namespace VAICOM
             private void AllowRadioTuningOn(object sender, RoutedEventArgs e) { State.activeconfig.AllowRadioTuning = true; }
             private void AllowRadioTuningOff(object sender, RoutedEventArgs e) { State.activeconfig.AllowRadioTuning = false; }
             private void SetCurrentValueAllowRadioTuning(object sender, EventArgs e) { AllowRadioTuning.IsEnabled = State.PRO; AllowRadioTuning.IsChecked = State.activeconfig.AllowRadioTuning; }
-            
-            
+
+
             // Right column:
 
             // use hints
@@ -129,7 +129,7 @@ namespace VAICOM
             // squelch
             private void DisableSquelchOn(object sender, RoutedEventArgs e) { State.activeconfig.DisableSquelch = true; }
             private void DisableSquelchOff(object sender, RoutedEventArgs e) { State.activeconfig.DisableSquelch = false; }
-            private void SetCurrentValueDisableSquelch(object sender, EventArgs e) {  DisableSquelch.IsEnabled = State.PRO; DisableSquelch.IsChecked = State.activeconfig.DisableSquelch;  }
+            private void SetCurrentValueDisableSquelch(object sender, EventArgs e) { DisableSquelch.IsEnabled = State.PRO; DisableSquelch.IsChecked = State.activeconfig.DisableSquelch; }
             // UI sounds
             private void UIsoundsOn(object sender, RoutedEventArgs e) { State.activeconfig.UIsounds = true; }
             private void UIsoundsOff(object sender, RoutedEventArgs e) { State.activeconfig.UIsounds = false; }

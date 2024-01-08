@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using System;
+﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using VAICOM.Client;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -55,7 +55,7 @@ namespace VAICOM
 
             public static void StartConfigWindow(Object resetwindow)
             {
-                
+
                 State.configurationwindow = new ConfigWindow();
 
                 if ((bool)resetwindow)
@@ -68,5 +68,5 @@ namespace VAICOM
 
             }
         }
-    }  
+    }
 }
