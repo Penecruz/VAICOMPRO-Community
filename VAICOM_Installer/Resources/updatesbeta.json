@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240101,
-      "version": 2923,
-      "versionstring": "2.9.2.3",
+      "releasedate": 20240128,
+      "version": 2927,
+      "versionstring": "2.9.2.7",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.2.3 - Installer testing - removed redundany extension checks - Added option for new DCS command menu navigation - Update loop removed."
+      "releasenotes": "Beta Test build 2.9.2.7 - NuGet packages changes - System.Numerics.Vectors Version change to 4.1.4.0 -Net7 Framework tests."
     }
   ]
 }
