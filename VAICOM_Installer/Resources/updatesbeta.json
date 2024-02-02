@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240128,
-      "version": 2927,
-      "versionstring": "2.9.2.7",
+      "releasedate": 20240202,
+      "version": 2928,
+      "versionstring": "2.9.2.8",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.2.7 - NuGet packages changes - System.Numerics.Vectors Version change to 4.1.4.0 -Net7 Framework tests."
+      "releasenotes": "Beta Test build 2.9.2.8 - Kneeboard changes to add new theater localizations"
     }
   ]
 }
