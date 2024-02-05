@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.CoreAudioApi;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -83,7 +84,7 @@ namespace VAICOM
                 try
                 {
 
-                    System.Version VAminversion = Version.Parse(State.vaminversion);
+                    System.Version VAminversion = Version.Parse(State.vaminversion); // set minimum tested version of voice attack in state
                     System.Version VAcurrentversion = vaProxy.VAVersion;
 
                     if (VAcurrentversion < VAminversion)
@@ -180,7 +181,7 @@ namespace VAICOM
                 }
                 else
                 {
-                    // ---- only check for new updates every <checkmax> sessions
+                    // ---- only check for new updates every <checkmax> sessions (1 will check each session)
 
                     Random rnd = new Random();
                     int checkmax = 1;
