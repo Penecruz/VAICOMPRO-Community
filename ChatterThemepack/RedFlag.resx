@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NTTR_23_R353" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\RedFlag\NTTR_23_R353.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Red_Flag_33_mins_001_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\audio\themes\chatter\redflag\red flag 33 mins(001).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

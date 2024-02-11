@@ -17,7 +17,7 @@ namespace VAICOM
 
             public static Dictionary<string, Dictionary<string, string>> categories;
 
-            public static void ResetDatabase()
+            public static void ResetDatabase() // resets the full database encrypted files list
             {
                 categories = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase)
                 {
@@ -31,6 +31,15 @@ namespace VAICOM
                     { "importedmenus",      Aliases.importedmenus       },
                     { "playercallsigns",    Aliases.playercallsigns     },
                     { "simcontrol",         Aliases.simcontrol          },
+                };
+            }
+
+            public static void ResetImported() // resets only the imported F10 menu Items and Imported Thearter ATC encrypted database files
+            {
+                categories = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase)
+                {
+                    { "importedatcs",       Aliases.importedatcs        },
+                    { "importedmenus",      Aliases.importedmenus       },
                 };
             }
 

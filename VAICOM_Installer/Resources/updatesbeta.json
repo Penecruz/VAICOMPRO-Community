@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240205,
-      "version": 2929,
-      "versionstring": "2.9.2.9",
+      "releasedate": 20240211,
+      "version": 2930,
+      "versionstring": "2.9.3.0",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.2.9 - NAudio fixes for Voice Attack future version --- Please test Chatter as it has been reworked -- Also default config for new extension options addded"
+      "releasenotes": "Beta Test build 2.9.3.0 - New theme for Chatter - Fallon (More Navy oriantated NTTR theme) -- Option to reset Imported items only from the DB"
     }
   ]
 }

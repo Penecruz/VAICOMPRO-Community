@@ -30,6 +30,7 @@ del *.config
     <DebugType>full</DebugType>
     <OutputPath>..\bin\$(Configuration)\</OutputPath>
     <WarningLevel>2</WarningLevel>
+    <Optimize>True</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
