@@ -7,11 +7,11 @@
      	"isbeta": false,
 	    "isdev": false,
 	    "productid": 1,
-      "releasedate": 20240107,
-     	"version": 2923,
-    	"versionstring": "2.9.2.3",
-    	"downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.2.3/VAICOMPRO.zip",
-    	"releasenotes": "Release 2.9.2.3 - Clean"
+      "releasedate": 20240214,
+     	"version": 2930,
+    	"versionstring": "2.9.3.0",
+    	"downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.3.0/VAICOMPRO.zip",
+    	"releasenotes": "Release 2.9.3.0 - Fallon"
     }
   ]
 }
