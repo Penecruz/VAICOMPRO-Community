@@ -63,13 +63,13 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 ## Patch Notes
 
 
+
 Patch Notes V2.9.3.0
 
 -	Complete Net 7 compatibility assurance.
 -	Added option to delete only the Imported keywords from the database.
 -	Added new Chatter theme Fallon.(Navy range and ATC chatter, includes some BFM training chatter)
 -	Added all terrains to the Kneeboard time zone check.
-
 
 Known Issues
 
