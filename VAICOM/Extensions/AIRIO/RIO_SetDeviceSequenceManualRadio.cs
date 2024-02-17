@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -190,7 +190,7 @@ namespace VAICOM
                             case "zero":
                                 minval2 = 0;
                                 break;
-                            case "cero": 
+                            case "cero":
                                 minval2 = 0;
                                 break;
                             case "null":
@@ -233,7 +233,7 @@ namespace VAICOM
                             case "funf null":
                                 minval2 = 50;
                                 break;
-                            
+
                             // 75
                             case "7 5":
                                 minval2 = 75;
@@ -313,7 +313,7 @@ namespace VAICOM
                         SendNewMessage();
 
                         // write message to log 
-                        
+
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {

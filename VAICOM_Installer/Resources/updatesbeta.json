@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20231221,
-      "version": 2916,
-      "versionstring": "2.9.1.6",
+      "releasedate": 20240101,
+      "version": 2923,
+      "versionstring": "2.9.2.3",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.1.6 - Xmas RC2 in Beta. Testing concludes 22.12.2023. "
+      "releasenotes": "Beta Test build 2.9.2.3 - Installer testing - removed redundany extension checks - Added option for new DCS command menu navigation - Update loop removed."
     }
   ]
 }

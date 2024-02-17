@@ -1,6 +1,5 @@
-﻿using VAICOM.Static;
-using System.Collections.Generic;
-using System;
+﻿using System.Collections.Generic;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -31,15 +30,15 @@ namespace VAICOM
                 {
                     TACANstate = new Dictionary<string, DeviceAction>();
 
-                    TACANstate["Stennis"]   = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Washington"]= DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Stennis"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Washington"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     TACANstate["Roosevelt"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Lincoln"]   = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Truman"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Tarawa"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Arco"]      = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Shell"]     = DeviceActionsLibrary.RIO.Atom_J_VOID;
-                    TACANstate["Texaco"]    = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Lincoln"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Truman"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Tarawa"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Arco"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Shell"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
+                    TACANstate["Texaco"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                     TACANstate["Forrestal"] = DeviceActionsLibrary.RIO.Atom_J_VOID;
                 }
 
@@ -47,16 +46,16 @@ namespace VAICOM
                 {
                     string result = "";
 
-                    if (unitcallsign.Contains("Stennis")    || fullname.Contains("Stennis"))    { return "Stennis"; }
+                    if (unitcallsign.Contains("Stennis") || fullname.Contains("Stennis")) { return "Stennis"; }
                     if (unitcallsign.Contains("Washington") || fullname.Contains("Washington")) { return "Washington"; }
-                    if (unitcallsign.Contains("Roosevelt")  || fullname.Contains("Roosevelt"))  { return "Roosevelt"; }
-                    if (unitcallsign.Contains("Lincoln")    || fullname.Contains("Lincoln"))    { return "Lincoln"; }
-                    if (unitcallsign.Contains("Truman")     || fullname.Contains("Truman"))     { return "Truman"; }
-                    if (unitcallsign.Contains("Tarawa")     || fullname.Contains("Tarawa"))     { return "Tarawa";  }
-                    if (unitcallsign.Contains("Arco")       || fullname.Contains("Arco"))       { return "Arco";    }
-                    if (unitcallsign.Contains("Shell")      || fullname.Contains("Shell"))      { return "Shell";   }
-                    if (unitcallsign.Contains("Texaco")     || fullname.Contains("Texaco"))     { return "Texaco";  }
-                    if (unitcallsign.Contains("Forrestal")  || fullname.Contains("Forrestal"))  { return "Forrestal"; }
+                    if (unitcallsign.Contains("Roosevelt") || fullname.Contains("Roosevelt")) { return "Roosevelt"; }
+                    if (unitcallsign.Contains("Lincoln") || fullname.Contains("Lincoln")) { return "Lincoln"; }
+                    if (unitcallsign.Contains("Truman") || fullname.Contains("Truman")) { return "Truman"; }
+                    if (unitcallsign.Contains("Tarawa") || fullname.Contains("Tarawa")) { return "Tarawa"; }
+                    if (unitcallsign.Contains("Arco") || fullname.Contains("Arco")) { return "Arco"; }
+                    if (unitcallsign.Contains("Shell") || fullname.Contains("Shell")) { return "Shell"; }
+                    if (unitcallsign.Contains("Texaco") || fullname.Contains("Texaco")) { return "Texaco"; }
+                    if (unitcallsign.Contains("Forrestal") || fullname.Contains("Forrestal")) { return "Forrestal"; }
 
                     return result;
                 }
@@ -68,7 +67,7 @@ namespace VAICOM
 
                         resetTACANstate();
                         int counter = 0;
-                
+
                         foreach (Servers.Server.DcsUnit unit in State.currentstate.TACANunits)
                         {
                             string callsign = extractTACANunit(unit.callsign, unit.fullname);
@@ -77,7 +76,7 @@ namespace VAICOM
                             {
                                 TACANstate[callsign] = GetAtom(counter);
                             }
-                            catch 
+                            catch
                             {
                             }
 

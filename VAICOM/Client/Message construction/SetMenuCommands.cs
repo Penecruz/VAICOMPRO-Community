@@ -12,38 +12,38 @@ namespace VAICOM
 
                 public static List<int> voidmessage = new List<int>() { iCommands.iCommandNull };
 
-                public static List<int> homemenu    = new List<int>() { iCommands.ICommandMenuItem11, iCommands.ICommandMenuItem11, iCommands.ICommandMenuItem11 };
+                public static List<int> homemenu = new List<int>() { iCommands.ICommandMenuItem11, iCommands.ICommandMenuItem11, iCommands.ICommandMenuItem11 };
 
-                public static List<int> showFlight  = new List<int>() { iCommands.ICommandMenuItem2 };
-                public static List<int> showJTAC    = new List<int>() { iCommands.ICommandMenuItem4 };
-                public static List<int> showATC     = new List<int>() { iCommands.ICommandMenuItem5 };
-                public static List<int> showCargo   = new List<int>() { iCommands.ICommandMenuItem6 };
+                public static List<int> showFlight = new List<int>() { iCommands.ICommandMenuItem2 };
+                public static List<int> showJTAC = new List<int>() { iCommands.ICommandMenuItem4 };
+                public static List<int> showATC = new List<int>() { iCommands.ICommandMenuItem5 };
+                public static List<int> showCargo = new List<int>() { iCommands.ICommandMenuItem6 };
                 public static List<int> showDescent = new List<int>() { iCommands.ICommandMenuItem7 };
-                public static List<int> showAWACS   = new List<int>() { iCommands.ICommandMenuItem7 };
-                public static List<int> showTanker  = new List<int>() { iCommands.ICommandMenuItem6, iCommands.ICommandMenuItem9 };
-                public static List<int> showCrew    = new List<int>() { iCommands.ICommandMenuItem8  };
-                public static List<int> showAux     = new List<int>() { iCommands.ICommandMenuItem10 };
-                public static List<int> showMoose   = new List<int>() { iCommands.ICommandMenuItem10 }; // Add Moose
+                public static List<int> showAWACS = new List<int>() { iCommands.ICommandMenuItem7 };
+                public static List<int> showTanker = new List<int>() { iCommands.ICommandMenuItem6, iCommands.ICommandMenuItem9 };
+                public static List<int> showCrew = new List<int>() { iCommands.ICommandMenuItem8 };
+                public static List<int> showAux = new List<int>() { iCommands.ICommandMenuItem10 };
+                public static List<int> showMoose = new List<int>() { iCommands.ICommandMenuItem10 }; // Add Moose
 
-                public static List<int> doAction1   = new List<int>() { iCommands.ICommandMenuItem1 };
-                public static List<int> doAction2   = new List<int>() { iCommands.ICommandMenuItem2 };
-                public static List<int> doAction3   = new List<int>() { iCommands.ICommandMenuItem3 };
-                public static List<int> doAction4   = new List<int>() { iCommands.ICommandMenuItem4 };
-                public static List<int> doAction5   = new List<int>() { iCommands.ICommandMenuItem5 };
-                public static List<int> doAction6   = new List<int>() { iCommands.ICommandMenuItem6 };
-                public static List<int> doAction7   = new List<int>() { iCommands.ICommandMenuItem7 };
-                public static List<int> doAction8   = new List<int>() { iCommands.ICommandMenuItem8 };
-                public static List<int> doAction9   = new List<int>() { iCommands.ICommandMenuItem9 };
-                public static List<int> doAction10  = new List<int>() { iCommands.ICommandMenuItem10 };
-                public static List<int> doAction11  = new List<int>() { iCommands.ICommandMenuItem11 };
-                public static List<int> doAction12  = new List<int>() { iCommands.ICommandMenuItem12 };
+                public static List<int> doAction1 = new List<int>() { iCommands.ICommandMenuItem1 };
+                public static List<int> doAction2 = new List<int>() { iCommands.ICommandMenuItem2 };
+                public static List<int> doAction3 = new List<int>() { iCommands.ICommandMenuItem3 };
+                public static List<int> doAction4 = new List<int>() { iCommands.ICommandMenuItem4 };
+                public static List<int> doAction5 = new List<int>() { iCommands.ICommandMenuItem5 };
+                public static List<int> doAction6 = new List<int>() { iCommands.ICommandMenuItem6 };
+                public static List<int> doAction7 = new List<int>() { iCommands.ICommandMenuItem7 };
+                public static List<int> doAction8 = new List<int>() { iCommands.ICommandMenuItem8 };
+                public static List<int> doAction9 = new List<int>() { iCommands.ICommandMenuItem9 };
+                public static List<int> doAction10 = new List<int>() { iCommands.ICommandMenuItem10 };
+                public static List<int> doAction11 = new List<int>() { iCommands.ICommandMenuItem11 };
+                public static List<int> doAction12 = new List<int>() { iCommands.ICommandMenuItem12 };
 
-                public static List<int> closemenu   = new List<int>() { iCommands.ICommandMenuItem12 };
+                public static List<int> closemenu = new List<int>() { iCommands.ICommandMenuItem12 };
 
                 public static List<int> showflight1 = new List<int>() { iCommands.ICommandMenuItem1 };
                 public static List<int> showflight2 = new List<int>() { iCommands.ICommandMenuItem2 };
 
-                public static List<int> iCommandPushToTalkEnableVoice  = new List<int>() { iCommands.iCommandPushToTalkEnableVoice  };
+                public static List<int> iCommandPushToTalkEnableVoice = new List<int>() { iCommands.iCommandPushToTalkEnableVoice };
                 public static List<int> iCommandPushToTalkDisableVoice = new List<int>() { iCommands.iCommandPushToTalkDisableVoice };
 
                 public static List<int> menuindex()

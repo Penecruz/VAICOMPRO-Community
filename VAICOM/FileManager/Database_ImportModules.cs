@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using VAICOM.Products;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json; 
+using VAICOM.Database;
+using VAICOM.Products;
+using VAICOM.Static;
 
 namespace VAICOM
 {

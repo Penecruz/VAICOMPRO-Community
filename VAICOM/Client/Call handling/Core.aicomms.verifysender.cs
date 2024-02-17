@@ -1,14 +1,5 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using System;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Collections.Generic;
-
-using Newtonsoft.Json;
-
-using System.Media;
+﻿using VAICOM.Database;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -16,7 +7,7 @@ namespace VAICOM
     {
 
         public partial class DcsClient
-    {
+        {
             public static partial class Message
             {
 

@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using VAICOM.Database;
 using VAICOM.Extensions.RIO;
+using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -22,7 +22,7 @@ namespace VAICOM
 
                 public static void settunenum()
                 {
-                    
+
                     State.currentmessage.tunenum = (State.currentstate.easycomms && State.currentcommand.isState()) || (State.currentrecipientclass.Name.Equals("AOCS") && (State.currentstate.easycomms || (State.currentcommand.isSelect() && State.activeconfig.AllowRadioTuning)));
 
                     if ((bool)State.currentmessage.tunenum)
@@ -31,7 +31,7 @@ namespace VAICOM
                         {
                             State.currentmessage.type = Messagetypes.SettingsChange;
 
-                            State.currentmessage.tunemod = State.currentstate.availablerecipients["Aux"].Find(IsAOCS).mod.Equals("FM") ? 1:0;
+                            State.currentmessage.tunemod = State.currentstate.availablerecipients["Aux"].Find(IsAOCS).mod.Equals("FM") ? 1 : 0;
                             State.currentmessage.tunefrq.Add(State.currentstate.availablerecipients["Aux"].Find(IsAOCS).freq);
                             State.currentmessage.tunefrq.AddRange(State.currentstate.availablerecipients["Aux"].Find(IsAOCS).altfreq);
 
@@ -99,7 +99,7 @@ namespace VAICOM
                             // hotmic is active, RIO not called
 
                             if (!State.valistening) //hotmic was used
-                            { 
+                            {
                                 if (!State.currentrecipientclass.Equals(Recipientclasses.Crew))
                                 {
                                     Log.Write("ICS HOT MIC: Use Push-To-Talk TX nodes to transmit radio messages.", Colors.Warning);
@@ -124,9 +124,9 @@ namespace VAICOM
 
                     State.currentmessage.extsequence.Add(new Extensions.RIO.DeviceAction());
 
-                    State.currentmessage.extsequence[0].device  = 18; // gearhook now 18
+                    State.currentmessage.extsequence[0].device = 18; // gearhook now 18
                     State.currentmessage.extsequence[0].command = 3023; //CATAPULT_Salute
-                    State.currentmessage.extsequence[0].value   = 1.0; // press
+                    State.currentmessage.extsequence[0].value = 1.0; // press
                 }
 
                 public static void constructRIO()
@@ -227,28 +227,28 @@ namespace VAICOM
 
                 public static bool ConstructMessage()
                 {
-      
+
                     try
                     {
                         Log.Write("Constructing message... ", Colors.Text);
 
-                        State.currentmessage =               new CommsMessage();
+                        State.currentmessage = new CommsMessage();
 
-                        State.currentmessage.debug          = State.activeconfig.Debugmode;
-                        State.currentmessage.client         = State.currentlicense;
-                        State.currentmessage.mode           = State.clientmode;
-                        State.currentmessage.tgtdevid       = Message.GetSendDeviceId();
-                        State.currentmessage.tgtdevname     = State.currentradiodevicename;
-                        State.currentmessage.type           = State.currentcommand.ApplicationType();
-                        State.currentmessage.command        = State.currentcommand.eventnumber != 0 ? State.currentcommand.eventnumber : State.currentcommand.geteventnumber();
-                        State.currentmessage.dcsid          = State.currentcommand.dcsid != "" ? State.currentcommand.dcsid : "wMsgNull";
-                        State.currentmessage.insert         = State.currentcommand.RequiresInsert();
-                        State.currentmessage.reccat         = State.currentrecipientclass.Name;
-                        State.currentmessage.selectrecipient= State.currentmessageunit.fullname;
-                        State.currentmessage.selectunit     = State.currentmessageunit.id_;
-                        State.currentmessage.havedial       = State.currentmodule.Havedial;
-                        State.currentmessage.fc3            = State.currentmodule.IsFC;
-                        State.currentmessage.forcetune      = !State.currentstate.easycomms && State.activeconfig.AllowRadioTuning && State.currentcommand.isSelect();
+                        State.currentmessage.debug = State.activeconfig.Debugmode;
+                        State.currentmessage.client = State.currentlicense;
+                        State.currentmessage.mode = State.clientmode;
+                        State.currentmessage.tgtdevid = Message.GetSendDeviceId();
+                        State.currentmessage.tgtdevname = State.currentradiodevicename;
+                        State.currentmessage.type = State.currentcommand.ApplicationType();
+                        State.currentmessage.command = State.currentcommand.eventnumber != 0 ? State.currentcommand.eventnumber : State.currentcommand.geteventnumber();
+                        State.currentmessage.dcsid = State.currentcommand.dcsid != "" ? State.currentcommand.dcsid : "wMsgNull";
+                        State.currentmessage.insert = State.currentcommand.RequiresInsert();
+                        State.currentmessage.reccat = State.currentrecipientclass.Name;
+                        State.currentmessage.selectrecipient = State.currentmessageunit.fullname;
+                        State.currentmessage.selectunit = State.currentmessageunit.id_;
+                        State.currentmessage.havedial = State.currentmodule.Havedial;
+                        State.currentmessage.fc3 = State.currentmodule.IsFC;
+                        State.currentmessage.forcetune = !State.currentstate.easycomms && State.activeconfig.AllowRadioTuning && State.currentcommand.isSelect();
 
                         // set numeric tuning if required..
                         settunenum();
@@ -259,24 +259,24 @@ namespace VAICOM
                         if (State.currentcommand.hasAppendix() & (State.have["apxwpn"] || State.have["apxdir"])) { SetAppendices(); }
 
                         // settings..
-                        State.currentmessage.redirect_world_speech  = State.activeconfig.Redirect_World_Speech;
-                        State.currentmessage.disableplayervoice     = State.activeconfig.DisablePlayerVoice;
-                        State.currentmessage.hideonscreentext       = State.activeconfig.HideOnScreenText;
-                        State.currentmessage.forcelanguage          = State.activeconfig.ForceLanguage;
-                        State.currentmessage.forcedlanguage         = Languages.localization.languages[State.activeconfig.ForcedLanguage];
-                        State.currentmessage.menuinvisible          = State.activeconfig.HideMenus;
-                        State.currentmessage.forcenatoprotocol      = State.activeconfig.EnforceATCProtocol && (State.activeconfig.EnforcedATCProtocol == 0);
-                        State.currentmessage.forcecallsigns         = State.activeconfig.EnforceCallsigns;
-                        State.currentmessage.forcedcallsigns        = Languages.localization.languages[State.activeconfig.CallsignsLanguage];
-                        State.currentmessage.operatedial            = State.activeconfig.OperateDial;
-                        State.currentmessage.importmenus            = State.activeconfig.ImportOtherMenu;
+                        State.currentmessage.redirect_world_speech = State.activeconfig.Redirect_World_Speech;
+                        State.currentmessage.disableplayervoice = State.activeconfig.DisablePlayerVoice;
+                        State.currentmessage.hideonscreentext = State.activeconfig.HideOnScreenText;
+                        State.currentmessage.forcelanguage = State.activeconfig.ForceLanguage;
+                        State.currentmessage.forcedlanguage = Languages.localization.languages[State.activeconfig.ForcedLanguage];
+                        State.currentmessage.menuinvisible = State.activeconfig.HideMenus;
+                        State.currentmessage.forcenatoprotocol = State.activeconfig.EnforceATCProtocol && (State.activeconfig.EnforcedATCProtocol == 0);
+                        State.currentmessage.forcecallsigns = State.activeconfig.EnforceCallsigns;
+                        State.currentmessage.forcedcallsigns = Languages.localization.languages[State.activeconfig.CallsignsLanguage];
+                        State.currentmessage.operatedial = State.activeconfig.OperateDial;
+                        State.currentmessage.importmenus = State.activeconfig.ImportOtherMenu;
 
-                        State.currentmessage.AIRIO                  = State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]);
-                        State.currentmessage.carriersuppressauto    = State.activeconfig.CarrierSuppressAuto;
+                        State.currentmessage.AIRIO = State.currentmodule.Equals(Products.DCSmodules.LookupTable[State.riomod]);
+                        State.currentmessage.carriersuppressauto = State.activeconfig.CarrierSuppressAuto;
 
                         // SPECIAL: CONSTRUCT MESSAGE FOR AIRIO
-                        if (!ProcessIfRIO()) 
-                        { 
+                        if (!ProcessIfRIO())
+                        {
                             return false; // tried AIRIO cmd but not licensed
                         }
 
@@ -291,10 +291,10 @@ namespace VAICOM
 
                         // OPTIONS
                         // for options/menu commands: change type and add keysequence..
-                        bool airioflightcrew = State.currentkey["recipient"].Equals("RIO") || State.currentkey["recipient"].Equals("Iceman"); 
+                        bool airioflightcrew = State.currentkey["recipient"].Equals("RIO") || State.currentkey["recipient"].Equals("Iceman");
                         if (State.currentcommand.isOptions())
                         {
-                            Log.Write("Identified as options command", Colors.Inline);                        
+                            Log.Write("Identified as options command", Colors.Inline);
                             if (airioflightcrew)
                             {
                                 VAICOM.Extensions.RIO.helper.ShowWheel(true);
@@ -329,7 +329,7 @@ namespace VAICOM
                                     int command = 3550;
                                     int value = -1;
 
-                                    switch(State.currentcommand.uniqueid)
+                                    switch (State.currentcommand.uniqueid)
                                     {
                                         case 22501: //menu1
                                             command = 3551; // vertical up
@@ -369,7 +369,7 @@ namespace VAICOM
                                     };
                                     menu.Add(menuaction);
 
-                                    State.currentmessage.extsequence.AddRange(menu);   
+                                    State.currentmessage.extsequence.AddRange(menu);
 
                                 }
                                 catch (Exception e)
@@ -403,7 +403,7 @@ namespace VAICOM
                         return true;
                     }
                     catch (Exception e)
-                    {               
+                    {
                         Log.Write("message construction error:" + "\n" + e.StackTrace + "\n" + e.InnerException, Colors.Inline);
                         return false;
                     }

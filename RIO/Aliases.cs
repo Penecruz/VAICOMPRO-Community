@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace VAICOM.Extensions.RIO
 {
@@ -49,7 +48,7 @@ namespace VAICOM.Extensions.RIO
             {"Close Context Menu",          "wMsgJ_MENU_CTXT_CLOSE"             },
             {"Close Main Menu",             "wMsgJ_MENU_MAIN_CLOSE"             },
 
-            {"Don't Auto Designate",        "wMsgJESTER_LANTIRN_inhibit_auto_designate"         }, 
+            {"Don't Auto Designate",        "wMsgJESTER_LANTIRN_inhibit_auto_designate"         },
             {"Track Point",                 "wMsgJESTER_LANTIRN_track_target_id"                }, //na
             {"Track Area",                  "wMsgJESTER_LANTIRN_track_zone_id"                  }, //na
             {"Designate",                   "wMsgJESTER_LANTIRN_designate"                      },
@@ -88,7 +87,7 @@ namespace VAICOM.Extensions.RIO
             {"Track Single Contact Ahead",  "wMsgJ_RDR_STT_TGT_AHEAD"           },
             {"Track Single Bogey Ahead",    "wMsgJ_RDR_STT_ENMY_TGT_AHEAD"      },
             {"Track Single Friendly Ahead", "wMsgJ_RDR_STT_FRNDLY_TGT_AHEAD"    },
-            {"Track Single First",          "wMsgJ_RDR_STT_FIRST_TWS_TGT"       }, 
+            {"Track Single First",          "wMsgJ_RDR_STT_FIRST_TWS_TGT"       },
             {"Track Single Target",         "wMsgJ_RDR_STT_TWS_TGT_NUM"         }, // not endpoint //
             {"Track Single Target 1",       "wMsgJ_RDR_STT_TWS_TGT_1"           },
             {"Track Single Target 2",       "wMsgJ_RDR_STT_TWS_TGT_2"           },
@@ -559,7 +558,7 @@ namespace VAICOM.Extensions.RIO
             {"Flares Program 6 by 10",              "wMsgJ_DEF_FLR_PGM_7"                },
             {"Flares Program 10 by 10",             "wMsgJ_DEF_FLR_PGM_8"                },
 
-            
+
             {"Look for Ground Targets",             "wMsgLANTIRN_Srch_Any"                  },
             {"Look for Activity",                   "wMsgLANTIRN_Srch_Any_Active"           },
             {"Look for Bogeys",                     "wMsgLANTIRN_Srch_Air"                  },

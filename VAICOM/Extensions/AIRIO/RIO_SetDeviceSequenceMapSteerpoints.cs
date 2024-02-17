@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -138,7 +138,7 @@ namespace VAICOM
 
                         //Log.Write("Map Marker = " + segment1 + "\\" + markercount, Colors.Warning);
 
-                        int position = 1+ markercount - segment1; // 1+
+                        int position = 1 + markercount - segment1; // 1+
                         //Log.Write("Position = " + position, Colors.Warning);
 
                         switch (position)
@@ -166,7 +166,7 @@ namespace VAICOM
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_1);
                                 break;
                             case 8:
-                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);            
+                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_2);
                                 break;
                             case 9:
@@ -190,7 +190,7 @@ namespace VAICOM
                         // always close menu wheel: add at the very end
                         State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_MENU_CLOSE);
 
-                        string message = "RIO | Map marker" + " " + segment1.ToString() + " " + "to" + " " + segment3 ;
+                        string message = "RIO | Map marker" + " " + segment1.ToString() + " " + "to" + " " + segment3;
 
                         if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
                         {
@@ -222,7 +222,7 @@ namespace VAICOM
                         SendNewMessage();
 
                         // write message to log 
-                        
+
                         // for single:
                         if (PTT.IsPTTModeSingle()) // for single mode
                         {

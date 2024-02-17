@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -44,7 +44,7 @@ namespace VAICOM
                         // root sequence
                         State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_CONTEXT); // includes close first
                         State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_6);
-                        
+
                         if (orbit)
                         {
                             State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_4);
@@ -54,15 +54,15 @@ namespace VAICOM
                             State.currentmessage.extsequence.AddRange(DeviceActionsLibrary.Sequences.Macro.Seq_J_MENU_OPTION_2);
                         }
 
-                        
-                        
+
+
                         //Log.Write("Segment 0 = " + header, Colors.Warning);
-                        
+
                         int segment1;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}"), out segment1); // Marker Number 1-10
                         int markercount = State.currentstate.riostate.markers;
 
-                        int position = 1+ markercount - segment1; // 1+
+                        int position = 1 + markercount - segment1; // 1+
                         //Log.Write("Position = " + position, Colors.Warning);
 
                         switch (position)
@@ -90,7 +90,7 @@ namespace VAICOM
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_1);
                                 break;
                             case 8:
-                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);            
+                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_2);
                                 break;
                             case 9:
@@ -115,7 +115,7 @@ namespace VAICOM
                         // always close menu wheel: add at the very end
                         State.currentmessage.extsequence.Add(VAICOM.Extensions.RIO.DeviceActionsLibrary.RIO.Atom_J_MENU_CLOSE);
 
-                        string str = orbit ? "Orbit" : "Fly to"; 
+                        string str = orbit ? "Orbit" : "Fly to";
                         string message = str + " Map Marker " + segment1.ToString();
 
                         if (State.activeconfig.RIO_Messages && !State.activeconfig.RIO_Hints_Only)
@@ -148,7 +148,7 @@ namespace VAICOM
                         SendNewMessage();
 
                         // write message to log 
-                        
+
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {

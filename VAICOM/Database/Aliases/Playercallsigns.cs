@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
-using Newtonsoft.Json.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Data.SqlTypes;
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VAICOM
 {

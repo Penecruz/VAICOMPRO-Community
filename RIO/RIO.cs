@@ -1,50 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VAICOM.Extensions.RIO
 {
 
-    public class AuxData 
+    public class AuxData
     {
-  
+
     }
 
     public class RecipientInfo
     {
-        public int      uniqueid;
-        public string   name;
-        public string   displayname;
-        public bool     requiresJester;
-        public bool     enabled;
-        public bool     blockedforFree;
+        public int uniqueid;
+        public string name;
+        public string displayname;
+        public bool requiresJester;
+        public bool enabled;
+        public bool blockedforFree;
 
         public RecipientInfo()
         {
-            requiresJester  = true;
-            enabled         = false;
-            blockedforFree  = true;
+            requiresJester = true;
+            enabled = false;
+            blockedforFree = true;
         }
     }
 
     public class CommandInfo
     {
-        public int      uniqueid;
-        public string   name;
-        public string   displayname;
-        public int      eventnumber;
-        public bool     requiresJester;
-        public bool     enabled;
-        public bool     blockedforFree;
+        public int uniqueid;
+        public string name;
+        public string displayname;
+        public int eventnumber;
+        public bool requiresJester;
+        public bool enabled;
+        public bool blockedforFree;
 
         public CommandInfo()
         {
-            eventnumber     = 4000;
-            requiresJester  = true;
-            enabled         = false;
-            blockedforFree  = true;
+            eventnumber = 4000;
+            requiresJester = true;
+            enabled = false;
+            blockedforFree = true;
         }
     }
 
@@ -58,7 +55,7 @@ namespace VAICOM.Extensions.RIO
         };
     }
 
-  
+
 
 
 

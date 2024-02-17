@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
-using VAICOM.Products;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using VAICOM.Products;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -19,7 +19,7 @@ namespace VAICOM
             }
 
             public class radioslotdevicelist
-            {  
+            {
                 public List<int> Slot_map_INT = new List<int>();
                 public List<int> Slot_map_SRS = new List<int>();
                 public List<int> Slot_map_CUS = new List<int>();
@@ -30,8 +30,8 @@ namespace VAICOM
                 //not used for now
                 public static Dictionary<string, radioslotdevicelist> slot_mapping_table = new Dictionary<string, radioslotdevicelist>()
                 {
-                    {"----" ,       new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } }, 
-                    
+                    {"----" ,       new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
+
                     {"A-10A" ,      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-15C" ,      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"Su-25" ,      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
@@ -308,10 +308,10 @@ namespace VAICOM
                     else // non-FC3
                     {
 
-                        bool allocatedRadio1    = false;
-                        bool allocatedRadio2    = false;
-                        bool allocatedRadio3    = false;
-                        bool allocatedINT       = false;
+                        bool allocatedRadio1 = false;
+                        bool allocatedRadio2 = false;
+                        bool allocatedRadio3 = false;
+                        bool allocatedINT = false;
 
                         DCSmodule module = null;
 
@@ -349,7 +349,7 @@ namespace VAICOM
                                 RadioDevices.INT.AM = radiounit.AM;
                                 RadioDevices.INT.FM = radiounit.FM;
                                 RadioDevices.INT.on = radiounit.on;
-                                RadioDevices.INT.frequency = radiounit.frequency.ToString(); 
+                                RadioDevices.INT.frequency = radiounit.frequency.ToString();
                                 RadioDevices.INT.modulation = radiounit.modulation;
 
                                 deviceallocated = true;
@@ -362,18 +362,18 @@ namespace VAICOM
                             {
 
                                 TXNodes.TX1.enabled = true;
-                                TXNodes.TX1.number  = radiounit.deviceid;
-                                TXNodes.TX1.radios  = TXConfigs.SNGL_RADIO_Radio1;
+                                TXNodes.TX1.number = radiounit.deviceid;
+                                TXNodes.TX1.radios = TXConfigs.SNGL_RADIO_Radio1;
 
                                 RadioDevices.Radio1.isavailable = radiounit.isavailable;
-                                RadioDevices.Radio1.deviceid    = radiounit.deviceid;
-                                RadioDevices.Radio1.name        = radiolist_SRS.Slot_map[0];
-                                RadioDevices.Radio1.intercom    = radiounit.intercom;
-                                RadioDevices.Radio1.AM          = radiounit.AM;
-                                RadioDevices.Radio1.FM          = radiounit.FM;
-                                RadioDevices.Radio1.on          = radiounit.on;
-                                RadioDevices.Radio1.frequency   = radiounit.frequency.ToString(); 
-                                RadioDevices.Radio1.modulation  = radiounit.modulation;
+                                RadioDevices.Radio1.deviceid = radiounit.deviceid;
+                                RadioDevices.Radio1.name = radiolist_SRS.Slot_map[0];
+                                RadioDevices.Radio1.intercom = radiounit.intercom;
+                                RadioDevices.Radio1.AM = radiounit.AM;
+                                RadioDevices.Radio1.FM = radiounit.FM;
+                                RadioDevices.Radio1.on = radiounit.on;
+                                RadioDevices.Radio1.frequency = radiounit.frequency.ToString();
+                                RadioDevices.Radio1.modulation = radiounit.modulation;
 
                                 RadioDevices.Radio1.isSRSserver = false;
 
@@ -388,24 +388,24 @@ namespace VAICOM
                             {
 
                                 TXNodes.TX2.enabled = true;
-                                TXNodes.TX2.number  = radiounit.deviceid;
-                                TXNodes.TX2.radios  = TXConfigs.SNGL_RADIO_Radio2;
+                                TXNodes.TX2.number = radiounit.deviceid;
+                                TXNodes.TX2.radios = TXConfigs.SNGL_RADIO_Radio2;
 
-                                RadioDevices.Radio2.isavailable     = radiounit.isavailable;
-                                RadioDevices.Radio2.deviceid        = radiounit.deviceid;
-                                RadioDevices.Radio2.name            = radiolist_SRS.Slot_map[1];
-                                RadioDevices.Radio2.intercom        = radiounit.intercom;
-                                RadioDevices.Radio2.AM              = radiounit.AM;
-                                RadioDevices.Radio2.FM              = radiounit.FM;
-                                RadioDevices.Radio2.on              = radiounit.on;
-                                RadioDevices.Radio2.frequency       = radiounit.frequency.ToString(); 
-                                RadioDevices.Radio2.modulation      = radiounit.modulation;
+                                RadioDevices.Radio2.isavailable = radiounit.isavailable;
+                                RadioDevices.Radio2.deviceid = radiounit.deviceid;
+                                RadioDevices.Radio2.name = radiolist_SRS.Slot_map[1];
+                                RadioDevices.Radio2.intercom = radiounit.intercom;
+                                RadioDevices.Radio2.AM = radiounit.AM;
+                                RadioDevices.Radio2.FM = radiounit.FM;
+                                RadioDevices.Radio2.on = radiounit.on;
+                                RadioDevices.Radio2.frequency = radiounit.frequency.ToString();
+                                RadioDevices.Radio2.modulation = radiounit.modulation;
 
                                 RadioDevices.Radio2.isSRSserver = false;
 
                                 deviceallocated = true;
                                 allocatedRadio2 = true;
-                                State.radiocount = State.radiocount + 1;  
+                                State.radiocount = State.radiocount + 1;
                             }
 
 
@@ -413,18 +413,18 @@ namespace VAICOM
                             if (!deviceallocated && radiounit.displayName.ToLower().Equals(radiolist_Ref.Slot_map[2].ToLower()))
                             {
                                 TXNodes.TX3.enabled = true;
-                                TXNodes.TX3.number  = radiounit.deviceid;
-                                TXNodes.TX3.radios  = TXConfigs.SNGL_RADIO_Radio3;
+                                TXNodes.TX3.number = radiounit.deviceid;
+                                TXNodes.TX3.radios = TXConfigs.SNGL_RADIO_Radio3;
 
                                 RadioDevices.Radio3.isavailable = radiounit.isavailable;
-                                RadioDevices.Radio3.deviceid    = radiounit.deviceid;
-                                RadioDevices.Radio3.name        = radiolist_SRS.Slot_map[2]; 
-                                RadioDevices.Radio3.intercom    = radiounit.intercom;
-                                RadioDevices.Radio3.AM          = radiounit.AM;
-                                RadioDevices.Radio3.FM          = radiounit.FM;
-                                RadioDevices.Radio3.on          = radiounit.on;
-                                RadioDevices.Radio3.frequency   = radiounit.frequency.ToString();
-                                RadioDevices.Radio3.modulation  = radiounit.modulation;
+                                RadioDevices.Radio3.deviceid = radiounit.deviceid;
+                                RadioDevices.Radio3.name = radiolist_SRS.Slot_map[2];
+                                RadioDevices.Radio3.intercom = radiounit.intercom;
+                                RadioDevices.Radio3.AM = radiounit.AM;
+                                RadioDevices.Radio3.FM = radiounit.FM;
+                                RadioDevices.Radio3.on = radiounit.on;
+                                RadioDevices.Radio3.frequency = radiounit.frequency.ToString();
+                                RadioDevices.Radio3.modulation = radiounit.modulation;
 
                                 RadioDevices.Radio3.isSRSserver = false;
 
@@ -438,7 +438,7 @@ namespace VAICOM
                         if (!allocatedRadio1)
                         {
                             TXNodes.TX1.radios = TXConfigs.SNGL_RADIO_Radio1;
-                            TXNodes.TX1.radios[0].name = radiolist_SRS.Slot_map[0];          
+                            TXNodes.TX1.radios[0].name = radiolist_SRS.Slot_map[0];
                             TXNodes.TX1.enabled = true;
                             if (TXNodes.TX1.radios[0].name.Equals(""))
                             {
@@ -455,7 +455,7 @@ namespace VAICOM
                         if (!allocatedRadio2)
                         {
                             TXNodes.TX2.radios = TXConfigs.SNGL_RADIO_Radio2;
-                            TXNodes.TX2.radios[0].name = radiolist_SRS.Slot_map[1];            
+                            TXNodes.TX2.radios[0].name = radiolist_SRS.Slot_map[1];
                             TXNodes.TX2.enabled = true;
                             if (TXNodes.TX2.radios[0].name.Equals(""))
                             {
@@ -472,7 +472,7 @@ namespace VAICOM
                         if (!allocatedRadio3)
                         {
                             TXNodes.TX3.radios = TXConfigs.SNGL_RADIO_Radio3;
-                            TXNodes.TX3.radios[0].name = radiolist_SRS.Slot_map[2];         
+                            TXNodes.TX3.radios[0].name = radiolist_SRS.Slot_map[2];
                             TXNodes.TX3.enabled = true;
                             if (TXNodes.TX3.radios[0].name.Equals(""))
                             {

@@ -1,9 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
-using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using VAICOM.PushToTalk;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -90,11 +90,11 @@ namespace VAICOM
                 if (!TX.enabled || TX.name.Contains("TX5") || TX.name.Contains("TX6"))
                 {
 
-                    TX.tunedforai       = TX.name.Contains("TX5"); 
-                    TX.tunedforhuman    = false;
-                    TX.humanplayers     = "";
-                    TX.tunecounter      = 0;
-                    TX.relay            = false;
+                    TX.tunedforai = TX.name.Contains("TX5");
+                    TX.tunedforhuman = false;
+                    TX.humanplayers = "";
+                    TX.tunecounter = 0;
+                    TX.relay = false;
 
                     return tunedforTX;
                 }
@@ -108,10 +108,10 @@ namespace VAICOM
                     {
                         string logcolor = Colors.Text;
 
-                        TX.tunedforai       = false;
-                        TX.tunedforhuman    = false;
-                        TX.humanplayers     = "";
-                        TX.tunecounter      = 0;
+                        TX.tunedforai = false;
+                        TX.tunedforhuman = false;
+                        TX.humanplayers = "";
+                        TX.tunecounter = 0;
 
                         foreach (PTT.RadioDevice TXradio in TX.radios) // usually just 0, for SEL can be multiple
                         {
@@ -129,7 +129,7 @@ namespace VAICOM
                                         CorrectCallsigns(tunedunit);
                                         writestr = writestr + tunedunit.callsign;
                                         if (tunedunit.ishuman) // for human unit
-                                        {                                                                
+                                        {
                                             writestr = writestr + " [player " + tunedunit.playerid + "]";
                                             TX.tunedforhuman = true;
                                             TX.humanplayers += " " + tunedunit.playerid + " [" + tunedunit.callsign + "],";
@@ -155,8 +155,8 @@ namespace VAICOM
                                         }
                                     }
                                 }
-                            } 
-                        } 
+                            }
+                        }
 
                         if (TX.tunecounter.Equals(0) && !quiet)
                         {

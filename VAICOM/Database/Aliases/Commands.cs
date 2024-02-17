@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VAICOM
 {
@@ -146,7 +146,7 @@ namespace VAICOM
                 { "Instrument Approach",    "approachinstrument"    },
                 { "Request Vector to Bullseye", "vectortobullseye"  },
                 { "Request Vector to Bandit",   "vectortobandit"    },
-                { "*Bogey Dope",             "vectortobandit"    }, 
+                { "*Bogey Dope",             "vectortobandit"    },
                 { "Request Vector to Base", "vectortobase"          },
                 { "*Directions to Base",     "vectortobase"          },
                 { "Request Vector to Tanker","vectortotanker"       },
@@ -299,13 +299,13 @@ namespace VAICOM
 
                 { "Confirm" ,                  "wMsgLeaderConfirm"                     },
 
-                { "Confirm Remaining Fuel" ,   "wMsgLeaderConfirmRemainingFuel"        }, 
+                { "Confirm Remaining Fuel" ,   "wMsgLeaderConfirmRemainingFuel"        },
                 { "Low State" ,                "wMsgLeaderConfirmRemainingFuel"        },// forced
 
                 { "Inbound Marshall Respond" ,  "wMsgLeaderInboundMarshallRespond"     }, // force remove
                 { "Expect On Time" ,            "wMsgLeaderInboundMarshallRespond"     }, // forced
                 
-                { "Established" ,              "wMsgLeaderEsteblished"                 }, 
+                { "Established" ,              "wMsgLeaderEsteblished"                 },
                 { "Commencing" ,               "wMsgLeaderCommencing"                  },// CASE III
                 { "Checking In" ,              "wMsgLeaderCheckingIn"                  },// CASE III //fixed? Pene testing
                 { "Approach Check In" ,        "wMsgLeaderCheckingIn"                  }, //forced

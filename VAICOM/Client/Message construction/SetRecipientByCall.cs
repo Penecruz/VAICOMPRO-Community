@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
 using VAICOM.Database;
 using VAICOM.Products;
-using System;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -35,7 +35,7 @@ namespace VAICOM
                             return returnunit;
                         }
                         else
-                        {        
+                        {
                             returnunit = State.currentstate.availablerecipients["Flight"][1];
                         }
 
@@ -190,10 +190,10 @@ namespace VAICOM
                             return State.SelectedUnit[cat.Name];
                         }
                     }
-                    catch 
+                    catch
                     {
                         Log.Write("Getting selected unit failed.", Colors.Text);
-                        return new Server.DcsUnit(); 
+                        return new Server.DcsUnit();
                     }
 
                 }
@@ -242,12 +242,12 @@ namespace VAICOM
                     {
                         return false;
                     }
-                    
+
                     if (cat.Equals(Recipientclasses.Undefined))
                     {
                         return false;
                     }
-                    
+
                     if (cat.Equals(Recipientclasses.RIO))
                     {
                         return false;
@@ -310,7 +310,7 @@ namespace VAICOM
                         }
                         else
                         {
-                            return  1;
+                            return 1;
                         }
                     }
 
@@ -367,7 +367,7 @@ namespace VAICOM
 
                         int getownunit = SetUnitForVoidClasses(Recipients.Table[State.currentkey["recipient"]]);
                         if (getownunit.Equals(-1))
-                        {     
+                        {
                             return false; // recipient na!
                         }
                         if (getownunit.Equals(1))
@@ -391,7 +391,7 @@ namespace VAICOM
                             else
                             {
                                 return false; // no awacs unit found
-                            }          
+                            }
                         }
 
                         // else try find the unit using called repient name:

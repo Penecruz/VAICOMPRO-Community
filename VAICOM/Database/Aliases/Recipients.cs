@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VAICOM
 {
@@ -459,7 +459,7 @@ namespace VAICOM
 
                 // Moose Airboss
                 { "Air Boss",                "Moose"                  },
-                
+
 
             };
 

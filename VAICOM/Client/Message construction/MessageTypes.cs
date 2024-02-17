@@ -1,13 +1,9 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using Newtonsoft.Json;
 using System;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using System.ComponentModel;
+using System.Text;
 using VAICOM.Extensions.Kneeboard;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -27,14 +23,14 @@ namespace VAICOM
                 public class CommsMessage
                 {
 
-                    public bool     debug;
-                    public string   client;
-                    public string   mode;
-                    public string   type;
-                    public int      tgtdevid;
-                    public string   tgtdevname;
-                    public string   dspmsg;
-                    public int      msgdur;
+                    public bool debug;
+                    public string client;
+                    public string mode;
+                    public string type;
+                    public int tgtdevid;
+                    public string tgtdevname;
+                    public string dspmsg;
+                    public int msgdur;
                     public List<double> shift;
 
                     public string dcsid; //"wMsgLeaderEngageMyTarget"
@@ -58,8 +54,8 @@ namespace VAICOM
                     public bool? dictmode;
 
                     public bool? tunenum;
-                    public int   tunechn;
-                    public int  ?tunemod;
+                    public int tunechn;
+                    public int? tunemod;
                     public List<string> tunefrq;
 
                     public bool disableplayervoice;
@@ -114,7 +110,7 @@ namespace VAICOM
                     public bool fc3;
                     public bool AIRIO;
                     public bool carriersuppressauto;
-                    public int?  kneeboard;
+                    public int? kneeboard;
                     public bool? dictmode;
 
                     public UpdateRequest()
@@ -135,13 +131,13 @@ namespace VAICOM
                 // send change settings message
                 public class SettingsChange
                 {
-                    public bool         debug;
-                    public string       client;
-                    public string       mode;
-                    public string       type;
-                    public int          command;
-                    public string       dspmsg;
-                    public int          msgdur;
+                    public bool debug;
+                    public string client;
+                    public string mode;
+                    public string type;
+                    public int command;
+                    public string dspmsg;
+                    public int msgdur;
                     public List<double> shift;
 
                     //public int      tgtdevid;
@@ -177,80 +173,80 @@ namespace VAICOM
                 // comd sequence as in iCommands 0000-4000 (e.g. for Options menu)
                 public class iCommandSequence
                 {
-                    public bool         debug;
-                    public bool         showmenu;
-                    public string       client;
-                    public string       mode;
-                    public string       type;
-                    public string       tgtdevname;
-                    public int          command;
-                    public List<int>    cmdsequence;
-                    public bool         importmenus;
-                    public string       dspmsg;
-                    public int          msgdur;
+                    public bool debug;
+                    public bool showmenu;
+                    public string client;
+                    public string mode;
+                    public string type;
+                    public string tgtdevname;
+                    public int command;
+                    public List<int> cmdsequence;
+                    public bool importmenus;
+                    public string dspmsg;
+                    public int msgdur;
                     public List<double> shift;
-                    public bool         carriersuppressauto;
-                    public int?         kneeboard;
-                    public bool?        dictmode;
+                    public bool carriersuppressauto;
+                    public int? kneeboard;
+                    public bool? dictmode;
 
                     public iCommandSequence()
                     {
-                        debug       = State.activeconfig.Debugmode;
-                        showmenu    = true;
-                        client      = State.currentlicense;
-                        mode        = State.clientmode;
-                        type        = Messagetypes.iCommandSequence;
-                        tgtdevname  = State.currentradiodevicename.Replace(":", " ");
-                        command     = 4000;
+                        debug = State.activeconfig.Debugmode;
+                        showmenu = true;
+                        client = State.currentlicense;
+                        mode = State.clientmode;
+                        type = Messagetypes.iCommandSequence;
+                        tgtdevname = State.currentradiodevicename.Replace(":", " ");
+                        command = 4000;
                         cmdsequence = new List<int>();
                         importmenus = State.activeconfig.ImportOtherMenu;
-                        shift       = new List<double>();
-                        dictmode    = State.Proxy.Dictation.IsOn();
+                        shift = new List<double>();
+                        dictmode = State.Proxy.Dictation.IsOn();
                     }
                 }
 
                 // action sequence as for imported F10 menu actions (Index)
                 public class ActionIndexSequence
                 {
-                    public bool         debug;
-                    public string       client;
-                    public string       mode;
-                    public string       type;
-                    public int          command;
-                    public List<int>    actionsequence;
-                    public bool         importmenus;
-                    public string       dspmsg;
-                    public int          msgdur;
+                    public bool debug;
+                    public string client;
+                    public string mode;
+                    public string type;
+                    public int command;
+                    public List<int> actionsequence;
+                    public bool importmenus;
+                    public string dspmsg;
+                    public int msgdur;
                     public List<double> shift;
-                    public bool         carriersuppressauto;
-                    public int?         kneeboard;
-                    public bool?        dictmode;
+                    public bool carriersuppressauto;
+                    public int? kneeboard;
+                    public bool? dictmode;
 
                     public ActionIndexSequence()
                     {
-                        debug       = State.activeconfig.Debugmode;
-                        client      = State.currentlicense;
-                        mode        = State.clientmode;
-                        type        = Messagetypes.ActionIndexSequence;
-                        command     = 4000;
+                        debug = State.activeconfig.Debugmode;
+                        client = State.currentlicense;
+                        mode = State.clientmode;
+                        type = Messagetypes.ActionIndexSequence;
+                        command = 4000;
                         importmenus = State.activeconfig.ImportOtherMenu;
-                        dictmode    = State.Proxy.Dictation.IsOn();
+                        dictmode = State.Proxy.Dictation.IsOn();
                     }
                 }
 
                 // send specific debug message
                 public class DebugMsg
                 {
-                    public bool     debug;
-                    public string   client;
-                    public string   mode;
-                    public string   exec;
-                    public string   dspmsg;
-                    public int      msgdur;
+                    public bool debug;
+                    public string client;
+                    public string mode;
+                    public string exec;
+                    public string dspmsg;
+                    public int msgdur;
                     public List<double> shift;
-                    public bool     carriersuppressauto;
-                    public int?     kneeboard;
-                    public bool?    dictmode;
+                    public bool carriersuppressauto;
+                    public int? kneeboard;
+                    public bool? dictmode;
 
                     public DebugMsg()
                     {
@@ -271,23 +267,23 @@ namespace VAICOM
                 // for manual radio tuning.
                 public class RadioTuneMessage
                 {
-                    public bool     debug;
-                    public string   client;
-                    public string   mode;
-                    public string   type;
-                    public int      tgtdevid;
-                    public int      command;
-                    public string   exec;
-                    public string   dspmsg;
-                    public int      msgdur;
-                    public bool     carriersuppressauto;
-                    public int?     kneeboard;
-                    public bool?    dictmode;
+                    public bool debug;
+                    public string client;
+                    public string mode;
+                    public string type;
+                    public int tgtdevid;
+                    public int command;
+                    public string exec;
+                    public string dspmsg;
+                    public int msgdur;
+                    public bool carriersuppressauto;
+                    public int? kneeboard;
+                    public bool? dictmode;
 
-                    public bool?    tunenum;
-                    public string   tunechn;
-                    public int?     tunemod;
-                    public List<string>   tunefrq;
+                    public bool? tunenum;
+                    public string tunechn;
+                    public int? tunemod;
+                    public List<string> tunefrq;
 
                     public RadioTuneMessage()
                     {
@@ -322,9 +318,9 @@ namespace VAICOM
                         msg.logdata = new LogData("", "Please enable kneeboard extension to use this page.");
                     }
 
-                        string formatmessage = JsonConvert.SerializeObject(msg);
-                        byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage);
-                        State.Kneeboard_SendSocket.SendTo(sendbuffer, State.Kneeboard_SendIpEndPoint);    
+                    string formatmessage = JsonConvert.SerializeObject(msg);
+                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage);
+                    State.Kneeboard_SendSocket.SendTo(sendbuffer, State.Kneeboard_SendIpEndPoint);
                 }
                 catch (Exception e)
                 {
@@ -391,7 +387,7 @@ namespace VAICOM
                     updaterequest.carriersuppressauto = State.activeconfig.CarrierSuppressAuto;
 
                     string formatmessage = JsonConvert.SerializeObject(updaterequest);
-                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage); 
+                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage);
                     State.SendSocket.SendTo(sendbuffer, State.SendIpEndPoint);
                     //Log.Write("Message sent: " + formatmessage, Colors.Inline);
                     State.lastupdaterequesttimer = 0;
@@ -417,8 +413,8 @@ namespace VAICOM
                     this.messagetype = "heartbeat";
                     this.status = "OK";
 
-                    string profilename = "VAICOM PRO Community Edition for DCS World";     
-                    if(!State.Proxy.GetProfileName().ToLower().Contains(profilename.ToLower()))
+                    string profilename = "VAICOM PRO Community Edition for DCS World";
+                    if (!State.Proxy.GetProfileName().ToLower().Contains(profilename.ToLower()))
                     {
                         status = "profile error";
                     }
@@ -509,7 +505,7 @@ namespace VAICOM
                     }
 
                     string formatmessage = JsonConvert.SerializeObject(update);
-                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage); 
+                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage);
                     State.SendSocket.SendTo(sendbuffer, State.SendIpEndPoint);
                 }
                 catch (Exception e)
@@ -549,7 +545,7 @@ namespace VAICOM
                     sendsequence.dspmsg = message;
                     sendsequence.msgdur = 5;
                     string formatmessage = JsonConvert.SerializeObject(sendsequence);
-                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage); 
+                    byte[] sendbuffer = Encoding.UTF8.GetBytes(formatmessage);
                     State.SendSocket.SendTo(sendbuffer, State.SendIpEndPoint);
                     return formatmessage;
                 }

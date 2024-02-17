@@ -1,31 +1,23 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
-using VAICOM.Client;
+﻿using NAudio.Wave;
 using System;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.IO;
-using System.Speech.Synthesis;
-using System.Media;
-using System.Threading;
-using NAudio;
-using NAudio.Wave;
 using System.Reflection;
 using System.Speech.AudioFormat;
-using VAICOM.Extensions.WorldAudio;
+using System.Speech.Synthesis;
+using System.Threading;
 using System.Windows.Forms;
 using VAICOM.Extensions.Kneeboard;
-using System.Globalization;
+using VAICOM.Extensions.WorldAudio;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
     namespace Extensions
     {
 
- 
+
         namespace AOCS
         {
 
@@ -75,8 +67,8 @@ namespace VAICOM
                 public static void AOCS_SpeakPhraseAsync(string str)
                 {
 
-                   Thread.Sleep(500);
-                
+                    Thread.Sleep(500);
+
                     try
                     {
                         // generate speech adio..
@@ -84,7 +76,7 @@ namespace VAICOM
                         var outformat = new SpeechAudioFormatInfo(8000, AudioBitsPerSample.Sixteen, AudioChannel.Mono); //8000 //11025
 
                         State.synth.SetOutputToWaveStream(wavstream);
-                        var mi = State.synth.GetType().GetMethod("SetOutputStream", BindingFlags.Instance | BindingFlags.NonPublic);               
+                        var mi = State.synth.GetType().GetMethod("SetOutputStream", BindingFlags.Instance | BindingFlags.NonPublic);
                         mi.Invoke(State.synth, new object[] { wavstream, outformat, true, true });
 
                         PromptBuilder builder = new PromptBuilder();
@@ -118,7 +110,7 @@ namespace VAICOM
                     catch (Exception e)
                     {
                         Log.Write("TTS error: " + e.StackTrace, Colors.Inline);
-                    } 
+                    }
                 }
 
                 public static void AOCS_OnSpeechStopped(object sender, StoppedEventArgs args)
@@ -155,7 +147,7 @@ namespace VAICOM
 
                     if (State.activeconfig.Redirect_World_Speech)
                     {
-                        volume = (int) (State.activeconfig.TTSVolume / 0.5f) * basevolume;
+                        volume = (int)(State.activeconfig.TTSVolume / 0.5f) * basevolume;
                         if (volume < 0)
                         {
                             volume = 0;
@@ -171,7 +163,7 @@ namespace VAICOM
                         volume = basevolume;
                     }
 
-                    State.synth.Rate    = 0;
+                    State.synth.Rate = 0;
 
                     try
                     {
@@ -207,7 +199,7 @@ namespace VAICOM
                     catch (Exception e)
                     {
                         Log.Write(e.Message, Colors.Inline);
-                    }             
+                    }
                 }
 
                 // read mission briefing
@@ -322,7 +314,7 @@ namespace VAICOM
                                 {
                                     if (State.activeconfig.DeepInterrogate)
                                     {
-                                        if (State.currentstate.multiplayer && !State.activeconfig.MP_AOCS) 
+                                        if (State.currentstate.multiplayer && !State.activeconfig.MP_AOCS)
                                         {
                                             UI.Playsound.Sorry();
                                             Log.Write("AOCS is deactivated for Multiplayer in Preferences.", Colors.Warning);
@@ -335,7 +327,7 @@ namespace VAICOM
 
                                             bool singleunit;
 
-                                            if (!State.currentkey["recipient"].Equals("aocs") &!State.currentkey["recipient"].Equals("aux") & !State.currentkey["recipient"].Equals("cargo") & !State.currentkey["recipient"].Equals("crew"))
+                                            if (!State.currentkey["recipient"].Equals("aocs") & !State.currentkey["recipient"].Equals("aux") & !State.currentkey["recipient"].Equals("cargo") & !State.currentkey["recipient"].Equals("crew"))
                                             {
 
                                                 if (!State.calledisclass) // called for just a single unit
@@ -354,7 +346,7 @@ namespace VAICOM
                                             else // aocs was called: do general mission status
                                             {
                                                 AOCS_ReadMissionOverview();
-                                            }                                      
+                                            }
                                         }
                                     }
                                     else
@@ -485,7 +477,7 @@ namespace VAICOM
                                         {
                                             indexstr = "";
                                         }
-                                        kneeboardbriefing += "- " + unit.callsign.Replace("-","") + "\n";
+                                        kneeboardbriefing += "- " + unit.callsign.Replace("-", "") + "\n";
                                         unitsbriefing = unitsbriefing + ", " + indexstr + Helpers.Common.ProcessBrevity(unit.callsign);
                                     }
                                 }
@@ -631,7 +623,7 @@ namespace VAICOM
 
                                 string readstr;
                                 string printstring;
-                                string kneeboardstring ="";
+                                string kneeboardstring = "";
                                 string speechfreqdec = freqdec;
 
                                 if (freqdec.Equals("000"))
@@ -661,14 +653,14 @@ namespace VAICOM
                                 readstr = indexstr + Helpers.Common.ProcessBrevity(namer) + ". Bearing " + bearing + " for " + rangestr + elevationstr + ", contact " + speakmodstr + " " + Helpers.Common.ReadFrequency(primaryfreq) + ".\n";
                                 printstring = " " + indexstr + " " + namer + ". Bearing " + bearingraw + " for " + rangestr + elevationstr + ", contact " + modstr + altfreqs + " MHz";
                                 kneeboardstring = namer + " @ " + bearingraw + "/" + rangestr; //unit.index.ToString() + " " + + "/" + elevstr                           
-                                if (classstr.Equals("Tanker")|| classstr.Equals("AWACS"))
+                                if (classstr.Equals("Tanker") || classstr.Equals("AWACS"))
                                 {
-                                    kneeboardstring += "/" +elevstr;
+                                    kneeboardstring += "/" + elevstr;
                                 }
-                                kneeboardstring = (kneeboardstring + " ").Replace("000 ","k") + "\n" + modstr + altfreqs;
+                                kneeboardstring = (kneeboardstring + " ").Replace("000 ", "k") + "\n" + modstr + altfreqs;
 
                                 kneeboardsummaries.Add(kneeboardstring);
-             
+
                                 unitsbriefing = unitsbriefing + readstr;
                                 Log.Write(printstring, Colors.Message);
 
@@ -691,12 +683,12 @@ namespace VAICOM
                         KneeboardUpdater.UpdateMessagelogForCat(classstr.ToUpper(), logupdate);
 
                     }
-                        catch (Exception e)
-                        {
-                            State.briefinginprogress = false;
-                            Log.Write(e.StackTrace, Colors.Inline);
-                        }
+                    catch (Exception e)
+                    {
+                        State.briefinginprogress = false;
+                        Log.Write(e.StackTrace, Colors.Inline);
                     }
+                }
 
             }
         }

@@ -1,14 +1,14 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Input;
 using VAICOM.Database;
 using VAICOM.FileManager;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Threading;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Forms;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -163,7 +163,7 @@ namespace VAICOM
                     Restore_Button.Background = System.Windows.Media.Brushes.LightGray;
                     Restore_Button.Foreground = System.Windows.Media.Brushes.Black;
                 }
-      
+
             }
 
             public void Reflectunsavedchanges()
@@ -180,7 +180,7 @@ namespace VAICOM
                     KeywordsExport.Background = System.Windows.Media.Brushes.LightGray;
                     KeywordsExport.Foreground = System.Windows.Media.Brushes.Black;
                 }
- 
+
             }
 
             private void EditorDeleteCurrentAlias(object sender, RoutedEventArgs e)
@@ -336,35 +336,35 @@ namespace VAICOM
                     string message;
 
 
-                        if (State.editorcurrenttext != "")
+                    if (State.editorcurrenttext != "")
+                    {
+                        try
                         {
-                            try
-                            {
-                                Aliases.categories[State.editorcurrentsourcetable].Add(State.editorcurrenttext, State.editorcurrentkeyword);
-                                Aliases.categories[State.editorcurrentsourcetable].Remove(State.editorcurrentalias);
-                                message = "Changed " + State.editorcurrentalias + " to " + State.editorcurrenttext;
-                                Message.Text = message;
-                                Log.Write(message, Colors.Text);
-                                Aliases.BuildNewMasterTable();
-                                comboBoxAlias.ItemsSource = null;
-                                comboBoxAlias.ItemsSource = Aliases.master;
-                                comboBoxAlias.Text = State.editorcurrenttext;
-                                State.activeconfig.Editorunsavedchanges = true;
-                                Reflectunsavedchanges();
-                            }
-                            catch (Exception)
-                            {
-                                message = "Command phrase '" + State.editorcurrenttext + "' is already in use!";
-                                Message.Text = message;
-                                Log.Write(message, Colors.Text);
-                            }
+                            Aliases.categories[State.editorcurrentsourcetable].Add(State.editorcurrenttext, State.editorcurrentkeyword);
+                            Aliases.categories[State.editorcurrentsourcetable].Remove(State.editorcurrentalias);
+                            message = "Changed " + State.editorcurrentalias + " to " + State.editorcurrenttext;
+                            Message.Text = message;
+                            Log.Write(message, Colors.Text);
+                            Aliases.BuildNewMasterTable();
+                            comboBoxAlias.ItemsSource = null;
+                            comboBoxAlias.ItemsSource = Aliases.master;
+                            comboBoxAlias.Text = State.editorcurrenttext;
+                            State.activeconfig.Editorunsavedchanges = true;
+                            Reflectunsavedchanges();
                         }
-                        else
+                        catch (Exception)
                         {
-                            message = "(first enter a new command phrase)";
+                            message = "Command phrase '" + State.editorcurrenttext + "' is already in use!";
                             Message.Text = message;
                             Log.Write(message, Colors.Text);
                         }
+                    }
+                    else
+                    {
+                        message = "(first enter a new command phrase)";
+                        Message.Text = message;
+                        Log.Write(message, Colors.Text);
+                    }
 
                 }
                 catch
@@ -388,7 +388,7 @@ namespace VAICOM
                     aliascounter.Text = State.aliascount.ToString();
                     comboBoxAlias.Text = State.editorcurrentalias;
                     Getaliascount();
- 
+
                     State.activeconfig.Editorrequiresreload = false;
                     Reflectunsavedchanges();
                     Reflectrequiresreload();
@@ -420,7 +420,7 @@ namespace VAICOM
                     foreach (KeyValuePair<string, Dictionary<string, string>> subset in Aliases.categories)
                     {
                         Dictionary<string, string> set = subset.Value;
-                        if (set.ContainsValue(State.editorcurrentkeyword)) 
+                        if (set.ContainsValue(State.editorcurrentkeyword))
                         {
                             State.editorcurrentsourcetable = subset.Key;
                         }
@@ -610,17 +610,17 @@ namespace VAICOM
             }
             private void Toggle_Expander_On(object sender, RoutedEventArgs e)
             {
-                ExportCSVbutton.Visibility      = Visibility.Hidden;
-                ImportCSVbutton_Add.Visibility  = Visibility.Visible;
+                ExportCSVbutton.Visibility = Visibility.Hidden;
+                ImportCSVbutton_Add.Visibility = Visibility.Visible;
             }
             private void Toggle_Expander_Off(object sender, RoutedEventArgs e)
             {
-                ExportCSVbutton.Visibility      = Visibility.Visible;
-                ImportCSVbutton_Add.Visibility  = Visibility.Hidden;
+                ExportCSVbutton.Visibility = Visibility.Visible;
+                ImportCSVbutton_Add.Visibility = Visibility.Hidden;
             }
             private void Import_Init(object sender, EventArgs e)
             {
-                ImportCSVbutton_Add.IsEnabled = true; 
+                ImportCSVbutton_Add.IsEnabled = true;
 
             }
             private void Test_VA_Profile(object sender, MouseButtonEventArgs e)

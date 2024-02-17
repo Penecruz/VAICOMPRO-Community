@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Threading;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -33,7 +33,7 @@ namespace VAICOM
                             }
                             Thread.Sleep(delay);
                             DcsClient.SendUpdateRequest(); // get an update directly after
-                        }                
+                        }
 
                     }
                     catch (Exception)

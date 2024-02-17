@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
+﻿using System.Collections.Generic;
 using VAICOM.Database;
-using System.Collections.Generic;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -9,7 +9,7 @@ namespace VAICOM
     {
 
         public partial class DcsClient
-    {
+        {
             public static partial class Message
             {
 
@@ -87,7 +87,7 @@ namespace VAICOM
                             haveresult = true;
 
                             bool callsignmatch = State.currentstate.playercallsign.ToLower().Contains(usedalias.ToLower());
- 
+
                             if (category.Equals("sender"))
                             {
 

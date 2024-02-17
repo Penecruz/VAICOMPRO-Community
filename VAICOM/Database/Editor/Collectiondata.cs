@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VAICOM
 {
@@ -58,7 +58,7 @@ namespace VAICOM
             {
                 public override int Compare(string x, string y)
                 {
-                    return ((new CaseInsensitiveComparer()).Compare(x.Replace("*",""), y.Replace("*", "")));
+                    return ((new CaseInsensitiveComparer()).Compare(x.Replace("*", ""), y.Replace("*", "")));
                 }
 
                 public override bool Equals(string x, string y)

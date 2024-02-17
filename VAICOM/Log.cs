@@ -1,5 +1,5 @@
-﻿using VAICOM.Static;
-using System.IO;
+﻿using System.IO;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -14,7 +14,7 @@ namespace VAICOM
                 State.logfile = State.VA_APPS + "\\" + Products.Products.Families.Vaicom.VaicomProPlugin.rootfoldername + "\\" + AppData.SubFolders["logfiles"] + "\\" + "VAICOMPRO.log";
 
                 if (State.activeconfig.Debugmode || State.trainerrunning)
-                {                  
+                {
                     try
                     {
                         if (File.Exists(State.logfile))
@@ -22,7 +22,7 @@ namespace VAICOM
                             File.Delete(State.logfile);
                         }
                     }
-                    catch 
+                    catch
                     {
                     }
 
@@ -32,11 +32,11 @@ namespace VAICOM
             catch
             {
             }
-        } 
+        }
 
         public static void Write(string writestring, string color)
         {
-            if (State.startup || (!State.activeconfig.Debugmode & !State.trainerrunning))  
+            if (State.startup || (!State.activeconfig.Debugmode & !State.trainerrunning))
             {
                 if (State.startup && State.deepdebugmode)
                 {

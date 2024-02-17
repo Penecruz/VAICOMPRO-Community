@@ -1,11 +1,11 @@
-﻿using VAICOM.Static;
-using VAICOM.Servers;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using VAICOM.Servers;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -63,7 +63,7 @@ namespace VAICOM
                     State.SendIpEndPoint = new IPEndPoint(IPAddress.Parse(State.activeconfig.ClientSendIP), State.activeconfig.ClientSendPort);
                     State.ReceivingUdpClient = new UdpClient(State.activeconfig.ClientReceivePort);
                     State.ReceiveIpEndPoint = new IPEndPoint(IPAddress.Any, State.activeconfig.ClientReceivePort);
-                   
+
 
                     // --------------------------------------------------------------------
                 }

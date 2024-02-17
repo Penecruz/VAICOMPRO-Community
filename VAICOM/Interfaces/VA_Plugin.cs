@@ -1,10 +1,10 @@
-﻿using VAICOM.Static;
-using VAICOM.Client;
-using VAICOM.PushToTalk;
-using System;
+﻿using System;
 using System.Threading;
+using VAICOM.Client;
 using VAICOM.Extensions.WorldAudio;
 using VAICOM.FileManager;
+using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -18,12 +18,12 @@ namespace VAICOM
 
             public static string VA_DisplayName()
             {
-                return "VAICOM PRO Community Edition for DCS World"; 
+                return "VAICOM PRO Community Edition for DCS World";
             }
 
             public static string VA_DisplayInfo()
             {
-                return "VAICOM PRO Community Edition 2.8 for DCS World"; 
+                return "VAICOM PRO Community Edition 2.8 for DCS World";
             }
 
             public static Guid VA_Id()
@@ -47,7 +47,7 @@ namespace VAICOM
 
             public static void VA_Invoke1(dynamic vaProxy)
             {
-               State.Proxy = vaProxy;
+                State.Proxy = vaProxy;
 
                 if (State.activeconfig.Runningforthefirsttime || (State.initialized == false))
                 {
@@ -55,7 +55,7 @@ namespace VAICOM
                 }
 
                 string contextinput = Helpers.Common.StringNormalize(vaProxy.Context);
-                bool longpress = State.Proxy.Utility.ParseTokens("{CMDLONGPRESSINVOKED}") == "1" ;
+                bool longpress = State.Proxy.Utility.ParseTokens("{CMDLONGPRESSINVOKED}") == "1";
 
                 switch (contextinput)
                 {
@@ -63,7 +63,7 @@ namespace VAICOM
                     // Push-To-Talk handlers
 
                     case "ptt.hotkey.tx1.press":
-                        PTT.PTT_Handler(vaProxy, PTT.TXNodes.TX1, true, longpress); 
+                        PTT.PTT_Handler(vaProxy, PTT.TXNodes.TX1, true, longpress);
                         break;
 
                     case "ptt.hotkey.tx1.release":
@@ -128,11 +128,11 @@ namespace VAICOM
                             vaProxy.WriteToLog("There was an error processing this voice command.", Colors.Text);
                         }
                         break;
-                    
+
                     // Config window
 
                     case "config":
-                        UI.Initialize.OpenConfiguration(vaProxy,false);
+                        UI.Initialize.OpenConfiguration(vaProxy, false);
                         break;
 
                     case "config.resetwindow":
@@ -496,7 +496,7 @@ namespace VAICOM
                     // --------------------------------------------------------------------------
 
                     case "test":
-                            API.API_Test(vaProxy);
+                        API.API_Test(vaProxy);
                         break;
 
                     default:
@@ -521,7 +521,7 @@ namespace VAICOM
                         FileHandler.Lua.LuaFiles_Install(false, true); // resets F14 lua to normal (quiet)
                     }
 
-                    FileHandler.Lua.LuaFiles_Install_Kneeboard(true, true); 
+                    FileHandler.Lua.LuaFiles_Install_Kneeboard(true, true);
 
                     UI.Timers.UI_Timer_Stop();
                     Beacon.Beacon_TimerStop();
@@ -531,8 +531,8 @@ namespace VAICOM
                     AppDomain.CurrentDomain.AssemblyResolve -= Framework.Assemblies.AssemblyResolve;
                     State.Proxy = null;
                 }
-                catch 
-                {                   
+                catch
+                {
                 }
             }
 
@@ -548,11 +548,11 @@ namespace VAICOM
                         vaProxy.SetBoolean("vaicompro.serverdata.currentserver.multiplayer", State.currentstate.multiplayer);
                         vaProxy.SetBoolean("vaicompro.serverdata.currentserver.easycomms", State.currentstate.easycomms);
                         vaProxy.SetBoolean("vaicompro.serverdata.currentserver.vrmode", State.currentstate.vrmode);
-                        
+
                         vaProxy.SetText("vaicompro.playerdata.currentmodule.name", State.currentmodule.Name);
                         vaProxy.SetText("vaicompro.playerdata.currentmodule.cat", State.currentstate.playerunitcat);
 
-                        vaProxy.SetBoolean("vaicompro.serverdata.currentserver.mission", State.currentstate.missiontitle.Substring(0, 100).Length >100? State.currentstate.missiontitle.Substring(0,100) : State.currentstate.missiontitle);
+                        vaProxy.SetBoolean("vaicompro.serverdata.currentserver.mission", State.currentstate.missiontitle.Substring(0, 100).Length > 100 ? State.currentstate.missiontitle.Substring(0, 100) : State.currentstate.missiontitle);
 
                     }
                     catch

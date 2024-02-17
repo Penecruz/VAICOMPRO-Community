@@ -1,7 +1,7 @@
-﻿using VAICOM.FileManager;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using VAICOM.FileManager;
 
 namespace VAICOM
 {
@@ -35,7 +35,7 @@ namespace VAICOM
 
             private bool kneeboard_init = false;
 
-            private void SetCurrentValueKneeboardOpacity(object sender, EventArgs e) 
+            private void SetCurrentValueKneeboardOpacity(object sender, EventArgs e)
             {
                 KneeboardOpacity.IsEnabled = true;
                 KneeboardOpacity.Value = State.activeconfig.KneeboardOpacity;
@@ -61,8 +61,8 @@ namespace VAICOM
 
             // Left column:        
 
-            private void SetConfigEnableRIO_Enable(object sender, RoutedEventArgs e) { if (State.allowairioswitching) { if (!State.activeconfig.RIO_Enabled) {  } State.activeconfig.RIO_Enabled = true; FileHandler.Lua.LuaFiles_Install(false, true); } else { RIO_Enable_Box.IsEnabled = false; } } // State.activeconfig.RIO_Enabled = false; 
-            private void SetConfigDisableRIO_Enable(object sender, RoutedEventArgs e) { if (State.allowairioswitching) { if (State.activeconfig.RIO_Enabled) {  } State.activeconfig.RIO_Enabled = false; FileHandler.Lua.LuaFiles_Install(false, true); } else { RIO_Enable_Box.IsEnabled = false;  } } // State.activeconfig.RIO_Enabled = false;
+            private void SetConfigEnableRIO_Enable(object sender, RoutedEventArgs e) { if (State.allowairioswitching) { if (!State.activeconfig.RIO_Enabled) { } State.activeconfig.RIO_Enabled = true; FileHandler.Lua.LuaFiles_Install(false, true); } else { RIO_Enable_Box.IsEnabled = false; } } // State.activeconfig.RIO_Enabled = false; 
+            private void SetConfigDisableRIO_Enable(object sender, RoutedEventArgs e) { if (State.allowairioswitching) { if (State.activeconfig.RIO_Enabled) { } State.activeconfig.RIO_Enabled = false; FileHandler.Lua.LuaFiles_Install(false, true); } else { RIO_Enable_Box.IsEnabled = false; } } // State.activeconfig.RIO_Enabled = false;
 
             private void SetCurrentValueRIO_Enable(object sender, EventArgs e)
             {
@@ -171,7 +171,7 @@ namespace VAICOM
             }
 
             private void SetCurrentValueRIO_ICShotmic_useswitch(object sender, EventArgs e)
-            { 
+            {
                 if (State.jesteractivated && State.dll_installed_rio)
                 {
                     RIO_ICShotmic_useswitch.Visibility = Visibility.Visible;
@@ -251,7 +251,7 @@ namespace VAICOM
                 ChatterSilentOffline.IsChecked = State.activeconfig.ChatterSilentOffline;
             }
 
-            private void KneeboardlinkPTTOn(object sender, RoutedEventArgs e) { State.activeconfig.KneeboardlinkPTT = true;   }
+            private void KneeboardlinkPTTOn(object sender, RoutedEventArgs e) { State.activeconfig.KneeboardlinkPTT = true; }
             private void KneeboardlinkPTTOff(object sender, RoutedEventArgs e) { State.activeconfig.KneeboardlinkPTT = false; }
             private void SetCurrentValueKneeboardlinkPTT(object sender, EventArgs e)
             {

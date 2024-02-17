@@ -1,11 +1,11 @@
-﻿using VAICOM.Static;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using VAICOM.Extensions.AOCS;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
-using VAICOM.Extensions.AOCS;
-using System.Collections.Generic;
-using System;
-using System.Windows.Forms;
-using System.Linq;
+using VAICOM.Static;
 
 
 
@@ -72,7 +72,7 @@ namespace VAICOM
 
             }
 
-        public static void CreateListTACAN()
+            public static void CreateListTACAN()
             {
                 try
                 {
@@ -147,7 +147,7 @@ namespace VAICOM
                     }
                     foreach (DcsUnit unit in State.currentstate.availablerecipients["ATC"])
                     {
-                        if ( unit.fullname.ToLower().Contains("ticonderoga") || unit.callsign.ToLower().Contains("ticonderoga") ||( CheckSuperCarrier(unit.callsign+unit.fullname) && !(unit.callsign + unit.fullname).ToLower().Contains("kuznetsov") && !(unit.callsign + unit.fullname).ToLower().Contains("vinson")))
+                        if (unit.fullname.ToLower().Contains("ticonderoga") || unit.callsign.ToLower().Contains("ticonderoga") || (CheckSuperCarrier(unit.callsign + unit.fullname) && !(unit.callsign + unit.fullname).ToLower().Contains("kuznetsov") && !(unit.callsign + unit.fullname).ToLower().Contains("vinson")))
                         {
                             DLunits.Add(unit);
                         }
@@ -253,7 +253,7 @@ namespace VAICOM
                     try
                     {
                         Client.DcsClient.UpdateRIOState();
-                        CreateListTACAN();  
+                        CreateListTACAN();
                         CreateListDL();
                     }
                     catch
@@ -276,8 +276,8 @@ namespace VAICOM
                     PTT.PTT_Manage_Listen_States_OnUpdate(State.currentTXnode);
                 }
                 else
-                {                 
-                    PTT.PTT_Manage_Listen_States_OnPressRelease(false,false);
+                {
+                    PTT.PTT_Manage_Listen_States_OnPressRelease(false, false);
                 }
 
                 GetAuxMenu();

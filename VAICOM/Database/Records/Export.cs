@@ -1,8 +1,5 @@
-﻿using VAICOM.Static;
-using VAICOM.Database;
-using System.Collections.Generic;
-using System;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using VAICOM.Static;
 
 namespace VAICOM
 {
@@ -53,7 +50,7 @@ namespace VAICOM
 
                                             // LOG ADDED
                                             //Log.Write("Alias " + alias.Key + " found for " + alias.Value, Colors.Warning);
-                                            
+
                                             recipientstrings[cat] += alias.Key + "; ";
                                             counter = counter + 1;
                                         }
@@ -136,115 +133,115 @@ namespace VAICOM
                 // 5) merge for each recipient category
                 foreach (string recipientcat in RecipientCategories.GetNames(typeof(RecipientCategories)))
                 {
-                    
+
                     if (!recipientcat.Equals("aifarp") && !recipientcat.Equals("aiship"))
                     {
-                    string cat = recipientcat;
-                    string outputcommandstring = "";
-                    //add the appropriate command blocks
-                    foreach (string commandcat in CommandCategories.GetNames(typeof(CommandCategories)))
-                    {
-
-                        // FLIGHT
-                        if (cat.Equals("aiflight") && (commandcat.Contains("aicommsflight") || commandcat.Contains("special")))
+                        string cat = recipientcat;
+                        string outputcommandstring = "";
+                        //add the appropriate command blocks
+                        foreach (string commandcat in CommandCategories.GetNames(typeof(CommandCategories)))
                         {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
+
+                            // FLIGHT
+                            if (cat.Equals("aiflight") && (commandcat.Contains("aicommsflight") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                            //JTAC
+                            if (cat.Equals("aijtac") && (commandcat.Contains("aicommsjtac") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                            //ATC
+                            if (cat.Equals("aiatc") && (commandcat.Equals("aicommsatc") || commandcat.Contains("aicommscarrier") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+                            //Carrier
+
+                            //if (cat.Equals("aiship") && ( || commandcat.Equals("special")))
+                            //{
+                            //    outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            //}
+
+                            //AWACS
+                            if (cat.Equals("aiawacs") && (commandcat.Contains("aicommsawacs") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                            //Tanker
+                            if (cat.Equals("aitanker") && (commandcat.Contains("aicommstanker") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                            //Crew
+                            if (cat.Equals("aicrew") && (commandcat.Contains("aicommscrew") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                            //AOCS
+                            if (cat.Equals("aocs") && (commandcat.Contains("aicommsaocs") || commandcat.Contains("special")))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                            //RIO
+                            if (cat.Equals("RIO") && commandcat.Contains("RIO"))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat] + "Options;";
+                            }
+
+                            //RIO
+                            if (cat.Equals("AI_pilot") && commandcat.Contains("AI_pilot"))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat] + "Options;";
+                            }
+
+                            //kneeboard commands
+                            if (cat.Equals("kneeboard") && commandcat.Contains("kneeboard"))
+                            {
+                                outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            }
+
+                        }
+                        // set commandblock
+                        if (outputcommandstring.Length > 0)
+                        {
+                            outputcommandstring = "[" + outputcommandstring;
+                            outputcommandstring = outputcommandstring.TrimEnd("; ".ToCharArray());
+                            outputcommandstring += "]"; // no ; here 
                         }
 
-                        //JTAC
-                        if (cat.Equals("aijtac") && (commandcat.Contains("aicommsjtac") || commandcat.Contains("special") ))
+                        // set recipient block
+                        string outputrecipientstring = recipientstrings[cat];
+                        outputrecipientstring = "[" + outputrecipientstring;
+                        outputrecipientstring = outputrecipientstring.TrimEnd("; ".ToCharArray());
+                        outputrecipientstring += ";]"; // recipient block is optional
+
+                        if (recipientstrings[cat].Length > 0 && outputcommandstring.Length > 0) // have aliases for recipient and commands
                         {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
+                            // construct:
+                            string blockstring = "";
+
+                            blockstring += outputrecipientstring;
+                            if (cat.Equals("aijtac") || cat.Equals("aiatc") || cat.Equals("aifarp") || cat.Equals("aiship") || cat.Equals("aitanker") || cat.Equals("aiawacs") || cat.Equals("aocs")) //,
+                            {
+                                //blockstring += outputsenderstring;
+                            }
+                            if (cat.Equals("aiflight"))
+                            {
+                                blockstring += outputcuestring;
+                            }
+                            blockstring += outputcommandstring;
+                            blockstring += ";";
+
+                            outputstring += blockstring;
                         }
-
-                        //ATC
-                        if (cat.Equals("aiatc") && (commandcat.Equals("aicommsatc") || commandcat.Contains("aicommscarrier") || commandcat.Contains("special")))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        }
-                        //Carrier
-
-                        //if (cat.Equals("aiship") && ( || commandcat.Equals("special")))
-                        //{
-                        //    outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        //}
-
-                        //AWACS
-                        if (cat.Equals("aiawacs") && (commandcat.Contains("aicommsawacs") || commandcat.Contains("special")))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        }
-
-                        //Tanker
-                        if (cat.Equals("aitanker") && (commandcat.Contains("aicommstanker") || commandcat.Contains("special")))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        }
-
-                        //Crew
-                        if (cat.Equals("aicrew") && (commandcat.Contains("aicommscrew") || commandcat.Contains("special")))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        }
-
-                        //AOCS
-                        if (cat.Equals("aocs") && (commandcat.Contains("aicommsaocs") || commandcat.Contains("special")))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        }
-
-                        //RIO
-                        if (cat.Equals("RIO") && commandcat.Contains("RIO"))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat] + "Options;";
-                        }
-
-                        //RIO
-                        if (cat.Equals("AI_pilot") && commandcat.Contains("AI_pilot"))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat] + "Options;";
-                        }
-
-                        //kneeboard commands
-                        if (cat.Equals("kneeboard") && commandcat.Contains("kneeboard"))
-                        {
-                            outputcommandstring = outputcommandstring + commandstrings[commandcat];
-                        }
-
-                    }
-                    // set commandblock
-                    if (outputcommandstring.Length > 0)
-                    {
-                        outputcommandstring = "[" + outputcommandstring;
-                        outputcommandstring = outputcommandstring.TrimEnd("; ".ToCharArray());
-                        outputcommandstring += "]"; // no ; here 
-                    }
-
-                    // set recipient block
-                    string outputrecipientstring = recipientstrings[cat];
-                    outputrecipientstring = "[" + outputrecipientstring;
-                    outputrecipientstring = outputrecipientstring.TrimEnd("; ".ToCharArray());
-                    outputrecipientstring += ";]"; // recipient block is optional
-
-                    if (recipientstrings[cat].Length > 0 && outputcommandstring.Length > 0) // have aliases for recipient and commands
-                    {
-                        // construct:
-                        string blockstring = "";
-
-                        blockstring += outputrecipientstring;
-                        if (cat.Equals("aijtac") || cat.Equals("aiatc") || cat.Equals("aifarp") || cat.Equals("aiship") || cat.Equals("aitanker") || cat.Equals("aiawacs") || cat.Equals("aocs")) //,
-                        {
-                            //blockstring += outputsenderstring;
-                        }
-                        if (cat.Equals("aiflight"))
-                        {
-                            blockstring += outputcuestring;
-                        }
-                        blockstring += outputcommandstring;
-                        blockstring += ";";
-
-                        outputstring += blockstring;
-                    }
 
                     }
 
@@ -280,7 +277,7 @@ namespace VAICOM
                 {
                     try
                     {
-                        if (alias.Value.Equals("switch")) 
+                        if (alias.Value.Equals("switch"))
                         {
                             outputspecialcmdstring += alias.Key + "; ";
                             counter = counter + 1;
@@ -366,7 +363,7 @@ namespace VAICOM
                 {
                     foreach (KeyValuePair<string, string> entry in master)
                     {
-                        if (!entry.Key.Replace(" ","").Equals("")) // skip any empties / blanks
+                        if (!entry.Key.Replace(" ", "").Equals("")) // skip any empties / blanks
                         {
                             string insertstr = "*";
                             insertstr = insertstr + entry.Key.Replace("*", "");

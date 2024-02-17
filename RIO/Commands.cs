@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VAICOM.Extensions.RIO
 {
@@ -175,7 +172,7 @@ namespace VAICOM.Extensions.RIO
             { "wMsgJ_WPN_AG_RIP_TIME_500" ,     new CommandInfo { uniqueid = 23330, name = "wMsgJ_WPN_AG_RIP_TIME_500",     displayname = Labels.aicommands["wMsgJ_WPN_AG_RIP_TIME_500"], enabled = true     } },
             { "wMsgJ_WPN_AG_RIP_TIME_990" ,     new CommandInfo { uniqueid = 23331, name = "wMsgJ_WPN_AG_RIP_TIME_990",     displayname = Labels.aicommands["wMsgJ_WPN_AG_RIP_TIME_990"], enabled = true     } },
             { "wMsgJ_WPN_AG_RIP_DIST" ,         new CommandInfo { uniqueid = 23332, name = "wMsgJ_WPN_AG_RIP_DIST",         displayname = Labels.aicommands["wMsgJ_WPN_AG_RIP_DIST"], enabled = true         } },
-            { "wMsgJ_WPN_AG_RIP_DIST_STEP" ,    new CommandInfo { uniqueid = 23333, name = "wMsgJ_WPN_AG_RIP_DIST_STEP",    displayname = Labels.aicommands["wMsgJ_WPN_AG_RIP_DIST_STEP"], enabled = true    } }, 
+            { "wMsgJ_WPN_AG_RIP_DIST_STEP" ,    new CommandInfo { uniqueid = 23333, name = "wMsgJ_WPN_AG_RIP_DIST_STEP",    displayname = Labels.aicommands["wMsgJ_WPN_AG_RIP_DIST_STEP"], enabled = true    } },
             { "wMsgJ_WPN_AG" ,                  new CommandInfo { uniqueid = 23334, name = "wMsgJ_WPN_AG",                  displayname = Labels.aicommands["wMsgJ_WPN_AG"]   } }, // root, dont use
             { "wMsgJ_WPN_AA" ,                  new CommandInfo { uniqueid = 23335, name = "wMsgJ_WPN_AA",                  displayname = Labels.aicommands["wMsgJ_WPN_AA"] } }, //root, dont use
             { "wMsgJ_WPN_AG_RIP" ,              new CommandInfo { uniqueid = 23336, name = "wMsgJ_WPN_AG_RIP",              displayname = Labels.aicommands["wMsgJ_WPN_AG_RIP"]  } }, // root, dont use
@@ -287,7 +284,7 @@ namespace VAICOM.Extensions.RIO
             { "wMsgJ_RAD_182_SELECT_MODE" ,     new CommandInfo { uniqueid = 23431, name = "wMsgJ_RAD_182_SELECT_MODE",     displayname = Labels.aicommands["wMsgJ_RAD_182_SELECT_MODE"] } }, // use MODe below
             { "wMsgJ_RAD_182_TUNE_ATC" ,        new CommandInfo { uniqueid = 23432, name = "wMsgJ_RAD_182_TUNE_ATC",        displayname = Labels.aicommands["wMsgJ_RAD_182_TUNE_ATC"]  } },
             { "wMsgJ_RAD_182_TUNE_TAC" ,        new CommandInfo { uniqueid = 23433, name = "wMsgJ_RAD_182_TUNE_TAC",        displayname = Labels.aicommands["wMsgJ_RAD_182_TUNE_TAC"]  } },
-           
+
             { "wMsgJ_RAD_DL" ,                  new CommandInfo { uniqueid = 23435, name = "wMsgJ_RAD_DL",                  displayname = Labels.aicommands["wMsgJ_RAD_DL"]} }, // root, not endpoint -> disable
             { "wMsgJ_RAD_DL_SET_MODE" ,         new CommandInfo { uniqueid = 23436, name = "wMsgJ_RAD_DL_SET_MODE",         displayname = Labels.aicommands["wMsgJ_RAD_DL_SET_MODE"], enabled = true    } },
             { "wMsgJ_RAD_DL_SET_FREQ_PRST" ,    new CommandInfo { uniqueid = 23437, name = "wMsgJ_RAD_DL_SET_FREQ_PRST",    displayname = Labels.aicommands["wMsgJ_RAD_DL_SET_FREQ_PRST"], enabled = true   } },
@@ -296,7 +293,7 @@ namespace VAICOM.Extensions.RIO
             { "wMsgJ_RAD_DL_OFF" ,              new CommandInfo { uniqueid = 23439, name = "wMsgJ_RAD_DL_OFF",              displayname = Labels.aicommands["wMsgJ_RAD_DL_OFF"], enabled = true           } },
             { "wMsgJ_RAD_DL_FGHT" ,             new CommandInfo { uniqueid = 23440, name = "wMsgJ_RAD_DL_FGHT",             displayname = Labels.aicommands["wMsgJ_RAD_DL_FGHT"], enabled = true           } },
 
-            
+
             { "wMsgJ_RAD_DL_SET_FREQ_1" ,       new CommandInfo { uniqueid = 23445, name = "wMsgJ_RAD_DL_SET_FREQ_1",       displayname = Labels.aicommands["wMsgJ_RAD_DL_SET_FREQ_1"], enabled = true            } },
             { "wMsgJ_RAD_DL_SET_FREQ_2" ,       new CommandInfo { uniqueid = 23446, name = "wMsgJ_RAD_DL_SET_FREQ_2",       displayname = Labels.aicommands["wMsgJ_RAD_DL_SET_FREQ_2"], enabled = true            } },
             { "wMsgJ_RAD_DL_SET_FREQ_3" ,       new CommandInfo { uniqueid = 23447, name = "wMsgJ_RAD_DL_SET_FREQ_3",       displayname = Labels.aicommands["wMsgJ_RAD_DL_SET_FREQ_3"], enabled = true            } },
@@ -527,7 +524,7 @@ namespace VAICOM.Extensions.RIO
             { "wMsgJ_DEF_FLR_PGM_7" ,           new CommandInfo { uniqueid = 23638, name = "wMsgJ_DEF_FLR_PGM_7",           displayname = Labels.aicommands["wMsgJ_DEF_FLR_PGM_7"], enabled = true          } },
             { "wMsgJ_DEF_FLR_PGM_8" ,           new CommandInfo { uniqueid = 23639, name = "wMsgJ_DEF_FLR_PGM_8",           displayname = Labels.aicommands["wMsgJ_DEF_FLR_PGM_8"], enabled = true          } },
 
-           
+
             { "wMsgLANTIRN_Srch_Any" ,          new CommandInfo { uniqueid = 23641, name = "wMsgLANTIRN_Srch_Any",              displayname = Labels.aicommands["wMsgLANTIRN_Srch_Any"]   , enabled = true         } },
             { "wMsgLANTIRN_Srch_Any_Active" ,   new CommandInfo { uniqueid = 23642, name = "wMsgLANTIRN_Srch_Any_Active",       displayname = Labels.aicommands["wMsgLANTIRN_Srch_Any_Active"], enabled = true            } },
             { "wMsgLANTIRN_Srch_Air" ,          new CommandInfo { uniqueid = 23643, name = "wMsgLANTIRN_Srch_Air",              displayname = Labels.aicommands["wMsgLANTIRN_Srch_Air"]     , enabled = true       } },

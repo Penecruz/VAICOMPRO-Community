@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Timers;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -11,9 +11,9 @@ namespace VAICOM
         public static partial class SRSclient
         {
 
-            public static System.Timers.Timer   SRS_Timer           { get; set; }
-            public static bool                  Created             { get; set; }
-            public static bool                  SRSTimerActive   { get; set; }
+            public static System.Timers.Timer SRS_Timer { get; set; }
+            public static bool Created { get; set; }
+            public static bool SRSTimerActive { get; set; }
 
             public static void SRS_Timer_Initialize()
             {

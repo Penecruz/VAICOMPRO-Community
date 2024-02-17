@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using VAICOM.Static;
 namespace VAICOM
 {
 
@@ -10,10 +10,10 @@ namespace VAICOM
         public static partial class Aliases
         {
 
-            public static Dictionary<string, string> importedmenus  = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            public static Dictionary<string, string> importedatcs   = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            public static Dictionary<string, string> importedmenus = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            public static Dictionary<string, string> importedatcs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             public static Dictionary<string, string> cockpitcontrol = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            public static Dictionary<string, string> simcontrol     = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            public static Dictionary<string, string> simcontrol = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
             public static Dictionary<string, Dictionary<string, string>> categories;
 
@@ -143,7 +143,7 @@ namespace VAICOM
                     State.aliascount = count;
                     Log.Write("Success.", Colors.Text);
                 }
-                catch 
+                catch
                 {
                 }
 
@@ -152,7 +152,7 @@ namespace VAICOM
                     BuildKneeboardAliasList();
                 }
                 catch
-                { 
+                {
                 }
 
             }
@@ -166,8 +166,8 @@ namespace VAICOM
 
                     int count = 0;
 
-                    State.KneeboardCatAliasStrings[0] = new Dictionary<string, SortedDictionary<string,List<string>>>(); // cat/"Request"/{"vector to base","vect to tanker'}
-                    State.KneeboardCatAliasStrings[1] = new Dictionary<string, SortedDictionary<string,List<string>>>();
+                    State.KneeboardCatAliasStrings[0] = new Dictionary<string, SortedDictionary<string, List<string>>>(); // cat/"Request"/{"vector to base","vect to tanker'}
+                    State.KneeboardCatAliasStrings[1] = new Dictionary<string, SortedDictionary<string, List<string>>>();
 
                     List<string> commandscomplete = new List<string>();
 
@@ -188,38 +188,38 @@ namespace VAICOM
                             //--------------------------------------------
                             //first correct the alias if needed
 
-                            for (int i =60; i >=0; i -=5) // for JTAC cheeck in
+                            for (int i = 60; i >= 0; i -= 5) // for JTAC cheeck in
                             {
                                 alias = alias.Replace(i.ToString() + " minutes", "XX minutes");
                             }
 
                             // for kick out xx miles
-                            alias = alias.Replace("1 mile",  "XX miles");
+                            alias = alias.Replace("1 mile", "XX miles");
                             alias = alias.Replace("2 miles", "XX miles");
                             alias = alias.Replace("3 miles", "XX miles");
                             alias = alias.Replace("5 miles", "XX miles");
                             alias = alias.Replace("8 miles", "XX miles");
-                            alias = alias.Replace("10 miles","XX miles");
+                            alias = alias.Replace("10 miles", "XX miles");
 
                             if (alias.Contains("Ball"))
                             {
                                 alias = "XX Ball";
                             }
-                     
+
                             alias = alias.Replace("from the NorthEast", "from the XX");
                             alias = alias.Replace("from the SouthEast", "from the XX");
                             alias = alias.Replace("from the SouthWest", "from the XX");
                             alias = alias.Replace("from the NorthWest", "from the XX");
                             alias = alias.Replace("from the North", "from the XX");
-                            alias = alias.Replace("from the East", "from the XX");                   
-                            alias = alias.Replace("from the South", "from the XX");                        
+                            alias = alias.Replace("from the East", "from the XX");
+                            alias = alias.Replace("from the South", "from the XX");
                             alias = alias.Replace("from the West", "from the XX");
 
                             alias = alias.Replace("D-link Targets", "D-link Target");
 
                             //--------------------------------------------
                             // split alias string
-                            string aliasfirstword =  "";
+                            string aliasfirstword = "";
 
                             if (alias.ToLower().StartsWith("go pincer") || alias.ToLower().StartsWith("go echelon") || alias.ToLower().StartsWith("go helo") || alias.ToLower().StartsWith("tacan mode") || alias.ToLower().StartsWith("tacan tune") || alias.ToLower().StartsWith("set ripple") || alias.ToLower().StartsWith("turn left") || alias.ToLower().StartsWith("turn right") || alias.ToLower().StartsWith("track single") || alias.ToLower().StartsWith("flares mode") || alias.ToLower().StartsWith("flares program") || alias.ToLower().StartsWith("attack mode") || alias.ToLower().StartsWith("chaff program") || alias.ToLower().StartsWith("dispense order") || alias.ToLower().StartsWith("link") || alias.ToLower().StartsWith("dispense") || alias.ToLower().StartsWith("radar mode") || alias.ToLower().StartsWith("track single"))
                             {
@@ -242,9 +242,9 @@ namespace VAICOM
                             //--------------------------------------------
                             // add string to tables
 
-                            if (Commands.Table.ContainsKey(commandname)) 
+                            if (Commands.Table.ContainsKey(commandname))
                             {
-  
+
                                 string category = Commands.Table[commandname].RecipientClass().Name;
 
                                 if (!currentlines.ContainsKey(category))
@@ -252,7 +252,7 @@ namespace VAICOM
                                     currentlines.Add(category, 1);
                                 }
 
-                                int chunk =0;
+                                int chunk = 0;
                                 if (currentlines[category] > 24)
                                 {
                                     chunk = 1;
@@ -277,7 +277,7 @@ namespace VAICOM
                                 if (!State.KneeboardCatAliasStrings[chunk][category][aliasfirstword].Contains(aliasresidue)) //add residue to first word
                                 {
                                     int stringlength = 0;
-                                    foreach(string str in State.KneeboardCatAliasStrings[chunk][category][aliasfirstword])
+                                    foreach (string str in State.KneeboardCatAliasStrings[chunk][category][aliasfirstword])
                                     {
                                         stringlength += 3 + str.Length;
                                     }

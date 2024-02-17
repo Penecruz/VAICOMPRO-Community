@@ -1,8 +1,8 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using VAICOM.Extensions.RIO;
 using VAICOM.PushToTalk;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -42,13 +42,13 @@ namespace VAICOM
                         State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_UTIL_NAV_GRD_MARKER);
 
                         string header = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:0}"); // Map Marker
-                        //Log.Write("Segment 0 = " + header, Colors.Warning);
-                        
+                                                                                           //Log.Write("Segment 0 = " + header, Colors.Warning);
+
                         int segment1;
                         Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}"), out segment1); // Marker Number 1-10
                         int markercount = State.currentstate.riostate.markers;
 
-                        int position = 1+ markercount - segment1; // 1+
+                        int position = 1 + markercount - segment1; // 1+
                         //Log.Write("Position = " + position, Colors.Warning);
 
                         switch (position)
@@ -76,7 +76,7 @@ namespace VAICOM
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_1);
                                 break;
                             case 8:
-                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);            
+                                State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_7);
                                 State.currentmessage.extsequence.AddRange(VAICOM.Extensions.RIO.DeviceActionsLibrary.Sequences.Macro.Seq_J_INPUT_NUM_2);
                                 break;
                             case 9:
@@ -128,7 +128,7 @@ namespace VAICOM
                         SendNewMessage();
 
                         // write message to log 
-                        
+
                         // for single:
                         if ((State.currentmodule.Singlehotkey & !State.activeconfig.ForceMultiHotkey) || (!State.currentmodule.Singlehotkey & State.activeconfig.ForceSingleHotkey)) // for single mode
                         {

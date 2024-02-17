@@ -1,12 +1,10 @@
-﻿using VAICOM.Static;
-using VAICOM.Products;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using VAICOM.Products;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -68,7 +66,7 @@ namespace VAICOM
 
             public static string RemoveIllegalChars(string inputstr)
             {
-    
+
                 return inputstr.Replace("{", "").Replace("}", "").Replace("[", "").Replace("]", "").Replace("@", "").Replace("$", "").Replace("#", "").Replace(";", "").Replace(":", "").Replace("\"", "").Replace("\'", "").Replace("*", "").Replace(".", " ").Replace("-", " ").Replace("(", "").Replace(")", "");
             }
 
@@ -116,7 +114,7 @@ namespace VAICOM
                         return outputstr;
                     }
                 }
-   
+
             }
 
             public static string StringArrayToMultiString(ICollection<string> stringArray)
@@ -135,7 +133,7 @@ namespace VAICOM
 
             public static int GetRange(Servers.Server.Vector A, Servers.Server.Vector B)
             {
-                double Range = Math.Round(Math.Sqrt(Math.Pow((A.x-B.x),2)+ Math.Pow((A.z - B.z), 2)),0);
+                double Range = Math.Round(Math.Sqrt(Math.Pow((A.x - B.x), 2) + Math.Pow((A.z - B.z), 2)), 0);
                 return (int)Range;
             }
 
@@ -160,7 +158,7 @@ namespace VAICOM
 
                 string RawValMain = normalizedinput.Substring(0, 3);
                 int RawValDec = Int32.Parse(normalizedinput.Substring(3, 3));
-                double RoundedValDec = 25 * Math.Round((double)RawValDec / 25); 
+                double RoundedValDec = 25 * Math.Round((double)RawValDec / 25);
                 string RoundedDec = Common.Reverse(Common.Reverse(("000" + RoundedValDec)).Substring(0, 3));
 
                 normalizedinput = RawValMain + "." + RoundedDec; // + " MHz";

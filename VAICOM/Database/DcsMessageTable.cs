@@ -26,7 +26,7 @@ namespace VAICOM
                 //local lfs = require("lfs")
                 //local io = require("io")
                 //dumpfile = io.open(lfs.writedir()..[[DcsDump.csv]], "w")
-                
+
                 //if dumpfile then
                 //  listtables = function(offset, maxdepth, tablename, filtertype)
                 //      if base.type(tablename) == "table" then

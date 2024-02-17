@@ -1,6 +1,6 @@
-﻿using VAICOM.Static;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
+using VAICOM.Static;
 
 namespace VAICOM
 {
