@@ -63,23 +63,19 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 ## Patch Notes
 
 
-Patch Notes V2.9.2.0
+Patch Notes V2.9.3.0
 
--	Fix Alt and Flush log errors.
--	Fix errors with SRS PTT radio names across multiple modules.
--	Fixed conflict with Mirage 2000 and Mirage F1.
--	Fixed Mirage F1 Vaicom Pro kneeboard. (page 3 on the kneeboard and see known issue below)
--	Added Mirage F1CE
--	Added new DCS Player callsigns for F/A-18, F-15E and C-130.
--	Refresh of the Vaicom Pro manual. (Thanks @BIONICRAVEN)
- 
+-	Complete Net 7 compatibility assurance.
+-	Added option to delete only the Imported keywords from the database.
+-	Added new Chatter theme Fallon.(Navy range and ATC chatter, includes some BFM training chatter)
+-	Added all terrains to the Kneeboard time zone check.
+
+
 Known Issues
--	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
 
--	Jester mini wheel may briefly display flash with very complex jester commands.
+-	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
 -	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
--	Mirage F1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World 
-        OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
+-	Mirage f1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
 
 
 ## Community Team
