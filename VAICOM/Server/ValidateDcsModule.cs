@@ -159,7 +159,6 @@ namespace VAICOM
                     return true;
                 }
 
-
                 // F-16C Viper
                 if (State.currentstate.id.ToLower().Contains("f") && State.currentstate.id.ToLower().Contains("16") && State.currentstate.id.ToLower().Contains("c"))
                 {
@@ -179,11 +178,11 @@ namespace VAICOM
                     return true;
                 }
                 // Mosquito
-                //if (State.currentstate.id.ToLower().Contains("mosquito"))
-                //{
-                //State.currentmodule = DCSmodules.LookupTable["Mosquito"];
-                //return true;
-                //}
+                if (State.currentstate.id.ToLower().Contains("mosquito"))
+                {
+                    State.currentmodule = DCSmodules.LookupTable["Mosquito"];
+                    return true;
+                }
                 // Mig-29
                 if (State.currentstate.id.ToLower().Contains("-29") || (State.currentstate.id.ToLower().Contains("fulcrum")))
                 {

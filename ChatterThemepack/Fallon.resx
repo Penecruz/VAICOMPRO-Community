@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Fallon_402_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_402_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_402_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_402_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bogey_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bogey_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bogey_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bogey_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bogey_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bogey_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bunky_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bunky_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bunky_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bunky_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bunky_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bunky_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Bunky_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Bunky_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Cobra_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Cobra_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Cobra_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Cobra_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Deeler_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Deeler_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Depot_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Depot_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Dog_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Dog_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Kimwat_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Kimwat_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Nordic_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Nordic_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Nordic_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Nordic_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Nordic_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Nordic_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Nordic_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Nordic_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Raider2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Raider2_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Raider2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Raider2_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Raider2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Raider2_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Raider2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Raider2_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Raider2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Raider2_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Raider2_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Raider2_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Reaper2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Reaper2_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Reaper2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Reaper2_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Reaper2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Reaper2_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_10.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_11.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_12.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_13.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_14.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_15.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_16.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_17.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_18.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_19.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_20.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Scorp_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Scorp_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Showtime_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Showtime_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Showtime_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Showtime_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Snake1_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Snake1_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Steely1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Steely1_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_10.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_11.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_12.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_13.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_14.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_15.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_16.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_17.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_18.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_19.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_20.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_21.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_22.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_23.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_24.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Thunder2_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Thunder2_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Topgun4_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Topgun4_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Topgun4_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Topgun4_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Topgun4_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Topgun4_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Topgun4_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Topgun4_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Topgun4_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Topgun4_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Tophat_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Tophat_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Tophat_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Tophat_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_10.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_5.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_6.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_7.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_8.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_Viper_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_Viper_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Fallon_War_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Fallon\Fallon_War_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

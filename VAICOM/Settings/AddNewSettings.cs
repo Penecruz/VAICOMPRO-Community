@@ -18,6 +18,17 @@ namespace VAICOM
 
                 try
                 {
+                    //added 2.9.2.3-->
+                    if (State.activeconfig.Kneeboard_Enabled.Equals(null))
+                    {
+                        State.activeconfig.Kneeboard_Enabled = true;
+                    }
+                    
+                    if (State.activeconfig.Chatter_Enabled.Equals(null))
+                    {
+                        State.activeconfig.Chatter_Enabled = true;
+                    }
+
                     // added 2.5.25
                     if (State.activeconfig.MP_UseTXLink.Equals(null))
                     {

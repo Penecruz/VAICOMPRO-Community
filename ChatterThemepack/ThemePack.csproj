@@ -35,6 +35,11 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Fallon.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Fallon.resx</DependentUpon>
+    </Compile>
     <Compile Update="NATO.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -55,7 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Russia.resx</DependentUpon>
     </Compile>
-    <Compile Update="RedFlag1.Designer.cs">
+    <Compile Update="RedFlag.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RedFlag.resx</DependentUpon>
@@ -67,6 +72,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Fallon.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Fallon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="NATO.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NATO.Designer.cs</LastGenOutput>
@@ -87,7 +96,7 @@
     </EmbeddedResource>
     <EmbeddedResource Update="RedFlag.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RedFlag1.Designer.cs</LastGenOutput>
+      <LastGenOutput>RedFlag.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="WWII.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -1885,5 +1894,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Properties\Resources.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Audio\Themes\Chatter\Fallon\" />
   </ItemGroup>
 </Project>
