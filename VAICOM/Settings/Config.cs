@@ -153,6 +153,7 @@ namespace VAICOM
 
             // reset options
 
+            public bool Resetimported;
             public bool Resetdb;
             public bool Resetoptions;
             public bool Resetprofile;
@@ -327,6 +328,7 @@ namespace VAICOM
 
                 // Reset page
 
+                Resetimported = false,
                 Resetdb = false,
                 Resetoptions = false,
                 Resetprofile = false,

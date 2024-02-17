@@ -1,11 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using VAICOM.Database;
 using VAICOM.FileManager;
 using VAICOM.Servers;
+using VAICOM.Static;
 
 
 namespace VAICOM
@@ -17,6 +19,10 @@ namespace VAICOM
         {
 
             // ------RESET PAGE -------------------------------------------
+
+            private void Resetimportedon(object sender, RoutedEventArgs e) { State.activeconfig.Resetimported = true; }
+            private void Resetimportedoff(object sender, RoutedEventArgs e) { State.activeconfig.Resetimported = false; }
+            private void SetCurrentValueResetimported(object sender, EventArgs e) { clearimported.IsChecked = State.activeconfig.Resetimported; }
 
             private void resetdbon(object sender, RoutedEventArgs e) { State.activeconfig.Resetdb = true; }
             private void resetdboff(object sender, RoutedEventArgs e) { State.activeconfig.Resetdb = false; }
@@ -86,7 +92,7 @@ namespace VAICOM
                                 FileHandler.Root.DeleteDatabaseFolder();
                                 FileHandler.Root.CheckSubFolders();
                                 // put db
-                                clearkeywordsdb();
+                                Clearkeywordsdb();
                                 Aliases.ResetDatabase();
                                 Labels.ResetDatabase();
                                 Aliases.BuildNewMasterTable();
@@ -95,7 +101,29 @@ namespace VAICOM
                                 State.activeconfig.Editorrequiresreload = true;
                                 Reflectunsavedchanges();
                                 Reflectrequiresreload();
-                                Log.Write("Database cleared.", Static.Colors.Text);
+                                Log.Write("Full Database cleared.", Static.Colors.Text);
+                            }
+                            catch
+                            {
+                            }
+                        }
+
+                        if (State.activeconfig.Resetimported)
+                        {
+                            try
+                            {
+                                // Check the Folders for the DB
+                                FileHandler.Root.CheckSubFolders();
+                                //Clear imported encrypted DB, remove imported aliases and rebuild master table
+
+                                ClearImporteddb();                                
+                                Aliases.ResetImported();
+                                Aliases.BuildNewMasterTable();
+                                State.activeconfig.Editorunsavedchanges = true;
+                                State.activeconfig.Editorrequiresreload = true;
+                                Reflectunsavedchanges();
+                                Reflectrequiresreload();
+                                Log.Write("Imported Menu Items and ATC Recipients cleared.", Static.Colors.Text);
                             }
                             catch
                             {
@@ -200,7 +228,7 @@ namespace VAICOM
                 showprolight();
 
             }
-            private void clearkeywordsdb()
+            private void Clearkeywordsdb()
             {
                 try
                 {
@@ -213,6 +241,17 @@ namespace VAICOM
                     Aliases.importedatcs = new Dictionary<string, string>();
                     Aliases.playercallsigns = new Dictionary<string, string>();
                     Aliases.simcontrol = new Dictionary<string, string>();
+                }
+                catch
+                {
+                }
+            }
+
+            private void ClearImporteddb()
+            {
+                try
+                {
+                    Aliases.importedatcs = new Dictionary<string, string>();
                 }
                 catch
                 {

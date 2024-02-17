@@ -39,6 +39,15 @@ namespace VAICOM
                             case "syria":
                                 returnstring += "SYRI";
                                 break;
+                            case "sinai":
+                                returnstring += "SINI";
+                                break;
+                            case "marianas":
+                                returnstring += "MARI";
+                                break;
+                            case "falklands":
+                                returnstring += "SATL";
+                                break;
                             default:
                                 returnstring += "THTR";
                                 break;
@@ -74,6 +83,15 @@ namespace VAICOM
                                 break;
                             case "syria":
                                 returnstring += "C(Z+3)";
+                                break;
+                            case "sinai":
+                                returnstring += "SP(Z+2)";
+                                break;
+                            case "marianas":
+                                returnstring += "ChST(Z+10)";
+                                break;
+                            case "falklands":
+                                returnstring += "FIST(Z-3)";
                                 break;
                             default:
                                 returnstring += "Z";
