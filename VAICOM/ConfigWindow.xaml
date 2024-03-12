@@ -331,7 +331,7 @@
                     <TextBlock x:Name="LabelFixReg" FontSize="12" Foreground="#999" HorizontalAlignment="Left" Margin="424,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38"><Run Text="fix "/><Run Text="R"/><Run Text="eg"/></TextBlock>
 
                     <TextBlock x:Name="LabelOBFlag" FontSize="11" Foreground="#999" HorizontalAlignment="Left" Margin="407,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57"><Run Language="de-de" Text="O"/><Run Text="pen"/><Run Language="de-de" Text="B"/><Run Text="eta"/></TextBlock>
-                    <TextBlock x:Name="LabelReleaseFlag" FontSize="11" Foreground="#999" HorizontalAlignment="Left" Margin="298,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" TextAlignment="Right"><Run Language="de-de" Text="R"/><Run Text="eleas"/><Run Language="de-de" Text="e"/></TextBlock>
+                    <TextBlock x:Name="LabelReleaseFlag" FontSize="11" Foreground="#999" HorizontalAlignment="Left" Margin="282,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" TextAlignment="Right"><Run Text="Com"/><Run Language="en-au" Text="bined"/><Run Text="/Stable"/><Run Text=" "/></TextBlock>
                     <TextBlock x:Name="LabelStandAloneFlag" FontSize="11" Foreground="#999" HorizontalAlignment="Left" Margin="298,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="70" TextAlignment="Right"><Run Language="de-de" Text="S"/><Run Text="tandalone"/></TextBlock>
                     <TextBlock x:Name="LabelSteamFlag" FontSize="11" Foreground="#999" HorizontalAlignment="Left" Margin="408,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="38"><Run Language="de-de" Text="S"/><Run Text="team"/></TextBlock>
 

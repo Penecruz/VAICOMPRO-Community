@@ -89,7 +89,7 @@ namespace VAICOM
 
                 };
 
-                public static Dictionary<string, radioslotlist> mapping_Ref = new Dictionary<string, radioslotlist>()
+                public static Dictionary<string, radioslotlist> mapping_Ref = new Dictionary<string, radioslotlist>() //Radio names as listed in the module comms definitions
                 {
                     {"----" , new radioslotlist() { Slot_map = {"VHF AM","UHF","VHF FM"} } },
 
@@ -102,12 +102,12 @@ namespace VAICOM
                     {"Mi-8MT" ,     new radioslotlist() { Slot_map = { "R-863", "JADRO-1A", "R-828" } } },
                     {"UH-1H" ,      new radioslotlist() { Slot_map = { "VHF FM", "CB UHF", "VHF AM"  } } },
                     //{"A-10C" ,      new radioslotlist() { Slot_map = { "VHF AM", "CB UHF", "VHF FM" } } }, OLD version saved in case issues with non A10CII modules
-                    {"A-10C" ,      new radioslotlist() { Slot_map = { "VHF AM (ARC-210)", "UHF AM (ARC-164)", "VHF FM (ARC-186)" } } },
+                    {"A-10C" ,      new radioslotlist() { Slot_map = { "VHF AM", "CB UHF", "VHF FM" } } },
                     {"TF-51D" ,     new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"MiG-15Bis" ,  new radioslotlist() { Slot_map = { "RSI-6K", "", "" } } },
                     {"Su-27" ,      new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"Hawk" ,       new radioslotlist() { Slot_map = { "VHF", "UHF", ""} } },
-                    {"M-2000C" ,    new radioslotlist() { Slot_map = { "ERA 7000 V/UHF", "ERA 7200 UHF", ""} } },
+                    {"M-2000C" ,    new radioslotlist() { Slot_map = { "VHF", "UHF", ""} } },
 
                     {"artillery_commander",new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },
                     {"FA-18C_hornet", new radioslotlist() { Slot_map = { "COMM1: ARC-210", "COMM2: ARC-210", ""} } },
@@ -115,7 +115,7 @@ namespace VAICOM
                     {"F-14A" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"F-14B" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"AJS37" ,      new radioslotlist() { Slot_map = { "AM Radio", "AM Radio", "" } } },
-                    {"F-5E-3" ,     new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "", "" } } },
+                    {"F-5E-3" ,     new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "", "" } } },
                     {"P-51D" ,      new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"SpitfireLFMkIX",new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"C-101" ,      new radioslotlist() { Slot_map = { "CB UHF", "CB VHF", ""} } },
@@ -142,28 +142,28 @@ namespace VAICOM
                     {"Fw-190A8" ,   new radioslotlist() { Slot_map = { "FuG165ZY", "", "" } } },
                     {"P-47D" ,      new radioslotlist() { Slot_map = { "SCR522", "", "" } } },
                     {"CE-2" ,       new radioslotlist() { Slot_map = { "KY-197A", "", "" } } },
-                    {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "Radio AN/ARC-164", "" } } },
+                    {"A-4E-C" ,     new radioslotlist() { Slot_map = { "AN/ARC-51BX", "", "" } } },
 
                     {"Mirage-F1" ,  new radioslotlist() { Slot_map = { "V/UHF (TRAP-136)", "UHF (TRAP-137B)", "" } } },
                     {"MB-339A" ,    new radioslotlist() { Slot_map = { "COMM1 Radio", "COMM2 Radio", "" } } },
-                    {"F-15ESE" ,    new radioslotlist() { Slot_map = { "ARC-164 V/UHF", "ARC-210 V/UHF", ""} } }, //Pene
+                    {"F-15ESE" ,    new radioslotlist() { Slot_map = { "UHF1", "UHF2", ""} } }, //Pene
                     {"A-29B" ,      new radioslotlist() { Slot_map = { "V/UHF XT-6013", "V/UHF XT-6013", "V/UHF XT-6013" } } }, //Pene
                     {"UH-60L" ,     new radioslotlist() { Slot_map = { "VHF-FM Radio AN/ARC-201 (1)", "Direction Finder Set AN/ARN-149", "VHF Radio AN/ARC-186" } } }, //Pene
                     {"Hercules" ,   new radioslotlist() { Slot_map = { "", "CB UHF", ""} } }, //Pene
                     {"T-45" ,       new radioslotlist() { Slot_map = { "RADIO2", "RADIO1", ""} } }, //Pene
-                    {"F-16I" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
-                    {"F-16D_50" ,   new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
-                    {"F-16D_50_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
-                    {"F-16D_52",    new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
-                    {"F-16D_52_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
-                    {"F-16D_Barak_40" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
-                    {"F-16D_Barak_30" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
+                    {"F-16I" ,      new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
+                    {"F-16D_50" ,   new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
+                    {"F-16D_50_NS", new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
+                    {"F-16D_52",    new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
+                    {"F-16D_52_NS", new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
+                    {"F-16D_Barak_40" ,      new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
+                    {"F-16D_Barak_30" ,      new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
 
                     //{"F-22" ,       new radioslotlist() { Slot_map = { "VHF/UHF AN/ARC-182", "VHF/UHF AN/ARC-182", ""} } }, //Pene WIP
 
                 };
 
-                public static Dictionary<string, radioslotlist> mapping_SRS = new Dictionary<string, radioslotlist>()
+                public static Dictionary<string, radioslotlist> mapping_SRS = new Dictionary<string, radioslotlist>() //Radio names to be displayed when in SRS PTT Mode 
                 {
                     {"----" , new radioslotlist() { Slot_map = {"SRS 1", "SRS 2", "SRS 3" } } },
 

@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240218,
-      "version": 2931,
-      "versionstring": "2.9.3.1",
+      "releasedate": 20240312,
+      "version": 2934,
+      "versionstring": "2.9.3.4",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.3.1 - Expand Chatter Theme - Fallon (Completed sound set)"
+      "releasenotes": "Beta Test build 2.9.3.4 - Expand Chatter Theme - Fallon (Completed sound set), Fix SRS PTT issues, DCS message table updated to latest version"
     }
   ]
 }
