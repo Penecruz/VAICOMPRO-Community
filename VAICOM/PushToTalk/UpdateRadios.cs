@@ -47,7 +47,7 @@ namespace VAICOM
                         bool viper = State.currentstate.id.Contains("F-16");
                         bool tomcat = State.currentstate.id.Contains("F-14");
                         bool strike = State.currentmodule.Equals(DCSmodules.LookupTable["F-15ESE"]);
-                        bool viggen = State.currentstate.id.Contains("AJS-37");
+                       // bool viggen = State.currentstate.id.Contains("AJS-37");
 
                         foreach (Server.RadioDevice radiounit in State.currentstate.radios)
                         {
@@ -64,8 +64,8 @@ namespace VAICOM
                             bool strikecomm1 = (strike & radiounit.deviceid.Equals(7));
                             bool strikecomm2 = (strike & radiounit.deviceid.Equals(8));
 
-                            bool viggenfr24 = (viggen & radiounit.displayName.ToLower().Contains("1"));
-                            bool viggenfr22 = (viggen & radiounit.displayName.ToLower().Contains("2"));
+                           // bool viggenfr24 = (viggen & radiounit.displayName.ToLower().Contains("1")); //Test without work around with new file names in module?
+                           // bool viggenfr22 = (viggen & radiounit.displayName.ToLower().Contains("2"));
 
                             bool deviceallocated = false;
 
@@ -91,8 +91,8 @@ namespace VAICOM
                                 // int is not part of radio count
                             }
 
-                            bool uhfcandidate = tomcatuhf || vipervhf || harriercomm2 || strikecomm2 || viggenfr24 ||(!viperuhf && (!harrier && !tomcat && !strike && (radiounit.displayName.ToLower().Contains("uhf") || (radiounit.AM & !radiounit.displayName.ToLower().Contains("vhf")))));
-
+                            //bool uhfcandidate = tomcatuhf || vipervhf || harriercomm2 || strikecomm2 || viggenfr24 ||(!viperuhf && (!harrier && !tomcat && !strike && (radiounit.displayName.ToLower().Contains("uhf") || (radiounit.AM & !radiounit.displayName.ToLower().Contains("vhf")))));
+                            bool uhfcandidate = tomcatuhf || vipervhf || harriercomm2 || strikecomm2  || (!viperuhf && (!harrier && !tomcat && !strike && (radiounit.displayName.ToLower().Contains("uhf") || (radiounit.AM & !radiounit.displayName.ToLower().Contains("vhf")))));
                             // UHF -> TX2
                             if (!deviceallocated && !allocatedUHF && uhfcandidate)
                             {
@@ -122,8 +122,8 @@ namespace VAICOM
                                 State.radiocount = State.radiocount + 1;
                             }
 
-                            bool amcandidate = viperuhf || harriercomm1 || strikecomm1 || viggenfr22 || (!harrier & radiounit.AM);
-
+                            //bool amcandidate = viperuhf || harriercomm1 || strikecomm1 || viggenfr22 || (!harrier & radiounit.AM);
+                            bool amcandidate = viperuhf || harriercomm1 || strikecomm1 || (!harrier & radiounit.AM);
                             // VHF AM -> TX1 
                             if (!deviceallocated & !allocatedAM & amcandidate)
                             {
