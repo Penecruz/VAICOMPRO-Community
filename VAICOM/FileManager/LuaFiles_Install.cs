@@ -51,8 +51,8 @@ namespace VAICOM
 
                                 // handling current version
 
-                                bool currentcycleis_standalonerelease = set.Key.Equals("2.8");
-                                bool currentcycleis_standaloneopenbeta = set.Key.Equals("2.8 OpenBeta");
+                                bool currentcycleis_standalonerelease = set.Key.Equals("2.9");
+                                bool currentcycleis_standaloneopenbeta = set.Key.Equals("2.9 OpenBeta");
                                 bool currentcycleis_steam = set.Key.Equals("STEAM");
 
                                 // decide whether to place openbeta or release lua code
@@ -159,11 +159,11 @@ namespace VAICOM
 
                                     State.dcsinstalled = true;
 
-                                    if (set.Key.Equals("2.8"))
+                                    if (set.Key.Equals("2.9"))
                                     {
                                         State.dcspath_release = dcsprogramfilesfolder;
                                     }
-                                    if (set.Key.Equals("2.8 OpenBeta"))
+                                    if (set.Key.Equals("2.9 OpenBeta"))
                                     {
                                         State.dcspath_openbeta = dcsprogramfilesfolder;
                                     }

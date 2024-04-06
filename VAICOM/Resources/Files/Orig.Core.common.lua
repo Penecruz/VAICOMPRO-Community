@@ -958,11 +958,21 @@ WingmanContactHandler = {
 			Digits					= Digits}
 }
 
-airdromeNames = {}
-do
+function clearAirdromeSubs()
 	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
 		airdromeNames[airdromeNameVariant] = {}
 	end
+end
+
+local function initAirdromeSubs()
+	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
+		AirbaseName.sub[base.Airbase.Category.AIRDROME].sub[airdromeNameVariant] = Phrases:new(airdromeNames[airdromeNameVariant], 'Callsign')
+	end
+end
+
+airdromeNames = {}
+do 
+	clearAirdromeSubs()
 end
 
 AirbaseName = {
@@ -992,10 +1002,8 @@ AirbaseName = {
 		[base.Airbase.Category.SHIP]		= UnitCallname:new('Aircraft Carriers', false, nil,'Aircraft Carriers'),
 	}
 }
-do
-	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
-		AirbaseName.sub[base.Airbase.Category.AIRDROME].sub[airdromeNameVariant] = Phrases:new(airdromeNames[airdromeNameVariant], 'Callsign')
-	end
+do 
+	initAirdromeSubs()
 end
 
 ATCToLeaderHandler = {
@@ -1116,10 +1124,16 @@ ClientAndAWACSHandler = {
 												end
 											else
 												local groupName, flightNum, aircraftNum = encodeCallsign(pComm:getCallsign())
-												return self.sub.AWACSCallname:make(pComm:getUnit(), base.math.floor(pComm:getCallsign() / 100)) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+
+												if pComm:getUnit():getDesc().category == 2  then --GROUND UNIT
+													return self.sub.GroundUnitCallname:make(pComm:getUnit(), base.math.floor(pComm:getCallsign() / 100)) + self.sub.DigitGroups:make('%d', flightNum)
+												else
+													return self.sub.AWACSCallname:make(pComm:getUnit(), base.math.floor(pComm:getCallsign() / 100)) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+												end
 											end
 										end,
 										sub = { AWACSCallname = UnitCallname:new('AWACS', false, nil, 'Callsign'),
+												GroundUnitCallname = UnitCallname:new('Ground Units', false, nil, 'Callsign'),
 												Digits = Digits,
 												Index = Index,
 												DigitGroups	= DigitGroups
@@ -3122,18 +3136,12 @@ local function getMessageModuleAndLanguage(roleData, module, language)
 end
 
 function Initialize()
-	--base.print( '\t Common::AirbaseName : Initialize()' )
-	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
-		AirbaseName.sub[base.Airbase.Category.AIRDROME].sub[airdromeNameVariant] = Phrases:new(airdromeNames[airdromeNameVariant], 'Callsign')
-	end
+	initAirdromeSubs()
 end
 
 --[[
 function Release()
-	airdromeNames = {}
-	for moduleIndex, airdromeNameVariant in base.pairs(airdromeNameVariants) do
-		airdromeNames[airdromeNameVariant] = {}
-	end
+	clearAirdromeSubs()
 	--base.print( '\t Common::AirbaseName : Release()' )
 end
 ]]
