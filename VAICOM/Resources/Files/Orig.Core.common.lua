@@ -14,6 +14,95 @@ local math = base.math
 local require = base.require
 require('i18n').setup(_M)
 
+local print 	= base.print
+local tostring 	= base.tostring
+local tonumber  = base.tonumber
+
+local  BIG_CALLSIGN_MIN = 1e9
+local  SHT_CALLSIGN_MAX = 1e3
+
+function callsignPack(group,flight,wingman)
+	if group < 10 and flight  < 10 and wingman < 10 then
+		return wingman + 10 * flight + 100 * group
+	else
+		return BIG_CALLSIGN_MIN  + wingman + 1000 * flight + 1000000 * group
+	end
+end
+
+
+function callsignUnpack(packed)
+	local group,flight,wingman
+	if packed < SHT_CALLSIGN_MAX then
+		group		 = math.floor(packed / 100)
+
+		local flight_wingman = packed - group * 100
+		
+		flight 		 =  math.floor(flight_wingman / 10)
+		wingman		 =  flight_wingman - flight * 10		
+	else
+		packed  	 = packed - BIG_CALLSIGN_MIN
+
+		group		 = math.floor(packed/1000000)
+
+		local flight_wingman = packed - group * 1000000
+		
+		flight 		 =  math.floor(flight_wingman / 1000)
+		wingman		 =  flight_wingman - flight * 1000		
+	end
+	
+	return group,flight,wingman
+end
+
+
+function callsignMinimize(callsign)
+	if callsign < SHT_CALLSIGN_MAX then 
+		return callsign
+	end
+	local g,f,w = callsignUnpack(callsign)
+	local str   = tostring(g) ..  tostring(f) .. tostring(w)
+	return tonumber(str);
+end
+
+local function callsignTest(c)
+	print("----------------------------------------")
+	print("CALLSIGN IS\t"..c)
+
+	if c >= BIG_CALLSIGN_MIN then 
+		print("CALLSIGN IS\tLONG")
+	elseif c < SHT_CALLSIGN_MAX then
+		print("CALLSIGN IS\tSHORT")
+	else
+		error("UNEXPECTED CALLSIGN")
+	end
+
+	local g,f,w    = callsignUnpack(c)
+
+	print("UNPACK group\t"..tostring(g))
+	print("UNPACK flight\t"..tostring(f))
+	print("UNPACK wingman\t"..tostring(w))
+
+	local packed = callsignPack(g,f,w)
+
+	print("PACKED\t\t"..packed)
+
+	if packed ~= c then
+		error("MISMATCH")
+	end
+
+	print("MINIMIZE\t"..callsignMinimize(c))
+end
+
+--callsignTest(937)
+--callsignTest(callsignPack(11,543,4))
+
+
+function encodeCallsign(callsign)
+	local g,f,w = callsignUnpack(callsign)
+	f		 = math.max(1, f)
+	w 		 = math.max(1, math.min(w,4))
+	return g, f, w
+end
+
 --Game Modules
 
 local defaultModuleName = 'Common'
@@ -519,17 +608,13 @@ do
 		countryCallnames = self.sub[default]
 
 		local cat = pUnit:getDesc().category
-		--base.print('\t pUnit:category '..cat)
 		if hasNumericCallsign(pUnit) then
-			res = _getUnitCallnames(self, pUnit, countryCallnames, callname)
+			return _getUnitCallnames(self, pUnit, countryCallnames, callname)
 		elseif cat == 2 and callname == 0 then --cat == 2 - GROUNG
-			local groupName, flightNum, aircraftNum = encodeCallsign(callname)
-			res = _getUnitCallnames(self, pUnit, countryCallnames, flightNum)
+			return _getUnitCallnames(self, pUnit, countryCallnames, 1)
 		else
-			res = _getUnitCallnames(self, pUnit, countryCallnames, callname)
+			return  _getUnitCallnames(self, pUnit, countryCallnames, callname)
 		end
-		
-		return res
 	end	
 
 	UnitCallname = {
@@ -606,20 +691,10 @@ do
 	UnitCallname.__index = UnitCallname
 end
 
-function encodeCallsign(callsign)
-	local groupCallname = base.math.floor(callsign / 100)
-	callsign = callsign - groupCallname * 100
-	local flightNumber = base.math.floor(callsign / 10)
-	callsign = callsign - flightNumber * 10
-	local aircraftNumber = callsign
-	flightNumber = base.math.max(1, flightNumber)
-	aircraftNumber = base.math.max(1, base.math.min(aircraftNumber, 4))
-	return groupCallname, flightNumber, aircraftNumber
-end
 
 function hasNumericCallsign(pUnit)
 	local country = pUnit:getCountry()
-	local forcesName = pUnit:getForcesName()
+	--local forcesName = pUnit:getForcesName()
 	return 	country == base.country.RUSSIA or
 			country == base.country.UKRAINE or
 			country == base.country.BELARUS or
@@ -701,21 +776,18 @@ PlayerAircraftCallsign = {
 		end
 		------------------------------------
 
-		local country = pUnit:getCountry()
+		local country  = pUnit:getCountry()
 		local callsign = pComm:getCallsign()
-		--base.print('\t\t Callsign = ',callsign)
 		if hasNumericCallsign(pUnit) then
-			--base.print('\t\t hasNumericCallsign == true  country = '..country..' callsign = '..callsign)
-			base.assert(base.type(callsign) == 'number')
+			local c = callsignMinimize(callsign)
 			if useIndex then
-				return self.sub.Index:make(callsign)
+				return self.sub.Index:make(c)
 			else
-				return self.sub.Digits:make(callsign)
+				return self.sub.Digits:make(c)
 			end
 		else
-			--base.print('\t\t hasNumericCallsign == false  country = '..country..' callsign = '..callsign)
-			local groupName, flightNum, aircraftNum = encodeCallsign(callsign)
-			return self.sub.PlayerAircraftCallname:make(pUnit, groupName) + ' ' + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+			local callnameIdx, flightNum, aircraftNum = encodeCallsign(callsign)
+			return self.sub.PlayerAircraftCallname:make(pUnit, callnameIdx) + ' ' + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
 		end
 		
 	end,
@@ -805,37 +877,23 @@ local function makeCallsignString_(pComm, airdromeNameVariant)
 		end		
 	else
 		if hasNumericCallsign(pUnit) then
-			return callsign
-			--[[
-			if pUnit:hasAttribute('Air') then
-				base.assert(base.type(callsign) == 'number')
-				return callsign
-			else
-				return getCallname(pUnit, base.math.floor(callsign / 100 + 0.5))
-			end
-			--]]
-		else
-			local groupName, flightNum, aircraftNum = encodeCallsign(callsign)
-			local callname = getCallname(pUnit, groupName)
-			if callname ~= nil then
-				--base.print('~~~common.lua:makeCallsignString_ callname = ',callname)
-				if isHeavyAircraft(pUnit) then
-					if pUnit:hasAttribute('AWACS') then 
-						return callname..flightNum..'-'..aircraftNum
-					end
-					if pUnit:hasAttribute('Tankers') then 
-						return callname..flightNum..'-'..aircraftNum
-					end
-					if pUnit:hasAttribute('Transports') then 
-						return callname..flightNum..'-'..aircraftNum
-					end
-					return callname
-				else
-					--base.print('~~~common.lua:makeCallsignString_ Not heavy aircraft callname = ',callname)
-					return callname..flightNum..aircraftNum
-				end
-			end
+			return callsignMinimize(callsign)
 		end
+		local callnameIdx, flightNum, aircraftNum = encodeCallsign(callsign)
+		local callname = getCallname(pUnit, callnameIdx)
+		
+		if not(callname) then 
+			return nil
+		end
+		if isHeavyAircraft(pUnit) then
+			if	pUnit:hasAttribute('AWACS') or
+				pUnit:hasAttribute('Tankers') or 
+				pUnit:hasAttribute('Transports') then 
+				return callname..flightNum..'-'..aircraftNum
+			end
+			return callname
+		end
+		return callname..flightNum..aircraftNum
 	end
 	return nil
 end
@@ -1115,20 +1173,23 @@ ClientAndAWACSHandler = {
 			AWACSCallsign 			= {
 										make = function(self, pComm, useIndex)
 											base.print('\t AWACSCallsign:make')
-											if hasNumericCallsign(pComm:getUnit()) then
-												local callsign = pComm:getCallsign()
+											local callsign = pComm:getCallsign()
+											
+											local unit = pComm:getUnit()
+												
+											if hasNumericCallsign(unit) then
+												local c = callsignMinimize(callsign)
 												if useIndex then
-													return self.sub.Index:make(callsign)
+													return self.sub.Index:make(c)
 												else
-													return self.sub.Digits:make(callsign)
+													return self.sub.Digits:make(c)
 												end
 											else
-												local groupName, flightNum, aircraftNum = encodeCallsign(pComm:getCallsign())
-
-												if pComm:getUnit():getDesc().category == 2  then --GROUND UNIT
-													return self.sub.GroundUnitCallname:make(pComm:getUnit(), base.math.floor(pComm:getCallsign() / 100)) + self.sub.DigitGroups:make('%d', flightNum)
+												local callnameIdx , flightNum, aircraftNum = encodeCallsign(callsign)
+												if unit:getDesc().category == 2  then --GROUND UNIT
+													return self.sub.GroundUnitCallname:make(unit,callnameIdx) + self.sub.DigitGroups:make('%d', flightNum)
 												else
-													return self.sub.AWACSCallname:make(pComm:getUnit(), base.math.floor(pComm:getCallsign() / 100)) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+													return self.sub.AWACSCallname:make(unit, callnameIdx) 	  + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
 												end
 											end
 										end,
@@ -1262,35 +1323,27 @@ AirGroupCallsign = {
 		if callsign2 == "" then
 			return p.start()
 		end
-		base.assert(callsign ~= nil)
 		if hasNumericCallsign(pUnit) then
-			base.assert(base.type(callsign) == 'number')
+			local c = callsignMinimize(callsign)
 			if useIndex then
-				return self.sub.Index:make(callsign)
+				return self.sub.Index:make(c)
 			else
-				return self.sub.Digits:make(callsign)
+				return self.sub.Digits:make(c)
 			end
-		else
-			base.assert(pUnit ~= nil)
-			local groupName, flightNum, aircraftNum = encodeCallsign(callsign)
-			if isHeavyAircraft(pUnit) then
-				if pUnit:hasAttribute('AWACS') then
-					return self.sub.AWACSCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
-				else
-					if pUnit:hasAttribute('Tankers') then
-						return self.sub.TankerCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
-					else
-						if pUnit:hasAttribute('Transports') then							
-							return self.sub.TransportsCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
-						else
-							return self.sub.AirGroupCallname:make(pUnit, groupName)
-						end
-					end
-				end
+		end
+		local groupName, flightNum, aircraftNum = encodeCallsign(callsign)
+		if isHeavyAircraft(pUnit) then
+			if pUnit:hasAttribute('AWACS') then
+				return self.sub.AWACSCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+			elseif pUnit:hasAttribute('Tankers') then
+				return self.sub.TankerCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+			elseif pUnit:hasAttribute('Transports') then							
+				return self.sub.TransportsCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
 			else
-				return self.sub.AirGroupCallname:make(pUnit, groupName) + ' ' + self.sub.Digits:make(flightNum)
-			end	
-		end	
+				return self.sub.AirGroupCallname:make(pUnit, groupName)
+			end
+		end
+		return self.sub.AirGroupCallname:make(pUnit, groupName) + ' ' + self.sub.Digits:make(flightNum)
 	end,
 	sub = { AirGroupCallname	= UnitCallname:new('Air', true, nil, 'Callsign'),
 			AWACSCallname		= UnitCallname:new('AWACS', true, nil, 'Callsign'),

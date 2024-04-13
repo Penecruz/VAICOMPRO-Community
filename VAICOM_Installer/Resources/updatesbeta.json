@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240406,
-      "version": 2941,
-      "versionstring": "2.9.4.1",
+      "releasedate": 20240414,
+      "version": 2942,
+      "versionstring": "2.9.4.2",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.4.1 - Fixed JF-17 PTT behaviouir from Single to Multi, JF-17 SRS PTT changes, Please check All other modules for SRS PTT behaviour as well. - changed Common.lua to match new DCS version may correct airodrome errors - please check - Version detection update should detect 2.9 now on init."
+      "releasenotes": "Beta Test build 2.9.4.2 - Fixed JF-17 PTT behaviouir from Single to Multi, JF-17 SRS PTT changes, Please check All other modules for SRS PTT behaviour as well. - changed Common.lua to match new DCS version may correct airodrome errors and Tankers - please check - Version detection update should detect 2.9 now on init with debug running."
     }
   ]
 }
