@@ -63,19 +63,24 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 ## Patch Notes
 
 
-Patch Notes V2.9.3.0
+Patch Notes V2.9.4.3
 
--	Complete Net 7 compatibility assurance.
--	Added option to delete only the Imported keywords from the database.
--	Added new Chatter theme Fallon.(Navy range and ATC chatter, includes some BFM training chatter)
--	Added all terrains to the Kneeboard time zone check.
-
+- Hotfix for VA Version check
+2.9.4.2
+- JF-17 radio changes now multi radio TX.
+- JF-17 SRS PTT Radio names now match Aircraft.
+- Fixed ATC comms menu pop ups if Disable Menus selected in vaicom Pro UI.
+- Fixed AAR Tanker comms pop ups when Disable Menus selected in vaicom Pro UI.
+- DCS Version detection updated to detect 2.9.4.x
+- Vaicom Pro DCS module version updated.
 
 Known Issues
 
--	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
--	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
--	Mirage f1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
+- AJS-37 Viggen, SRS PTT Mapping remains broken. Heatblur radio device display name issue.
+- F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
+- Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
+
+Mirage f1 Kneeboard cover causes issues (recommend deleting it (1.png) from \DCS World OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-\KNEEBOARD\pages folders.
 
 
 ## Community Team
