@@ -363,7 +363,7 @@ namespace VAICOM
                     if (!State.dcspath_release.Equals(""))
                     {
                         pathrelease = State.dcspath_release + "\n";
-                        pathrelease += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.8"] + "\n";
+                        pathrelease += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.9"] + "\n";
                     }
                     message += "> DCS World (release version):" + "\n";
                     message += "   " + pathrelease + "\n";
@@ -372,7 +372,7 @@ namespace VAICOM
                     if (!State.dcspath_openbeta.Equals(""))
                     {
                         pathopenbeta = State.dcspath_openbeta + "\n";
-                        pathopenbeta += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.8 OpenBeta"] + "\n";
+                        pathopenbeta += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.9 OpenBeta"] + "\n";
                     }
                     message += "> DCS World (open beta):" + "\n";
                     message += "   " + pathopenbeta + "\n";
@@ -381,7 +381,7 @@ namespace VAICOM
                     if (!State.dcspath_steam.Equals(""))
                     {
                         pathsteam = State.dcspath_steam + "\n";
-                        pathsteam += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.8"] + "\n"; ;
+                        pathsteam += "   Saved Games folder " + UserSavedGamesFolder + "\\" + Server.dcsversion["2.9"] + "\n"; ;
                     }
                     message += "> DCS World (STEAM):" + "\n";
                     message += "   " + pathsteam + "\n";

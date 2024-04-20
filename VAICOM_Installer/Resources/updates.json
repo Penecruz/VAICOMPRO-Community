@@ -2,16 +2,16 @@
   "updates":
   [
     {
-    	"title": "VAICOM PRO Community Edition for DCS World",
-    	"isrelease": true,
-     	"isbeta": false,
-	    "isdev": false,
-	    "productid": 1,
-      "releasedate": 20240214,
-     	"version": 2930,
-    	"versionstring": "2.9.3.0",
-    	"downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.3.0/VAICOMPRO.zip",
-    	"releasenotes": "Release 2.9.3.0 - Fallon"
+      "title": "VAICOM PRO Community Edition for DCS World",
+      "isrelease": true,
+      "isbeta": false,
+      "isdev": false,
+      "productid": 1,
+      "releasedate": 20240420,
+      "version": 2943,
+      "versionstring": "2.9.4.3",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.4.3/VAICOMPRO.zip",
+      "releasenotes": "Release 2.9.4.3 - Hotfix VA Version  - Bug Fixes - Updates to DCS core files compatability - JF-17 radio updates - Vaicom pro module and version detection updates."
     }
   ]
 }
