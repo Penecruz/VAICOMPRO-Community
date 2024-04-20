@@ -8,10 +8,10 @@
       "isdev": false,
       "productid": 1,
       "releasedate": 20240420,
-      "version": 2942,
-      "versionstring": "2.9.4.2",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.4.2/VAICOMPRO.zip",
-      "releasenotes": "Release 2.9.4.2 - Bug Fixes - Updates to DCS core files compatability - JF-17 radio updates - Vaicom pro module and version detection updates."
+      "version": 2943,
+      "versionstring": "2.9.4.3",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.4.3/VAICOMPRO.zip",
+      "releasenotes": "Release 2.9.4.3 - Hotfix VA Version  - Bug Fixes - Updates to DCS core files compatability - JF-17 radio updates - Vaicom pro module and version detection updates."
     }
   ]
 }
