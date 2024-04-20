@@ -18,7 +18,7 @@ namespace VAICOM
                 /// <summary>
                 /// generated directly from dump .csv / .xlxs file
                 /// dump lua code see below (use UI * tab in deep debug mode)
-                /// updated list for DCS 2.8.5.40170
+                /// updated list for DCS 2.9.3.51704
                 /// </summary> 
 
                 //--dump Lua code:
@@ -212,7 +212,7 @@ namespace VAICOM
                 DcsMessageTable.Add(4144, "wMsgLeaderINFLIGHTREP");
                 DcsMessageTable.Add(4145, "wMsgLeaderToFACMaximum");
                 DcsMessageTable.Add(4146, "wMsgLeaderToGroundCrewNull");
-                DcsMessageTable.Add(4147, "wMsgLeaderSpecialCommand"); //special for ground
+                DcsMessageTable.Add(4147, "wMsgLeaderSpecialCommand");
                 DcsMessageTable.Add(4148, "wMsgLeaderRequestRefueling");
                 DcsMessageTable.Add(4149, "wMsgLeaderRequestCannonReloading");
                 DcsMessageTable.Add(4150, "wMsgLeaderRequestRearming");
@@ -226,7 +226,7 @@ namespace VAICOM
                 DcsMessageTable.Add(4158, "wMsgLeaderGroundGestureSalut");
                 DcsMessageTable.Add(4159, "wMsgLeaderGroundRequestLaunch");
                 DcsMessageTable.Add(4160, "wMsgLeaderToGroundCrewMaximum");
-                DcsMessageTable.Add(4161, "wMsgLeaderToServiceMaximum"); // what is this?
+                DcsMessageTable.Add(4161, "wMsgLeaderToServiceMaximum");
                 DcsMessageTable.Add(4162, "wMsgLeaderMaximum");
                 DcsMessageTable.Add(4163, "wMsgLeaderToNavyATCNull");
                 DcsMessageTable.Add(4164, "wMsgLeaderInboundCarrier");
@@ -1006,6 +1006,7 @@ namespace VAICOM
                 DcsMessageTable.Add(4938, "wMsgLeaderMoving");
                 DcsMessageTable.Add(4939, "wMsgNavyMaximum");
                 DcsMessageTable.Add(4940, "wMsgMaximum");
+
                 // Add Moose Commands
                 DcsMessageTable.Add(4941, "wMsgLeaderToMooseCmndsNull");
                 DcsMessageTable.Add(4942, "wMsgLeaderToMooseCmndsMaximum");

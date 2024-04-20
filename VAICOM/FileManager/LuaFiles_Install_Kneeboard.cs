@@ -35,11 +35,11 @@ namespace VAICOM
 
                             string dcs_path = "NOT INSTALLED";
 
-                            if (set.Key.Equals("2.8"))
+                            if (set.Key.Equals("2.9"))
                             {
                                 dcs_path = State.dcspath_release;
                             }
-                            if (set.Key.Equals("2.8 OpenBeta"))
+                            if (set.Key.Equals("2.9 OpenBeta"))
                             {
                                 dcs_path = State.dcspath_openbeta;
                             }
