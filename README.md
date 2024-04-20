@@ -74,6 +74,7 @@ Patch Notes V2.9.4.3
 - DCS Version detection updated to detect 2.9.4.x
 - Vaicom Pro DCS module version updated.
 
+
 Known Issues
 
 - AJS-37 Viggen, SRS PTT Mapping remains broken. Heatblur radio device display name issue.
