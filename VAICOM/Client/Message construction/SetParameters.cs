@@ -1,4 +1,6 @@
 ﻿
+using System.Security.Cryptography;
+
 namespace VAICOM
 {
 
@@ -36,56 +38,50 @@ namespace VAICOM
                             State.currentmessage.parameters.Add(State.currentcommand.readback);
                             break;
 
-                        case "wMsgLeaderSpecialCommand": // crew special
+                        case "wMsgLeaderSpecialCommand": // crew special command to add device and paramater types.
                             {
                                 int commandkey = State.currentcommand.uniqueid;
                                 switch (commandkey)
                                 {
-                                    case 18002:
+                                    case 18002: //boarding ladder
                                         State.currentmessage.parameters.Add(State.currentcommand.type);
                                         break;
 
-                                    case 18003:
+                                    case 18003: //inertial starter
                                         State.currentmessage.parameters.Add(State.currentcommand.type);
                                         break;
 
-                                    case 18004:
-                                        //State.currentmessage.parameters.Add("device:0, type:4");
-                                        //State.currentmessage.parameters.Add("device:" + State.currentcommand.device); //Set HMD
-                                        State.currentmessage.parameters.Add(State.currentcommand.type);
+                                    case 18004: //hmd
                                         State.currentmessage.parameters.Add(State.currentcommand.device);
-                                        //State.currentmessage.parameters.Add(State.currentcommand.parametername);
+                                        State.currentmessage.parameters.Add(State.currentcommand.type);
                                         break;
 
-                                    case 18005:
-                                        //State.currentmessage.parameters.Add(":" + State.currentcommand.device);
-                                        State.currentmessage.parameters.Add(State.currentcommand.type); //Set NVG
+                                    case 18005: //nvg
                                         State.currentmessage.parameters.Add(State.currentcommand.device);
-                                        //State.currentmessage.parameters.Add(State.currentcommand.parametername);
-                                        //State.currentmessage.parameters.Add("device:1, type:4");
+                                        State.currentmessage.parameters.Add(State.currentcommand.type); //Set NVG                                        
                                         break;
 
-                                    case 18007:
+                                    case 18007: //epu on
                                         State.currentmessage.parameters.Add(State.currentcommand.type);
                                         State.currentmessage.parameters.Add(State.currentcommand.power_source);
                                         break;
 
-                                    case 18008:
+                                    case 18008: //epu off
                                         State.currentmessage.parameters.Add(State.currentcommand.type);
                                         State.currentmessage.parameters.Add(State.currentcommand.power_source);
                                         break;
 
-                                    case 18009:
+                                    case 18009: //turbo on
                                         State.currentmessage.parameters.Add(State.currentcommand.parametername);
                                         State.currentmessage.parameters.Add(State.currentcommand.value);
                                         break;
 
-                                    case 18010:
+                                    case 18010: //turbo off
                                         State.currentmessage.parameters.Add(State.currentcommand.parametername);
                                         State.currentmessage.parameters.Add(State.currentcommand.value);
                                         break;
 
-                                    case 18006:
+                                    case 18006: //load water
                                         //State.currentmessage.parameters.Add(State.currentcommand.type);
                                         State.currentmessage.parameters.Add(State.currentcommand.volume); // load water for AV-8B
                                         State.currentmessage.parameters.Add(State.currentcommand.device);

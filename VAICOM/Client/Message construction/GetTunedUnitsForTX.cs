@@ -25,7 +25,7 @@ namespace VAICOM
                         if (!radio.intercom && radio.on)
                         {
                             string radiomod = radio.modulation;
-                            string radiofreq = Helpers.Common.NormalizeFreqString(radio.frequency);
+                            string radiofreq = Helpers.Common.NormalizeFreqString(radio.frequency); //is this helper grabbing the correct ,frequency??
                             foreach (KeyValuePair<string, List<Server.DcsUnit>> cat in State.currentstate.availablerecipients)
                             {
                                 if (!cat.Key.Equals("Player") & !cat.Key.Equals("Crew") & !cat.Key.Equals("Cargo")) // &!cat.Key.Equals("Aux")
