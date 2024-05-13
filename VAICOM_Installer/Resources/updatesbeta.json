@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240423,
-      "version": 2944,
-      "versionstring": "2.9.4.4",
+      "releasedate": 20240513,
+      "version": 2946,
+      "versionstring": "2.9.4.6",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.4.4 - Mucking about with terrains and ground crew device parameters - nothing to test yet."
+      "releasenotes": "Beta Test build 2.9.4.6 - Adds Heatblur F-4E as supported module, Jester WIP, Changes to SRS PTT handling, "
     }
   ]
 }
