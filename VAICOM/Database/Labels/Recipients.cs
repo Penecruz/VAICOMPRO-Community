@@ -292,7 +292,7 @@ namespace VAICOM
                 { "Rovaniemi",              "Rovaniemi"             },
                 { "Bodo",                   "Bodo"                  },
                 { "Lakselv",                "Lakselv"               },
-                { "Jokkmokk",               "Jokkmokk"              },
+                //{ "Jokkmokk",               "Jokkmokk"              },
                 { "Kiruna",                 "Kiruna"                },
                 { "Kalixfors",              "Kalixfors"             },
                 { "Severomorsk1",           "Severomorsk-1"         },

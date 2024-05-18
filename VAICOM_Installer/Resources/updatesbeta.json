@@ -8,10 +8,10 @@
       "isdev": false,
       "productid": 1,
       "releasedate": 20240519,
-      "version": 2947,
-      "versionstring": "2.9.4.7",
+      "version": 2948,
+      "versionstring": "2.9.4.8",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.4.7 - Adds Heatblur F-4E as supported module (Jester 2.0 WIP), Changes to SRS PTT handling, Adds Kola Penisular Terrain "
+      "releasenotes": "Beta Test build 2.9.4.8 - Adds Heatblur F-4E as supported module (Jester 2.0 WIP), Changes to SRS PTT handling, Adds Kola Penisular Terrain, Correct error in recipient labels "
     }
   ]
 }
