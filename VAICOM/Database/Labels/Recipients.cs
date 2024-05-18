@@ -284,6 +284,22 @@ namespace VAICOM
                 { "El Calafate",            "El Calafate"           },
                 { "Puerto Natales",         "Puerto Natales"        },
                 { "Aerodromo O'Higgins",    "Aerodromo O'Higgins"   },
+
+                // Kola Peninsular map
+
+                { "BAS100",                 "BAS 100"               },
+                { "Kemi Tornio",            "Kemi Tornio"           },
+                { "Rovaniemi",              "Rovaniemi"             },
+                { "Bodo",                   "Bodo"                  },
+                { "Lakselv",                "Lakselv"               },
+                { "Jokkmokk",               "Jokkmokk"              },
+                { "Kiruna",                 "Kiruna"                },
+                { "Kalixfors",              "Kalixfors"             },
+                { "Severomorsk1",           "Severomorsk-1"         },
+                { "Severomorsk3",           "Severomorsk-3"         },
+                { "Monchegorsk",            "Monchegorsk"           },
+                { "Murmansk International", "Murmansk International"   },
+                { "Olenegorsk",             "Olenegorsk"            },
                 
                 // FARP
 
