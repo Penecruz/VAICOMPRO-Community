@@ -279,6 +279,12 @@ namespace VAICOM
                     State.currentmodule = DCSmodules.LookupTable["F-22A"];
                     return true;
                 }
+                //F-4E Phantom II
+                if (State.currentstate.id.ToLower().Contains("f") & State.currentstate.id.ToLower().Contains("4") && (State.currentstate.id.ToLower().Contains("e")))
+                {
+                    State.currentmodule = DCSmodules.LookupTable["F-4E-45MC"];
+                    return true;
+                }
                 //Goshawk
                 // if (State.currentstate.id.ToLower().Contains("t") & (State.currentstate.id.ToLower().Contains("45")))
                 //{

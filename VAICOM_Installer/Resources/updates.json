@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240420,
-      "version": 2943,
-      "versionstring": "2.9.4.3",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.4.3/VAICOMPRO.zip",
-      "releasenotes": "Release 2.9.4.3 - Hotfix VA Version  - Bug Fixes - Updates to DCS core files compatability - JF-17 radio updates - Vaicom pro module and version detection updates."
+      "releasedate": 20240521,
+      "version": 2950,
+      "versionstring": "2.9.5.0",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.5.0/VAICOMPRO.zip",
+      "releasenotes": "Release 2.9.5.0 - Adds F-4E Phantom II - Adds Kola Penisula terrain - Fixes some SRS PTT errors - "
     }
   ]
 }
