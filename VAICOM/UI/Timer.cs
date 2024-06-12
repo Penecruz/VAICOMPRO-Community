@@ -135,7 +135,7 @@ namespace VAICOM
                 {
                     Log.Write("Update timer elapsed, beacon pulse.", Colors.Inline);
                     State.lastupdaterequesttimer = 0;
-                    if (!State.currentstate.id.Equals("UH-1H")) // don't update for Huey
+                    if (!State.currentstate.id.Equals("UH-1H")) // don't update for Huey //Why?? Pene
                     {
                         DcsClient.SendUpdateRequest();
                     }

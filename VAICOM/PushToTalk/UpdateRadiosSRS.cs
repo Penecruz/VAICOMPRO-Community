@@ -87,6 +87,7 @@ namespace VAICOM
                     {"Hercules" ,           new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"T-45" ,               new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-4E-45MC" ,          new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
+                    {"OH58D" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
 
                 };
 
@@ -153,6 +154,7 @@ namespace VAICOM
                     {"Hercules" ,   new radioslotlist() { Slot_map = { "", "CB UHF", ""} } }, //Pene
                     {"T-45" ,       new radioslotlist() { Slot_map = { "RADIO2", "RADIO1", ""} } }, //Pene
                     {"F-4E-45MC" ,  new radioslotlist() { Slot_map = { "UHF ARC-164", "", ""} } }, //Pene
+                    {"OH58D" ,      new radioslotlist() { Slot_map = { "UHF AM", "VHF AM", "VHF FM1" } } }, //Pene
                     {"F-16I" ,      new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
                     {"F-16D_50" ,   new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
                     {"F-16D_50_NS", new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "VHF Radio AN/ARC-222", "" } } },
@@ -227,6 +229,7 @@ namespace VAICOM
                     {"Hercules" ,   new radioslotlist() { Slot_map = { "", "AN/ARC-164", ""} } },
                     {"T-45" ,       new radioslotlist() { Slot_map = { "AN/ARC-182 1", "AN/ARC-182 2", ""} } }, //Pene WIP
                     {"F-4E-45MC" ,  new radioslotlist() { Slot_map = { "UHF ARC-164", "", ""} } }, //Pene
+                    {"OH58D" ,      new radioslotlist() { Slot_map = { "AN/ARC-231(U)", "AN/ARC-231(V)", "AN/ARC-231(FM)" } } }, //Pene
                     {"F-16I" ,      new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
                     {"F-16D_50" ,   new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
                     {"F-16D_50_NS", new radioslotlist() { Slot_map = { "AN/ARC-164 UHF", "AN/ARC-222 VHF", "" } } },
