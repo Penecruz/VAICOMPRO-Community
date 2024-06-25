@@ -9,22 +9,10 @@
     <FileVersion>0.0.0.0</FileVersion>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -56,12 +44,7 @@ del *.config
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
   </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>

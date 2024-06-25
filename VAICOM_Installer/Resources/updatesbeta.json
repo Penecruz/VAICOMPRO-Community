@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240612,
-      "version": 2952,
-      "versionstring": "2.9.5.2",
+      "releasedate": 20240626,
+      "version": 2955,
+      "versionstring": "2.9.5.5",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.5.2 - Adds Heatblur OH-58D  ( WIP), Changes Sinai Map Recipients, other crazy idea shit that may break other stuff, sorry "
+      "releasenotes": "Beta Test build 2.9.5.5 - Adds OH-58D Kiowa, adds CH-47F Chinook, adds Afghanistan Map as supported recipients, Change to DX loop sampling rate, updated DCS Core luas"
     }
   ]
 }

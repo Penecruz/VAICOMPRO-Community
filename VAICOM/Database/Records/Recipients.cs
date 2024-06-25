@@ -351,6 +351,27 @@ namespace VAICOM
 
                 { "wAIUnitATCKolaMaximum",      new Recipient { uniqueid = 15630, category = RecipientCategories.aiatc, name = "wAIUnitATCKolaMaximum",           } },
 
+                // Afghanistan Map
+
+                { "wAIUnitATCAfghanNull",       new Recipient { uniqueid = 15650, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanNull",              } },
+
+                { "Tarinkot",                   new Recipient { uniqueid = 15651, category = RecipientCategories.aiatc, name = "wAIUnitATCCAfghanTarinkot",  displayname = Labels.airecipients["Tarinkot"], blockedforFree = true  } },
+                { "kandahar",                   new Recipient { uniqueid = 15652, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghankandahar",  displayname = Labels.airecipients["kandahar"], blockedforFree = true  } },
+                { "Kandahar Heliport",          new Recipient { uniqueid = 15653, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanKandaharHeliport",  displayname = Labels.airecipients["Kandahar Heliport"], blockedforFree = true  } },
+                { "Chaghcharan",                new Recipient { uniqueid = 15654, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanChaghcharan",  displayname = Labels.airecipients["Chaghcharan"], blockedforFree = true  } },
+                { "Bost",                       new Recipient { uniqueid = 15655, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanBost",  displayname = Labels.airecipients["Bost"], blockedforFree = true  } },
+                { "Dwyer",                      new Recipient { uniqueid = 15656, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanDwyer",  displayname = Labels.airecipients["Dwyer"], blockedforFree = true  } },
+                { "Camp Bastion",               new Recipient { uniqueid = 15657, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanCampBastion",  displayname = Labels.airecipients["Camp Bastion"], blockedforFree = true  } },
+                { "Camp Bastion Heliport",      new Recipient { uniqueid = 15658, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanCampBastionHeliport",  displayname = Labels.airecipients["Camp Bastion Heliport"], blockedforFree = true  } },
+                { "Qala i Naw",                 new Recipient { uniqueid = 15659, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanQala i Naw",  displayname = Labels.airecipients["Qala i Naw"], blockedforFree = true  } },
+                { "Herat",                      new Recipient { uniqueid = 15660, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanHerat",  displayname = Labels.airecipients["Herat"], blockedforFree = true  } },
+                { "Shindand",                   new Recipient { uniqueid = 15661, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanShindand",  displayname = Labels.airecipients["Shindand"], blockedforFree = true  } },
+                { "Shindand Heliport",          new Recipient { uniqueid = 15662, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanShindandHeliport",  displayname = Labels.airecipients["Shindand Heliport"], blockedforFree = true  } },
+                { "Farah",                      new Recipient { uniqueid = 15663, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanFarah",  displayname = Labels.airecipients["Farah"], blockedforFree = true  } },
+                { "Nimroz",                     new Recipient { uniqueid = 15664, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanNimroz",  displayname = Labels.airecipients["Nimroz"], blockedforFree = true  } },
+
+                { "wAIUnitATCAfghanMaximum",   new Recipient { uniqueid = 15680, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanMaximum",           } },
+
                 // Farps
 
                 { "wAIUnitATCFarpsNull",        new Recipient { uniqueid = 15400, category = RecipientCategories.aifarp, name = "wAIUnitATCFarpsNull",         } },

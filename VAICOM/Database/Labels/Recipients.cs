@@ -301,6 +301,23 @@ namespace VAICOM
                 { "Murmansk International", "Murmansk International"   },
                 { "Olenegorsk",             "Olenegorsk"            },
                 
+                // Afghanistan map
+
+                { "Tarinkot",               "Tarinkot"              },
+                { "kandahar",               "kandahar"              },
+                { "Kandahar Heliport",      "Kandahar Heliport"     },
+                { "Chaghcharan",            "Chaghcharan"           },
+                { "Bost",                   "Bost"                  },
+                { "Dwyer",                  "Dwyer"                 },
+                { "Camp Bastion",           "Camp Bastion"          },
+                { "Camp Bastion Heliport",  "Camp Bastion Heliport" },
+                { "Qala i Naw",             "Qala i Naw"            },
+                { "Herat",                  "Herat"                 },
+                { "Shindand",               "Shindand"              },
+                { "Shindand Heliport",      "Shindand Heliport"     },
+                { "Farah",                  "Farah"                 },
+                { "Nimroz",                 "Nimroz"                },
+
                 // FARP
 
                 { "platform",               "Helipad"               },

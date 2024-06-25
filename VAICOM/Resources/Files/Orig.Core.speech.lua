@@ -25,7 +25,6 @@ module('speech')
 
 --Protocol by country
 
---[DCSCORE-6483: A-10C speech error](https://jira.eagle.ru/browse/DCSCORE-6483)
 --by some reason at mission execution  time  table coutry is chnaged in format , save  original  as reference
 
 local  nations  = base.country.id
