@@ -62,6 +62,30 @@ namespace VAICOM
                     }
                 }
 
+                public static void ExtractNoLoadContext() // add NoLoadContext for VA 2.0 Compatability Pene
+                {
+
+                    try
+                    {
+                        string rootpath = State.Proxy.SessionState["VA_APPS"] + "\\" + Products.Products.Families.Vaicom.VaicomProPlugin.rootfoldername;
+                        string writefile;
+
+                        byte[] source = Properties.Resources.NoLoadContext;
+
+                        writefile = rootpath + "\\" + "NoLoadContext";
+
+                        if (File.Exists(writefile))
+                        {
+                            File.Delete(writefile);
+                        }
+
+                        File.WriteAllBytes(writefile, source);
+
+                    }
+                    catch
+                    {
+                    }
+                }
 
                 public static void DeleteConfigFolder()
                 {

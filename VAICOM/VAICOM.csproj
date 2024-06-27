@@ -142,6 +142,7 @@ TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
     <EmbeddedResource Include="Resources\Audio\UI\Stereo 44kHz 16bit -26dB\UI Squelch_LT.wav" />
     <EmbeddedResource Include="Resources\Audio\UI\Stereo 44kHz 16bit -26dB\UI Switch Soft.wav" />
     <EmbeddedResource Include="Resources\Files\EULA.txt" />
+    <EmbeddedResource Include="Resources\Files\NoLoadContext" />
     <EmbeddedResource Include="Resources\Files\Updater_Chatter.txt" />
     <EmbeddedResource Include="Resources\Files\Updater_Plugin.txt" />
     <EmbeddedResource Include="Resources\Files\Updater_RIO.txt" />
@@ -337,5 +338,8 @@ TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="App.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Files\NoLoadContext" />
   </ItemGroup>
 </Project>
