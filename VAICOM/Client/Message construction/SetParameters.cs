@@ -52,13 +52,13 @@ namespace VAICOM
                                         break;
 
                                     case 18004: //hmd
-                                        State.currentmessage.parameters.Add(State.currentcommand.device);
                                         State.currentmessage.parameters.Add(State.currentcommand.type);
+                                        State.currentmessage.parameters.Add(State.currentcommand.device);                                        
                                         break;
 
                                     case 18005: //nvg
+                                        State.currentmessage.parameters.Add(State.currentcommand.type);//Set NVG
                                         State.currentmessage.parameters.Add(State.currentcommand.device);
-                                        State.currentmessage.parameters.Add(State.currentcommand.type); //Set NVG                                        
                                         break;
 
                                     case 18007: //epu on

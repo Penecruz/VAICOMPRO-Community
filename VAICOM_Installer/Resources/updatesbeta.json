@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240627,
-      "version": 2957,
-      "versionstring": "2.9.5.7",
+      "releasedate": 20240628,
+      "version": 2959,
+      "versionstring": "2.9.5.9",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Beta Test build 2.9.5.7 - Adds OH-58D Kiowa, adds CH-47F Chinook, adds Afghanistan Map as supported recipients, Change to DX loop sampling rate, updated DCS Core luas, Added new payload file for VA 2.0 Compatability"
+      "releasenotes": "Change to DX loop sampling rate, Added new payload file for VA 2.0 Compatability, RC for DCS 2.9.6.X"
     }
   ]
 }
