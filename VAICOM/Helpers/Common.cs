@@ -21,7 +21,7 @@ namespace VAICOM
                 return Regex.Replace(q, @"\d", "");
             }
 
-            public static string ReadFrequency(string q)
+            public static string ReadFrequency(string q) //grabbing frequency list and creating a sorted list.
             {
                 //input must be normalized freq string
                 string returnstr = q;
@@ -46,7 +46,7 @@ namespace VAICOM
             {
                 List<string> SortedList = new List<string>();
 
-                SortedList = a.OrderBy(q => q).ToList();
+                SortedList = a.OrderBy(q => q).ToList(); // (q => q)?? or reverse
 
                 return SortedList;
             }

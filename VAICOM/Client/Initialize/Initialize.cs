@@ -425,6 +425,7 @@ namespace VAICOM
 
                     FileHandler.Root.CheckSubFolders();
                     FileHandler.Root.ExtractCompagnionApp();
+                    FileHandler.Root.ExtractNoLoadContext();
 
                     Log.Write("VAICOM PRO Community Edition for DCS World.", Colors.System);
                     Log.Write("Press LCtrl+LAlt+C to open Vaicom Pro UI", Colors.System);

@@ -346,6 +346,49 @@ namespace VAICOM
                 { "Puerto Natales",         "Puerto Natales"        },
                 { "O'Higgins",              "Aerodromo O'Higgins"   },
 
+                // Kola Peninsular map
+
+                { "BAS 100",                "BAS100"                },
+                { "Tornio",                 "Kemi Tornio"           },
+                { "Kemi Tornio",            "Kemi Tornio"           },
+                { "Rovaniemi",              "Rovaniemi"             },
+                { "Bodo",                   "Bodo"                  },
+                { "Lakselv",                "Lakselv"               },
+                { "Banak",                  "Lakselv"               },
+                { "Jokkmokk",               "Jokkmokk"              },
+                { "Kiruna",                 "Kiruna"                },
+                { "Kalixfors",              "Kalixfors"             },
+                { "Severomorsk One",        "Severomorsk1"          },
+                { "Severomorsk Three",      "Severomorsk3"          },
+                { "Severomorsk North",      "Severomorsk1"          },
+                { "Severomorsk South",      "Severomorsk3"          },
+                { "Monchegorsk",            "Monchegorsk"           },
+                { "Murmansk",               "Murmansk International"  },
+                { "Murmansk International", "Murmansk International"  },
+                { "Olenegorsk",             "Olenegorsk"            },
+
+                // Afghanistan map
+
+                { "Tarinkot",               "Tarinkot"              },
+                { "kandahar",               "kandahar"              },
+                { "Kandahar Heliport",      "Kandahar Heliport"     },
+                { "Kandahar Pads",          "Kandahar Heliport"     },
+                { "Chaghcharan",            "Chaghcharan"           },
+                { "Bost",                   "Bost"                  },
+                { "Dwyer",                  "Dwyer"                 },
+                { "Yardbird",               "Dwyer"                 },
+                { "Camp Bastion",           "Camp Bastion"          },
+                { "Bastion",                "Camp Bastion"          },
+                { "Camp Bastion Heliport",  "Camp Bastion Heliport" },
+                { "Bastion Pads",           "Camp Bastion Heliport" },
+                { "Qala i Naw",             "Qala i Naw"            },
+                { "Qala",                   "Qala i Naw"            },
+                { "Herat",                  "Herat"                 },
+                { "Shindand",               "Shindand"              },
+                { "Shindand Heliport",      "Shindand Heliport"     },
+                { "Shindand Pads",          "Shindand Heliport"     },
+                { "Farah",                  "Farah"                 },
+                { "Nimroz",                 "Nimroz"                },
 
                 // farp
 

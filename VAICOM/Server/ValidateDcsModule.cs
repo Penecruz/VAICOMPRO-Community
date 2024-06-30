@@ -274,9 +274,21 @@ namespace VAICOM
                     return true;
                 }
                 //F-22 Raptor
-                if (State.currentstate.id.ToLower().Contains("f") & (State.currentstate.id.ToLower().Contains("22a")))
+                if (State.currentstate.id.ToLower().Contains("f") & State.currentstate.id.ToLower().Contains("22") && (State.currentstate.id.ToLower().Contains("a")))
                 {
                     State.currentmodule = DCSmodules.LookupTable["F-22A"];
+                    return true;
+                }
+                //F-4E Phantom II
+                if (State.currentstate.id.ToLower().Contains("f") & State.currentstate.id.ToLower().Contains("4") && (State.currentstate.id.ToLower().Contains("e")))
+                {
+                    State.currentmodule = DCSmodules.LookupTable["F-4E-45MC"];
+                    return true;
+                }
+                //OH-58D Kiowa Warrier
+                if (State.currentstate.id.ToLower().Contains("OH") & State.currentstate.id.ToLower().Contains("58") && (State.currentstate.id.ToLower().Contains("d")))
+                {
+                    State.currentmodule = DCSmodules.LookupTable["OH58D"];
                     return true;
                 }
                 //Goshawk
