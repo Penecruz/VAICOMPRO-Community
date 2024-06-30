@@ -53,7 +53,7 @@ namespace VAICOM
                     {"F-14" ,               new radioslotdevicelist() { Slot_map_INT = {3,4,0}, Slot_map_SRS = {3,4,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-14A" ,              new radioslotdevicelist() { Slot_map_INT = {4,4,0}, Slot_map_SRS = {3,4,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-14B" ,              new radioslotdevicelist() { Slot_map_INT = {3,4,0}, Slot_map_SRS = {3,4,0}, Slot_map_CUS = {0,0,0} } },
-                    {"AJS37" ,              new radioslotdevicelist() { Slot_map_INT = {30,31,0}, Slot_map_SRS = {30,31,0}, Slot_map_CUS = {30,31,0} } },
+                    {"AJS37" ,              new radioslotdevicelist() { Slot_map_INT = {30,31,0}, Slot_map_SRS = {30,31,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-5E-3" ,             new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"P-51D" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"SpitfireLFMkIX",      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
@@ -117,7 +117,7 @@ namespace VAICOM
                     {"F-14" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"F-14A" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"F-14B" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
-                    {"AJS37" ,      new radioslotlist() { Slot_map = { "AM Radio", "AM Radio", "" } } },//testradio2, testradio folders in seq. looks under test in module broken with same name.
+                    {"AJS37" ,      new radioslotlist() { Slot_map = { "FR24", "FR22", "" } } },//testradio2, testradio folders in seq. looks under test in module broken with same name.
                     {"F-5E-3" ,     new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "", "" } } },
                     {"P-51D" ,      new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"SpitfireLFMkIX",new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
