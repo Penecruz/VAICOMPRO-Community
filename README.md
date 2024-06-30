@@ -63,26 +63,27 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 ## Patch Notes
 
 
-Patch Notes V2.9.4.3
+**VAICOM PRO plugin 2.9.6.0**
 
-- Hotfix for VA Version check
-2.9.4.2
-- JF-17 radio changes now multi radio TX.
-- JF-17 SRS PTT Radio names now match Aircraft.
-- Fixed ATC comms menu pop ups if Disable Menus selected in vaicom Pro UI.
-- Fixed AAR Tanker comms pop ups when Disable Menus selected in vaicom Pro UI.
-- DCS Version detection updated to detect 2.9.4.x
-- Vaicom Pro DCS module version updated.
+This update adds new aircraft and terrain to the supported modules list. It also adds support for the next version of Voice Attack while maintaining backward compatibility with the current version.
 
+-	Added OH-58D(R) as a supported aircraft (WIP see notes below).
+-	Added CH-47F as a supported aircraft.
+-	Added Afghanistan (south) terrain to ATC recipients list.
+-	Added support for Voice Attack 2.0 when released.
+- Fixed AJS37 Viggen FR24/FR22 Radios **Requires next release of DCS to function** (thanks HeatBlur for the change)
+-	Changed DX update loop refresh to be quicker (feedback appreciated if you see performance issues)
 
-Known Issues
+With the additional terrain added you will need to update your profile keywords using the Test > Finish steps.
 
-- AJS-37 Viggen, SRS PTT Mapping remains broken. Heatblur radio device display name issue.
-- F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
-- Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
+**Known Issues**
 
-Mirage f1 Kneeboard cover causes issues (recommend deleting it (1.png) from \DCS World OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-\KNEEBOARD\pages folders.
-
+-	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
+-	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
+-	Mirage f1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
+-	Easy comms/Instant select at some airports will not function due to map developers’ incomplete data. Can still be manually tuned. E.g most of the Sinai airports.
+-	VaicomPro manual needs updating for Kola and Afghanistan map and page numbering
+-	OH-58D(R) Radio is multi rather than single PTT until I can work out why it’s not functioning as expected.
 
 ## Community Team
 
