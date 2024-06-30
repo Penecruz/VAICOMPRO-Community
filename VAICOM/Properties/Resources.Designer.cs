@@ -774,7 +774,7 @@ namespace VAICOM.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to local self_ID = &quot;VAICOM PRO Community Edition&quot;
+        ///   Looks up a localized string similar to local self_ID = &quot;VAICOM PRO&quot;
         ///
         ///declare_plugin(self_ID,
         ///{
@@ -782,14 +782,15 @@ namespace VAICOM.Properties {
         ///	dirName		 = current_mod_path,
         ///	binaries	 = {&apos;VAICOMPRO.dll&apos;},
         ///
-        ///	displayName	 = &quot;VAICOM PRO Community Edition&quot;,
+        ///	displayName	 = &quot;VAICOM PRO&quot;,
         ///	shortName	 = &quot;VAICOM PRO&quot;,
-        ///	fileMenuName = &quot;VAICOM PRO Community Edition&quot;,
+        ///	fileMenuName = &quot;VAICOM PRO&quot;,
         ///
-        ///	version		 = &quot;2.8.5&quot;,
+        ///	version		 = &quot;2.9.4&quot;,
         ///	state		 = &quot;installed&quot;, 	
         ///	developerName= &quot;VAICOM Community&quot;,
-        ///	info		 = _(&quot;VAICOM PRO Community Edition is a professional-grade voice communications interface. The plugin uses VoiceAttack as c [rest of string was truncated]&quot;;.
+        ///	info		 = _(&quot;VAICOM PRO Community Edition is a voice communications interface plugin for VoiceAttack, enabling true-to-life radio communications with all AI units in the mission.&quot;),
+        ///        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string entry {
             get {
@@ -799,8 +800,16 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to ---------------------------
-        ///This software is public domain.
-        ///All use is at your own risk..
+        ///MIT License
+        ///
+        ///Copyright (c) 2022 VAICOM PRO Community Edition
+        ///
+        ///Permission is hereby granted, free of charge, to any person obtaining a copy
+        ///of this software and associated documentation files (the &quot;Software&quot;), to deal
+        ///in the Software without restriction, including without limitation the rights
+        ///to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        ///copies of the Software, and to permit persons to whom the Software is
+        ///furnished to do so, subject to the f [rest of string was truncated]&quot;;.
         /// </summary>
         public static string EULA {
             get {
@@ -969,6 +978,16 @@ namespace VAICOM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] NoLoadContext {
+            get {
+                object obj = ResourceManager.GetObject("NoLoadContext", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] Notepad_png {
             get {
                 object obj = ResourceManager.GetObject("Notepad_png", resourceCulture);
@@ -1029,8 +1048,7 @@ namespace VAICOM.Properties {
         ///				[&quot;text&quot;] = {
         ///					[&quot;fontSize&quot;] = 10,
         ///					[&quot;horzAlign&quot;] = {
-        ///						[&quot;type&quot;] = &quot;min&quot;
-        /// [rest of string was truncated]&quot;;.
+        ///						[&quot;type&quot;] = &quot;min&quot;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         public static string options {
             get {
@@ -1096,13 +1114,14 @@ namespace VAICOM.Properties {
         ///local require = base.require
         ///require(&apos;i18n&apos;).setup(_M)
         ///
-        ///--Game Modules
+        ///local print 	= base.print
+        ///local tostring 	= base.tostring
+        ///local tonumber  = base.tonumber
         ///
-        ///local defaultModuleName = &apos;Common&apos;
+        ///local  BIG_CALLSIGN_MIN = 1e9
+        ///local  SHT_CALLSIGN_MAX = 1e3
         ///
-        ///local function getModuleByLocalPlayer()
-        ///	local localPlayer = base.world.getPlayer()
-        ///	if localPlayer ~= nil then [rest of string was truncated]&quot;;.
+        ///function c [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Orig_Core_common {
             get {
@@ -1920,7 +1939,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO Commnity Edition 2.8
+        ///ECHO VAICOM PRO Commnity Edition 2.9
         ///ECHO Extension Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe
@@ -1942,19 +1961,19 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO 2.8
+        ///ECHO VAICOM PRO 2.9
         ///ECHO Plugin Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe
         ///TIMEOUT /T 2
         ///ECHO Updating files...
-        ///COPY /Y &quot;Updates\Package\VAICOMPRO\Documentation\VAICOM PRO User Manual.pdf&quot; &quot;Documentation\VAICOM PRO User Manual.pdf&quot; 
+        ///COPY /Y &quot;Updates\Package\VAICOMPRO\Documentation\VAICOM PRO Community User Manual.pdf&quot; &quot;Documentation\VAICOM PRO Community User Manual.pdf&quot; 
         ///COPY /Y &quot;Updates\Package\VAICOMPRO\EULA.txt&quot; &quot;EULA.txt&quot; 
         ///COPY /Y &quot;Updates\Package\VAICOMPRO\VAICOMPRO.dll&quot; &quot;VAICOMPRO.dll&quot; 
         ///RMDIR /S /Q &quot;Updates&quot;
         ///DEL /Q VAICOMPRO.exe
         ///ECHO Restarting VoiceAttack...
-        ///START &quot;VoiceAttack&quot; /MI [rest of string was truncated]&quot;;.
+        ///STA [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Updater_Plugin {
             get {
@@ -1964,7 +1983,7 @@ namespace VAICOM.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @ECHO OFF
-        ///ECHO VAICOM PRO Community Edition 2.8
+        ///ECHO VAICOM PRO Community Edition 2.9
         ///ECHO Extension Updater running...
         ///ECHO Closing VoiceAttack...
         ///TASKKILL /F /IM VoiceAttack.exe

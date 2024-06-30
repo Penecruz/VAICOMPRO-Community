@@ -583,4 +583,7 @@
   <data name="Append_Kneeboard_command_defs" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\files\append.kneeboard.command_defs.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="NoLoadContext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\NoLoadContext;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

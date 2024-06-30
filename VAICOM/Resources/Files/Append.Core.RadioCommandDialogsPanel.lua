@@ -661,7 +661,7 @@ local function vaicom_loop()
 		end
 	else
 		base.print("KILL VAICOM LOOP")
-		Gui.EnableHighSpeedUpdate(false)
+		Gui.EnableHighSpeedUpdate(true) -- default = false Pene WIP run high speed true for testing
 		Gui.RemoveUpdateCallback(vaicom_loop)
 		end
 end

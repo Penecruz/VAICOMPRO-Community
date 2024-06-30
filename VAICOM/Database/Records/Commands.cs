@@ -12,7 +12,7 @@ namespace VAICOM
             public static Dictionary<string, Command> Table = new Dictionary<string, Command>(StringComparer.OrdinalIgnoreCase)
             {
 
-            // device control section 00000
+            // device control section 00000 //was this removed to limit scope creep???
             { "iCommandNull" ,          new Command { uniqueid = 00000, category = CommandCategories.cockpit, dcsid = "iCommandNull" } },
             //{ "gearup" ,                new Command { uniqueid = 00000, category = cmdcat.cockpit, eventnumber = 0068, name = "iCommandGearUp" ,   displayname=Labels.cockpitcontrol["gearup"],   hasparameter =  true, on = true} },
             //{ "geardown" ,              new Command { uniqueid = 00000, category = cmdcat.cockpit, eventnumber = 0068, name = "iCommandGearDown" , displayname=Labels.cockpitcontrol["geardown"], hasparameter =  true, on = false} },

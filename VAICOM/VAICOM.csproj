@@ -9,22 +9,10 @@
     <FileVersion>0.0.0.0</FileVersion>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -56,12 +44,7 @@ del *.config
     <PreBuildEvent>TASKKILL /FI "STATUS eq RUNNING" /F /IM VoiceAttack.exe
 TASKKILL /FI "STATUS eq RUNNING" /F /IM XDesProc.exe</PreBuildEvent>
   </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>cd "$(TargetDir)"
-del *.pdb
-del *.config
-</PostBuildEvent>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <PackageReference Include="Costura.Fody" Version="5.7.0">
       <PrivateAssets>all</PrivateAssets>
@@ -159,6 +142,7 @@ del *.config
     <EmbeddedResource Include="Resources\Audio\UI\Stereo 44kHz 16bit -26dB\UI Squelch_LT.wav" />
     <EmbeddedResource Include="Resources\Audio\UI\Stereo 44kHz 16bit -26dB\UI Switch Soft.wav" />
     <EmbeddedResource Include="Resources\Files\EULA.txt" />
+    <EmbeddedResource Include="Resources\Files\NoLoadContext" />
     <EmbeddedResource Include="Resources\Files\Updater_Chatter.txt" />
     <EmbeddedResource Include="Resources\Files\Updater_Plugin.txt" />
     <EmbeddedResource Include="Resources\Files\Updater_RIO.txt" />
@@ -354,5 +338,8 @@ del *.config
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="App.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Files\NoLoadContext" />
   </ItemGroup>
 </Project>
