@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240529,
-      "version": 2960,
-      "versionstring": "2.9.6.0",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.6.0/VAICOMPRO.zip",
-      "releasenotes": "Release 2.9.6.0 - Adds OH-58D Kiowa II, CH-47F Chinook, Afghanistan terrain. VA 2.0 compatability, fixes AJS-37 Viggen radios, DX Loop rate changed, other minor updates  "
+      "releasedate": 20240722,
+      "version": 2963,
+      "versionstring": "2.9.6.3",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.6.3/VAICOMPRO.zip",
+      "releasenotes": "Release 2.9.6.3 Hotfix - AV-8B Harrier PTT handling, F-16C Virper Non SRS TX1/2 ordering, AJS-37 Viggen Non SRS TX1/2 ordering"
     }
   ]
 }

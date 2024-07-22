@@ -11,7 +11,7 @@
       "version": 2963,
       "versionstring": "2.9.6.3",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Hotfix - AV-8B Harrier PTT names, F-16C Virper Non SRS TX1/2 ordering, AJS-37 Viggen Non SRS TX1/2 ordering"
+      "releasenotes": "Hotfix - AV-8B Harrier PTT handling, F-16C Virper Non SRS TX1/2 ordering, AJS-37 Viggen Non SRS TX1/2 ordering"
     }
   ]
 }
