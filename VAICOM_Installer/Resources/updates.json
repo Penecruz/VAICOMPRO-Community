@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240722,
-      "version": 2963,
-      "versionstring": "2.9.6.3",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.6.3/VAICOMPRO.zip",
-      "releasenotes": "Release 2.9.6.3 Hotfix - AV-8B Harrier PTT handling, F-16C Virper Non SRS TX1/2 ordering, AJS-37 Viggen Non SRS TX1/2 ordering"
+      "releasedate": 20240728,
+      "version": 2967,
+      "versionstring": "2.9.6.7",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.6.7/VAICOMPRO.zip",
+      "releasenotes": "Release 2.9.6.7 Hotfix - Fix AV-8B Harrier COMM1 and COMM2 handling, Fix F/A-18C Non SRS PTT Mode VHF TX slot moved to TX3, Fix A-10C II SRS PTT Mode radios not functioning correctly,Fix F-5E SRS PTT Mode radio not functioning correctly"
     }
   ]
 }
