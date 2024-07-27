@@ -27,7 +27,7 @@ namespace VAICOM
 
             public static class maps
             {
-                //not used for now, would really like to understand what the plan was here? Slot Map seems to be in play now F-15E and AV-8B need to work out order of TX1 2 3 - Pene
+                //not used for now, would really like to understand what the plan was here? -Pene
                 public static Dictionary<string, radioslotdevicelist> slot_mapping_table = new Dictionary<string, radioslotdevicelist>()
                 {
                     {"----" ,       new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
@@ -105,7 +105,7 @@ namespace VAICOM
                     {"Mi-8MT" ,     new radioslotlist() { Slot_map = { "R-863", "JADRO-1A", "R-828" } } },
                     {"UH-1H" ,      new radioslotlist() { Slot_map = { "VHF FM", "CB UHF", "VHF AM"  } } },
                     //{"A-10C" ,      new radioslotlist() { Slot_map = { "VHF AM", "CB UHF", "VHF FM" } } }, OLD version saved in case issues with non A10CII modules
-                    {"A-10C" ,      new radioslotlist() { Slot_map = { "VHF AM", "CB UHF", "VHF FM" } } },
+                    {"A-10C" ,      new radioslotlist() { Slot_map = { "VHF AM (ARC-210)", "UHF AM (ARC-164)", "VHF FM (ARC-186)" } } },
                     {"TF-51D" ,     new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"MiG-15Bis" ,  new radioslotlist() { Slot_map = { "RSI-6K", "", "" } } },
                     {"Su-27" ,      new radioslotlist() { Slot_map = { "VHF AM", "UHF", "VHF FM" } } },

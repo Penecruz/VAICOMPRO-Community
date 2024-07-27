@@ -348,7 +348,7 @@ function ProcessRemoteCommand()
 		socket.try(base.vaicom.sender:send(base.vaicom.flags.raw))
 		return
 	end
-	if clientmessage.type == base.vaicom.messagetype.aicomms			then
+	if clientmessage.type == base.vaicom.messagetype.aicomms			then -- Rearming Menu call
 		local unitcomm, tgtunit = SetTargetComm(clientmessage.command)
 		if clientmessage.command == base.Message.wMsgLeaderRequestRearming then
 			base.MissionResourcesDialog.onRadioMenuRearm()
