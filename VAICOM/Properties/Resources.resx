@@ -586,4 +586,16 @@
   <data name="NoLoadContext" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Files\NoLoadContext;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Append_Terrain_Nevada_Radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\Append.Terrain.Nevada.Radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Append_Terrain_Siani_radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\Append.Terrain.Siani.radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Orig_Terrain_Nevada_Radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\Orig.Terrain.Nevada.Radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Orig_Terrain_Siani_radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\Orig.Terrain.Siani.radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

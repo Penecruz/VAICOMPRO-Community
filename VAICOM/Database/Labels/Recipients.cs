@@ -258,6 +258,20 @@ namespace VAICOM
                 { "Ben-Gurion",             "Ben-Gurion"            },
                 { "Ovda",                   "Ovda"                  },
                 { "St Catherine",           "St Catherine"          },
+                { "Wadi Abu Rish",          "Wadi Abu Rish"         },
+                { "Ramon International Airport",              "Ramon International Airport"            },
+                { "Sharm El Sheikh International Airport",    "Sharm El Sheikh International Airport"  },
+                { "Hurghada International Airport",           "Hurghada International Airport"         },
+                { "Al Bahr al Ahmar",                         "Al Bahr al Ahmar"                       },
+                { "El Minya",              "El Minya"               },
+                { "Beni Suef",             "Beni Suef"              },
+                { "Kom Awshim",            "St Catherine"           },
+                { "Quwaysina",             "Kom Awshim"             },
+                { "Birma Air Base",        "Birma Air Base"         },
+                { "Gebel El Basur Air Base",                 "Gebel El Basur Air Base"                },
+                { "Al Rahmaniyah Air Base",                  "Al Rahmaniyah Air Base"                 },
+                { "Jiyanklis Air Base",                      "Jiyanklis Air Base"                     },
+                { "Borj El Arab International Airport",      "Borj El Arab International Airport"     },
 
                 // South Atlantic map
 

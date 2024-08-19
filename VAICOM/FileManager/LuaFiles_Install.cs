@@ -521,7 +521,7 @@ namespace VAICOM
 
                                     if (!forcequiet)
                                     {
-                                        Log.Write("   " + updatecounter + "/7 DCS-side files were updated.", Colors.Text);
+                                        Log.Write("   " + updatecounter + "/9 DCS-side files were updated.", Colors.Text);
                                     }
 
                                     // Done, now install theme for this DCS version:

@@ -483,6 +483,59 @@ namespace VAICOM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to dofile(&apos;Scripts/World/Radio/ModulationTypes.lua&apos;)
+        ///dofile(&apos;Scripts/World/Radio/FrequencyBands.lua&apos;)
+        ///
+        ///local gettext = require(&quot;i_18n&quot;)
+        ///local       _ = gettext.translate
+        ///
+        ///--WORLD RADIO -- Appended by Vaicompro
+        ///
+        ///radioTableFormat = 3
+        ///radio = {
+        ///	{
+        ///		radioId = &apos;airfield6_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;Boulderñity&quot;), &quot;Boulderñity&quot;}}};
+        ///		frequency = {[UHF] = {MODULATIONTYPE_AM, 250100000.000000}, [VHF_HI] = {MODULATIONTYPE_AM, 118050000.000000}};
+        ///		sceneObjects = {&apos;t:48 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Append_Terrain_Nevada_Radio {
+            get {
+                return ResourceManager.GetString("Append_Terrain_Nevada_Radio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dofile(&apos;Scripts/World/Radio/ModulationTypes.lua&apos;)
+        ///dofile(&apos;Scripts/World/Radio/FrequencyBands.lua&apos;)
+        ///
+        ///local gettext = require(&quot;i_18n&quot;)
+        ///local       _ = gettext.translate
+        ///
+        ///--WORLD RADIO -- Appended by VaicomPro
+        ///
+        ///radioTableFormat = 3
+        ///radio = {
+        ///	{
+        ///		radioId = &apos;0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;Sharqiyah&quot;), &quot;Sharqiyah&quot;}}}; -- Where is this?
+        ///		frequency = {};
+        ///		sceneObjects = {&apos;t:10379342&apos;};
+        ///	};
+        ///	{
+        ///		radioId = &apos;airfield1_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		cal [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Append_Terrain_Siani_radio {
+            get {
+                return ResourceManager.GetString("Append_Terrain_Siani_radio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] base_menu_window {
@@ -1339,6 +1392,64 @@ namespace VAICOM.Properties {
         public static string Orig_ReplaceString_F14_JesterAI_Page {
             get {
                 return ResourceManager.GetString("Orig_ReplaceString_F14_JesterAI_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dofile(&apos;Scripts/World/Radio/ModulationTypes.lua&apos;)
+        ///dofile(&apos;Scripts/World/Radio/FrequencyBands.lua&apos;)
+        ///
+        ///local gettext = require(&quot;i_18n&quot;)
+        ///local       _ = gettext.translate
+        ///
+        ///--WORLD RADIO
+        ///
+        ///radioTableFormat = 3
+        ///radio = {
+        ///	{
+        ///		radioId = &apos;airfield6_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;Boulderñity&quot;), &quot;Boulderñity&quot;}}};
+        ///		frequency = {};
+        ///		sceneObjects = {&apos;t:4816956&apos;};
+        ///	};
+        ///	{
+        ///		radioId = &apos;airfield1_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;Ind [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Orig_Terrain_Nevada_Radio {
+            get {
+                return ResourceManager.GetString("Orig_Terrain_Nevada_Radio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dofile(&apos;Scripts/World/Radio/ModulationTypes.lua&apos;)
+        ///dofile(&apos;Scripts/World/Radio/FrequencyBands.lua&apos;)
+        ///
+        ///local gettext = require(&quot;i_18n&quot;)
+        ///local       _ = gettext.translate
+        ///
+        ///--WORLD RADIO
+        ///
+        ///radioTableFormat = 3
+        ///radio = {
+        ///	{
+        ///		radioId = &apos;0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;Sharqiyah&quot;), &quot;Sharqiyah&quot;}}};
+        ///		frequency = {};
+        ///		sceneObjects = {&apos;t:10379342&apos;};
+        ///	};
+        ///	{
+        ///		radioId = &apos;airfield1_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;AbuSultan&quot;), &quot;Ab [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Orig_Terrain_Siani_radio {
+            get {
+                return ResourceManager.GetString("Orig_Terrain_Siani_radio", resourceCulture);
             }
         }
         

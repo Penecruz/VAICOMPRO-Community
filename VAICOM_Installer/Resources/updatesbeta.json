@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240727,
-      "version": 2967,
-      "versionstring": "2.9.6.7",
+      "releasedate": 20240819,
+      "version": 2970,
+      "versionstring": "2.9.7.0",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Hotfix2 -All aircraft radios PTT TX Node allocation and SRS Allocation - Please Test"
+      "releasenotes": "Adds Sinai airports expansion, Adds new radio.lua appending routine, Fix USS Forestall recipient ID incorrect - Please test all thanks "
     }
   ]
 }

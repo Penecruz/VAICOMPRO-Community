@@ -525,8 +525,56 @@ namespace VAICOM
                   kneeboard = true,
                   binary = true,
                 } },
+                // Add radio.lua terrain files that are left incomplete by the terrain developer
+                {"2.8 Sinai_radio.lua",new Server.LuaFile
+                {
+                  filename = "radio.lua",
+                  installfolder = "Mods\\terrains\\Sinai",
+                  installfolder_legacy = "Mods\\terrains\\Sinai",
+                  append = false, // <--- Do Not append must replace,
+                  root = true,
+                  hardreset = true,
+                  orig = Properties.Resources.Orig_Terrain_Siani_radio,
+                  source = Properties.Resources.Append_Terrain_Siani_radio,
+                  stringreplace = false,
+                  stringorig = Properties.Resources.Orig_Terrain_Siani_radio,
+                  stringsource = Properties.Resources.Append_Terrain_Siani_radio,                  
+                  version ="2.8",
+                  canremove = true,
+                  reset = false,
+                  //ACTIVE:
+                  install = true,
+                  export = false,
+                  autoremove  = true,
+                  quiet  = false,
+                  AIRIO = true,
+                  kneeboard = false,
+                } },
 
-
+                {"2.8 Nevada_radio.lua",new Server.LuaFile
+                {
+                  filename = "radio.lua",
+                  installfolder = "Mods\\terrains\\Nevada",
+                  installfolder_legacy = "Mods\\terrains\\Nevada",
+                  append = false, // <--- Do Not append must replace,
+                  root = true,
+                  hardreset = true,
+                  orig = Properties.Resources.Orig_Terrain_Nevada_Radio,
+                  source = Properties.Resources.Append_Terrain_Nevada_Radio,
+                  stringreplace = false,
+                  stringorig = Properties.Resources.Orig_Terrain_Nevada_Radio,
+                  stringsource = Properties.Resources.Append_Terrain_Nevada_Radio,
+                  version ="2.8",
+                  canremove = true,
+                  reset = false,
+                  //ACTIVE:
+                  install = true,
+                  export = false,
+                  autoremove  = true,
+                  quiet  = false,
+                  AIRIO = true,
+                  kneeboard = false,
+                } },
                 };
 
             }
