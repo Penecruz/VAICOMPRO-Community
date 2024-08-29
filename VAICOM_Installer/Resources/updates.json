@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240728,
-      "version": 2967,
-      "versionstring": "2.9.6.7",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.6.7/VAICOMPRO.zip",
-      "releasenotes": "Release 2.9.6.7 Hotfix - Fix AV-8B Harrier COMM1 and COMM2 handling, Fix F/A-18C Non SRS PTT Mode VHF TX slot moved to TX3, Fix A-10C II SRS PTT Mode radios not functioning correctly,Fix F-5E SRS PTT Mode radio not functioning correctly"
+      "releasedate": 20240829,
+      "version": 2972,
+      "versionstring": "2.9.7.2",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.7.2/VAICOMPRO.zip",
+      "releasenotes": "Release 2.9.7.2 - Adds Radio.lua patching routine, Work to support further terrain modules,  Adds Sinai airfields expansion new recipients, Nevada and Sinai Radio.lua swap files, Fix USS Forestall Unique ID"
     }
   ]
 }
