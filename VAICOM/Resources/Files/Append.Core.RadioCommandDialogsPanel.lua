@@ -351,7 +351,7 @@ function ProcessRemoteCommand()
 	if clientmessage.type == base.vaicom.messagetype.aicomms			then -- Rearming Menu call
 		local unitcomm, tgtunit = SetTargetComm(clientmessage.command)
 		if clientmessage.command == base.Message.wMsgLeaderRequestRearming then
-			base.MissionResourcesDialog.onRadioMenuRearm()
+			base.MissionResourcesDialog.cargoWindowOnOff()
 			return
 		end
 		data.curCommunicatorId = clientmessage.tgtdevid or data.curCommunicatorId
