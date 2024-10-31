@@ -222,9 +222,19 @@ namespace VAICOM
                 { "H3",                     "H3"                    },
                 { "H3 Northwest",           "H3 Northwest"          },
                 { "H3 Southwest",           "H3 Southwest"          },
+                { "H4",                     "H4"                    },
                 { "Paphos",                 "Paphos"                },
                 { "Lakatamia",              "Lakatamia"             },
                 { "Ercan",                  "Ercan"                 },
+                { "Muwaffaq Salti",         "Muwaffaq Salti"        },
+                { "King Abdullah II",       "King Abdullah II"      },
+                //{ "Tel Nof",                "Tel Nof"               }, //Already defined in Sinai
+                //{ "Hatzor",                 "Hatzor"                }, //Already defined in Sinai
+                //{ "Palmachim",              "Palmachim"             }, //Already defined in Sinai
+                //{ "Ben Gurion",             "Ben Gurion"            }, //Already defined in Sinai
+                { "Marka",                  "Marka"                 },
+                { "Herzliya",               "Herzliya"              },
+                { "Price Hassan",           "Prince Hassan"         },
 
                 // Sinai map
 
@@ -251,7 +261,7 @@ namespace VAICOM
                 { "Ramon Airbase",          "Ramon Airbase"         },
                 { "Hatzerim",               "Hatzerim"              },
                 { "Hatzor",                 "Hatzor"                },
-                { "Palmahim",               "Palmahim"              },
+                { "Palmachim",              "Palmachim"             },
                 { "Tel Nof",                "Tel Nof"               },
                 { "Nevatim",                "Nevatim"               },
                 { "Sde Dov",                "Sde Dov"               },

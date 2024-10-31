@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20240829,
-      "version": 2972,
-      "versionstring": "2.9.7.2",
+      "releasedate": 20241101,
+      "version": 2990,
+      "versionstring": "2.9.9.0",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Adds Sinai airports expansion, Adds new radio.lua appending routine, Fix USS Forestall recipient ID incorrect - 7.2 updates Beta to align with next release "
+      "releasenotes": "Adds New Syrian Airports, Playing with CH-47E radios "
     }
   ]
 }

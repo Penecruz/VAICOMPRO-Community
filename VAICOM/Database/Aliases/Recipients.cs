@@ -269,9 +269,20 @@ namespace VAICOM
                 { "H 3",                    "H3"                    },
                 { "H 3 Northwest",          "H3 Northwest"          },
                 { "H 3 Southwest",          "H3 Southwest"          },
+                { "H 4",                    "H4"                    },
                 { "Paphos",                 "Paphos"                },
                 { "Lakatamia",              "Lakatamia"             },
                 { "Ercan",                  "Ercan"                 },
+                { "Muwaffaq Salti",         "Muwaffaq Salti"        },
+                { "King Abdullah II",       "King Abdullah II"      },
+                { "King Abdullah",          "King Abdullah II"      },
+                //{ "Tel Nof",                "Tel Nof"               }, //Already defined in Sinai
+                //{ "Hatzor",                 "Hatzor"                }, //Already defined in Sinai
+                //{ "Palmachim",              "Palmachim"             }, //Already defined in Sinai
+                //{ "Ben Gurion",             "Ben Gurion"            }, //Already defined in Sinai
+                { "Marka",                  "Marka"                 },
+                { "Herzliya",               "Herzliya"              },
+                { "Price Hassan",           "Prince Hassan"         },
 
                 // Sinai map
 
@@ -304,10 +315,10 @@ namespace VAICOM
                 { "Hatzerim",               "Hatzerim"              },
                 { "Hatzor",                 "Hatzor"                },
                 { "Hatsor",                 "Hatzor"                },
-                { "Palmahim",               "Palmahim"              },
+                { "Palmachim",              "Palmachim"             },
                 { "Tel Nof",                "Tel Nof"               },
                 { "Nevatim",                "Nevatim"               },
-                { "Sdee Dov",                "Sde Dov"               },
+                { "Sdee Dov",                "Sde Dov"              },
                 { "Ben Gurion",             "Ben-Gurion"            },
                 { "Ovda",                   "Ovda"                  },
                 { "Saint Catherine",        "St Catherine"          },
