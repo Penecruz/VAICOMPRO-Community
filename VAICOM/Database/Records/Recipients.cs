@@ -520,9 +520,9 @@ namespace VAICOM
                 { "descent",                  new Recipient { uniqueid = 19201, category = RecipientCategories.cargo, name = "wAIUnitDescent",          displayname = Labels.airecipients["descent"], blockedforFree = true  } },
                 { "wAIUnitDescentMaximum",    new Recipient { uniqueid = 19299, category = RecipientCategories.cargo, name = "wAIUnitDescentMaximum",   } },
 
+                // RIO pack
                 { "wAIUnitFlightCrewMembersNull",        new Recipient { uniqueid = 19300, category = RecipientCategories.RIO, name = "wAIUnitFlightCrewMembersNull",         } },
                 
-                // RIO pack
                 { "wAIUnitFlightCrewMembersMaximum",     new Recipient { uniqueid = 19399, category = RecipientCategories.RIO, name = "wAIUnitFlightCrewMembersMaximum",      } },
 
 

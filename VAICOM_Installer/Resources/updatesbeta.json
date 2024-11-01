@@ -8,10 +8,10 @@
       "isdev": false,
       "productid": 1,
       "releasedate": 20241101,
-      "version": 2990,
-      "versionstring": "2.9.9.0",
+      "version": 2991,
+      "versionstring": "2.9.9.1",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Adds New Syrian Airports, Playing with CH-47E radios "
+      "releasenotes": "Adds New Syrian Airports, Playing with CH-47E radios, Fix Recipients error"
     }
   ]
 }

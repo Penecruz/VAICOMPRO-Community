@@ -234,7 +234,7 @@ namespace VAICOM
                 //{ "Ben Gurion",             "Ben Gurion"            }, //Already defined in Sinai
                 { "Marka",                  "Marka"                 },
                 { "Herzliya",               "Herzliya"              },
-                { "Price Hassan",           "Prince Hassan"         },
+                { "Prince Hassan",          "Prince Hassan"         },
 
                 // Sinai map
 

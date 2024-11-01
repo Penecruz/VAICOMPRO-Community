@@ -282,7 +282,7 @@ namespace VAICOM
                 //{ "Ben Gurion",             "Ben Gurion"            }, //Already defined in Sinai
                 { "Marka",                  "Marka"                 },
                 { "Herzliya",               "Herzliya"              },
-                { "Price Hassan",           "Prince Hassan"         },
+                { "Prince Hassan",          "Prince Hassan"         },
 
                 // Sinai map
 
@@ -318,7 +318,7 @@ namespace VAICOM
                 { "Palmachim",              "Palmachim"             },
                 { "Tel Nof",                "Tel Nof"               },
                 { "Nevatim",                "Nevatim"               },
-                { "Sdee Dov",                "Sde Dov"              },
+                { "Sdee Dov",               "Sde Dov"              },
                 { "Ben Gurion",             "Ben-Gurion"            },
                 { "Ovda",                   "Ovda"                  },
                 { "Saint Catherine",        "St Catherine"          },
