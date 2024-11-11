@@ -598,4 +598,10 @@
   <data name="Orig_Terrain_Siani_radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Files\Orig.Terrain.Siani.radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Append_Terrain_Kola_radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\Append.Terrain.Kola.radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Orig_Terrain_Kola_radio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files\Orig.Terrain.Kola.radio.lua;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

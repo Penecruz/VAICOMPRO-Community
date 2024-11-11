@@ -489,7 +489,35 @@ namespace VAICOM.Properties {
         ///local gettext = require(&quot;i_18n&quot;)
         ///local       _ = gettext.translate
         ///
-        ///--WORLD RADIO -- Appended by Vaicompro
+        ///--WORLD RADIO -- Appended by VaicomPro
+        ///
+        ///radioTableFormat = 3
+        ///radio = {
+        ///	{
+        ///		radioId = &apos;airfield4_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;BAS100&quot;), &quot;BAS100&quot;}}};
+        ///		frequency = {[UHF] = {MODULATIONTYPE_AM, 257100000.000000}};
+        ///		sceneObjects = {&apos;t:6021123&apos;};
+        ///	};
+        ///	{
+        ///		radioId = &apos;EFIV_Ivalo1&apos;;
+        ///		role = {&quot;ground [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Append_Terrain_Kola_radio {
+            get {
+                return ResourceManager.GetString("Append_Terrain_Kola_radio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dofile(&apos;Scripts/World/Radio/ModulationTypes.lua&apos;)
+        ///dofile(&apos;Scripts/World/Radio/FrequencyBands.lua&apos;)
+        ///
+        ///local gettext = require(&quot;i_18n&quot;)
+        ///local       _ = gettext.translate
+        ///
+        ///--WORLD RADIO -- Appended by VaicomPro
         ///
         ///radioTableFormat = 3
         ///radio = {
@@ -1392,6 +1420,35 @@ namespace VAICOM.Properties {
         public static string Orig_ReplaceString_F14_JesterAI_Page {
             get {
                 return ResourceManager.GetString("Orig_ReplaceString_F14_JesterAI_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dofile(&apos;Scripts/World/Radio/ModulationTypes.lua&apos;)
+        ///dofile(&apos;Scripts/World/Radio/FrequencyBands.lua&apos;)
+        ///
+        ///local gettext = require(&quot;i_18n&quot;)
+        ///local       _ = gettext.translate
+        ///
+        ///--WORLD RADIO
+        ///
+        ///radioTableFormat = 3
+        ///radio = {
+        ///	{
+        ///		radioId = &apos;airfield4_0&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        ///		callsign = {{[&quot;common&quot;] = {_(&quot;BAS100&quot;), &quot;BAS100&quot;}}};
+        ///		frequency = {[UHF] = {MODULATIONTYPE_AM, 257100000.000000}};
+        ///		sceneObjects = {&apos;t:6021123&apos;};
+        ///	};
+        ///	{
+        ///		radioId = &apos;EFIV_Ivalo1&apos;;
+        ///		role = {&quot;ground&quot;, &quot;tower&quot;, &quot;approach&quot;};
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Orig_Terrain_Kola_radio {
+            get {
+                return ResourceManager.GetString("Orig_Terrain_Kola_radio", resourceCulture);
             }
         }
         
