@@ -63,31 +63,24 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 ## Patch Notes
 
 
-**VAICOM PRO plugin 2.9.6.0**
+**VAICOM PRO plugin 2.9.9.3**
 
-This update adds new aircraft and terrain to the supported modules list. It also adds support for the next version of Voice Attack while maintaining backward compatibility with the current version.
+This update adds Kola terrain to the new file patching routine that allows Vaicom Pro to append individual
+terrain modules radio.lua files. This will pick up Bodo and add some UHF frequencies to other military fields
+for use with Easy Comms and in turn the use of the "Select" command in Vaicom Pro. It also adds the new Syrian airfields expansion to the recipients list. There are some small bug fixes.
 
--	Added OH-58D(R) as a supported aircraft (WIP see notes below).
--	Added CH-47F as a supported aircraft.
--	Added Afghanistan (south) terrain to ATC recipients list.
--	Added support for Voice Attack 2.0 when released.
-- Fixed AJS37 Viggen FR24/FR22 Radios **Requires next release of DCS to function** (thanks HeatBlur for the change)
--	Changed DX update loop refresh to be quicker (feedback appreciated if you see performance issues)
-
-With the additional terrain added you will need to update your profile keywords using the Test > Finish steps.
+-	Kola radio.lua patching routine.
+-	Fix error in recipients database.
+-	CH-47 Chinook WIP radio changes.
+-	Add new Syrian airfields to ATC recipient’s database.
 
 **Known Issues**
 
--	F-14 A/B Tomcat, wheel chocks must be set then removed in some cases.
--	Due to module design, Mirage F1 and A10-C kneeboard is not on the first page
--	Mirage f1 Kneeboard cover causes issues (recommend deleting it (1.png) from \\DCS World OpenBeta\Mods\aircraft\Mirage-F1\Cockpit\Mirage-F1\Mirage-<version>\KNEEBOARD\pages folders.
--	Easy comms/Instant select at some airports will not function due to map developers’ incomplete data. Can still be manually tuned. E.g most of the Sinai airports.
--	VaicomPro manual needs updating for Kola and Afghanistan map and page numbering
--	OH-58D(R) Radio is multi rather than single PTT until I can work out why it’s not functioning as expected.
+-	Rearming Request with Ground Crew will not open Rearming UI, only rearms last selection (Use Options Command to access menu for now).There have been changes in DCS Version 2.9.6.X that adds new rearm routine to support Dynamic Spawn Client Slots, Users have reported issues when jumping between Dynamic slots and Vaicom not recognising the new module.
 
 ## Community Team
 
 Pene, Special K, D3adCy11nd3r, Folgers, Hornblower793, Liam8, MAXsenna, MisterOutofTime, Raskit and stag1975
 
 #### Beta Team
-104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye and Virus
+104th_Aeons, GSG-3|Turbine|202, DrChainsaw, Jaeger, Nicola, Padinn, SPAZ-505, tomeye, Virus, Bonz RexExGSR, LawnBoy and Scotia
