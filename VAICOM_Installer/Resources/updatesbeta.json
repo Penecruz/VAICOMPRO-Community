@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20241112,
-      "version": 2993,
-      "versionstring": "2.9.9.3",
+      "releasedate": 20250118,
+      "version": 2995,
+      "versionstring": "2.9.9.5",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Adds New Syrian Airports, Playing with CH-47E radios, Fix Recipients error, added new Kola terrain radio.lua swap file to complete please test Bodo and Kemi Torino"
+      "releasenotes": "Fixes errors in origional DCS swap files this had the effect of corrupting the radiocommandsdialog.lua and common.lua on second run of DCS. Also changed some appended files to base line errors prior to bug hunting. Happy testing!"
     }
   ]
 }

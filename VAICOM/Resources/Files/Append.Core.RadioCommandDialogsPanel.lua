@@ -351,7 +351,7 @@ function ProcessRemoteCommand()
 	if clientmessage.type == base.vaicom.messagetype.aicomms			then -- Rearming Menu call
 		local unitcomm, tgtunit = SetTargetComm(clientmessage.command)
 		if clientmessage.command == base.Message.wMsgLeaderRequestRearming then
-			base.MissionResourcesDialog.cargoWindowOnOff()
+			base.MissionResourcesDialog.onRadioMenuRearm()
 			return
 		end
 		data.curCommunicatorId = clientmessage.tgtdevid or data.curCommunicatorId
@@ -472,7 +472,8 @@ function ApplySettings(message)
 						country == base.country.VIETNAM or 
 						country == base.country.USSR or
 						country == base.country.YUGOSLAVIA or
-						(country == base.country.id.USA and forcesName == 'NAVY')
+						country == base.country.GDR
+						--or (country == nations.USA and forcesName == 'NAVY')	-- TODO: Make correct Numeric Callsign for US NAVY
 			end
 		end		
 	end
@@ -811,7 +812,8 @@ base.vaicom.properties = {
 							country == base.country.VIETNAM or 
 							country == base.country.USSR or
 							country == base.country.YUGOSLAVIA or
-							(country == base.country.id.USA and forcesName == 'NAVY')
+							country == base.country.GDR
+							--or (country == nations.USA and forcesName == 'NAVY')	-- TODO: Make correct Numeric Callsign for US NAVY
 				end
 				callsignStr = base.speech.protocols[useprotocol]:makeCallsignString(UnitCommunicator) or "unknown"	
 			end
