@@ -394,7 +394,7 @@ namespace VAICOM
                 { "Olenegorsk",             "Olenegorsk"            },
 
                 // Afghanistan map
-
+                    // South
                 { "Tarinkot",               "Tarinkot"              },
                 { "kandahar",               "kandahar"              },
                 { "Kandahar Heliport",      "Kandahar Heliport"     },
@@ -415,6 +415,52 @@ namespace VAICOM
                 { "Shindand Pads",          "Shindand Heliport"     },
                 { "Farah",                  "Farah"                 },
                 { "Nimroz",                 "Nimroz"                },
+                     // East
+                { "Bagram",                "Bagram"                 },
+                { "Bamyan",                "Bamyan"                 },
+                { "Ghazni Heliport",       "Ghazni Heliport"        },
+                { "Ghazni",                "Ghazni Heliport"        },
+                { "Gardez",                "Gardez"                 },
+                { "Jalalabad",             "Jalalabad"              },
+                { "Kabul",                 "Kabul"                  },
+                { "Khost",                 "Khost"                  },
+                { "Chapman",               "Khost"                  },
+                { "Khost Heliport",        "Khost Heliport"         },
+                { "Salerno",               "Khost Heliport"         },
+                { "Sharan",                "Sharan"                 },
+                { "Sharana",               "Sharan"                 },
+                { "Urgoon Heliport",       "Urgoon Heliport"        },
+                { "Urgun",                 "Urgoon Heliport"        },
+                
+                // Iraq map
+                    // North
+                { "Al-Asad Airbase",                           "Al-Asad Airbase"                     },
+                { "Al-Asad",                                   "Al-Asad Airbase"                     },
+                { "Al-Sahra Airport",                          "Al-Sahra Airport"                    },
+                { "Al-Sahra",                                  "Al-Sahra Airport"                    },
+                { "Al-Salam Airbase",                          "Al-Salam Airbase"                    },
+                { "Al-Salam",                                  "Al-Salam Airbase"                    },
+                { "Al-Taji Airport",                           "Al-Taji Airport"                     },
+                { "Al-Taji",                                   "Al-Taji Airport"                     },
+                { "Al-Taquddum Airport",                       "Al-Taquddum Airport"                 },
+                { "Al-Taquddum",                               "Al-Taquddum Airport"                 },
+                { "Baghdad International Airport",             "Baghdad International Airport"       },
+                { "Baghdad ",                                  "Baghdad International Airport"       },
+                { "Balad Airbase",                             "Balad Airbase"                       },
+                { "Balad",                                     "Balad Airbase"                       },
+                { "Bashur Airport",                            "Bashur Airport"                      },
+                { "Bashur",                                    "Bashur Airport"                      },
+                { "Erbil International Airport",               "Erbil International Airport"         },
+                { "Erbil",                                     "Erbil International Airport"         },
+                { "K1 Base",                                   "K1 Base"                             },
+                { "Kay One",                                   "K1 Base"                             },
+                { "Kirkuk International Airport",              "Kirkuk International Airport"        },
+                { "Kirkuk",                                    "Kirkuk International Airport"        },
+                { "Qayyarah Airfield West",                    "Qayyarah Airfield West"              },
+                { "Qayyarah",                                  "Qayyarah Airfield West"              },
+                { "Kay Rah",                                   "Qayyarah Airfield West"              },
+                { "Sulaimaniyah International Airport",        "Sulaimaniyah International Airport"  },
+                { "Sulaimaniyah",                              "Sulaimaniyah International Airport"  },
 
                 // farp
 
