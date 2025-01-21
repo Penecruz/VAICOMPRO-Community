@@ -364,10 +364,10 @@ function ProcessRemoteCommand()
         -- Trigger the rearming menu/dialog and make log entry for testing
 			if base.MissionResourcesDialog and base.MissionResourcesDialog.onRadioMenuRearm then
 				base.MissionResourcesDialog.onRadioMenuRearm()
-				base.log.info("MissionResourcesDialog.onRadioMenuRearm was sent.")
+				env.info('*Rearm Message* Was sent as expected')
 			else
             -- Log an error if the function doesn't exist to test what is happening.
-				base.log.error("MissionResourcesDialog.onRadioMenuRearm is not available.")
+				env.info('*Rearm Message* not sent')
 			end
         return
     end
