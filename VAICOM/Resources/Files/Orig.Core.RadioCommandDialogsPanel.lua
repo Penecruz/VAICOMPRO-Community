@@ -225,7 +225,7 @@ local function checkCommunicator(communicator, targetFrequency, targetModulation
 					end
 				end				
 				if communicator.range then
-					if communicator.range.min < targetFrequency and targetFrequency < communicator.range.max  then
+					if communicator.range.min <= targetFrequency and targetFrequency <= communicator.range.max  then
 						return true
 					end
 				elseif communicator.ranges then
@@ -233,7 +233,7 @@ local function checkCommunicator(communicator, targetFrequency, targetModulation
 						--base.print('targetFrequency = '..targetFrequency)
 						--base.print('range.min = '..range.min)
 						--base.print('range.max = '..range.max)
-						if range.min < targetFrequency and targetFrequency < range.max then
+						if range.min <= targetFrequency and targetFrequency <= range.max then
 							return true
 						end
 					end
