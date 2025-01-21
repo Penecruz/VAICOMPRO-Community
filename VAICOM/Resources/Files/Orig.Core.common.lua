@@ -128,6 +128,26 @@ local function getModuleName(message)
 	end
 end
 
+
+
+local function hasNumericCallsign(pUnit)
+	local country = pUnit:getCountry()
+	--local forcesName = pUnit:getForcesName()
+	return 	country == base.country.RUSSIA or
+			country == base.country.UKRAINE or
+			country == base.country.BELARUS or
+			country == base.country.INSURGENTS or
+			country == base.country.ABKHAZIA or
+			country == base.country.SOUTH_OSETIA or
+			country == base.country.CHINA or
+			country == base.country.VIETNAM or 
+			country == base.country.USSR or
+			country == base.country.YUGOSLAVIA or
+			country == base.country.GDR
+			--or (country == nations.USA and forcesName == 'NAVY')	-- TODO: Make correct Numeric Callsign for US NAVY
+end
+
+
 --Units
 
 local unitSystems = {
@@ -690,24 +710,6 @@ do
 	UnitCallname.__index = UnitCallname
 end
 
-
-function hasNumericCallsign(pUnit)
-	local country = pUnit:getCountry()
-	--local forcesName = pUnit:getForcesName()
-	return 	country == base.country.RUSSIA or
-			country == base.country.UKRAINE or
-			country == base.country.BELARUS or
-			country == base.country.INSURGENTS or
-			country == base.country.ABKHAZIA or
-			country == base.country.SOUTH_OSETIA or
-			country == base.country.CHINA or
-			country == base.country.VIETNAM or 
-			country == base.country.USSR or
-			country == base.country.YUGOSLAVIA or
-			country == base.country.GDR
-			--or (country == nations.USA and forcesName == 'NAVY')	-- TODO: Make correct Numeric Callsign for US NAVY
-end
-
 local airdromeNameVariants = {
 	['Common'] = 'Common',
 	['USSR'] = 'USSR',
@@ -731,52 +733,54 @@ function getBoardNumber(number)
 	return a1,a2,a3
 end
 
-PlayerAircraftCallsign = {
-	make = function(self, pComm, pComm2, useIndex)
-		--base.print('\t PlayerAircraftCallsign:make')
+
+local makeNAVY_XXX = function(pUnit)
+	base.assert(pUnit:hasAttribute('Air'))
+
+	local a1 = u.round(10*pUnit:getDrawArgumentValue(442),1)
+	local a2 = u.round(10*pUnit:getDrawArgumentValue(31),1)
+	local a3 = u.round(10*pUnit:getDrawArgumentValue(32),1)
+
+	return DigitGroups:make('%d%d%d', a1, a2, a3)
+end
+
+USNAVYPlayerAircraftCallsign = {
+	
+	make = function(self, pComm)
 		if pComm == nil then
 			return p.start()
 		end	
-		local pUnit = pComm:getUnit()
-		--[[
-		local attr = pUnit:getAttributes()
-		for aId, anames in base.pairs(attr) do
-			base.print('\t\t attr: ',aId)
-		end
-		--]]
-		base.assert(pUnit ~= nil)
-		base.assert(pUnit:hasAttribute('Air'))
+		local	pUnit = pComm
+		return	makeNAVY_XXX(pUnit)
+	end,
+	sub = {	Digits					= Digits,
+			DigitGroups				= DigitGroups,
+	},
+}
 
-		-- Navy
-		-- If negotiations witch AirbaseSHIP and unit is NAVY then use boardnumber for callsign !!!
-		local forcesName = pUnit:getForcesName()
-		--base.print('\t\t pComm: forcesName: ',forcesName)
-		if pComm2 then
-			local pUnit2 = pComm2:getUnit()
-			if pUnit2 then
-				--base.print('\t\t pComm2: forcesName: ',pUnit2:getForcesName())
-				--base.print('\t\t pComm2: name: ',pUnit2:getName())
-				--base.print('\t\t pComm2: category: ',pUnit2:getDesc().category)
-				local isAirbase = (pUnit2:getForcesName() == "AirBase")
-				if isAirbase and pUnit2:getDesc().category == base.Airbase.Category.SHIP and pUnit2:getCoalition() == 2 
-						--and forcesName == 'NAVY'  
-						then
-					--local number = 100*u.round(10*pUnit:getDrawArgumentValue(442),1) + 10*u.round(10*pUnit:getDrawArgumentValue(31),1) + u.round(10*pUnit:getDrawArgumentValue(32),1)
-					--base.print('\t\t Callsign = ',number) --boardnumber
-					--return self.sub.Digits:make(number)
-					--local a1,a2,a3 = getBoardNumber(number)
-					local a1 = u.round(10*pUnit:getDrawArgumentValue(442),1)
-					local a2 = u.round(10*pUnit:getDrawArgumentValue(31),1)
-					local a3 = u.round(10*pUnit:getDrawArgumentValue(32),1)
-					--base.print('\t\t Callsign split = ',a1,a2,a3) --boardnumber
-					return self.sub.DigitGroups:make('%d%d%d', a1, a2, a3)
-				end
-			end
+AirGroupCallsign = {
+	make_callname_base = function(self,pUnit,callsignIdx)
+		if pUnit:hasAttribute('AWACS') then
+			return self.sub.AWACSCallname:make(pUnit, callsignIdx)
+		elseif pUnit:hasAttribute('Tankers') then
+			return self.sub.TankerCallname:make(pUnit, callsignIdx)
+		elseif pUnit:hasAttribute('Transports') then							
+			return self.sub.TransportsCallname:make(pUnit, callsignIdx)
+		else
+			return self.sub.AirGroupCallname:make(pUnit, callsignIdx)
 		end
-		------------------------------------
+	end,
 
-		local country  = pUnit:getCountry()
-		local callsign = pComm:getCallsign()
+	make = function(self, pComm, useIndex)
+		if pComm == nil then
+			return p.start()
+		end
+		local pUnit 	= pComm:getUnit()
+		local callsign 	= pComm:getCallsign()
+		local callsign2 = pUnit:getCallsign()
+		if callsign2 == "" then
+			return p.start()
+		end
 		if hasNumericCallsign(pUnit) then
 			local c = callsignMinimize(callsign)
 			if useIndex then
@@ -784,61 +788,69 @@ PlayerAircraftCallsign = {
 			else
 				return self.sub.Digits:make(c)
 			end
-		else
-			local callnameIdx, flightNum, aircraftNum = encodeCallsign(callsign)
-			return self.sub.PlayerAircraftCallname:make(pUnit, callnameIdx) + ' ' + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
 		end
 		
+		local groupName, flightNum, aircraftNum = encodeCallsign(callsign)
+		local base_callname  					= self:make_callname_base(pUnit,groupName)
+		
+		if	pUnit:hasAttribute('Strategic bombers') or 
+			pUnit:hasAttribute('Aux') then
+			return base_callname
+		end
+		
+		if	pUnit:hasAttribute('AWACS') or
+			pUnit:hasAttribute('Tankers') or
+			pUnit:hasAttribute('Transports') then							
+			return base_callname + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
+		else
+			return base_callname + ' ' + self.sub.Digits:make(flightNum)
+		end
+	end,
+	sub = { AirGroupCallname	= UnitCallname:new('Air', true, nil, 'Callsign'),
+			AWACSCallname		= UnitCallname:new('AWACS', true, nil, 'Callsign'),
+			TankerCallname		= UnitCallname:new('Tankers', true, nil, 'Callsign'),
+			TransportsCallname	= UnitCallname:new('Transports', true, nil, 'Callsign'),
+			Index				= Index,
+			Digits 				= Digits,
+			DigitGroups			= DigitGroups }
+}
+
+PlayerAircraftCallsign = {
+	make = function(self, pComm, pComm2, useIndex)
+		--base.print('\t PlayerAircraftCallsign:make')
+		if pComm == nil then
+			return p.start()
+		end	
+
+		-- Navy
+		-- If negotiations witch AirbaseSHIP and unit is NAVY then use boardnumber for callsign !!!
+		if pComm2 then
+			local pUnit  = pComm:getUnit()
+			local pUnit2 = pComm2:getUnit()
+			if	pUnit and pUnit2 and 
+				pUnit2:getForcesName() 		== "AirBase" and 
+				pUnit2:getDesc().category 	== base.Airbase.Category.SHIP and 
+				pUnit2:getCoalition() == 2 then --'NAVY'  
+				return makeNAVY_XXX(pUnit)
+			end
+		end
+		return AirGroupCallsign:make(pComm,useIndex)
 	end,
 	-- TODO: to remove the 'hack' with A-10 specific callnames. This features should be available for all units - removed
 	sub = {	Index					= Index,
 			Digits					= Digits,
-			PlayerAircraftCallname	= UnitCallname:new('Air', false, nil, 'Callsign'),
 			DigitGroups				= DigitGroups },
 }
 
-USNAVYPlayerAircraftCallsign = {
-	make = function(self, pComm)
-		--base.print('\t USNAVYPlayerAircraftCallsign:make')
-		if pComm == nil then
-			return p.start()
-		end	
-		local pUnit = pComm
-		base.assert(pUnit:hasAttribute('Air'))
-		base.assert(pUnit ~= nil)
-		--local number = 100*u.round(10*pUnit:getDrawArgumentValue(442),1) + 10*u.round(10*pUnit:getDrawArgumentValue(31),1) + u.round(10*pUnit:getDrawArgumentValue(32),1)
-		--base.print('\t\t Callsign = ',number)		
-		--return self.sub.Digits:make(number)			
-		local a1 = u.round(10*pUnit:getDrawArgumentValue(442),1)
-		local a2 = u.round(10*pUnit:getDrawArgumentValue(31),1)
-		local a3 = u.round(10*pUnit:getDrawArgumentValue(32),1)
-		--local a1,a2,a3 = getBoardNumber(number)
-		--base.print('\t\t Callsign split = ',a1,a2,a3) --boardnumber
-		return self.sub.DigitGroups:make('%d%d%d', a1, a2, a3)
-	end,
-	sub = {	Digits					= Digits,
-			DigitGroups				= DigitGroups,
-			},
-}
-
-function isHeavyAircraft(pUnit)
-	return	pUnit:hasAttribute('AWACS') or
-			pUnit:hasAttribute('Tankers') or
-			pUnit:hasAttribute('Strategic bombers') or
-			pUnit:hasAttribute('Transports') or
-			pUnit:hasAttribute('Aux')
-end
-
-local function checkUnitAttribute(pUnit, attribute)
-	--base.print('~~~~!!!~~~~ checkUnitAttribute(pUnit, attribute), pUnitType, attribute',pUnit:getTypeName(),attribute)
-	--base.print('~~~~!!!~~~~ checkUnitAttribute(pUnit, attribute), base.debug.traceback()',base.debug.traceback())
-	return pUnit:hasAttribute(attribute)
-end
 
 local function getCallname(pUnit, callnameId)
 	local callnames = base.db.getCallnames(pUnit:getCountry(), pUnit:getTypeName())
 	if callnames and callnames[callnameId] then
 		return callnames[callnameId].Name
+	end
+
+	local checkUnitAttribute = function(pUnit, attribute)
+		return pUnit:hasAttribute(attribute)
 	end
 	callnames = base.db.getUnitCallnames2(pUnit:getCountry(), pUnit, checkUnitAttribute)
 	if callnames and callnames[callnameId] then
@@ -884,15 +896,16 @@ local function makeCallsignString_(pComm, airdromeNameVariant)
 		if not(callname) then 
 			return nil
 		end
-		if isHeavyAircraft(pUnit) then
-			if	pUnit:hasAttribute('AWACS') or
-				pUnit:hasAttribute('Tankers') or 
-				pUnit:hasAttribute('Transports') then 
-				return callname..flightNum..'-'..aircraftNum
-			end
+		if	pUnit:hasAttribute('AWACS') or
+			pUnit:hasAttribute('Tankers') or 
+			pUnit:hasAttribute('Transports') then 
+			return callname..flightNum..'-'..aircraftNum
+		elseif	pUnit:hasAttribute('Strategic bombers') or 
+				pUnit:hasAttribute('Aux') then
 			return callname
+		else
+			return callname..flightNum..aircraftNum
 		end
-		return callname..flightNum..aircraftNum
 	end
 	return nil
 end
@@ -1311,47 +1324,6 @@ TargetShortDescription = {
 
 end
 
-AirGroupCallsign = {
-	make = function(self, pComm, useIndex)
-		if pComm == nil then
-			return p.start()
-		end
-		local pUnit = pComm:getUnit()
-		local callsign = pComm:getCallsign()
-		local callsign2 = pUnit:getCallsign()
-		if callsign2 == "" then
-			return p.start()
-		end
-		if hasNumericCallsign(pUnit) then
-			local c = callsignMinimize(callsign)
-			if useIndex then
-				return self.sub.Index:make(c)
-			else
-				return self.sub.Digits:make(c)
-			end
-		end
-		local groupName, flightNum, aircraftNum = encodeCallsign(callsign)
-		if isHeavyAircraft(pUnit) then
-			if pUnit:hasAttribute('AWACS') then
-				return self.sub.AWACSCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
-			elseif pUnit:hasAttribute('Tankers') then
-				return self.sub.TankerCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
-			elseif pUnit:hasAttribute('Transports') then							
-				return self.sub.TransportsCallname:make(pUnit, groupName) + self.sub.DigitGroups:make('%d-%d', flightNum, aircraftNum)
-			else
-				return self.sub.AirGroupCallname:make(pUnit, groupName)
-			end
-		end
-		return self.sub.AirGroupCallname:make(pUnit, groupName) + ' ' + self.sub.Digits:make(flightNum)
-	end,
-	sub = { AirGroupCallname	= UnitCallname:new('Air', true, nil, 'Callsign'),
-			AWACSCallname		= UnitCallname:new('AWACS', true, nil, 'Callsign'),
-			TankerCallname		= UnitCallname:new('Tankers', true, nil, 'Callsign'),
-			TransportsCallname	= UnitCallname:new('Transports', true, nil, 'Callsign'),
-			Index				= Index,
-			Digits 				= Digits,
-			DigitGroups			= DigitGroups }
-}
 
 FlightMessageHandler = {
 	make = function(self, message, language)
@@ -2436,7 +2408,7 @@ handlersTable = {
 	[base.Message.wMsgATCDepartureRadarContact] 		= Start_Receiver_Callsign_End_Handler, --  [SIDE NUMBER],radar contact, altimeter 29.92.
 	[base.Message.wMsgATCDepartureClearedToSwitch]  	= Start_Receiver_Callsign_End_Handler,--[SIDE NUMBER], cleared to switch.
 		
-	[base.Message.wMsgATCMarshallCopyTen]			= StartEndHandler,
+	[base.Message.wMsgATCMarshallCopyTen]			= Start_Receiver_Callsign_End_Handler, --StartEndHandler,	-- testers request to add Callsign for clearness
 	
 	[base.Message.wMsgATCMarshallSwitchApproach]	= Start_Receiver_Callsign_End_Handler,	--[SIDE NUMBER], switch approach.  
 	[base.Message.wMsgLeaderPlatform]				= Start_Sender_Callsign_End_Handler,	--[SIDE NUMBER], platform.
@@ -3301,4 +3273,4 @@ function make(self, message)
 	
 end	
 
---base.print('Speech.common modules loaded')
+--base.print('Speech.common modules loaded')S
