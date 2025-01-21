@@ -63,20 +63,24 @@ Flashing Comms Menu after DCS World update is a known issue and can be resolved 
 ## Patch Notes
 
 
-**VAICOM PRO plugin 2.9.9.3**
+**VAICOM PRO plugin 2.9.9.8**
 
-This update adds Kola terrain to the new file patching routine that allows Vaicom Pro to append individual
-terrain modules radio.lua files. This will pick up Bodo and add some UHF frequencies to other military fields
-for use with Easy Comms and in turn the use of the "Select" command in Vaicom Pro. It also adds the new Syrian airfields expansion to the recipients list. There are some small bug fixes.
+This update is a complete rebase of the Vaicom Pro appended lua files to fix many small bugs due to changes in the DCS core Common.lua and Speech.lua. It also stops Vaicom from corrupting DCS UI Script files when it unloads and restores them.
+This update adds support for the great Iraq (North) terrain and adds support for the upcoming Afghanistan (East) terrain.
 
--	Kola radio.lua patching routine.
--	Fix error in recipients database.
--	CH-47 Chinook WIP radio changes.
--	Add new Syrian airfields to ATC recipient’s database.
+-	Fix errors in DCS UI Script restore files.
+- 	Fix many errors in Appended lua files to conform with current DCS standard 
+-	Fix errors in database.
+-	Add new Iraq (North) airfields to ATC recipient’s database.
+- 	Add new Afghanistan (East) airfields to ATC recipient’s database.
 
 **Known Issues**
 
--	Rearming Request with Ground Crew will not open Rearming UI, only rearms last selection (Use Options Command to access menu for now).There have been changes in DCS Version 2.9.6.X that adds new rearm routine to support Dynamic Spawn Client Slots, Users have reported issues when jumping between Dynamic slots and Vaicom not recognising the new module.
+-	Rearming Request with Ground Crew will not open Rearming UI, only rearms last selection (Use Options Command to access menu for now).
+
+There have been changes in DCS Version 2.9.6.X that adds new rearm routine to support
+Dynamic Spawn Client Slots, Some Users have reported issues when jumping between Dynamic
+slots and Vaicom Pro not recognizing the new module.
 
 ## Community Team
 
