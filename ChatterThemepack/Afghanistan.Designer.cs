@@ -666,6 +666,24 @@ namespace Themepack {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream Afghan_AWACS_1 {
+            get {
+                return ResourceManager.GetStream("Afghan_AWACS_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Afghan_AWACS_2 {
+            get {
+                return ResourceManager.GetStream("Afghan_AWACS_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream Afghan_Blizard_1 {
             get {
                 return ResourceManager.GetStream("Afghan_Blizard_1", resourceCulture);

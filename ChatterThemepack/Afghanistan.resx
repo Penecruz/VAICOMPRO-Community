@@ -319,6 +319,12 @@
   <data name="Afghan_Apache_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\Themes\Chatter\Afghanistan\Afghan_Apache_9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Afghan_AWACS_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Afghanistan\Afghan_AWACS_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Afghan_AWACS_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Audio\Themes\Chatter\Afghanistan\Afghan_AWACS_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Afghan_Blizard_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Audio\Themes\Chatter\Afghanistan\Afghan_Blizard_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
