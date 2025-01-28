@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20250124,
-      "version": 29911,
-      "versionstring": "2.9.9.11",
+      "releasedate": 20250128,
+      "version": 29912,
+      "versionstring": "2.9.9.12",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Adds F-5E Flaming Cliffs version, Adds community Super Hornet mod F/A-18E/F and EA-18G, Adds Chatter theme Afghan (WIP) at this stage only has about half the intended sound files. Check volume levels compared to other themes"
+      "releasenotes": "Couple more bug fixes due to typos, Additional Afghan Chatter files, Adds F-5E Flaming Cliffs version, Adds community Super Hornet mod F/A-18E/F and EA-18G, Adds Chatter theme Afghan (WIP) at this stage only has about half the intended sound files. Check volume levels compared to other themes"
     }
   ]
 }
