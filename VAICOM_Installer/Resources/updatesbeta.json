@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20250129,
-      "version": 29913,
-      "versionstring": "2.9.9.13",
+      "releasedate": 20250203,
+      "version": 29915,
+      "versionstring": "2.9.9.15",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Couple more bug fixes due to typos, Additional Afghan Chatter files, Adds F-5E Flaming Cliffs version, Adds community Super Hornet mod F/A-18E/F and EA-18G, Completes Chatter theme Afghan. Check volume levels compared to other themes"
+      "releasenotes": "Clarification of hooking on PTT Tab on Vaicom UI, more bug fixes due to typos, completed Afghanistan Chatter theme, Adds F-5E Flaming Cliffs version (WIP) still crash DCS if Vaicom running on slotting, Adds community Super Hornet mod F/A-18E/F and EA-18G."
     }
   ]
 }

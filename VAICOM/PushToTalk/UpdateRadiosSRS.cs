@@ -55,6 +55,7 @@ namespace VAICOM
                     {"F-14B" ,              new radioslotdevicelist() { Slot_map_INT = {3,4,0}, Slot_map_SRS = {3,4,0}, Slot_map_CUS = {0,0,0} } },
                     {"AJS37" ,              new radioslotdevicelist() { Slot_map_INT = {30,31,0}, Slot_map_SRS = {30,31,0}, Slot_map_CUS = {0,0,0} } },
                     {"F-5E-3" ,             new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
+                    {"F-5E-3_FC" ,          new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"P-51D" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"SpitfireLFMkIX",      new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
                     {"C-101" ,              new radioslotdevicelist() { Slot_map_INT = {0,0,0}, Slot_map_SRS = {0,0,0}, Slot_map_CUS = {0,0,0} } },
@@ -118,7 +119,7 @@ namespace VAICOM
                     {"F-14B" ,       new radioslotlist() { Slot_map = { "UHF ARC-159", "VHF/UHF ARC-182", "" } } },
                     {"AJS37" ,      new radioslotlist() { Slot_map = { "FR22", "FR24", "" } } },// HB Changed names to identify radios correctly :).
                     {"F-5E-3" ,     new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "", "" } } },
-                    {"F-5E-3_FC" ,  new radioslotlist() { Slot_map = { "UHF Radio AN/ARC-164", "", "" } } }, // Adds Flaming Cliffs version
+                    {"F-5E-3_FC" ,  new radioslotlist() { Slot_map = { "FC Broadband Radio", "", "" } } }, // Adds Flaming Cliffs version
                     {"P-51D" ,      new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"SpitfireLFMkIX",new radioslotlist() { Slot_map = { "SCR522A", "", "" } } },
                     {"C-101" ,      new radioslotlist() { Slot_map = { "CB UHF", "CB VHF", ""} } },
