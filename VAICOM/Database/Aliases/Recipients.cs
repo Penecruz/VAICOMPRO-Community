@@ -133,7 +133,7 @@ namespace VAICOM
                 { "Groom Lake",             "Groom Lake"            },
                 { "Dreamland",              "Groom Lake"            },
                 { "Nellis",                 "Nellis"                },
-                { "NellisControl",          "Nellis"                },
+                { "Nellis Control",         "Nellis"                },
                 { "Boulder",                "Boulder City"          },
                 { "Boulder City",           "Boulder City"          },
 
@@ -548,6 +548,7 @@ namespace VAICOM
                 { "Texaco",                 "texaco"                },
                 { "Shell",                  "shell"                 },
                 { "Arco",                   "arco"                  },
+                { "Ark oh",                 "arco"                  },
                 { "Nearest Tanker",         "nearesttanker"         },
 
                    // crew
