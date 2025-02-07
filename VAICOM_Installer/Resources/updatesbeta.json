@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20250207,
-      "version": 29917,
-      "versionstring": "2.9.9.17",
+      "releasedate": 20250208,
+      "version": 29918,
+      "versionstring": "2.9.9.18",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": "Fix Instant select crash introduced last Beta, Change Vaicom DX loops speed, fix Nellis typo, Clarification of hooking on PTT Tab on Vaicom UI, more bug fixes due to typos, completed Afghanistan Chatter theme, Adds F-5E Flaming Cliffs version (WIP) still crash DCS if Vaicom running on slotting, Adds community Super Hornet mod F/A-18E/F and EA-18G."
+      "releasenotes": " Support for Whisper Attack, Remove wildcards from keywords, Adds additional command aliases ***REQUIRES Reset of Keywords database in UI and finish steps***, Fix Instant select crash introduced last Beta, Change Vaicom DX loops speed, fix Nellis typo, Clarification of hooking on PTT Tab on Vaicom UI, more bug fixes due to typos, completed Afghanistan Chatter theme, Adds F-5E Flaming Cliffs version (WIP) still crash DCS if Vaicom running on slotting, Adds community Super Hornet mod F/A-18E/F and EA-18G."
     }
   ]
 }
