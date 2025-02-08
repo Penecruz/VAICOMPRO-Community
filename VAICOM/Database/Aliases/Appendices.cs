@@ -21,7 +21,6 @@ namespace VAICOM
                 { "Bomb",                   "withunguided"             },
                 { "Bombs",                  "withunguided"             },
                 { "Stores",                 "withunguided"             },
-                { "Storess",                "withunguided"             },
                 { "Guided",                 "withguided"               },
                 { "GBU",                    "withguided"               },
                 { "GBUs",                   "withguided"               },

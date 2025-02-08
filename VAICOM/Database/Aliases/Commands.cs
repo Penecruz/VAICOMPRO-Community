@@ -263,7 +263,8 @@ namespace VAICOM
                 { "Rockets",                "rockets"               },
                 { "Standby for BDA",        "bda"                   },
                 { "Standby for Report",     "inflightrep"           },
-                { "Request Refuel*",        "requestrefueling"      },
+                { "Request Refuel",         "requestrefueling"      },
+                { "Request Refueling",      "requestrefueling"      },
                 { "Load Cannon",            "requestcannonreload"   },
                 { "Request Rearming",       "requestrearming"       },
                 { "Apply Air",              "applyair"              },
@@ -381,7 +382,7 @@ namespace VAICOM
                 { "Take Twelve",            "menu12"                },
 
                 // special
-                { "Switch*",                "switch"                },
+                { "Switch",                "switch"                },
                 { "Select",                 "select"                },
                 { "Options",                "options"               },
 
