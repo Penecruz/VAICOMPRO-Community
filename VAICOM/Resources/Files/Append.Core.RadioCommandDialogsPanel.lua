@@ -348,44 +348,12 @@ function ProcessRemoteCommand()
 		socket.try(base.vaicom.sender:send(base.vaicom.flags.raw))
 		return
 	end
-	--if clientmessage.type == base.vaicom.messagetype.aicomms			then -- Rearming Menu call Original
-		--local unitcomm, tgtunit = SetTargetComm(clientmessage.command)
-		--if clientmessage.command == base.Message.wMsgLeaderRequestRearming then 
-			--base.DcsInputCommandsTable.iCommandMissionResourcesManagement() -- what is the new call?
-			--base.MissionResourcesDialog.onRadioMenuRearm()
-			--return
-		--end
-	if clientmessage.type == base.vaicom.messagetype.aicomms then -- Try with logging
-    -- Attempt to set target communication and retrieve the target unit
+	if clientmessage.type == base.vaicom.messagetype.aicomms			then -- Rearming Menu call testing
 		local unitcomm, tgtunit = SetTargetComm(clientmessage.command)
-    
-    -- Check if the command is a request for rearming
-		if clientmessage.command == base.Message.wMsgLeaderRequestRearming then
-        -- Trigger the rearming menu/dialog and make log entry for testing
-			if base.MissionResourcesDialog and base.MissionResourcesDialog.onRadioMenuRearm then
-				base.MissionResourcesDialog.onRadioMenuRearm()
-				env.info('*Rearm Message* Was sent as expected')
-			else
-            -- Log an error if the function doesn't exist to test what is happening.
-				env.info('*Rearm Message* not sent')
-			end
-        return
-    end
-	--if clientmessage.type == base.vaicom.messagetype.aicomms then --try this to input directly via the in game command?
-    -- Attempt to set target communication and retrieve the target unit
-    --local unitcomm, tgtunit = SetTargetComm(clientmessage.command)
-    
-    -- Check if the command is a request for rearming
-    --if clientmessage.command == base.Message.wMsgLeaderRequestRearming then
-        -- Pass the command to open the rearm menu directly
-        --if base.Input then
-            --base.Input.push_action(base.DCSInputCommandsTable.iCommandMissionResourcesManagement)
-        --else
-            -- Log an error if the Input system is unavailable
-            --base.log.error("Input system is not available to execute iCommandMissionResourcesManagement.")
-        --end
-        --return
-    --end
+		if clientmessage.command == base.Message.wMsgLeaderRequestRearming then			
+			base.MissionResourcesDialog.onRadioMenuRearm()
+			return
+		end
 		data.curCommunicatorId = clientmessage.tgtdevid or data.curCommunicatorId
 		selectAndTuneCommunicator(unitcomm)
 		local messagesendcommand	= clientmessage.command
