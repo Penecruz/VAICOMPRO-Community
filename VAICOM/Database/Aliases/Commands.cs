@@ -12,6 +12,7 @@ namespace VAICOM
             public static Dictionary<string, string> aicommands = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
 
+                //flight
                 { "My Target",              "mytarget"              },
                 { "My Contact",             "mytarget"              },
                 { "Bandit",                 "bandit"                },
@@ -82,6 +83,7 @@ namespace VAICOM
                 { "Go Home",                "returntobase"          },
                 { "RTB",                    "returntobase"          },
                 { "Go to Tanker",           "flytotanker"           },
+                { "Head to the Tanker",     "flytotanker"           },
                 { "Rejoin",                 "joinup"                },
                 { "Join Up",                "joinup"                },
                 { "Join On Me",             "joinup"                },
@@ -106,6 +108,7 @@ namespace VAICOM
                 { "Fence In",               "fencein"               },
                 { "Fence Out",              "fenceout"              },
                 { "Out Cold",               "out"                   },
+                { "Off Cold",               "out"                   },
                 { "Go Line Abreast",        "golineabreast"         },
                 { "Go Trail",               "gotrail"               },
                 { "Go Wedge",               "gowedge"               },
@@ -184,6 +187,7 @@ namespace VAICOM
                 { "Ready for Takeoff",      "requesttakeoff"        },
                 { "Ready for Departure",    "requesttakeoff"        },
                 { "Tower Request Takeoff",  "towerreqtakeoff"       },
+                { "Ready",                  "towerreqtakeoff"       },
                 { "Abort Takeoff",          "aborttakeoff"          },
                 { "Cancel Departure",       "aborttakeoff"          },
                 { "Directions to Final",    "requestazimuth"        },
@@ -195,8 +199,9 @@ namespace VAICOM
                 { "Cancel Approach",        "abortinbound"          },
                 { "Request Landing",        "requestlanding"        },
                 { "Request Taxi for Takeoff","reqtaxifortakeoff"    },
-                { "Taxi Clearence",          "reqtaxifortakeoff"    },
+                { "Taxi Clearance",          "reqtaxifortakeoff"    },
                 { "Request Taxi to Parking","reqtaxitoparking"      },
+                { "For parking Stand",      "reqtaxitoparking"      },
                 { "Inbound Straight",       "inboundstraight"       },
                 { "Overhead Approach",      "approachoverhead"      },
                 { "Straight Approach",      "approachstraight"      },
@@ -313,6 +318,8 @@ namespace VAICOM
                 //ground crew
                 { "Request Rearming",       "requestrearming"       },
                 { "Apply Air",              "applyair"              },
+                { "Start valve Open",       "applyair"              },
+                { "External Air On",        "applyair"              },
                 { "Request Repair",         "requestrepair"         },
                 { "Stow the Boarding Ladder","stowboardingladder"   },
                 { "Run Inertial Starter",   "runinertialstarter"    },
@@ -322,13 +329,20 @@ namespace VAICOM
                 { "Turbo On",               "turboon"               },
                 { "Turbo Off",              "turbooff"              },
                 { "Ground Power On",        "groundpoweron"         },
+                { "External Power On",      "groundpoweron"         },
                 { "Ground Power Off",       "groundpoweroff"        },
+                { "External Power Off",     "groundpoweroff"        },
                 { "Place the Wheelchocks",  "wheelchocksplace"      },
+                { "Chocks In",              "wheelchocksplace"      },
                 { "Remove the Wheelchocks", "wheelchocksremove"     },
+                { "Pull the Chocks",        "wheelchocksremove"     },
+                { "Chocks Out",             "wheelchocksremove"     },
                 { "Open the Canopy",        "Seq_J_CANOPY_OPEN"     },
                 { "Close the Canopy",       "Seq_J_CANOPY_CLOSE"    },
                 { "Connect Air Supply",     "airsupplyconnect"      },
+                { "Connect Ground Air",     "airsupplyconnect"      },
                 { "Disconnect Air Supply",  "airsupplydisconnect"   },
+                { "Pull the Ground Air",    "airsupplydisconnect"   },
 
                 // Carrier Comms
 
@@ -401,6 +415,7 @@ namespace VAICOM
                 { "Repeat",                 "repeat"                },
                 { "Say Again",              "repeat"                },
 
+                // menu navigation commands
                 { "Take 1",                 "menu01"                },
                 { "Take 2",                 "menu02"                },
                 { "Take 3",                 "menu03"                },
@@ -436,6 +451,7 @@ namespace VAICOM
                 { "Status",                 "state"                 },
                 { "Briefing",               "readbriefing"          },
 
+                //kneeboard
                 { "Show Notes",            "wMsgKneeboardShowNotes"       },
                 { "Clear Notes",           "wMsgKneeboardClearNotes"      },
                 { "Start Dictate",         "wMsgKneeboardDictateStart"    },
