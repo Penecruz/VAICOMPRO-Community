@@ -352,6 +352,9 @@ namespace VAICOM
                 { "Khost Heliport",        "Khost Heliport"         },
                 { "Sharan",                "Sharan"                 },
                 { "Urgoon Heliport",       "Urgoon Heliport"        },
+                { "Maymana Zahiraddin Faryabi", "Maymana Zahiraddin Faryabi"     },
+                { "Mary",                  "Mary"                                },
+                { "Mary North",            "Mary North"                          },
 
                 // Iraq map
                     // North

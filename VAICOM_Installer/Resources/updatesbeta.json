@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20250214,
-      "version": 3000,
-      "versionstring": "3.0.0.0",
+      "releasedate": 20250216,
+      "version": 3001,
+      "versionstring": "3.0.0.1",
       "downloadurl": "https://raw.githubusercontent.com/Penecruz/VAICOMPRO-Community/Development/VAICOM_Installer/Resources/VAICOMPRO.zip",
-      "releasenotes": " Release canditate, New Vaicom pro manual, Adds Tac Turns for Ai flight recipients, Minor fix for Export.cs, Support for Whisper Attack, Remove wildcards from keywords, Adds additional command aliases ***REQUIRES Reset of Keywords database in UI and finish steps***, Change Vaicom DX loop speed, fix Nellis Control typo, Better clarification of hooking on PTT Tab on Vaicom UI, more bug fixes due to typos, completed Afghanistan Chatter theme, Adds F-5E Flaming Cliffs version (WIP) still crash DCS if Vaicom running on slotting, Adds community Super Hornet mod F/A-18E/F and EA-18G."
+      "releasenotes": " Release canditate 2, Adds additional Afghanistan ATC aliases, Adds Kneeboard thearters Afghanistan and Iraq time zones, New Vaicom pro manual, Adds Tac Turns for Ai flight recipients, Minor fix for Export.cs, Support for Whisper Attack, Remove wildcards from keywords, Adds additional command aliases ***REQUIRES Reset of Keywords database in UI and finish steps***, Change Vaicom DX loop speed, fix Nellis Control typo, Better clarification of hooking on PTT Tab on Vaicom UI, more bug fixes due to typos, completed Afghanistan Chatter theme, Adds F-5E Flaming Cliffs version (WIP) still crash DCS if Vaicom running on slotting, Adds community Super Hornet mod F/A-18E/F and EA-18G."
     }
   ]
 }

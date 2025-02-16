@@ -404,6 +404,9 @@ namespace VAICOM
                 { "Khost Heliport",             new Recipient { uniqueid = 15512, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanKhostHeliport",  displayname = Labels.airecipients["Khost Heliport"], blockedforFree = true  } },
                 { "Sharan",                     new Recipient { uniqueid = 15513, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanSharan",  displayname = Labels.airecipients["Sharan"], blockedforFree = true  } },
                 { "Urgoon Heliport",            new Recipient { uniqueid = 15514, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanUrgoonHeliport",  displayname = Labels.airecipients["Urgoon Heliport"], blockedforFree = true  } },
+                { "Maymana Zahiraddin Faryabi", new Recipient { uniqueid = 15515, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanMaymanaZahiraddinFaryabi",  displayname = Labels.airecipients["Maymana Zahiraddin Faryabi"], blockedforFree = true  } },
+                { "Mary",                       new Recipient { uniqueid = 15516, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanMary",  displayname = Labels.airecipients["Mary"], blockedforFree = true  } },
+                { "Mary North",                 new Recipient { uniqueid = 15517, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanMaryNorth",  displayname = Labels.airecipients["Mary North"], blockedforFree = true  } },
                    // North TODO
                 { "wAIUnitATCAfghanMaximum",    new Recipient { uniqueid = 15540, category = RecipientCategories.aiatc, name = "wAIUnitATCAfghanMaximum",           } },
 
