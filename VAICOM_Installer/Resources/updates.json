@@ -7,11 +7,11 @@
       "isbeta": false,
       "isdev": false,
       "productid": 1,
-      "releasedate": 20250121,
-      "version": 2998,
-      "versionstring": "2.9.9.8",
-      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v2.9.9.8/VAICOMPRO.zip",
-      "releasenotes": "Release 2.9.9.8 - Fix errors in DCS UI Script restore files, fix errors in Appended lua files to conform with current DCS standard,  Fix errors in database, Add new Iraq (North) airfields to ATC recipient’s database, Add new Afghanistan (East) airfields to ATC recipient’s database "
+      "releasedate": 20250217,
+      "version": 3000,
+      "versionstring": "3.0.0.0",
+      "downloadurl": "https://github.com/Penecruz/VAICOMPRO-Community/releases/download/v3.0.0.0/VAICOMPRO.zip",
+      "releasenotes": "Release 3.0.0.0 - Fix errors in keywords and add many more standard keyword phrases, Add new DCS Ground Crew, Wingman and Flight commands,  Provides support for Whisper Attack users by providing a clean VSPX.vap file for use, Fix the Export.cs routine to allow clean export, Change PTT Tab indication when ‘No Module Detected’, Add F-5E Flaming Cliffs version to modules (WIP), Add Community Mod F/A-18 E/F Super Hornet and E/A-18G Growler as supported modules, Add Afghanistan and Iraq theaters to ATO kneeboard time zones, Add the Afghanistan Chatter theme. "
     }
   ]
 }

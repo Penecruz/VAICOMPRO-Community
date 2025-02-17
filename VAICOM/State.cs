@@ -29,7 +29,7 @@ namespace VAICOM
         // general
 
 
-        public static bool versionbeta = true; //set if Beta version
+        public static bool versionbeta = false; //set if Beta version
         public static bool versiondev = false; //set if Dev version
         public static bool usenewselectmethod = false;
         public static string debuguser = "VAICOM_Tester";
@@ -42,7 +42,7 @@ namespace VAICOM
         public static bool requirecarrierregkey = false;
         public static bool installkneeboard = true;
 
-        public static bool deepdebugmode = true; //set to deepdebug mode
+        public static bool deepdebugmode = false; //set to deepdebug mode
         public static bool databaseencrypted = true;
         public static bool luahardreset = true;
         public static bool exitapp = false;
