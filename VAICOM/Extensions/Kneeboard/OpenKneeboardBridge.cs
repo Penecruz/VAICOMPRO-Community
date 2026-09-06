@@ -1418,11 +1418,55 @@ namespace VAICOM
                         }
                         else if (moduleId.StartsWith("AH-64D", StringComparison.OrdinalIgnoreCase))
                         {
-                            foreach (string key in Database.Aliases.aicommands.Keys)
+                            // AH-64D: return common George commands plus seat-specific commands.
+                            bool isPilot = Helpers.Common.IsAH64PilotSeatActive();
+
+                            var allowedCategories = new HashSet<Database.CommandCategories>
                             {
-                                if (key.StartsWith("George ", StringComparison.OrdinalIgnoreCase))
+                                Database.CommandCategories.AH64D_George, // common commands always allowed
+                                isPilot
+                                ? Database.CommandCategories.AH64D_George_CPG
+                                : Database.CommandCategories.AH64D_George_PLT
+                            };
+
+                            foreach (KeyValuePair<string, string> alias in Database.Aliases.aicommands)
+                            {
+                                string phrase = (alias.Key ?? string.Empty).Trim();
+                                string aliasValue = alias.Value ?? string.Empty;
+
+                                if (string.IsNullOrWhiteSpace(phrase) || string.IsNullOrWhiteSpace(aliasValue))
                                 {
-                                    keywords.Add(key);
+                                    continue;
+                                }
+
+                                try
+                                {
+                                    // Try direct lookup in the commands table using the alias value as key.
+                                    if (Database.Commands.Table != null && Database.Commands.Table.TryGetValue(aliasValue, out Database.Command cmd))
+                                    {
+                                        if (cmd != null && allowedCategories.Contains(cmd.category))
+                                        {
+                                            keywords.Add(phrase);
+                                        }
+
+                                        continue;
+                                    }
+
+                                    // If direct lookup failed, try to find a command where the dcsid matches the alias value.
+                                    if (Database.Commands.Table != null)
+                                    {
+                                        var found = Database.Commands.Table.Values
+                                            .FirstOrDefault(command => !string.IsNullOrWhiteSpace(command.dcsid)
+                                                && command.dcsid.Equals(aliasValue, StringComparison.OrdinalIgnoreCase));
+                                        if (found != null && allowedCategories.Contains(found.category))
+                                        {
+                                            keywords.Add(phrase);
+                                        }
+                                    }
+                                }
+                                catch
+                                {
+                                    // ignore and continue
                                 }
                             }
                         }
