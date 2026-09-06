@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using VAICOM.Static;
 
 namespace VAICOM.Extensions.AICPG
@@ -190,12 +189,25 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeCMDispenseChaffAndFlares":
                     SelectCMDispenseMode(AH64CMDispenseMode.ChaffAndFlares);
                     break;
+                case "wMsgGeorgeExtLightsOff":
+                    SelectExternalLightsMode(AH64ExternalLightsMode.Off);
+                    break;
+                case "wMsgGeorgeExtLightsDay":
+                    SelectExternalLightsMode(AH64ExternalLightsMode.Day);
+                    break;
+                case "wMsgGeorgeExtLightsNightBright":
+                    SelectExternalLightsMode(AH64ExternalLightsMode.NightBright);
+                    break;
+                case "wMsgGeorgeExtLightsNightDim":
+                    SelectExternalLightsMode(AH64ExternalLightsMode.NightDim);
+                    break;
+                case "wMsgGeorgeExtLightsFormation":
+                    SelectExternalLightsMode(AH64ExternalLightsMode.Formation);
+                    break;
 
                 // George ROE
                 case "wMsgGeorgeReturnFire":
-                    AddGeorgeLongButton(AH64GeorgeButton.Menu);
-                    AddGeorgeLongButton(AH64GeorgeButton.Up);
-                    AddGeorgeButton(AH64GeorgeButton.Menu);
+                    SelectRulesOfEngagementMode(AH64ROEMode.ReturnFire);
                     break;
                 case "wMsgGeorgeWeaponsFree":
                     if (Helpers.Common.IsAH64PilotSeatActive())
@@ -206,9 +218,7 @@ namespace VAICOM.Extensions.AICPG
                     else
                     {
                         // George as pilot
-                        AddGeorgeLongButton(AH64GeorgeButton.Menu);
-                        AddGeorgeLongButton(AH64GeorgeButton.Up);
-                        AddGeorgeButton(AH64GeorgeButton.Menu);
+                        SelectRulesOfEngagementMode(AH64ROEMode.WeaponsFree);
                     }
                     break;
                 case "wMsgGeorgeHoldFire":
@@ -220,9 +230,7 @@ namespace VAICOM.Extensions.AICPG
                     else
                     {
                         // George as pilot
-                        AddGeorgeLongButton(AH64GeorgeButton.Menu);
-                        AddGeorgeLongButton(AH64GeorgeButton.Up);
-                        AddGeorgeButton(AH64GeorgeButton.Menu);
+                        SelectRulesOfEngagementMode(AH64ROEMode.HoldFire);
                     }
                     break;
 
@@ -446,6 +454,40 @@ namespace VAICOM.Extensions.AICPG
             AddGeorgeButton(AH64GeorgeButton.Menu);
 
             AH64GeorgeState.SelectedCMDispenseMode = target;
+        }
+
+        private static void SelectExternalLightsMode(AH64ExternalLightsMode target)
+        {
+            var current = AH64GeorgeState.SelectedExternalLightsMode;
+            int steps = AH64GeorgeState.GetExternalLightsSteps(current, target);
+
+            AddGeorgeLongButton(AH64GeorgeButton.Menu);
+
+            for (int i = 0; i < steps; i++)
+            {
+                AddGeorgeButton(AH64GeorgeButton.Right, 80);
+            }
+
+            AddGeorgeButton(AH64GeorgeButton.Menu);
+
+            AH64GeorgeState.SelectedExternalLightsMode = target;
+        }
+
+        private static void SelectRulesOfEngagementMode(AH64ROEMode target)
+        {
+            var current = AH64GeorgeState.SelectedROEMode;
+            int steps = AH64GeorgeState.GetRulesOfEngagementSteps(current, target);
+
+            AddGeorgeLongButton(AH64GeorgeButton.Menu);
+
+            for (int i = 0; i < steps; i++)
+            {
+                AddGeorgeLongButton(AH64GeorgeButton.Up, 80);
+            }
+
+            AddGeorgeButton(AH64GeorgeButton.Menu);
+
+            AH64GeorgeState.SelectedROEMode = target;
         }
     }
 }

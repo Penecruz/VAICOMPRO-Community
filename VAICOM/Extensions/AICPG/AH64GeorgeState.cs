@@ -20,9 +20,27 @@ namespace VAICOM.Extensions.AICPG
         Rockets
     }
 
+    public enum AH64ROEMode
+    {
+        ReturnFire,
+        WeaponsFree,
+        HoldFire
+    }
+
+    public enum AH64ExternalLightsMode
+    {
+        Off,
+        Day,
+        NightBright,
+        NightDim,
+        Formation
+    }
+
     public class AH64GeorgeState
     {
         public static AH64CMDispenseMode SelectedCMDispenseMode = AH64CMDispenseMode.None;
+        public static AH64ExternalLightsMode SelectedExternalLightsMode = AH64ExternalLightsMode.Off;
+        public static AH64ROEMode SelectedROEMode = AH64ROEMode.HoldFire;
         public static AH64WeaponMode SelectedWeapon = AH64WeaponMode.Unknown;
         
         public static bool GunAvailable;
@@ -339,6 +357,86 @@ namespace VAICOM.Extensions.AICPG
                         AH64CMDispenseMode.Flares,
                         AH64CMDispenseMode.ChaffAndFlares
                     };
+        }
+
+        private static List<AH64ExternalLightsMode> GetExternalLightsOrder()
+        {
+            return new List<AH64ExternalLightsMode>
+                    {
+                        AH64ExternalLightsMode.Off,
+                        AH64ExternalLightsMode.Day,
+                        AH64ExternalLightsMode.NightBright,
+                        AH64ExternalLightsMode.NightDim,
+                        AH64ExternalLightsMode.Formation
+                    };
+        }
+
+        public static int GetExternalLightsSteps(AH64ExternalLightsMode from, AH64ExternalLightsMode to)
+        {
+            if (from == to)
+            {
+                return 0;
+            }
+
+            var order = GetExternalLightsOrder();
+            int fromIndex = order.IndexOf(from);
+            int toIndex = order.IndexOf(to);
+
+            if (fromIndex < 0)
+            {
+                fromIndex = 0;
+            }
+
+            if (toIndex < 0)
+            {
+                return 0;
+            }
+
+            if (toIndex >= fromIndex)
+            {
+                return toIndex - fromIndex;
+            }
+
+            return (order.Count - fromIndex) + toIndex;
+        }
+
+        private static List<AH64ROEMode> GetRulesOfEngagmentOrder()
+        {
+            return new List<AH64ROEMode>
+                    {
+                        AH64ROEMode.ReturnFire,
+                        AH64ROEMode.WeaponsFree,
+                        AH64ROEMode.HoldFire,
+                    };
+        }
+
+        public static int GetRulesOfEngagementSteps(AH64ROEMode from, AH64ROEMode to)
+        {
+            if (from == to)
+            {
+                return 0;
+            }
+
+            var order = GetRulesOfEngagmentOrder();
+            int fromIndex = order.IndexOf(from);
+            int toIndex = order.IndexOf(to);
+
+            if (fromIndex < 0)
+            {
+                fromIndex = 0;
+            }
+
+            if (toIndex < 0)
+            {
+                return 0;
+            }
+
+            if (toIndex >= fromIndex)
+            {
+                return toIndex - fromIndex;
+            }
+
+            return (order.Count - fromIndex) + toIndex;
         }
     }
 }
