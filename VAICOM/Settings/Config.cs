@@ -90,6 +90,7 @@ namespace VAICOM
             public bool Kneeboard_Enabled;
             public bool OpenKneeboard_Out;
             public bool OpenKneeboard_AutoBrowse;
+            public bool OpenKneeboard_FocusSwitchEnabled;
             public int OpenKneeboard_Out_Port;
             public bool OpenKneeboard_EfbEnabled;
             public string OpenKneeboard_EfbAuthBlob;
@@ -303,6 +304,7 @@ namespace VAICOM
                 Kneeboard_Enabled = true,
                 OpenKneeboard_Out = false,
                 OpenKneeboard_AutoBrowse = false,
+                OpenKneeboard_FocusSwitchEnabled = false,
                 OpenKneeboard_Out_Port = 7779,
                 OpenKneeboard_EfbEnabled = false,
                 OpenKneeboard_EfbAuthBlob = "",

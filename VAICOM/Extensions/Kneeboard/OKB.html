@@ -1012,6 +1012,63 @@
       box-shadow: 0 0 0 3px rgba(134, 196, 255, 0.52), 0 0 18px rgba(80, 170, 255, 0.45);
     }
 
+    .efbWaypointRow {
+      border-bottom: 1px solid #e8edf2;
+      background: #ffffff;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .efbWaypointRow.active {
+      background: #dcecff;
+    }
+
+    .efbWaypointNameBtn {
+      width: 100%;
+      text-align: left;
+      border: 0;
+      background: transparent;
+      color: #111;
+      font-family: inherit;
+      font-size: 22px;
+      padding: 0;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .efbWaypointMeta {
+      color: #3a4a5a;
+      font-size: 14px;
+      line-height: 1.3;
+      white-space: pre-line;
+      font-family: Consolas, "Courier New", monospace;
+    }
+
+    .efbWaypointActions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .efbWaypointActionBtn {
+      border: 1px solid #97a7b7;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1b2d41;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 3px 8px;
+      min-height: 28px;
+    }
+
+    .efbWaypointActionBtn.delete {
+      border-color: #b77a7a;
+      color: #7a2020;
+      background: #fff3f3;
+    }
+
     .efbPickerItem {
       display: block;
       width: 100%;
@@ -2758,6 +2815,35 @@
       background: #32465f;
     }
 
+    body.night-mode .efbWaypointRow {
+      background: #2a3440;
+      border-bottom-color: #3b4a5a;
+    }
+
+    body.night-mode .efbWaypointRow.active {
+      background: #3f5f87;
+    }
+
+    body.night-mode .efbWaypointNameBtn {
+      color: #e2eaf2;
+    }
+
+    body.night-mode .efbWaypointMeta {
+      color: #b8c8d8;
+    }
+
+    body.night-mode .efbWaypointActionBtn {
+      background: #2b3541;
+      color: #e2eaf2;
+      border-color: #607183;
+    }
+
+    body.night-mode .efbWaypointActionBtn.delete {
+      color: #ffc7c7;
+      border-color: #9a5959;
+      background: #4a2a2a;
+    }
+
     body.night-mode .efbPickerItem {
       background: #2a3440;
       color: #e2eaf2;
@@ -3345,6 +3431,8 @@
     const efbSaAnchorModeStorageKey = 'vaicom.okb.efbSaAnchorMode';
     const efbSaUseFastOwnshipStorageKey = 'vaicom.okb.efbSaUseFastOwnship';
     const efbSaNavigraphLayerStorageKey = 'vaicom.okb.efbSaNavigraphLayer';
+    const efbSaUserWaypointsEnabledStorageKey = 'vaicom.okb.efbSaUserWaypointsEnabled';
+    const efbSaUserWaypointsStorageKey = 'vaicom.okb.efbSaUserWaypoints';
     const drawModeTimeoutMs = 30000;
     const speedRecommendationTimeoutMs = 30000;
     const fakeMissionSpeedMin = 0.25;
@@ -3380,6 +3468,7 @@
     let efbRightToolsOpen = false;
     let efbAutoSelectOnEnter = false;
     let efbSearchOverlayOpen = false;
+    let efbSearchMode = 'airport';
     let efbSearchToken = '';
     let efbSearchAnimateOpenOnce = false;
     let efbViewerMode = 'chart';
@@ -3392,12 +3481,26 @@
     let efbSaAnchorMode = 'center';
     let efbSaUseFastOwnshipEnabled = true;
     let efbSaNavigraphLayer = 'vfr';
+    let efbSaShowUserWaypoints = true;
     let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
+    let efbSaUserWaypoints = [];
+    let efbSaUserWaypointEditingId = '';
+    let efbSaUserWaypointEditDraft = '';
+    let efbSaUserWaypointDiag = {
+      lastAction: '',
+      lastAddLatLon: '',
+      lastAddXY: '',
+      lastPayloadCount: 0,
+      lastRenderedCount: 0,
+      lastSelectedAssetKey: '',
+    };
     let efbSaFollowSuppressUntilBySelection = {};
     let efbSaLastCameraApplyMsBySelection = {};
     let efbSaOwnshipMotionBySelection = {};
     let efbSaCameraTickerId = 0;
     let efbSaOwnshipPollTickerId = 0;
+    const efbSaUserWaypointHoldMs = 1000;
+    const efbSaUserWaypointHoldMovePx = 16;
     const overlayCloseHideDelayMs = 620;
 
     function clamp(v, min, max) {
@@ -3556,6 +3659,25 @@
       try {
         if (!window.localStorage) return;
         window.localStorage.setItem(efbSaAnchorModeStorageKey, normalizeEfbSaAnchorMode(efbSaAnchorMode));
+      } catch (_) {
+      }
+    }
+
+    function readEfbSaUserWaypointsEnabledPreference() {
+      try {
+        if (!window.localStorage) return true;
+        const raw = window.localStorage.getItem(efbSaUserWaypointsEnabledStorageKey);
+        if (raw === null || raw === undefined || raw === '') return true;
+        return raw !== '0';
+      } catch (_) {
+        return true;
+      }
+    }
+
+    function persistEfbSaUserWaypointsEnabledPreference() {
+      try {
+        if (!window.localStorage) return;
+        window.localStorage.setItem(efbSaUserWaypointsEnabledStorageKey, efbSaShowUserWaypoints ? '1' : '0');
       } catch (_) {
       }
     }
@@ -3844,6 +3966,16 @@
         bearing: bearing,
       };
     }
+
+      const drawerListCapture = document.getElementById('efbDrawerList');
+      if (drawerListCapture && !drawerListCapture.__efbUserWpCaptureBound) {
+        drawerListCapture.__efbUserWpCaptureBound = true;
+        ['pointerdown', 'click', 'mousedown', 'mouseup', 'touchstart', 'touchend'].forEach(function (evtName) {
+          drawerListCapture.addEventListener(evtName, function (ev) {
+            if (typeof ev.stopPropagation === 'function') ev.stopPropagation();
+          }, true);
+        });
+      }
 
     function buildBraBearingMap(data) {
       const result = {};
@@ -4640,6 +4772,12 @@
       })();
 
       function toLonLat(point) {
+        const latDirect = Number(point && point.lat);
+        const lonDirect = Number(point && point.lon);
+        if (isFinite(latDirect) && isFinite(lonDirect) && Math.abs(latDirect) <= 90 && Math.abs(lonDirect) <= 180) {
+          return [lonDirect, latDirect];
+        }
+
         const north = Number(point && point.xNum);
         const east = Number(point && point.yNum);
         if (!isFinite(north) || !isFinite(east)) return null;
@@ -5056,6 +5194,10 @@
         });
       });
 
+      setEfbSaUserWaypointDiag({
+        lastPayloadCount: Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints.length : 0
+      });
+
       const selected = getActiveFlightPlanSelection(model);
       const rawAssets = getMudMapAssets(model, dlinkOnEnabled);
       const ownshipPoint = getPlayerMapPoint(model);
@@ -5391,6 +5533,13 @@
         + '</svg>';
     }
 
+    function getEfbUserWaypointsIconSvg() {
+      return '<svg class="efbRailIconSvg" viewBox="0 0 64 64" aria-hidden="true">'
+        + '<polygon points="32,10 52,48 12,48" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>'
+        + '<circle cx="32" cy="37" r="3" fill="currentColor"/>'
+        + '</svg>';
+    }
+
     function getEfbSaLayerDlinkIconSvg() {
       return '<svg class="efbRailIconSvg" viewBox="0 0 64 64" aria-hidden="true">'
         + '<text x="32" y="48" text-anchor="middle" font-size="40" font-weight="700" fill="currentColor" font-family="Consolas, monospace">DL</text>'
@@ -5433,6 +5582,13 @@
         + '<line x1="20" y1="44" x2="44" y2="20" stroke="currentColor" stroke-width="3"/>'
         + '<circle cx="22" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>'
         + '<circle cx="42" cy="42" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/>'
+        + '</svg>';
+    }
+
+    function getEfbSaLayerUserWaypointIconSvg() {
+      return '<svg class="efbRailIconSvg" viewBox="0 0 64 64" aria-hidden="true">'
+        + '<polygon points="32,10 52,48 12,48" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>'
+        + '<circle cx="32" cy="37" r="2.8" fill="currentColor"/>'
         + '</svg>';
     }
 
@@ -5639,6 +5795,218 @@
         window.localStorage.setItem(efbPinnedChartsStorageKey, JSON.stringify(efbPinnedChartsByAirport || {}));
       } catch (_) {
       }
+    }
+
+    function readEfbSaUserWaypointsPreference() {
+      try {
+        if (!window.localStorage) return [];
+        const raw = window.localStorage.getItem(efbSaUserWaypointsStorageKey);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) return [];
+        const clean = [];
+        const seen = {};
+
+        function tryReadFiniteNumber(value) {
+          if (value === null || value === undefined) return null;
+          const text = String(value).trim();
+          if (!text) return null;
+          const n = Number(text);
+          return isFinite(n) ? n : null;
+        }
+
+        parsed.forEach(function (row) {
+          if (!row || typeof row !== 'object') return;
+          const id = String(row.id || '').trim();
+          if (!id || seen[id]) return;
+          const name = String(row.name || '').trim();
+          const xNum = tryReadFiniteNumber(row.xNum);
+          const yNum = tryReadFiniteNumber(row.yNum);
+          const lat = tryReadFiniteNumber(row.lat);
+          const lon = tryReadFiniteNumber(row.lon);
+          const hasXY = xNum !== null && yNum !== null;
+          const hasLatLon = lat !== null && lon !== null && Math.abs(lat) <= 90 && Math.abs(lon) <= 180;
+          if (!hasXY && !hasLatLon) return;
+          seen[id] = true;
+          clean.push({
+            id: id,
+            name: name || '',
+            xNum: hasXY ? xNum : null,
+            yNum: hasXY ? yNum : null,
+            lat: hasLatLon ? lat : null,
+            lon: hasLatLon ? lon : null,
+            createdUtcMs: Number(row.createdUtcMs) || Date.now(),
+            updatedUtcMs: Number(row.updatedUtcMs) || 0,
+          });
+        });
+        return clean;
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function persistEfbSaUserWaypointsPreference() {
+      try {
+        if (!window.localStorage) return;
+        const rows = Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints : [];
+        window.localStorage.setItem(efbSaUserWaypointsStorageKey, JSON.stringify(rows));
+      } catch (_) {
+      }
+    }
+
+    function buildEfbSaUserWaypointAssetKey(id) {
+      const key = String(id || '').trim();
+      if (!key) return '';
+      return 'USER-WP|' + key;
+    }
+
+    function parseEfbSaUserWaypointAssetKey(assetKey) {
+      const text = String(assetKey || '').trim();
+      if (!text) return '';
+      const prefix = 'USER-WP|';
+      if (text.indexOf(prefix) !== 0) return '';
+      return String(text.substring(prefix.length) || '').trim();
+    }
+
+    function findEfbSaUserWaypointById(id) {
+      const key = String(id || '').trim();
+      if (!key) return null;
+      const rows = Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints : [];
+      for (let i = 0; i < rows.length; i++) {
+        const row = rows[i] || {};
+        if (String(row.id || '') === key) return row;
+      }
+      return null;
+    }
+
+    function getNextEfbSaUserWaypointName() {
+      const rows = Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints : [];
+      const used = {};
+      rows.forEach(function (row) {
+        const name = String((row && row.name) || '').toUpperCase().trim();
+        const m = name.match(/^U(\d+)$/);
+        if (!m) return;
+        const n = Number(m[1]);
+        if (isFinite(n) && n > 0) used[n] = true;
+      });
+      let idx = 1;
+      while (used[idx]) idx++;
+      return 'U' + String(idx);
+    }
+
+    function createEfbSaUserWaypoint(xNum, yNum, lat, lon) {
+      const north = (xNum === null || xNum === undefined || String(xNum).trim() === '') ? NaN : Number(xNum);
+      const east = (yNum === null || yNum === undefined || String(yNum).trim() === '') ? NaN : Number(yNum);
+      const latNum = (lat === null || lat === undefined || String(lat).trim() === '') ? NaN : Number(lat);
+      const lonNum = (lon === null || lon === undefined || String(lon).trim() === '') ? NaN : Number(lon);
+      const hasXY = isFinite(north) && isFinite(east);
+      const hasLatLon = isFinite(latNum) && isFinite(lonNum) && Math.abs(latNum) <= 90 && Math.abs(lonNum) <= 180;
+      if (!hasXY && !hasLatLon) return null;
+      const id = 'u' + Date.now().toString(36) + Math.floor(Math.random() * 100000).toString(36);
+      const wp = {
+        id: id,
+        name: getNextEfbSaUserWaypointName(),
+        xNum: hasXY ? north : null,
+        yNum: hasXY ? east : null,
+        lat: hasLatLon ? latNum : null,
+        lon: hasLatLon ? lonNum : null,
+        createdUtcMs: Date.now(),
+        updatedUtcMs: Date.now(),
+      };
+      if (!Array.isArray(efbSaUserWaypoints)) efbSaUserWaypoints = [];
+      efbSaUserWaypoints.push(wp);
+      persistEfbSaUserWaypointsPreference();
+      return wp;
+    }
+
+    function renameEfbSaUserWaypoint(id, name) {
+      const wp = findEfbSaUserWaypointById(id);
+      if (!wp) return false;
+      const next = String(name || '').trim();
+      if (!next) return false;
+      if (wp.name === next) return true;
+      wp.name = next;
+      wp.updatedUtcMs = Date.now();
+      persistEfbSaUserWaypointsPreference();
+      return true;
+    }
+
+    function beginEfbSaUserWaypointRename(id) {
+      const key = String(id || '').trim();
+      const wp = findEfbSaUserWaypointById(key);
+      if (!wp) return false;
+      efbSaUserWaypointEditingId = key;
+      efbSaUserWaypointEditDraft = String((wp && wp.name) || '').trim() || getNextEfbSaUserWaypointName();
+      return true;
+    }
+
+    function cancelEfbSaUserWaypointRename() {
+      efbSaUserWaypointEditingId = '';
+      efbSaUserWaypointEditDraft = '';
+    }
+
+    function commitEfbSaUserWaypointRename() {
+      const id = String(efbSaUserWaypointEditingId || '').trim();
+      if (!id) return false;
+      const next = String(efbSaUserWaypointEditDraft || '').trim();
+      if (!next) return false;
+      const ok = renameEfbSaUserWaypoint(id, next);
+      if (ok) {
+        efbSaUserWaypointEditingId = '';
+        efbSaUserWaypointEditDraft = '';
+      }
+      return ok;
+    }
+
+    function setEfbSaUserWaypointDiag(partial) {
+      const p = partial && typeof partial === 'object' ? partial : {};
+      efbSaUserWaypointDiag = Object.assign({}, efbSaUserWaypointDiag || {}, p);
+    }
+
+    function deleteEfbSaUserWaypoint(id) {
+      const key = String(id || '').trim();
+      if (!key) return false;
+      if (!Array.isArray(efbSaUserWaypoints) || !efbSaUserWaypoints.length) return false;
+      const idx = efbSaUserWaypoints.findIndex(function (row) { return String((row && row.id) || '') === key; });
+      if (idx < 0) return false;
+      efbSaUserWaypoints.splice(idx, 1);
+      persistEfbSaUserWaypointsPreference();
+      return true;
+    }
+
+    function formatEfbSaUserWaypointLatLon(theatre, wp) {
+      const ll = resolveEfbSaUserWaypointLonLat(theatre, wp);
+      if (!ll) return '-';
+      return formatLatLonDms(ll.lat, ll.lon);
+    }
+
+    function resolveEfbSaUserWaypointLonLat(theatre, wp) {
+      const rawLat = wp && wp.lat;
+      const rawLon = wp && wp.lon;
+      const latDirect = (rawLat === null || rawLat === undefined || String(rawLat).trim() === '') ? NaN : Number(rawLat);
+      const lonDirect = (rawLon === null || rawLon === undefined || String(rawLon).trim() === '') ? NaN : Number(rawLon);
+      if (isFinite(latDirect) && isFinite(lonDirect) && Math.abs(latDirect) <= 90 && Math.abs(lonDirect) <= 180) {
+        return { lat: latDirect, lon: lonDirect };
+      }
+
+      const rawNorth = wp && wp.xNum;
+      const rawEast = wp && wp.yNum;
+      const north = (rawNorth === null || rawNorth === undefined || String(rawNorth).trim() === '') ? NaN : Number(rawNorth);
+      const east = (rawEast === null || rawEast === undefined || String(rawEast).trim() === '') ? NaN : Number(rawEast);
+      if (!isFinite(north) || !isFinite(east)) return null;
+      const llPrimary = convertDcsXYToLatLon(theatre, north, east);
+      const llSwap = convertDcsXYToLatLon(theatre, east, north);
+      const ll = (llPrimary && isFinite(Number(llPrimary.lat)) && isFinite(Number(llPrimary.lon)))
+        ? llPrimary
+        : ((llSwap && isFinite(Number(llSwap.lat)) && isFinite(Number(llSwap.lon))) ? llSwap : null);
+      return ll || null;
+    }
+
+    function formatEfbSaUserWaypointMgrs(theatre, wp) {
+      const ll = resolveEfbSaUserWaypointLonLat(theatre, wp);
+      if (!ll) return 'MGRS N/A';
+      const mgrs = String(formatLatLonMgrs(ll.lat, ll.lon) || '').toUpperCase().trim();
+      return mgrs || 'MGRS N/A';
     }
 
     function safe(v) { return (v === null || v === undefined || v === '') ? '-' : String(v); }
@@ -5996,7 +6364,9 @@
         ? 'chart'
         : (mode === 'pinned'
           ? 'pinned'
-          : (mode === 'sa-layers' ? 'sa-layers' : 'airport'));
+          : (mode === 'sa-layers'
+            ? 'sa-layers'
+            : (mode === 'user-waypoints' ? 'user-waypoints' : 'airport')));
       efbDrawerOpen = true;
       efbSelectionFlowActive = true;
     }
@@ -6182,7 +6552,7 @@
       return {
         liveSession: liveSession,
         devBypass: devBypass,
-        allowed: liveSession,
+        allowed: liveSession || devBypass,
       };
     }
 
@@ -6195,6 +6565,13 @@
         .toUpperCase()
         .replace(/[^A-Z0-9]/g, '')
         .slice(0, 4);
+    }
+
+    function normalizeEfbWaypointRenameToken(value) {
+      return String(value || '')
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, '')
+        .slice(0, 10);
     }
 
     function getEventElementTarget(ev) {
@@ -6274,17 +6651,25 @@
         efbSelectedChartByAirport[airportKey] = selected;
       }
       const canCycle = cycleCharts.length > 1;
-      const searchToken = normalizeEfbSearchToken(efbSearchToken);
+      const searchToken = efbSearchMode === 'user-waypoint-rename'
+        ? normalizeEfbWaypointRenameToken(efbSearchToken)
+        : normalizeEfbSearchToken(efbSearchToken);
       const searchCandidates = getEfbSearchCandidates(searchToken, 120);
       const outerChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
       const innerChars = '0123456789'.split('');
       const wheelOuterHtml = buildEfbSearchRingButtons(outerChars, 154, 'efbSearchOuterBtn');
       const wheelInnerHtml = buildEfbSearchRingButtons(innerChars, 106, 'efbSearchInnerBtn');
-      const tokenDisplay = searchToken || '----';
-      const searchRows = searchCandidates.map(function (code) {
-        const active = code === airportKey ? ' active' : '';
-        return '<button type="button" class="efbSearchCandidateBtn' + active + '" data-efb-search-candidate="' + escapeHtml(code) + '">' + escapeHtml(getEfbAirportDisplayText(code)) + '</button>';
-      }).join('');
+      const tokenDisplay = searchToken || (efbSearchMode === 'user-waypoint-rename' ? 'NAME' : '----');
+      const searchRows = efbSearchMode === 'user-waypoint-rename'
+        ? '<div class="efbSearchEmpty">Use wheel to build waypoint name, then Apply.</div>'
+        : searchCandidates.map(function (code) {
+          const active = code === airportKey ? ' active' : '';
+          return '<button type="button" class="efbSearchCandidateBtn' + active + '" data-efb-search-candidate="' + escapeHtml(code) + '">' + escapeHtml(getEfbAirportDisplayText(code)) + '</button>';
+        }).join('');
+      const context = resolveActiveSaMapContext(data || latestData);
+      const saMapTheater = String(resolveOpenFreeMapFallbackTheatreText(data || latestData) || '').trim();
+      const selectedAssetKey = context && context.selected ? getMapSelectedAssetKeyBySelection(context.selected) : '';
+      const selectedUserWaypointId = parseEfbSaUserWaypointAssetKey(selectedAssetKey);
 
       const airportOptions = airports.map(function (a) {
         const code = String(a || '').toUpperCase().trim();
@@ -6313,7 +6698,7 @@
         ? ('Charts · ' + escapeHtml(airportKey || 'UNSET'))
         : (efbDrawerMode === 'sa-layers' ? 'SA Map Layers'
         : (efbDrawerMode === 'pinned' ? ('Pinned · ' + escapeHtml(airportKey || 'UNSET'))
-          : 'Airports'));
+          : (efbDrawerMode === 'user-waypoints' ? 'User Waypoints' : 'Airports')));
       const pinned = getPinnedChartsForAirport(airportKey);
       const pinnedRows = charts
         .filter(function (c) {
@@ -6330,11 +6715,44 @@
       const navAuth = !!(((data && data.Efb) || {}).AuthPresent);
       const navLayer = normalizeEfbSaNavigraphLayer(efbSaNavigraphLayer);
       const navLayerLabel = getEfbSaNavigraphLayerLabel(navLayer);
+      const userWaypointRows = (Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints : [])
+        .slice()
+        .sort(function (a, b) {
+          const an = String((a && a.name) || '').toUpperCase();
+          const bn = String((b && b.name) || '').toUpperCase();
+          if (an < bn) return -1;
+          if (an > bn) return 1;
+          return String((a && a.id) || '').localeCompare(String((b && b.id) || ''));
+        })
+        .map(function (wp) {
+          const id = String((wp && wp.id) || '').trim();
+          if (!id) return '';
+          const name = String((wp && wp.name) || '').trim() || id;
+          const latLon = formatEfbSaUserWaypointLatLon(saMapTheater, wp);
+          const mgrs = formatEfbSaUserWaypointMgrs(saMapTheater, wp);
+          const active = id === selectedUserWaypointId ? ' active' : '';
+          const editing = id === String(efbSaUserWaypointEditingId || '').trim();
+          const nameLine = editing
+            ? ('<div class="efbWaypointActions"><input type="text" class="efbWaypointNameBtn" data-efb-user-waypoint-edit-input="' + escapeHtml(id) + '" value="' + escapeHtml(String(efbSaUserWaypointEditDraft || name)) + '" /><button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-edit-save="' + escapeHtml(id) + '">Save</button><button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-edit-cancel="' + escapeHtml(id) + '">Cancel</button></div>')
+            : ('<button type="button" class="efbWaypointNameBtn" data-efb-user-waypoint-select="' + escapeHtml(id) + '">' + escapeHtml(name) + '</button>');
+          return '<div class="efbWaypointRow' + active + '" data-efb-user-waypoint="' + escapeHtml(id) + '">'
+            + nameLine
+            + '<div class="efbWaypointMeta">LAT/LON: ' + escapeHtml(latLon) + '\nMGRS: ' + escapeHtml(mgrs) + '</div>'
+            + '<div class="efbWaypointActions">'
+            + '<button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-center="' + escapeHtml(id) + '">Center</button>'
+            + '<button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-rename="' + escapeHtml(id) + '">Rename</button>'
+            + '<button type="button" class="efbWaypointActionBtn delete" data-efb-user-waypoint-delete="' + escapeHtml(id) + '">Delete</button>'
+            + '</div>'
+            + '</div>';
+        })
+        .join('');
       const drawerRows = efbDrawerMode === 'chart'
         ? (options || '<span class="efbPickerEmpty">No charts for this airport</span>')
         : (efbDrawerMode === 'pinned'
           ? (pinnedRows || '<span class="efbPickerEmpty">No pinned charts for this airport</span>')
-          : (airportOptions || '<span class="efbPickerEmpty">No airport folders</span>'));
+          : (efbDrawerMode === 'user-waypoints'
+            ? (userWaypointRows || '<span class="efbPickerEmpty">No user waypoints yet. Long-press on SA map to add.</span>')
+            : (airportOptions || '<span class="efbPickerEmpty">No airport folders</span>')));
       const drawerClass = efbDrawerOpen ? 'efbLeftActionDrawer' : 'efbLeftActionDrawer closed';
       const isSaMapMode = normalizeEfbViewerMode(efbViewerMode) === 'sa-map';
       const topNavClass = isSaMapMode ? 'efbTopNav efbTopNavHidden' : 'efbTopNav';
@@ -6351,6 +6769,7 @@
         + '<button id="efbSaMapToggleBtn" type="button" class="efbRailBtn' + (isSaMapMode ? ' active' : '') + '" title="' + escapeHtml(saToggleTitle) + '">' + getEfbSaMapToggleIconSvg(isSaMapMode) + '</button>'
         + '<span class="efbRailSpacer" aria-hidden="true"></span>'
         + '<button id="efbCenterOwnshipBtn" type="button" class="efbRailBtn' + (isSaMapMode ? '' : ' efbRailBtnHidden') + '" title="Center SA Map on ownship">' + getEfbOwnshipCenterIconSvg() + '</button>'
+        + '<button id="efbUserWaypointsBtn" type="button" class="efbRailBtn' + (isSaMapMode ? '' : ' efbRailBtnHidden') + (efbDrawerOpen && efbDrawerMode === 'user-waypoints' ? ' active' : '') + '" title="User waypoint drawer">' + getEfbUserWaypointsIconSvg() + '</button>'
         + '<button id="efbSaFollowBtn" type="button" class="efbRailBtn' + (isSaMapMode ? '' : ' efbRailBtnHidden') + (efbSaFollowOwnshipEnabled ? ' active' : '') + '" title="Follow ownship ' + (efbSaFollowOwnshipEnabled ? 'ON' : 'OFF') + '">' + getEfbSaFollowIconSvg() + '</button>'
         + '<button id="efbSaTrackUpBtn" type="button" class="efbRailBtn' + (isSaMapMode ? '' : ' efbRailBtnHidden') + (efbSaTrackUpEnabled ? ' active' : '') + '" title="Track-up ' + (efbSaTrackUpEnabled ? 'ON' : 'OFF') + '">' + getEfbSaTrackUpIconSvg() + '</button>'
         + '<button id="efbSaAnchorBtn" type="button" class="efbRailBtn' + (isSaMapMode && efbSaFollowOwnshipEnabled ? '' : ' efbRailBtnHidden') + '" title="Anchor: ' + (normalizeEfbSaAnchorMode(efbSaAnchorMode) === 'lower-third' ? 'Lower third' : 'Center') + '">' + (normalizeEfbSaAnchorMode(efbSaAnchorMode) === 'lower-third' ? getEfbSaAnchorLowerThirdIconSvg() : getEfbSaAnchorCenterIconSvg()) + '</button>'
@@ -6386,6 +6805,7 @@
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowJtacTargets !== false ? ' active' : '') + '" data-efb-sa-layer="jtac" title="JTAC targets ' + (efbSaShowJtacTargets !== false ? 'ON' : 'OFF') + '">' + getEfbSaLayerJtacIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowAirports ? ' active' : '') + '" data-efb-sa-layer="airports" title="Airport symbols ' + (efbSaShowAirports ? 'ON' : 'OFF') + '">' + getEfbSaLayerAirportIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowNavlog ? ' active' : '') + '" data-efb-sa-layer="navlog" title="Navlog route and waypoints ' + (efbSaShowNavlog ? 'ON' : 'OFF') + '">' + getEfbSaLayerNavlogIconSvg() + '</button>'
+        + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowUserWaypoints !== false ? ' active' : '') + '" data-efb-sa-layer="user-waypoints" title="User waypoints ' + (efbSaShowUserWaypoints !== false ? 'ON' : 'OFF') + '">' + getEfbSaLayerUserWaypointIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowDtcOverlay ? ' active' : '') + '" data-efb-sa-layer="dtc" title="DTC SA overlay ' + (efbSaShowDtcOverlay ? 'ON' : 'OFF') + '">' + getEfbSaLayerOverlayIconSvg() + '</button>'
         + '</div>'
         + '<div id="efbSearchOverlay" class="' + ((efbSearchOverlayOpen && !efbSearchAnimateOpenOnce) ? 'efbSearchOverlay open' : 'efbSearchOverlay') + '">'
@@ -6399,11 +6819,14 @@
         + '<div class="efbSearchCenterActions">'
         + '<button type="button" class="efbSearchActionBtn" data-efb-search-action="back">Back</button>'
         + '<button type="button" class="efbSearchActionBtn" data-efb-search-action="clear">Clear</button>'
+        + (efbSearchMode === 'user-waypoint-rename'
+          ? '<button type="button" class="efbSearchActionBtn" data-efb-search-action="apply-rename">Apply</button>'
+          : '')
         + '</div>'
         + '</div>'
         + '</div>'
         + '<div class="efbSearchResults">'
-        + '<div class="efbSearchResultsHead">Code · ' + escapeHtml(tokenDisplay) + '</div>'
+        + '<div class="efbSearchResultsHead">' + escapeHtml(efbSearchMode === 'user-waypoint-rename' ? 'Name · ' : 'Code · ') + escapeHtml(tokenDisplay) + '</div>'
         + '<div id="efbSearchCandidates" class="efbSearchCandidates">' + (searchRows || '<div class="efbSearchEmpty">No matching airports.</div>') + '</div>'
         + '</div>'
         + '</div>'
@@ -6457,7 +6880,9 @@
           ? ('Charts · ' + (airportKey || 'UNSET'))
           : (efbDrawerMode === 'pinned'
             ? 'Pinned charts'
-            : (efbDrawerMode === 'sa-layers' ? 'SA Map Layers' : 'Airports'));
+            : (efbDrawerMode === 'sa-layers'
+              ? 'SA Map Layers'
+              : (efbDrawerMode === 'user-waypoints' ? 'User Waypoints' : 'Airports')));
 
         if (efbDrawerMode === 'chart') {
           const charts = efbChartsByAirport[airportKey] || [];
@@ -6489,6 +6914,43 @@
           list.innerHTML = rows || '<span class="efbPickerEmpty">No pinned charts for this airport</span>';
         } else if (efbDrawerMode === 'sa-layers') {
           list.innerHTML = '';
+        } else if (efbDrawerMode === 'user-waypoints') {
+          const model = latestData || data;
+          const theater = String(resolveOpenFreeMapFallbackTheatreText(model) || '').trim();
+          const context = resolveActiveSaMapContext(model);
+          const selectedAssetKey = context && context.selected ? getMapSelectedAssetKeyBySelection(context.selected) : '';
+          const selectedUserWaypointId = parseEfbSaUserWaypointAssetKey(selectedAssetKey);
+          const rows = (Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints : [])
+            .slice()
+            .sort(function (a, b) {
+              const an = String((a && a.name) || '').toUpperCase();
+              const bn = String((b && b.name) || '').toUpperCase();
+              if (an < bn) return -1;
+              if (an > bn) return 1;
+              return String((a && a.id) || '').localeCompare(String((b && b.id) || ''));
+            })
+            .map(function (wp) {
+              const id = String((wp && wp.id) || '').trim();
+              if (!id) return '';
+              const name = String((wp && wp.name) || '').trim() || id;
+              const latLon = formatEfbSaUserWaypointLatLon(theater, wp);
+              const mgrs = formatEfbSaUserWaypointMgrs(theater, wp);
+              const active = id === selectedUserWaypointId ? ' active' : '';
+              const editing = id === String(efbSaUserWaypointEditingId || '').trim();
+              const nameLine = editing
+                ? ('<div class="efbWaypointActions"><input type="text" class="efbWaypointNameBtn" data-efb-user-waypoint-edit-input="' + escapeHtml(id) + '" value="' + escapeHtml(String(efbSaUserWaypointEditDraft || name)) + '" /><button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-edit-save="' + escapeHtml(id) + '">Save</button><button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-edit-cancel="' + escapeHtml(id) + '">Cancel</button></div>')
+                : ('<button type="button" class="efbWaypointNameBtn" data-efb-user-waypoint-select="' + escapeHtml(id) + '">' + escapeHtml(name) + '</button>');
+              return '<div class="efbWaypointRow' + active + '" data-efb-user-waypoint="' + escapeHtml(id) + '">'
+                + nameLine
+                + '<div class="efbWaypointMeta">LAT/LON: ' + escapeHtml(latLon) + '\nMGRS: ' + escapeHtml(mgrs) + '</div>'
+                + '<div class="efbWaypointActions">'
+                + '<button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-center="' + escapeHtml(id) + '">Center</button>'
+                + '<button type="button" class="efbWaypointActionBtn" data-efb-user-waypoint-rename="' + escapeHtml(id) + '">Rename</button>'
+                + '<button type="button" class="efbWaypointActionBtn delete" data-efb-user-waypoint-delete="' + escapeHtml(id) + '">Delete</button>'
+                + '</div>'
+                + '</div>';
+            }).join('');
+          list.innerHTML = rows || '<span class="efbPickerEmpty">No user waypoints yet. Long-press on SA map to add.</span>';
         } else {
           const airports = Array.isArray(efbAvailableAirports) ? efbAvailableAirports : [];
           const rows = airports.map(function (a) {
@@ -6509,6 +6971,7 @@
         const jtacBtn = drawer.querySelector('[data-efb-sa-layer="jtac"]');
         const airportsBtn = drawer.querySelector('[data-efb-sa-layer="airports"]');
         const navlogBtn = drawer.querySelector('[data-efb-sa-layer="navlog"]');
+        const userWaypointsBtn = drawer.querySelector('[data-efb-sa-layer="user-waypoints"]');
         const dtcBtn = drawer.querySelector('[data-efb-sa-layer="dtc"]');
         if (navBaseBtn) {
           const layer = normalizeEfbSaNavigraphLayer(efbSaNavigraphLayer);
@@ -6531,6 +6994,10 @@
         if (navlogBtn) {
           navlogBtn.classList.toggle('active', efbSaShowNavlog !== false);
           navlogBtn.title = 'Navlog route ' + (efbSaShowNavlog !== false ? 'ON' : 'OFF');
+        }
+        if (userWaypointsBtn) {
+          userWaypointsBtn.classList.toggle('active', efbSaShowUserWaypoints !== false);
+          userWaypointsBtn.title = 'User waypoints ' + (efbSaShowUserWaypoints !== false ? 'ON' : 'OFF');
         }
         if (dtcBtn) {
           dtcBtn.classList.toggle('active', efbSaShowDtcOverlay !== false);
@@ -6565,6 +7032,21 @@
         };
       }
 
+      const userWaypointsBtn = document.getElementById('efbUserWaypointsBtn');
+      if (userWaypointsBtn) {
+        userWaypointsBtn.onclick = function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (normalizeEfbViewerMode(efbViewerMode) !== 'sa-map') return;
+          if (efbDrawerOpen && efbDrawerMode === 'user-waypoints') {
+            closeEfbDrawer();
+          } else {
+            openEfbDrawer('user-waypoints');
+          }
+          applyEfbDrawerUi();
+        };
+      }
+
       applyEfbQuickPinButtonUi();
 
       const saLayerDrawer = document.getElementById('efbSaLayerDrawer');
@@ -6587,6 +7069,9 @@
             efbSaShowAirports = !efbSaShowAirports;
           } else if (layer === 'navlog') {
             efbSaShowNavlog = !efbSaShowNavlog;
+          } else if (layer === 'user-waypoints') {
+            efbSaShowUserWaypoints = !efbSaShowUserWaypoints;
+            persistEfbSaUserWaypointsEnabledPreference();
           } else if (layer === 'dtc') {
             efbSaShowDtcOverlay = !efbSaShowDtcOverlay;
           }
@@ -6736,6 +7221,7 @@
         const finalizeClose = function () {
           efbSearchOverlayOpen = false;
           efbSearchAnimateOpenOnce = false;
+          efbSearchMode = 'airport';
           if (typeof afterClose === 'function') {
             afterClose();
           }
@@ -6759,6 +7245,7 @@
           ev.stopPropagation();
           const willOpen = !efbSearchOverlayOpen;
           if (willOpen) {
+            efbSearchMode = 'airport';
             efbSearchOverlayOpen = true;
             closeEfbDrawer();
             efbRightToolsOpen = false;
@@ -6809,8 +7296,12 @@
           const charBtn = target.closest ? target.closest('[data-efb-search-char]') : null;
           if (charBtn) {
             const ch = String(charBtn.getAttribute('data-efb-search-char') || '').trim().toUpperCase();
-            if (ch && normalizeEfbSearchToken(efbSearchToken).length < 4) {
-              efbSearchToken = normalizeEfbSearchToken(efbSearchToken + ch);
+            const normalizer = efbSearchMode === 'user-waypoint-rename'
+              ? normalizeEfbWaypointRenameToken
+              : normalizeEfbSearchToken;
+            const maxLen = efbSearchMode === 'user-waypoint-rename' ? 10 : 4;
+            if (ch && normalizer(efbSearchToken).length < maxLen) {
+              efbSearchToken = normalizer(efbSearchToken + ch);
               efbUiDirty = true;
               if (latestData) render(latestData);
             }
@@ -6821,9 +7312,24 @@
           if (actionBtn) {
             const action = String(actionBtn.getAttribute('data-efb-search-action') || '').toLowerCase();
             if (action === 'back') {
-              efbSearchToken = normalizeEfbSearchToken(efbSearchToken).slice(0, -1);
+              efbSearchToken = (efbSearchMode === 'user-waypoint-rename'
+                ? normalizeEfbWaypointRenameToken(efbSearchToken)
+                : normalizeEfbSearchToken(efbSearchToken)).slice(0, -1);
             } else if (action === 'clear') {
               efbSearchToken = '';
+            } else if (action === 'apply-rename') {
+              const id = String(efbSaUserWaypointEditingId || '').trim();
+              const wp = findEfbSaUserWaypointById(id);
+              const tokenName = normalizeEfbWaypointRenameToken(efbSearchToken);
+              if (wp && tokenName) {
+                efbSaUserWaypointEditDraft = tokenName;
+                commitEfbSaUserWaypointRename();
+                setEfbSaUserWaypointDiag({ lastAction: 'edit-save-radial' });
+              }
+              closeSearchOverlayAnimated(function () {
+                openEfbDrawer('user-waypoints');
+              });
+              return;
             }
             efbUiDirty = true;
             if (latestData) render(latestData);
@@ -6831,7 +7337,7 @@
           }
 
           const candidateBtn = target.closest ? target.closest('[data-efb-search-candidate]') : null;
-          if (candidateBtn) {
+          if (candidateBtn && efbSearchMode !== 'user-waypoint-rename') {
             const nextAirport = String(candidateBtn.getAttribute('data-efb-search-candidate') || '').toUpperCase().trim();
             if (!nextAirport) return;
             closeSearchOverlayAnimated(function () {
@@ -6854,8 +7360,122 @@
 
       const drawerList = document.getElementById('efbDrawerList');
       if (drawerList) {
-        drawerList.onclick = function (ev) {
+        const runUserWaypointDrawerAction = function (ev) {
+          if (!ev) return false;
+          if (typeof ev.preventDefault === 'function') ev.preventDefault();
+          if (typeof ev.stopPropagation === 'function') ev.stopPropagation();
           const target = getEventElementTarget(ev);
+          if (!target || !target.closest) return false;
+          const context = resolveActiveSaMapContext(latestData || data);
+
+          const editSave = target.closest('[data-efb-user-waypoint-edit-save]');
+          if (editSave) {
+            const id = String(editSave.getAttribute('data-efb-user-waypoint-edit-save') || '').trim();
+            if (!id || id !== String(efbSaUserWaypointEditingId || '').trim()) return true;
+            if (commitEfbSaUserWaypointRename() && latestData) {
+              setEfbSaUserWaypointDiag({ lastAction: 'edit-save' });
+              applyEfbDrawerUi();
+              efbUiDirty = false;
+              render(latestData);
+            }
+            return true;
+          }
+
+          const editCancel = target.closest('[data-efb-user-waypoint-edit-cancel]');
+          if (editCancel) {
+            setEfbSaUserWaypointDiag({ lastAction: 'edit-cancel' });
+            cancelEfbSaUserWaypointRename();
+            applyEfbDrawerUi();
+            efbUiDirty = false;
+            if (latestData) render(latestData);
+            return true;
+          }
+
+          const userWaypointSelect = target.closest('[data-efb-user-waypoint-select]');
+          if (userWaypointSelect) {
+            const id = String(userWaypointSelect.getAttribute('data-efb-user-waypoint-select') || '').trim();
+            const wp = findEfbSaUserWaypointById(id);
+            if (!wp) return true;
+            if (context && context.selected) {
+              setMapSelectedAssetKeyBySelection(context.selected, buildEfbSaUserWaypointAssetKey(id));
+            }
+            setEfbSaUserWaypointDiag({ lastAction: 'select' });
+            if (latestData) render(latestData);
+            return true;
+          }
+
+          const userWaypointCenter = target.closest('[data-efb-user-waypoint-center]');
+          if (userWaypointCenter) {
+            const id = String(userWaypointCenter.getAttribute('data-efb-user-waypoint-center') || '').trim();
+            const wp = findEfbSaUserWaypointById(id);
+            if (!wp) return true;
+            if (context && context.selected) {
+              setMapSelectedAssetKeyBySelection(context.selected, buildEfbSaUserWaypointAssetKey(id));
+              handleOpenFreeMapCenterUserWaypoint(context.selected, wp, latestData || data);
+            }
+            applyEfbDrawerUi();
+            efbUiDirty = false;
+            setEfbSaUserWaypointDiag({ lastAction: 'center' });
+            if (latestData) render(latestData);
+            return true;
+          }
+
+          const userWaypointRename = target.closest('[data-efb-user-waypoint-rename]');
+          if (userWaypointRename) {
+            const id = String(userWaypointRename.getAttribute('data-efb-user-waypoint-rename') || '').trim();
+            const wp = findEfbSaUserWaypointById(id);
+            if (!wp) return true;
+            setEfbSaUserWaypointDiag({ lastAction: 'rename-open' });
+            beginEfbSaUserWaypointRename(id);
+            efbSearchMode = 'user-waypoint-rename';
+            efbSearchToken = normalizeEfbWaypointRenameToken(efbSaUserWaypointEditDraft || wp.name || '');
+            efbSearchOverlayOpen = true;
+            efbSearchAnimateOpenOnce = false;
+            closeEfbDrawer();
+            efbUiDirty = true;
+            if (latestData) render(latestData);
+            return true;
+          }
+
+          const userWaypointDelete = target.closest('[data-efb-user-waypoint-delete]');
+          if (userWaypointDelete) {
+            const id = String(userWaypointDelete.getAttribute('data-efb-user-waypoint-delete') || '').trim();
+            const wp = findEfbSaUserWaypointById(id);
+            if (!wp) return true;
+            setEfbSaUserWaypointDiag({ lastAction: 'delete' });
+            deleteEfbSaUserWaypoint(id);
+            if (String(efbSaUserWaypointEditingId || '').trim() === id) {
+              cancelEfbSaUserWaypointRename();
+            }
+            if (context && context.selected) {
+              const currentKey = getMapSelectedAssetKeyBySelection(context.selected);
+              if (parseEfbSaUserWaypointAssetKey(currentKey) === id) {
+                setMapSelectedAssetKeyBySelection(context.selected, '');
+              }
+            }
+            applyEfbDrawerUi();
+            efbUiDirty = false;
+            if (latestData) render(latestData);
+            return true;
+          }
+
+          return false;
+        };
+
+        drawerList.onpointerdown = function (ev) {
+          const target = getEventElementTarget(ev);
+          if (!target || !target.closest) return;
+          if (target.closest('[data-efb-user-waypoint-rename], [data-efb-user-waypoint-delete], [data-efb-user-waypoint-center], [data-efb-user-waypoint-select], [data-efb-user-waypoint-edit-save], [data-efb-user-waypoint-edit-cancel]')) {
+            if (typeof ev.stopPropagation === 'function') ev.stopPropagation();
+          }
+        };
+
+        drawerList.onpointerup = runUserWaypointDrawerAction;
+        drawerList.onclick = function (ev) {
+          if (runUserWaypointDrawerAction(ev)) return;
+          const target = getEventElementTarget(ev);
+          const context = resolveActiveSaMapContext(latestData || data);
+
           const pinItem = target && target.closest ? target.closest('[data-efb-pin-toggle]') : null;
           if (pinItem) {
             let pinId = String(pinItem.getAttribute('data-efb-pin-toggle') || '').trim();
@@ -6895,6 +7515,36 @@
           efbUiDirty = true;
           closeEfbDrawer();
           if (latestData) render(latestData);
+        };
+
+        drawerList.oninput = function (ev) {
+          const target = getEventElementTarget(ev);
+          if (!target || !target.closest) return;
+          const input = target.closest('[data-efb-user-waypoint-edit-input]');
+          if (!input) return;
+          const id = String(input.getAttribute('data-efb-user-waypoint-edit-input') || '').trim();
+          if (!id || id !== String(efbSaUserWaypointEditingId || '').trim()) return;
+          efbSaUserWaypointEditDraft = String(input.value || '').slice(0, 24);
+          setEfbSaUserWaypointDiag({ lastAction: 'edit-input' });
+        };
+
+        drawerList.onkeydown = function (ev) {
+          const target = getEventElementTarget(ev);
+          if (!target || !target.closest) return;
+          const input = target.closest('[data-efb-user-waypoint-edit-input]');
+          if (!input) return;
+          if (ev.key === 'Enter') {
+            if (commitEfbSaUserWaypointRename() && latestData) {
+              render(latestData);
+            }
+            ev.preventDefault();
+            return;
+          }
+          if (ev.key === 'Escape') {
+            cancelEfbSaUserWaypointRename();
+            if (latestData) render(latestData);
+            ev.preventDefault();
+          }
         };
       }
 
@@ -7065,9 +7715,10 @@
         const absSin = Math.abs(Math.sin(rotRad));
         const bboxHeightAtScale1 = (baseWidth * absSin) + (baseHeight * absCos);
         const scale = clamp(host.clientHeight / Math.max(1, bboxHeightAtScale1), 0.5, 3.5);
+        const fittedBboxHeight = bboxHeightAtScale1 * scale;
         viewport.scale = scale;
         viewport.tx = 0;
-        viewport.ty = 0;
+        viewport.ty = (fittedBboxHeight - baseHeight) / 2;
         applyEfbViewportToImage(image, viewport);
       };
 
@@ -11253,12 +11904,11 @@
       }
 
       const overlayRoot = overlaySvg;
-      if (!orderedFeatures.length) {
-        return;
-      }
 
       const selectedAssetKey = getMapSelectedAssetKeyBySelection(item.selectedKey);
       const selectedAssetInfo = { x: NaN, y: NaN, props: null };
+      const modelForWaypoints = latestData || {};
+      const theatreForWaypoints = String(resolveOpenFreeMapFallbackTheatreText(modelForWaypoints) || '').trim();
       function makeNode(name) { return document.createElementNS('http://www.w3.org/2000/svg', name); }
       const renderLayer = makeNode('g');
       overlaySvg = renderLayer;
@@ -11479,7 +12129,7 @@
           if (!p) return;
           const kind = String((props && props.kind) || '').toLowerCase();
           const isAsset = props.group === 'asset' && kind !== 'airfield';
-          const isSelectable = !!(props && props.assetKey) && (props.group === 'asset' || kind === 'airfield');
+          const isSelectable = !!(props && props.assetKey) && (props.group === 'asset' || kind === 'airfield' || kind === 'user-waypoint');
           const isSelected = isSelectable && String(selectedAssetKey || '') === String(props.assetKey || '');
           const markerNode = isAsset
             ? createAssetSymbol(p.x, p.y, props)
@@ -11498,6 +12148,18 @@
                 d.setAttribute('stroke-width', '1.5');
                 d.style.pointerEvents = 'none';
                 return d;
+              }
+              if (kind === 'user-waypoint') {
+                const tri = makeNode('polygon');
+                tri.setAttribute('points',
+                  p.x.toFixed(1) + ',' + (p.y - 8.0).toFixed(1) + ' '
+                  + (p.x - 7.2).toFixed(1) + ',' + (p.y + 5.8).toFixed(1) + ' '
+                  + (p.x + 7.2).toFixed(1) + ',' + (p.y + 5.8).toFixed(1));
+                tri.setAttribute('fill', 'none');
+                tri.setAttribute('stroke', stroke);
+                tri.setAttribute('stroke-width', '1.9');
+                tri.style.pointerEvents = 'none';
+                return tri;
               }
               if (kind === 'waypoint') {
                 const wpType = String((props && props.waypointType) || '').toLowerCase();
@@ -11806,7 +12468,7 @@
               return c;
             })();
 
-          if (markerNode && (kind === 'waypoint' || kind === 'airfield')) {
+          if (markerNode && (kind === 'waypoint' || kind === 'airfield' || kind === 'user-waypoint')) {
             markerNode.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ') scale(1.5) translate(' + (-p.x).toFixed(1) + ' ' + (-p.y).toFixed(1) + ')');
           }
 
@@ -11815,14 +12477,14 @@
             markerNode.style.cursor = 'pointer';
             markerNode.setAttribute('data-asset-key', String(props.assetKey));
             if (isSelected) {
-              const selectedRingRadius = (kind === 'airfield' || kind === 'waypoint') ? 16.5 : 11;
+              const selectedRingRadius = (kind === 'airfield' || kind === 'waypoint' || kind === 'user-waypoint') ? 16.5 : 11;
               const ring = makeNode('circle');
               ring.setAttribute('cx', p.x.toFixed(1));
               ring.setAttribute('cy', p.y.toFixed(1));
               ring.setAttribute('r', selectedRingRadius.toFixed(1));
               ring.setAttribute('fill', 'none');
               ring.setAttribute('stroke', '#c94444');
-              ring.setAttribute('stroke-width', (kind === 'airfield' || kind === 'waypoint') ? '3.0' : '2.4');
+              ring.setAttribute('stroke-width', (kind === 'airfield' || kind === 'waypoint' || kind === 'user-waypoint') ? '3.0' : '2.4');
               ring.style.pointerEvents = 'none';
               overlaySvg.appendChild(ring);
               selectedAssetInfo.x = p.x;
@@ -11836,7 +12498,7 @@
           if (label) {
             const kind = String((props && props.kind) || '').toLowerCase();
             const isAirfieldLabel = kind === 'airfield';
-            const isWaypointLabel = kind === 'waypoint';
+            const isWaypointLabel = kind === 'waypoint' || kind === 'user-waypoint';
             const useScaledLabel = isAirfieldLabel || isWaypointLabel;
             const text = makeNode('text');
             text.setAttribute('x', (p.x + (isAirfieldLabel ? 16 : (isWaypointLabel ? 14 : 9))).toFixed(1));
@@ -11889,6 +12551,96 @@
         }
       });
 
+      let renderedUserWaypointCount = 0;
+      if (efbSaShowUserWaypoints !== false) {
+        const userWaypointLayer = makeNode('g');
+        userWaypointLayer.setAttribute('data-efb-user-waypoint-layer', '1');
+        (Array.isArray(efbSaUserWaypoints) ? efbSaUserWaypoints : []).forEach(function (wp) {
+          const id = String((wp && wp.id) || '').trim();
+          if (!id) return;
+          const ll = resolveEfbSaUserWaypointLonLat(theatreForWaypoints, wp);
+          if (!ll) return;
+          let p = null;
+          try {
+            p = map.project([Number(ll.lon), Number(ll.lat)]);
+          } catch (_) {
+            p = null;
+          }
+          if (!p || !isFinite(Number(p.x)) || !isFinite(Number(p.y))) return;
+
+          renderedUserWaypointCount++;
+          const stroke = '#205a99';
+          const name = String((wp && wp.name) || '').trim() || 'UWP';
+          const assetKey = buildEfbSaUserWaypointAssetKey(id);
+          const isSelected = String(selectedAssetKey || '') === assetKey;
+
+          const tri = makeNode('polygon');
+          tri.setAttribute('points',
+            p.x.toFixed(1) + ',' + (p.y - 12.0).toFixed(1) + ' '
+            + (p.x - 10.8).toFixed(1) + ',' + (p.y + 8.7).toFixed(1) + ' '
+            + (p.x + 10.8).toFixed(1) + ',' + (p.y + 8.7).toFixed(1));
+          tri.setAttribute('fill', 'none');
+          tri.setAttribute('stroke', stroke);
+          tri.setAttribute('stroke-width', '2.8');
+          tri.style.pointerEvents = 'auto';
+          tri.style.cursor = 'pointer';
+          tri.setAttribute('data-asset-key', assetKey);
+          userWaypointLayer.appendChild(tri);
+
+          const hit = makeNode('circle');
+          hit.setAttribute('cx', p.x.toFixed(1));
+          hit.setAttribute('cy', p.y.toFixed(1));
+          hit.setAttribute('r', '16');
+          hit.setAttribute('fill', '#000000');
+          hit.setAttribute('fill-opacity', '0.01');
+          hit.style.pointerEvents = 'auto';
+          hit.style.cursor = 'pointer';
+          hit.setAttribute('data-asset-key', assetKey);
+          userWaypointLayer.appendChild(hit);
+
+          const label = makeNode('text');
+          label.setAttribute('x', (p.x + 16).toFixed(1));
+          label.setAttribute('y', (p.y + 4).toFixed(1));
+          label.setAttribute('font-size', '16.5');
+          label.setAttribute('font-weight', '700');
+          label.setAttribute('fill', stroke);
+          label.setAttribute('stroke', '#ffffff');
+          label.setAttribute('stroke-width', '0.9');
+          label.style.pointerEvents = 'none';
+          label.textContent = name;
+          userWaypointLayer.appendChild(label);
+
+          if (isSelected) {
+            const ring = makeNode('circle');
+            ring.setAttribute('cx', p.x.toFixed(1));
+            ring.setAttribute('cy', p.y.toFixed(1));
+            ring.setAttribute('r', '18.5');
+            ring.setAttribute('fill', 'none');
+            ring.setAttribute('stroke', '#c94444');
+            ring.setAttribute('stroke-width', '3.0');
+            ring.style.pointerEvents = 'none';
+            userWaypointLayer.appendChild(ring);
+
+            selectedAssetInfo.x = p.x;
+            selectedAssetInfo.y = p.y;
+            selectedAssetInfo.props = {
+              category: 'USER_WAYPOINT',
+              typeName: 'USER WAYPOINT',
+              latLonText: String(formatEfbSaUserWaypointLatLon(theatreForWaypoints, wp) || '').trim(),
+              mgrsText: String(formatEfbSaUserWaypointMgrs(theatreForWaypoints, wp) || '').toUpperCase().trim(),
+              xNum: (wp && wp.xNum !== null && wp.xNum !== undefined && String(wp.xNum) !== '') ? Number(wp.xNum) : NaN,
+              yNum: (wp && wp.yNum !== null && wp.yNum !== undefined && String(wp.yNum) !== '') ? Number(wp.yNum) : NaN,
+            };
+          }
+        });
+        overlaySvg.appendChild(userWaypointLayer);
+      }
+
+      setEfbSaUserWaypointDiag({
+        lastRenderedCount: renderedUserWaypointCount,
+        lastSelectedAssetKey: String(selectedAssetKey || '')
+      });
+
       if (selectedAssetInfo.props) {
         const p = selectedAssetInfo.props;
         function formatFreq(v) {
@@ -11928,6 +12680,8 @@
         const mpText = String(p.mpClientCallsign || '').trim();
         if (category !== 'JTAC_TARGET') {
           if (typeText) infoLines.push('TYPE: ' + typeText);
+          const latLonText = String(p.latLonText || '').trim();
+          if (latLonText) infoLines.push('LAT/LON: ' + latLonText);
           const mgrsText = String(p.mgrsText || '').trim();
           if (mgrsText) infoLines.push('MGRS: ' + mgrsText);
           const elevFeet = Number(p.elevationFeet);
@@ -12005,6 +12759,105 @@
 
       if (!item.overlayClickBound) {
         let lastAssetBugEventMs = 0;
+        let longPressState = null;
+
+        function clearLongPressState() {
+          if (!longPressState) return;
+          if (longPressState.timerId) {
+            clearTimeout(longPressState.timerId);
+          }
+          longPressState = null;
+        }
+
+        function beginLongPressDetection(ev) {
+          if (!ev) return;
+          if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+          const rawTarget = getEventElementTarget(ev);
+          if (rawTarget && rawTarget.closest && rawTarget.closest('.maplibregl-ctrl, .maplibregl-control-container, .maplibregl-marker')) return;
+          const selectedKey = item.selectedKey;
+          if (!selectedKey) return;
+
+          const key = getFlightPlanEtaStartKey(selectedKey);
+          if (!key) return;
+
+          const pointerId = (typeof ev.pointerId === 'number') ? ev.pointerId : 0;
+          const startX = Number(ev.clientX);
+          const startY = Number(ev.clientY);
+          const assetNode = rawTarget && rawTarget.closest ? rawTarget.closest('[data-asset-key]') : null;
+          const targetAssetKey = assetNode && assetNode.getAttribute
+            ? String(assetNode.getAttribute('data-asset-key') || '').trim()
+            : '';
+
+          longPressState = {
+            pointerId: pointerId,
+            startX: startX,
+            startY: startY,
+            moved: false,
+            fired: false,
+            targetAssetKey: targetAssetKey,
+            timerId: 0,
+          };
+
+          longPressState.timerId = setTimeout(function () {
+            if (!longPressState || longPressState.fired || longPressState.moved) return;
+            longPressState.fired = true;
+
+            const current = longPressState;
+            const userWaypointId = parseEfbSaUserWaypointAssetKey(current.targetAssetKey);
+            if (userWaypointId) {
+              setMapSelectedAssetKeyBySelection(selectedKey, buildEfbSaUserWaypointAssetKey(userWaypointId));
+              openEfbDrawer('user-waypoints');
+              efbUiDirty = true;
+              if (latestData) render(latestData);
+              return;
+            }
+
+            const rect = host.getBoundingClientRect ? host.getBoundingClientRect() : null;
+            if (!rect || !isFinite(rect.left) || !isFinite(rect.top)) return;
+            const px = current.startX - rect.left;
+            const py = current.startY - rect.top;
+            if (!isFinite(px) || !isFinite(py)) return;
+
+            let lonLat = null;
+            try {
+              lonLat = map.unproject([px, py]);
+            } catch (_) {
+              lonLat = null;
+            }
+            if (!lonLat) return;
+
+            const lon = Number(lonLat.lng);
+            const lat = Number(lonLat.lat);
+            if (!isFinite(lat) || !isFinite(lon)) return;
+
+            const model = latestData || {};
+            const theater = String(resolveOpenFreeMapFallbackTheatreText(model) || '').trim();
+            const dcsPoint = convertLatLonToDcsXY(theater, lat, lon);
+            const created = createEfbSaUserWaypoint(
+              dcsPoint && isFinite(Number(dcsPoint.xNum)) ? Number(dcsPoint.xNum) : NaN,
+              dcsPoint && isFinite(Number(dcsPoint.yNum)) ? Number(dcsPoint.yNum) : NaN,
+              lat,
+              lon);
+            if (!created) return;
+            setEfbSaUserWaypointDiag({
+              lastAction: 'add',
+              lastAddLatLon: Number(lat).toFixed(5) + ',' + Number(lon).toFixed(5),
+              lastAddXY: ((created.xNum !== null && created.xNum !== undefined) && (created.yNum !== null && created.yNum !== undefined))
+                ? (String(Math.round(Number(created.xNum))) + '/' + String(Math.round(Number(created.yNum))))
+                : 'null/null'
+            });
+
+            renderOpenFreeMapOverlay(item, item.payload || { features: [] });
+            const fallback = host.querySelector('.fltPlanOpenMapFallback');
+            if (fallback) fallback.style.display = 'none';
+
+            const assetKey = buildEfbSaUserWaypointAssetKey(created.id);
+            setMapSelectedAssetKeyBySelection(selectedKey, assetKey);
+            openEfbDrawer('user-waypoints');
+            efbUiDirty = true;
+            if (latestData) render(latestData);
+          }, efbSaUserWaypointHoldMs);
+        }
 
         function handleOverlayAssetBugEvent(ev, immediate) {
           let node = ev.target;
@@ -12096,11 +12949,48 @@
           }
         }
 
-        overlayRoot.addEventListener('pointerdown', function (ev) {
+        function onPointerDown(ev) {
+          beginLongPressDetection(ev);
           handleOverlayAssetBugEvent(ev, true);
-        });
+        }
+
+        overlayRoot.addEventListener('pointerdown', onPointerDown);
+        host.addEventListener('pointerdown', onPointerDown);
+
+        function onPointerMove(ev) {
+          if (!longPressState) return;
+          const pointerId = (typeof ev.pointerId === 'number') ? ev.pointerId : 0;
+          if (pointerId !== longPressState.pointerId) return;
+          const dx = Number(ev.clientX) - Number(longPressState.startX);
+          const dy = Number(ev.clientY) - Number(longPressState.startY);
+          if (!isFinite(dx) || !isFinite(dy)) return;
+          if ((dx * dx) + (dy * dy) > (efbSaUserWaypointHoldMovePx * efbSaUserWaypointHoldMovePx)) {
+            longPressState.moved = true;
+            clearLongPressState();
+          }
+        }
+
+        overlayRoot.addEventListener('pointermove', onPointerMove);
+        host.addEventListener('pointermove', onPointerMove);
+
+        function onPointerDone() {
+          clearLongPressState();
+        }
+
+        overlayRoot.addEventListener('pointerup', onPointerDone);
+        overlayRoot.addEventListener('pointercancel', onPointerDone);
+        overlayRoot.addEventListener('pointerleave', onPointerDone);
+        host.addEventListener('pointerup', onPointerDone);
+        host.addEventListener('pointercancel', onPointerDone);
+        host.addEventListener('pointerleave', onPointerDone);
 
         overlayRoot.addEventListener('click', function (ev) {
+          if (longPressState && longPressState.fired) {
+            clearLongPressState();
+            ev.preventDefault();
+            if (typeof ev.stopPropagation === 'function') ev.stopPropagation();
+            return;
+          }
           handleOverlayAssetBugEvent(ev, false);
         });
         item.overlayClickBound = true;
@@ -12349,6 +13239,29 @@
       state.centerLat = centerLat;
       state.zoom = Number(map.getZoom());
       map.easeTo({ pitch: 0, duration: 0 });
+      return true;
+    }
+
+    function handleOpenFreeMapCenterUserWaypoint(selected, waypoint, data) {
+      if (!waypoint) return false;
+      const key = getFlightPlanEtaStartKey(selected);
+      if (!key) return false;
+      const containerId = String(openFreeMapContainerIdBySelectionKey[key] || '');
+      if (!containerId) return false;
+      const item = openFreeMapInstancesByContainerId[containerId];
+      if (!item || !item.map) return false;
+
+      const model = data || latestData || {};
+      const theater = String(resolveOpenFreeMapFallbackTheatreText(model) || '').trim();
+      const ll = resolveEfbSaUserWaypointLonLat(theater, waypoint);
+      if (!ll) return false;
+
+      const map = item.map;
+      map.easeTo({ center: [Number(ll.lon), Number(ll.lat)], duration: 0 });
+      const state = getOpenFreeMapViewBySelection(selected);
+      state.centerLon = Number(ll.lon);
+      state.centerLat = Number(ll.lat);
+      state.zoom = Number(map.getZoom());
       return true;
     }
 
@@ -18147,7 +19060,10 @@
       if (selectedAssetKey) {
         selectedAsset = selectionPool.find(function (a) { return makeMapAssetSelectionKey(a) === selectedAssetKey; }) || null;
         if (!selectedAsset) {
-          setMapSelectedAssetKeyBySelection(selected, '');
+          const selectedUserWaypointId = parseEfbSaUserWaypointAssetKey(selectedAssetKey);
+          if (!selectedUserWaypointId) {
+            setMapSelectedAssetKeyBySelection(selected, '');
+          }
         }
       }
 
@@ -19564,6 +20480,11 @@
               bindEfbInteractions(displayData);
               efbLastResolvedAirport = airportKey;
               efbUiDirty = false;
+          } else if (isSaMapMode && efbDrawerOpen && efbDrawerMode === 'user-waypoints') {
+            const list = document.getElementById('efbDrawerList');
+            if (list && typeof bindEfbInteractions === 'function') {
+              bindEfbInteractions(displayData);
+            }
             }
 
             if (isSaMapMode) {
@@ -20741,6 +21662,8 @@
     efbSaAnchorMode = readEfbSaAnchorModePreference();
     efbSaUseFastOwnshipEnabled = readEfbSaUseFastOwnshipPreference();
     efbSaNavigraphLayer = readEfbSaNavigraphLayerPreference();
+    efbSaShowUserWaypoints = readEfbSaUserWaypointsEnabledPreference();
+    efbSaUserWaypoints = readEfbSaUserWaypointsPreference();
     nightModeEnabled = readNightModePreference();
     applyNightModeUi();
     dlinkOnEnabled = readDlinkOnPreference();

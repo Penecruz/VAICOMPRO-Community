@@ -170,6 +170,7 @@
     <Resource Include="Resources\Images\hazard-sign-images-general_warning.png" />
     <Resource Include="Resources\Images\icon-refresh-128.png" />
     <Resource Include="Resources\Images\MainMenulogo.png" />
+    <Resource Include="Resources\Images\Navigraph_Logo_tx.png" />
     <Resource Include="Resources\Images\microphone.png" />
     <Resource Include="Resources\Images\microphone_trainingmode.png" />
     <Resource Include="Resources\Images\Panelbg.png" />

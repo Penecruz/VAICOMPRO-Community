@@ -343,6 +343,18 @@ namespace VAICOM
                 }
             }
 
+            private void OpenKneeboardFocusSwitchOn(object sender, RoutedEventArgs e) { State.activeconfig.OpenKneeboard_FocusSwitchEnabled = true; }
+            private void OpenKneeboardFocusSwitchOff(object sender, RoutedEventArgs e) { State.activeconfig.OpenKneeboard_FocusSwitchEnabled = false; }
+            private void SetCurrentValueOpenKneeboardFocusSwitch(object sender, EventArgs e)
+            {
+                CheckBox checkbox = sender as CheckBox;
+                if (checkbox != null)
+                {
+                    checkbox.IsEnabled = true;
+                    checkbox.IsChecked = State.activeconfig.OpenKneeboard_FocusSwitchEnabled;
+                }
+            }
+
             private void OpenKneeboardEfbEnableOn(object sender, RoutedEventArgs e)
             {
                 State.activeconfig.OpenKneeboard_EfbEnabled = true;

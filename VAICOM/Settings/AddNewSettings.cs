@@ -70,6 +70,10 @@ namespace VAICOM
                     {
                         State.activeconfig.OpenKneeboard_AutoBrowse = State.activeconfig.KneeboardlinkPTT;
                     }
+                    if (!ConfigContainsProperty("OpenKneeboard_FocusSwitchEnabled"))
+                    {
+                        State.activeconfig.OpenKneeboard_FocusSwitchEnabled = false;
+                    }
                     if (State.activeconfig.OpenKneeboard_Out_Port <= 0 || State.activeconfig.OpenKneeboard_Out_Port > 65535)
                     {
                         State.activeconfig.OpenKneeboard_Out_Port = 7779;

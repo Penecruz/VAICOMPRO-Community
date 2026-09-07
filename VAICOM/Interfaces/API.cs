@@ -292,6 +292,9 @@ namespace VAICOM
             private static readonly List<string> okbTabOrder = new List<string>()
             { "LOG", "ATC", "AWACS", "JTAC", "TANKER", "AOCS", "FLIGHT", "AI CREW", "GND CREW", "NOTES" };
 
+            private const string OkbActionPrefix = "vaicom-community;okb-out;";
+            private const string OkbTabPrefix = OkbActionPrefix + "tab-";
+
             private static string okbActiveTab = "LOG";
 
             public static string NormalizeKneeboardContext(string input)
@@ -302,8 +305,7 @@ namespace VAICOM
                 }
 
                 string normalized = input.Trim().ToLowerInvariant();
-                const string okbTabPrefix = "vaicom-community;okb-out;tab-";
-                if (!normalized.StartsWith(okbTabPrefix, StringComparison.Ordinal))
+                if (!normalized.StartsWith(OkbActionPrefix, StringComparison.Ordinal))
                 {
                     return normalized;
                 }
@@ -311,20 +313,49 @@ namespace VAICOM
                 return normalized;
             }
 
+            public static bool IsOpenKneeboardActionContext(string input)
+            {
+                return !string.IsNullOrWhiteSpace(input)
+                    && input.StartsWith(OkbActionPrefix, StringComparison.OrdinalIgnoreCase);
+            }
+
             public static bool IsOpenKneeboardTabActionContext(string input)
             {
                 return !string.IsNullOrWhiteSpace(input)
-                    && input.StartsWith("vaicom-community;okb-out;tab-", StringComparison.OrdinalIgnoreCase);
+                    && input.StartsWith(OkbTabPrefix, StringComparison.OrdinalIgnoreCase);
             }
 
             public static void ControlOpenKneeboardOut(dynamic vaProxy, string actionContext)
             {
-                if (!IsOpenKneeboardTabActionContext(actionContext))
+                if (!IsOpenKneeboardActionContext(actionContext))
                 {
                     return;
                 }
 
-                string action = actionContext.Trim().ToLowerInvariant().Substring("vaicom-community;okb-out;tab-".Length);
+                if (string.IsNullOrWhiteSpace(actionContext))
+                {
+                    return;
+                }
+
+                string normalizedContext = actionContext.Trim().ToLowerInvariant();
+                if (normalizedContext.Equals(OkbActionPrefix + "focus-okb", StringComparison.Ordinal))
+                {
+                    HandleFocusCommand(vaProxy, true);
+                    return;
+                }
+
+                if (normalizedContext.Equals(OkbActionPrefix + "focus-dcs", StringComparison.Ordinal))
+                {
+                    HandleFocusCommand(vaProxy, false);
+                    return;
+                }
+
+                if (!normalizedContext.StartsWith(OkbTabPrefix, StringComparison.Ordinal))
+                {
+                    return;
+                }
+
+                string action = normalizedContext.Substring(OkbTabPrefix.Length);
                 switch (action)
                 {
                     case "next":
@@ -367,6 +398,22 @@ namespace VAICOM
                     default:
                         break;
                 }
+            }
+
+            private static void HandleFocusCommand(dynamic vaProxy, bool focusOpenKneeboard)
+            {
+                if (State.activeconfig == null || !State.activeconfig.OpenKneeboard_FocusSwitchEnabled)
+                {
+                    vaProxy.WriteToLog("OKB Out focus command ignored: enable Focus Switch in Preferences > OpenKneeboard Out.", Colors.Warning);
+                    return;
+                }
+
+                string statusMessage;
+                bool focused = focusOpenKneeboard
+                    ? OpenKneeboardBridge.TryFocusOpenKneeboard(out statusMessage)
+                    : OpenKneeboardBridge.TryFocusDcs(out statusMessage);
+
+                vaProxy.WriteToLog(statusMessage, focused ? Colors.Message : Colors.Warning);
             }
 
             private static void CycleOkbTabs(dynamic vaProxy, int direction)

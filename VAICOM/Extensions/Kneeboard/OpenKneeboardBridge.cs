@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.IO;
 using System.Net;
@@ -120,9 +121,40 @@ namespace VAICOM
                 private static long lastClientRequestUtcTicks;
                 private static long fastOwnshipLastLogUtcTicks;
                 private static readonly Guid SavedGamesFolderId = new Guid("4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4");
+                private const int SwRestore = 9;
+
+                [StructLayout(LayoutKind.Sequential)]
+                private struct NativeRect
+                {
+                    public int Left;
+                    public int Top;
+                    public int Right;
+                    public int Bottom;
+                }
 
                 [DllImport("shell32.dll")]
                 private static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);
+
+                [DllImport("user32.dll")]
+                private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+                [DllImport("user32.dll")]
+                private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+                [DllImport("user32.dll")]
+                private static extern bool BringWindowToTop(IntPtr hWnd);
+
+                [DllImport("user32.dll")]
+                private static extern IntPtr SetActiveWindow(IntPtr hWnd);
+
+                [DllImport("user32.dll")]
+                private static extern bool GetWindowRect(IntPtr hWnd, out NativeRect lpRect);
+
+                [DllImport("user32.dll")]
+                private static extern bool SetCursorPos(int x, int y);
+
+                [DllImport("user32.dll")]
+                private static extern IntPtr GetForegroundWindow();
 
                 private const int DefaultOpenKneeboardOutPort = 7779;
                 private const string OpenKneeboardPluginsRegistryKey = @"SOFTWARE\Fred Emmott\OpenKneeboard\Plugins\v1";
@@ -189,6 +221,205 @@ namespace VAICOM
                         DateTime lastRequestUtc = new DateTime(ticks, DateTimeKind.Utc);
                         return (DateTime.UtcNow - lastRequestUtc) <= TimeSpan.FromSeconds(3);
                     }
+                }
+
+                public static bool TryFocusOpenKneeboard(out string statusMessage)
+                {
+                    Process target = FindProcessByWindowTitlePrefix("OpenKneeboard");
+                    if (target == null)
+                    {
+                        statusMessage = "OKB Out focus failed: no OpenKneeboard window is open.";
+                        return false;
+                    }
+
+                    return TryActivateWindow(target, true, out statusMessage);
+                }
+
+                public static bool TryFocusDcs(out string statusMessage)
+                {
+                    Process target = null;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        target = FindDcsProcess();
+                        if (target != null)
+                        {
+                            break;
+                        }
+
+                        Thread.Sleep(120);
+                    }
+
+                    if (target == null)
+                    {
+                        statusMessage = "OKB Out focus failed: no DCS window is open or ready.";
+                        return false;
+                    }
+
+                    bool focused = TryActivateWindow(target, true, out statusMessage);
+                    if (!focused)
+                    {
+                        Process retry = FindDcsProcess();
+                        if (retry != null)
+                        {
+                            focused = TryActivateWindow(retry, true, out statusMessage);
+                        }
+                    }
+
+                    return focused;
+                }
+
+                private static bool TryActivateWindow(Process process, bool centerMouse, out string statusMessage)
+                {
+                    if (process == null)
+                    {
+                        statusMessage = "OKB Out focus failed: invalid target process.";
+                        return false;
+                    }
+
+                    IntPtr windowHandle = IntPtr.Zero;
+                    string title = "";
+                    string processName = "";
+
+                    try
+                    {
+                        windowHandle = process.MainWindowHandle;
+                        title = process.MainWindowTitle ?? "";
+                        processName = process.ProcessName ?? "";
+                    }
+                    catch
+                    {
+                    }
+
+                    if (windowHandle == IntPtr.Zero)
+                    {
+                        statusMessage = "OKB Out focus failed: target window handle is not available.";
+                        return false;
+                    }
+
+                    try
+                    {
+                        ShowWindow(windowHandle, SwRestore);
+                        Thread.Sleep(80);
+                    }
+                    catch
+                    {
+                    }
+
+                    bool focused = false;
+                    try
+                    {
+                        focused = SetForegroundWindow(windowHandle);
+                        focused = BringWindowToTop(windowHandle) || focused;
+                        focused = SetActiveWindow(windowHandle) != IntPtr.Zero || focused;
+                        focused = focused || GetForegroundWindow() == windowHandle;
+                    }
+                    catch
+                    {
+                    }
+
+                    if (!focused)
+                    {
+                        statusMessage = "OKB Out focus failed: Windows blocked foreground activation for " + processName + ".";
+                        return false;
+                    }
+
+                    if (centerMouse)
+                    {
+                        TryCenterCursorInWindow(windowHandle, processName);
+                        Thread.Sleep(150);
+                        TryCenterCursorInWindow(windowHandle, processName);
+                    }
+
+                    string label = string.IsNullOrWhiteSpace(title) ? processName : title;
+                    statusMessage = "OKB Out focus set to " + label + ".";
+                    return true;
+                }
+
+                private static void TryCenterCursorInWindow(IntPtr windowHandle, string processName)
+                {
+                    try
+                    {
+                        NativeRect rect;
+                        if (!GetWindowRect(windowHandle, out rect))
+                        {
+                            Log.Write("OKB Out focus: GetWindowRect failed while centering mouse for " + (processName ?? "target") + ".", Colors.Warning);
+                            return;
+                        }
+
+                        int centerX = rect.Left + ((rect.Right - rect.Left) / 2);
+                        int centerY = rect.Top + ((rect.Bottom - rect.Top) / 2);
+                        if (!SetCursorPos(centerX, centerY))
+                        {
+                            Log.Write("OKB Out focus: SetCursorPos failed while centering mouse for " + (processName ?? "target") + ".", Colors.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Write("OKB Out focus: mouse centering exception for " + (processName ?? "target") + ": " + ex.Message, Colors.Warning);
+                    }
+                }
+
+                private static Process FindProcessByWindowTitlePrefix(string titlePrefix)
+                {
+                    if (string.IsNullOrWhiteSpace(titlePrefix))
+                    {
+                        return null;
+                    }
+
+                    foreach (Process process in Process.GetProcesses())
+                    {
+                        try
+                        {
+                            if (process.MainWindowHandle == IntPtr.Zero)
+                            {
+                                continue;
+                            }
+
+                            string title = process.MainWindowTitle ?? "";
+                            if (title.StartsWith(titlePrefix, StringComparison.OrdinalIgnoreCase))
+                            {
+                                return process;
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+
+                    return null;
+                }
+
+                private static Process FindDcsProcess()
+                {
+                    Process fallbackByName = null;
+
+                    foreach (Process process in Process.GetProcesses())
+                    {
+                        try
+                        {
+                            if (process.MainWindowHandle == IntPtr.Zero)
+                            {
+                                continue;
+                            }
+
+                            string title = process.MainWindowTitle ?? "";
+                            if (title.Equals("Digital Combat Simulator", StringComparison.OrdinalIgnoreCase)
+                                || title.StartsWith("Digital Combat Simulator", StringComparison.OrdinalIgnoreCase))
+                            {
+                                return process;
+                            }
+
+                            if (fallbackByName == null && string.Equals(process.ProcessName ?? "", "DCS", StringComparison.OrdinalIgnoreCase))
+                            {
+                                fallbackByName = process;
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+
+                    return fallbackByName;
                 }
 
                 private static void SetKeywordsPluginRegistration()

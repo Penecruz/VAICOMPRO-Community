@@ -16,6 +16,7 @@ namespace VAICOM
             {
                 private const string DeviceCodeGrantType = "urn:ietf:params:oauth:grant-type:device_code";
                 private static readonly object MockRefreshSync = new object();
+                private static readonly object RefreshSync = new object();
                 private static Timer mockRefreshTimer;
                 private static string mockRefreshMode = "success";
 
@@ -281,96 +282,111 @@ namespace VAICOM
 
                     try
                     {
-                        string authPayload;
-                        if (!OpenKneeboardNavigraphEfbState.TryGetDecryptedAuthBlob(out authPayload) || string.IsNullOrWhiteSpace(authPayload))
+                        lock (RefreshSync)
                         {
-                            message = "No auth payload available.";
-                            return false;
-                        }
-
-                        JObject existing = JObject.Parse(authPayload);
-                        string refreshToken = (string)existing["refresh_token"] ?? "";
-                        if (string.IsNullOrWhiteSpace(refreshToken))
-                        {
-                            message = "Missing refresh token.";
-                            return false;
-                        }
-
-                        OAuthConfig config = BuildConfig();
-                        if (string.IsNullOrWhiteSpace(config.ClientId) || string.IsNullOrWhiteSpace(config.TokenEndpoint))
-                        {
-                            message = "Missing OAuth client id or token endpoint.";
-                            return false;
-                        }
-
-                        List<KeyValuePair<string, string>> payload = new List<KeyValuePair<string, string>>
-                        {
-                            new KeyValuePair<string, string>("grant_type", "refresh_token"),
-                            new KeyValuePair<string, string>("client_id", config.ClientId),
-                            new KeyValuePair<string, string>("refresh_token", refreshToken),
-                        };
-                        if (!string.IsNullOrWhiteSpace(config.Scope))
-                        {
-                            payload.Add(new KeyValuePair<string, string>("scope", config.Scope));
-                        }
-                        if (!string.IsNullOrWhiteSpace(config.ClientSecret))
-                        {
-                            payload.Add(new KeyValuePair<string, string>("client_secret", config.ClientSecret));
-                        }
-
-                        using (HttpClient client = new HttpClient())
-                        using (FormUrlEncodedContent content = new FormUrlEncodedContent(payload))
-                        {
-                            // try
-                            // {
-                            //     var logPayload = new List<KeyValuePair<string, string>>(payload);
-                            //     for (int i = 0; i < logPayload.Count; i++)
-                            //     {
-                            //         if (string.Equals(logPayload[i].Key, "client_secret", StringComparison.OrdinalIgnoreCase))
-                            //         {
-                            //             logPayload[i] = new KeyValuePair<string, string>(logPayload[i].Key, "<redacted>");
-                            //         }
-                            //     }
-                            //     JObject payloadObj = new JObject();
-                            //     foreach (var kv in logPayload) payloadObj[kv.Key] = kv.Value;
-                            //     Log.Write("Navigraph refresh request payload: " + payloadObj.ToString(Newtonsoft.Json.Formatting.None), Static.Colors.Debug);
-                            // }
-                            // catch { }
-
-                            HttpResponseMessage response = client.PostAsync(config.TokenEndpoint, content).GetAwaiter().GetResult();
-                            string json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                            // try { Log.Write("Navigraph refresh response: " + json, Static.Colors.Debug); } catch { }
-
-                            if (!response.IsSuccessStatusCode)
+                            string authPayload;
+                            if (!OpenKneeboardNavigraphEfbState.TryGetDecryptedAuthBlob(out authPayload) || string.IsNullOrWhiteSpace(authPayload))
                             {
-                                message = "Refresh failed: " + json;
+                                message = "No auth payload available.";
                                 return false;
                             }
 
-                            JObject tokenObj = JObject.Parse(json);
-                            string newAccess = (string)tokenObj["access_token"] ?? "";
-                            if (string.IsNullOrWhiteSpace(newAccess))
+                            JObject existing = JObject.Parse(authPayload);
+                            if (IsAccessTokenFresh(existing))
                             {
-                                message = "Refresh response missing access token.";
+                                message = "Access token is still valid.";
+                                return true;
+                            }
+
+                            string refreshToken = (string)existing["refresh_token"] ?? "";
+                            if (string.IsNullOrWhiteSpace(refreshToken))
+                            {
+                                message = "Missing refresh token.";
                                 return false;
                             }
 
-                            JObject updated = new JObject
+                            OAuthConfig config = BuildConfig();
+                            if (string.IsNullOrWhiteSpace(config.ClientId) || string.IsNullOrWhiteSpace(config.TokenEndpoint))
                             {
-                                ["provider"] = (string)existing["provider"] ?? "navigraph",
-                                ["token_type"] = (string)tokenObj["token_type"] ?? (string)existing["token_type"] ?? "Bearer",
-                                ["access_token"] = newAccess,
-                                ["refresh_token"] = (string)tokenObj["refresh_token"] ?? refreshToken,
-                                ["scope"] = (string)tokenObj["scope"] ?? (string)existing["scope"] ?? "",
-                                ["expires_in"] = (int?)tokenObj["expires_in"] ?? (int?)existing["expires_in"] ?? 3600,
-                                ["obtained_utc"] = DateTime.UtcNow.ToString("o"),
+                                message = "Missing OAuth client id or token endpoint.";
+                                return false;
+                            }
+
+                            List<KeyValuePair<string, string>> payload = new List<KeyValuePair<string, string>>
+                            {
+                                new KeyValuePair<string, string>("grant_type", "refresh_token"),
+                                new KeyValuePair<string, string>("client_id", config.ClientId),
+                                new KeyValuePair<string, string>("refresh_token", refreshToken),
                             };
+                            if (!string.IsNullOrWhiteSpace(config.Scope))
+                            {
+                                payload.Add(new KeyValuePair<string, string>("scope", config.Scope));
+                            }
+                            if (!string.IsNullOrWhiteSpace(config.ClientSecret))
+                            {
+                                payload.Add(new KeyValuePair<string, string>("client_secret", config.ClientSecret));
+                            }
 
-                            ApplyTileCookiesFromResponse(updated, response);
+                            using (HttpClient client = new HttpClient())
+                            using (FormUrlEncodedContent content = new FormUrlEncodedContent(payload))
+                            {
+                                // try
+                                // {
+                                //     var logPayload = new List<KeyValuePair<string, string>>(payload);
+                                //     for (int i = 0; i < logPayload.Count; i++)
+                                //     {
+                                //         if (string.Equals(logPayload[i].Key, "client_secret", StringComparison.OrdinalIgnoreCase))
+                                //         {
+                                //             logPayload[i] = new KeyValuePair<string, string>(logPayload[i].Key, "<redacted>");
+                                //         }
+                                //     }
+                                //     JObject payloadObj = new JObject();
+                                //     foreach (var kv in logPayload) payloadObj[kv.Key] = kv.Value;
+                                //     Log.Write("Navigraph refresh request payload: " + payloadObj.ToString(Newtonsoft.Json.Formatting.None), Static.Colors.Debug);
+                                // }
+                                // catch { }
 
-                            OpenKneeboardNavigraphEfbState.SetEncryptedAuthBlob(updated.ToString(Newtonsoft.Json.Formatting.None));
-                            message = "Token refreshed.";
-                            return true;
+                                HttpResponseMessage response = client.PostAsync(config.TokenEndpoint, content).GetAwaiter().GetResult();
+                                string json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                                // try { Log.Write("Navigraph refresh response: " + json, Static.Colors.Debug); } catch { }
+
+                                if (!response.IsSuccessStatusCode)
+                                {
+                                    message = "Refresh failed: " + json;
+                                    return false;
+                                }
+
+                                JObject tokenObj = JObject.Parse(json);
+                                string newAccess = (string)tokenObj["access_token"] ?? "";
+                                string newRefresh = (string)tokenObj["refresh_token"] ?? "";
+                                if (string.IsNullOrWhiteSpace(newAccess))
+                                {
+                                    message = "Refresh response missing access token.";
+                                    return false;
+                                }
+                                if (string.IsNullOrWhiteSpace(newRefresh))
+                                {
+                                    message = "Refresh response missing refresh token.";
+                                    return false;
+                                }
+
+                                JObject updated = new JObject
+                                {
+                                    ["provider"] = (string)existing["provider"] ?? "navigraph",
+                                    ["token_type"] = (string)tokenObj["token_type"] ?? (string)existing["token_type"] ?? "Bearer",
+                                    ["access_token"] = newAccess,
+                                    ["refresh_token"] = newRefresh,
+                                    ["scope"] = (string)tokenObj["scope"] ?? (string)existing["scope"] ?? "",
+                                    ["expires_in"] = (int?)tokenObj["expires_in"] ?? (int?)existing["expires_in"] ?? 3600,
+                                    ["obtained_utc"] = DateTime.UtcNow.ToString("o"),
+                                };
+
+                                ApplyTileCookiesFromResponse(updated, response);
+
+                                OpenKneeboardNavigraphEfbState.SetEncryptedAuthBlob(updated.ToString(Newtonsoft.Json.Formatting.None));
+                                message = "Token refreshed.";
+                                return true;
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -378,6 +394,37 @@ namespace VAICOM
                         message = "Refresh exception: " + ex.Message;
                         return false;
                     }
+                }
+
+                private static bool IsAccessTokenFresh(JObject token)
+                {
+                    try
+                    {
+                        if (token == null)
+                        {
+                            return false;
+                        }
+
+                        string accessToken = (string)token["access_token"] ?? "";
+                        if (string.IsNullOrWhiteSpace(accessToken))
+                        {
+                            return false;
+                        }
+
+                        int expiresIn = (int?)token["expires_in"] ?? 0;
+                        DateTime obtainedUtc;
+                        if (expiresIn > 0
+                            && DateTime.TryParse((string)token["obtained_utc"], out obtainedUtc)
+                            && DateTime.UtcNow < obtainedUtc.ToUniversalTime().AddSeconds(Math.Max(30, expiresIn - 60)))
+                        {
+                            return true;
+                        }
+                    }
+                    catch
+                    {
+                    }
+
+                    return false;
                 }
 
                 public static async Task<ConnectResult> ConnectWithDeviceFlowAsync(CancellationToken cancellationToken)
