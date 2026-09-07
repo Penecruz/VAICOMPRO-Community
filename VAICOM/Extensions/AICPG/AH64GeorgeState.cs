@@ -50,6 +50,30 @@ namespace VAICOM.Extensions.AICPG
         public static bool WowFromExport;
         public static bool WowFromServerState;
 
+        private static readonly List<AH64CMDispenseMode> cmDispenseOrder = new List<AH64CMDispenseMode>
+        {
+            AH64CMDispenseMode.None,
+            AH64CMDispenseMode.Chaff,
+            AH64CMDispenseMode.Flares,
+            AH64CMDispenseMode.ChaffAndFlares
+        };
+
+        private static readonly List<AH64ROEMode> rulesOfEngagementOrder = new List<AH64ROEMode>
+        {
+            AH64ROEMode.HoldFire,
+            AH64ROEMode.ReturnFire,
+            AH64ROEMode.WeaponsFree
+        };
+
+        private static readonly List<AH64ExternalLightsMode> externalLightsOrder = new List<AH64ExternalLightsMode>
+        {
+            AH64ExternalLightsMode.Off,
+            AH64ExternalLightsMode.Day,
+            AH64ExternalLightsMode.NightBright,
+            AH64ExternalLightsMode.NightDim,
+            AH64ExternalLightsMode.Formation
+        };
+
         public static void UpdateWeaponState()
         {
             bool hadValidWeaponState = WeaponStateValid;
@@ -326,9 +350,8 @@ namespace VAICOM.Extensions.AICPG
                 return 0;
             }
 
-            var order = GetCMDispenseOrder();
-            int fromIndex = order.IndexOf(from);
-            int toIndex = order.IndexOf(to);
+            int fromIndex = cmDispenseOrder.IndexOf(from);
+            int toIndex = cmDispenseOrder.IndexOf(to);
 
             if (fromIndex < 0)
             {
@@ -345,30 +368,7 @@ namespace VAICOM.Extensions.AICPG
                 return toIndex - fromIndex;
             }
 
-            return (order.Count - fromIndex) + toIndex;
-        }
-
-        private static List<AH64CMDispenseMode> GetCMDispenseOrder()
-        {
-            return new List<AH64CMDispenseMode>
-                    {
-                        AH64CMDispenseMode.None,
-                        AH64CMDispenseMode.Chaff,
-                        AH64CMDispenseMode.Flares,
-                        AH64CMDispenseMode.ChaffAndFlares
-                    };
-        }
-
-        private static List<AH64ExternalLightsMode> GetExternalLightsOrder()
-        {
-            return new List<AH64ExternalLightsMode>
-                    {
-                        AH64ExternalLightsMode.Off,
-                        AH64ExternalLightsMode.Day,
-                        AH64ExternalLightsMode.NightBright,
-                        AH64ExternalLightsMode.NightDim,
-                        AH64ExternalLightsMode.Formation
-                    };
+            return (cmDispenseOrder.Count - fromIndex) + toIndex;
         }
 
         public static int GetExternalLightsSteps(AH64ExternalLightsMode from, AH64ExternalLightsMode to)
@@ -378,9 +378,8 @@ namespace VAICOM.Extensions.AICPG
                 return 0;
             }
 
-            var order = GetExternalLightsOrder();
-            int fromIndex = order.IndexOf(from);
-            int toIndex = order.IndexOf(to);
+            int fromIndex = externalLightsOrder.IndexOf(from);
+            int toIndex = externalLightsOrder.IndexOf(to);
 
             if (fromIndex < 0)
             {
@@ -397,17 +396,7 @@ namespace VAICOM.Extensions.AICPG
                 return toIndex - fromIndex;
             }
 
-            return (order.Count - fromIndex) + toIndex;
-        }
-
-        private static List<AH64ROEMode> GetRulesOfEngagmentOrder()
-        {
-            return new List<AH64ROEMode>
-                    {
-                        AH64ROEMode.ReturnFire,
-                        AH64ROEMode.WeaponsFree,
-                        AH64ROEMode.HoldFire,
-                    };
+            return (externalLightsOrder.Count - fromIndex) + toIndex;
         }
 
         public static int GetRulesOfEngagementSteps(AH64ROEMode from, AH64ROEMode to)
@@ -417,9 +406,8 @@ namespace VAICOM.Extensions.AICPG
                 return 0;
             }
 
-            var order = GetRulesOfEngagmentOrder();
-            int fromIndex = order.IndexOf(from);
-            int toIndex = order.IndexOf(to);
+            int fromIndex = rulesOfEngagementOrder.IndexOf(from);
+            int toIndex = rulesOfEngagementOrder.IndexOf(to);
 
             if (fromIndex < 0)
             {
@@ -436,7 +424,7 @@ namespace VAICOM.Extensions.AICPG
                 return toIndex - fromIndex;
             }
 
-            return (order.Count - fromIndex) + toIndex;
+            return (rulesOfEngagementOrder.Count - fromIndex) + toIndex;
         }
     }
 }

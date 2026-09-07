@@ -27,7 +27,7 @@ namespace VAICOM
                 {
                     CommandCategories output = CommandCategories.AH64D_George;
 
-                    if (id >= 25214 && id <= 25499)
+                    if (id >= 25220 && id <= 25499)
                     {
                         return CommandCategories.AH64D_George_CPG;
                     }
