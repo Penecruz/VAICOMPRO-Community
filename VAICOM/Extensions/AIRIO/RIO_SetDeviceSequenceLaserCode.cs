@@ -30,6 +30,24 @@ namespace VAICOM
                             return;
                         }
 
+                        // Read the code before building the message, so an unreadable
+                        // command exits without leaving a half-built message behind.
+                        string lasercode = Extensions.CommandNumbers.Digits();
+
+                        // The device's thumbwheels are fixed at 1xxx, so the leading 1 is
+                        // implicit. Accept the full real-world code as well as the short form.
+                        if (lasercode.Length == 4 && lasercode[0] == '1')
+                        {
+                            lasercode = lasercode.Substring(1);
+                        }
+
+                        if (lasercode.Length != 3)
+                        {
+                            Log.Write("Laser code: expected 3 digits, got '" + lasercode + "'", Colors.Warning);
+                            UI.Playsound.Recipientna();
+                            return;
+                        }
+
                         // else continue
                         State.currentmessage = new CommsMessage();
                         setdefaultmessageparams();
@@ -39,9 +57,7 @@ namespace VAICOM
                         string header = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:0}");
                         //Log.Write("Segment 0 = " + header, Colors.Warning);
 
-                        int majval1;
-                        Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}"), out majval1);
-                        //Log.Write("majval1 = " + majval1, Colors.Warning);
+                        int majval1 = Extensions.CommandNumbers.At(lasercode, 0);
                         switch (majval1)
                         {
                             //case 0:
@@ -76,9 +92,7 @@ namespace VAICOM
                                 //    break;
                         }
 
-                        int majval2;
-                        Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}"), out majval2);
-                        //Log.Write("majval2 = " + majval2, Colors.Warning);
+                        int majval2 = Extensions.CommandNumbers.At(lasercode, 1);
                         switch (majval2)
                         {
                             //case 0:
@@ -113,9 +127,7 @@ namespace VAICOM
                                 //    break;
                         }
 
-                        int minval;
-                        Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:3}"), out minval);
-                        //Log.Write("Segment 3 = " + minval, Colors.Warning);
+                        int minval = Extensions.CommandNumbers.At(lasercode, 2);
                         switch (minval)
                         {
                             //case 0:

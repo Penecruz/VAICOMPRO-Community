@@ -46,6 +46,17 @@ namespace VAICOM
                             return;
                         }
 
+                        // Read the channel before building the message, so an unreadable
+                        // command exits without leaving a half-built message behind.
+                        string dltune = Extensions.CommandNumbers.Digits();
+
+                        if (dltune.Length != 3)
+                        {
+                            Log.Write("Datalink tune: expected 3 digits, got '" + dltune + "'", Colors.Warning);
+                            UI.Playsound.Recipientna();
+                            return;
+                        }
+
                         // else continue
                         State.currentmessage = new CommsMessage();
                         setdefaultmessageparams();
@@ -58,9 +69,7 @@ namespace VAICOM
                         string header = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:0}");
                         //Log.Write("Segment 0 = " + header, Colors.Warning);
 
-                        int majval1;
-                        Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:1}"), out majval1);
-                        //Log.Write("majval1 = " + majval1, Colors.Warning);
+                        int majval1 = Extensions.CommandNumbers.At(dltune, 0);
                         if (isTomcatBU)
                         {
                             double value = GetDatalinkTuneDigitValue(majval1);
@@ -109,9 +118,7 @@ namespace VAICOM
                             }
                         }
 
-                        int majval2;
-                        Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:2}"), out majval2);
-                        //Log.Write("majval2 = " + majval2, Colors.Warning);
+                        int majval2 = Extensions.CommandNumbers.At(dltune, 1);
                         if (isTomcatBU)
                         {
                             double value = GetDatalinkTuneDigitValue(majval2);
@@ -160,9 +167,7 @@ namespace VAICOM
                             }
                         }
 
-                        int minval;
-                        Int32.TryParse(State.Proxy.Utility.ParseTokens("{CMDSEGMENT:4}"), out minval);
-                        //Log.Write("Segment 3 = " + minval, Colors.Warning);
+                        int minval = Extensions.CommandNumbers.At(dltune, 2);
                         if (isTomcatBU)
                         {
                             double value = GetDatalinkTuneDigitValue(minval);
