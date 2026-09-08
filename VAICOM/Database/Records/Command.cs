@@ -228,7 +228,10 @@ namespace VAICOM
 
             public bool isGeorgeCPG()
             {
-                return category == CommandCategories.AH64D_George_CPG || category == CommandCategories.AH64D_George_roe;
+                return category == CommandCategories.AH64D_George_CPG || category == CommandCategories.AH64D_George_roe
+                    || category == CommandCategories.AH64D_George_CPG_startup || category == CommandCategories.AH64D_George_CPG_search
+                    || category == CommandCategories.AH64D_George_CPG_sensors || category == CommandCategories.AH64D_George_CPG_targets
+                    || category == CommandCategories.AH64D_George_CPG_weapons;
             }
 
             public bool isGeorgePilot()
@@ -305,6 +308,11 @@ namespace VAICOM
             AH64D_George,
             AH64D_George_roe,
             AH64D_George_CPG,
+            AH64D_George_CPG_startup,
+            AH64D_George_CPG_search,
+            AH64D_George_CPG_sensors,
+            AH64D_George_CPG_targets,
+            AH64D_George_CPG_weapons,
             AH64D_George_PLT,
             AH64D_George_PLT_ground,
             AH64D_George_PLT_hover,

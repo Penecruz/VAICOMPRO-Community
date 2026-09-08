@@ -31,6 +31,26 @@ namespace VAICOM
                     {
                         return CommandCategories.AH64D_George_roe;
                     }
+                    if (id >= 25220 && id <= 25229)
+                    {
+                        return CommandCategories.AH64D_George_CPG_startup;
+                    }
+                    if (id >= 25300 && id <= 25349)
+                    {
+                        return CommandCategories.AH64D_George_CPG_search;
+                    }
+                    if (id >= 25350 && id <= 25399)
+                    {
+                        return CommandCategories.AH64D_George_CPG_sensors;
+                    }
+                    if (id >= 25400 && id <= 25449)
+                    {
+                        return CommandCategories.AH64D_George_CPG_targets;
+                    }
+                    if (id >= 25450 && id <= 25499)
+                    {
+                        return CommandCategories.AH64D_George_CPG_weapons;
+                    }
                     if (id >= 25220 && id <= 25499)
                     {
                         return CommandCategories.AH64D_George_CPG;

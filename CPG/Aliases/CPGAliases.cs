@@ -18,7 +18,7 @@ namespace VAICOM.Extensions.CPG
         // Aliases for CPG commands (get added to command aliases)
         public static Dictionary<string, string> aicommands = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
-            // George AI - Button Control
+            // Common - Button Control
             { "George Menu",                                 "georgeshowhide"                },
             { "George Show",                                 "georgeshowhide"                },
             { "George Hide",                                 "georgeshowhide"                },
@@ -34,7 +34,7 @@ namespace VAICOM.Extensions.CPG
             { "George Center Long",                          "georgecenterlong"              },
             { "George Request Control",                      "georgecontrolrequest"          },
 
-            // George AI - Start and Shutdown
+            // CPG - Start and Shutdown
             { "George Start Up",                             "georgestartup"                 },
             { "George start your runup",                     "georgestartup"                 },
             { "George let's get going",                      "georgestartup"                 },
@@ -44,7 +44,7 @@ namespace VAICOM.Extensions.CPG
             { "George shut-'er down",                        "georgeshutdown"                },
             { "George normal shutdown",                      "georgeshutdown"                },
 
-            // George AI - Search and Sensor Management
+            // CPG - Search and Sensor Management
             { "George TADS Sensor",                          "georgetadssensor"              },
             { "George TADS FLIR",                            "georgetadssensor"              },
             { "George TADS TV",                              "georgetadssensor"              },
@@ -104,7 +104,7 @@ namespace VAICOM.Extensions.CPG
             { "George what's in your line-of-sight",         "georgemacrotadslos"            },
             { "George what's that",                          "georgemacrotadslos"            },
 
-            // George AI - Weapons and Targeting
+            // CPG - Weapons and Targeting
             { "George Next Weapon",                          "georgenextweapon"              },
             { "George Select Gun",                           "georgemacroselectgun"          },
             { "George Select Missiles",                      "georgemacroselectmissiles"     },
@@ -191,7 +191,7 @@ namespace VAICOM.Extensions.CPG
             { "George Hold Your Fire",                       "georgeholdfire"                },
             { "George Cease Fire",                           "georgeholdfire"                },
 
-            // George AI - Startup, Shutdown, and Takeoff (GND)
+            // Pilot - Startup, Shutdown, and Takeoff (GND)
             { "George Start A P U",                          "georgestartupapu"              },
             { "George Start Engines Idle",                   "georgestartupenginesidle"      },
             { "George Start Engines Fly",                    "georgestartupenginesfly"       },
@@ -200,7 +200,7 @@ namespace VAICOM.Extensions.CPG
             { "George Shutdown Engines",                     "georgeshutdownengines"         },
             { "George Take Off",                             "georgetakeoff"                 },
 
-            // George AI - Flight and Navigation (FLT)
+            // Pilot - Flight and Navigation (FLT)
             { "George Speed Up",                             "georgespeedup"                 },
             { "George Slow Down",                            "georgeslowdown"                },
             { "George Increase Altitude",                    "georgeincreasealtitude"        },
@@ -213,7 +213,7 @@ namespace VAICOM.Extensions.CPG
             { "George Set Radar Altitude",                   "georgesetradaraltitude"        },
             { "George Set Barometric Altitude",              "georgesetbarometricaltitude"   },
 
-            // George AI - Combat Maneuvers (CMBT)
+            // Pilot - Combat Maneuvers (CMBT)
             { "George Break Left",                           "georgebreakleft"               },
             { "George Break Right",                          "georgebreakright"              },
             { "George Orbit Overhead",                       "georgeorbitoverhead"           },
@@ -230,7 +230,7 @@ namespace VAICOM.Extensions.CPG
             { "George Return To Battle Position",            "georgereturntobattleposition"  },
             { "George Mask Position",                        "georgemaskposition"            },
 
-            // George AI - Defense (DEFN)
+            // Pilot - Defense (DEFN)
             { "George Return Fire",                          "georgereturnfire"              },
             { "George Evade Off",                            "georgeevadeoff"                },
             { "George Evade Level",                          "georgeevadelevel"              },
@@ -252,7 +252,7 @@ namespace VAICOM.Extensions.CPG
             { "George Turn On Dim Lights",                   "georgeextlightsnightdim"       },
             { "George Turn On Formation Lights",             "georgeextlightsformation"      },
 
-            // George AI - Hover Bob-up (H-B)
+            // Pilot - Hover Bob-up (H-B)
             { "George Move Forwards",                        "georgehoverforward"            },
             { "George Move Back",                            "georgehoverback"               },
             { "George Move Left",                            "georgehoverleft"               },
@@ -260,7 +260,7 @@ namespace VAICOM.Extensions.CPG
             { "George Come Up 10 Feet",                      "georgehoveruptenfeet"          },
             { "George Come Down 10 Feet",                    "georgehoverdowntenfeet"        },
 
-            // George AI - Menu Modes
+            // Pilot - Menu Modes
             { "George Combat Mode",                          "georgemenucombatmode"          },
             { "George Defense Mode",                         "georgemenudefensemode"         },
             { "George Flight Mode",                          "georgemenuflightmode"          },

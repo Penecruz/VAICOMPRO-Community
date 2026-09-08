@@ -1364,7 +1364,12 @@ namespace VAICOM
 
                 private static readonly string[] AH64CPGKeywordSectionOrder = new[]
                 {
-                    "CP/G",
+                    "Startup and Shutdown",
+                    "Search Tasks",
+                    "Sensor Management",
+                    "Targets and Tracking",
+                    "Weapons",
+                    "Other",
                 };
 
                 private static readonly string[] AH64PilotKeywordSectionOrder = new[]
@@ -1712,11 +1717,20 @@ namespace VAICOM
                 {
                     switch (category)
                     {
-                        case CommandCategories.AH64D_George_CPG:
-                            return "CP/G";
                         case CommandCategories.AH64D_George:
+                        case CommandCategories.AH64D_George_CPG:
                         case CommandCategories.AH64D_George_PLT:
                             return "Other";
+                        case CommandCategories.AH64D_George_CPG_startup:
+                            return "Startup and Shutdown";
+                        case CommandCategories.AH64D_George_CPG_search:
+                            return "Search Tasks";
+                        case CommandCategories.AH64D_George_CPG_sensors:
+                            return "Sensor Management";
+                        case CommandCategories.AH64D_George_CPG_targets:
+                            return "Targets and Tracking";
+                        case CommandCategories.AH64D_George_CPG_weapons:
+                            return "Weapons";
                         case CommandCategories.AH64D_George_PLT_ground:
                             return "Startup and Shutdown";
                         case CommandCategories.AH64D_George_PLT_hover:
@@ -1727,6 +1741,10 @@ namespace VAICOM
                             return "Combat";
                         case CommandCategories.AH64D_George_PLT_defensive:
                         case CommandCategories.AH64D_George_roe:
+                            if (Helpers.Common.IsAH64PilotSeatActive())
+                            {
+                                return "Weapons";
+                            }
                             return "Defensive";
                         default:
                             return null;
