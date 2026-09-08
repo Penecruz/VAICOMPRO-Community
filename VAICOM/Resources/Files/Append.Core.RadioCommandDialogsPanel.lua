@@ -704,14 +704,14 @@ function ProcessRemoteCommand()
 		socket.try(base.vaicom.sender:send(base.vaicom.flags.raw))
 		return
 	end
-	if clientmessage.type == base.vaicom.messagetype.undefined 			then						
+	if clientmessage.type == base.vaicom.messagetype.undefined 			then
 		socket.try(base.vaicom.sender:send(base.vaicom.flags.raw))
 		return
 	end
 	
 	ApplySettings(clientmessage)
 	
-	if clientmessage.type == base.vaicom.messagetype.settingschange 	then		
+	if clientmessage.type == base.vaicom.messagetype.settingschange 	then
 		socket.try(base.vaicom.sender:send(base.vaicom.flags.raw))
 		return
 	end
@@ -2355,6 +2355,7 @@ base.vaicom.state = {
 		root 					= base.tostring(base.lfs.writedir()),
 		currentdir 				= base.tostring(base.lfs.currentdir()),
 		easycomms				= data.radioAutoTune or base.DCS.getMissionOptions().difficulty.easyCommunication or true,
+		ah64state				= {},
 		riostate				= {},
 		options					= {},
 		currentspeech			= {},
@@ -2482,7 +2483,7 @@ base.vaicom.state = {
 					base.vaicom.state.riostate.f4eSeat = -1
 				end
 
-				if data.initialized and base.GetDevice(0) and base.GetDevice(0).get_argument_value and base.string.find(dcsId, "AH-64D", 1, true) ~= nil then
+				if data.initialized and isAH64 and base.GetDevice(0) and base.GetDevice(0).get_argument_value then
                     local seat = base.get_param_handle("SEAT"):get() -- Determine pilot or CPG seat
 					local pltIcsMode = base.GetDevice(0):get_argument_value(346)
 					local cpgIcsMode = base.GetDevice(0):get_argument_value(387) -- Added CPG controls for George Pilot expansion
@@ -2495,6 +2496,10 @@ base.vaicom.state = {
 					else
 						ah64ICSHot = (pltIcsMode ~= nil and pltIcsMode < 0.5) or (cpgIcsMode ~= nil and cpgIcsMode < 0.5)
 					end
+
+					-- Get CMWS switch positions
+					base.vaicom.state.ah64state.cmwsArm = base.GetDevice(0):get_argument_value(614)
+					base.vaicom.state.ah64state.cmwsBypass = base.GetDevice(0):get_argument_value(616)
 				end
 
 				-- Map markers are used by OKB so only include if we are retrieving this data (diagnostics probe)
@@ -4462,9 +4467,10 @@ base.vaicom.state = {
 									menucargo	= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menucargo) or nil,
 								  }						
 				chunk[10] 		= {
-									riostate = base.vaicom.state.riostate or nil,
-									bpos	 = base.vaicom.state.bpos or nil,
-									cpos	 = base.vaicom.state.cpos or nil,
+									ah64state = base.vaicom.state.ah64state and base.next(base.vaicom.state.ah64state) and base.vaicom.state.ah64state or nil,
+									riostate  = base.vaicom.state.riostate or nil,
+									bpos	  = base.vaicom.state.bpos or nil,
+									cpos	  = base.vaicom.state.cpos or nil,
 								  }
 				chunk[11] 		= {
 									payload	 = base.vaicom.state.payload or nil,

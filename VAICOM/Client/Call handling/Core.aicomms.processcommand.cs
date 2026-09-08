@@ -415,8 +415,12 @@ namespace VAICOM
                         State.F14WheelChocksState = State.WheelChocksState.On;
                     }
 
-                    SendNewMessage();
-
+                    // We need to delay the server update request that occurs after a George command is sent to ensure that
+                    // George has performed the in-cockpit operation prior to getting the updated state.
+                    int delayBeforeServerUpdate = State.currentcommand.isGeorge() ? 2000 : 0;
+                    
+                    SendNewMessage(delayBeforeServerUpdate);
+                    
                     bool sentRioCloseMacro = State.currentcommand.isRIO()
                         && State.currentmessage != null
                         && State.currentmessage.extsequence != null
@@ -445,7 +449,6 @@ namespace VAICOM
                     State.previousmessageunit = State.currentmessageunit;
                     State.previousrecipientclass = State.currentrecipientclass;
 
-                    Log.Write("Message sent successfully for recipient class " + State.currentrecipientclass.Name + ".", Colors.Inline);
 
                     // for ics hotmic:
                     if (State.AIRIOactive && State.IsCrewHotMicActive())

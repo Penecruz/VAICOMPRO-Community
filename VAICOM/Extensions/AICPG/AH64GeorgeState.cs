@@ -3,6 +3,18 @@ using VAICOM.Static;
 
 namespace VAICOM.Extensions.AICPG
 {
+    public enum AH64CMWSArmSafe
+    {
+        Arm,
+        Safe
+    }
+
+    public enum  AH64CMWSMode
+    {
+        Auto,
+        Bypass
+    }
+
     public enum AH64CMDispenseMode
     {
         None,
@@ -38,10 +50,36 @@ namespace VAICOM.Extensions.AICPG
 
     public class AH64GeorgeState
     {
-        public static AH64CMDispenseMode SelectedCMDispenseMode = AH64CMDispenseMode.None;
-        public static AH64ExternalLightsMode SelectedExternalLightsMode = AH64ExternalLightsMode.Off;
-        public static AH64ROEMode SelectedROEMode = AH64ROEMode.HoldFire;
-        public static AH64WeaponMode SelectedWeapon = AH64WeaponMode.Unknown;
+        public static AH64CMWSArmSafe SelectedCMWSArmSafe { get; set; } = AH64CMWSArmSafe.Safe;
+        public static AH64CMDispenseMode SelectedCMDispenseMode { get; set; } = AH64CMDispenseMode.None;
+
+        private static AH64CMWSMode _SelectedCMWSMode = AH64CMWSMode.Auto;
+        public static AH64CMWSMode SelectedCMWSMode
+        {
+            get => _SelectedCMWSMode;
+            set
+            {
+                _SelectedCMWSMode = value;
+
+                // If on Flares and Chaff and CMWS is changed to Auto then the dispense mode will be
+                // automatically changed to Chaff. If it was on Flares then it will be changed to None.
+                if (value.Equals(AH64CMWSMode.Auto))
+                {
+                    if (SelectedCMDispenseMode.Equals(AH64CMDispenseMode.Flares))
+                    {
+                        SelectedCMDispenseMode = AH64CMDispenseMode.None;
+                    }
+                    else if (SelectedCMDispenseMode.Equals(AH64CMDispenseMode.ChaffAndFlares))
+                    {
+                        SelectedCMDispenseMode = AH64CMDispenseMode.Chaff;
+                    }
+                }
+            }
+        }
+
+        public static AH64ExternalLightsMode SelectedExternalLightsMode { get; set; } = AH64ExternalLightsMode.Off;
+        public static AH64ROEMode SelectedROEMode { get; set; } = AH64ROEMode.HoldFire;
+        public static AH64WeaponMode SelectedWeapon { get; set; } = AH64WeaponMode.Unknown;
         
         public static bool GunAvailable;
         public static bool RocketsAvailable;
@@ -350,8 +388,9 @@ namespace VAICOM.Extensions.AICPG
                 return 0;
             }
 
-            int fromIndex = cmDispenseOrder.IndexOf(from);
-            int toIndex = cmDispenseOrder.IndexOf(to);
+            var order = GetCMDispenseOrder();
+            int fromIndex = order.IndexOf(from);
+            int toIndex = order.IndexOf(to);
 
             if (fromIndex < 0)
             {
@@ -369,6 +408,24 @@ namespace VAICOM.Extensions.AICPG
             }
 
             return (cmDispenseOrder.Count - fromIndex) + toIndex;
+        }
+
+        private static List<AH64CMDispenseMode> GetCMDispenseOrder()
+        {
+            // When CMWS is in Bypass mode all dispense modes are available.
+            if (SelectedCMWSMode.Equals(AH64CMWSMode.Bypass))
+            {
+                return cmDispenseOrder;
+            }
+
+            // When CMWS is in Auto mode, only None and Chaff are available.
+            var order = new List<AH64CMDispenseMode>
+            {
+                AH64CMDispenseMode.None,
+                AH64CMDispenseMode.Chaff,
+            };
+
+            return order;
         }
 
         public static int GetExternalLightsSteps(AH64ExternalLightsMode from, AH64ExternalLightsMode to)

@@ -216,7 +216,6 @@ namespace VAICOM
                 public bool ejsn;
                 public int markers;
                 public List<MapMarkerState> markerdetails;
-
             }
 
             public class MapMarkerState
@@ -228,6 +227,12 @@ namespace VAICOM
                 public double x;
                 public double y;
                 public double z;
+            }
+
+            public class AH64State
+            {
+                public int cmwsArm;
+                public int cmwsBypass;
             }
 
             public class payloadcannon
@@ -302,6 +307,7 @@ namespace VAICOM
                 public string playerunitcat;
                 public bool airborne;
                 public TomcatState riostate;
+                public AH64State ah64state;
                 public payload payload;
                 public Vector bpos;
                 public campos cpos;
@@ -393,6 +399,7 @@ namespace VAICOM
                 public string playerunitcat;
                 public bool airborne;
                 public TomcatState riostate;
+                public AH64State ah64state;
                 public payload payload;
                 public Vector bpos;
                 public campos cpos;

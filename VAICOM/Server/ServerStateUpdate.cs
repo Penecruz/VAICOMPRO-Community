@@ -406,7 +406,12 @@ namespace VAICOM
 
                     State.currentstate.viewexternal = !State.currentstate.cpos.type.Equals(0);
                     State.currentstate.soundsallowexternal = State.currentstate.options.sound.headphones_on_external_views;
-
+                
+                    if (serverMessage.ah64state != null)
+                    {
+                        AH64GeorgeState.SelectedCMWSArmSafe = serverMessage.ah64state.cmwsArm == 0 ? AH64CMWSArmSafe.Safe : AH64CMWSArmSafe.Arm;
+                        AH64GeorgeState.SelectedCMWSMode = serverMessage.ah64state.cmwsBypass == 0 ? AH64CMWSMode.Auto : AH64CMWSMode.Bypass;
+                    }
                 }
                 catch (Exception e)
                 {

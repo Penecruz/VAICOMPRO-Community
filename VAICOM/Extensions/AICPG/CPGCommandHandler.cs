@@ -48,14 +48,14 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeMenuGroundMode":
                 case "wMsgGeorgeMenuHoverMode":
                 case "wMsgGeorgeMenuNextMode":
-                    if (State.currentcommand.dcsid.Equals("wMsgGeorgeNextWeapon", StringComparison.OrdinalIgnoreCase) && !CanChangeWeaponSelection())
+                    if (commandId.Equals("wMsgGeorgeNextWeapon", StringComparison.OrdinalIgnoreCase) && !CanChangeWeaponSelection())
                     {
                         break;
                     }
 
                     AddGeorgeButton(AH64GeorgeButton.Left);
 
-                    if (State.currentcommand.dcsid.Equals("wMsgGeorgeNextWeapon", StringComparison.OrdinalIgnoreCase))
+                    if (commandId.Equals("wMsgGeorgeNextWeapon", StringComparison.OrdinalIgnoreCase))
                     {
                         SelectNextWeapon();
                     }
@@ -158,16 +158,16 @@ namespace VAICOM.Extensions.AICPG
 
                 // George PLT Defense Mode items
                 case "wMsgGeorgeCMWSArm":
+                    SelectCMWSArmSafe(AH64CMWSArmSafe.Arm);
+                    break;
                 case "wMsgGeorgeCMWSSafe":
-                    AddGeorgeLongButton(AH64GeorgeButton.Menu);
-                    AddGeorgeButton(AH64GeorgeButton.Up);
-                    AddGeorgeButton(AH64GeorgeButton.Menu);
+                    SelectCMWSArmSafe(AH64CMWSArmSafe.Safe);
                     break;
                 case "wMsgGeorgeCMWSAuto":
+                    SelectCMWSMode(AH64CMWSMode.Auto);
+                    break;
                 case "wMsgGeorgeCMWSBypass":
-                    AddGeorgeLongButton(AH64GeorgeButton.Menu);
-                    AddGeorgeButton(AH64GeorgeButton.Down);
-                    AddGeorgeButton(AH64GeorgeButton.Menu);
+                    SelectCMWSMode(AH64CMWSMode.Bypass);
                     break;
                 case "wMsgGeorgeEvadeOff":
                 case "wMsgGeorgeEvadeLevel":
@@ -439,8 +439,48 @@ namespace VAICOM.Extensions.AICPG
             return true;
         }
 
+        private static void SelectCMWSArmSafe(AH64CMWSArmSafe target)
+        {
+            // CMWS arm/safe is toggable so the commands for these don't set specific
+            // values. We check the current state and command to prevent toggling with wrong commands.
+            // Whilst we pre-emptively toggle the state here, the actual in-cockpit position
+            // will be synched in the next server state update.
+            if (!AH64GeorgeState.SelectedCMWSArmSafe.Equals(target))
+            {
+                AddGeorgeLongButton(AH64GeorgeButton.Menu);
+                AddGeorgeButton(AH64GeorgeButton.Up);
+                AddGeorgeButton(AH64GeorgeButton.Menu);
+
+                AH64GeorgeState.SelectedCMWSArmSafe = target;
+            }
+        }
+
+        private static void SelectCMWSMode(AH64CMWSMode target)
+        {
+            // CMWS arm/safe and auto/bypass are toggable, the commands for these don't set specific
+            // values. We check the current state and command to prevent toggling with wrong commands.
+            // Whilst we pre-emptively toggle the state here, the actual in-cockpit position
+            // will be synched in the next server state update.
+            if (!AH64GeorgeState.SelectedCMWSMode.Equals(target))
+            {
+                AddGeorgeLongButton(AH64GeorgeButton.Menu);
+                AddGeorgeButton(AH64GeorgeButton.Down);
+                AddGeorgeButton(AH64GeorgeButton.Menu);
+
+                AH64GeorgeState.SelectedCMWSMode = target;
+            }
+        }
+
         private static void SelectCMDispenseMode(AH64CMDispenseMode target)
         {
+            // The flares and chaff/flares options are not available if the CMWS is set to Auto.
+            if (AH64GeorgeState.SelectedCMWSMode.Equals(AH64CMWSMode.Auto) 
+                && (target.Equals(AH64CMDispenseMode.Flares) || target.Equals(AH64CMDispenseMode.ChaffAndFlares)))
+            {
+                Log.Write("Dispense mode " + target + " is not available with CMWS in Auto.", Colors.Recognition);
+                return;
+            }
+
             var current = AH64GeorgeState.SelectedCMDispenseMode;
             int steps = AH64GeorgeState.GetCMDispenseSteps(current, target);
 
