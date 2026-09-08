@@ -462,7 +462,8 @@ namespace VAICOM
                 {
                     if (category == CommandCategories.AH64D_George
                         || category == CommandCategories.AH64D_George_CPG
-                        || category == CommandCategories.AH64D_George_PLT)
+                        || category == CommandCategories.AH64D_George_PLT
+                        || category.ToString().StartsWith("AH64D", StringComparison.OrdinalIgnoreCase))
                     {
                         return "AI Crew | AH-64D Apache";
                     }

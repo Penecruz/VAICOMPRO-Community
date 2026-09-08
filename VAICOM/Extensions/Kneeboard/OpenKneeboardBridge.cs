@@ -17,6 +17,7 @@ using System.Windows;
 using System.Globalization;
 using VAICOM.Client;
 using VAICOM.Static;
+using VAICOM.Database;
 
 namespace VAICOM
 {
@@ -1303,9 +1304,13 @@ namespace VAICOM
                     lock (Sync)
                     {
                         snapshot.Server = BuildServerSnapshot();
-                        snapshot.AiCrewKeywords = BuildAiCrewKeywords();
-                        snapshot.AiCrewKeywordSections = BuildAiCrewKeywordSections();
                         snapshot.UpdatedUtc = DateTime.UtcNow;
+                        
+                        if (currentSelectedTab.Equals("AI CREW"))
+                        {
+                            snapshot.AiCrewKeywords = BuildAiCrewKeywords();
+                            snapshot.AiCrewKeywordSections = BuildAiCrewKeywordSections();
+                        }
                     }
                 }
 
@@ -1357,6 +1362,21 @@ namespace VAICOM
                     "AI Pilot",
                 };
 
+                private static readonly string[] AH64CPGKeywordSectionOrder = new[]
+                {
+                    "CP/G",
+                };
+
+                private static readonly string[] AH64PilotKeywordSectionOrder = new[]
+                {
+                    "Startup and Shutdown",
+                    "Hover Bob-Up",
+                    "Flight",
+                    "Combat",
+                    "Defensive",
+                    "Other",
+                };
+
                 private static readonly HashSet<string> F14SupercarrierCommandIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
                 {
                     "wMsgJ_RAD_DL_HOST_WASH",
@@ -1384,6 +1404,11 @@ namespace VAICOM
                             || moduleId.IndexOf("F14", StringComparison.OrdinalIgnoreCase) >= 0)
                         {
                             return BuildF14AiCrewKeywordSections();
+                        }
+
+                        if (moduleId.StartsWith("AH-64D", StringComparison.OrdinalIgnoreCase))
+                        {
+                            return BuildAH64AiCrewKeywordSections();
                         }
                     }
                     catch
@@ -1606,6 +1631,108 @@ namespace VAICOM
                     return null;
                 }
 
+                private static Dictionary<string, List<string>> BuildAH64AiCrewKeywordSections()
+                {
+                    Dictionary<string, SortedSet<string>> buckets = new Dictionary<string, SortedSet<string>>(StringComparer.OrdinalIgnoreCase);
+                    
+                    bool isPilot = Helpers.Common.IsAH64PilotSeatActive();
+                    var keywordSectionOrder = isPilot ? AH64CPGKeywordSectionOrder : AH64PilotKeywordSectionOrder;
+
+                    foreach (string section in keywordSectionOrder)
+                    {
+                        buckets[section] = new SortedSet<string>(StringComparer.OrdinalIgnoreCase);
+                    }
+
+                    foreach (KeyValuePair<string, string> alias in Extensions.CPG.Aliases.aicommands)
+                    {
+                        string phrase = (alias.Key ?? string.Empty).Trim();
+                        string aliasValue = alias.Value ?? string.Empty;
+
+                        if (string.IsNullOrWhiteSpace(phrase) || string.IsNullOrWhiteSpace(aliasValue))
+                        {
+                            continue;
+                        }
+
+                        try
+                        {
+                            // Try direct lookup in the commands table using the alias value as key.
+                            if (Database.Commands.Table != null && Database.Commands.Table.TryGetValue(aliasValue, out Database.Command command))
+                            {
+                                // If direct lookup failed, try to find a command where the dcsid matches the alias value
+                                if (command == null)
+                                {
+                                    command = Database.Commands.Table.Values
+                                            .FirstOrDefault(cmd => !string.IsNullOrWhiteSpace(cmd.dcsid)
+                                                && command.dcsid.Equals(aliasValue, StringComparison.OrdinalIgnoreCase));
+                                }
+                                if (command != null)
+                                {
+                                    // Return common George commands, plus seat-specific commands.
+                                    if (command.category == CommandCategories.AH64D_George
+                                        || (isPilot && command.isGeorgeCPG())
+                                        || (!isPilot && command.isGeorgePilot()))
+                                    {
+                                        string section = ClassifyAH64AiCrewKeywordSection(command.category);
+                                        if (string.IsNullOrWhiteSpace(section))
+                                        {
+                                            continue;
+                                        }
+
+                                        if (buckets.TryGetValue(section, out SortedSet<string> set))
+                                        {
+                                            set.Add(phrase);
+                                        }
+                                    }
+                                }
+
+                                continue;
+                            }
+                        }
+                        catch
+                        {
+                            // ignore and continue
+                        }
+                    }
+
+                    Dictionary<string, List<string>> sections = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+                    foreach (string section in keywordSectionOrder)
+                    {
+                        if (!buckets.TryGetValue(section, out SortedSet<string> set) || set.Count == 0)
+                        {
+                            continue;
+                        }
+
+                        sections[section] = set.ToList();
+                    }
+
+                    return sections;
+                }
+
+                private static string ClassifyAH64AiCrewKeywordSection(CommandCategories category)
+                {
+                    switch (category)
+                    {
+                        case CommandCategories.AH64D_George_CPG:
+                            return "CP/G";
+                        case CommandCategories.AH64D_George:
+                        case CommandCategories.AH64D_George_PLT:
+                            return "Other";
+                        case CommandCategories.AH64D_George_PLT_ground:
+                            return "Startup and Shutdown";
+                        case CommandCategories.AH64D_George_PLT_hover:
+                            return "Hover Bob-Up";
+                        case CommandCategories.AH64D_George_PLT_flight:
+                            return "Flight";
+                        case CommandCategories.AH64D_George_PLT_combat:
+                            return "Combat";
+                        case CommandCategories.AH64D_George_PLT_defensive:
+                        case CommandCategories.AH64D_George_roe:
+                            return "Defensive";
+                        default:
+                            return null;
+                    }
+                }
+
                 private static List<string> BuildAiCrewKeywords()
                 {
                     try
@@ -1652,14 +1779,6 @@ namespace VAICOM
                             // AH-64D: return common George commands plus seat-specific commands.
                             bool isPilot = Helpers.Common.IsAH64PilotSeatActive();
 
-                            var allowedCategories = new HashSet<Database.CommandCategories>
-                            {
-                                Database.CommandCategories.AH64D_George, // common commands always allowed
-                                isPilot
-                                ? Database.CommandCategories.AH64D_George_CPG
-                                : Database.CommandCategories.AH64D_George_PLT
-                            };
-
                             foreach (KeyValuePair<string, string> alias in Database.Aliases.aicommands)
                             {
                                 string phrase = (alias.Key ?? string.Empty).Trim();
@@ -1675,7 +1794,10 @@ namespace VAICOM
                                     // Try direct lookup in the commands table using the alias value as key.
                                     if (Database.Commands.Table != null && Database.Commands.Table.TryGetValue(aliasValue, out Database.Command cmd))
                                     {
-                                        if (cmd != null && allowedCategories.Contains(cmd.category))
+                                        // Return common George commands, plus seat-specific commands.
+                                        if (cmd != null && (cmd.category == CommandCategories.AH64D_George
+                                            || (isPilot && cmd.isGeorgeCPG())
+                                            || (!isPilot && cmd.isGeorgePilot())))
                                         {
                                             keywords.Add(phrase);
                                         }
@@ -1689,7 +1811,9 @@ namespace VAICOM
                                         var found = Database.Commands.Table.Values
                                             .FirstOrDefault(command => !string.IsNullOrWhiteSpace(command.dcsid)
                                                 && command.dcsid.Equals(aliasValue, StringComparison.OrdinalIgnoreCase));
-                                        if (found != null && allowedCategories.Contains(found.category))
+                                        if (found != null && (found.category == CommandCategories.AH64D_George
+                                            || (isPilot && found.isGeorgeCPG())
+                                            || (!isPilot && found.isGeorgePilot())))
                                         {
                                             keywords.Add(phrase);
                                         }

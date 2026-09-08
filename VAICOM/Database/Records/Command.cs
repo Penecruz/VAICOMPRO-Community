@@ -226,6 +226,18 @@ namespace VAICOM
                 return value;
             }
 
+            public bool isGeorgeCPG()
+            {
+                return category == CommandCategories.AH64D_George_CPG || category == CommandCategories.AH64D_George_roe;
+            }
+
+            public bool isGeorgePilot()
+            {
+                return category == CommandCategories.AH64D_George_PLT || category == CommandCategories.AH64D_George_PLT_ground || category == CommandCategories.AH64D_George_PLT_hover
+                    || category == CommandCategories.AH64D_George_PLT_flight || category == CommandCategories.AH64D_George_PLT_combat || category == CommandCategories.AH64D_George_PLT_defensive
+                    || category == CommandCategories.AH64D_George_roe;
+            }
+
             public bool isVoid()
             {
 
@@ -291,8 +303,14 @@ namespace VAICOM
             RIO_misc,
             AI_pilot,
             AH64D_George,
+            AH64D_George_roe,
             AH64D_George_CPG,
             AH64D_George_PLT,
+            AH64D_George_PLT_ground,
+            AH64D_George_PLT_hover,
+            AH64D_George_PLT_flight,
+            AH64D_George_PLT_combat,
+            AH64D_George_PLT_defensive,
             kneeboard,
             WSO,
             WSO_navigation,

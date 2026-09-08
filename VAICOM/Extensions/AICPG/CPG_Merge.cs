@@ -27,15 +27,39 @@ namespace VAICOM
                 {
                     CommandCategories output = CommandCategories.AH64D_George;
 
+                    if (id >= 25218 && id <= 25219)
+                    {
+                        return CommandCategories.AH64D_George_roe;
+                    }
                     if (id >= 25220 && id <= 25499)
                     {
                         return CommandCategories.AH64D_George_CPG;
                     }
-                    if (id >= 25500 && id <= 25999)
+                    if (id >= 25500 && id <= 25549)
+                    {
+                        return CommandCategories.AH64D_George_PLT_ground;
+                    }
+                    if (id >= 25550 && id <= 25599)
+                    {
+                        return CommandCategories.AH64D_George_PLT_flight;
+                    }
+                    if (id >= 25600 && id <= 25649)
+                    {
+                        return CommandCategories.AH64D_George_PLT_combat;
+                    }
+                    if (id >= 25650 && id <= 25699)
+                    {
+                        return CommandCategories.AH64D_George_PLT_defensive;
+                    }
+                    if (id >= 25700 && id <= 25749)
+                    {
+                        return CommandCategories.AH64D_George_PLT_hover;
+                    }
+                    if (id >= 25750 && id <= 25999)
                     {
                         return CommandCategories.AH64D_George_PLT;
                     }
-                    
+
                     return output;
                 }
 

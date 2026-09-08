@@ -9255,6 +9255,40 @@
       return groups;
     }
 
+    // Handles non-F14 aircraft (e.g. AH-64D) whose sections come straight from AiCrewKeywordSections.
+    function getAiCrewKeywordGroups(data, phrases) {
+      const sectionMap = (data && data.AiCrewKeywordSections) || {};
+      const sectionNames = Object.keys(sectionMap);
+      if (!sectionNames.length) return [];
+
+      const rows = Array.isArray(phrases) ? phrases : [];
+      if (!rows.length) return [];
+
+      const canonicalByKey = {};
+      rows.forEach(function (p) {
+        const text = String(p || '').replace(/\s+/g, ' ').trim();
+        if (!text) return;
+        canonicalByKey[text.toUpperCase()] = text;
+      });
+
+      const groups = [];
+      sectionNames.forEach(function (section) {
+        const sectionItems = Array.isArray(sectionMap[section]) ? sectionMap[section] : [];
+        const unique = [];
+        sectionItems.forEach(function (item) {
+          const text = String(item || '').replace(/\s+/g, ' ').trim();
+          if (!text) return;
+          const canonical = canonicalByKey[text.toUpperCase()] || text;
+          if (unique.indexOf(canonical) < 0) unique.push(canonical);
+        });
+
+        if (!unique.length) return;
+        groups.push({ title: section, items: unique });
+      });
+
+      return groups;
+    }
+
     function rankF4KeywordByPhase(phase, phrase) {
       const p = String(phrase || '').trim();
       if (!p) return 100;
@@ -9848,6 +9882,9 @@
         if (isF14Aircraft(data)) {
           const f14Groups = getF14AiCrewKeywordGroups(data, rows);
           if (f14Groups.length) return f14Groups;
+        } else {
+          const keywordGroups = getAiCrewKeywordGroups(data, rows);
+          if (keywordGroups.length) return keywordGroups;
         }
 
         const suffix = formatAiCrewPhaseLabel(data && data.AiCrewPhase);
