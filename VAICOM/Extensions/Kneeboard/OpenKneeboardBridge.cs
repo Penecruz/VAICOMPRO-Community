@@ -4627,6 +4627,7 @@ namespace VAICOM
                         try { moduleConnectedFlag = State.moduleConnected; } catch { moduleConnectedFlag = false; }
                         try { currentModuleId = State.currentmodule == null ? "" : (State.currentmodule.Id ?? ""); } catch { currentModuleId = ""; }
                         try { currentStateModuleId = State.currentstate == null ? "" : (State.currentstate.id ?? ""); } catch { currentStateModuleId = ""; }
+                        try { server.MetarMetric = State.currentmodule != null && State.currentmodule.IsMetric; } catch { server.MetarMetric = false; }
 
                         bool moduleFromCurrentModule = !string.IsNullOrWhiteSpace(currentModuleId)
                             && !string.Equals(currentModuleId.Trim(), "----", StringComparison.OrdinalIgnoreCase);
@@ -4684,6 +4685,7 @@ namespace VAICOM
                         if (!server.ModuleConnected)
                         {
                             server.Aircraft = "";
+                            server.MetarMetric = false;
                             server.PlayerPosX = 0;
                             server.PlayerPosY = 0;
                             server.PlayerAltFeet = 0;
@@ -5274,6 +5276,7 @@ namespace VAICOM
                 public string DcsLocation { get; set; } = "";
                 public bool ModuleConnected { get; set; }
                 public string Aircraft { get; set; } = "";
+                public bool MetarMetric { get; set; }
                 public string PlayerUsername { get; set; } = "";
                 public string PlayerCallsign { get; set; } = "";
                 public string MissionTitle { get; set; } = "";
@@ -5302,6 +5305,7 @@ namespace VAICOM
                         DcsLocation = DcsLocation,
                         ModuleConnected = ModuleConnected,
                         Aircraft = Aircraft,
+                        MetarMetric = MetarMetric,
                         PlayerUsername = PlayerUsername,
                         PlayerCallsign = PlayerCallsign,
                         MissionTitle = MissionTitle,

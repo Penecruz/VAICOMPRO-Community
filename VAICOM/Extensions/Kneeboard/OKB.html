@@ -3359,6 +3359,7 @@
     let latestData = null;
     let showServerMessages = false;
     let metarPressureInHg = false;
+    let metarPressureAutoMode = true;
     let selectedAtcMetarKey = '';
     let okbExperimentalEnabled = false;
     let okbCursorMode = '';
@@ -3431,6 +3432,7 @@
     const efbSaAnchorModeStorageKey = 'vaicom.okb.efbSaAnchorMode';
     const efbSaUseFastOwnshipStorageKey = 'vaicom.okb.efbSaUseFastOwnship';
     const efbSaNavigraphLayerStorageKey = 'vaicom.okb.efbSaNavigraphLayer';
+    const efbSaDoghousesEnabledStorageKey = 'vaicom.okb.efbSaDoghousesEnabled';
     const efbSaUserWaypointsEnabledStorageKey = 'vaicom.okb.efbSaUserWaypointsEnabled';
     const efbSaUserWaypointsStorageKey = 'vaicom.okb.efbSaUserWaypoints';
     const drawModeTimeoutMs = 30000;
@@ -3463,6 +3465,7 @@
     let efbPickerDocumentHandlerBound = false;
     let efbDrawerOpen = false;
     let efbDrawerMode = 'airport';
+    let efbDrawerAnimateOpenOnce = false;
     let efbSelectionFlowActive = false;
     let efbPinnedChartsByAirport = {};
     let efbRightToolsOpen = false;
@@ -3481,6 +3484,7 @@
     let efbSaAnchorMode = 'center';
     let efbSaUseFastOwnshipEnabled = true;
     let efbSaNavigraphLayer = 'vfr';
+    let efbSaShowDoghouses = true;
     let efbSaShowUserWaypoints = true;
     let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
     let efbSaUserWaypoints = [];
@@ -3501,10 +3505,72 @@
     let efbSaOwnshipPollTickerId = 0;
     const efbSaUserWaypointHoldMs = 1000;
     const efbSaUserWaypointHoldMovePx = 16;
+    const efbSaDoghouseMinZoom = 9.5;
+    const efbSaDoghouseOffsetNm = 2.0;
     const overlayCloseHideDelayMs = 620;
 
     function clamp(v, min, max) {
       return Math.max(min, Math.min(max, v));
+    }
+
+    function resolveModuleMetarPressureInHgPreference(data) {
+      const server = (data && data.Server) || {};
+      return !(server && server.MetarMetric === true);
+    }
+
+    function applyMetarUnitAutoPreference(data, forceReset) {
+      const shouldReset = !!forceReset || metarPressureAutoMode;
+      if (!shouldReset) return;
+      metarPressureInHg = resolveModuleMetarPressureInHgPreference(data);
+    }
+
+    function formatMetarForSelectedUnits(metarRawText, useInHg) {
+      let text = String(metarRawText || '');
+
+      function metersToSmToken(visMeters) {
+        const m = parseInt(visMeters, 10);
+        if (!isFinite(m)) return null;
+        const sm = m / 1609.344;
+        if (sm > 6) return 'P6SM';
+        if (sm <= 0.25) return '1/4SM';
+
+        if (sm >= 2) {
+          return String(Math.round(sm)) + 'SM';
+        }
+
+        const quarter = Math.round(sm * 4) / 4;
+        if (quarter <= 0.25) return '1/4SM';
+        if (quarter <= 0.5) return '1/2SM';
+        if (quarter <= 0.75) return '3/4SM';
+
+        const whole = Math.floor(quarter + 1e-9);
+        const frac = quarter - whole;
+        if (Math.abs(frac) < 1e-6) return String(whole) + 'SM';
+        if (Math.abs(frac - 0.25) < 1e-6) return String(whole) + ' 1/4SM';
+        if (Math.abs(frac - 0.5) < 1e-6) return String(whole) + ' 1/2SM';
+        if (Math.abs(frac - 0.75) < 1e-6) return String(whole) + ' 3/4SM';
+        return String(whole) + 'SM';
+      }
+
+      if (useInHg) {
+        text = text.replace(/((?:METAR:\s+|METAR\s+)[^\n]*?)\b(\d{4}|9999)\b(\s+.*?\s+)Q(\d{4})\b/g, function (_, prefix, vism, middle, qhpa) {
+          const visSm = metersToSmToken(vism);
+          const hpa = parseInt(qhpa, 10);
+          if (!isFinite(hpa)) return _;
+          const inhg = (hpa * 0.0295299830714).toFixed(2);
+          const visToken = visSm || vism;
+          return prefix + visToken + middle + 'A' + inhg;
+        });
+
+        text = text.replace(/((?:METAR:\s+|METAR\s+)[^\n]*?\bCAVOK\b[^\n]*?\s+)Q(\d{4})\b/g, function (_, prefix, qhpa) {
+          const hpa = parseInt(qhpa, 10);
+          if (!isFinite(hpa)) return _;
+          const inhg = (hpa * 0.0295299830714).toFixed(2);
+          return prefix + 'A' + inhg;
+        });
+      }
+
+      return text;
     }
 
     function readEfbSaUseFastOwnshipPreference() {
@@ -3641,6 +3707,25 @@
       try {
         if (!window.localStorage) return;
         window.localStorage.setItem(efbSaTrackUpEnabledStorageKey, efbSaTrackUpEnabled ? '1' : '0');
+      } catch (_) {
+      }
+    }
+
+    function readEfbSaDoghousesEnabledPreference() {
+      try {
+        if (!window.localStorage) return true;
+        const raw = window.localStorage.getItem(efbSaDoghousesEnabledStorageKey);
+        if (raw === null || raw === undefined || raw === '') return true;
+        return raw !== '0';
+      } catch (_) {
+        return true;
+      }
+    }
+
+    function persistEfbSaDoghousesEnabledPreference() {
+      try {
+        if (!window.localStorage) return;
+        window.localStorage.setItem(efbSaDoghousesEnabledStorageKey, efbSaShowDoghouses ? '1' : '0');
       } catch (_) {
       }
     }
@@ -4695,6 +4780,7 @@
       const allowAirports = (efbSaShowAirports !== false);
       const allowJtacTargets = (efbSaShowJtacTargets !== false);
       const visibleRows = allowNavlog ? rows : [];
+      const doghouseRows = normalizeDoghouseMapLegRows(rows);
       const model = data || latestData || {};
       const server = (model && model.Server) || {};
       const theatreInfo = resolveOpenFreeMapTheatreInfo(model);
@@ -4941,6 +5027,24 @@
           dashed: !!(seg && seg.dashed),
         });
       });
+
+      if (efbSaShowDoghouses !== false) {
+        const doghouseLegs = buildDoghouseLegData(doghouseRows, theatre);
+        doghouseLegs.forEach(function (d) {
+          const heading = computeTrueHeadingDeg(
+            { x: Number(d.fromXNum), y: Number(d.fromYNum) },
+            { x: Number(d.toXNum), y: Number(d.toYNum) });
+          addPointFeature({ xNum: Number(d.midXNum), yNum: Number(d.midYNum) }, {
+            kind: 'doghouse',
+            group: 'overlay',
+            headingDeg: heading,
+            mhText: String(d.mhText || '-'),
+            distText: String(d.distText || '-'),
+            eteText: String(d.eteText || '--:--'),
+            altText: String(d.altText || '-'),
+          });
+        });
+      }
 
       if (activeJtacTarget) {
         const t = activeJtacTarget || {};
@@ -5420,44 +5524,44 @@
         const x = m.x.toFixed(1);
         const y = m.y.toFixed(1);
         function racetrack(colorHex, label) {
-          const w = 64;
-          const h = 32;
-          const rx = 14;
-          return '<g><rect x="' + (m.x - (w / 2)).toFixed(1) + '" y="' + (m.y - (h / 2)).toFixed(1) + '" width="' + w + '" height="' + h + '" rx="' + rx + '" ry="' + rx + '" fill="#ffffff" stroke="' + colorHex + '" stroke-width="2.2" /><text x="' + x + '" y="' + (m.y + 5.5).toFixed(1) + '" text-anchor="middle" font-size="14" fill="' + colorHex + '" font-weight="700">' + label + '</text></g>';
+          const w = 76;
+          const h = 40;
+          const rx = 18;
+          return '<g><rect x="' + (m.x - (w / 2)).toFixed(1) + '" y="' + (m.y - (h / 2)).toFixed(1) + '" width="' + w + '" height="' + h + '" rx="' + rx + '" ry="' + rx + '" fill="none" stroke="' + colorHex + '" stroke-width="2.4" /><text x="' + x + '" y="' + (m.y + 6.5).toFixed(1) + '" text-anchor="middle" font-size="16" fill="' + colorHex + '" font-weight="700">' + label + '</text></g>';
         }
         if (m.kind === 'aar') return racetrack('#111111', 'AAR');
         if (m.kind === 'cap') return racetrack('#2f5fa7', 'CAP');
         if (m.kind === 'hld') return racetrack('#2f7f4f', 'HLD');
         if (m.kind === 'ip') {
-          const s = 9;
-          return '<rect x="' + (m.x - s).toFixed(1) + '" y="' + (m.y - s).toFixed(1) + '" width="' + (s * 2) + '" height="' + (s * 2) + '" fill="#2f7f4f" stroke="#1e5535" stroke-width="1.5" />';
+          const s = 11;
+          return '<rect x="' + (m.x - s).toFixed(1) + '" y="' + (m.y - s).toFixed(1) + '" width="' + (s * 2) + '" height="' + (s * 2) + '" fill="none" stroke="#2f7f4f" stroke-width="2.1" />';
         }
         if (m.kind === 'tgt') {
-          const p1 = x + ',' + (m.y - 10).toFixed(1);
-          const p2 = (m.x - 10).toFixed(1) + ',' + (m.y + 8).toFixed(1);
-          const p3 = (m.x + 10).toFixed(1) + ',' + (m.y + 8).toFixed(1);
-          return '<polygon points="' + p1 + ' ' + p2 + ' ' + p3 + '" fill="#a33d3d" stroke="#682626" stroke-width="1.5" />';
+          const p1 = x + ',' + (m.y - 12).toFixed(1);
+          const p2 = (m.x - 12).toFixed(1) + ',' + (m.y + 9.6).toFixed(1);
+          const p3 = (m.x + 12).toFixed(1) + ',' + (m.y + 9.6).toFixed(1);
+          return '<polygon points="' + p1 + ' ' + p2 + ' ' + p3 + '" fill="none" stroke="#a33d3d" stroke-width="2.1" />';
         }
         if (m.kind === 'home' || m.kind === 'ldg') {
-          const r = 10;
-          const roofTop = x + ',' + (m.y - 12).toFixed(1);
-          const roofL = (m.x - r).toFixed(1) + ',' + (m.y - 2).toFixed(1);
-          const roofR = (m.x + r).toFixed(1) + ',' + (m.y - 2).toFixed(1);
-          const baseX = (m.x - 8).toFixed(1);
-          const baseY = (m.y - 2).toFixed(1);
-          return '<polygon points="' + roofTop + ' ' + roofL + ' ' + roofR + '" fill="#735c2f" stroke="#4c3d1f" stroke-width="1.5" /><rect x="' + baseX + '" y="' + baseY + '" width="16" height="12" fill="#b1945a" stroke="#4c3d1f" stroke-width="1.5" />';
+          const r = 12;
+          const roofTop = x + ',' + (m.y - 14.4).toFixed(1);
+          const roofL = (m.x - r).toFixed(1) + ',' + (m.y - 2.4).toFixed(1);
+          const roofR = (m.x + r).toFixed(1) + ',' + (m.y - 2.4).toFixed(1);
+          const baseX = (m.x - 9.6).toFixed(1);
+          const baseY = (m.y - 2.4).toFixed(1);
+          return '<polygon points="' + roofTop + ' ' + roofL + ' ' + roofR + '" fill="none" stroke="#735c2f" stroke-width="2.1" /><rect x="' + baseX + '" y="' + baseY + '" width="19.2" height="13.8" fill="none" stroke="#b1945a" stroke-width="2.1" />';
         }
-        return '<circle cx="' + x + '" cy="' + y + '" r="8" fill="#3a6ea5" stroke="#244766" stroke-width="1.5" />';
+        return '<circle cx="' + x + '" cy="' + y + '" r="10" fill="none" stroke="#3a6ea5" stroke-width="2.1" />';
       }
 
       const pointEls = mapped.map(function (m) {
         const step = escapeHtml(String(m.wp.step || '-'));
         const name = escapeHtml(String(m.wp.name || ''));
         const label = name && name !== '-' ? ('STP ' + step + ' ' + name) : ('STP ' + step);
-        const tx = (m.x + 11).toFixed(1);
-        const ty = (m.y - 11).toFixed(1);
+        const tx = (m.x + 14).toFixed(1);
+        const ty = (m.y - 14).toFixed(1);
         return iconFor(m)
-          + '<text x="' + tx + '" y="' + ty + '" font-size="11" fill="#1f2e3d" font-weight="700">' + label + '</text>';
+          + '<text x="' + tx + '" y="' + ty + '" font-size="13" fill="#1f2e3d" font-weight="700">' + label + '</text>';
       });
 
       const northArrow = [
@@ -5592,12 +5696,27 @@
         + '</svg>';
     }
 
+    function getEfbSaLayerDoghouseIconSvg() {
+      return '<svg class="efbRailIconSvg" viewBox="0 0 64 64" aria-hidden="true">'
+        + '<polygon points="18,27 32,13 46,27" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>'
+        + '<rect x="15" y="27" width="34" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="3.4"/>'
+        + '<line x1="22" y1="35" x2="42" y2="35" stroke="currentColor" stroke-width="2.4"/>'
+        + '<line x1="22" y1="42" x2="36" y2="42" stroke="currentColor" stroke-width="2.4"/>'
+        + '</svg>';
+    }
+
     function getEfbSaLayerJtacIconSvg() {
       return '<svg class="efbRailIconSvg" viewBox="0 0 64 64" aria-hidden="true">'
         + '<polygon points="32,11 53,32 32,53 11,32" fill="none" stroke="currentColor" stroke-width="3"/>'
         + '<line x1="32" y1="17" x2="32" y2="47" stroke="currentColor" stroke-width="3"/>'
         + '<line x1="17" y1="32" x2="47" y2="32" stroke="currentColor" stroke-width="3"/>'
         + '</svg>';
+    }
+
+    function normalizeDoghouseMapLegRows(rows) {
+      return (Array.isArray(rows) ? rows : []).filter(function (wp) {
+        return isFinite(Number(wp && wp.xNum)) && isFinite(Number(wp && wp.yNum));
+      });
     }
 
     function getEfbSaNavigraphLayerIconSvg(layer) {
@@ -6360,6 +6479,7 @@
     }
 
     function openEfbDrawer(mode) {
+      const wasOpen = !!efbDrawerOpen;
       efbDrawerMode = mode === 'chart'
         ? 'chart'
         : (mode === 'pinned'
@@ -6368,11 +6488,13 @@
             ? 'sa-layers'
             : (mode === 'user-waypoints' ? 'user-waypoints' : 'airport')));
       efbDrawerOpen = true;
+      efbDrawerAnimateOpenOnce = !wasOpen;
       efbSelectionFlowActive = true;
     }
 
     function closeEfbDrawer() {
       efbDrawerOpen = false;
+      efbDrawerAnimateOpenOnce = false;
       efbSelectionFlowActive = false;
     }
 
@@ -6805,6 +6927,7 @@
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowJtacTargets !== false ? ' active' : '') + '" data-efb-sa-layer="jtac" title="JTAC targets ' + (efbSaShowJtacTargets !== false ? 'ON' : 'OFF') + '">' + getEfbSaLayerJtacIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowAirports ? ' active' : '') + '" data-efb-sa-layer="airports" title="Airport symbols ' + (efbSaShowAirports ? 'ON' : 'OFF') + '">' + getEfbSaLayerAirportIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowNavlog ? ' active' : '') + '" data-efb-sa-layer="navlog" title="Navlog route and waypoints ' + (efbSaShowNavlog ? 'ON' : 'OFF') + '">' + getEfbSaLayerNavlogIconSvg() + '</button>'
+        + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowDoghouses !== false ? ' active' : '') + '" data-efb-sa-layer="doghouses" title="Doghouse leg data ' + (efbSaShowDoghouses !== false ? 'ON' : 'OFF') + '">' + getEfbSaLayerDoghouseIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowUserWaypoints !== false ? ' active' : '') + '" data-efb-sa-layer="user-waypoints" title="User waypoints ' + (efbSaShowUserWaypoints !== false ? 'ON' : 'OFF') + '">' + getEfbSaLayerUserWaypointIconSvg() + '</button>'
         + '<button type="button" class="efbRightDrawerBtn' + (efbSaShowDtcOverlay ? ' active' : '') + '" data-efb-sa-layer="dtc" title="DTC SA overlay ' + (efbSaShowDtcOverlay ? 'ON' : 'OFF') + '">' + getEfbSaLayerOverlayIconSvg() + '</button>'
         + '</div>'
@@ -6875,6 +6998,22 @@
         drawer.className = (efbDrawerOpen && !isSaLayerDrawer) ? 'efbLeftActionDrawer' : 'efbLeftActionDrawer closed';
         if (saLayerDrawer) {
           saLayerDrawer.className = isSaLayerDrawer ? 'efbSaLayerDrawer' : 'efbSaLayerDrawer closed';
+        }
+        if (efbDrawerOpen && efbDrawerAnimateOpenOnce) {
+          const animateNode = isSaLayerDrawer ? saLayerDrawer : drawer;
+          const closedClass = isSaLayerDrawer ? 'efbSaLayerDrawer closed' : 'efbLeftActionDrawer closed';
+          const openClass = isSaLayerDrawer ? 'efbSaLayerDrawer' : 'efbLeftActionDrawer';
+          if (animateNode) {
+            animateNode.className = closedClass;
+            if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
+              window.requestAnimationFrame(function () {
+                animateNode.className = openClass;
+              });
+            } else {
+              animateNode.className = openClass;
+            }
+          }
+          efbDrawerAnimateOpenOnce = false;
         }
         title.textContent = efbDrawerMode === 'chart'
           ? ('Charts · ' + (airportKey || 'UNSET'))
@@ -6971,6 +7110,7 @@
         const jtacBtn = drawer.querySelector('[data-efb-sa-layer="jtac"]');
         const airportsBtn = drawer.querySelector('[data-efb-sa-layer="airports"]');
         const navlogBtn = drawer.querySelector('[data-efb-sa-layer="navlog"]');
+        const doghousesBtn = drawer.querySelector('[data-efb-sa-layer="doghouses"]');
         const userWaypointsBtn = drawer.querySelector('[data-efb-sa-layer="user-waypoints"]');
         const dtcBtn = drawer.querySelector('[data-efb-sa-layer="dtc"]');
         if (navBaseBtn) {
@@ -6994,6 +7134,10 @@
         if (navlogBtn) {
           navlogBtn.classList.toggle('active', efbSaShowNavlog !== false);
           navlogBtn.title = 'Navlog route ' + (efbSaShowNavlog !== false ? 'ON' : 'OFF');
+        }
+        if (doghousesBtn) {
+          doghousesBtn.classList.toggle('active', efbSaShowDoghouses !== false);
+          doghousesBtn.title = 'Doghouse leg data ' + (efbSaShowDoghouses !== false ? 'ON' : 'OFF');
         }
         if (userWaypointsBtn) {
           userWaypointsBtn.classList.toggle('active', efbSaShowUserWaypoints !== false);
@@ -7069,6 +7213,9 @@
             efbSaShowAirports = !efbSaShowAirports;
           } else if (layer === 'navlog') {
             efbSaShowNavlog = !efbSaShowNavlog;
+          } else if (layer === 'doghouses') {
+            efbSaShowDoghouses = !efbSaShowDoghouses;
+            persistEfbSaDoghousesEnabledPreference();
           } else if (layer === 'user-waypoints') {
             efbSaShowUserWaypoints = !efbSaShowUserWaypoints;
             persistEfbSaUserWaypointsEnabledPreference();
@@ -7430,10 +7577,19 @@
             efbSearchMode = 'user-waypoint-rename';
             efbSearchToken = normalizeEfbWaypointRenameToken(efbSaUserWaypointEditDraft || wp.name || '');
             efbSearchOverlayOpen = true;
-            efbSearchAnimateOpenOnce = false;
+            efbSearchAnimateOpenOnce = true;
             closeEfbDrawer();
             efbUiDirty = true;
-            if (latestData) render(latestData);
+            if (latestData) {
+              render(latestData);
+              window.requestAnimationFrame(function () {
+                const overlay = document.getElementById('efbSearchOverlay');
+                if (overlay) overlay.classList.add('open');
+                efbSearchAnimateOpenOnce = false;
+              });
+            } else {
+              efbSearchAnimateOpenOnce = false;
+            }
             return true;
           }
 
@@ -11960,6 +12116,13 @@
           return NaN;
         }
       })();
+      let mapZoom = NaN;
+      try {
+        mapZoom = Number(map && map.getZoom ? map.getZoom() : NaN);
+      } catch (_) {
+        mapZoom = NaN;
+      }
+      const doghousePlacedAnchors = [];
 
       function createAssetSymbol(px, py, props) {
         const g = makeNode('g');
@@ -12201,48 +12364,48 @@
               if (kind === 'waypoint') {
                 const wpType = String((props && props.waypointType) || '').toLowerCase();
                 if (wpType === 'ip') {
-                  const s = 7.2;
+                  const s = 8.8;
                   const ip = makeNode('rect');
                   ip.setAttribute('x', (p.x - s).toFixed(1));
                   ip.setAttribute('y', (p.y - s).toFixed(1));
                   ip.setAttribute('width', (s * 2).toFixed(1));
                   ip.setAttribute('height', (s * 2).toFixed(1));
-                  ip.setAttribute('fill', '#2f7f4f');
-                  ip.setAttribute('stroke', '#1e5535');
-                  ip.setAttribute('stroke-width', '1.5');
+                  ip.setAttribute('fill', 'none');
+                  ip.setAttribute('stroke', '#2f7f4f');
+                  ip.setAttribute('stroke-width', '2.0');
                   ip.style.pointerEvents = 'none';
                   return ip;
                 }
                 if (wpType === 'tgt') {
                   const tgt = makeNode('polygon');
                   tgt.setAttribute('points',
-                    p.x.toFixed(1) + ',' + (p.y - 7.2).toFixed(1) + ' '
-                    + (p.x - 7.2).toFixed(1) + ',' + p.y.toFixed(1) + ' '
-                    + p.x.toFixed(1) + ',' + (p.y + 7.2).toFixed(1) + ' '
-                    + (p.x + 7.2).toFixed(1) + ',' + p.y.toFixed(1));
-                  tgt.setAttribute('fill', '#a33d3d');
-                  tgt.setAttribute('stroke', '#682626');
-                  tgt.setAttribute('stroke-width', '1.5');
+                    p.x.toFixed(1) + ',' + (p.y - 8.8).toFixed(1) + ' '
+                    + (p.x - 8.8).toFixed(1) + ',' + p.y.toFixed(1) + ' '
+                    + p.x.toFixed(1) + ',' + (p.y + 8.8).toFixed(1) + ' '
+                    + (p.x + 8.8).toFixed(1) + ',' + p.y.toFixed(1));
+                  tgt.setAttribute('fill', 'none');
+                  tgt.setAttribute('stroke', '#a33d3d');
+                  tgt.setAttribute('stroke-width', '2.0');
                   tgt.style.pointerEvents = 'none';
                   return tgt;
                 }
                 if (wpType === 'home' || wpType === 'ldg') {
-                  const roofTop = p.x.toFixed(1) + ',' + (p.y - 8.2).toFixed(1);
-                  const roofL = (p.x - 7.2).toFixed(1) + ',' + (p.y - 1.6).toFixed(1);
-                  const roofR = (p.x + 7.2).toFixed(1) + ',' + (p.y - 1.6).toFixed(1);
+                  const roofTop = p.x.toFixed(1) + ',' + (p.y - 10.4).toFixed(1);
+                  const roofL = (p.x - 8.8).toFixed(1) + ',' + (p.y - 2.0).toFixed(1);
+                  const roofR = (p.x + 8.8).toFixed(1) + ',' + (p.y - 2.0).toFixed(1);
                   const homeRoof = makeNode('polygon');
                   homeRoof.setAttribute('points', roofTop + ' ' + roofL + ' ' + roofR);
-                  homeRoof.setAttribute('fill', '#735c2f');
-                  homeRoof.setAttribute('stroke', '#4c3d1f');
-                  homeRoof.setAttribute('stroke-width', '1.2');
+                  homeRoof.setAttribute('fill', 'none');
+                  homeRoof.setAttribute('stroke', '#735c2f');
+                  homeRoof.setAttribute('stroke-width', '2.0');
                   const homeBase = makeNode('rect');
-                  homeBase.setAttribute('x', (p.x - 5.8).toFixed(1));
-                  homeBase.setAttribute('y', (p.y - 1.6).toFixed(1));
-                  homeBase.setAttribute('width', '11.6');
-                  homeBase.setAttribute('height', '7.2');
-                  homeBase.setAttribute('fill', '#b1945a');
-                  homeBase.setAttribute('stroke', '#4c3d1f');
-                  homeBase.setAttribute('stroke-width', '1.2');
+                  homeBase.setAttribute('x', (p.x - 7.2).toFixed(1));
+                  homeBase.setAttribute('y', (p.y - 2.0).toFixed(1));
+                  homeBase.setAttribute('width', '14.4');
+                  homeBase.setAttribute('height', '8.8');
+                  homeBase.setAttribute('fill', 'none');
+                  homeBase.setAttribute('stroke', '#b1945a');
+                  homeBase.setAttribute('stroke-width', '2.0');
                   const gHome = makeNode('g');
                   gHome.appendChild(homeRoof);
                   gHome.appendChild(homeBase);
@@ -12253,21 +12416,21 @@
                   const gRacetrack = makeNode('g');
                   const raceRect = makeNode('rect');
                   const raceColor = wpType === 'aar' ? '#111111' : (wpType === 'cap' ? '#2f5fa7' : '#2f7f4f');
-                  raceRect.setAttribute('x', (p.x - 16).toFixed(1));
-                  raceRect.setAttribute('y', (p.y - 8).toFixed(1));
-                  raceRect.setAttribute('width', '32');
-                  raceRect.setAttribute('height', '16');
-                  raceRect.setAttribute('rx', '7');
-                  raceRect.setAttribute('ry', '7');
-                  raceRect.setAttribute('fill', '#ffffff');
+                  raceRect.setAttribute('x', (p.x - 19).toFixed(1));
+                  raceRect.setAttribute('y', (p.y - 10).toFixed(1));
+                  raceRect.setAttribute('width', '38');
+                  raceRect.setAttribute('height', '20');
+                  raceRect.setAttribute('rx', '9');
+                  raceRect.setAttribute('ry', '9');
+                  raceRect.setAttribute('fill', 'none');
                   raceRect.setAttribute('stroke', raceColor);
-                  raceRect.setAttribute('stroke-width', '1.6');
+                  raceRect.setAttribute('stroke-width', '2.0');
                   gRacetrack.appendChild(raceRect);
                   const raceTxt = makeNode('text');
                   raceTxt.setAttribute('x', p.x.toFixed(1));
-                  raceTxt.setAttribute('y', (p.y + 3.8).toFixed(1));
+                  raceTxt.setAttribute('y', (p.y + 4.4).toFixed(1));
                   raceTxt.setAttribute('text-anchor', 'middle');
-                  raceTxt.setAttribute('font-size', '9.5');
+                  raceTxt.setAttribute('font-size', '10.8');
                   raceTxt.setAttribute('font-weight', '700');
                   raceTxt.setAttribute('fill', raceColor);
                   raceTxt.textContent = wpType.toUpperCase();
@@ -12275,6 +12438,16 @@
                   gRacetrack.style.pointerEvents = 'none';
                   return gRacetrack;
                 }
+
+                const wpCircle = makeNode('circle');
+                wpCircle.setAttribute('cx', p.x.toFixed(1));
+                wpCircle.setAttribute('cy', p.y.toFixed(1));
+                wpCircle.setAttribute('r', '8.8');
+                wpCircle.setAttribute('fill', 'none');
+                wpCircle.setAttribute('stroke', fill);
+                wpCircle.setAttribute('stroke-width', '2.3');
+                wpCircle.style.pointerEvents = 'none';
+                return wpCircle;
               }
               if (kind === 'airfield') {
                 const gField = makeNode('g');
@@ -12482,6 +12655,126 @@
                 geo.style.pointerEvents = 'none';
                 return geo;
               }
+              if (kind === 'doghouse') {
+                if (!isFinite(mapZoom) || mapZoom < efbSaDoghouseMinZoom) {
+                  return null;
+                }
+                const headingDeg = Number(props && props.headingDeg);
+                const roofHeight = 26;
+                const bodyWidth = 120;
+                const bodyHeight = 108;
+                const rowHeight = bodyHeight / 3;
+                const zoomFactor = clamp((mapZoom - efbSaDoghouseMinZoom) / 3.0, 0, 1);
+                const offsetNmDynamic = Math.max(0.6, Number(efbSaDoghouseOffsetNm) * (1.0 - (0.65 * zoomFactor)));
+                const offsetPxFromNm = isFinite(metersPerPixel) && metersPerPixel > 0
+                  ? ((offsetNmDynamic * 1852.0) / metersPerPixel)
+                  : 0;
+                const minRouteClearancePx = (bodyWidth / 2) + 10;
+                const offsetPx = Math.max(minRouteClearancePx, offsetPxFromNm);
+
+                const gDog = makeNode('g');
+                let mapBearing = 0;
+                try {
+                  mapBearing = Number(map && map.getBearing ? map.getBearing() : 0);
+                } catch (_) {
+                  mapBearing = 0;
+                }
+                const renderHeading = isFinite(headingDeg)
+                  ? normalizeHeadingDeg(headingDeg - mapBearing)
+                  : 0;
+                const headingRad = renderHeading * (Math.PI / 180.0);
+                const rightX = Math.cos(headingRad);
+                const rightY = Math.sin(headingRad);
+                const minSepPx = Math.max(118, Math.max(bodyWidth, bodyHeight) + 12);
+                function hasConflict(x, y) {
+                  return doghousePlacedAnchors.some(function (a) {
+                    const dx = Number(a.x) - Number(x);
+                    const dy = Number(a.y) - Number(y);
+                    return ((dx * dx) + (dy * dy)) < (minSepPx * minSepPx);
+                  });
+                }
+
+                let sideSign = 1;
+                let anchorX = p.x + (rightX * offsetPx * sideSign);
+                let anchorY = p.y + (rightY * offsetPx * sideSign);
+                if (hasConflict(anchorX, anchorY)) {
+                  sideSign = -1;
+                  anchorX = p.x + (rightX * offsetPx * sideSign);
+                  anchorY = p.y + (rightY * offsetPx * sideSign);
+                }
+                const bodyX = anchorX - (bodyWidth / 2);
+                const bodyY = anchorY - (bodyHeight / 2);
+                gDog.setAttribute('transform', 'rotate(' + renderHeading.toFixed(1) + ' ' + anchorX.toFixed(1) + ' ' + anchorY.toFixed(1) + ')');
+
+                const roof = makeNode('polygon');
+                roof.setAttribute('points',
+                  anchorX.toFixed(1) + ',' + (bodyY - roofHeight).toFixed(1) + ' '
+                  + bodyX.toFixed(1) + ',' + bodyY.toFixed(1) + ' '
+                  + (bodyX + bodyWidth).toFixed(1) + ',' + bodyY.toFixed(1));
+                roof.setAttribute('fill', '#ffffff');
+                roof.setAttribute('fill-opacity', '0.55');
+                roof.setAttribute('stroke', '#000000');
+                roof.setAttribute('stroke-width', '2.6');
+                gDog.appendChild(roof);
+
+                const body = makeNode('rect');
+                body.setAttribute('x', bodyX.toFixed(1));
+                body.setAttribute('y', bodyY.toFixed(1));
+                body.setAttribute('width', bodyWidth.toFixed(1));
+                body.setAttribute('height', bodyHeight.toFixed(1));
+                body.setAttribute('rx', '2');
+                body.setAttribute('ry', '2');
+                body.setAttribute('fill', '#ffffff');
+                body.setAttribute('fill-opacity', '0.55');
+                body.setAttribute('stroke', '#000000');
+                body.setAttribute('stroke-width', '2.6');
+                gDog.appendChild(body);
+
+                const sep1 = makeNode('line');
+                sep1.setAttribute('x1', bodyX.toFixed(1));
+                sep1.setAttribute('y1', (bodyY + rowHeight).toFixed(1));
+                sep1.setAttribute('x2', (bodyX + bodyWidth).toFixed(1));
+                sep1.setAttribute('y2', (bodyY + rowHeight).toFixed(1));
+                sep1.setAttribute('stroke', '#000000');
+                sep1.setAttribute('stroke-width', '2.0');
+                gDog.appendChild(sep1);
+
+                const sep2 = makeNode('line');
+                sep2.setAttribute('x1', bodyX.toFixed(1));
+                sep2.setAttribute('y1', (bodyY + (rowHeight * 2)).toFixed(1));
+                sep2.setAttribute('x2', (bodyX + bodyWidth).toFixed(1));
+                sep2.setAttribute('y2', (bodyY + (rowHeight * 2)).toFixed(1));
+                sep2.setAttribute('stroke', '#000000');
+                sep2.setAttribute('stroke-width', '2.0');
+                gDog.appendChild(sep2);
+
+                function row(y, text, center) {
+                  const tx = makeNode('text');
+                  tx.setAttribute('x', (center ? anchorX : (bodyX + 8)).toFixed(1));
+                  tx.setAttribute('y', y.toFixed(1));
+                  tx.setAttribute('text-anchor', center ? 'middle' : 'start');
+                  tx.setAttribute('dominant-baseline', 'middle');
+                  tx.setAttribute('font-size', '18');
+                  tx.setAttribute('font-weight', '700');
+                  tx.setAttribute('fill', '#000000');
+                  tx.setAttribute('font-family', 'Consolas, monospace');
+                  tx.textContent = String(text || '');
+                  gDog.appendChild(tx);
+                }
+
+                row(bodyY - (roofHeight * 0.42), String((props && props.mhText) || '-'), true);
+                row(bodyY + (rowHeight * 0.5), 'DIST ' + String((props && props.distText) || '-') + ' NM', true);
+                row(bodyY + (rowHeight * 1.5), 'ETE ' + String((props && props.eteText) || '--:--'), true);
+                row(bodyY + (rowHeight * 2.5), 'ALT ' + String((props && props.altText) || '-'), true);
+
+                doghousePlacedAnchors.push({
+                  x: anchorX,
+                  y: anchorY
+                });
+
+                gDog.style.pointerEvents = 'none';
+                return gDog;
+              }
             if (kind === 'jtac-friendly') {
               return createJtacFriendlySymbol(p.x, p.y, props);
             }
@@ -12504,6 +12797,10 @@
               c.style.pointerEvents = 'none';
               return c;
             })();
+
+          if (!markerNode) {
+            return;
+          }
 
           if (markerNode && (kind === 'waypoint' || kind === 'airfield' || kind === 'user-waypoint')) {
             markerNode.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ') scale(1.5) translate(' + (-p.x).toFixed(1) + ' ' + (-p.y).toFixed(1) + ')');
@@ -12538,9 +12835,9 @@
             const isWaypointLabel = kind === 'waypoint' || kind === 'user-waypoint';
             const useScaledLabel = isAirfieldLabel || isWaypointLabel;
             const text = makeNode('text');
-            text.setAttribute('x', (p.x + (isAirfieldLabel ? 16 : (isWaypointLabel ? 14 : 9))).toFixed(1));
+            text.setAttribute('x', (p.x + (isAirfieldLabel ? 16 : (isWaypointLabel ? 16 : 9))).toFixed(1));
             text.setAttribute('y', (p.y + 4).toFixed(1));
-            text.setAttribute('font-size', isAirfieldLabel ? '18.5' : (isWaypointLabel ? '16.5' : '11'));
+            text.setAttribute('font-size', isAirfieldLabel ? '18.5' : (isWaypointLabel ? '18.5' : '11'));
             text.setAttribute('font-weight', '700');
             const labelFill = isAsset
               ? '#1f3550'
@@ -12549,7 +12846,7 @@
                 : String((props && props.textColor) || '#1f2e3d'));
             text.setAttribute('fill', labelFill);
             text.setAttribute('stroke', '#ffffff');
-            text.setAttribute('stroke-width', useScaledLabel ? '0.9' : '0.6');
+            text.setAttribute('stroke-width', useScaledLabel ? '1.0' : '0.6');
             text.style.pointerEvents = 'none';
             text.textContent = label;
             overlaySvg.appendChild(text);
@@ -12702,6 +12999,38 @@
         if (category === 'JTAC_TARGET') {
           const jtacLines = formatJtacNineLinePopupLines(p);
           jtacLines.forEach(function (x) { infoLines.push(String(x || '')); });
+
+          const jtacLatLonText = (function () {
+            const direct = String(p.latLonText || '').trim();
+            if (direct) return direct;
+            const xNum = Number(p.xNum);
+            const yNum = Number(p.yNum);
+            if (!isFinite(xNum) || !isFinite(yNum) || !theatreForWaypoints) return '';
+            const llPrimary = convertDcsXYToLatLon(theatreForWaypoints, xNum, yNum);
+            const llSwap = convertDcsXYToLatLon(theatreForWaypoints, yNum, xNum);
+            const ll = (llPrimary && isFinite(Number(llPrimary.lat)) && isFinite(Number(llPrimary.lon)))
+              ? llPrimary
+              : ((llSwap && isFinite(Number(llSwap.lat)) && isFinite(Number(llSwap.lon))) ? llSwap : null);
+            if (!ll) return '';
+            return formatLatLonDms(Number(ll.lat), Number(ll.lon));
+          })();
+          if (jtacLatLonText) infoLines.push('LAT/LON: ' + jtacLatLonText);
+
+          const jtacMgrsText = (function () {
+            const direct = String(p.mgrsText || '').toUpperCase().trim();
+            if (direct) return direct;
+            const xNum = Number(p.xNum);
+            const yNum = Number(p.yNum);
+            if (!isFinite(xNum) || !isFinite(yNum) || !theatreForWaypoints) return '';
+            const llPrimary = convertDcsXYToLatLon(theatreForWaypoints, xNum, yNum);
+            const llSwap = convertDcsXYToLatLon(theatreForWaypoints, yNum, xNum);
+            const ll = (llPrimary && isFinite(Number(llPrimary.lat)) && isFinite(Number(llPrimary.lon)))
+              ? llPrimary
+              : ((llSwap && isFinite(Number(llSwap.lat)) && isFinite(Number(llSwap.lon))) ? llSwap : null);
+            if (!ll) return '';
+            return String(formatLatLonMgrs(Number(ll.lat), Number(ll.lon)) || '').toUpperCase().trim();
+          })();
+          if (jtacMgrsText) infoLines.push('MGRS: ' + jtacMgrsText);
         }
         const typeText = String(p.typeName || '').trim();
         const freqText = formatFreq(p.frequency);
@@ -13533,11 +13862,21 @@
               }
             }
 
+            const defaultMapZoom = 6;
+            const doghouseStartupZoom = (efbSaShowDoghouses !== false)
+              ? Math.max(defaultMapZoom, Number(efbSaDoghouseMinZoom) + 0.2)
+              : defaultMapZoom;
+            const initialZoom = hasStoredView
+              ? Number(viewState.zoom)
+              : ((selectedTab === 'EFB' && normalizeEfbViewerMode(efbViewerMode) === 'sa-map' && efbSaFollowOwnshipEnabled)
+                ? doghouseStartupZoom
+                : defaultMapZoom);
+
             const map = new maplibregl.Map({
               container: host,
               style: buildOpenFreeMapStyleSpec(),
               center: [initialCenterLon, initialCenterLat],
-              zoom: hasStoredView ? Number(viewState.zoom) : 6,
+              zoom: initialZoom,
               bearing: initialBearing,
               attributionControl: true,
             });
@@ -14006,6 +14345,74 @@
       const dy = currY - prevY;
       const meters = Math.sqrt((dx * dx) + (dy * dy));
       return meters / 1852.0;
+    }
+
+    function parseWaypointSpeedKnots(spd) {
+      const v = Number(spd);
+      if (!isFinite(v) || v <= 0) return NaN;
+      return v;
+    }
+
+    function formatDoghouseEteSeconds(seconds) {
+      const n = Number(seconds);
+      if (!isFinite(n) || n <= 0) return '--:--';
+      const total = Math.max(1, Math.round(n));
+      const m = Math.floor(total / 60);
+      const s = total % 60;
+      return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    function buildDoghouseLegData(rows, theater) {
+      const list = Array.isArray(rows) ? rows : [];
+      if (list.length < 2) return [];
+      const magVar = Number(getApproxMagVariationDeg(theater));
+      const doghouses = [];
+      for (let i = 1; i < list.length; i++) {
+        const fromWp = list[i - 1];
+        const toWp = list[i];
+        const fromX = Number(fromWp && fromWp.xNum);
+        const fromY = Number(fromWp && fromWp.yNum);
+        const toX = Number(toWp && toWp.xNum);
+        const toY = Number(toWp && toWp.yNum);
+        if (!isFinite(fromX) || !isFinite(fromY) || !isFinite(toX) || !isFinite(toY)) continue;
+
+        const headingTrue = computeTrueHeadingDeg({ x: fromX, y: fromY }, { x: toX, y: toY });
+        const headingMag = isFinite(headingTrue) ? normalizeHeadingDeg(headingTrue - magVar) : NaN;
+        const distanceNm = computeLegDistanceNm({ x: fromX, y: fromY }, { x: toX, y: toY });
+
+        let eteSeconds = NaN;
+        const fromEta = parseEtaToSeconds(fromWp && (fromWp.etaDisplay || fromWp.eta));
+        const toEta = parseEtaToSeconds(toWp && (toWp.etaDisplay || toWp.eta));
+        if (isFinite(fromEta) && isFinite(toEta) && toEta > fromEta) {
+          eteSeconds = toEta - fromEta;
+        } else {
+          const speedKts = parseWaypointSpeedKnots(toWp && toWp.spd);
+          if (isFinite(distanceNm) && distanceNm > 0 && isFinite(speedKts) && speedKts > 0) {
+            eteSeconds = (distanceNm * 3600.0) / speedKts;
+          }
+        }
+
+        const altFeet = isFinite(Number(toWp && toWp.altFeet))
+          ? Number(toWp.altFeet)
+          : (isFinite(Number(toWp && toWp.alt)) ? Number(toWp.alt) : NaN);
+
+        const midXNum = (fromX + toX) / 2.0;
+        const midYNum = (fromY + toY) / 2.0;
+
+        doghouses.push({
+          fromXNum: fromX,
+          fromYNum: fromY,
+          toXNum: toX,
+          toYNum: toY,
+          midXNum: midXNum,
+          midYNum: midYNum,
+          mhText: formatHeadingDeg(headingMag),
+          distText: formatDistanceNm(distanceNm),
+          eteText: formatDoghouseEteSeconds(eteSeconds),
+          altText: isFinite(altFeet) ? String(Math.round(altFeet)) : '-',
+        });
+      }
+      return doghouses;
     }
 
     function estimateLegSpeedKcas(distanceNm, legSeconds, altFeet) {
@@ -15280,6 +15687,7 @@
     function formatMetarBlockHtml(data, selected) {
       const server = (data && data.Server) || {};
       const metars = server.AtcMetars || {};
+      const useInHg = !!metarPressureInHg;
       const atcLines = pickClosestLines(getMergedList(data && data.Units, 'ATC'), 8);
       const keys = [];
       const seen = {};
@@ -15302,7 +15710,8 @@
 
       const rows = keys.map(function (k) {
         const text = String(metars[k] || '').trim();
-        return '<tr><td>' + escapeHtml(truncateText(text, 100)) + '</td></tr>';
+        const converted = formatMetarForSelectedUnits(text, useInHg);
+        return '<tr><td>' + escapeHtml(truncateText(converted, 100)) + '</td></tr>';
       });
       if (!rows.length) { rows.push('<tr><td>No METAR data.</td></tr>'); }
 
@@ -17372,6 +17781,7 @@
       const allowAirports = (efbSaShowAirports !== false);
       const allowJtacTargets = (efbSaShowJtacTargets !== false);
       const visibleRows = allowNavlog ? rows : [];
+      const doghouseRows = normalizeDoghouseMapLegRows(rows);
       const model = data || latestData || {};
       const server = (model && model.Server) || {};
       const diagnostics = (server && server.Diagnostics) || {};
@@ -17569,6 +17979,24 @@
           dashed: !!(seg && seg.dashed)
         });
       });
+
+      if (efbSaShowDoghouses !== false) {
+        const doghouseLegs = buildDoghouseLegData(doghouseRows, theatre);
+        doghouseLegs.forEach(function (d) {
+          const heading = computeTrueHeadingDeg(
+            { x: Number(d.fromXNum), y: Number(d.fromYNum) },
+            { x: Number(d.toXNum), y: Number(d.toYNum) });
+          addPointFeature({ xNum: Number(d.midXNum), yNum: Number(d.midYNum) }, {
+            kind: 'doghouse',
+            group: 'overlay',
+            headingDeg: heading,
+            mhText: String(d.mhText || '-'),
+            distText: String(d.distText || '-'),
+            eteText: String(d.eteText || '--:--'),
+            altText: String(d.altText || '-'),
+          });
+        });
+      }
 
       historyJtacTargets.forEach(function (h) {
         const xNum = Number(h && h.xNum);
@@ -18615,10 +19043,10 @@
         const step = escapeHtml(String(m.wp.step || '-'));
         const name = escapeHtml(String(m.wp.name || ''));
         const label = name && name !== '-' ? ('STP ' + step + ' ' + name) : ('STP ' + step);
-        const tx = (m.x + (isFinite(Number(m.labelDx)) ? Number(m.labelDx) : 11)).toFixed(1);
-        const ty = (m.y + (isFinite(Number(m.labelDy)) ? Number(m.labelDy) : -11)).toFixed(1);
+        const tx = (m.x + (isFinite(Number(m.labelDx)) ? Number(m.labelDx) : 14)).toFixed(1);
+        const ty = (m.y + (isFinite(Number(m.labelDy)) ? Number(m.labelDy) : -14)).toFixed(1);
         return iconFor(m)
-          + '<text x="' + tx + '" y="' + ty + '" font-size="11" fill="' + palette.label + '" font-weight="700">' + label + '</text>';
+          + '<text x="' + tx + '" y="' + ty + '" font-size="13" fill="' + palette.label + '" font-weight="700">' + label + '</text>';
       });
 
       function assetIconFor(a) {
@@ -20291,6 +20719,7 @@
       latestData = data;
 
       const displayData = getDisplayData(data);
+      applyMetarUnitAutoPreference(displayData, false);
       const efbGate = selectedTab === 'EFB' ? getEfbModuleGateState(displayData) : null;
 
       if (selectedTab === 'EFB') {
@@ -21357,6 +21786,7 @@
 
       if (clickedMetarArea || selectedMetarArea) {
         if (!hasMetar) return;
+        metarPressureAutoMode = false;
         metarPressureInHg = !metarPressureInHg;
         render(latestData);
         return;
@@ -21380,6 +21810,7 @@
       }
 
       if (!hasMetar) return;
+      metarPressureAutoMode = false;
       metarPressureInHg = !metarPressureInHg;
       render(latestData);
     });
@@ -21699,6 +22130,7 @@
     efbSaAnchorMode = readEfbSaAnchorModePreference();
     efbSaUseFastOwnshipEnabled = readEfbSaUseFastOwnshipPreference();
     efbSaNavigraphLayer = readEfbSaNavigraphLayerPreference();
+    efbSaShowDoghouses = readEfbSaDoghousesEnabledPreference();
     efbSaShowUserWaypoints = readEfbSaUserWaypointsEnabledPreference();
     efbSaUserWaypoints = readEfbSaUserWaypointsPreference();
     nightModeEnabled = readNightModePreference();
