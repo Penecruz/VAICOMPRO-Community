@@ -16,11 +16,14 @@ namespace VAICOM.Extensions.AICPG
                 // Long show/hide press
                 case "wMsgGeorgeMenuDefenseMode":
                     AddGeorgeLongButton(AH64GeorgeButton.Menu);
+                    UI.Playsound.Commandcomplete();
                     break;
                 // Up Short Presses
                 case "wMsgGeorgeUp":
                 case "wMsgGeorgePreviuousTarget":
                 case "wMsgGeorgePreviousItem":
+                case "wMsgGeorgeAPUStart":
+                case "wMsgGeorgeAPUStop":
                 case "wMsgGeorgeStartUpEnginesFly":
                 case "wMsgGeorgeSpeedUp":
                 case "wMsgGeorgeAlignToTADS":
@@ -32,7 +35,7 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeDown":
                 case "wMsgGeorgeNextTarget":
                 case "wMsgGeorgeNextItem":
-                case "wMsgGeorgeStartUpAPU":
+                case "wMsgGeorgeAPUOnly":
                 case "wMsgGeorgeShutdownEngines":
                 case "wMsgGeorgeSlowDown":
                 case "wMsgGeorgeReturnToBattlePosition":
@@ -43,11 +46,6 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeLeft":
                 case "wMsgGeorgeNextWeapon":
                 case "wMsgGeorgeExitList":
-                case "wMsgGeorgeMenuCombatMode":
-                case "wMsgGeorgeMenuFlightMode":
-                case "wMsgGeorgeMenuGroundMode":
-                case "wMsgGeorgeMenuHoverMode":
-                case "wMsgGeorgeMenuNextMode":
                     if (commandId.Equals("wMsgGeorgeNextWeapon", StringComparison.OrdinalIgnoreCase) && !CanChangeWeaponSelection())
                     {
                         break;
@@ -59,6 +57,14 @@ namespace VAICOM.Extensions.AICPG
                     {
                         SelectNextWeapon();
                     }
+                    break;
+                case "wMsgGeorgeMenuCombatMode":
+                case "wMsgGeorgeMenuFlightMode":
+                case "wMsgGeorgeMenuGroundMode":
+                case "wMsgGeorgeMenuHoverMode":
+                case "wMsgGeorgeMenuNextMode":
+                    AddGeorgeButton(AH64GeorgeButton.Left);
+                    UI.Playsound.Commandcomplete();
                     break;
                 // Right Short Presses
                 case "wMsgGeorgeRight":
@@ -136,6 +142,8 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgePointListFilterThreat":
                 case "wMsgGeorgeMslTraj":
                 case "wMsgGeorgePointSelect":
+                case "wMsgGeorgeCMWSOn":
+                case "wMsgGeorgeCMWSOff":
                 case "wMsgGeorgeComeRight":
                 case "wMsgGeorgeBreakRight":
                 case "wMsgGeorgeHoverRight":

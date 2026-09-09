@@ -192,12 +192,16 @@ namespace VAICOM.Extensions.CPG
             { "George Cease Fire",                           "georgeholdfire"                },
 
             // Pilot - Startup, Shutdown, and Takeoff (GND)
-            { "George Start A P U",                          "georgestartupapu"              },
+            { "George Start A P U",                          "georgeapustart"                },
+            { "George Stop A P U",                           "georgeapustop"                 },
+            { "George A P U Only",                           "georgeapuonly"                 },
             { "George Start Engines Idle",                   "georgestartupenginesidle"      },
             { "George Start Engines Fly",                    "georgestartupenginesfly"       },
             { "George Full Start Up",                        "georgestartupfull"             },
             { "George Full Shutdown",                        "georgeshutdownfull"            },
             { "George Shutdown Engines",                     "georgeshutdownengines"         },
+            { "George Countermeasures On",                   "georgecmwson"                  },
+            { "George Countermeasures Off",                  "georgecmwsoff"                 },
             { "George Take Off",                             "georgetakeoff"                 },
 
             // Pilot - Flight and Navigation (FLT)
