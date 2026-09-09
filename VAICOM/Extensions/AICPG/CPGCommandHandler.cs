@@ -108,6 +108,7 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeUpLong":
                 case "wMsgGeorgeTadsZoomIn":
                 case "wMsgGeorgeTargetListZoomIn":
+                case "wMsgGeorgeStartUpFull":
                 case "wMsgGeorgeIncreaseAltitude":
                 case "wMsgGeorgeOrbitOverhead":
                 case "wMsgGeorgeHoverForward":
@@ -157,7 +158,6 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeAdjustAim":
                 case "wMsgGeorgeTadsSensor":
                 case "wMsgGeorgeAreaSearch":
-                case "wMsgGeorgeStartUpFull":
                 case "wMsgGeorgeSetRadarAltitude":
                 case "wMsgGeorgeSetBarometricAltitude":
                 case "wMsgGeorgeAddBattlePosition":
