@@ -1,4 +1,4 @@
-namespace VAICOM
+﻿namespace VAICOM
 {
 
     namespace Extensions
@@ -32,6 +32,31 @@ namespace VAICOM
             {
                 string digits = State.Proxy.Utility.ParseTokens("{TXTNUM:\"{CMD}\"}");
                 return digits ?? string.Empty;
+            }
+
+            /// <summary>
+            /// The digits contained in an arbitrary string, in order. Never null.
+            /// Used to work out what part of a command's digit run came from a
+            /// particular segment.
+            /// </summary>
+            public static string DigitsIn(string text)
+            {
+                if (string.IsNullOrEmpty(text))
+                {
+                    return string.Empty;
+                }
+
+                System.Text.StringBuilder digits = new System.Text.StringBuilder();
+
+                foreach (char c in text)
+                {
+                    if (c >= '0' && c <= '9')
+                    {
+                        digits.Append(c);
+                    }
+                }
+
+                return digits.ToString();
             }
 
             /// <summary>
