@@ -48,6 +48,18 @@ namespace VAICOM
                             return;
                         }
 
+                        // Each thumbwheel has its own range: 5-7, 1-8, 1-8. Checking only the
+                        // combined value against 788 lets a code such as 699 through, which
+                        // then matches no case below and silently sets a different code.
+                        if (lasercode[0] < '5' || lasercode[0] > '7'
+                            || lasercode[1] < '1' || lasercode[1] > '8'
+                            || lasercode[2] < '1' || lasercode[2] > '8')
+                        {
+                            Log.Write("Laser code: 1" + lasercode + " is not a valid code (wheels are 5-7, 1-8, 1-8)", Colors.Warning);
+                            UI.Playsound.Recipientna();
+                            return;
+                        }
+
                         // else continue
                         State.currentmessage = new CommsMessage();
                         setdefaultmessageparams();

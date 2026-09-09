@@ -50,6 +50,14 @@ namespace VAICOM
                         // command exits without leaving a half-built message behind.
                         string dltune = Extensions.CommandNumbers.Digits();
 
+                        // The three wheels are the tens, units and tenths of a frequency whose
+                        // leading 3 is fixed in hardware, so accept the frequency spoken in
+                        // full ("three zero five five" -> 3055) as well as the bare wheels.
+                        if (dltune.Length == 4 && dltune[0] == '3')
+                        {
+                            dltune = dltune.Substring(1);
+                        }
+
                         if (dltune.Length != 3)
                         {
                             Log.Write("Datalink tune: expected 3 digits, got '" + dltune + "'", Colors.Warning);
