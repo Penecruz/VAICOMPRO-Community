@@ -38,6 +38,7 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeAPUOnly":
                 case "wMsgGeorgeShutdownEngines":
                 case "wMsgGeorgeSlowDown":
+                case "wMsgGeorgeHoldPosition":
                 case "wMsgGeorgeReturnToBattlePosition":
                 case "wMsgGeorgeHoverDownTenFeet":
                     AddGeorgeButton(AH64GeorgeButton.Down);

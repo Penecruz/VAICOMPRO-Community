@@ -210,6 +210,7 @@ namespace VAICOM.Extensions.CPG
             { "George Increase Altitude",                    "georgeincreasealtitude"        },
             { "George Decrease Altitude",                    "georgedecreasealtitude"        },
             { "George Follow Waypoints",                     "georgefollowwaypoints"         },
+            { "George Fly Route Direct",                     "georgefollowwaypoints"         },
             { "George Come Left",                            "georgecomeleft"                },
             { "George Come Right",                           "georgecomeright"               },
             { "George Set Air Speed",                        "georgesetairspeedref"          },
