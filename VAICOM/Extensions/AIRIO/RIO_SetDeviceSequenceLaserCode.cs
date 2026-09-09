@@ -30,8 +30,12 @@ namespace VAICOM
                             return;
                         }
 
-                        // Read the code before building the message, so an unreadable
-                        // command exits without leaving a half-built message behind.
+                        // else continue
+                        State.currentmessage = new CommsMessage();
+                        setdefaultmessageparams();
+                        State.currentmessage.type = Messagetypes.DeviceControl;
+                        State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>();
+
                         string lasercode = Extensions.CommandNumbers.Digits();
 
                         // The device's thumbwheels are fixed at 1xxx, so the leading 1 is
@@ -43,8 +47,8 @@ namespace VAICOM
 
                         if (lasercode.Length != 3)
                         {
-                            Log.Write("Laser code: expected 3 digits, got '" + lasercode + "'", Colors.Warning);
-                            UI.Playsound.Recipientna();
+                            ReportRioInputError("Could not read the laser code.\nSay three digits, or the full code as 1xxx.",
+                                                "Laser code: expected 3 digits, got '" + lasercode + "'");
                             return;
                         }
 
@@ -55,16 +59,10 @@ namespace VAICOM
                             || lasercode[1] < '1' || lasercode[1] > '8'
                             || lasercode[2] < '1' || lasercode[2] > '8')
                         {
-                            Log.Write("Laser code: 1" + lasercode + " is not a valid code (wheels are 5-7, 1-8, 1-8)", Colors.Warning);
-                            UI.Playsound.Recipientna();
+                            ReportRioInputError("1" + lasercode + " is not a valid laser code.\nRange is 1511 to 1788.",
+                                                "Laser code 1" + lasercode + " is out of range (1511 to 1788)");
                             return;
                         }
-
-                        // else continue
-                        State.currentmessage = new CommsMessage();
-                        setdefaultmessageparams();
-                        State.currentmessage.type = Messagetypes.DeviceControl;
-                        State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>();
 
                         string header = State.Proxy.Utility.ParseTokens("{CMDSEGMENT:0}");
                         //Log.Write("Segment 0 = " + header, Colors.Warning);

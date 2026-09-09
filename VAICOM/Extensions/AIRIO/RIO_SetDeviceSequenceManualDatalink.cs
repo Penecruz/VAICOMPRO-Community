@@ -46,30 +46,35 @@ namespace VAICOM
                             return;
                         }
 
-                        // Read the channel before building the message, so an unreadable
-                        // command exits without leaving a half-built message behind.
-                        string dltune = Extensions.CommandNumbers.Digits();
-
-                        // The three wheels are the tens, units and tenths of a frequency whose
-                        // leading 3 is fixed in hardware, so accept the frequency spoken in
-                        // full ("three zero five five" -> 3055) as well as the bare wheels.
-                        if (dltune.Length == 4 && dltune[0] == '3')
-                        {
-                            dltune = dltune.Substring(1);
-                        }
-
-                        if (dltune.Length != 3)
-                        {
-                            Log.Write("Datalink tune: expected 3 digits, got '" + dltune + "'", Colors.Warning);
-                            UI.Playsound.Recipientna();
-                            return;
-                        }
-
                         // else continue
                         State.currentmessage = new CommsMessage();
                         setdefaultmessageparams();
                         State.currentmessage.type = Messagetypes.DeviceControl;
                         State.currentmessage.extsequence = new List<Extensions.RIO.DeviceAction>();
+
+                        string dltune = Extensions.CommandNumbers.Digits();
+
+                        // The three wheels are the tens, units and tenths of a frequency whose
+                        // leading 3 is fixed in hardware, so accept the frequency spoken in
+                        // full ("three zero five five" -> 3055) as well as the bare wheels.
+                        if (dltune.Length == 4)
+                        {
+                            if (dltune[0] != '3')
+                            {
+                                ReportRioInputError(dltune.Insert(3, ".") + "0 is not a valid datalink frequency.\nRange is 300.00 to 399.90.",
+                                                    "Datalink tune: " + dltune + " is outside 3000-3999");
+                                return;
+                            }
+
+                            dltune = dltune.Substring(1);
+                        }
+
+                        if (dltune.Length != 3)
+                        {
+                            ReportRioInputError("Could not read the datalink frequency.\nSay three digits, or the full frequency as 3xxx.",
+                                                "Datalink tune: expected 3 digits, got '" + dltune + "'");
+                            return;
+                        }
 
                         bool isTomcatBU = IsF14BUActive();
                         Log.Write("AIRIO DL tune detect | state.id=" + (State.currentstate != null ? State.currentstate.id : "<null>") + " | isF14BU=" + isTomcatBU, Colors.Text);
