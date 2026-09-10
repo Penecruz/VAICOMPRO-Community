@@ -1446,6 +1446,36 @@
       filter: grayscale(1);
     }
 
+    .fastOwnshipDataPanel {
+      min-width: 250px;
+      max-width: 360px;
+      min-height: 75px;
+      padding: 7px 10px;
+      border: 1px solid rgba(48, 68, 88, 0.45);
+      border-radius: 12px;
+      background: rgba(20, 32, 46, 0.44);
+      color: rgba(238, 248, 255, 0.96);
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    body.night-mode .fastOwnshipDataPanel {
+      background: rgba(10, 17, 28, 0.56);
+      border-color: rgba(84, 116, 150, 0.52);
+      color: rgba(222, 237, 253, 0.96);
+    }
+
     .overlayPanel.fltPlanOverlayPanel {
       width: 720px;
       max-width: calc(100vw - 32px);
@@ -3270,6 +3300,7 @@
   <div id="fltPlanQuickBar" class="fltPlanQuickBar hidden">
     <button id="fltPlanFileBtn" class="fltPlanQuickBtn" type="button" title="Flight plan files">☰</button>
     <button id="fastOwnshipToggleBtn" class="fltPlanQuickBtn fastOwnshipBtn hidden" type="button" title="Fast ownship source">🌐GPS</button>
+    <div id="fastOwnshipDataPanel" class="fastOwnshipDataPanel hidden" aria-live="polite"></div>
     <button id="fltPlanSessionBtn" class="fltPlanQuickBtn" type="button" title="Session information">ℹ</button>
   </div>
 
@@ -3324,6 +3355,7 @@
       <label class="overlayOption"><input id="overlayAutoBrowse" type="checkbox"> Auto Browse</label>
       <label class="overlayOption"><input id="overlayNightMode" type="checkbox"> Night Mode</label>
       <label class="overlayOption"><input id="overlayDlinkOn" type="checkbox"> DLink ON</label>
+      <label class="overlayOption"><input id="overlayEfbAdLanding" type="checkbox"> EFB Display AD on Landing</label>
       <label class="overlayOption sliderOption"><span>Font Size</span><input id="overlayFontSizeSlider" type="range"
           min="18" max="34" step="1" value="24"><span id="overlayFontSizeValue" class="sliderValue">24</span></label>
       <label id="overlayShowRawWrap" class="overlayOption"><input id="overlayShowRaw" type="checkbox"> Show raw
@@ -3397,6 +3429,7 @@
     let runtimeFlightPlanSnapshot = null;
     let runtimeFlightPlanSnapshotMissionIdentity = '';
     let runtimeFlightPlanSnapshotGroupName = '';
+    let runtimeFlightPlanSnapshotFingerprint = '';
     let runtimeFlightPlanUserOverride = false;
     let lastKnownPlayerCallsign = '';
     let lastKnownTheater = '';
@@ -3404,7 +3437,11 @@
     let lastOwnshipPointForHeading = null;
     let lastOwnshipHeadingDeg = NaN;
     let lastMissionIdentity = '';
+    let pendingMissionIdentity = '';
+    let pendingMissionIdentityConfirmCount = 0;
     let lastMissionClockSeconds = NaN;
+    let missionClockRewindCandidateSeconds = NaN;
+    let missionClockRewindConfirmCount = 0;
     let missionClockAnchorSeconds = NaN;
     let missionClockAnchorSystemMs = 0;
     let missionClockAnchorIdentity = '';
@@ -3431,6 +3468,7 @@
     const efbSaTrackUpEnabledStorageKey = 'vaicom.okb.efbSaTrackUpEnabled';
     const efbSaAnchorModeStorageKey = 'vaicom.okb.efbSaAnchorMode';
     const efbSaUseFastOwnshipStorageKey = 'vaicom.okb.efbSaUseFastOwnship';
+    const efbAdLandingEnabledStorageKey = 'vaicom.okb.efbAdLandingEnabled';
     const efbSaNavigraphLayerStorageKey = 'vaicom.okb.efbSaNavigraphLayer';
     const efbSaDoghousesEnabledStorageKey = 'vaicom.okb.efbSaDoghousesEnabled';
     const efbSaUserWaypointsEnabledStorageKey = 'vaicom.okb.efbSaUserWaypointsEnabled';
@@ -3483,10 +3521,16 @@
     let efbSaTrackUpEnabled = false;
     let efbSaAnchorMode = 'center';
     let efbSaUseFastOwnshipEnabled = true;
+    let efbAdLandingEnabled = false;
     let efbSaNavigraphLayer = 'vfr';
     let efbSaShowDoghouses = true;
     let efbSaShowUserWaypoints = true;
-    let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
+    let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, hasGroundSpeed: false, groundSpeedKnots: NaN, hasWow: false, wow: -1, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
+    let efbAdLandingAssistState = { seenAirborne: false, triggeredThisWowOn: false };
+    let efbFastOwnshipDebugPanelVisible = false;
+    let fastOwnshipLongPressTimerId = 0;
+    let fastOwnshipLongPressFired = false;
+    const fastOwnshipLongPressMs = 2000;
     let efbSaUserWaypoints = [];
     let efbSaUserWaypointEditingId = '';
     let efbSaUserWaypointEditDraft = '';
@@ -3511,6 +3555,67 @@
 
     function clamp(v, min, max) {
       return Math.max(min, Math.min(max, v));
+    }
+
+    function maybeApplyEfbAdLandingAssist() {
+      if (!efbAdLandingEnabled || selectedTab !== 'EFB') return;
+
+      const hasWow = !!(efbSaOwnshipFast && efbSaOwnshipFast.hasWow);
+      const wow = Number(efbSaOwnshipFast && efbSaOwnshipFast.wow);
+      const hasGs = !!(efbSaOwnshipFast && efbSaOwnshipFast.hasGroundSpeed);
+      const gs = Number(efbSaOwnshipFast && efbSaOwnshipFast.groundSpeedKnots);
+      if (!hasWow || !hasGs || !isFinite(gs)) return;
+
+      if (wow === 0) {
+        efbAdLandingAssistState.seenAirborne = true;
+        efbAdLandingAssistState.triggeredThisWowOn = false;
+        return;
+      }
+
+      if (wow !== 1) {
+        efbAdLandingAssistState.triggeredThisWowOn = false;
+        return;
+      }
+
+      if (gs >= 80) return;
+      if (!efbAdLandingAssistState.seenAirborne) return;
+      if (efbAdLandingAssistState.triggeredThisWowOn) return;
+
+      efbAdLandingAssistState.triggeredThisWowOn = true;
+
+      // 1) Ensure the EFB is in SA Map mode.
+      if (normalizeEfbViewerMode(efbViewerMode) !== 'sa-map') {
+        efbViewerMode = 'sa-map';
+        persistEfbViewerModePreference();
+        closeEfbDrawer();
+        efbRightToolsOpen = false;
+        efbSearchOverlayOpen = false;
+        efbSearchAnimateOpenOnce = false;
+        efbUiDirty = true;
+      }
+
+      const applyAdZoomIfNeeded = function () {
+        if (selectedTab !== 'EFB' || normalizeEfbViewerMode(efbViewerMode) !== 'sa-map') return;
+        const context = resolveActiveSaMapContext(latestData || null);
+        if (!context || !context.selected) return;
+
+        // 2) Only force AD ON; never toggle it back OFF automatically.
+        const quickState = getOpenFreeMapViewBySelection(context.selected);
+        if (quickState && quickState.adQuickZoomActive) return;
+
+        const handledByWebMap = (typeof handleOpenFreeMapZoomAction === 'function')
+          ? handleOpenFreeMapZoomAction(context.selected, 'ad')
+          : false;
+        if (!handledByWebMap) {
+          zoomMapViewBySelection(context.selected, 1.8);
+          if (latestData) render(latestData);
+        }
+      };
+
+      // 3) Render first, then apply AD zoom once map context exists.
+      if (latestData) render(latestData);
+      window.setTimeout(applyAdZoomIfNeeded, 60);
+      window.setTimeout(applyAdZoomIfNeeded, 260);
     }
 
     function resolveModuleMetarPressureInHgPreference(data) {
@@ -3592,18 +3697,77 @@
       }
     }
 
+    function readEfbAdLandingEnabledPreference() {
+      try {
+        if (!window.localStorage) return false;
+        const raw = window.localStorage.getItem(efbAdLandingEnabledStorageKey);
+        if (raw === null || raw === undefined || raw === '') return false;
+        return raw === '1';
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function persistEfbAdLandingEnabledPreference() {
+      try {
+        if (!window.localStorage) return;
+        window.localStorage.setItem(efbAdLandingEnabledStorageKey, efbAdLandingEnabled ? '1' : '0');
+      } catch (_) {
+      }
+    }
+
+    function applyEfbAdLandingUi() {
+      const overlayBox = document.getElementById('overlayEfbAdLanding');
+      if (overlayBox) overlayBox.checked = !!efbAdLandingEnabled;
+    }
+
     function updateFastOwnshipToggleUi() {
       const btn = document.getElementById('fastOwnshipToggleBtn');
+      const panel = document.getElementById('fastOwnshipDataPanel');
       if (!btn) return;
       const hasFast = !!(efbSaOwnshipFast && efbSaOwnshipFast.hasPosition);
+      const gs = Number(efbSaOwnshipFast && efbSaOwnshipFast.groundSpeedKnots);
+      const gsText = (efbSaOwnshipFast && efbSaOwnshipFast.hasGroundSpeed && isFinite(gs)) ? ('GS ' + String(Math.round(gs)) + 'kt') : 'GS n/a';
+      const wow = Number(efbSaOwnshipFast && efbSaOwnshipFast.wow);
+      const wowText = (efbSaOwnshipFast && efbSaOwnshipFast.hasWow)
+        ? ('WOW ' + (wow === 1 ? 'ON' : (wow === 0 ? 'OFF' : 'n/a')))
+        : 'WOW n/a';
+      const alt = Number(efbSaOwnshipFast && efbSaOwnshipFast.altFeet);
+      const altText = isFinite(alt) ? ('ALT ' + String(Math.round(alt)) + 'ft') : 'ALT n/a';
+      const hdg = Number(efbSaOwnshipFast && efbSaOwnshipFast.headingDeg);
+      const hdgText = (efbSaOwnshipFast && efbSaOwnshipFast.hasHeading && isFinite(hdg)) ? ('HDG ' + String(Math.round(hdg)) + '°') : 'HDG n/a';
+      const posX = Number(efbSaOwnshipFast && efbSaOwnshipFast.posX);
+      const posY = Number(efbSaOwnshipFast && efbSaOwnshipFast.posY);
+      const posText = (isFinite(posX) && isFinite(posY))
+        ? ('X ' + String(Math.round(posX)) + '  Y ' + String(Math.round(posY)))
+        : 'X/Y n/a';
+      const ageMs = Date.now() - Number(efbSaOwnshipFast && efbSaOwnshipFast.updatedUtcMs || 0);
+      const ageText = isFinite(ageMs) && ageMs >= 0 ? ('AGE ' + String((ageMs / 1000).toFixed(1)) + 's') : 'AGE n/a';
+      const srcText = efbSaUseFastOwnshipEnabled ? 'SRC FAST' : 'SRC SERVER';
       btn.className = hasFast
         ? ('fltPlanQuickBtn fastOwnshipBtn' + (efbSaUseFastOwnshipEnabled ? '' : ' off'))
         : 'fltPlanQuickBtn fastOwnshipBtn hidden';
       btn.title = hasFast
         ? (efbSaUseFastOwnshipEnabled
-          ? 'Fast ownship ON (click to force server fallback)'
-          : 'Fast ownship OFF (click to resume fast ownship)')
+          ? ('Fast ownship ON (click to force server fallback) · ' + gsText + ' · ' + wowText)
+          : ('Fast ownship OFF (click to resume fast ownship) · ' + gsText + ' · ' + wowText))
         : 'Waiting for fast ownship stream...';
+
+      if (panel) {
+        const shouldShowPanel = efbFastOwnshipDebugPanelVisible && hasFast && selectedTab === 'EFB' && normalizeEfbViewerMode(efbViewerMode) === 'sa-map';
+        panel.className = shouldShowPanel ? 'fastOwnshipDataPanel' : 'fastOwnshipDataPanel hidden';
+        if (shouldShowPanel) {
+          panel.innerHTML = [
+            'GPS FAST OWNSHIP',
+            srcText + ' · ' + ageText,
+            posText,
+            hdgText + ' · ' + altText,
+            gsText + ' · ' + wowText,
+          ].map(escapeHtml).join('<br>');
+        } else {
+          panel.innerHTML = '';
+        }
+      }
     }
 
     function normalizeEfbViewerMode(mode) {
@@ -5140,7 +5304,7 @@
       });
 
       visibleRows.forEach(function (wp) {
-        const step = String(wp && wp.step || '').trim();
+        const step = String((wp && wp.stepDisplay !== undefined && wp.stepDisplay !== null && String(wp.stepDisplay).trim()) ? wp.stepDisplay : (wp && wp.step || '')).trim();
         const name = String(wp && wp.name || '').trim();
         const label = step ? (step + (name ? (' ' + name) : '')) : name;
         const waypointType = getMudMapPointType(wp);
@@ -6877,6 +7041,10 @@
             : (airportOptions || '<span class="efbPickerEmpty">No airport folders</span>')));
       const drawerClass = efbDrawerOpen ? 'efbLeftActionDrawer' : 'efbLeftActionDrawer closed';
       const isSaMapMode = normalizeEfbViewerMode(efbViewerMode) === 'sa-map';
+      const saQuickZoomState = (context && context.selected)
+        ? getOpenFreeMapViewBySelection(context.selected)
+        : null;
+      const saQuickZoomActive = !!(isSaMapMode && saQuickZoomState && saQuickZoomState.adQuickZoomActive);
       const topNavClass = isSaMapMode ? 'efbTopNav efbTopNavHidden' : 'efbTopNav';
       const saToggleTitle = isSaMapMode ? 'Switch to Chart view' : 'Switch to SA Map view';
 
@@ -6907,9 +7075,10 @@
         + '<button id="efbZoomResetBtn" type="button" class="efbRailBtn" title="Reset view">⟳</button>'
         + '<button id="efbZoomInBtn" type="button" class="efbRailBtn" title="Zoom in">+</button>'
         + '<span class="efbRailSpacer" aria-hidden="true"></span>'
-        + '<button id="efbRotateToolsBtn" type="button" class="efbRailBtn" title="Chart orientation tools">⤾</button>'
+        + '<button id="efbRotateToolsBtn" type="button" class="efbRailBtn' + (isSaMapMode ? ' efbRailBtnHidden' : '') + '" title="Chart orientation tools">⤾</button>'
+        + '<button id="efbQuickAdZoomBtn" type="button" class="efbRailBtn' + (isSaMapMode ? '' : ' efbRailBtnHidden') + (saQuickZoomActive ? ' active' : '') + '" title="Aerodrome quick zoom">AD</button>'
         + '</div>'
-        + '<div id="efbRightActionDrawer" class="' + (efbRightToolsOpen ? 'efbRightActionDrawer' : 'efbRightActionDrawer closed') + '">'
+        + '<div id="efbRightActionDrawer" class="' + (isSaMapMode ? 'efbRightActionDrawer closed' : (efbRightToolsOpen ? 'efbRightActionDrawer' : 'efbRightActionDrawer closed')) + '">'
         + '<button id="efbRotateLeftBtn" type="button" class="efbRightDrawerBtn" title="Rotate left">⟲</button>'
         + '<button id="efbRotateRightBtn" type="button" class="efbRightDrawerBtn" title="Rotate right">⟳</button>'
         + '<button id="efbFitHorizontalBtn" type="button" class="efbRightDrawerBtn" title="Fit horizontally">↔</button>'
@@ -7290,6 +7459,11 @@
           ev.preventDefault();
           ev.stopPropagation();
           efbViewerMode = normalizeEfbViewerMode(efbViewerMode) === 'sa-map' ? 'chart' : 'sa-map';
+          const contextBeforeToggle = resolveActiveSaMapContext(latestData || data);
+          if (contextBeforeToggle && contextBeforeToggle.selected) {
+            const quickState = getOpenFreeMapViewBySelection(contextBeforeToggle.selected);
+            if (quickState) quickState.adQuickZoomActive = false;
+          }
           persistEfbViewerModePreference();
           closeEfbDrawer();
           efbRightToolsOpen = false;
@@ -7822,8 +7996,18 @@
         rotateToolsBtn.onclick = function (ev) {
           ev.preventDefault();
           ev.stopPropagation();
+          if (isSaMapMode) return;
           efbRightToolsOpen = !efbRightToolsOpen;
           if (rightDrawer) rightDrawer.className = efbRightToolsOpen ? 'efbRightActionDrawer' : 'efbRightActionDrawer closed';
+        };
+      }
+
+      const quickAdZoomBtn = document.getElementById('efbQuickAdZoomBtn');
+      if (quickAdZoomBtn) {
+        quickAdZoomBtn.onclick = function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          applySaMapZoomAction('ad');
         };
       }
 
@@ -8236,6 +8420,7 @@
         applyAutoBrowseUi();
         applyNightModeUi();
         applyDlinkOnUi();
+        applyEfbAdLandingUi();
         applyContentFontSizeUi();
         const showRawBox = document.getElementById('showRaw');
         const showServerBox = document.getElementById('showServer');
@@ -11828,6 +12013,7 @@
       runtimeFlightPlanSnapshot = null;
       runtimeFlightPlanSnapshotMissionIdentity = '';
       runtimeFlightPlanSnapshotGroupName = '';
+      runtimeFlightPlanSnapshotFingerprint = '';
     }
 
     function invalidateEfbAirportCatalogCache() {
@@ -11848,17 +12034,60 @@
       const identity = getMissionIdentity(data);
       const missionClock = getMissionClockSeconds(data);
       const server = (data && data.Server) || {};
-      const hasActiveModule = !!String(server.Aircraft || '').trim();
+      const aircraft = String(server.Aircraft || '').trim();
+      const hasActiveModule = aircraft.length > 0 && aircraft.toUpperCase() !== '----';
+      const moduleConnected = !!server.ModuleConnected;
+      const hasStableIdentityNow = moduleConnected
+        && hasActiveModule
+        && !!String(server.Theater || '').trim()
+        && !!String(server.MissionTitle || '').trim();
 
-      if (!hasActiveModule) {
-        lastMissionClockSeconds = NaN;
+      if (!hasActiveModule || !moduleConnected) {
+        missionClockRewindCandidateSeconds = NaN;
+        missionClockRewindConfirmCount = 0;
+        pendingMissionIdentity = '';
+        pendingMissionIdentityConfirmCount = 0;
         return;
       }
 
-      const identityChanged = !!identity && !!lastMissionIdentity && identity !== lastMissionIdentity;
-      const missionClockRewound = isFinite(missionClock)
+      let identityChanged = false;
+      if (hasStableIdentityNow && !!identity && !!lastMissionIdentity && identity !== lastMissionIdentity) {
+        if (pendingMissionIdentity === identity) {
+          pendingMissionIdentityConfirmCount += 1;
+        } else {
+          pendingMissionIdentity = identity;
+          pendingMissionIdentityConfirmCount = 1;
+        }
+        // Require repeated identical alternate identity before forcing FLT PLN runtime reset.
+        identityChanged = pendingMissionIdentityConfirmCount >= 3;
+      } else {
+        pendingMissionIdentity = '';
+        pendingMissionIdentityConfirmCount = 0;
+      }
+
+      let missionClockRewound = false;
+      if (isFinite(missionClock)
         && isFinite(lastMissionClockSeconds)
-        && missionClock + 60 < lastMissionClockSeconds;
+        && missionClock + 60 < lastMissionClockSeconds) {
+        const nearStartClock = missionClock <= 180;
+        const hadPriorProgress = lastMissionClockSeconds >= 300;
+        if (nearStartClock && hadPriorProgress) {
+          if (isFinite(missionClockRewindCandidateSeconds)
+            && Math.abs(missionClock - missionClockRewindCandidateSeconds) <= 20) {
+            missionClockRewindConfirmCount += 1;
+          } else {
+            missionClockRewindCandidateSeconds = missionClock;
+            missionClockRewindConfirmCount = 1;
+          }
+          missionClockRewound = missionClockRewindConfirmCount >= 2;
+        } else {
+          missionClockRewindCandidateSeconds = NaN;
+          missionClockRewindConfirmCount = 0;
+        }
+      } else {
+        missionClockRewindCandidateSeconds = NaN;
+        missionClockRewindConfirmCount = 0;
+      }
 
       if (identityChanged || missionClockRewound) {
         resetRuntimeFlightPlanState();
@@ -11868,9 +12097,13 @@
         runtimeFlightPlanUserOverride = false;
         efbSaOwnshipFast.hasPosition = false;
         efbSaOwnshipFast.updatedUtcMs = 0;
+        pendingMissionIdentity = '';
+        pendingMissionIdentityConfirmCount = 0;
+        missionClockRewindCandidateSeconds = NaN;
+        missionClockRewindConfirmCount = 0;
       }
 
-      if (identity) {
+      if (hasStableIdentityNow && identity) {
         lastMissionIdentity = identity;
       }
       if (isFinite(missionClock)) {
@@ -13547,11 +13780,62 @@
         return true;
       }
       if (mode === 'reset') {
+        const stateReset = getOpenFreeMapViewBySelection(selected);
+        stateReset.adQuickZoomActive = false;
         const bounds = item.bounds;
         if (bounds && bounds.length === 4) {
           map.fitBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]], { padding: 36, duration: 0, maxZoom: 11 });
           return true;
         }
+      }
+      if (mode === 'ad') {
+        const state = getOpenFreeMapViewBySelection(selected);
+        const wasActive = !!state.adQuickZoomActive;
+        if (wasActive && isFinite(Number(state.adQuickZoomPrevZoom))) {
+          const previousZoom = Number(state.adQuickZoomPrevZoom);
+          if (efbSaFollowOwnshipEnabled) {
+            const ownship = resolveOwnshipLonLat();
+            if (ownship) {
+              map.easeTo({
+                zoom: previousZoom,
+                around: [Number(ownship.lon), Number(ownship.lat)],
+                duration: 0,
+              });
+            } else {
+              map.easeTo({ zoom: previousZoom, duration: 0 });
+            }
+          } else {
+            map.easeTo({ zoom: previousZoom, duration: 0 });
+          }
+          state.adQuickZoomActive = false;
+          state.zoom = previousZoom;
+          return true;
+        }
+
+        const currentCenter = map.getCenter ? map.getCenter() : null;
+        const ownship = resolveOwnshipLonLat();
+        const targetLon = ownship && isFinite(Number(ownship.lon))
+          ? Number(ownship.lon)
+          : (currentCenter && isFinite(Number(currentCenter.lng)) ? Number(currentCenter.lng) : NaN);
+        const targetLat = ownship && isFinite(Number(ownship.lat))
+          ? Number(ownship.lat)
+          : (currentCenter && isFinite(Number(currentCenter.lat)) ? Number(currentCenter.lat) : NaN);
+        const targetZoom = 14.5;
+        if (!isFinite(targetLon) || !isFinite(targetLat)) return false;
+
+        state.adQuickZoomPrevCenterLon = currentCenter && isFinite(Number(currentCenter.lng)) ? Number(currentCenter.lng) : NaN;
+        state.adQuickZoomPrevCenterLat = currentCenter && isFinite(Number(currentCenter.lat)) ? Number(currentCenter.lat) : NaN;
+        state.adQuickZoomPrevZoom = Number(map.getZoom());
+        state.adQuickZoomPrevBearing = Number(map.getBearing ? map.getBearing() : 0);
+        state.adQuickZoomActive = true;
+
+        map.easeTo({
+          center: [targetLon, targetLat],
+          zoom: targetZoom,
+          duration: 0,
+          pitch: 0,
+        });
+        return true;
       }
       return false;
     }
@@ -14183,7 +14467,6 @@
       if (efbSaOwnshipPollTickerId) return;
       efbSaOwnshipPollTickerId = window.setInterval(function () {
         if (selectedTab !== 'EFB') return;
-        if (normalizeEfbViewerMode(efbViewerMode) !== 'sa-map') return;
 
         const nowMs = Date.now();
         if ((nowMs - Number(efbSaOwnshipFast.lastPollMs || 0)) < 120) return;
@@ -14205,9 +14488,14 @@
             efbSaOwnshipFast.altFeet = Number(payload.altFeet);
             efbSaOwnshipFast.headingDeg = Number(payload.headingDeg);
             efbSaOwnshipFast.hasHeading = payload.hasHeading === true && isFinite(Number(payload.headingDeg));
+            efbSaOwnshipFast.hasGroundSpeed = payload.hasGroundSpeed === true && isFinite(Number(payload.groundSpeedKnots));
+            efbSaOwnshipFast.groundSpeedKnots = Number(payload.groundSpeedKnots);
+            efbSaOwnshipFast.hasWow = payload.hasWow === true;
+            efbSaOwnshipFast.wow = Number(payload.wow);
             efbSaOwnshipFast.theater = String(payload.theater || '');
             efbSaOwnshipFast.updatedUtcMs = Date.now();
             updateFastOwnshipToggleUi();
+            maybeApplyEfbAdLandingAssist();
 
             if (efbSaFollowOwnshipEnabled && selectedTab === 'EFB' && normalizeEfbViewerMode(efbViewerMode) === 'sa-map') {
               const selectedKey = getActiveEfbSaSelectionKey();
@@ -15653,8 +15941,9 @@
     }
 
     function formatFrequenciesBlockHtml(data, selected) {
-      const atcRaw = pickClosestLines(getMergedList(data && data.Units, 'ATC'), 4);
-      const flightRaw = pickClosestLines(getMergedList(data && data.Units, 'FLIGHT'), 4);
+      const laneData = getRuntimeFlightPlanLiveLaneData(data, selected);
+      const atcRaw = pickClosestLines((laneData && laneData.unitsATC) || getMergedList(data && data.Units, 'ATC'), 4);
+      const flightRaw = pickClosestLines((laneData && laneData.unitsFLIGHT) || getMergedList(data && data.Units, 'FLIGHT'), 4);
       const entries = atcRaw.concat(flightRaw)
         .map(extractFreqAndUnit)
         .filter(function (x) { return !!x; })
@@ -15670,9 +15959,10 @@
     }
 
     function formatAssetsBlockHtml(data, selected) {
-      const tanker = pickClosestLines(getMergedList(data && data.Units, 'TANKER'), 3);
-      const awacs = pickClosestLines(getMergedList(data && data.Units, 'AWACS'), 2);
-      const jtac = pickClosestLines(getMergedList(data && data.Units, 'JTAC'), 2);
+      const laneData = getRuntimeFlightPlanLiveLaneData(data, selected);
+      const tanker = pickClosestLines((laneData && laneData.unitsTANKER) || getMergedList(data && data.Units, 'TANKER'), 3);
+      const awacs = pickClosestLines((laneData && laneData.unitsAWACS) || getMergedList(data && data.Units, 'AWACS'), 2);
+      const jtac = pickClosestLines((laneData && laneData.unitsJTAC) || getMergedList(data && data.Units, 'JTAC'), 2);
       const all = tanker.concat(awacs).concat(jtac).slice(0, 7);
 
       const rows = all.map(function (line) {
@@ -15686,9 +15976,10 @@
 
     function formatMetarBlockHtml(data, selected) {
       const server = (data && data.Server) || {};
-      const metars = server.AtcMetars || {};
-      const useInHg = !!metarPressureInHg;
-      const atcLines = pickClosestLines(getMergedList(data && data.Units, 'ATC'), 8);
+      const laneData = getRuntimeFlightPlanLiveLaneData(data, selected);
+      const metars = (laneData && laneData.atcMetars) || server.AtcMetars || {};
+      const useInHg = laneData ? !!laneData.metarUseInHg : !!metarPressureInHg;
+      const atcLines = pickClosestLines((laneData && laneData.unitsATC) || getMergedList(data && data.Units, 'ATC'), 8);
       const keys = [];
       const seen = {};
 
@@ -18080,7 +18371,7 @@
       }
 
       visibleRows.forEach(function (wp) {
-        const step = String(wp && wp.step || '').trim();
+        const step = String((wp && wp.stepDisplay !== undefined && wp.stepDisplay !== null && String(wp.stepDisplay).trim()) ? wp.stepDisplay : (wp && wp.step || '')).trim();
         const name = String(wp && wp.name || '').trim();
         const label = step ? (step + (name ? (' ' + name) : '')) : name;
         const waypointType = getMudMapPointType(wp);
@@ -19040,7 +19331,7 @@
       }
 
       const pointEls = mapped.map(function (m) {
-        const step = escapeHtml(String(m.wp.step || '-'));
+        const step = escapeHtml(String((m.wp && m.wp.stepDisplay !== undefined && m.wp.stepDisplay !== null && String(m.wp.stepDisplay).trim()) ? m.wp.stepDisplay : (m.wp.step || '-')));
         const name = escapeHtml(String(m.wp.name || ''));
         const label = name && name !== '-' ? ('STP ' + step + ' ' + name) : ('STP ' + step);
         const tx = (m.x + (isFinite(Number(m.labelDx)) ? Number(m.labelDx) : 14)).toFixed(1);
@@ -19846,13 +20137,14 @@
           const speedStepTitle = (speedMode === 'MACH' && canUseMachDisplay(wp.altFeet))
             ? 'Adjust by 0.01 Mach'
             : 'Adjust by 10 KCAS';
+          const stepLabel = String((wp && wp.stepDisplay !== undefined && wp.stepDisplay !== null && String(wp.stepDisplay).trim()) ? wp.stepDisplay : wp.step);
           html += '<tr' + rowClassAttr + rowDataAttrs + '>';
           if (isStart) {
-            html += '<td class="fltPlanCellNum">' + escapeHtml(wp.step) + '</td>';
+            html += '<td class="fltPlanCellNum">' + escapeHtml(stepLabel) + '</td>';
           } else {
             const dirArmedClass = isNavlogRowActionArmed(selected, stepKey, 'dir') ? ' armed' : '';
             const delArmedClass = isNavlogRowActionArmed(selected, stepKey, 'del') ? ' armed' : '';
-            html += '<td class="fltPlanCellNum"><span class="fltPlanStepCellWrap"><span>' + escapeHtml(wp.step) + '</span><button type="button" class="fltPlanRowActionBtn dir' + dirArmedClass + '" data-row-action="dir" data-row-step="' + escapeHtml(stepKey) + '">DIR TO</button><button type="button" class="fltPlanRowActionBtn del' + delArmedClass + '" data-row-action="del" data-row-step="' + escapeHtml(stepKey) + '">DEL STP</button></span></td>';
+            html += '<td class="fltPlanCellNum"><span class="fltPlanStepCellWrap"><span>' + escapeHtml(stepLabel) + '</span><button type="button" class="fltPlanRowActionBtn dir' + dirArmedClass + '" data-row-action="dir" data-row-step="' + escapeHtml(stepKey) + '">DIR TO</button><button type="button" class="fltPlanRowActionBtn del' + delArmedClass + '" data-row-action="del" data-row-step="' + escapeHtml(stepKey) + '">DEL STP</button></span></td>';
           }
           if (wp.isStart) {
             html += '<td>' + escapeHtml(wp.type) + '</td>';
@@ -19984,9 +20276,13 @@
       const altFeet = isFinite(altFeetRaw) ? (Math.round(altFeetRaw / 500) * 500) : NaN;
       const speedKnots = isFinite(spdMs) ? Math.round(spdMs * 1.94384449) : NaN;
 
+      const stepNumber = Math.round(pt);
+      const runtimeDisplayStep = stepNumber > 0 ? (stepNumber - 1) : 0;
+
       return {
         groupName: groupName,
-        step: String(Math.round(pt)),
+        step: String(stepNumber),
+        stepDisplay: String(runtimeDisplayStep),
         type: abbreviateRouteType(task || 'WP'),
         typeRaw: task || 'WP',
         name: '-',
@@ -20008,6 +20304,86 @@
       return list.map(function (wp) {
         return wp && typeof wp === 'object' ? Object.assign({}, wp) : wp;
       });
+    }
+
+    function normalizeRuntimeWaypointNumber(value, precision) {
+      const n = Number(value);
+      if (!isFinite(n)) return 'NaN';
+      if (!isFinite(Number(precision)) || Number(precision) < 0) {
+        return String(Math.round(n));
+      }
+      return n.toFixed(Math.max(0, Math.min(6, Math.round(Number(precision)))));
+    }
+
+    function buildRuntimeWaypointsFingerprint(rows) {
+      const list = Array.isArray(rows) ? rows : [];
+      if (!list.length) return '';
+      const normalized = list
+        .map(function (wp) {
+          const row = wp && typeof wp === 'object' ? wp : {};
+          return [
+            String(stepToKey(row.step) || ''),
+            normalizeRuntimeWaypointNumber(row.xNum, 1),
+            normalizeRuntimeWaypointNumber(row.yNum, 1),
+            normalizeRuntimeWaypointNumber(row.altFeet, 0),
+            normalizeRuntimeWaypointNumber(row.etaSourceSeconds, 0),
+            String(row.typeRaw || row.type || '').toUpperCase().trim(),
+          ].join('|');
+        })
+        .sort();
+      return normalized.join('||');
+    }
+
+    function isRuntimeSnapshotUpdateDeferred(selected) {
+      const key = String(selected || '').trim();
+      if (!key) return false;
+      if (key !== '__RUNTIME_PLAYER__') return false;
+      const state = getFlightPlanPlanState(key);
+      const navEdit = getExpandedNavEdit(key);
+      const navEditActive = !!(navEdit && stepToKey(navEdit.step) && String(navEdit.field || '').trim());
+      const rowActionActive = !!(state && stepToKey(state.rowActionStep));
+      const draggingActive = !!(navlogRowDrag && String(navlogRowDrag.selected || '') === key);
+      return navEditActive || rowActionActive || draggingActive;
+    }
+
+    function getRuntimeFlightPlanLiveLaneData(data, selected) {
+      const model = data || latestData || {};
+      const key = String(selected || '').trim();
+      const state = getFlightPlanPlanState(key);
+      const cache = (state && state.runtimeLiveLaneCache && typeof state.runtimeLiveLaneCache === 'object')
+        ? state.runtimeLiveLaneCache
+        : { fingerprint: '', data: null };
+      if (state && (!state.runtimeLiveLaneCache || typeof state.runtimeLiveLaneCache !== 'object')) {
+        state.runtimeLiveLaneCache = cache;
+      }
+
+      function lanePayloadFrom(source) {
+        const src = source || {};
+        return {
+          unitsATC: getMergedList(src.Units, 'ATC'),
+          unitsFLIGHT: getMergedList(src.Units, 'FLIGHT'),
+          unitsTANKER: getMergedList(src.Units, 'TANKER'),
+          unitsAWACS: getMergedList(src.Units, 'AWACS'),
+          unitsJTAC: getMergedList(src.Units, 'JTAC'),
+          atcMetars: (((src || {}).Server || {}).AtcMetars) || {},
+          metarUseInHg: !!metarPressureInHg,
+        };
+      }
+
+      const livePayload = lanePayloadFrom(model);
+      let fingerprint = '';
+      try {
+        fingerprint = JSON.stringify(livePayload);
+      } catch (_) {
+        fingerprint = '';
+      }
+
+      if (!cache.data || cache.fingerprint !== fingerprint) {
+        cache.data = livePayload;
+        cache.fingerprint = fingerprint;
+      }
+
+      return cache.data || livePayload;
     }
 
     function readMissionRuntimeWaypointsFromDiagnostics(data) {
@@ -20057,12 +20433,17 @@
       }
 
       const live = readMissionRuntimeWaypointsFromDiagnostics(model);
+      const liveFingerprint = buildRuntimeWaypointsFingerprint(live);
       const hasSnapshot = !!(runtimeFlightPlanSnapshot && runtimeFlightPlanSnapshot.length);
       const snapshotMatchesMission = runtimeFlightPlanSnapshotMissionIdentity === missionIdentity;
+
+      // Keep runtime NAVLOG stable once captured for the active mission.
+      // It should only be replaced on mission identity change/reset, not by periodic refresh nudges.
       if (live.length && (!hasSnapshot || !snapshotMatchesMission)) {
         runtimeFlightPlanSnapshot = cloneRuntimeWaypoints(live);
         runtimeFlightPlanSnapshotMissionIdentity = missionIdentity;
         runtimeFlightPlanSnapshotGroupName = liveGroupName;
+        runtimeFlightPlanSnapshotFingerprint = liveFingerprint;
       } else if (liveGroupName && snapshotMatchesMission && !runtimeFlightPlanSnapshotGroupName) {
         runtimeFlightPlanSnapshotGroupName = liveGroupName;
       }
@@ -21227,6 +21608,16 @@
       }
     });
 
+    document.getElementById('overlayEfbAdLanding').addEventListener('change', function (ev) {
+      efbAdLandingEnabled = !!ev.target.checked;
+      persistEfbAdLandingEnabledPreference();
+      applyEfbAdLandingUi();
+      if (!efbAdLandingEnabled) {
+        efbAdLandingAssistState.seenAirborne = false;
+        efbAdLandingAssistState.triggeredThisWowOn = false;
+      }
+    });
+
     document.getElementById('overlayAutoBrowse').addEventListener('change', function (ev) {
       autoBrowse = !!ev.target.checked;
       applyAutoBrowseUi();
@@ -21385,6 +21776,13 @@
             const step = String(node.getAttribute('data-nav-edit-step') || '');
             const field = String(node.getAttribute('data-nav-edit-field') || '').toUpperCase();
             if (selected && step && field) {
+              if (field === 'SPD') {
+                const recStep = String(node.getAttribute('data-speed-rec-step') || '');
+                if (recStep && acceptSpeedRecommendation(selected, recStep)) {
+                  render(latestData);
+                  return;
+                }
+              }
               const current = getExpandedNavEdit(selected);
               if (current.step === step && current.field === field) {
                 closeExpandedNavEditAnimated(selected);
@@ -21986,6 +22384,10 @@
     document.getElementById('fastOwnshipToggleBtn').addEventListener('click', function (ev) {
       ev.preventDefault();
       ev.stopPropagation();
+      if (fastOwnshipLongPressFired) {
+        fastOwnshipLongPressFired = false;
+        return;
+      }
       if (!(efbSaOwnshipFast && efbSaOwnshipFast.hasPosition)) return;
       efbSaUseFastOwnshipEnabled = !efbSaUseFastOwnshipEnabled;
       persistEfbSaUseFastOwnshipPreference();
@@ -22000,6 +22402,31 @@
       }
       if (latestData) render(latestData);
     });
+
+    document.getElementById('fastOwnshipToggleBtn').addEventListener('pointerdown', function () {
+      if (fastOwnshipLongPressTimerId) {
+        window.clearTimeout(fastOwnshipLongPressTimerId);
+        fastOwnshipLongPressTimerId = 0;
+      }
+      fastOwnshipLongPressFired = false;
+      fastOwnshipLongPressTimerId = window.setTimeout(function () {
+        fastOwnshipLongPressTimerId = 0;
+        fastOwnshipLongPressFired = true;
+        efbFastOwnshipDebugPanelVisible = !efbFastOwnshipDebugPanelVisible;
+        updateFastOwnshipToggleUi();
+        if (latestData) render(latestData);
+      }, fastOwnshipLongPressMs);
+    });
+
+    function clearFastOwnshipLongPressTimer() {
+      if (!fastOwnshipLongPressTimerId) return;
+      window.clearTimeout(fastOwnshipLongPressTimerId);
+      fastOwnshipLongPressTimerId = 0;
+    }
+
+    document.getElementById('fastOwnshipToggleBtn').addEventListener('pointerup', clearFastOwnshipLongPressTimer);
+    document.getElementById('fastOwnshipToggleBtn').addEventListener('pointercancel', clearFastOwnshipLongPressTimer);
+    document.getElementById('fastOwnshipToggleBtn').addEventListener('pointerleave', clearFastOwnshipLongPressTimer);
 
     document.getElementById('fltPlanFilesCloseBtn').addEventListener('click', function (ev) {
       ev.preventDefault();
@@ -22129,6 +22556,8 @@
     efbSaTrackUpEnabled = readEfbSaTrackUpEnabledPreference();
     efbSaAnchorMode = readEfbSaAnchorModePreference();
     efbSaUseFastOwnshipEnabled = readEfbSaUseFastOwnshipPreference();
+    efbAdLandingEnabled = readEfbAdLandingEnabledPreference();
+    applyEfbAdLandingUi();
     efbSaNavigraphLayer = readEfbSaNavigraphLayerPreference();
     efbSaShowDoghouses = readEfbSaDoghousesEnabledPreference();
     efbSaShowUserWaypoints = readEfbSaUserWaypointsEnabledPreference();

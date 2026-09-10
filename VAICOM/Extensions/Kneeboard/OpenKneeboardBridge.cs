@@ -53,10 +53,14 @@ namespace VAICOM
                     public double AltFeet;
                     public double HeadingDeg;
                     public bool HasHeading;
+                    public double GroundSpeedKnots;
+                    public bool HasGroundSpeed;
+                    public int Wow;
+                    public bool HasWow;
                     public DateTime UpdatedUtc;
                 }
 
-                public static void UpdateFastOwnship(double x, double y, double z, double? headingDeg)
+                public static void UpdateFastOwnship(double x, double y, double z, double? headingDeg, double? groundSpeedKnots, int wow)
                 {
                     if (double.IsNaN(x) || double.IsInfinity(x)
                         || double.IsNaN(y) || double.IsInfinity(y)
@@ -86,6 +90,19 @@ namespace VAICOM
                             }
                             fastOwnship.HeadingDeg = heading;
                         }
+
+                        if (groundSpeedKnots.HasValue && !double.IsNaN(groundSpeedKnots.Value) && !double.IsInfinity(groundSpeedKnots.Value) && groundSpeedKnots.Value >= 0)
+                        {
+                            fastOwnship.HasGroundSpeed = true;
+                            fastOwnship.GroundSpeedKnots = groundSpeedKnots.Value;
+                        }
+
+                        if (wow == 0 || wow == 1)
+                        {
+                            fastOwnship.HasWow = true;
+                            fastOwnship.Wow = wow;
+                        }
+
                         fastOwnship.UpdatedUtc = DateTime.UtcNow;
                     }
                 }
@@ -102,6 +119,10 @@ namespace VAICOM
                             AltFeet = fastOwnship.AltFeet,
                             HasHeading = fastOwnship.HasHeading,
                             HeadingDeg = fastOwnship.HeadingDeg,
+                            HasGroundSpeed = fastOwnship.HasGroundSpeed,
+                            GroundSpeedKnots = fastOwnship.GroundSpeedKnots,
+                            HasWow = fastOwnship.HasWow,
+                            Wow = fastOwnship.Wow,
                             UpdatedUtc = fastOwnship.UpdatedUtc,
                         };
                     }
@@ -2072,6 +2093,14 @@ namespace VAICOM
 
                     if (path == "/okb/dev/refresh")
                     {
+                        try
+                        {
+                            DcsClient.SendUpdateRequest();
+                        }
+                        catch
+                        {
+                        }
+
                         ForceRefreshOutDashboardData();
                         WriteJson(context.Response, "{\"ok\":true}");
                         return;
@@ -3203,8 +3232,34 @@ namespace VAICOM
                         double altFeet = 0;
                         double headingDeg = 0;
                         bool hasHeading = false;
+                        double groundSpeedKnots = 0;
+                        bool hasGroundSpeed = false;
+                        bool hasWow = false;
+                        int wow = -1;
                         double missionTimeSeconds = 0;
                         bool hasPosition = false;
+                        bool moduleConnectedNow = false;
+
+                        try
+                        {
+                            bool moduleConnectedFlag = false;
+                            string currentModuleId = "";
+                            string currentStateModuleId = "";
+                            try { moduleConnectedFlag = State.moduleConnected; } catch { moduleConnectedFlag = false; }
+                            try { currentModuleId = State.currentmodule == null ? "" : (State.currentmodule.Id ?? ""); } catch { currentModuleId = ""; }
+                            try { currentStateModuleId = State.currentstate == null ? "" : (State.currentstate.id ?? ""); } catch { currentStateModuleId = ""; }
+
+                            bool moduleFromCurrentModule = !string.IsNullOrWhiteSpace(currentModuleId)
+                                && !string.Equals(currentModuleId.Trim(), "----", StringComparison.OrdinalIgnoreCase);
+                            bool moduleFromCurrentState = !string.IsNullOrWhiteSpace(currentStateModuleId)
+                                && !string.Equals(currentStateModuleId.Trim(), "----", StringComparison.OrdinalIgnoreCase);
+
+                            moduleConnectedNow = moduleConnectedFlag && moduleFromCurrentModule && moduleFromCurrentState;
+                        }
+                        catch
+                        {
+                            moduleConnectedNow = false;
+                        }
 
                         FastOwnshipState ownshipFast;
                         if (TryGetFastOwnship(out ownshipFast))
@@ -3215,11 +3270,22 @@ namespace VAICOM
                             hasPosition = true;
                             hasHeading = ownshipFast.HasHeading;
                             headingDeg = ownshipFast.HeadingDeg;
+                            hasGroundSpeed = ownshipFast.HasGroundSpeed;
+                            groundSpeedKnots = ownshipFast.GroundSpeedKnots;
+                            hasWow = ownshipFast.HasWow;
+                            wow = ownshipFast.Wow;
                         }
 
                         if (State.currentstate != null)
                         {
                             theater = State.currentstate.theatre ?? "";
+
+                            if (moduleConnectedNow)
+                            {
+                                // Use processed server-state airborne as authoritative WoW for stability across modules.
+                                hasWow = true;
+                                wow = State.currentstate.airborne ? 0 : 1;
+                            }
 
                             if (!hasPosition && State.currentstate.bpos != null)
                             {
@@ -3237,6 +3303,12 @@ namespace VAICOM
                                 : State.currentstate.tod;
                         }
 
+                        if (!moduleConnectedNow)
+                        {
+                            hasWow = false;
+                            wow = -1;
+                        }
+
                         var payload = new
                         {
                             updatedUtc = DateTime.UtcNow,
@@ -3247,6 +3319,10 @@ namespace VAICOM
                             altFeet = altFeet,
                             hasHeading = hasHeading,
                             headingDeg = headingDeg,
+                            hasGroundSpeed = hasGroundSpeed,
+                            groundSpeedKnots = groundSpeedKnots,
+                            hasWow = hasWow,
+                            wow = wow,
                             missionTimeSeconds = missionTimeSeconds,
                         };
 

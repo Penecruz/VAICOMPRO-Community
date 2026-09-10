@@ -199,18 +199,86 @@ vaicom.insert = {
     end,
 
     DetectOnGroundState = function(self)
+        local function to_airborne_bool(value)
+            local vt = type(value)
+            if vt == "boolean" then
+                return value
+            end
+            if vt == "number" then
+                return value ~= 0
+            end
+            if vt == "string" then
+                local s = string.lower(string.gsub(value, "^%s*(.-)%s*$", "%1"))
+                if s == "true" or s == "1" or s == "yes" or s == "on" then
+                    return true
+                end
+                if s == "false" or s == "0" or s == "no" or s == "off" then
+                    return false
+                end
+            end
+            return nil
+        end
+
+        local function to_ground_bool(value)
+            local vt = type(value)
+            if vt == "boolean" then
+                return value
+            end
+            if vt == "number" then
+                return value > 0
+            end
+            if vt == "string" then
+                local s = string.lower(string.gsub(value, "^%s*(.-)%s*$", "%1"))
+                if s == "true" or s == "on" or s == "yes" then
+                    return true
+                end
+                if s == "false" or s == "off" or s == "no" then
+                    return false
+                end
+                local n = tonumber(s)
+                if n ~= nil then
+                    return n > 0
+                end
+            end
+            return nil
+        end
+
+        local function any_ground_truth(value, depth)
+            depth = depth or 0
+            if depth > 4 then return nil end
+            local direct = to_ground_bool(value)
+            if direct ~= nil then
+                return direct
+            end
+            if type(value) == "table" then
+                for _, nested in pairs(value) do
+                    local probe = any_ground_truth(nested, depth + 1)
+                    if probe ~= nil then
+                        return probe
+                    end
+                end
+            end
+            return nil
+        end
+
         if type(LoGetMechInfo) == "function" then
             local ok, mech = pcall(LoGetMechInfo)
             if ok and type(mech) == "table" then
+                local foundWowKey = false
                 for k, v in pairs(mech) do
-                    if type(k) == "string" and string.find(string.upper(k), "WOW", 1, true) then
-                        if v == true then
-                            return true
-                        end
-                        if type(v) == "number" and v > 0 then
-                            return true
+                    if type(k) == "string" then
+                        local keyUpper = string.upper(k)
+                        if string.find(keyUpper, "WOW", 1, true) or string.find(keyUpper, "WEIGHT", 1, true) then
+                            foundWowKey = true
+                            local probe = any_ground_truth(v, 0)
+                            if probe == true then
+                                return true
+                            end
                         end
                     end
+                end
+                if foundWowKey then
+                    return false
                 end
             end
         end
@@ -219,7 +287,10 @@ vaicom.insert = {
             local ok, selfData = pcall(LoGetSelfData)
             if ok and type(selfData) == "table" then
                 if selfData.InAir ~= nil then
-                    return not selfData.InAir
+                    local airborne = to_airborne_bool(selfData.InAir)
+                    if airborne ~= nil then
+                        return not airborne
+                    end
                 end
             end
         end
@@ -242,32 +313,63 @@ vaicom.insert = {
         pcall(function() vaicom.sendtoclient:send(msg) end)
     end,
 
-    SendOwnshipStateUpdate = function(self) -- GPS simulation for VAICOM, fast position upates to ownship position with heading.
+    SendOwnshipStateUpdate = function(self) -- GPS simulation for VAICOM, fast position updates to ownship position with heading.
         if not vaicom.sendtoclient then return end
 
         local x = nil
         local y = nil
         local z = nil
         local hdg = nil
+        local gs_ms = nil
 
         if type(LoGetSelfData) == "function" then
             local ok, selfData = pcall(LoGetSelfData)
-            if ok and type(selfData) == "table" and type(selfData.Position) == "table" then
-                x = tonumber(selfData.Position.x)
-                y = tonumber(selfData.Position.y)
-                z = tonumber(selfData.Position.z)
-                hdg = tonumber(selfData.Heading)
+            if ok and type(selfData) == "table" then
+                if type(selfData.Position) == "table" then
+                    x = tonumber(selfData.Position.x)
+                    y = tonumber(selfData.Position.y)
+                    z = tonumber(selfData.Position.z)
+                    hdg = tonumber(selfData.Heading)
+                end
+
+                if type(selfData.Velocity) == "table" then
+                    local vx = tonumber(selfData.Velocity.x)
+                    local vz = tonumber(selfData.Velocity.z)
+                    if vx ~= nil and vz ~= nil then
+                        gs_ms = math.sqrt((vx * vx) + (vz * vz))
+                    end
+                end
+
+                if gs_ms == nil then
+                    local speedCandidate = tonumber(selfData.Speed)
+                    if speedCandidate ~= nil then
+                        gs_ms = math.abs(speedCandidate)
+                    end
+                end
+            end
+        end
+
+        if gs_ms == nil and type(LoGetVectorVelocity) == "function" then
+            local okVel, vel = pcall(LoGetVectorVelocity)
+            if okVel and type(vel) == "table" then
+                local vx = tonumber(vel.x)
+                local vz = tonumber(vel.z)
+                if vx ~= nil and vz ~= nil then
+                    gs_ms = math.sqrt((vx * vx) + (vz * vz))
+                end
             end
         end
 
         if (x == nil or y == nil or z == nil) and type(LoGetWorldObjects) == "function" then
             local ok, own = pcall(LoGetWorldObjects, "self")
-            if ok and type(own) == "table" and type(own.Position) == "table" then
-                x = tonumber(own.Position.x)
-                y = tonumber(own.Position.y)
-                z = tonumber(own.Position.z)
-                if hdg == nil then
-                    hdg = tonumber(own.Heading) --radians? (Pene)
+            if ok and type(own) == "table" then
+                if type(own.Position) == "table" then
+                    x = tonumber(own.Position.x)
+                    y = tonumber(own.Position.y)
+                    z = tonumber(own.Position.z)
+                    if hdg == nil then
+                        hdg = tonumber(own.Heading) --radians? (Pene)
+                    end
                 end
             end
         end
@@ -276,12 +378,22 @@ vaicom.insert = {
             return
         end
 
-        local msg
+        local parts = {
+            vaicom.config.ownshipprefix,
+            string.format("x=%.3f", x),
+            string.format("y=%.3f", y),
+            string.format("z=%.3f", z),
+        }
+
         if hdg ~= nil then
-            msg = string.format("%s;x=%.3f;y=%.3f;z=%.3f;hdg=%.3f", vaicom.config.ownshipprefix, x, y, z, hdg) -- Heading is reported in radians, as per DCS API, converted to degrees upstream in the EFB.
-        else
-            msg = string.format("%s;x=%.3f;y=%.3f;z=%.3f", vaicom.config.ownshipprefix, x, y, z)
+            table.insert(parts, string.format("hdg=%.3f", hdg)) -- Heading is reported in radians, as per DCS API, converted to degrees upstream in the EFB.
         end
+
+        if gs_ms ~= nil and gs_ms == gs_ms then
+            table.insert(parts, string.format("gs_ms=%.3f", math.max(0, gs_ms)))
+        end
+
+        local msg = table.concat(parts, ";")
 
         pcall(function() vaicom.sendtoclient:send(msg) end)
     end,

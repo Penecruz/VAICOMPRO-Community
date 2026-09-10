@@ -62,7 +62,39 @@ namespace VAICOM
                         headingOpt = heading;
                     }
 
-                    Extensions.Kneeboard.OpenKneeboardBridge.UpdateFastOwnship(x, y, z, headingOpt);
+                    double parsed;
+                    double? groundSpeedKnotsOpt = null;
+                    if (double.TryParse(values.ContainsKey("gs_kts") ? values["gs_kts"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed)
+                        || double.TryParse(values.ContainsKey("gskt") ? values["gskt"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed)
+                        || double.TryParse(values.ContainsKey("gskts") ? values["gskts"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed))
+                    {
+                        if (!double.IsNaN(parsed) && !double.IsInfinity(parsed) && parsed >= 0)
+                        {
+                            groundSpeedKnotsOpt = parsed;
+                        }
+                    }
+                    else if (double.TryParse(values.ContainsKey("gs_ms") ? values["gs_ms"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed)
+                        || double.TryParse(values.ContainsKey("groundspeed_ms") ? values["groundspeed_ms"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed)
+                        || double.TryParse(values.ContainsKey("groundspeed") ? values["groundspeed"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed)
+                        || double.TryParse(values.ContainsKey("gs") ? values["gs"] : "", System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out parsed))
+                    {
+                        if (!double.IsNaN(parsed) && !double.IsInfinity(parsed) && parsed >= 0)
+                        {
+                            groundSpeedKnotsOpt = parsed * 1.9438444924406;
+                        }
+                    }
+
+                    int wowState = -1;
+                    if (int.TryParse(values.ContainsKey("wow") ? values["wow"] : "", out wowState))
+                    {
+                        wowState = wowState != 0 ? 1 : 0;
+                    }
+                    else
+                    {
+                        wowState = -1;
+                    }
+
+                    Extensions.Kneeboard.OpenKneeboardBridge.UpdateFastOwnship(x, y, z, headingOpt, groundSpeedKnotsOpt, wowState);
                 }
                 catch (Exception e)
                 {
