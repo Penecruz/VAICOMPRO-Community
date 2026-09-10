@@ -3,6 +3,12 @@ using VAICOM.Static;
 
 namespace VAICOM.Extensions.AICPG
 {
+    public enum  AH64Apu
+    {
+        On,
+        Off
+    }
+
     public enum AH64CMWSArmSafe
     {
         Armed,
@@ -50,7 +56,7 @@ namespace VAICOM.Extensions.AICPG
 
     public class AH64GeorgeState
     {
-
+        public static AH64Apu ApuOnOffState { get; set; } = AH64Apu.Off;
         public static AH64CMWSArmSafe SelectedCMWSArmSafe { get; set; } = AH64CMWSArmSafe.Safe;
         public static AH64CMDispenseMode SelectedCMDispenseMode { get; set; } = AH64CMDispenseMode.None;
         

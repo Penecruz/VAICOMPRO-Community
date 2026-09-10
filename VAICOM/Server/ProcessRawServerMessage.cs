@@ -195,6 +195,7 @@ namespace VAICOM
                         }
                     }
 
+                    bool apuOn = values.TryGetValue("apu", out string apuValue) && apuValue.Equals("1");
                     bool cmwsArmed = values.TryGetValue("cmwsArmed", out string cmwsArmedValue) && cmwsArmedValue.Equals("1");
                     bool cmwsBypass = values.TryGetValue("cmwsBypass", out string cmwsBypassValue) && cmwsBypassValue.Equals("1");
                     bool gunAvailable = values.TryGetValue("gun", out string gunValue) && gunValue.Equals("1");
@@ -205,7 +206,7 @@ namespace VAICOM
                     int antiCollisionLights = values.TryGetValue("antiCollisionLights", out string antiCollisionLightsValue) && int.TryParse(antiCollisionLightsValue, out int acLights) ? acLights : 0;
                     int formationLights = values.TryGetValue("formationLights", out string formationLightsValue) && int.TryParse(formationLightsValue, out int formLights) ? formLights : 0;
 
-
+                    AH64GeorgeState.ApuOnOffState = apuOn ? AH64Apu.On : AH64Apu.Off;
                     AH64GeorgeState.SelectedCMWSArmSafe = cmwsArmed ? AH64CMWSArmSafe.Armed : AH64CMWSArmSafe.Safe;
                     AH64GeorgeState.SelectedCMWSMode = cmwsBypass ? AH64CMWSMode.Bypass : AH64CMWSMode.Auto;
                     AH64GeorgeState.GunAvailable = gunAvailable;
@@ -218,7 +219,6 @@ namespace VAICOM
                     {
                         AH64GeorgeState.SelectedWeapon = AH64WeaponMode.NoWeapon;
                     }
-
 
                     AH64GeorgeState.SetExteriorLightsMode(navigationLights, antiCollisionLights, formationLights);
                 }

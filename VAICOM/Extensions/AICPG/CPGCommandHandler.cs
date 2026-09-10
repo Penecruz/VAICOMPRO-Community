@@ -22,14 +22,16 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeUp":
                 case "wMsgGeorgePreviuousTarget":
                 case "wMsgGeorgePreviousItem":
-                case "wMsgGeorgeAPUStart":
-                case "wMsgGeorgeAPUStop":
                 case "wMsgGeorgeStartUpEnginesFly":
                 case "wMsgGeorgeSpeedUp":
                 case "wMsgGeorgeAlignToTADS":
                 case "wMsgGeorgeAlignToNTS":
                 case "wMsgGeorgeHoverUpTenFeet":
                     AddGeorgeButton(AH64GeorgeButton.Up);
+                    break;
+                case "wMsgGeorgeAPUStart":
+                case "wMsgGeorgeAPUStop":
+                    ToggleApuOnOff(commandId.Equals("wMsgGeorgeAPUStart", StringComparison.OrdinalIgnoreCase) ? AH64Apu.On : AH64Apu.Off);
                     break;
                 // Down Short Presses
                 case "wMsgGeorgeDown":
@@ -467,6 +469,16 @@ namespace VAICOM.Extensions.AICPG
             }
 
             return true;
+        }
+
+        private static void ToggleApuOnOff(AH64Apu target)
+        {
+            if (!AH64GeorgeState.ApuOnOffState.Equals(target))
+            {
+                // We don't change the internal state here as we will receive a server
+                // message to update this indicating if it's on or off.
+                AddGeorgeButton(AH64GeorgeButton.Up);
+            }
         }
 
         private static void SelectCMWSArmSafe(AH64CMWSArmSafe target)

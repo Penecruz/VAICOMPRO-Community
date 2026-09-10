@@ -302,6 +302,7 @@ vaicom.insert = {
         if not vaicom.sendtoclient then return end
 
         local gun, rockets, missiles = self:ClassifyPayloadWeapons(payload)
+        local apu = payload.apu
         local cmwsArmed = payload.cmwsArmed
         local cmwsBypass = payload.cmwsBypass
         local navigationLights = payload.navigationLights
@@ -309,12 +310,13 @@ vaicom.insert = {
         local antiCollisionLights = payload.antiCollisionLights
         local wow = self:DetectOnGroundState()
         local msg = string.format(
-            "%s;gun=%d;rockets=%d;missiles=%d;wow=%d;cmwsArmed=%d;cmwsBypass=%d;navigationLights=%d;formationLights=%d;antiCollisionLights=%d",
+            "%s;gun=%d;rockets=%d;missiles=%d;wow=%d;apu=%d;cmwsArmed=%d;cmwsBypass=%d;navigationLights=%d;formationLights=%d;antiCollisionLights=%d",
             vaicom.config.ah64stateprefix,
             gun and 1 or 0,
             rockets and 1 or 0,
             missiles and 1 or 0,
             wow and 1 or 0,
+            apu,
             cmwsArmed,
             cmwsBypass,
             navigationLights,
@@ -590,6 +592,8 @@ vaicom.insert = {
         local isAh64 = string.find(moduleName or "", "AH-64D", 1, true) ~= nil
 
         if isAh64 then
+            -- Get the current indicator light for the APU 
+            local apu = base.GetDevice(0):get_argument_value(406) -- 0=off, 1=on
             -- Get CMWS switch positions
             local cmwsArmed = base.GetDevice(0):get_argument_value(614)
 			local cmwsBypass = base.GetDevice(0):get_argument_value(616)
@@ -597,7 +601,7 @@ vaicom.insert = {
             local navigationLights = base.GetDevice(0):get_argument_value(326) -- -1=dim, 0=off, 1=bright
             local antiCollisionLights = base.GetDevice(0):get_argument_value(332) -- -1=red, 0=off, 1=white
             local formationLights = base.GetDevice(0):get_argument_value(329) -- 0=off, 1=on
-            
+            payloadTable.apu = apu
             payloadTable.cmwsArmed = cmwsArmed
             payloadTable.cmwsBypass = cmwsBypass
             payloadTable.navigationLights = navigationLights
