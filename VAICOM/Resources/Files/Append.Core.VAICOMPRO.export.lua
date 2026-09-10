@@ -104,7 +104,7 @@ vaicom.insert = {
         intervalSeconds = 0.1,
         lastPoll = 0,
         lastState = nil,
-        lastWeaponState = nil,
+        lastAh64State = nil,
         logfile = nil,
         keylogfile = nil,
         statusfile = nil,
@@ -298,18 +298,29 @@ vaicom.insert = {
         return false
     end,
 
-    SendWeaponStateUpdate = function(self, payload)
+    SendAh64StateUpdate = function(self, payload)
         if not vaicom.sendtoclient then return end
 
         local gun, rockets, missiles = self:ClassifyPayloadWeapons(payload)
+        local cmwsArmed = payload.cmwsArmed
+        local cmwsBypass = payload.cmwsBypass
         local wow = self:DetectOnGroundState()
-        local msg = string.format("%s;gun=%d;rockets=%d;missiles=%d;wow=%d", vaicom.config.ah64stateprefix, gun and 1 or 0, rockets and 1 or 0, missiles and 1 or 0, wow and 1 or 0)
+        local msg = string.format(
+            "%s;gun=%d;rockets=%d;missiles=%d;wow=%d;cmwsArmed=%d;cmwsBypass=%d",
+            vaicom.config.ah64stateprefix,
+            gun and 1 or 0,
+            rockets and 1 or 0,
+            missiles and 1 or 0,
+            wow and 1 or 0,
+            cmwsArmed,
+            cmwsBypass
+        )
 
-        if msg == self.probe.lastWeaponState then
+        if msg == self.probe.lastAh64State then
             return
         end
 
-        self.probe.lastWeaponState = msg
+        self.probe.lastAh64State = msg
         pcall(function() vaicom.sendtoclient:send(msg) end)
     end,
 
@@ -573,7 +584,13 @@ vaicom.insert = {
         local isAh64 = string.find(moduleName or "", "AH-64D", 1, true) ~= nil
 
         if isAh64 then
-            self:SendWeaponStateUpdate(payloadTable)
+            -- Get CMWS switch positions
+            local cmwsArmed = base.GetDevice(0):get_argument_value(614)
+			local cmwsBypass = base.GetDevice(0):get_argument_value(616)
+            payloadTable.cmwsArmed = cmwsArmed
+            payloadTable.cmwsBypass = cmwsBypass
+
+            self:SendAh64StateUpdate(payloadTable)
         end
 
         self:SendOwnshipStateUpdate()

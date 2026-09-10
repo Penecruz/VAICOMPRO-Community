@@ -11,10 +11,7 @@ namespace VAICOM
         {
             public static partial class Message
             {
-                // For AI comms. An optional delay can be specified after which the the server update request
-                // is sent. If no delay is specified then this will use the default 0 delay, or the radio delay
-                // from the current module is used.
-                public static void SendNewMessage(int delay = 0)
+                public static void SendNewMessage() // for aicomms
                 {
                     try
                     {
@@ -24,8 +21,17 @@ namespace VAICOM
 
                         if (State.currentmessage.command.Equals(4000))
                         {
-                            int updateDelay = delay > 0 ? delay : State.currentmodule.radiodelay;
-                            Thread.Sleep(updateDelay);
+                            // for Select command
+                            int delay = 0;
+                            if (!State.currentmodule.radiodelay.Equals(null))
+                            {
+                                delay = State.currentmodule.radiodelay; // allow some time for radio to tune
+                            }
+                            else
+                            {
+                                delay = 0;
+                            }
+                            Thread.Sleep(delay);
                             DcsClient.SendUpdateRequest(); // get an update directly after
                         }
                     }

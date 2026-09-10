@@ -2355,7 +2355,6 @@ base.vaicom.state = {
 		root 					= base.tostring(base.lfs.writedir()),
 		currentdir 				= base.tostring(base.lfs.currentdir()),
 		easycomms				= data.radioAutoTune or base.DCS.getMissionOptions().difficulty.easyCommunication or true,
-		ah64state				= {},
 		riostate				= {},
 		options					= {},
 		currentspeech			= {},
@@ -2496,10 +2495,6 @@ base.vaicom.state = {
 					else
 						ah64ICSHot = (pltIcsMode ~= nil and pltIcsMode < 0.5) or (cpgIcsMode ~= nil and cpgIcsMode < 0.5)
 					end
-
-					-- Get CMWS switch positions
-					base.vaicom.state.ah64state.cmwsArm = base.GetDevice(0):get_argument_value(614)
-					base.vaicom.state.ah64state.cmwsBypass = base.GetDevice(0):get_argument_value(616)
 				end
 
 				-- Map markers are used by OKB so only include if we are retrieving this data (diagnostics probe)
@@ -4467,7 +4462,6 @@ base.vaicom.state = {
 									menucargo	= (base.vaicom.state.activemessage.importmenus and base.vaicom.state.menucargo) or nil,
 								  }						
 				chunk[10] 		= {
-									ah64state = base.vaicom.state.ah64state and base.next(base.vaicom.state.ah64state) and base.vaicom.state.ah64state or nil,
 									riostate  = base.vaicom.state.riostate or nil,
 									bpos	  = base.vaicom.state.bpos or nil,
 									cpos	  = base.vaicom.state.cpos or nil,

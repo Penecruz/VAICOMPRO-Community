@@ -175,7 +175,7 @@ namespace VAICOM.Extensions.AICPG
 
                 // George PLT Defense Mode items
                 case "wMsgGeorgeCMWSArm":
-                    SelectCMWSArmSafe(AH64CMWSArmSafe.Arm);
+                    SelectCMWSArmSafe(AH64CMWSArmSafe.Armed);
                     break;
                 case "wMsgGeorgeCMWSSafe":
                     SelectCMWSArmSafe(AH64CMWSArmSafe.Safe);

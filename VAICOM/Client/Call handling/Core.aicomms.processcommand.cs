@@ -415,11 +415,7 @@ namespace VAICOM
                         State.F14WheelChocksState = State.WheelChocksState.On;
                     }
 
-                    // We need to delay the server update request that occurs after a George command is sent to ensure that
-                    // George has performed the in-cockpit operation prior to getting the updated state.
-                    int delayBeforeServerUpdate = State.currentcommand.isGeorge() ? 2000 : 0;
-                    
-                    SendNewMessage(delayBeforeServerUpdate);
+                    SendNewMessage();
                     
                     bool sentRioCloseMacro = State.currentcommand.isRIO()
                         && State.currentmessage != null

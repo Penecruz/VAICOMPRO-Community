@@ -229,12 +229,6 @@ namespace VAICOM
                 public double z;
             }
 
-            public class AH64State
-            {
-                public int cmwsArm;
-                public int cmwsBypass;
-            }
-
             public class payloadcannon
             {
                 public int shells;
@@ -307,7 +301,6 @@ namespace VAICOM
                 public string playerunitcat;
                 public bool airborne;
                 public TomcatState riostate;
-                public AH64State ah64state;
                 public payload payload;
                 public Vector bpos;
                 public campos cpos;
@@ -399,7 +392,6 @@ namespace VAICOM
                 public string playerunitcat;
                 public bool airborne;
                 public TomcatState riostate;
-                public AH64State ah64state;
                 public payload payload;
                 public Vector bpos;
                 public campos cpos;

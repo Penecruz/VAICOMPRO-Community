@@ -5,7 +5,7 @@ namespace VAICOM.Extensions.AICPG
 {
     public enum AH64CMWSArmSafe
     {
-        Arm,
+        Armed,
         Safe
     }
 
@@ -50,9 +50,10 @@ namespace VAICOM.Extensions.AICPG
 
     public class AH64GeorgeState
     {
+
         public static AH64CMWSArmSafe SelectedCMWSArmSafe { get; set; } = AH64CMWSArmSafe.Safe;
         public static AH64CMDispenseMode SelectedCMDispenseMode { get; set; } = AH64CMDispenseMode.None;
-
+        
         private static AH64CMWSMode _SelectedCMWSMode = AH64CMWSMode.Auto;
         public static AH64CMWSMode SelectedCMWSMode
         {

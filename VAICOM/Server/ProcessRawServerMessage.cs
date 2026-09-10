@@ -116,7 +116,7 @@ namespace VAICOM
 
                     Extensions.Kneeboard.OpenKneeboardBridge.AppendRawServerMessage(trimmed);
 
-                    if (DetectAH64WeaponState(trimmed))
+                    if (DetectAH64State(trimmed))
                     {
                         return;
                     }
@@ -164,7 +164,7 @@ namespace VAICOM
                 }
             }
 
-            public static bool DetectAH64WeaponState(string receivedString)
+            public static bool DetectAH64State(string receivedString)
             {
                 const string prefix = "missiondata.update.ah64state";
                 receivedString = (receivedString ?? "").Trim();
@@ -195,11 +195,15 @@ namespace VAICOM
                         }
                     }
 
+                    bool cmwsArmed = values.TryGetValue("cmwsArmed", out string cmwsArmedValue) && cmwsArmedValue.Equals("1");
+                    bool cmwsBypass = values.TryGetValue("cmwsBypass", out string cmwsBypassValue) && cmwsBypassValue.Equals("1");
                     bool gunAvailable = values.TryGetValue("gun", out string gunValue) && gunValue.Equals("1");
                     bool rocketsAvailable = values.TryGetValue("rockets", out string rocketsValue) && rocketsValue.Equals("1");
                     bool missilesAvailable = values.TryGetValue("missiles", out string missilesValue) && missilesValue.Equals("1");
                     bool wow = values.TryGetValue("wow", out string wowValue) && wowValue.Equals("1");
 
+                    AH64GeorgeState.SelectedCMWSArmSafe = cmwsArmed ? AH64CMWSArmSafe.Armed : AH64CMWSArmSafe.Safe;
+                    AH64GeorgeState.SelectedCMWSMode = cmwsBypass ? AH64CMWSMode.Bypass : AH64CMWSMode.Auto;
                     AH64GeorgeState.GunAvailable = gunAvailable;
                     AH64GeorgeState.RocketsAvailable = rocketsAvailable;
                     AH64GeorgeState.MissilesAvailable = missilesAvailable;
