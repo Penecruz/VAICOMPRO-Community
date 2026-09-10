@@ -140,7 +140,15 @@
         <ul>
           <li><strong>Files (☰)</strong>: Opens FLT PLN file picker overlay.</li>
           <li><strong>GPS (🌐GPS)</strong>: Visible when fast ownship stream is available. Click to toggle fast ownship source ON/OFF for troubleshooting versus legacy server-position fallback.</li>
+          <li><strong>GPS long-press (2s)</strong>: Toggles hidden fast-ownship diagnostics (GS, WOW, ALT, HDG, X/Y, source, age).</li>
           <li><strong>Session (ℹ)</strong>: Opens session information overlay.</li>
+        </ul>
+
+        <h3>Layout and Interaction</h3>
+        <ul>
+          <li><strong>Tab/Keywords splitter</strong>: Drag the divider between main tab content and keyword panel to resize. Ratio is saved per tab.</li>
+          <li><strong>Auto Browse behavior</strong>: When enabled, the active tab can follow runtime category focus updates.</li>
+          <li><strong>Debug panels</strong>: Raw JSON and server message panels are intended for diagnostics and may be hidden when debug mode is not active.</li>
         </ul>
 
         <h3>Quick Settings Overlay</h3>
@@ -148,6 +156,7 @@
           <li><strong>Auto Browse</strong>: Auto-switches tabs based on session events.</li>
           <li><strong>Night Mode</strong>: Applies darkened styling for low-light readability.</li>
           <li><strong>DLink ON</strong>: Enables DLink-related behavior where applicable.</li>
+          <li><strong>EFB Display AD on Landing</strong>: Landing-roll assist. When enabled, EFB auto-switches to SA Map and enables AD quick zoom when <code>GS &lt; 80 kts</code> and <code>WOW = ON</code>. It does not auto-revert on takeoff.</li>
           <li><strong>Font Size</strong>: Scales dashboard text content.</li>
           <li><strong>Show raw JSON</strong>: Debug output panel for data payloads.</li>
           <li><strong>Show server messages</strong>: Debug panel for server-side messages.</li>
@@ -269,6 +278,7 @@
 
           <ul>
               <li><strong>Files (☰)</strong>: Lists detected FLT PLN files and lets you select one.</li>
+              <li><strong>GPS (🌐GPS)</strong>: Fast ownship source toggle (fast feed versus legacy server fallback).</li>
               <li><strong>Session (ℹ)</strong>: Displays current mission/session state in a popup.</li>
               <li><strong>Refresh behavior</strong>: File list refresh is managed through current workflow and runtime updates.</li>
           </ul>
@@ -292,11 +302,14 @@
           <div class="helpImageCaption">Figure 2. FLT PLN NAVLOG and waypoint management.</div>
           <ul>
               <li>Primary navigation log view for route legs and waypoint sequencing.</li>
+              <li><strong>Runtime waypoint numbering</strong>: Mission runtime NAVLOG uses <code>0</code> as the first runtime waypoint, then continues the sequence, while ST position remains available for consistency across DTC and RTE plans.</li>
               <li>Focuses on route progression, leg continuity, and planning data readability.</li>
               <li>In-cell pop-up controls allow adjustment of supported waypoint parameters.</li>
               <li>Clicking editable cells opens embedded pop-up editors (in-place) for quick value changes without leaving NAVLOG context.</li>
+              <li><strong>TOT speed recommendation action</strong>: If a speed value is flashing as recommended, tapping it applies that recommendation directly. After set, tapping again opens the normal speed edit popup.</li>
               <li>Clicking certain cell headers changes data units where applicable.</li>
               <li>Useful for cockpit cross-check against aircraft systems and required TOT, ATA and ETAs.</li>
+              <li><strong>Runtime stability model</strong>: Runtime route display uses a stabilized mission snapshot to avoid in-flight flicker while still allowing other live data lanes to update.</li>
           </ul>
 
           <h3>COM</h3>
@@ -323,6 +336,7 @@
       <h3>Data Sources and Notes</h3>
       <div class="controls">
         <ul>
+          <li><strong>Runtime route source</strong>: Mission runtime route is auto-selected when no explicit DTC file override is active.</li>
           <li><strong>DTC files</strong>: Loaded from Saved Games DTC export paths when available.</li>
           <li><strong>RouteTool files</strong>: Parsed from RouteTool preset output where supported.</li>
           <li><strong>Embedded edit controls</strong>: Cell-activated pop-up editors are contextual and only appear on supported fields/pages.</li>
@@ -376,6 +390,7 @@
         <h3>Controls</h3>
         <ul>
           <li>No dedicated floating tab-specific controls at this stage.</li>
+          <li><strong>METAR pressure presentation</strong>: Display units can be shown as QNH hPa or converted inHg for readability (display-only formatting).</li>
         </ul>
       </div>
     </section>
@@ -412,6 +427,7 @@
             <h3>Controls</h3>
             <ul>
                 <li>No dedicated tab-specific controls; uses global settings/help controls.</li>
+                <li><strong>Contact readability</strong>: Contact lines are grouped and normalized for kneeboard readability; sensor/source cadence can affect update timing.</li>
             </ul>
         </div>
     </section>
@@ -470,6 +486,7 @@
         <h3>Controls</h3>
         <ul>
           <li>No dedicated tab controls currently beyond global overlays.</li>
+          <li><strong>SA layer coupling</strong>: JTAC map geometry can be toggled from EFB SA Layers without clearing JTAC text history.</li>
         </ul>
       </div>
     </section>
@@ -498,6 +515,7 @@
         <h3>Controls</h3>
         <ul>
           <li>No dedicated tab controls currently beyond global overlays.</li>
+          <li><strong>Frequency format</strong>: Runtime COM data is shown with standardized MHz precision where available.</li>
         </ul>
       </div>
     </section>
@@ -519,6 +537,7 @@
         <h3>Controls</h3>
         <ul>
           <li>No dedicated tab controls currently beyond global overlays.</li>
+          <li><strong>Role</strong>: AOCS is a reference/output pane; it does not currently expose direct action buttons.</li>
         </ul>
       </div>
     </section>
@@ -540,6 +559,8 @@
         <h3>Controls</h3>
         <ul>
           <li>No dedicated floating tab controls currently.</li>
+          <li><strong>Role</strong>: FLIGHT is optimized as contextual reference text for formation and mission management.
+          </li>
         </ul>
       </div>
     </section>
@@ -567,6 +588,7 @@
         <h3>Controls</h3>
         <ul>
           <li>No dedicated tab controls currently beyond global overlays.</li>
+          <li><strong>Module-dependent output</strong>: Available AI crew options vary by aircraft and seat logic.</li>
         </ul>
       </div>
     </section>
@@ -583,6 +605,12 @@
         <ul>
           <li>Ground-crew relevant command references and expected response patterns.</li>
           <li>Useful for rearm/refuel/airframe-service interaction flow cross-checks.</li>
+        </ul>
+
+        <h3>Operational Notes</h3>
+        <ul>
+          <li>Content reflects command/reference workflow assistance and can vary by module capability/state.</li>
+          <li>Use with ATC/FLT PLN pages to coordinate turnaround and departure setup.</li>
         </ul>
 
         <h3>Controls</h3>
@@ -669,6 +697,14 @@
               <li><strong>Track-Up</strong>: Rotates map to ownship heading until explicitly turned OFF.</li>
               <li><strong>Anchor</strong>: Toggles follow anchor position between center and lower-third framing.</li>
               <li><strong>Map zoom controls</strong>: The same right-rail zoom controls apply in SA Map mode.</li>
+               <li><strong>Mode-specific right rail</strong>: Rotation tools are chart-mode controls and are replaced by AD quick zoom in SA Map mode.</li>
+              <li><strong>AD quick zoom</strong>: In SA Map mode, the right-rail AD control replaces chart rotation tools. First press zooms to aerodrome/taxi detail near ownship. Second press restores the pre-AD zoom level while preserving follow behavior.</li>
+          </ul>
+
+          <h3>Chart Mode vs SA Map Right Rail</h3>
+          <ul>
+              <li><strong>Chart mode</strong>: Rotation drawer/tools are available for chart orientation tasks.</li>
+              <li><strong>SA Map mode</strong>: Rotation drawer/tools are hidden and AD quick zoom is shown in the same control slot.</li>
           </ul>
 
           <h3>SA Map Layers Drawer</h3>
@@ -684,6 +720,7 @@
               <li><strong>Bug an asset/airfield</strong>: Tap/click symbols to select/deselect and show related detail context.</li>
               <li><strong>Manual inspect while following</strong>: Drag/zoom/rotate temporarily suppresses follow recentering, then follow resumes automatically.</li>
               <li><strong>Troubleshoot ownship source</strong>: Use the global GPS icon to compare fast ownship updates vs legacy server-position fallback.</li>
+              <li><strong>Landing rollout assist</strong>: With <strong>EFB Display AD on Landing</strong> enabled, AD quick zoom can auto-activate during rollout when speed and WOW criteria are met.</li>
           </ul>
 
           <h3>Draw and Annotation Functions</h3>
