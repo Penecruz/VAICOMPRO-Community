@@ -207,19 +207,19 @@ namespace VAICOM.Extensions.AICPG
                     SelectCMDispenseMode(AH64CMDispenseMode.ChaffAndFlares);
                     break;
                 case "wMsgGeorgeExtLightsOff":
-                    SelectExternalLightsMode(AH64ExternalLightsMode.Off);
+                    SelectExteriorLightsMode(AH64ExteriorLightsMode.Off);
                     break;
                 case "wMsgGeorgeExtLightsDay":
-                    SelectExternalLightsMode(AH64ExternalLightsMode.Day);
+                    SelectExteriorLightsMode(AH64ExteriorLightsMode.Day);
                     break;
                 case "wMsgGeorgeExtLightsNightBright":
-                    SelectExternalLightsMode(AH64ExternalLightsMode.NightBright);
+                    SelectExteriorLightsMode(AH64ExteriorLightsMode.NightBright);
                     break;
                 case "wMsgGeorgeExtLightsNightDim":
-                    SelectExternalLightsMode(AH64ExternalLightsMode.NightDim);
+                    SelectExteriorLightsMode(AH64ExteriorLightsMode.NightDim);
                     break;
                 case "wMsgGeorgeExtLightsFormation":
-                    SelectExternalLightsMode(AH64ExternalLightsMode.Formation);
+                    SelectExteriorLightsMode(AH64ExteriorLightsMode.Formation);
                     break;
 
                 // George ROE
@@ -526,10 +526,10 @@ namespace VAICOM.Extensions.AICPG
             AH64GeorgeState.SelectedCMDispenseMode = target;
         }
 
-        private static void SelectExternalLightsMode(AH64ExternalLightsMode target)
+        private static void SelectExteriorLightsMode(AH64ExteriorLightsMode target)
         {
-            var current = AH64GeorgeState.SelectedExternalLightsMode;
-            int steps = AH64GeorgeState.GetExternalLightsSteps(current, target);
+            var current = AH64GeorgeState.SelectedExteriorLightsMode;
+            int steps = AH64GeorgeState.GetExteriorLightsSteps(current, target);
 
             AddGeorgeLongButton(AH64GeorgeButton.Menu);
 
@@ -540,7 +540,7 @@ namespace VAICOM.Extensions.AICPG
 
             AddGeorgeButton(AH64GeorgeButton.Menu);
 
-            AH64GeorgeState.SelectedExternalLightsMode = target;
+            AH64GeorgeState.SelectedExteriorLightsMode = target;
         }
 
         private static void SelectRulesOfEngagementMode(AH64ROEMode target)

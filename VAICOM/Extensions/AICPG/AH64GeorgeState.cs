@@ -39,7 +39,7 @@ namespace VAICOM.Extensions.AICPG
         HoldFire
     }
 
-    public enum AH64ExternalLightsMode
+    public enum AH64ExteriorLightsMode
     {
         Off,
         Day,
@@ -78,7 +78,7 @@ namespace VAICOM.Extensions.AICPG
             }
         }
 
-        public static AH64ExternalLightsMode SelectedExternalLightsMode { get; set; } = AH64ExternalLightsMode.Off;
+        public static AH64ExteriorLightsMode SelectedExteriorLightsMode { get; set; } = AH64ExteriorLightsMode.Off;
         public static AH64ROEMode SelectedROEMode { get; set; } = AH64ROEMode.HoldFire;
         public static AH64WeaponMode SelectedWeapon { get; set; } = AH64WeaponMode.Unknown;
         
@@ -104,13 +104,13 @@ namespace VAICOM.Extensions.AICPG
             AH64ROEMode.WeaponsFree
         };
 
-        private static readonly List<AH64ExternalLightsMode> externalLightsOrder = new List<AH64ExternalLightsMode>
+        private static readonly List<AH64ExteriorLightsMode> exteriorLightsOrder = new List<AH64ExteriorLightsMode>
         {
-            AH64ExternalLightsMode.Off,
-            AH64ExternalLightsMode.Day,
-            AH64ExternalLightsMode.NightBright,
-            AH64ExternalLightsMode.NightDim,
-            AH64ExternalLightsMode.Formation
+            AH64ExteriorLightsMode.Off,
+            AH64ExteriorLightsMode.Day,
+            AH64ExteriorLightsMode.NightBright,
+            AH64ExteriorLightsMode.NightDim,
+            AH64ExteriorLightsMode.Formation
         };
 
         public static void UpdateWeaponState()
@@ -429,15 +429,15 @@ namespace VAICOM.Extensions.AICPG
             return order;
         }
 
-        public static int GetExternalLightsSteps(AH64ExternalLightsMode from, AH64ExternalLightsMode to)
+        public static int GetExteriorLightsSteps(AH64ExteriorLightsMode from, AH64ExteriorLightsMode to)
         {
             if (from == to)
             {
                 return 0;
             }
 
-            int fromIndex = externalLightsOrder.IndexOf(from);
-            int toIndex = externalLightsOrder.IndexOf(to);
+            int fromIndex = exteriorLightsOrder.IndexOf(from);
+            int toIndex = exteriorLightsOrder.IndexOf(to);
 
             if (fromIndex < 0)
             {
@@ -454,7 +454,7 @@ namespace VAICOM.Extensions.AICPG
                 return toIndex - fromIndex;
             }
 
-            return (externalLightsOrder.Count - fromIndex) + toIndex;
+            return (exteriorLightsOrder.Count - fromIndex) + toIndex;
         }
 
         public static int GetRulesOfEngagementSteps(AH64ROEMode from, AH64ROEMode to)
@@ -483,6 +483,30 @@ namespace VAICOM.Extensions.AICPG
             }
 
             return (rulesOfEngagementOrder.Count - fromIndex) + toIndex;
+        }
+
+        public static void SetExteriorLightsMode(int navigationLights, int antiCollisionLights, int formationLights)
+        {
+            if (navigationLights == 0 && antiCollisionLights == 1 && formationLights == 0)
+            {
+                SelectedExteriorLightsMode = AH64ExteriorLightsMode.Day;
+            }
+            else if (navigationLights == 1 && antiCollisionLights == -1 && formationLights == 0)
+            {
+                SelectedExteriorLightsMode = AH64ExteriorLightsMode.NightBright;
+            }
+            else if (navigationLights == -1 && antiCollisionLights == 0 && formationLights == 1)
+            {
+                SelectedExteriorLightsMode = AH64ExteriorLightsMode.NightDim;
+            }
+            else if (navigationLights == 0 && antiCollisionLights == 0 && formationLights == 1)
+            {
+                SelectedExteriorLightsMode = AH64ExteriorLightsMode.Formation;
+            }
+            else
+            {
+                SelectedExteriorLightsMode = AH64ExteriorLightsMode.Off;
+            }
         }
     }
 }

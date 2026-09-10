@@ -201,6 +201,10 @@ namespace VAICOM
                     bool rocketsAvailable = values.TryGetValue("rockets", out string rocketsValue) && rocketsValue.Equals("1");
                     bool missilesAvailable = values.TryGetValue("missiles", out string missilesValue) && missilesValue.Equals("1");
                     bool wow = values.TryGetValue("wow", out string wowValue) && wowValue.Equals("1");
+                    int navigationLights = values.TryGetValue("navigationLights", out string navigationLightsValue) && int.TryParse(navigationLightsValue, out int navLights) ? navLights : 0;
+                    int antiCollisionLights = values.TryGetValue("antiCollisionLights", out string antiCollisionLightsValue) && int.TryParse(antiCollisionLightsValue, out int acLights) ? acLights : 0;
+                    int formationLights = values.TryGetValue("formationLights", out string formationLightsValue) && int.TryParse(formationLightsValue, out int formLights) ? formLights : 0;
+
 
                     AH64GeorgeState.SelectedCMWSArmSafe = cmwsArmed ? AH64CMWSArmSafe.Armed : AH64CMWSArmSafe.Safe;
                     AH64GeorgeState.SelectedCMWSMode = cmwsBypass ? AH64CMWSMode.Bypass : AH64CMWSMode.Auto;
@@ -214,6 +218,9 @@ namespace VAICOM
                     {
                         AH64GeorgeState.SelectedWeapon = AH64WeaponMode.NoWeapon;
                     }
+
+
+                    AH64GeorgeState.SetExteriorLightsMode(navigationLights, antiCollisionLights, formationLights);
                 }
                 catch (Exception e)
                 {

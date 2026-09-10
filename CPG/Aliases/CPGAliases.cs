@@ -254,9 +254,12 @@ namespace VAICOM.Extensions.CPG
             { "George Dispense Flares",                      "georgecmdispenseflares"        },
             { "George Dispense Chaff And Flares",            "georgecmdispensechaffandflares" },
             { "George Turn Off Lights",                      "georgeextlightsoff"            },
+            { "George turn the lights off",                  "georgeextlightsoff"            },
             { "George Turn On Day Lights",                   "georgeextlightsday"            },
+            { "George turn the lights on",                   "georgeextlightsday"            },
             { "George Turn On Night Lights",                 "georgeextlightsnightbright"    },
             { "George Turn On Dim Lights",                   "georgeextlightsnightdim"       },
+            { "George dim the lights",                       "georgeextlightsnightdim"       },
             { "George Turn On Formation Lights",             "georgeextlightsformation"      },
 
             // Pilot - Hover Bob-up (H-B)

@@ -304,16 +304,22 @@ vaicom.insert = {
         local gun, rockets, missiles = self:ClassifyPayloadWeapons(payload)
         local cmwsArmed = payload.cmwsArmed
         local cmwsBypass = payload.cmwsBypass
+        local navigationLights = payload.navigationLights
+        local formationLights = payload.formationLights
+        local antiCollisionLights = payload.antiCollisionLights
         local wow = self:DetectOnGroundState()
         local msg = string.format(
-            "%s;gun=%d;rockets=%d;missiles=%d;wow=%d;cmwsArmed=%d;cmwsBypass=%d",
+            "%s;gun=%d;rockets=%d;missiles=%d;wow=%d;cmwsArmed=%d;cmwsBypass=%d;navigationLights=%d;formationLights=%d;antiCollisionLights=%d",
             vaicom.config.ah64stateprefix,
             gun and 1 or 0,
             rockets and 1 or 0,
             missiles and 1 or 0,
             wow and 1 or 0,
             cmwsArmed,
-            cmwsBypass
+            cmwsBypass,
+            navigationLights,
+            formationLights,
+            antiCollisionLights
         )
 
         if msg == self.probe.lastAh64State then
@@ -587,8 +593,16 @@ vaicom.insert = {
             -- Get CMWS switch positions
             local cmwsArmed = base.GetDevice(0):get_argument_value(614)
 			local cmwsBypass = base.GetDevice(0):get_argument_value(616)
+            -- Get exterior lights positions
+            local navigationLights = base.GetDevice(0):get_argument_value(326) -- -1=dim, 0=off, 1=bright
+            local antiCollisionLights = base.GetDevice(0):get_argument_value(332) -- -1=red, 0=off, 1=white
+            local formationLights = base.GetDevice(0):get_argument_value(329) -- 0=off, 1=on
+            
             payloadTable.cmwsArmed = cmwsArmed
             payloadTable.cmwsBypass = cmwsBypass
+            payloadTable.navigationLights = navigationLights
+            payloadTable.antiCollisionLights = antiCollisionLights
+            payloadTable.formationLights = formationLights
 
             self:SendAh64StateUpdate(payloadTable)
         end
