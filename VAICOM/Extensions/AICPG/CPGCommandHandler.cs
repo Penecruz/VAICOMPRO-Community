@@ -111,8 +111,10 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeStartUpFull":
                 case "wMsgGeorgeIncreaseAltitude":
                 case "wMsgGeorgeOrbitOverhead":
-                case "wMsgGeorgeHoverForward":
                     AddGeorgeLongButton(AH64GeorgeButton.Up);
+                    break;
+                case "wMsgGeorgeHoverForward":
+                    AddGeorgeLongHoldButton(AH64GeorgeButton.Up, 1000);
                     break;
                 // Down Long Presses
                 case "wMsgGeorgeDownLong":
@@ -124,8 +126,10 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeBreakOneEighty":
                 case "wMsgGeorgeThreatWarningsOn":
                 case "wMsgGeorgeThreatWarningsOff":
-                case "wMsgGeorgeHoverBack":
                     AddGeorgeLongButton(AH64GeorgeButton.Down);
+                    break;
+                case "wMsgGeorgeHoverBack":
+                    AddGeorgeLongHoldButton(AH64GeorgeButton.Down, 1000);
                     break;
                 // Left Long Presses
                 case "wMsgGeorgeLeftLong":
@@ -134,10 +138,12 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeNextRkt":
                 case "wMsgGeorgeNextMSL":
                 case "wMsgGeorgeAreaSelect":
-                case "wMsgGeorgeComeLeft":
                 case "wMsgGeorgeBreakLeft":
-                case "wMsgGeorgeHoverLeft":
                     AddGeorgeLongButton(AH64GeorgeButton.Left);
+                    break;
+                case "wMsgGeorgeComeLeft":
+                case "wMsgGeorgeHoverLeft":
+                    AddGeorgeLongHoldButton(AH64GeorgeButton.Left, 1000);
                     break;
                 // Right Long Presses
                 case "wMsgGeorgeRightLong":
@@ -146,10 +152,12 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgePointSelect":
                 case "wMsgGeorgeCMWSOn":
                 case "wMsgGeorgeCMWSOff":
-                case "wMsgGeorgeComeRight":
                 case "wMsgGeorgeBreakRight":
-                case "wMsgGeorgeHoverRight":
                     AddGeorgeLongButton(AH64GeorgeButton.Right);
+                    break;
+                case "wMsgGeorgeComeRight":
+                case "wMsgGeorgeHoverRight":
+                    AddGeorgeLongHoldButton(AH64GeorgeButton.Right, 1000);
                     break;
                 // Multifunction Long Presses
                 case "wMsgGeorgeCenterLong":
@@ -321,6 +329,17 @@ namespace VAICOM.Extensions.AICPG
             }
         }
 
+        // Enum overloads so callers can use AH64DGeorgeButton
+        public static void AddGeorgeLongButton(AH64GeorgeButton button)
+        {
+            AddGeorgeLongButton((int)button);
+        }
+
+        public static void AddGeorgeLongButton(AH64GeorgeButton button, int postDelayMs)
+        {
+            AddGeorgeLongButton((int)button, postDelayMs);
+        }
+
         public static void AddGeorgeLongButton(int command)
         {
             AddGeorgeAction(command, 1.0, 1200);
@@ -333,15 +352,17 @@ namespace VAICOM.Extensions.AICPG
             AddGeorgeAction(command, 0.0, postDelayMs);
         }
 
+
         // Enum overloads so callers can use AH64DGeorgeButton
-        public static void AddGeorgeLongButton(AH64GeorgeButton button)
+        public static void AddGeorgeLongHoldButton(AH64GeorgeButton button, int holdDurationMs)
         {
-            AddGeorgeLongButton((int)button);
+            AddGeorgeLongHoldButton((int)button, holdDurationMs);
         }
 
-        public static void AddGeorgeLongButton(AH64GeorgeButton button, int postDelayMs)
+        public static void AddGeorgeLongHoldButton(int command, int holdDurationMs)
         {
-            AddGeorgeLongButton((int)button, postDelayMs);
+            AddGeorgeAction(command, 1.0, 1200 + holdDurationMs);
+            AddGeorgeAction(command, 0.0);
         }
 
         public static void AddGeorgeButton(int command)
