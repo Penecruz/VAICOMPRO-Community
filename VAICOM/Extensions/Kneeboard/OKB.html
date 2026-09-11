@@ -176,10 +176,32 @@
       display: none;
     }
 
+    .efbAutoRecBalloonMain {
+      display: block;
+    }
+
+    .efbAutoRecBalloonNote {
+      display: block;
+      margin-top: 6px;
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+
+    .efbAutoRecBalloon.unable {
+      border-color: #2156a8;
+      color: #1f62c7;
+    }
+
     .efbAutoRecBalloon.active {
       display: block;
       opacity: 1;
       animation: fltPlanRecFlash 1.05s linear infinite;
+    }
+
+    .efbAutoRecBalloon.active.unable {
+      animation: fltPlanRecFlashBlue 1.05s linear infinite;
     }
 
     .kneeLayout {
@@ -2263,6 +2285,20 @@
       }
     }
 
+    @keyframes fltPlanRecFlashBlue {
+      0% {
+        color: #1f62c7;
+      }
+
+      50% {
+        color: #4ea0ff;
+      }
+
+      100% {
+        color: #1f62c7;
+      }
+    }
+
     .fltPlanRecSpeed {
       color: #b21f1f;
       font-weight: 800;
@@ -3592,6 +3628,8 @@
     let autoAtaRecSpdEnabled = false;
     let autoAtaRecPulseUntilUtc = 0;
     let autoAtaRecPulseSpdText = '';
+    let autoAtaRecPulseNoteText = '';
+    let autoAtaRecPulseUnable = false;
     let autoAtaWaypointPulseUntilByKey = {};
     let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, hasGroundSpeed: false, groundSpeedKnots: NaN, hasWow: false, wow: -1, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
     let efbAdLandingAssistState = { seenAirborne: false, triggeredThisWowOn: false };
@@ -8450,25 +8488,47 @@
       if (overlayBox) overlayBox.checked = !!autoAtaRecSpdEnabled;
     }
 
-    function getAutoAtaRecDisplaySpd(selected) {
+    function getAutoAtaRecDisplayState(selected) {
       const state = getFlightPlanPlanState(selected);
-      if (!state || !state.speedRecommendations || typeof state.speedRecommendations !== 'object') return '';
-      const keys = Object.keys(state.speedRecommendations)
-        .map(function (k) { return stepToKey(k); })
-        .filter(function (k) { return !!k; })
-        .sort(function (a, b) { return Number(a) - Number(b); });
-      if (!keys.length) return '';
-      const rec = state.speedRecommendations[keys[0]] || {};
-      const kcas = Math.round(Number(rec.kcas));
-      if (!isFinite(kcas) || kcas <= 0) return '';
-      if (kcas >= 1000) return String(kcas);
-      return String(kcas).padStart(3, '0');
+      if (!state) return { spdText: '', noteText: '', unable: false };
+
+      if (state.speedRecommendations && typeof state.speedRecommendations === 'object') {
+        const keys = Object.keys(state.speedRecommendations)
+          .map(function (k) { return stepToKey(k); })
+          .filter(function (k) { return !!k; })
+          .sort(function (a, b) { return Number(a) - Number(b); });
+        if (keys.length) {
+          const rec = state.speedRecommendations[keys[0]] || {};
+          const kcas = Math.round(Number(rec.kcas));
+          if (isFinite(kcas) && kcas > 0) {
+            return {
+              spdText: kcas >= 1000 ? String(kcas) : String(kcas).padStart(3, '0'),
+              noteText: '',
+              unable: false,
+            };
+          }
+        }
+      }
+
+      const fallbackCode = String(state.autoAtaLastFallbackCode || '').toUpperCase();
+      if (fallbackCode) {
+        const fallbackKcas = fallbackCode === 'HIGH' ? 700 : 220;
+        return {
+          spdText: String(fallbackKcas).padStart(3, '0'),
+          noteText: fallbackCode === 'HIGH' ? 'UNABLE ACCEL' : 'UNABLE DELAY',
+          unable: true,
+        };
+      }
+
+      return { spdText: '', noteText: '', unable: false };
     }
 
-    function triggerAutoAtaRecPulse(spdText) {
+    function triggerAutoAtaRecPulse(spdText, noteText, unableState) {
       const text = String(spdText || '').trim();
       if (!text || text === '---') return;
       autoAtaRecPulseSpdText = text;
+      autoAtaRecPulseNoteText = String(noteText || '').trim();
+      autoAtaRecPulseUnable = !!unableState;
       autoAtaRecPulseUntilUtc = Date.now() + autoAtaRecPulseDurationMs;
       applyAutoAtaRecPulseUi();
     }
@@ -8479,8 +8539,14 @@
       const hasSpd = !!String(autoAtaRecPulseSpdText || '').trim();
       const active = !!pulseEl && hasSpd && autoAtaRecPulseUntilUtc > now && selectedTab === 'EFB';
       if (pulseEl) {
-        pulseEl.textContent = hasSpd ? autoAtaRecPulseSpdText : '';
+        const speedText = hasSpd ? autoAtaRecPulseSpdText : '';
+        const noteText = String(autoAtaRecPulseNoteText || '').trim();
+        pulseEl.innerHTML = speedText
+          ? ('<span class="efbAutoRecBalloonMain">' + escapeHtml(speedText) + '</span>'
+            + (noteText ? ('<span class="efbAutoRecBalloonNote">' + escapeHtml(noteText) + '</span>') : ''))
+          : '';
         pulseEl.classList.toggle('active', active);
+        pulseEl.classList.toggle('unable', active && !!autoAtaRecPulseUnable);
       }
     }
 
@@ -8556,18 +8622,14 @@
         : null;
       state.autoAtaLastOwnshipPos = { north: own.north, east: own.east };
 
-      const pendingIndex = activeRows.findIndex(function (wp) {
+      const pendingRows = activeRows.filter(function (wp) {
         const k = stepToKey(wp && wp.step);
         return !!k && !(state.ataByStep && state.ataByStep[k]);
       });
-      if (pendingIndex < 0) return;
-
-      const candidate = activeRows[pendingIndex];
-      const candidateKey = stepToKey(candidate && candidate.step);
-      if (!candidateKey) return;
+      if (!pendingRows.length) return;
 
       const releaseKey = stepToKey(state.autoAtaLastCapturedStep);
-      if (releaseKey && releaseKey !== candidateKey) {
+      if (releaseKey) {
         const lastWp = activeRows.find(function (wp) { return stepToKey(wp && wp.step) === releaseKey; }) || null;
         if (lastWp) {
           const lastPos = resolveWaypointNorthEast(lastWp);
@@ -8582,34 +8644,45 @@
         }
       }
 
-      const wpPos = resolveWaypointNorthEast(candidate);
-      if (!isFinite(wpPos.north) || !isFinite(wpPos.east)) return;
+      let captured = false;
+      for (let i = 0; i < pendingRows.length; i++) {
+        const candidate = pendingRows[i];
+        const candidateKey = stepToKey(candidate && candidate.step);
+        if (!candidateKey) continue;
 
-      const dNorth = own.north - wpPos.north;
-      const dEast = own.east - wpPos.east;
-      const distanceMeters = Math.sqrt((dNorth * dNorth) + (dEast * dEast));
-      if (!isFinite(distanceMeters)) return;
+        const wpPos = resolveWaypointNorthEast(candidate);
+        if (!isFinite(wpPos.north) || !isFinite(wpPos.east)) continue;
 
-      let crossedWithinThreshold = distanceMeters <= autoAtaCaptureThresholdMeters;
-      if (!crossedWithinThreshold && prevOwn) {
-        const segDistance = distancePointToSegmentMeters(
-          wpPos.north,
-          wpPos.east,
-          prevOwn.north,
-          prevOwn.east,
-          own.north,
-          own.east
-        );
-        crossedWithinThreshold = isFinite(segDistance) && segDistance <= autoAtaCaptureThresholdMeters;
+        const dNorth = own.north - wpPos.north;
+        const dEast = own.east - wpPos.east;
+        const distanceMeters = Math.sqrt((dNorth * dNorth) + (dEast * dEast));
+        if (!isFinite(distanceMeters)) continue;
+
+        let crossedWithinThreshold = distanceMeters <= autoAtaCaptureThresholdMeters;
+        if (!crossedWithinThreshold && prevOwn) {
+          const segDistance = distancePointToSegmentMeters(
+            wpPos.north,
+            wpPos.east,
+            prevOwn.north,
+            prevOwn.east,
+            own.north,
+            own.east
+          );
+          crossedWithinThreshold = isFinite(segDistance) && segDistance <= autoAtaCaptureThresholdMeters;
+        }
+        if (!crossedWithinThreshold) continue;
+
+        const etaText = String(candidate.etaDisplay || candidate.eta || '').trim();
+        if (!etaText) continue;
+
+        if (captureAutoWaypointAta(selected, candidateKey, etaText, '1/2NM')) {
+          state.autoAtaLastCapturedStep = candidateKey;
+          captured = true;
+          break;
+        }
       }
-      if (!crossedWithinThreshold) return;
 
-      const etaText = String(candidate.etaDisplay || candidate.eta || '').trim();
-      if (!etaText) return;
-
-      if (captureAutoWaypointAta(selected, candidateKey, etaText, '1/2NM')) {
-        state.autoAtaLastCapturedStep = candidateKey;
-      }
+      if (!captured) return;
     }
 
     function setOverlayAnimated(overlay, open, baseClass) {
@@ -11291,10 +11364,30 @@
       };
     }
 
+    function resolveEtaTargetSecondsFromAta(plannedEtaSeconds, ataActualSeconds, ataPlannedSeconds) {
+      const plannedEta = Number(plannedEtaSeconds);
+      const actualAta = Number(ataActualSeconds);
+      const plannedAta = Number(ataPlannedSeconds);
+      if (!isFinite(plannedEta) || !isFinite(actualAta)) return NaN;
+
+      // Step 1: align the ETA timeline to the recorded ATA offset when available.
+      let target = isFinite(plannedAta)
+        ? (plannedEta + (actualAta - plannedAta))
+        : plannedEta;
+
+      // Step 2: keep the target in the future relative to the ATA event.
+      while (target <= actualAta) {
+        target += 86400;
+      }
+
+      return target;
+    }
+
     function buildSpeedRecommendationsForAta(selected, ataStep) {
       const state = getFlightPlanPlanState(selected);
       if (!state || !state.speedRecommendations) return;
       state.speedRecommendations = {};
+      state.autoAtaLastFallbackCode = '';
 
       const rows = getPlanWaypointsForRecommendations(selected);
       if (!rows.length) return;
@@ -11304,6 +11397,7 @@
 
       const ata = state.ataByStep && state.ataByStep[stepToKey(ataStep)] ? state.ataByStep[stepToKey(ataStep)] : null;
       const fromTime = ata ? Number(ata.actualSeconds) : NaN;
+      const fromPlanned = ata ? Number(ata.plannedSeconds) : NaN;
       if (!isFinite(fromTime)) return;
 
       let fromPoint = rows[idx];
@@ -11322,19 +11416,27 @@
       }
 
       const nextWp = rows[idx + 1];
-      const nextTarget = parseEtaToSeconds(nextWp && (nextWp.etaDisplay || nextWp.eta));
+      const nextTargetPlanned = parseEtaToSeconds(nextWp && (nextWp.etaDisplay || nextWp.eta));
+      const nextTarget = resolveEtaTargetSecondsFromAta(nextTargetPlanned, fromTime, fromPlanned);
       const reqNext = computeRequiredKcasForLeg(fromPoint, nextWp, fromTime, nextTarget);
       const reqNextRounded = normalizeRecommendedKcas(reqNext, nextWp && nextWp.altFeet);
       if (isKcasWithinRecommendationLimits(reqNextRounded, nextWp && nextWp.altFeet)) {
         setSpeedRecommendation(state, nextWp.step, reqNextRounded, true);
         return;
       }
+      if (isFinite(Number(reqNext))) {
+        const minNext = getRecommendationMinKcas(nextWp && nextWp.altFeet);
+        const maxNext = getRecommendationMaxKcas(nextWp && nextWp.altFeet);
+        if (isFinite(minNext) && Number(reqNext) < minNext) state.autoAtaLastFallbackCode = 'LOW';
+        else if (isFinite(maxNext) && Number(reqNext) > maxNext) state.autoAtaLastFallbackCode = 'HIGH';
+      }
 
       if (idx + 2 >= rows.length) return;
 
       const wpA = rows[idx + 1];
       const wpB = rows[idx + 2];
-      const targetB = parseEtaToSeconds(wpB && (wpB.etaDisplay || wpB.eta));
+      const targetBPlanned = parseEtaToSeconds(wpB && (wpB.etaDisplay || wpB.eta));
+      const targetB = resolveEtaTargetSecondsFromAta(targetBPlanned, fromTime, fromPlanned);
       const legA = computeLegDistanceNm(fromPoint, wpA);
       const legB = computeLegDistanceNm(wpA, wpB);
       if (!isFinite(legA) || !isFinite(legB) || legA <= 0 || legB <= 0) return;
@@ -11347,8 +11449,26 @@
 
       const reqA = normalizeRecommendedKcas(computeRequiredKcasForLeg(fromPoint, wpA, fromTime, fromTime + dtA), wpA && wpA.altFeet);
       const reqB = normalizeRecommendedKcas(computeRequiredKcasForLeg(wpA, wpB, fromTime + dtA, targetB), wpB && wpB.altFeet);
-      if (!isKcasWithinRecommendationLimits(reqA, wpA && wpA.altFeet)) return;
-      if (!isKcasWithinRecommendationLimits(reqB, wpB && wpB.altFeet)) return;
+      const reqARaw = computeRequiredKcasForLeg(fromPoint, wpA, fromTime, fromTime + dtA);
+      const reqBRaw = computeRequiredKcasForLeg(wpA, wpB, fromTime + dtA, targetB);
+      if (!isKcasWithinRecommendationLimits(reqA, wpA && wpA.altFeet)) {
+        const minA = getRecommendationMinKcas(wpA && wpA.altFeet);
+        const maxA = getRecommendationMaxKcas(wpA && wpA.altFeet);
+        if (isFinite(Number(reqARaw))) {
+          if (isFinite(minA) && Number(reqARaw) < minA) state.autoAtaLastFallbackCode = 'LOW';
+          else if (isFinite(maxA) && Number(reqARaw) > maxA) state.autoAtaLastFallbackCode = 'HIGH';
+        }
+        return;
+      }
+      if (!isKcasWithinRecommendationLimits(reqB, wpB && wpB.altFeet)) {
+        const minB = getRecommendationMinKcas(wpB && wpB.altFeet);
+        const maxB = getRecommendationMaxKcas(wpB && wpB.altFeet);
+        if (isFinite(Number(reqBRaw))) {
+          if (isFinite(minB) && Number(reqBRaw) < minB) state.autoAtaLastFallbackCode = 'LOW';
+          else if (isFinite(maxB) && Number(reqBRaw) > maxB) state.autoAtaLastFallbackCode = 'HIGH';
+        }
+        return;
+      }
 
       setSpeedRecommendation(state, wpA.step, reqA, true);
       setSpeedRecommendation(state, wpB.step, reqB, true);
