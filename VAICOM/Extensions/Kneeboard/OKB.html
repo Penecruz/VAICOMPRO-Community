@@ -127,6 +127,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      position: relative;
     }
 
     .statusIndicator {
@@ -150,6 +151,35 @@
     .status.status-sent .statusIndicator {
       background: #2e8b57;
       border-color: #1c5c39;
+    }
+
+    .efbAutoRecBalloon {
+      position: absolute;
+      left: 50%;
+      top: 84px;
+      transform: translateX(-50%);
+      z-index: 46;
+      min-width: 168px;
+      padding: 12px 18px;
+      border: 2px solid #a12626;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #b21f1f;
+      font-size: 66px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.34);
+      pointer-events: none;
+      opacity: 0;
+      display: none;
+    }
+
+    .efbAutoRecBalloon.active {
+      display: block;
+      opacity: 1;
+      animation: fltPlanRecFlash 1.05s linear infinite;
     }
 
     .kneeLayout {
@@ -1154,12 +1184,14 @@
       transition: filter 160ms ease;
     }
 
-    .efbEmpty {
+    .efbEmpty,
+    .fltPlanMessage {
       font-family: inherit;
+      white-space: pre-wrap;
       font-size: var(--contentFontSize);
       line-height: 1.32;
-      color: #4d5f71;
-      padding: 14px;
+      color: inherit;
+      padding: 0;
     }
 
     .efbLoadingOverlay {
@@ -1687,6 +1719,42 @@
       color: #1a4b84;
       text-decoration: underline;
       font-weight: 600;
+    }
+
+    .helpOverlayContent .iconLegendGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .helpOverlayContent .iconLegendItem {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border: 1px solid rgba(116, 133, 151, 0.45);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    .helpOverlayContent .helpIconSvg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      color: #1f3550;
+      flex: 0 0 22px;
+    }
+
+    .helpOverlayContent .helpIconGlyph {
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      flex: 0 0 22px;
     }
 
     .overlayOption.sliderOption {
@@ -2575,12 +2643,6 @@
       color: #7a858f;
     }
 
-    .fltPlanMessage {
-      white-space: pre-wrap;
-      font-size: var(--contentFontSize);
-      line-height: 1.32;
-    }
-
     .fltPlanPlain {
       margin: 0;
       background: #ffffff;
@@ -2896,10 +2958,6 @@
     body.night-mode .efbViewport {
       background: #121920;
       border-color: #607183;
-    }
-
-    body.night-mode .efbEmpty {
-      color: #9fb4c9;
     }
 
     body.night-mode .efbChartImageLocal {
@@ -3356,6 +3414,7 @@
       <label class="overlayOption"><input id="overlayNightMode" type="checkbox"> Night Mode</label>
       <label class="overlayOption"><input id="overlayDlinkOn" type="checkbox"> DLink ON</label>
       <label class="overlayOption"><input id="overlayEfbAdLanding" type="checkbox"> EFB Display AD on Landing</label>
+      <label class="overlayOption"><input id="overlayAutoAtaRecSpd" type="checkbox"> Auto ATA and REC SPD</label>
       <label class="overlayOption sliderOption"><span>Font Size</span><input id="overlayFontSizeSlider" type="range"
           min="18" max="34" step="1" value="24"><span id="overlayFontSizeValue" class="sliderValue">24</span></label>
       <label id="overlayShowRawWrap" class="overlayOption"><input id="overlayShowRaw" type="checkbox"> Show raw
@@ -3473,8 +3532,13 @@
     const efbSaDoghousesEnabledStorageKey = 'vaicom.okb.efbSaDoghousesEnabled';
     const efbSaUserWaypointsEnabledStorageKey = 'vaicom.okb.efbSaUserWaypointsEnabled';
     const efbSaUserWaypointsStorageKey = 'vaicom.okb.efbSaUserWaypoints';
+    const autoAtaRecSpdEnabledStorageKey = 'vaicom.okb.autoAtaRecSpdEnabled';
     const drawModeTimeoutMs = 30000;
     const speedRecommendationTimeoutMs = 30000;
+    const autoAtaCaptureThresholdMeters = 0.5 * 1852;
+    const autoAtaCaptureReleaseMeters = 0.35 * 1852;
+    const autoAtaRecPulseDurationMs = speedRecommendationTimeoutMs;
+    const autoAtaWaypointPulseDurationMs = 6000;
     const fakeMissionSpeedMin = 0.25;
     const fakeMissionSpeedMax = 8.0;
     let tabKeywordsSplitByTab = {};
@@ -3525,6 +3589,10 @@
     let efbSaNavigraphLayer = 'vfr';
     let efbSaShowDoghouses = true;
     let efbSaShowUserWaypoints = true;
+    let autoAtaRecSpdEnabled = false;
+    let autoAtaRecPulseUntilUtc = 0;
+    let autoAtaRecPulseSpdText = '';
+    let autoAtaWaypointPulseUntilByKey = {};
     let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, hasGroundSpeed: false, groundSpeedKnots: NaN, hasWow: false, wow: -1, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
     let efbAdLandingAssistState = { seenAirborne: false, triggeredThisWowOn: false };
     let efbFastOwnshipDebugPanelVisible = false;
@@ -5304,6 +5372,8 @@
       });
 
       visibleRows.forEach(function (wp) {
+        const stepKey = stepToKey(wp && wp.step);
+        const waypointPulseActive = isAutoAtaWaypointPulseActive(stepKey);
         const step = String((wp && wp.stepDisplay !== undefined && wp.stepDisplay !== null && String(wp.stepDisplay).trim()) ? wp.stepDisplay : (wp && wp.step || '')).trim();
         const name = String(wp && wp.name || '').trim();
         const label = step ? (step + (name ? (' ' + name) : '')) : name;
@@ -5313,10 +5383,11 @@
           waypointType: waypointType,
           group: 'overlay',
           label: label || 'WP',
-          fill: '#2d8fe3',
-          stroke: '#1f5d93',
+          fill: waypointPulseActive ? '#ff5a5a' : '#2d8fe3',
+          stroke: waypointPulseActive ? '#bf2b2b' : '#1f5d93',
           textColor: '#1f3550',
-          radius: 4,
+          radius: waypointPulseActive ? 6.8 : 4,
+          autoAtaPulseActive: waypointPulseActive,
         });
       });
 
@@ -6835,10 +6906,12 @@
         || Math.abs(Number(server.PlayerAltFeet) || 0) > 0.5;
       const liveSession = moduleConnected && hasAircraft && hasPosition;
       const devBypass = !!efb.DevBypass;
+      const simModeBypass = !!(fakeMissionEnabled && fakeMissionState);
       return {
         liveSession: liveSession,
         devBypass: devBypass,
-        allowed: liveSession || devBypass,
+        simModeBypass: simModeBypass,
+        allowed: liveSession || simModeBypass,
       };
     }
 
@@ -6900,19 +6973,32 @@
     }
 
     function formatEfbSaMapViewportHtml(data) {
-      const context = resolveActiveSaMapContext(data || latestData);
-      if (!context || !context.selected || !context.waypoints) {
-        return '<div class="efbEmpty">SA Map unavailable for current FLT PLN selection.</div>';
+      const model = data || latestData || {};
+      const context = resolveActiveSaMapContext(model);
+      const fallbackContext = {
+        selected: '__EFB_OWNSHIP__',
+        sourceType: 'EFB',
+        root: null,
+        overlays: {},
+        waypoints: [],
+      };
+      const useFallback = !context
+        && !fakeMissionEnabled
+        && getEfbModuleGateState(model).allowed;
+      const effectiveContext = context || (useFallback ? fallbackContext : null);
+
+      if (!effectiveContext || !effectiveContext.selected || !Array.isArray(effectiveContext.waypoints)) {
+        return '<div class="efbSaMapWrap fltPlanOpenMapWrap"><div id="efbSaMapBraReadout" class="fltPlanPage3BraReadout efbSaMapBraReadout"></div></div>';
       }
 
-      const state = buildSaMapRenderState(context.waypoints, data, context.selected, context.overlays, context.root);
+      const state = buildSaMapRenderState(effectiveContext.waypoints, model, effectiveContext.selected, effectiveContext.overlays, effectiveContext.root);
       if (!state) {
-        return '<div class="efbEmpty">SA Map unavailable for current FLT PLN data.</div>';
+        return '<div class="efbSaMapWrap fltPlanOpenMapWrap"><div id="efbSaMapBraReadout" class="fltPlanPage3BraReadout efbSaMapBraReadout"></div></div>';
       }
 
       let html = '<div class="efbSaMapWrap fltPlanOpenMapWrap" data-openfreemap-wrap="' + escapeHtml(state.openFreeMapId || '') + '">';
       if (state.openFreeMapId) {
-        html += '<div class="fltPlanOpenMapHost" data-openfreemap-map-id="' + escapeHtml(state.openFreeMapId) + '" data-openfreemap-selection="' + escapeHtml(getFlightPlanEtaStartKey(context.selected)) + '"></div>';
+        html += '<div class="fltPlanOpenMapHost" data-openfreemap-map-id="' + escapeHtml(state.openFreeMapId) + '" data-openfreemap-selection="' + escapeHtml(getFlightPlanEtaStartKey(effectiveContext.selected)) + '"></div>';
         html += '<div class="fltPlanOpenMapFallback">' + state.mapSvg + '</div>';
       } else {
         html += state.mapSvg;
@@ -7050,6 +7136,7 @@
 
       return ''
         + '<div class="efbShell">'
+        + '<div id="efbAutoAtaRecBalloon" class="efbAutoRecBalloon">---</div>'
         + '<div id="efbLoadingOverlay" class="efbLoadingOverlay' + (efbLoadingOverlayMessage ? ' visible' : '') + '"><div id="efbLoadingOverlayText" class="efbLoadingOverlayText">' + escapeHtml(efbLoadingOverlayMessage || '') + '</div></div>'
         + '<div class="' + topNavClass + '">'
         + '<button id="efbPrevChartBtn" type="button" class="efbTopNavBtn" title="Previous chart (uses pinned charts when available)"' + (canCycle ? '' : ' disabled') + '>&lt;&lt; PREV</button>'
@@ -8339,6 +8426,192 @@
       if (overlayBox) overlayBox.checked = !!autoBrowse;
     }
 
+    function readAutoAtaRecSpdEnabledPreference() {
+      try {
+        if (!window.localStorage) return false;
+        const raw = window.localStorage.getItem(autoAtaRecSpdEnabledStorageKey);
+        if (raw === null || raw === undefined || raw === '') return false;
+        return raw === '1';
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function persistAutoAtaRecSpdEnabledPreference() {
+      try {
+        if (!window.localStorage) return;
+        window.localStorage.setItem(autoAtaRecSpdEnabledStorageKey, autoAtaRecSpdEnabled ? '1' : '0');
+      } catch (_) {
+      }
+    }
+
+    function applyAutoAtaRecSpdUi() {
+      const overlayBox = document.getElementById('overlayAutoAtaRecSpd');
+      if (overlayBox) overlayBox.checked = !!autoAtaRecSpdEnabled;
+    }
+
+    function getAutoAtaRecDisplaySpd(selected) {
+      const state = getFlightPlanPlanState(selected);
+      if (!state || !state.speedRecommendations || typeof state.speedRecommendations !== 'object') return '';
+      const keys = Object.keys(state.speedRecommendations)
+        .map(function (k) { return stepToKey(k); })
+        .filter(function (k) { return !!k; })
+        .sort(function (a, b) { return Number(a) - Number(b); });
+      if (!keys.length) return '';
+      const rec = state.speedRecommendations[keys[0]] || {};
+      const kcas = Math.round(Number(rec.kcas));
+      if (!isFinite(kcas) || kcas <= 0) return '';
+      if (kcas >= 1000) return String(kcas);
+      return String(kcas).padStart(3, '0');
+    }
+
+    function triggerAutoAtaRecPulse(spdText) {
+      const text = String(spdText || '').trim();
+      if (!text || text === '---') return;
+      autoAtaRecPulseSpdText = text;
+      autoAtaRecPulseUntilUtc = Date.now() + autoAtaRecPulseDurationMs;
+      applyAutoAtaRecPulseUi();
+    }
+
+    function applyAutoAtaRecPulseUi(nowUtcMs) {
+      const pulseEl = document.getElementById('efbAutoAtaRecBalloon');
+      const now = isFinite(Number(nowUtcMs)) ? Number(nowUtcMs) : Date.now();
+      const hasSpd = !!String(autoAtaRecPulseSpdText || '').trim();
+      const active = !!pulseEl && hasSpd && autoAtaRecPulseUntilUtc > now && selectedTab === 'EFB';
+      if (pulseEl) {
+        pulseEl.textContent = hasSpd ? autoAtaRecPulseSpdText : '';
+        pulseEl.classList.toggle('active', active);
+      }
+    }
+
+    function markAutoAtaWaypointPulse(step) {
+      const key = stepToKey(step);
+      if (!key) return;
+      autoAtaWaypointPulseUntilByKey[key] = Date.now() + autoAtaWaypointPulseDurationMs;
+    }
+
+    function isAutoAtaWaypointPulseActive(step, nowUtcMs) {
+      const key = stepToKey(step);
+      if (!key) return false;
+      const until = Number(autoAtaWaypointPulseUntilByKey[key] || 0);
+      const now = isFinite(Number(nowUtcMs)) ? Number(nowUtcMs) : Date.now();
+      if (!isFinite(until) || until <= now) {
+        delete autoAtaWaypointPulseUntilByKey[key];
+        return false;
+      }
+      return true;
+    }
+
+    function captureAutoWaypointAta(selected, step, plannedEtaText, modeTag) {
+      const state = getFlightPlanPlanState(selected);
+      if (!state.ataByStep || typeof state.ataByStep !== 'object') state.ataByStep = {};
+      if (!Array.isArray(state.timingLog)) state.timingLog = [];
+
+      const key = stepToKey(step);
+      if (!key || state.ataByStep[key]) return false;
+
+      const planned = parseEtaToSeconds(plannedEtaText);
+      const actual = getCurrentFlightPlanClockSeconds();
+      if (!isFinite(planned) || !isFinite(actual)) return false;
+
+      state.ataByStep[key] = {
+        actualSeconds: actual,
+        plannedSeconds: planned,
+      };
+
+      const deltaText = formatSignedDeltaSeconds(actual - planned);
+      state.timingLog.push(new Date().toISOString() + ' | ATA AUTO STP' + key + ' ' + String(modeTag || 'CAP') + ' ' + deltaText);
+      if (state.timingLog.length > 16) {
+        state.timingLog = state.timingLog.slice(state.timingLog.length - 16);
+      }
+
+      buildSpeedRecommendationsForAta(selected, key);
+      const pulseSpdText = getAutoAtaRecDisplaySpd(selected);
+      lockInSpeedRecommendations(selected);
+      if (pulseSpdText) {
+        triggerAutoAtaRecPulse(pulseSpdText);
+      }
+      markAutoAtaWaypointPulse(key);
+      return true;
+    }
+
+    function updateAutoAtaRecSpdCapture(selected, rows) {
+      if (!autoAtaRecSpdEnabled) return;
+      const list = Array.isArray(rows) ? rows : [];
+      if (!list.length) return;
+
+      const state = getFlightPlanPlanState(selected);
+      const activeRows = getEffectiveRouteRows(list, state)
+        .filter(function (wp) { return !wp.isStart; })
+        .sort(function (a, b) { return Number(a && a.step) - Number(b && b.step); });
+      if (!activeRows.length) return;
+
+      const own = getOwnshipNorthEast();
+      if (!isFinite(own.north) || !isFinite(own.east)) return;
+
+      const prevOwn = state.autoAtaLastOwnshipPos
+        && isFinite(Number(state.autoAtaLastOwnshipPos.north))
+        && isFinite(Number(state.autoAtaLastOwnshipPos.east))
+        ? { north: Number(state.autoAtaLastOwnshipPos.north), east: Number(state.autoAtaLastOwnshipPos.east) }
+        : null;
+      state.autoAtaLastOwnshipPos = { north: own.north, east: own.east };
+
+      const pendingIndex = activeRows.findIndex(function (wp) {
+        const k = stepToKey(wp && wp.step);
+        return !!k && !(state.ataByStep && state.ataByStep[k]);
+      });
+      if (pendingIndex < 0) return;
+
+      const candidate = activeRows[pendingIndex];
+      const candidateKey = stepToKey(candidate && candidate.step);
+      if (!candidateKey) return;
+
+      const releaseKey = stepToKey(state.autoAtaLastCapturedStep);
+      if (releaseKey && releaseKey !== candidateKey) {
+        const lastWp = activeRows.find(function (wp) { return stepToKey(wp && wp.step) === releaseKey; }) || null;
+        if (lastWp) {
+          const lastPos = resolveWaypointNorthEast(lastWp);
+          if (isFinite(lastPos.north) && isFinite(lastPos.east)) {
+            const dn = own.north - lastPos.north;
+            const de = own.east - lastPos.east;
+            const releaseDistance = Math.sqrt((dn * dn) + (de * de));
+            if (isFinite(releaseDistance) && releaseDistance < autoAtaCaptureReleaseMeters) {
+              return;
+            }
+          }
+        }
+      }
+
+      const wpPos = resolveWaypointNorthEast(candidate);
+      if (!isFinite(wpPos.north) || !isFinite(wpPos.east)) return;
+
+      const dNorth = own.north - wpPos.north;
+      const dEast = own.east - wpPos.east;
+      const distanceMeters = Math.sqrt((dNorth * dNorth) + (dEast * dEast));
+      if (!isFinite(distanceMeters)) return;
+
+      let crossedWithinThreshold = distanceMeters <= autoAtaCaptureThresholdMeters;
+      if (!crossedWithinThreshold && prevOwn) {
+        const segDistance = distancePointToSegmentMeters(
+          wpPos.north,
+          wpPos.east,
+          prevOwn.north,
+          prevOwn.east,
+          own.north,
+          own.east
+        );
+        crossedWithinThreshold = isFinite(segDistance) && segDistance <= autoAtaCaptureThresholdMeters;
+      }
+      if (!crossedWithinThreshold) return;
+
+      const etaText = String(candidate.etaDisplay || candidate.eta || '').trim();
+      if (!etaText) return;
+
+      if (captureAutoWaypointAta(selected, candidateKey, etaText, '1/2NM')) {
+        state.autoAtaLastCapturedStep = candidateKey;
+      }
+    }
+
     function setOverlayAnimated(overlay, open, baseClass) {
       if (!overlay) return;
       const base = String(baseClass || 'overlayBackdrop');
@@ -8421,6 +8694,7 @@
         applyNightModeUi();
         applyDlinkOnUi();
         applyEfbAdLandingUi();
+        applyAutoAtaRecSpdUi();
         applyContentFontSizeUi();
         const showRawBox = document.getElementById('showRaw');
         const showServerBox = document.getElementById('showServer');
@@ -8959,6 +9233,7 @@
       fakeMissionEnabled = true;
       fakeMissionSpeed = 1.0;
       fakeMissionState = createFakeMissionStateFromData(latestData);
+      clearTakeoffTimeForSelection('__RUNTIME_PLAYER__');
       const selected = getActiveFlightPlanSelection(latestData);
       if (selected && fakeMissionState) {
         const state = getFlightPlanPlanState(selected);
@@ -9000,6 +9275,7 @@
       fakeMissionEnabled = false;
       fakeMissionState = null;
       fakeMissionSpeed = 1.0;
+      clearTakeoffTimeForSelection('__RUNTIME_PLAYER__');
       stopFakeMissionTimer();
       updateFakeMissionControlsUi();
       if (latestData) render(latestData);
@@ -11099,6 +11375,24 @@
       return true;
     }
 
+    function lockInSpeedRecommendations(selected) {
+      const state = getFlightPlanPlanState(selected);
+      if (!state || !state.speedRecommendations || typeof state.speedRecommendations !== 'object') return false;
+      const keys = Object.keys(state.speedRecommendations)
+        .map(function (k) { return stepToKey(k); })
+        .filter(function (k) { return !!k; })
+        .sort(function (a, b) { return Number(a) - Number(b); });
+      if (!keys.length) return false;
+
+      let applied = false;
+      keys.forEach(function (stepKey) {
+        if (acceptSpeedRecommendation(selected, stepKey)) {
+          applied = true;
+        }
+      });
+      return applied;
+    }
+
     function togglePostFlightOpen(selected) {
       const state = getFlightPlanPlanState(selected);
       state.postFlightOpen = !state.postFlightOpen;
@@ -11220,6 +11514,9 @@
 
       if (state.ataByStep[key]) {
         delete state.ataByStep[key];
+        if (stepToKey(state.autoAtaLastCapturedStep) === key) {
+          state.autoAtaLastCapturedStep = '';
+        }
         clearSpeedRecommendations(selected);
         return;
       }
@@ -11287,7 +11584,7 @@
 
     function getFlightPlanPlanState(selected) {
       const key = getFlightPlanEtaStartKey(selected);
-      if (!key) return { speedAdjustments: {}, speedDisplayModes: {}, altAdjustments: {}, typeOverrides: {}, lockedStep: '', totSeconds: NaN, lockedStart: null, timeMarks: {}, timingLog: [], postFlightOpen: false, ataByStep: {}, speedRecommendations: {}, totPerformanceByStep: {}, lastOwnshipPos: null, deletedSteps: {}, directToSourceStep: '', directToTargetStep: '', rowActionStep: '', rowActionMode: '', rowRevealStep: '', rowRevealMode: '', coordDisplayMode: 'xy', expandedBottomPanel: '', closingBottomPanel: '', closingBottomPanelUntilUtc: 0 };
+      if (!key) return { speedAdjustments: {}, speedDisplayModes: {}, altAdjustments: {}, typeOverrides: {}, lockedStep: '', totSeconds: NaN, lockedStart: null, timeMarks: {}, timingLog: [], postFlightOpen: false, ataByStep: {}, speedRecommendations: {}, totPerformanceByStep: {}, lastOwnshipPos: null, autoAtaLastOwnshipPos: null, autoAtaLastCapturedStep: '', deletedSteps: {}, directToSourceStep: '', directToTargetStep: '', rowActionStep: '', rowActionMode: '', rowRevealStep: '', rowRevealMode: '', coordDisplayMode: 'xy', expandedBottomPanel: '', closingBottomPanel: '', closingBottomPanelUntilUtc: 0 };
       const existing = fltPlanPlanStateBySelection[key];
       if (existing && typeof existing === 'object') {
         if (!existing.speedAdjustments || typeof existing.speedAdjustments !== 'object') existing.speedAdjustments = {};
@@ -11301,6 +11598,8 @@
         if (!existing.speedRecommendations || typeof existing.speedRecommendations !== 'object') existing.speedRecommendations = {};
         if (!existing.totPerformanceByStep || typeof existing.totPerformanceByStep !== 'object') existing.totPerformanceByStep = {};
         if (!existing.lastOwnshipPos || typeof existing.lastOwnshipPos !== 'object') existing.lastOwnshipPos = null;
+        if (!existing.autoAtaLastOwnshipPos || typeof existing.autoAtaLastOwnshipPos !== 'object') existing.autoAtaLastOwnshipPos = null;
+        if (typeof existing.autoAtaLastCapturedStep !== 'string') existing.autoAtaLastCapturedStep = '';
         if (!existing.deletedSteps || typeof existing.deletedSteps !== 'object') existing.deletedSteps = {};
         if (typeof existing.directToSourceStep !== 'string') existing.directToSourceStep = '';
         if (typeof existing.directToTargetStep !== 'string') existing.directToTargetStep = '';
@@ -11314,7 +11613,7 @@
         if (!isFinite(Number(existing.closingBottomPanelUntilUtc))) existing.closingBottomPanelUntilUtc = 0;
         return existing;
       }
-      const created = { speedAdjustments: {}, speedDisplayModes: {}, altAdjustments: {}, typeOverrides: {}, lockedStep: '', totSeconds: NaN, lockedStart: null, timeMarks: {}, timingLog: [], postFlightOpen: false, ataByStep: {}, speedRecommendations: {}, totPerformanceByStep: {}, lastOwnshipPos: null, deletedSteps: {}, directToSourceStep: '', directToTargetStep: '', rowActionStep: '', rowActionMode: '', rowRevealStep: '', rowRevealMode: '', coordDisplayMode: 'xy', expandedBottomPanel: '', closingBottomPanel: '', closingBottomPanelUntilUtc: 0 };
+      const created = { speedAdjustments: {}, speedDisplayModes: {}, altAdjustments: {}, typeOverrides: {}, lockedStep: '', totSeconds: NaN, lockedStart: null, timeMarks: {}, timingLog: [], postFlightOpen: false, ataByStep: {}, speedRecommendations: {}, totPerformanceByStep: {}, lastOwnshipPos: null, autoAtaLastOwnshipPos: null, autoAtaLastCapturedStep: '', deletedSteps: {}, directToSourceStep: '', directToTargetStep: '', rowActionStep: '', rowActionMode: '', rowRevealStep: '', rowRevealMode: '', coordDisplayMode: 'xy', expandedBottomPanel: '', closingBottomPanel: '', closingBottomPanelUntilUtc: 0 };
       fltPlanPlanStateBySelection[key] = created;
       return created;
     }
@@ -12605,7 +12904,10 @@
                   ip.setAttribute('height', (s * 2).toFixed(1));
                   ip.setAttribute('fill', 'none');
                   ip.setAttribute('stroke', '#2f7f4f');
-                  ip.setAttribute('stroke-width', '2.0');
+                  ip.setAttribute('stroke-width', (props && props.autoAtaPulseActive) ? '2.8' : '2.0');
+                  if (props && props.autoAtaPulseActive) {
+                    ip.setAttribute('stroke', '#d13a3a');
+                  }
                   ip.style.pointerEvents = 'none';
                   return ip;
                 }
@@ -12618,7 +12920,10 @@
                     + (p.x + 8.8).toFixed(1) + ',' + p.y.toFixed(1));
                   tgt.setAttribute('fill', 'none');
                   tgt.setAttribute('stroke', '#a33d3d');
-                  tgt.setAttribute('stroke-width', '2.0');
+                  tgt.setAttribute('stroke-width', (props && props.autoAtaPulseActive) ? '3.0' : '2.0');
+                  if (props && props.autoAtaPulseActive) {
+                    tgt.setAttribute('stroke', '#ff4d4d');
+                  }
                   tgt.style.pointerEvents = 'none';
                   return tgt;
                 }
@@ -12630,6 +12935,9 @@
                   homeRoof.setAttribute('points', roofTop + ' ' + roofL + ' ' + roofR);
                   homeRoof.setAttribute('fill', 'none');
                   homeRoof.setAttribute('stroke', '#735c2f');
+                  if (props && props.autoAtaPulseActive) {
+                    homeRoof.setAttribute('stroke', '#d04444');
+                  }
                   homeRoof.setAttribute('stroke-width', '2.0');
                   const homeBase = makeNode('rect');
                   homeBase.setAttribute('x', (p.x - 7.2).toFixed(1));
@@ -12638,6 +12946,9 @@
                   homeBase.setAttribute('height', '8.8');
                   homeBase.setAttribute('fill', 'none');
                   homeBase.setAttribute('stroke', '#b1945a');
+                  if (props && props.autoAtaPulseActive) {
+                    homeBase.setAttribute('stroke', '#ff6666');
+                  }
                   homeBase.setAttribute('stroke-width', '2.0');
                   const gHome = makeNode('g');
                   gHome.appendChild(homeRoof);
@@ -12656,8 +12967,8 @@
                   raceRect.setAttribute('rx', '9');
                   raceRect.setAttribute('ry', '9');
                   raceRect.setAttribute('fill', 'none');
-                  raceRect.setAttribute('stroke', raceColor);
-                  raceRect.setAttribute('stroke-width', '2.0');
+                  raceRect.setAttribute('stroke', (props && props.autoAtaPulseActive) ? '#d13a3a' : raceColor);
+                  raceRect.setAttribute('stroke-width', (props && props.autoAtaPulseActive) ? '2.8' : '2.0');
                   gRacetrack.appendChild(raceRect);
                   const raceTxt = makeNode('text');
                   raceTxt.setAttribute('x', p.x.toFixed(1));
@@ -13026,7 +13337,11 @@
               c.setAttribute('r', String(Number((props && props.radius) || 5.2)));
               c.setAttribute('fill', fill);
               c.setAttribute('stroke', stroke);
-              c.setAttribute('stroke-width', '1.6');
+              c.setAttribute('stroke-width', (props && props.autoAtaPulseActive) ? '2.6' : '1.6');
+              if (props && props.autoAtaPulseActive) {
+                c.setAttribute('fill', '#ff5a5a');
+                c.setAttribute('stroke', '#bf2b2b');
+              }
               c.style.pointerEvents = 'none';
               return c;
             })();
@@ -13037,6 +13352,9 @@
 
           if (markerNode && (kind === 'waypoint' || kind === 'airfield' || kind === 'user-waypoint')) {
             markerNode.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ') scale(1.5) translate(' + (-p.x).toFixed(1) + ' ' + (-p.y).toFixed(1) + ')');
+            if (props && props.autoAtaPulseActive) {
+              markerNode.setAttribute('filter', 'drop-shadow(0 0 4px rgba(255,72,72,0.95)) drop-shadow(0 0 9px rgba(255,72,72,0.85))');
+            }
           }
 
           if (isSelectable && props.assetKey) {
@@ -16440,6 +16758,8 @@
       state.speedRecommendations = {};
       state.totPerformanceByStep = {};
       state.lastOwnshipPos = null;
+      state.autoAtaLastOwnshipPos = null;
+      state.autoAtaLastCapturedStep = '';
       state.postFlightOpen = false;
     }
 
@@ -19672,6 +19992,12 @@
           }
           return clone;
         });
+      mapRows = applyAltitudeAdjustments(mapRows, selected);
+      mapRows = applyEtaPlanToWaypoints(mapRows, selected);
+      mapRows = applySpeedAdjustmentsToWaypoints(mapRows, selected);
+      mapRows = applyRouteTimeline(mapRows, selected);
+      mapRows = applyLockedTotPlan(mapRows, selected);
+      updateAutoAtaRecSpdCapture(selected, mapRows);
       let resolvedOverlays = overlays && typeof overlays === 'object'
         ? overlays
         : getDtcMapOverlays(root, getDtcRouteBySelection(selected), data);
@@ -19998,6 +20324,7 @@
       applyLockedTotPlan(displayRows, selected);
       applyDistancePlan(displayRows, selected);
       applyHeadingPlan(displayRows, theatre, selected);
+      updateAutoAtaRecSpdCapture(selected, displayRows);
       updateTotOverflyCapture(selected, displayRows);
       const etaHeading = hasTakeoffTimeBySelection(selected) ? 'ETA' : 'ETE';
       const planState = getFlightPlanPlanState(selected);
@@ -21144,6 +21471,7 @@
       }
 
       setStatus(statusText, statusLevel);
+      applyAutoAtaRecPulseUi();
 
       const dlinkBox = document.getElementById('dlinkOn');
       if (dlinkBox) {
@@ -21381,6 +21709,7 @@
         tabBody.className = 'content mainContent';
         tabBody.textContent = formatTabContent(displayData, selectedTab);
       }
+      applyAutoAtaRecPulseUi();
       updateCursorModeForTab();
       const tabBodyEl = document.getElementById('tabBody');
       const hasMetar = selectedTab === 'ATC' && /\bMETAR\s+[A-Z]{4}\b/i.test(tabBodyEl.textContent || '');
@@ -21401,6 +21730,51 @@
         if (keywordPanelEl) keywordPanelEl.style.display = 'flex';
         document.getElementById('keywordTitle').textContent = 'Keywords: ' + tabLabel(selectedTab) + aiCrewPhaseSuffix;
         updateKeywordBodyHtml(formatKeywordReferenceHtml(displayData, selectedTab));
+      }
+
+      if (selectedTab === 'EFB' && normalizeEfbViewerMode(efbViewerMode) === 'sa-map') {
+        const saMapContext = resolveActiveSaMapContext(displayData);
+        const fallbackSelection = '__EFB_OWNSHIP__';
+        const selectionKey = saMapContext && saMapContext.selected
+          ? String(saMapContext.selected)
+          : (!fakeMissionEnabled && getEfbModuleGateState(displayData).allowed ? fallbackSelection : '');
+        if (selectionKey) {
+          const saMapState = buildSaMapRenderState(
+            saMapContext && Array.isArray(saMapContext.waypoints) ? saMapContext.waypoints : [],
+            displayData,
+            selectionKey,
+            saMapContext && saMapContext.overlays ? saMapContext.overlays : {},
+            saMapContext ? saMapContext.root : null,
+            false);
+
+          if (saMapState && saMapState.openFreeMapPayload) {
+            const synced = syncOpenFreeMapForSelection(selectionKey, saMapState.openFreeMapPayload);
+            if (!synced && typeof initializeOpenFreeMapInstances === 'function') {
+              initializeOpenFreeMapInstances();
+            }
+          } else {
+            const fallbackEl = document.querySelector('#efbChartViewport .fltPlanOpenMapFallback');
+            if (fallbackEl) {
+              fallbackEl.style.display = 'block';
+            }
+          }
+
+          if (saMapState && saMapState.openFreeMapPayload && typeof initializeOpenFreeMapInstances === 'function') {
+            const mapHostEl = document.querySelector('#efbChartViewport .fltPlanOpenMapHost');
+            if (mapHostEl && !mapHostEl.firstChild) {
+              initializeOpenFreeMapInstances();
+            }
+          }
+
+          if (typeof applyOpenFreeMapOwnshipCamera === 'function') {
+            applyOpenFreeMapOwnshipCamera(selectionKey, displayData);
+          }
+
+          const readoutEl = document.getElementById('efbSaMapBraReadout');
+          if (readoutEl && saMapState) {
+            readoutEl.textContent = String(saMapState.readout || '');
+          }
+        }
       }
 
       const showRawWrap = document.getElementById('showRawWrap');
@@ -21615,6 +21989,20 @@
       if (!efbAdLandingEnabled) {
         efbAdLandingAssistState.seenAirborne = false;
         efbAdLandingAssistState.triggeredThisWowOn = false;
+      }
+    });
+
+    document.getElementById('overlayAutoAtaRecSpd').addEventListener('change', function (ev) {
+      autoAtaRecSpdEnabled = !!ev.target.checked;
+      persistAutoAtaRecSpdEnabledPreference();
+      applyAutoAtaRecSpdUi();
+      if (!autoAtaRecSpdEnabled) {
+        autoAtaRecPulseUntilUtc = 0;
+        autoAtaRecPulseSpdText = '';
+        applyAutoAtaRecPulseUi();
+      }
+      if (latestData && selectedTab === 'DTC') {
+        render(latestData);
       }
     });
 
@@ -22558,6 +22946,8 @@
     efbSaUseFastOwnshipEnabled = readEfbSaUseFastOwnshipPreference();
     efbAdLandingEnabled = readEfbAdLandingEnabledPreference();
     applyEfbAdLandingUi();
+    autoAtaRecSpdEnabled = readAutoAtaRecSpdEnabledPreference();
+    applyAutoAtaRecSpdUi();
     efbSaNavigraphLayer = readEfbSaNavigraphLayerPreference();
     efbSaShowDoghouses = readEfbSaDoghousesEnabledPreference();
     efbSaShowUserWaypoints = readEfbSaUserWaypointsEnabledPreference();

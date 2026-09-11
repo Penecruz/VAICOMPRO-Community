@@ -98,6 +98,37 @@
       border-radius: 4px;
       padding: 1px 5px;
     }
+    .iconLegendGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .iconLegendItem {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .helpIconSvg {
+      width: 22px;
+      height: 22px;
+      color: #1f3550;
+      flex: 0 0 22px;
+    }
+    .helpIconGlyph {
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      line-height: 1;
+      flex: 0 0 22px;
+    }
   </style>
 </head>
 <body>
@@ -139,8 +170,8 @@
         <h3>Top Quick Bar (FLT PLN context)</h3>
         <ul>
           <li><strong>Files (☰)</strong>: Opens FLT PLN file picker overlay.</li>
-          <li><strong>GPS (🌐GPS)</strong>: Visible when fast ownship stream is available. Click to toggle fast ownship source ON/OFF for troubleshooting versus legacy server-position fallback.</li>
-          <li><strong>GPS long-press (2s)</strong>: Toggles hidden fast-ownship diagnostics (GS, WOW, ALT, HDG, X/Y, source, age).</li>
+          <li><strong>GPS (🌐GPS)</strong>: Visible when EFB's internal GPS is available. Click to toggle EFB GPS source ON/OFF, for more accurate ownship position updates leave GPS on.</li>
+          <li><strong>GPS long-press (2s)</strong>: Toggles hidden Internal GPS diagnostics (GS, WOW, ALT, HDG, X/Y, source, age).</li>
           <li><strong>Session (ℹ)</strong>: Opens session information overlay.</li>
         </ul>
 
@@ -148,15 +179,16 @@
         <ul>
           <li><strong>Tab/Keywords splitter</strong>: Drag the divider between main tab content and keyword panel to resize. Ratio is saved per tab.</li>
           <li><strong>Auto Browse behavior</strong>: When enabled, the active tab can follow runtime category focus updates.</li>
-          <li><strong>Debug panels</strong>: Raw JSON and server message panels are intended for diagnostics and may be hidden when debug mode is not active.</li>
+          <li><strong>Debug panels</strong>: Raw JSON and server message panels are intended for diagnostics and are hidden when debug mode is not active.</li>
         </ul>
 
         <h3>Quick Settings Overlay</h3>
         <ul>
           <li><strong>Auto Browse</strong>: Auto-switches tabs based on session events.</li>
           <li><strong>Night Mode</strong>: Applies darkened styling for low-light readability.</li>
-          <li><strong>DLink ON</strong>: Enables DLink-related behavior where applicable.</li>
-          <li><strong>EFB Display AD on Landing</strong>: Landing-roll assist. When enabled, EFB auto-switches to SA Map and enables AD quick zoom when <code>GS &lt; 80 kts</code> and <code>WOW = ON</code>. It does not auto-revert on takeoff.</li>
+          <li><strong>DLink ON</strong>: Enables Data Link-related behavior where applicable.</li>
+          <li><strong>EFB Display AD on Landing</strong>: Landing-roll assist. When enabled, EFB auto-switches to SA Map and enables AD quick zoom when <code>GS &lt; 80 kts</code> and <code>WOW = ON</code>. It does NOT auto-revert on takeoff.</li>
+          <li><strong>Auto ATA and REC SPD</strong>: Enables automatic ATA capture and speed recommendation workflow on FLT PLN route transit. ATA is captured when ownship crosses within <code>0.5 NM</code> of the next pending waypoint (sim and live modes). On capture, recommended speed to get back on time at the next waypoint is auto-applied and a red 3-digit SPD balloon flashes in EFB.</li>
           <li><strong>Font Size</strong>: Scales dashboard text content.</li>
           <li><strong>Show raw JSON</strong>: Debug output panel for data payloads.</li>
           <li><strong>Show server messages</strong>: Debug panel for server-side messages.</li>
@@ -193,8 +225,8 @@
     <section id="fltpln" class="tab">
       <h2>FLT PLN Tab</h2>
       <p><strong>Overview:</strong> Flight plan viewer for Mission, DTC and RouteTool sourced files.</p>
-      <p><strong>Contains:</strong> Structured table views of selected file content, mission timing, route data, page views (Time/NAVLOG/COM/CMDS/MAP), and map interaction readouts.</p>
-      <p><strong>Purpose:</strong> This tab is intended as the mission planning and in-flight quick-reference board for timing, communications, commands, and route/map awareness.</p>
+      <p><strong>Contains:</strong> Structured table views of selected flight plan content, mission timing, route data, page views (Time/NAVLOG/COM/STORES/CMDS), an interactive Flight plan with DTC and Route tool import capability. Waypoint and flight plan data is passed dynamically to the EFB Moving Map.</p>
+      <p><strong>Purpose:</strong> This tab is intended as the mission planning and with either the mission flight plan or a loaded DTC/RTE plan. It Allows in-flight quick-reference editing and timing management, communications data, stores configuration monitoring, and CMDS program reference.</p>
 
       <div class="controls">
         <img class="helpImage" src="/okb/helpimg?name=fltplntab/FLTPLN_Overview.png" alt="FLT PLN tab overview" />
@@ -233,7 +265,7 @@
           <ul>
             <li>Validate waypoint order, leg continuity, and key route values before push.</li>
             <li>Use table/cell controls to inspect and adjust supported parameters.</li>
-            <li>Use NAVLOG as primary reference during enroute checks and reattacks.</li>
+            <li>Use NAVLOG as primary reference during enroute checks and attack timing.</li>
           </ul>
         </li>
         <li>
@@ -245,20 +277,20 @@
           </ul>
         </li>
         <li>
-          <strong>Maintain tactical picture (MAP page)</strong>
+          <strong>Maintain tactical picture (EFB MAP page)</strong>
           <ul>
-            <li>Toggle <strong>BG ON/OFF</strong> based on readability and mission need.</li>
-            <li>Use zoom/pan to inspect route legs, target area geometry, and divert options.</li>
-            <li>Use selection readouts for asset context and BRA/B-E style awareness where available.</li>
-            <li>Keep <strong>D-LINK ON</strong> when coalition datalink overlays are required.</li>
+              <li>Use zoom/pan to inspect route legs, target area geometry, and divert options.</li>
+              <li>Use the auto generated doghouse data blocks on route legs to fly the configured flight profile and timing.</li>
+              <li>Use selection readouts for asset context and BRA/B-E style awareness where available.</li>
+              <li>Keep <strong>D-LINK ON</strong> when coalition datalink overlays are required (requires an airborne AWACS, on task, to supply live data).</li>
           </ul>
         </li>
         <li>
           <strong>Execute in-mission update loop</strong>
           <ul>
-            <li>Cycle pages as needed: TIME (timing), NAVLOG (route), COM (radios), CMDS/STORES (systems), MAP (SA).</li>
-            <li>Re-check timing after major events (takeoff, push, IP, target actions, egress, divert).</li>
-            <li>Use debug views only when troubleshooting data mismatches (raw JSON / server messages).</li>
+            <li>Cycle pages as needed: TIME (timing), NAVLOG (route), COM (radios), CMDS/STORES (systems), EFB MAP.</li>
+            <li>Re-check timing after major events (takeoff, push, IP, target actions, egress, divert). Clicking an ETA will make it an ATA and provide updated timing information and a recommended speed schedule to recover timeline.</li>
+            <li>Use EFB map to monitor route progress and update tactical picture.</li>
           </ul>
         </li>
         <li>
@@ -278,7 +310,7 @@
 
           <ul>
               <li><strong>Files (☰)</strong>: Lists detected FLT PLN files and lets you select one.</li>
-              <li><strong>GPS (🌐GPS)</strong>: Fast ownship source toggle (fast feed versus legacy server fallback).</li>
+              <li><strong>GPS (🌐GPS)</strong>: Toggle EFB internal GPS source.</li>
               <li><strong>Session (ℹ)</strong>: Displays current mission/session state in a popup.</li>
               <li><strong>Refresh behavior</strong>: File list refresh is managed through current workflow and runtime updates.</li>
           </ul>
@@ -307,9 +339,11 @@
               <li>In-cell pop-up controls allow adjustment of supported waypoint parameters.</li>
               <li>Clicking editable cells opens embedded pop-up editors (in-place) for quick value changes without leaving NAVLOG context.</li>
               <li><strong>TOT speed recommendation action</strong>: If a speed value is flashing as recommended, tapping it applies that recommendation directly. After set, tapping again opens the normal speed edit popup.</li>
+              <li><strong>ETA/ATA toggle behavior</strong>: Tap a waypoint ETA value to mark ATA for that step. Tap the same ATA value again to clear ATA and return that cell to its original ETA display.</li>
+              <li><strong>Auto ATA and REC SPEED sequence gating</strong>: If selected on in the Settings, Auto ATA processes the first pending waypoint only, so another close/co-located waypoint does not both trigger in the same update. It will then lock in recommended speed and a pulsing speed popup will be displayed on the EFB Moving Map.</li>
               <li>Clicking certain cell headers changes data units where applicable.</li>
               <li>Useful for cockpit cross-check against aircraft systems and required TOT, ATA and ETAs.</li>
-              <li><strong>Runtime stability model</strong>: Runtime route display uses a stabilized mission snapshot to avoid in-flight flicker while still allowing other live data lanes to update.</li>
+              <li><strong>The Navlog has a stability model</strong>: Runtime route display uses a stabilized mission route snapshot while still allowing other live data lanes to update Frequencies, METAR and Assets.</li>
           </ul>
 
           <h3>COM</h3>
@@ -322,7 +356,7 @@
           <h3>STORES</h3>
           <ul>
               <li>Stores reference page for munitions, fuel, and other external stores when loaded on the jet.</li>
-              <li>Updated dynamically and allows rapidin-flight validation.</li>
+              <li>Updated dynamically and allows rapid in-flight validation and reference.</li>
               <li>Ideal for confirming stores station position, hung ordnance, and other critical information.</li>
           </ul>
 
@@ -336,22 +370,12 @@
       <h3>Data Sources and Notes</h3>
       <div class="controls">
         <ul>
-          <li><strong>Runtime route source</strong>: Mission runtime route is auto-selected when no explicit DTC file override is active.</li>
+          <li><strong>Runtime route source</strong>: Mission runtime route is auto-selected when no explicit DTC file or Route Tool route (RTE) override is active.</li>
           <li><strong>DTC files</strong>: Loaded from Saved Games DTC export paths when available.</li>
           <li><strong>RouteTool files</strong>: Parsed from RouteTool preset output where supported.</li>
           <li><strong>Embedded edit controls</strong>: Cell-activated pop-up editors are contextual and only appear on supported fields/pages.</li>
-          <li><strong>Fallback behavior</strong>: If structured rendering is unavailable, a plain formatted data view is shown.</li>
+          <li><strong>Fallback behavior</strong>: If structured rendering is unavailable due to a corrupted DTC/RTE file, a plain formatted data view is shown.</li>
           <li><strong>Debug support</strong>: Use global debug toggles (raw JSON/server messages) for troubleshooting content flow.</li>
-        </ul>
-      </div>
-
-      <h3>Planned Expansion</h3>
-      <div class="controls">
-        <ul>
-          <li>Add annotated screenshots for each page mode (TIME/NAVLOG/COM/CMDS/MAP).</li>
-          <li>Add icon callouts tied to actual button locations.</li>
-          <li>Add sample mission walkthrough blocks with expected outputs.</li>
-          <li>Add troubleshooting matrix for missing route/map data conditions.</li>
         </ul>
       </div>
 
@@ -360,7 +384,7 @@
         <ul>
           <li><strong>Files (☰)</strong>: Lists detected FLT PLN files and lets you select one.</li>
           <li><strong>Session (ℹ)</strong>: Displays current mission/session state in a popup.</li>
-          <li><strong>Refresh behavior</strong>: File list refresh is managed through current workflow and runtime updates.</li>
+          <li><strong>Refresh behavior</strong>: File list refresh is managed through current list workflow and runtime updates.</li>
         </ul>
       </div>
     </section>
@@ -450,14 +474,14 @@
         <h3>How To Use It</h3>
         <ul>
           <li>Use this tab to confirm the latest nine-line details before attacking.</li>
-          <li>Cross-reference the JTAC text with EFB SA Map symbols for rapid talk-on and run-in planning.</li>
+          <li>Cross-reference the JTAC text with EFB Moving Map symbols for rapid talk-on and run-in planning.</li>
           <li>Use FLT PLN NAVLOG (IP/route) with JTAC attack-sector markup to build ingress alignment and attack geometry awareness.</li>
         </ul>
 
-        <h3>EFB SA Map JTAC Markup (What Each Element Means)</h3>
+        <h3>EFB Moving Map JTAC Markup (What Each Element Means)</h3>
         <ul>
           <li><strong>Active JTAC TGT</strong>: Current assigned target from the most recent valid nine-line burst.</li>
-          <li><strong>Friendly marker/line</strong>: Friendly reference from line 8 when available. A dotted line extensing from the TGT to the location of the friendly troops in contact.</li>
+          <li><strong>Friendly marker/line</strong>: Friendly reference from line 8 when available. A dotted line extending from the TGT to the location of the friendly troops in contact.</li>
           <li><strong>Egress cue</strong>: Egress direction marker/line from line 9 when available. A red arrow that shows the required egress heading extending from the TGT 5 NM.</li>
           <li><strong>Attack sector</strong>: Reciprocal attack-heading sector from remarks/final heading constraints. A green arc sector that defines the direction to attack from, graduated in 5 NM sections.</li>
           <li><strong>Sector range bands</strong>: 1-5nm (primary), 5-10nm (lighter), 10-15nm (lightest) for longer fast-jet run-in planning.</li>
@@ -501,7 +525,7 @@
 
         <h3>What Is Displayed</h3>
         <ul>
-          <li><strong>Availability</strong>: Tankers currently detectable and offering AAR support.</li>
+          <li><strong>Availability</strong>: Tankers currently detectable and offering AAR support (must be on task).</li>
           <li><strong>Comms/nav data</strong>: Frequency and TACAN lines from runtime asset metadata when present.</li>
           <li><strong>Reference phrases</strong>: Tanker-related command/help phrases and common response cues.</li>
         </ul>
@@ -653,16 +677,53 @@
           <img class="helpImage" src="/okb/helpimg?name=efbtab/EFB_Overview2.png" alt="EFB tab overview2" />
           <div class="helpImageCaption">Figure EFB-2. EFB tab Airport Charts.</div>
 
+          <h3>EFB Icon Legend (SVG)</h3>
+          <p class="muted">Icons used in OKB Out for EFB control rails and SA layers.</p>
+
+          <h3>Left Rail</h3>
+          <div class="iconLegendGrid">
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 50V17l14-6 12 5 12-5v33l-12 5-12-5-14 6z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><line x1="22" y1="11" x2="22" y2="56" stroke="currentColor" stroke-width="3"/><line x1="34" y1="16" x2="34" y2="49" stroke="currentColor" stroke-width="3"/><path d="M46 17c-5.4 0-9.8 4.4-9.8 9.8 0 6.8 9.8 17.1 9.8 17.1S55.8 33.6 55.8 26.8c0-5.4-4.4-9.8-9.8-9.8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="46" cy="26.8" r="2.8" fill="currentColor"/></svg><span>Moving Map/Charts toggle (Map view icon)</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="11" y="7" width="42" height="50" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="3.5"/><line x1="11" y1="16" x2="53" y2="16" stroke="currentColor" stroke-width="2.6"/><line x1="14" y1="12" x2="30" y2="12" stroke="currentColor" stroke-width="2"/><line x1="34" y1="12" x2="50" y2="12" stroke="currentColor" stroke-width="2"/><path d="M16 45c4-7 10-9 15-7 4 2 9 2 17-3" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg><span>Moving Map/Charts toggle (Chart view icon)</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 30L56 8 43 56 31 43 22 49 19 39 8 30z" fill="currentColor"/><path d="M14 31L48 14 30 39z" fill="#f1f1ef" opacity="0.92"/></svg><span>Center ownship</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,10 52,48 12,48" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="32" cy="37" r="3" fill="currentColor"/></svg><span>User waypoint drawer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 24h24v5h-3l2 9h-7l-2-7h-8l-2 7h-7l2-9h-3z" fill="currentColor"/><rect x="22" y="38" width="8" height="14" fill="currentColor"/><rect x="15" y="52" width="22" height="4" fill="currentColor"/><circle cx="48" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2.8"/><line x1="38" y1="20" x2="58" y2="20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><line x1="48" y1="10" x2="48" y2="30" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="48" cy="20" r="2.6" fill="currentColor"/></svg><span>Auto nearest airport</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 24h36v6h-4l2 9h-8l-2-7h-12l-2 7h-8l2-9h-4z" fill="currentColor"/><rect x="27" y="39" width="10" height="15" fill="currentColor"/><rect x="18" y="54" width="28" height="4" fill="currentColor"/></svg><span>Airport charts drawer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 11c8 0 14 6 14 14h-6l9 9 9-9h-6c0-11-9-20-20-20-8 0-15 5-18 12l5 2c2.2-5 7.2-8 13-8z" fill="currentColor"/><path d="M13 39h6c0 11 9 20 20 20 8 0 15-5 18-12l-5-2c-2.2 5-7.2 8-13 8-8 0-14-6-14-14h6l-9-9-9 9z" fill="currentColor"/></svg><span>Pinned charts drawer</span></div>
+            <div class="iconLegendItem"><span class="helpIconGlyph" aria-hidden="true">📌</span><span>Quick pin toggle</span></div>
+          </div>
+
           <h3>Mode and Left Rail Controls</h3>
           <ul>
-              <li><strong>SA Map toggle</strong>: Switches the EFB viewport between chart mode and SA Map mode.</li>
-              <li><strong>Auto (crosshair + tower)</strong>: Resolves/selects airport from current mission context, then opens the chart list for that airport.</li>
-              <li><strong>Airport (🗼)</strong>: Opens airport list drawer first; selecting an airport opens its chart list.</li>
+              <li><strong>Moving Map/Charts toggle</strong>: Switches the EFB viewport between chart mode and Moving Map mode.</li>
+              <li><strong>Auto Nearest Airport</strong>: Resolves/selects airport from current mission context, then opens the chart list for that airport.</li>
+              <li><strong>Airports</strong>: Opens airport list drawer first; selecting an airport opens its chart list.</li>
               <li><strong>Pinned drawer (loop icon)</strong>: Opens pinned charts drawer (favorites) for quick chart cycling from your saved set.</li>
-              <li><strong>Quick Pin (📌)</strong>: Pins/unpins the currently displayed chart without opening a drawer.</li>
+              <li><strong>Quick Pin</strong>: Pins/unpins the currently displayed chart without opening a drawer.</li>
               <li><strong>Search</strong>: Opens the stylus-oriented chart search overlay with radial character input and center token display.</li>
               <li><strong>Layers</strong>: Opens the SA Map layers drawer when SA Map mode is active.</li>
           </ul>
+
+          <h3>Moving Map Navigation / Framing</h3>
+          <div class="iconLegendGrid">
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="14" fill="none" stroke="currentColor" stroke-width="3"/><line x1="32" y1="8" x2="32" y2="20" stroke="currentColor" stroke-width="3"/><line x1="32" y1="44" x2="32" y2="56" stroke="currentColor" stroke-width="3"/><line x1="8" y1="32" x2="20" y2="32" stroke="currentColor" stroke-width="3"/><line x1="44" y1="32" x2="56" y2="32" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="32" r="3.8" fill="currentColor"/></svg><span>Follow ownship</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,8 46,46 32,38 18,46" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="32" y1="18" x2="32" y2="40" stroke="currentColor" stroke-width="3"/></svg><span>Track-up/North Up Toggle</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="5" fill="none" stroke="currentColor" stroke-width="3"/><line x1="32" y1="16" x2="32" y2="48" stroke="currentColor" stroke-width="3"/><line x1="16" y1="32" x2="48" y2="32" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="32" r="3.2" fill="currentColor"/></svg><span>Anchor center</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="5" fill="none" stroke="currentColor" stroke-width="3"/><line x1="16" y1="32" x2="48" y2="32" stroke="currentColor" stroke-width="2.3" opacity="0.55"/><line x1="16" y1="42" x2="48" y2="42" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="42" r="3.2" fill="currentColor"/></svg><span>Anchor lower-third</span></div>
+          </div>
+
+          <h3>Moving Map Layers Drawer</h3>
+          <div class="iconLegendGrid">
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="44" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><rect x="10" y="27" width="44" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><rect x="10" y="42" width="44" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Layers drawer button</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><text x="32" y="48" text-anchor="middle" font-size="40" font-weight="700" fill="currentColor" font-family="Consolas, monospace">DL</text></svg><span>D-Link layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,11 53,32 32,53 11,32" fill="none" stroke="currentColor" stroke-width="3"/><line x1="32" y1="17" x2="32" y2="47" stroke="currentColor" stroke-width="3"/><line x1="17" y1="32" x2="47" y2="32" stroke="currentColor" stroke-width="3"/></svg><span>JTAC layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 24h36v6h-4l2 9h-8l-2-7h-12l-2 7h-8l2-9h-4z" fill="currentColor"/><rect x="27" y="39" width="10" height="15" fill="currentColor"/><rect x="18" y="54" width="28" height="4" fill="currentColor"/></svg><span>Airports layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="32" r="7" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="7" fill="none" stroke="currentColor" stroke-width="3"/><line x1="26" y1="30" x2="38" y2="22" stroke="currentColor" stroke-width="3"/><line x1="26" y1="34" x2="38" y2="42" stroke="currentColor" stroke-width="3"/></svg><span>Navlog layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><polygon points="18,27 32,13 46,27" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><rect x="15" y="27" width="34" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="3.4"/><line x1="22" y1="35" x2="42" y2="35" stroke="currentColor" stroke-width="2.4"/><line x1="22" y1="42" x2="36" y2="42" stroke="currentColor" stroke-width="2.4"/></svg><span>Doghouses layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><polygon points="32,10 52,48 12,48" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="32" cy="37" r="2.8" fill="currentColor"/></svg><span>User waypoints layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="12" width="40" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><line x1="20" y1="44" x2="44" y2="20" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="42" cy="42" r="4" fill="none" stroke="currentColor" stroke-width="2.5"/></svg><span>DTC overlays layer</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="7" fill="none" stroke="currentColor" stroke-width="3.4"/><text x="32" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="Consolas, monospace">VFR</text></svg><span>Navigraph base layer: VFR</span></div>
+            <div class="iconLegendItem"><svg class="helpIconSvg" viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="7" fill="none" stroke="currentColor" stroke-width="3.4"/><text x="32" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="Consolas, monospace">IFR</text><text x="32" y="49" text-anchor="middle" font-size="14.6" font-weight="700" fill="currentColor" font-family="Consolas, monospace">LOW</text></svg><span>Navigraph base layer: IFR Low/Hi</span></div>
+          </div>
 
           <h3>Drawer Lists and Pinning</h3>
           <ul>
@@ -690,7 +751,7 @@
               <li><strong>Pan/drag</strong>: Click-drag in chart viewport to move the chart image.</li>
           </ul>
 
-          <h3>SA Map Controls</h3>
+          <h3>Moving Map Controls and Indicators</h3>
           <ul>
               <li><strong>Center Ownship</strong>: Recenters the map on ownship immediately.</li>
               <li><strong>Follow Ownship</strong>: Keeps map camera centered/anchored on ownship until explicitly turned OFF.</li>
@@ -699,23 +760,28 @@
               <li><strong>Map zoom controls</strong>: The same right-rail zoom controls apply in SA Map mode.</li>
                <li><strong>Mode-specific right rail</strong>: Rotation tools are chart-mode controls and are replaced by AD quick zoom in SA Map mode.</li>
               <li><strong>AD quick zoom</strong>: In SA Map mode, the right-rail AD control replaces chart rotation tools. First press zooms to aerodrome/taxi detail near ownship. Second press restores the pre-AD zoom level while preserving follow behavior.</li>
+              <li><strong>TOT Transit cueing</strong>: When Auto ATA captures a waypoint transit, the waypoint symbol is highlighted/pulsed and the EFB top-center 3-digit recommended SPD balloon flashes.</li>
           </ul>
 
-          <h3>Chart Mode vs SA Map Right Rail</h3>
+          <h3>Chart Mode vs Moving Map Right Rail</h3>
           <ul>
               <li><strong>Chart mode</strong>: Rotation drawer/tools are available for chart orientation tasks.</li>
-              <li><strong>SA Map mode</strong>: Rotation drawer/tools are hidden and AD quick zoom is shown in the same control slot.</li>
+              <li><strong>Moving Map mode</strong>: Rotation drawer/tools are hidden and AD quick zoom is shown in the same control slot.</li>
           </ul>
 
-          <h3>SA Map Layers Drawer</h3>
+          <h3>Moving Map Layers Drawer</h3>
           <ul>
+              <li><strong>Navigraph Chart Style</strong>: Cycle Navigraph chart layer VFR, IFR Low and IFR Hi.</li>
               <li><strong>D-Link assets</strong>: Show/hide friendly tactical assets while keeping ownship available.</li>
+              <li><strong>JTAC</strong>: Show/hide JTAC targets and related Moving Map support markup.</li>
               <li><strong>Airports</strong>: Show/hide airfield symbols and labels.</li>
               <li><strong>Navlog route</strong>: Show/hide active route line and waypoint set.</li>
+              <li><strong>Doghouses</strong>: Show/hide leg doghouse blocks (MH, DIST, ETE, ALT) generated from the active navlog route.</li>
+              <li><strong>User waypoints</strong>: Show/hide custom user waypoint symbols and labels.</li>
               <li><strong>DTC overlays</strong>: Show/hide DTC map overlays (threats, GEO lines, points, etc.).</li>
           </ul>
 
-          <h3>SA Map Interaction Use Cases</h3>
+          <h3>Moving Map Interaction Use Cases</h3>
           <ul>
               <li><strong>Bug an asset/airfield</strong>: Tap/click symbols to select/deselect and show related detail context.</li>
               <li><strong>Manual inspect while following</strong>: Drag/zoom/rotate temporarily suppresses follow recentering, then follow resumes automatically.</li>

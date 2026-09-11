@@ -26,6 +26,8 @@
 - Disable text selection across the entire OpenKneeboard Out console UI to avoid messy selection highlights.
 - For OpenKneeboard SA map integration, attribution is already auto-rendered in the map UI, so do not add an extra footer attribution block.
 - For OKB work, keep HTML separated from OpenKneeboardBridge.cs in dedicated HTML files (e.g., OKB.html) and continue separating OKB UI code from bridge logic going forward.
+- In OKB UI, all tab messages should use the same buffering (padding), style, and night mode treatment.
+- When adding or changing OKB Out features, always update OKBHelpDoc.html to document settings, Icons, layer drawer items and other additions and changes in behavior.
 
 ## F-4E ICS Implementation
 - For F-4E ICS hot mic implementation, ignore WSO ICS state entirely and use only pilot ICS switch state because WSO seat occupancy disables WSO functions.
