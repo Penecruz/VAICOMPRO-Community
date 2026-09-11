@@ -111,11 +111,11 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeTadsZoomIn":
                 case "wMsgGeorgeTargetListZoomIn":
                 case "wMsgGeorgeStartUpFull":
-                case "wMsgGeorgeIncreaseAltitude":
                 case "wMsgGeorgeOrbitOverhead":
                     AddGeorgeLongButton(AH64GeorgeButton.Up);
                     break;
                 case "wMsgGeorgeHoverForward":
+                case "wMsgGeorgeIncreaseAltitude":
                     AddGeorgeLongHoldButton(AH64GeorgeButton.Up, 1000);
                     break;
                 // Down Long Presses
@@ -124,13 +124,13 @@ namespace VAICOM.Extensions.AICPG
                 case "wMsgGeorgeTargetListZoomOut":
                 case "wMsgGeorgeLastFoundTarget":
                 case "wMsgGeorgeShutdownFull":
-                case "wMsgGeorgeDecreaseAltitude":
                 case "wMsgGeorgeBreakOneEighty":
                 case "wMsgGeorgeThreatWarningsOn":
                 case "wMsgGeorgeThreatWarningsOff":
                     AddGeorgeLongButton(AH64GeorgeButton.Down);
                     break;
                 case "wMsgGeorgeHoverBack":
+                case "wMsgGeorgeDecreaseAltitude":
                     AddGeorgeLongHoldButton(AH64GeorgeButton.Down, 1000);
                     break;
                 // Left Long Presses
