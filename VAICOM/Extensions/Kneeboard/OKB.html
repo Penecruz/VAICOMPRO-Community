@@ -3633,6 +3633,7 @@
     let autoAtaWaypointPulseUntilByKey = {};
     let efbSaOwnshipFast = { hasPosition: false, posX: NaN, posY: NaN, altFeet: NaN, headingDeg: NaN, hasHeading: false, hasGroundSpeed: false, groundSpeedKnots: NaN, hasWow: false, wow: -1, theater: '', updatedUtcMs: 0, lastPollMs: 0 };
     let efbAdLandingAssistState = { seenAirborne: false, triggeredThisWowOn: false };
+    let autoTakeoffBySelection = {};
     let efbFastOwnshipDebugPanelVisible = false;
     let fastOwnshipLongPressTimerId = 0;
     let fastOwnshipLongPressFired = false;
@@ -12001,6 +12002,60 @@
       const server = (latestData && latestData.Server) || {};
       return { north: Number(server.PlayerPosX), east: Number(server.PlayerPosY) };
     }
+      // WIP auto takeoff logging incomplete, but this is the best we can do for now until we have a better ownship data source.
+    function updateAutoTakeoffCaptureFromFastOwnship(data) {
+      if (!autoAtaRecSpdEnabled) return;
+      if (fakeMissionEnabled) return;
+      if (!efbSaUseFastOwnshipEnabled) return;
+
+      const selected = getActiveFlightPlanSelection(data || latestData);
+      if (!selected) return;
+
+      const state = getFlightPlanPlanState(selected);
+      const key = getFlightPlanEtaStartKey(selected);
+      if (!state || !key) return;
+      if (!state.timeMarks || typeof state.timeMarks !== 'object') state.timeMarks = {};
+      if (!Array.isArray(state.timingLog)) state.timingLog = [];
+
+      const wow = Number(efbSaOwnshipFast && efbSaOwnshipFast.wow);
+      const hasWow = !!(efbSaOwnshipFast && efbSaOwnshipFast.hasWow);
+      const gs = Number(efbSaOwnshipFast && efbSaOwnshipFast.groundSpeedKnots);
+      const hasGs = !!(efbSaOwnshipFast && efbSaOwnshipFast.hasGroundSpeed) && isFinite(gs);
+      const mark = autoTakeoffBySelection[key] || { wasWowOn: false, captured: false };
+
+      if (!hasWow) {
+        autoTakeoffBySelection[key] = mark;
+        return;
+      }
+
+      if (wow === 1) {
+        mark.wasWowOn = true;
+        autoTakeoffBySelection[key] = mark;
+        return;
+      }
+
+      if (wow !== 0) {
+        autoTakeoffBySelection[key] = mark;
+        return;
+      }
+
+      if (!mark.wasWowOn || mark.captured) {
+        autoTakeoffBySelection[key] = mark;
+        return;
+      }
+
+      // Small speed gate to avoid WOW bounce/noise while still on deck.
+      if (hasGs && gs < 35) {
+        autoTakeoffBySelection[key] = mark;
+        return;
+      }
+
+      // Always lock actual takeoff on first WOW ON->OFF transition, even if pre-populated by STEP/START/TAXI.
+      // Subsequent user edits are respected because we only auto-capture once per flight selection.
+      setTakeoffTimeByAnchorFromNow(selected, 'TAKEOFF');
+      mark.captured = true;
+      autoTakeoffBySelection[key] = mark;
+    }
 
     function updateTotOverflyCapture(selected, rows) {
       const list = Array.isArray(rows) ? rows : [];
@@ -16884,6 +16939,7 @@
       if (!key) return;
       const state = getFlightPlanPlanState(selected);
       delete fltPlanEtaStartBySelection[key];
+      delete autoTakeoffBySelection[key];
       state.timeMarks = {};
       state.timingLog = [];
       state.ataByStep = {};
@@ -20456,6 +20512,7 @@
       applyLockedTotPlan(displayRows, selected);
       applyDistancePlan(displayRows, selected);
       applyHeadingPlan(displayRows, theatre, selected);
+      updateAutoTakeoffCaptureFromFastOwnship(data);
       updateAutoAtaRecSpdCapture(selected, displayRows);
       updateTotOverflyCapture(selected, displayRows);
       const etaHeading = hasTakeoffTimeBySelection(selected) ? 'ETA' : 'ETE';
