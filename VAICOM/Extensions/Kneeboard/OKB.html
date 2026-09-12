@@ -3368,7 +3368,7 @@
       </div>
 
       <div class="controls legacyControls">
-        <label><input id="autoBrowse" type="checkbox" checked> Auto Browse</label>
+        <label><input id="autoBrowse" type="checkbox"> Auto Browse</label>
         <label><input id="nightMode" type="checkbox"> Night Mode</label>
         <label><input id="dlinkOn" type="checkbox" checked> DLink ON</label>
         <label>Font Size <input id="fontSizeSlider" type="range" min="18" max="34" step="1" value="24"></label>
@@ -3481,7 +3481,7 @@
     const OKB_ACTION_TAB_NEXT = OKB_CUSTOM_ACTION_PREFIX + 'tab-next';
     const OKB_ACTION_TAB_SELECT = OKB_CUSTOM_ACTION_PREFIX + 'tab-select';
     let selectedTab = 'LOG';
-    let autoBrowse = true;
+    let autoBrowse = false;
     let sessionCollapsed = false;
     let latestData = null;
     let showServerMessages = false;
@@ -3571,7 +3571,7 @@
     const autoAtaRecSpdEnabledStorageKey = 'vaicom.okb.autoAtaRecSpdEnabled';
     const drawModeTimeoutMs = 30000;
     const speedRecommendationTimeoutMs = 30000;
-    const autoAtaCaptureThresholdMeters = 0.5 * 1852;
+    const autoAtaCaptureThresholdMeters = 0.75 * 1852;
     const autoAtaCaptureReleaseMeters = 0.35 * 1852;
     const autoAtaRecPulseDurationMs = speedRecommendationTimeoutMs;
     const autoAtaWaypointPulseDurationMs = 6000;
@@ -8592,10 +8592,10 @@
       }
 
       buildSpeedRecommendationsForAta(selected, key);
-      const pulseSpdText = getAutoAtaRecDisplaySpd(selected);
+      const pulseState = getAutoAtaRecDisplayState(selected);
       lockInSpeedRecommendations(selected);
-      if (pulseSpdText) {
-        triggerAutoAtaRecPulse(pulseSpdText);
+      if (pulseState && pulseState.spdText) {
+        triggerAutoAtaRecPulse(pulseState.spdText, pulseState.noteText, pulseState.unable);
       }
       markAutoAtaWaypointPulse(key);
       return true;
@@ -8622,9 +8622,19 @@
         : null;
       state.autoAtaLastOwnshipPos = { north: own.north, east: own.east };
 
+      const isRuntimeSelection = String(selected || '').trim() === '__RUNTIME_PLAYER__';
+      const lastActiveKey = stepToKey(activeRows[activeRows.length - 1] && activeRows[activeRows.length - 1].step);
       const pendingRows = activeRows.filter(function (wp) {
         const k = stepToKey(wp && wp.step);
-        return !!k && !(state.ataByStep && state.ataByStep[k]);
+        if (!k) return false;
+        if (k === lastActiveKey) return false;
+        if (isRuntimeSelection) {
+          const displayStep = Number(wp && wp.stepDisplay);
+          if (isFinite(displayStep) && displayStep <= 0) return false;
+        }
+        const stepNum = Number(k);
+        if (k === '0' || (isFinite(stepNum) && stepNum === 0)) return false;
+        return !(state.ataByStep && state.ataByStep[k]);
       });
       if (!pendingRows.length) return;
 
@@ -8675,7 +8685,7 @@
         const etaText = String(candidate.etaDisplay || candidate.eta || '').trim();
         if (!etaText) continue;
 
-        if (captureAutoWaypointAta(selected, candidateKey, etaText, '1/2NM')) {
+        if (captureAutoWaypointAta(selected, candidateKey, etaText, '3/4NM')) {
           state.autoAtaLastCapturedStep = candidateKey;
           captured = true;
           break;
@@ -11314,15 +11324,11 @@
     }
 
     function getRecommendationMinKcas(altFeet) {
-      const alt = Math.max(0, Number(altFeet) || 0);
-      const machMinKcas = (0.52 * 661.47) / (1.0 + (alt / 100000.0));
-      return Math.max(220, machMinKcas);
+      return 220;
     }
 
     function getRecommendationMaxKcas(altFeet) {
-      const alt = Math.max(0, Number(altFeet) || 0);
-      const machMaxKcas = (0.98 * 661.47) / (1.0 + (alt / 100000.0));
-      return Math.min(700, machMaxKcas);
+      return 700;
     }
 
     function isKcasWithinRecommendationLimits(kcas, altFeet) {
@@ -11348,8 +11354,8 @@
       const min = getRecommendationMinKcas(altFeet);
       const max = getRecommendationMaxKcas(altFeet);
       if (!isFinite(min) || !isFinite(max) || max < min) return NaN;
-      const adjusted = Math.max(min, rounded);
-      return adjusted <= max ? adjusted : NaN;
+      if (rounded < min || rounded > max) return NaN;
+      return rounded;
     }
 
     function setSpeedRecommendation(state, step, recommendedKcas, useRed) {
@@ -11367,15 +11373,12 @@
     function resolveEtaTargetSecondsFromAta(plannedEtaSeconds, ataActualSeconds, ataPlannedSeconds) {
       const plannedEta = Number(plannedEtaSeconds);
       const actualAta = Number(ataActualSeconds);
-      const plannedAta = Number(ataPlannedSeconds);
       if (!isFinite(plannedEta) || !isFinite(actualAta)) return NaN;
 
-      // Step 1: align the ETA timeline to the recorded ATA offset when available.
-      let target = isFinite(plannedAta)
-        ? (plannedEta + (actualAta - plannedAta))
-        : plannedEta;
+      // Target the listed plan ETA directly so REC SPD reflects required recovery to schedule.
+      let target = plannedEta;
 
-      // Step 2: keep the target in the future relative to the ATA event.
+      // Keep the target in the future relative to the ATA event.
       while (target <= actualAta) {
         target += 86400;
       }
@@ -11671,6 +11674,10 @@
       }
 
       buildSpeedRecommendationsForAta(selected, key);
+      const pulseState = getAutoAtaRecDisplayState(selected);
+      if (pulseState && pulseState.spdText) {
+        triggerAutoAtaRecPulse(pulseState.spdText, pulseState.noteText, pulseState.unable);
+      }
     }
 
     function hasTakeoffTimeBySelection(selected) {
@@ -11984,6 +11991,11 @@
     function getOwnshipNorthEast() {
       if (fakeMissionEnabled && fakeMissionState) {
         return { north: Number(fakeMissionState.playerX), east: Number(fakeMissionState.playerY) };
+      }
+
+      const fastOwnship = getFastOwnshipMapPoint(2000);
+      if (fastOwnship && isFinite(Number(fastOwnship.xNum)) && isFinite(Number(fastOwnship.yNum))) {
+        return { north: Number(fastOwnship.xNum), east: Number(fastOwnship.yNum) };
       }
 
       const server = (latestData && latestData.Server) || {};

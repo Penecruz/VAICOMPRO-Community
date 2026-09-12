@@ -31,6 +31,7 @@ namespace VAICOM
                 private static readonly object TileRequestModeSync = new object();
                 private static readonly ConcurrentDictionary<string, object> TileFetchLocks = new ConcurrentDictionary<string, object>(StringComparer.Ordinal);
                 private static DateTime LastPreflightRefreshUtc = DateTime.MinValue;
+                private static DateTime LastForcedTileCookieRefreshUtc = DateTime.MinValue;
                 private static bool? PreferTileBearerAuth = null;
                 private static bool? PreferTileTmsY = null;
                 private static Dictionary<string, HashSet<string>> IcaoAirportsByTheatre;
@@ -358,13 +359,13 @@ namespace VAICOM
                         }
 
                         JObject token = JObject.Parse(authPayload);
-                        if (HasUsableAccessToken(token))
+                        if (HasUsableAccessToken(token) && HasUsableTileCookies(token))
                         {
                             return true;
                         }
 
                         string msg;
-                        bool refreshed = OpenKneeboardNavigraphOAuthService.TryRefreshAccessToken(out msg);
+                        bool refreshed = OpenKneeboardNavigraphOAuthService.TryRefreshAccessToken(out msg, true);
                         try { Log.Write(refreshed ? "Navigraph token refresh: received." : ("Navigraph token refresh failed: " + msg), refreshed ? VAICOM.Static.Colors.Text : VAICOM.Static.Colors.Warning); } catch { }
                         if (refreshed)
                         {
@@ -373,6 +374,75 @@ namespace VAICOM
                                 LastPreflightRefreshUtc = DateTime.UtcNow;
                             }
                         }
+                        return refreshed;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+
+                private static bool HasUsableTileCookies(JObject token)
+                {
+                    try
+                    {
+                        if (token == null)
+                        {
+                            return false;
+                        }
+
+                        string policy = (string)token["tile_cookie_policy"] ?? "";
+                        string signature = (string)token["tile_cookie_signature"] ?? "";
+                        string keyPairId = (string)token["tile_cookie_keypairid"] ?? "";
+                        if (string.IsNullOrWhiteSpace(policy)
+                            || string.IsNullOrWhiteSpace(signature)
+                            || string.IsNullOrWhiteSpace(keyPairId))
+                        {
+                            return false;
+                        }
+
+                        DateTime obtainedUtc;
+                        if (DateTime.TryParse((string)token["tile_cookie_obtained_utc"], out obtainedUtc))
+                        {
+                            // Navigraph tile cookies are typically valid for ~1 hour; refresh proactively.
+                            if (DateTime.UtcNow >= obtainedUtc.ToUniversalTime().AddMinutes(50))
+                            {
+                                return false;
+                            }
+                        }
+
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+
+                private static bool TryForceRefreshTileCookiesOnce(string reason)
+                {
+                    try
+                    {
+                        lock (TokenRefreshSync)
+                        {
+                            if ((DateTime.UtcNow - LastForcedTileCookieRefreshUtc).TotalSeconds < 30)
+                            {
+                                return false;
+                            }
+                            LastForcedTileCookieRefreshUtc = DateTime.UtcNow;
+                        }
+
+                        string msg;
+                        bool refreshed = OpenKneeboardNavigraphOAuthService.TryRefreshAccessToken(out msg, true);
+                        try
+                        {
+                            Log.Write(
+                                refreshed
+                                    ? ("Navigraph tile-cookie forced refresh succeeded (" + (reason ?? "") + ").")
+                                    : ("Navigraph tile-cookie forced refresh failed (" + (reason ?? "") + "): " + msg),
+                                refreshed ? VAICOM.Static.Colors.Text : VAICOM.Static.Colors.Warning);
+                        }
+                        catch { }
                         return refreshed;
                     }
                     catch
@@ -1061,7 +1131,7 @@ namespace VAICOM
                         if (!hasAllCookies)
                         {
                             string refreshMsg;
-                            bool refreshed = OpenKneeboardNavigraphOAuthService.TryRefreshAccessToken(out refreshMsg);
+                            bool refreshed = OpenKneeboardNavigraphOAuthService.TryRefreshAccessToken(out refreshMsg, true);
                             try { Log.Write(refreshed ? "Navigraph tile auth refresh: received." : ("Navigraph tile auth refresh failed: " + refreshMsg), refreshed ? VAICOM.Static.Colors.Text : VAICOM.Static.Colors.Warning); } catch { }
 
                             if (refreshed && OpenKneeboardNavigraphEfbState.TryGetDecryptedAuthBlob(out authPayload) && !string.IsNullOrWhiteSpace(authPayload))
@@ -1159,6 +1229,28 @@ namespace VAICOM
                                                     {
                                                         string body = resp.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                                                         Log.Write("Navigraph enroute tile 403 body preview: " + BuildLogPreview(body), VAICOM.Static.Colors.Warning);
+
+                                                        // Stale/invalid CloudFront tile cookies can produce 403 AccessDenied.
+                                                        // Force-refresh token+cookies once, then continue retry loop.
+                                                        if (TryForceRefreshTileCookiesOnce("tile-403"))
+                                                        {
+                                                            if (OpenKneeboardNavigraphEfbState.TryGetDecryptedAuthBlob(out authPayload) && !string.IsNullOrWhiteSpace(authPayload))
+                                                            {
+                                                                payload = JObject.Parse(authPayload);
+                                                                accessToken = (string)payload["access_token"] ?? accessToken;
+                                                                policy = (string)payload["tile_cookie_policy"] ?? "";
+                                                                signature = (string)payload["tile_cookie_signature"] ?? "";
+                                                                keyPairId = (string)payload["tile_cookie_keypairid"] ?? "";
+                                                                hasAllCookies = !string.IsNullOrWhiteSpace(policy)
+                                                                    && !string.IsNullOrWhiteSpace(signature)
+                                                                    && !string.IsNullOrWhiteSpace(keyPairId);
+                                                                cookieJar = new CookieContainer();
+                                                                if (hasAllCookies)
+                                                                {
+                                                                    TryAddNavigraphTileCookies(cookieJar, policy, signature, keyPairId);
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                                 catch { }

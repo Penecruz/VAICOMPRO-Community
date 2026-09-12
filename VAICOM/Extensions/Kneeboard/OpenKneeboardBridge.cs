@@ -190,6 +190,14 @@ namespace VAICOM
                     ResetRawServerMessagesLog();
                     ResetSnapshot();
                     RefreshDtcFilesSnapshot();
+                    try
+                    {
+                        string refreshMsg;
+                        OpenKneeboardNavigraphOAuthService.TryRefreshAccessToken(out refreshMsg, true);
+                    }
+                    catch
+                    {
+                    }
                     SetPluginRegistration(State.activeconfig != null && State.activeconfig.OpenKneeboard_Out);
                     LoadIndexHtmlPage();
                     StartWebHost();
@@ -2049,8 +2057,10 @@ namespace VAICOM
                     if (path == "/okb/state" || path == "/okb/index.json")
                     {
                         // Update the selected category data and associated units if the tab has been changed to display a different category.
-                        string selectedTab = context.Request.QueryString["selectedTab"] ?? "";
-                        if (!currentSelectedTab.Equals(selectedTab, StringComparison.OrdinalIgnoreCase))
+                        // Ignore empty selectedTab probes so background index.json polling does not clear the active tab.
+                        string selectedTab = NormalizeSelectedTabToken((context.Request.QueryString["selectedTab"] ?? string.Empty).Trim());
+                        if (!string.IsNullOrEmpty(selectedTab)
+                            && !currentSelectedTab.Equals(selectedTab, StringComparison.OrdinalIgnoreCase))
                         {
                             currentSelectedTab = selectedTab;
                             // If we have just switched to the flight plan tab then do an
@@ -2334,6 +2344,14 @@ namespace VAICOM
                 public static bool IsFlightPlanTabSelected()
                 {
                     return !string.IsNullOrEmpty(currentSelectedTab) && currentSelectedTab.Equals("DTC");
+                }
+
+                private static string NormalizeSelectedTabToken(string selectedTab)
+                {
+                    string tab = (selectedTab ?? string.Empty).Trim();
+                    if (tab.Equals("WX/ATC", StringComparison.OrdinalIgnoreCase)) return "ATC";
+                    if (tab.Equals("FLT PLN", StringComparison.OrdinalIgnoreCase)) return "DTC";
+                    return tab;
                 }
 
                 public static bool IsFlightPlanTabActive

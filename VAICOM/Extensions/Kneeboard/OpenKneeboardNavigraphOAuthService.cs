@@ -276,7 +276,7 @@ namespace VAICOM
                     }
                 }
 
-                public static bool TryRefreshAccessToken(out string message)
+                public static bool TryRefreshAccessToken(out string message, bool forceRefresh = false)
                 {
                     message = "";
 
@@ -292,7 +292,7 @@ namespace VAICOM
                             }
 
                             JObject existing = JObject.Parse(authPayload);
-                            if (IsAccessTokenFresh(existing))
+                            if (!forceRefresh && IsAccessTokenFresh(existing))
                             {
                                 message = "Access token is still valid.";
                                 return true;
@@ -576,12 +576,33 @@ namespace VAICOM
                     }
 
                     config.IsValid = string.IsNullOrWhiteSpace(config.ValidationError);
-                    if (string.IsNullOrWhiteSpace(config.Scope))
-                    {
-                        config.Scope = "openid charts tiles offline_access";
-                    }
+                    config.Scope = EnsureRequiredNavigraphScopes(config.Scope);
 
                     return config;
+                }
+
+                private static string EnsureRequiredNavigraphScopes(string scope)
+                {
+                    var required = new[] { "openid", "charts", "tiles", "offline_access" };
+                    var ordered = new List<string>();
+                    var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                    foreach (var token in ((scope ?? "").Split(new[] { ' ', '\t', '\r', '\n', ',' }, StringSplitOptions.RemoveEmptyEntries)))
+                    {
+                        var t = (token ?? "").Trim();
+                        if (string.IsNullOrWhiteSpace(t) || seen.Contains(t)) continue;
+                        seen.Add(t);
+                        ordered.Add(t);
+                    }
+
+                    foreach (var req in required)
+                    {
+                        if (seen.Contains(req)) continue;
+                        seen.Add(req);
+                        ordered.Add(req);
+                    }
+
+                    return string.Join(" ", ordered);
                 }
 
                 private static async Task<DeviceAuthorizationResponse> RequestDeviceAuthorizationAsync(OAuthConfig config, CancellationToken cancellationToken)
