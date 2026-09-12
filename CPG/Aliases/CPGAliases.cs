@@ -243,7 +243,7 @@ namespace VAICOM.Extensions.CPG
             { "George set battle position here",             "georgeaddbattleposition"       },
             { "George establish new battle position",        "georgeaddbattleposition"       },
             { "George Delete Battle Position",               "georgedeletebattleposition"    },
-            { "George disgard that battle position",         "georgedeletebattleposition"    },
+            { "George disregard that battle position",       "georgedeletebattleposition"    },
             { "George Return To Battle Position",            "georgereturntobattleposition"  },
             { "George Mask Position",                        "georgemaskposition"            },
 
