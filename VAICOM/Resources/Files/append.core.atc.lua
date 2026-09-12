@@ -29,7 +29,7 @@ local function vaicom_patch_carrier_arrival_progression()
 	if closed ~= nil then
 		closed[Message.wMsgATCTaxiToParkingArea] = TO_STAGE('Arrival', 'Closed')
 		closed[Message.wMsgLeaderRequestTaxiToParking] = TO_STAGE('Arrival', 'Parking')
-	end
+	end	
 
 	local case2and3Approach = arrival.stages['Carrier approach CASE 2 and 3']
 	if case2and3Approach ~= nil then
